@@ -1,6 +1,6 @@
 # ShaderGraphCoder
 
-Write RealityKit shaders in Swift.
+An embedded DSL to write RealityKit shaders in Swift.
 
 **Supported Platforms:** visionOS
 
