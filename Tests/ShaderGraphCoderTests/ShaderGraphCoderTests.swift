@@ -11,7 +11,7 @@ struct SGTests {
     
     func pulsingBlue() async throws -> ShaderGraphMaterial {
         let frequency = SGValue.floatParameter(name: "Frequency", defaultValue: 2)
-        let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency)
+        let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency * (2*Float.pi))
         let surface = SGPBRSurface(baseColor: color)
         return try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
     }

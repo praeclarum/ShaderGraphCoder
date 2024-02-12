@@ -35,14 +35,17 @@ The following value types are supported:
 | Type | Description |
 | ---- | ----------- |
 | `SGValue` | The parent value type containing static methods and properties to get global values |
-| `SGScalar: SGValue` | A single value, usually a floating point number |
-| `SGVector: SGSIMD` | A vector of values, with either 2, 3, or 4 elements |
+| `SGScalar: SGValue` | A single number |
+| `SGSIMD: SGValue` | Base class for SIMD types color and vector |
 | `SGColor: SGSIMD` | A vector of color values, with either 3 or 4 elements |
-| `SGTexture1D` | A 1D texture that can be sampled |
-| `SGTexture2D` | A 2D texture that can be sampled |
-| `SGTexture3D` | A 3D texture that can be sampled |
+| `SGVector: SGSIMD` | A vector of values, with either 2, 3, or 4 elements |
+| `SGTexture1D: SGValue` | A 1D texture that can be sampled |
+| `SGTexture2D: SGValue` | A 2D texture that can be sampled |
+| `SGTexture3D: SGValue` | A 3D texture that can be sampled |
 
 Each of these Swift types has an underlying graph data type available as `dataType`.
+
+For more details see [Values.swift](Sources/ShaderGraphCoder/Sources.swift).
 
 
 ## Operations
@@ -55,6 +58,8 @@ The following operators are supported:
 | `-` | Subtraction |
 | `*` | Multiplication |
 | `/` | Division |
+| `abs` | Absolute value |
+| `clamp` | Clamp a value to a range |
 | `color3f` | Create an RGB color from computed elements |
 | `color4f` | Create an RGBA color from computed elements |
 | `cos` | Cosine of an angle in radians |
@@ -67,6 +72,12 @@ The following operators are supported:
 | `vector2f` | Create a 2D vector from computed elements |
 | `vector3f` | Create a 3D vector from computed elements |
 | `vector4f` | Create a 4D vector from computed elements |
+
+Most operators work on `SGScalar`, `SGVector`, and `SGColor` types.
+
+The `ifGreaterOrEqual` and `ifLess` operators are conditional operators that take a condition, a value if true, and a value if false. The `mix` operator is a linear interpolation operator that takes two values and a weight. Since runtime conditionals are not supported in RealityKit, the `ifGreaterOrEqual` and `ifLess` operators are the best way to implement runtime logic.
+
+For more details see [Operations.swift](Sources/ShaderGraphCoder/Operations.swift).
 
 
 ## Sources
@@ -81,6 +92,9 @@ The following sources are supported:
 | `SGValue.color4fParameter` | An RGBA color parameter that can be set by later mutating the material |
 | `SVValue.float` | A constant floating point number |
 | `SGValue.floatParameter` | A parameter that can be set by later mutating the material |
+| `SGValue.texture1DParameter` | A 1D texture parameter that can be set by later mutating the material |
+| `SGValue.texture2DParameter` | A 2D texture parameter that can be set by later mutating the material |
+| `SGValue.texture3DParameter` | A 3D texture parameter that can be set by later mutating the material |
 | `SGValue.time` | The time in seconds |
 | `SGValue.vector2f` | A constant 2D vector |
 | `SGValue.vector2fParameter` | A 2D vector parameter that can be set by later mutating the material |
@@ -91,6 +105,8 @@ The following sources are supported:
 | `SGValue.worldCameraPosition` | The world position of the camera |
 | `SGValue.worldNormal` | The world normal of the vertex or fragment being processed |
 | `SGValue.worldPosition` | The world position of the vertex or fragment being processed |
+
+For more details see [Sources.swift](Sources/ShaderGraphCoder/Sources.swift).
 
 
 ## Building on the Command Line
