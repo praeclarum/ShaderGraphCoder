@@ -116,7 +116,7 @@ public enum SGDataType: String {
     case vector3f = "float3"
     case vector4f = "float4"
     
-    var isScalar: Bool {
+    public var isScalar: Bool {
         switch self {
         case .asset:
             return false
@@ -144,7 +144,7 @@ public enum SGDataType: String {
             return false
         }
     }
-    var isColor: Bool {
+    public var isColor: Bool {
         switch self {
         case .asset:
             return false
@@ -185,7 +185,7 @@ public enum SGConstantValue {
     case vector2f(_ value: SIMD2<Float>)
     case vector3f(_ value: SIMD3<Float>)
     case vector4f(_ value: SIMD4<Float>)
-    var dataType: SGDataType {
+    public var dataType: SGDataType {
         switch self {
         case .color3f:
             return .color3f
@@ -225,7 +225,7 @@ public class SGSurface: SGNode {
 }
 
 public class SGPBRSurface: SGSurface {
-    init(baseColor: SGColor? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, emissiveColor: SGColor? = nil, ambientOcclusion: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, normal: SGVector? = nil, hasPremultipliedAlpha: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, specular: SGScalar? = nil) {
+    public init(baseColor: SGColor? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, emissiveColor: SGColor? = nil, ambientOcclusion: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, normal: SGVector? = nil, hasPremultipliedAlpha: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, specular: SGScalar? = nil) {
         super.init(
             nodeType: "ND_realitykit_pbr_surfaceshader",
             inputs: [
@@ -249,7 +249,7 @@ public class SGPBRSurface: SGSurface {
 }
 
 public class SGGeometryModifier: SGNode {
-    init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, userAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
+    public init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, userAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
         super.init(
             nodeType: "ND_realitykit_geometrymodifier_vertexshader",
             inputs: [
