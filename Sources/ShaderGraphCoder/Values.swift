@@ -149,18 +149,18 @@ public class SGNumeric: SGValue {
 }
 
 public class SGScalar: SGNumeric {
-    static func + (left: SGScalar, right: SGScalar) -> SGScalar { left.add(right) }
-    static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
-    static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
-    static func / (left: SGScalar, right: SGScalar) -> SGScalar { left.divide(right) }
-    static func + (left: SGScalar, right: Float) -> SGScalar { left.add(.float(right)) }
-    static func - (left: SGScalar, right: Float) -> SGScalar { left.subtract(.float(right)) }
-    static func * (left: SGScalar, right: Float) -> SGScalar { left.multiply(.float(right)) }
-    static func / (left: SGScalar, right: Float) -> SGScalar { left.divide(.float(right)) }
-    static func + (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).add(right) }
-    static func - (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).subtract(right) }
-    static func * (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).multiply(right) }
-    static func / (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).divide(right) }
+    public static func + (left: SGScalar, right: SGScalar) -> SGScalar { left.add(right) }
+    public static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
+    public static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
+    public static func / (left: SGScalar, right: SGScalar) -> SGScalar { left.divide(right) }
+    public static func + (left: SGScalar, right: Float) -> SGScalar { left.add(.float(right)) }
+    public static func - (left: SGScalar, right: Float) -> SGScalar { left.subtract(.float(right)) }
+    public static func * (left: SGScalar, right: Float) -> SGScalar { left.multiply(.float(right)) }
+    public static func / (left: SGScalar, right: Float) -> SGScalar { left.divide(.float(right)) }
+    public static func + (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).add(right) }
+    public static func - (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).subtract(right) }
+    public static func * (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).multiply(right) }
+    public static func / (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).divide(right) }
 }
 
 public class SGSIMD: SGNumeric {
@@ -212,55 +212,55 @@ public class SGSIMD: SGNumeric {
 }
 
 public class SGVector: SGSIMD {
-    static func + (left: SGVector, right: SGVector) -> SGVector { left.add(right) }
-    static func - (left: SGVector, right: SGVector) -> SGVector { left.subtract(right) }
-    static func * (left: SGVector, right: SGVector) -> SGVector { left.multiply(right) }
-    static func / (left: SGVector, right: SGVector) -> SGVector { left.divide(right) }
-    static func + (left: SGVector, right: SGScalar) -> SGVector { left.add(right) }
-    static func - (left: SGVector, right: SGScalar) -> SGVector { left.subtract(right) }
-    static func * (left: SGVector, right: SGScalar) -> SGVector { left.multiply(right) }
-    static func / (left: SGVector, right: SGScalar) -> SGVector { left.divide(right) }
-    static func + (left: SGVector, right: Float) -> SGVector { left.add(.float(right)) }
-    static func - (left: SGVector, right: Float) -> SGVector { left.subtract(.float(right)) }
-    static func * (left: SGVector, right: Float) -> SGVector { left.multiply(.float(right)) }
-    static func / (left: SGVector, right: Float) -> SGVector { left.divide(.float(right)) }
-    static func + (left: SGScalar, right: SGVector) -> SGVector { right.add(left) }
-    static func * (left: SGScalar, right: SGVector) -> SGVector { right.multiply(left) }
-    static func + (left: Float, right: SGVector) -> SGVector { right.add(.float(left)) }
-    static func * (left: Float, right: SGVector) -> SGVector { right.multiply(.float(left)) }
+    public static func + (left: SGVector, right: SGVector) -> SGVector { left.add(right) }
+    public static func - (left: SGVector, right: SGVector) -> SGVector { left.subtract(right) }
+    public static func * (left: SGVector, right: SGVector) -> SGVector { left.multiply(right) }
+    public static func / (left: SGVector, right: SGVector) -> SGVector { left.divide(right) }
+    public static func + (left: SGVector, right: SGScalar) -> SGVector { left.add(right) }
+    public static func - (left: SGVector, right: SGScalar) -> SGVector { left.subtract(right) }
+    public static func * (left: SGVector, right: SGScalar) -> SGVector { left.multiply(right) }
+    public static func / (left: SGVector, right: SGScalar) -> SGVector { left.divide(right) }
+    public static func + (left: SGVector, right: Float) -> SGVector { left.add(.float(right)) }
+    public static func - (left: SGVector, right: Float) -> SGVector { left.subtract(.float(right)) }
+    public static func * (left: SGVector, right: Float) -> SGVector { left.multiply(.float(right)) }
+    public static func / (left: SGVector, right: Float) -> SGVector { left.divide(.float(right)) }
+    public static func + (left: SGScalar, right: SGVector) -> SGVector { right.add(left) }
+    public static func * (left: SGScalar, right: SGVector) -> SGVector { right.multiply(left) }
+    public static func + (left: Float, right: SGVector) -> SGVector { right.add(.float(left)) }
+    public static func * (left: Float, right: SGVector) -> SGVector { right.multiply(.float(left)) }
 
-    var x: SGScalar { getSeparateOutput("outx") }
-    var y: SGScalar { getSeparateOutput("outy") }
-    var z: SGScalar { getSeparateOutput("outz") }
-    var w: SGScalar { getSeparateOutput("outw") }
-    var xy: SGVector { combine(values: [x, y], dataType: .vector2f) }
-    var xyz: SGVector { combine(values: [x, y, z], dataType: .vector3f) }
+    public var x: SGScalar { getSeparateOutput("outx") }
+    public var y: SGScalar { getSeparateOutput("outy") }
+    public var z: SGScalar { getSeparateOutput("outz") }
+    public var w: SGScalar { getSeparateOutput("outw") }
+    public var xy: SGVector { combine(values: [x, y], dataType: .vector2f) }
+    public var xyz: SGVector { combine(values: [x, y, z], dataType: .vector3f) }
 }
 
 public class SGColor: SGSIMD {
-    static func + (left: SGColor, right: SGColor) -> SGColor { left.add(right) }
-    static func - (left: SGColor, right: SGColor) -> SGColor { left.subtract(right) }
-    static func * (left: SGColor, right: SGColor) -> SGColor { left.multiply(right) }
-    static func / (left: SGColor, right: SGColor) -> SGColor { left.divide(right) }
-    static func + (left: SGColor, right: SGScalar) -> SGColor { left.add(right) }
-    static func - (left: SGColor, right: SGScalar) -> SGColor { left.subtract(right) }
-    static func * (left: SGColor, right: SGScalar) -> SGColor { left.multiply(right) }
-    static func / (left: SGColor, right: SGScalar) -> SGColor { left.divide(right) }
-    static func + (left: SGColor, right: Float) -> SGColor { left.add(.float(right)) }
-    static func - (left: SGColor, right: Float) -> SGColor { left.subtract(.float(right)) }
-    static func * (left: SGColor, right: Float) -> SGColor { left.multiply(.float(right)) }
-    static func / (left: SGColor, right: Float) -> SGColor { left.divide(.float(right)) }
-    static func + (left: SGScalar, right: SGColor) -> SGColor { right.add(left) }
-    static func * (left: SGScalar, right: SGColor) -> SGColor { right.multiply(left) }
-    static func + (left: Float, right: SGColor) -> SGColor { right.add(.float(left)) }
-    static func * (left: Float, right: SGColor) -> SGColor { right.multiply(.float(left)) }
+    public static func + (left: SGColor, right: SGColor) -> SGColor { left.add(right) }
+    public static func - (left: SGColor, right: SGColor) -> SGColor { left.subtract(right) }
+    public static func * (left: SGColor, right: SGColor) -> SGColor { left.multiply(right) }
+    public static func / (left: SGColor, right: SGColor) -> SGColor { left.divide(right) }
+    public static func + (left: SGColor, right: SGScalar) -> SGColor { left.add(right) }
+    public static func - (left: SGColor, right: SGScalar) -> SGColor { left.subtract(right) }
+    public static func * (left: SGColor, right: SGScalar) -> SGColor { left.multiply(right) }
+    public static func / (left: SGColor, right: SGScalar) -> SGColor { left.divide(right) }
+    public static func + (left: SGColor, right: Float) -> SGColor { left.add(.float(right)) }
+    public static func - (left: SGColor, right: Float) -> SGColor { left.subtract(.float(right)) }
+    public static func * (left: SGColor, right: Float) -> SGColor { left.multiply(.float(right)) }
+    public static func / (left: SGColor, right: Float) -> SGColor { left.divide(.float(right)) }
+    public static func + (left: SGScalar, right: SGColor) -> SGColor { right.add(left) }
+    public static func * (left: SGScalar, right: SGColor) -> SGColor { right.multiply(left) }
+    public static func + (left: Float, right: SGColor) -> SGColor { right.add(.float(left)) }
+    public static func * (left: Float, right: SGColor) -> SGColor { right.multiply(.float(left)) }
 
-    var r: SGScalar { getSeparateOutput("outr") }
-    var g: SGScalar { getSeparateOutput("outg") }
-    var b: SGScalar { getSeparateOutput("outb") }
-    var a: SGScalar { getSeparateOutput("outa") }
-    var rgb: SGColor { combine(values: [r, g, b], dataType: .color3f) }
-    var bgr: SGColor { combine(values: [b, g, r], dataType: .color3f) }
+    public var r: SGScalar { getSeparateOutput("outr") }
+    public var g: SGScalar { getSeparateOutput("outg") }
+    public var b: SGScalar { getSeparateOutput("outb") }
+    public var a: SGScalar { getSeparateOutput("outa") }
+    public var rgb: SGColor { combine(values: [r, g, b], dataType: .color3f) }
+    public var bgr: SGColor { combine(values: [b, g, r], dataType: .color3f) }
 }
 
 public class SGString: SGValue {
@@ -268,7 +268,7 @@ public class SGString: SGValue {
 }
 
 public class SGTexture1D: SGValue {
-    func sample(texcoord: SGValue? = nil) -> SGColor {
+    public func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
             errors.append("Cannot sample `\(dataType.usda)`. Use a `texture1DParameter` to sample.")
@@ -285,7 +285,7 @@ public class SGTexture1D: SGValue {
 }
 
 public class SGTexture2D: SGValue {
-    func sample(texcoord: SGValue? = nil) -> SGColor {
+    public func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
             errors.append("Cannot sample `\(dataType.usda)`. Use a `texture2DParameter` to sample.")
@@ -302,7 +302,7 @@ public class SGTexture2D: SGValue {
 }
 
 public class SGTexture3D: SGValue {
-    func sample(texcoord: SGValue? = nil) -> SGColor {
+    public func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
             errors.append("Cannot sample `\(dataType.usda)`. Use a `texture3DParameter` to sample.")

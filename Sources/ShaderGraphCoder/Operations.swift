@@ -16,7 +16,7 @@ public func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) 
     return combine(values: [r, g, b, a], dataType: .color4f)
 }
 
-public func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
+func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     var errors: [String] = []
     var n = 3
     let type = getNodeSuffixForDataType(dataType)
