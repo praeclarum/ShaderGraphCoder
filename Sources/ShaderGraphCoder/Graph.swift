@@ -224,7 +224,7 @@ public enum ShaderGraphCoderError: Error {
 public class SGSurface: SGNode {
 }
 
-class SGPBRSurface: SGSurface {
+public class SGPBRSurface: SGSurface {
     init(baseColor: SGColor? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, emissiveColor: SGColor? = nil, ambientOcclusion: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, normal: SGVector? = nil, hasPremultipliedAlpha: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, specular: SGScalar? = nil) {
         super.init(
             nodeType: "ND_realitykit_pbr_surfaceshader",
