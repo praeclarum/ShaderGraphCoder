@@ -47,7 +47,7 @@ The following value types are supported:
 
 Each of these Swift types has an underlying graph data type available as `dataType`.
 
-For more details see [Values.swift](Sources/ShaderGraphCoder/Sources.swift).
+For more details see [Values.swift](Sources/ShaderGraphCoder/Values.swift).
 
 
 ## Operations
