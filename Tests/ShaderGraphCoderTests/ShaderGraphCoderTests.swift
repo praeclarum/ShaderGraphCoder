@@ -2,7 +2,9 @@ import XCTest
 import RealityKit
 @testable import ShaderGraphCoder
 
-struct SGTests {
+#if os(visionOS)
+
+struct VisionTests {
     func red() async throws -> ShaderGraphMaterial {
         let color: SGColor = .color3f([1, 0, 0])
         let surface = SGPBRSurface(baseColor: color)
@@ -33,6 +35,8 @@ struct SGTests {
         }
     }
 }
+
+#endif
 
 final class ShaderGraphCoderTests: XCTestCase {
     func testExample() throws {

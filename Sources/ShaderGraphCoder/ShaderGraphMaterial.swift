@@ -8,6 +8,8 @@
 import Foundation
 import RealityKit
 
+#if os(visionOS)
+
 extension ShaderGraphMaterial {
     init(surface: SGSurface?, geometryModifier: SGGeometryModifier?) async throws {
         let materialName = "ShaderGraphCoderMaterial"
@@ -22,3 +24,5 @@ extension ShaderGraphMaterial {
         try await self.init(named: "/Root/\(materialName)", from: usdaData)
     }
 }
+
+#endif
