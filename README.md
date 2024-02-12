@@ -45,7 +45,7 @@ The following value types are supported:
 Each of these Swift types has an underlying graph data type available as `dataType`.
 
 
-## Operators
+## Operations
 
 The following operators are supported:
 

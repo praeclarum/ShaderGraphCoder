@@ -1,0 +1,24 @@
+//
+//  ShaderGraphMaterial.swift
+//  ShaderGraphCoder
+//
+//  Created by Frank A. Krueger on 2/10/24.
+//
+
+import Foundation
+import RealityKit
+
+extension ShaderGraphMaterial {
+    init(surface: SGSurface?, geometryModifier: SGGeometryModifier?) async throws {
+        let materialName = "ShaderGraphCoderMaterial"
+        let (usda, errors) = getUSDA(materialName: materialName, surface: surface, geometryModifier: geometryModifier)
+        if errors.count > 0 {
+            throw ShaderGraphCoderError.graphContainsErrors(errors: errors)
+        }
+        guard let usdaData = usda.data(using: .utf8) else {
+            throw ShaderGraphCoderError.failedToEncodeUSDAsData
+        }
+        print("\n\n========\nUSDA\n========\n\(usda)\n")
+        try await self.init(named: "/Root/\(materialName)", from: usdaData)
+    }
+}
