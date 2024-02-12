@@ -107,6 +107,27 @@ public func length<T>(_ x: T) -> SGScalar where T: SGSIMD {
     return SGScalar(source: .nodeOutput(node))
 }
 
+public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGScalar, y2: SGScalar) -> SGScalar {
+    let dx = x2 - x1
+    let dy = y2 - y1
+    let m = dy / dx
+    return m*(x - x1) + y1
+}
+
+public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGColor, y2: SGColor) -> SGColor {
+    let dx = x2 - x1
+    let dy = y2 - y1
+    let m = dy / dx
+    return m*(x - x1) + y1
+}
+
+public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGVector, y2: SGVector) -> SGVector {
+    let dx = x2 - x1
+    let dy = y2 - y1
+    let m = dy / dx
+    return m*(x - x1) + y1
+}
+
 public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
     let node = SGNode(
         nodeType: "ND_mix_" + getNodeSuffixForDataType(x.dataType),

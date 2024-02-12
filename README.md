@@ -68,8 +68,9 @@ The following operators are supported:
 | `cos` | Cosine of an angle in radians |
 | `ifGreaterOrEqual` | Conditional operator |
 | `ifLess` | Conditional operator |
-| `mix` | Linear interpolation |
 | `length` | Length (magnitude) of a vector or color |
+| `map` | Linearly map a value from one range to another |
+| `mix` | Linear interpolation |
 | `pow` | Power |
 | `sin` | Sine of an angle in radians |
 | `vector2f` | Create a 2D vector from computed elements |
