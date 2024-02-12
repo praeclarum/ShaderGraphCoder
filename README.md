@@ -2,6 +2,8 @@
 
 Write RealityKit shaders in Swift.
 
+**Supported Platforms:** visionOS
+
 
 ## Examples
 
