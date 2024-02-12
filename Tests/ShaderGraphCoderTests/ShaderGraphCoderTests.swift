@@ -2,30 +2,27 @@ import XCTest
 import RealityKit
 @testable import ShaderGraphCoder
 
+let testSurfaceShaders: [String: () -> SGSurface] = [
+    "red": {
+        let color: SGColor = .color3f([1, 0, 0])
+        return SGPBRSurface(baseColor: color)
+    },
+    "pulsingBlue": {
+        let frequency = SGValue.floatParameter(name: "Frequency", defaultValue: 2)
+        let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency * (2*Float.pi))
+        return SGPBRSurface(baseColor: color)
+    }
+]
+
 #if os(visionOS)
 
 struct VisionTests {
-    func red() async throws -> ShaderGraphMaterial {
-        let color: SGColor = .color3f([1, 0, 0])
-        let surface = SGPBRSurface(baseColor: color)
-        return try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
-    }
-    
-    func pulsingBlue() async throws -> ShaderGraphMaterial {
-        let frequency = SGValue.floatParameter(name: "Frequency", defaultValue: 2)
-        let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency * (2*Float.pi))
-        let surface = SGPBRSurface(baseColor: color)
-        return try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
-    }
-    
     func runTests() async {
-        let tests = [
-//            red,
-            pulsingBlue,
-        ]
-        for t in tests {
+        for (tn, t) in testSurfaceShaders {
             do {
-                let _ = try await t()
+                print(tn)
+                let surface = try await t()
+                let _ = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
                 print("SHADER OK!")
             }
             catch {
@@ -39,11 +36,10 @@ struct VisionTests {
 #endif
 
 final class ShaderGraphCoderTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
-
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    func testRed() throws {
+        let _ = testSurfaceShaders["red"]!()
+    }
+    func testPulsingBlue() throws {
+        let _ = testSurfaceShaders["pulsingBlue"]!()
     }
 }
