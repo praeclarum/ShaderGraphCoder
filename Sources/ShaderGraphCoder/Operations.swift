@@ -8,15 +8,15 @@
 import Foundation
 
 
-func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
+public func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
     return combine(values: [r, g, b], dataType: .color3f)
 }
 
-func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
+public func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
     return combine(values: [r, g, b, a], dataType: .color4f)
 }
 
-func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
+public func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     var errors: [String] = []
     var n = 3
     let type = getNodeSuffixForDataType(dataType)
@@ -50,11 +50,11 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     return T(source: .nodeOutput(sep))
 }
 
-func abs<T>(_ x: T) -> T where T: SGNumeric {
+public func abs<T>(_ x: T) -> T where T: SGNumeric {
     SGNumeric.unary("ND_absval_", x: x)
 }
 
-func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
+public func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
     let node = SGNode(
         nodeType: "ND_clamp_" + getNodeSuffixForDataType(x.dataType),
         inputs: [
@@ -66,15 +66,15 @@ func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
     return T(source: .nodeOutput(node))
 }
 
-func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
+public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
     clamp(x, min: SGValue.float(min), max: SGValue.float(max))
 }
 
-func cos<T>(_ x: T) -> T where T: SGNumeric {
+public func cos<T>(_ x: T) -> T where T: SGNumeric {
     SGNumeric.unary("ND_cos_", x: x)
 }
 
-func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
+public func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
     let node = SGNode(
         nodeType: "ND_ifgreatereq_" + getNodeSuffixForDataType(trueResult.dataType),
         inputs: [
@@ -87,19 +87,19 @@ func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult
     return U(source: .nodeOutput(node))
 }
 
-func ifGreaterOrEqual<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: Float) -> SGScalar where T: SGNumeric {
+public func ifGreaterOrEqual<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: Float) -> SGScalar where T: SGNumeric {
     ifGreaterOrEqual(value1, value2, trueResult: .float(trueResult), falseResult: .float(falseResult))
 }
 
-func ifLess<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
+public func ifLess<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
     ifGreaterOrEqual(value2, value1, trueResult: trueResult, falseResult: falseResult)
 }
 
-func ifLess<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: Float) -> SGScalar where T: SGNumeric {
+public func ifLess<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: Float) -> SGScalar where T: SGNumeric {
     ifGreaterOrEqual(value2, value1, trueResult: .float(trueResult), falseResult: .float(falseResult))
 }
 
-func length<T>(_ x: T) -> SGScalar where T: SGSIMD {
+public func length<T>(_ x: T) -> SGScalar where T: SGSIMD {
     let node = SGNode(
         nodeType: "ND_magnitude_" + getNodeSuffixForDataType(x.dataType),
         inputs: [.init(name: "in", connection: x)],
@@ -107,7 +107,7 @@ func length<T>(_ x: T) -> SGScalar where T: SGSIMD {
     return SGScalar(source: .nodeOutput(node))
 }
 
-func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
+public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
     let node = SGNode(
         nodeType: "ND_mix_" + getNodeSuffixForDataType(x.dataType),
         inputs: [
@@ -119,38 +119,31 @@ func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
     return T(source: .nodeOutput(node))
 }
 
-func pow<T>(_ x: T, _ y: SGNumeric) -> T where T: SGNumeric {
+public func pow<T>(_ x: T, _ y: SGNumeric) -> T where T: SGNumeric {
     SGNumeric.binary("ND_power_", left: x, right: y)
 }
 
-func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
+public func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
     SGNumeric.binary("ND_power_", left: x, right: .float(y))
 }
 
-func sin<T>(_ x: T) -> T where T: SGNumeric {
+public func sin<T>(_ x: T) -> T where T: SGNumeric {
     SGNumeric.unary("ND_sin_", x: x)
 }
 
-func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+public func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
     return combine(values: [x, y], dataType: .vector2f)
 }
 
-func vector3f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+public func vector3f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
     return combine(values: [x, y, z], dataType: .vector3f)
 }
 
-func vector4f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+public func vector4f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
     return combine(values: [x, y, z, w], dataType: .vector4f)
 }
 
 // MARK: - Private
-
-private func inferBinaryOutputType(left: SGDataType, right: SGDataType) -> SGDataType {
-    if left.isScalar {
-        return right
-    }
-    return left
-}
 
 private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
     switch dataType {

@@ -7,11 +7,11 @@
 
 import Foundation
 
-extension SGNode {
+public extension SGNode {
     var usdaName: String { "Node\(id)" }
 }
 
-extension SGDataType {
+public extension SGDataType {
     var usda: String {
         switch self {
         case .surface:
@@ -24,7 +24,7 @@ extension SGDataType {
     }
 }
 
-extension SGConstantValue {
+public extension SGConstantValue {
     var usda: String {
         switch self {
         case .color3f(let v, colorSpace: let cs):
@@ -51,7 +51,7 @@ extension SGConstantValue {
     }
 }
 
-extension SGValueSource {
+public extension SGValueSource {
     func getUSDAReference(materialName: String) -> String {
         switch self {
         case .constant(let ivalue):
@@ -64,7 +64,7 @@ extension SGValueSource {
     }
 }
 
-func getUSDA(materialName: String, surface: SGSurface?, geometryModifier: SGGeometryModifier?) -> (String, [String]) {
+public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier: SGGeometryModifier?) -> (String, [String]) {
     var lines: [String] = []
     func line(_ text: String) {
         lines.append(text)
@@ -152,15 +152,14 @@ func getUSDA(materialName: String, surface: SGSurface?, geometryModifier: SGGeom
     return (lines.joined(separator: "\n"), errors)
 }
 
-extension SGSurface {
+public extension SGSurface {
     func usda(materialName: String) -> String {
         return getUSDA(materialName: materialName, surface: self, geometryModifier: nil).0
     }
 }
 
-extension SGGeometryModifier {
+public extension SGGeometryModifier {
     func usda(materialName: String) -> String {
         return getUSDA(materialName: materialName, surface: nil, geometryModifier: self).0
     }
 }
-

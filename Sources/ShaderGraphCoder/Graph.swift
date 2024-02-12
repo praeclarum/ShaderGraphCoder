@@ -7,49 +7,47 @@
 
 import Foundation
 
-class SGNode: Identifiable, Equatable, Hashable {
+public class SGNode: Identifiable, Equatable, Hashable {
     private static var nextId: Int = 1
-    let id: Int
-    let nodeType: String
-    let inputs: [Input]
-    let outputs: [Output]
-    let errors: [String]
+    public let id: Int
+    public let nodeType: String
+    public let inputs: [Input]
+    public let outputs: [Output]
+    public let errors: [String]
     
-    var dataType: SGDataType { outputs[0].dataType }
-    var outputName: String { outputs[0].name }
+    public var dataType: SGDataType { outputs[0].dataType }
+    public var outputName: String { outputs[0].name }
     
-    func getOutputValue(name: String) -> SGValueSource { .nodeOutput(self, name) }
-    
-    struct Input {
-        let name: String
-        let dataType: SGDataType
-        let connection: SGValue?
-        init(name: String, dataType: SGDataType, connection: SGValue?) {
+    public struct Input {
+        public let name: String
+        public let dataType: SGDataType
+        public let connection: SGValue?
+        public init(name: String, dataType: SGDataType, connection: SGValue?) {
             self.name = name
             self.dataType = dataType
             self.connection = connection
         }
-        init(name: String, connection: SGValue) {
+        public init(name: String, connection: SGValue) {
             self.name = name
             self.dataType = connection.dataType
             self.connection = connection
         }
     }
     
-    struct Output {
-        let name: String
-        let dataType: SGDataType
-        init(name: String, dataType: SGDataType) {
+    public struct Output {
+        public let name: String
+        public let dataType: SGDataType
+        public init(name: String, dataType: SGDataType) {
             self.name = name
             self.dataType = dataType
         }
-        init(dataType: SGDataType) {
+        public init(dataType: SGDataType) {
             self.name = "out"
             self.dataType = dataType
         }
     }
     
-    init(nodeType: String, inputs: [Input], outputs: [Output], errors: [String] = []) {
+    public init(nodeType: String, inputs: [Input], outputs: [Output], errors: [String] = []) {
         self.id = SGNode.nextId
         SGNode.nextId += 1
         self.nodeType = nodeType
@@ -57,33 +55,35 @@ class SGNode: Identifiable, Equatable, Hashable {
         self.outputs = outputs
         self.errors = errors
     }
-    static func == (lhs: SGNode, rhs: SGNode) -> Bool {
+    public static func == (lhs: SGNode, rhs: SGNode) -> Bool {
         lhs.id == rhs.id
     }
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine("n")
         hasher.combine(id)
     }
 
-    func findOutput(name: String) -> Output? {
+    public func getOutputValue(name: String) -> SGValueSource { .nodeOutput(self, name) }
+
+    public func findOutput(name: String) -> Output? {
         outputs.first { $0.name == name }
     }
 }
 
-class SGValue {
-    let source: SGValueSource
-    var dataType: SGDataType { source.dataType }
-    required init(source: SGValueSource) {
+public class SGValue {
+    public let source: SGValueSource
+    public var dataType: SGDataType { source.dataType }
+    public required init(source: SGValueSource) {
         self.source = source
     }
 }
 
-enum SGValueSource {
+public enum SGValueSource {
     case nodeOutput(_ node: SGNode, _ outputName: String)
     case constant(_ value: SGConstantValue)
     case parameter(name: String, defaultValue: SGConstantValue)
     
-    var dataType: SGDataType {
+    public var dataType: SGDataType {
         switch self {
         case .nodeOutput(let node, let outputName):
             if let o = node.findOutput(name: outputName) {
@@ -97,12 +97,12 @@ enum SGValueSource {
         }
     }
 
-    static func nodeOutput(_ node: SGNode) -> SGValueSource {
+    public static func nodeOutput(_ node: SGNode) -> SGValueSource {
         .nodeOutput(node, "out")
     }
 }
 
-enum SGDataType: String {
+public enum SGDataType: String {
     case asset = "asset"
     case bool = "bool"
     case color3f = "color3f"
@@ -174,7 +174,7 @@ enum SGDataType: String {
     }
 }
 
-enum SGConstantValue {
+public enum SGConstantValue {
     case color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace)
     case color4f(_ value: SIMD4<Float>, colorSpace: SGColorSpace)
     case emptyTexture1D
@@ -211,36 +211,17 @@ enum SGConstantValue {
     }
 }
 
-enum SGColorSpace: String {
+public enum SGColorSpace: String {
     case linearSRGB = "lin_srgb"
     case textureSRGB = "srgb_texture"
 }
 
-enum ShaderGraphCoderError: Error {
+public enum ShaderGraphCoderError: Error {
     case failedToEncodeUSDAsData
     case graphContainsErrors(errors: [String])
 }
 
-class SGSurface: SGNode {
-}
-
-class SGGeometryModifier: SGNode {
-    init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, userAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
-        super.init(
-            nodeType: "ND_realitykit_geometrymodifier_vertexshader",
-            inputs: [
-                .init(name: "modelPositionOffset", dataType: .vector3f, connection: modelPositionOffset),
-                .init(name: "normal", dataType: .vector3f, connection: normal),
-                .init(name: "color", dataType: .color4f, connection: color),
-                .init(name: "bitangent", dataType: .vector3f, connection: bitangent),
-                .init(name: "userAttribute", dataType: .vector4f, connection: userAttribute),
-                .init(name: "uv0", dataType: .vector2f, connection: uv0),
-                .init(name: "uv1", dataType: .vector2f, connection: uv1),
-            ],
-            outputs: [
-                .init(name: "out", dataType: .geometryModifier)
-            ])
-    }
+public class SGSurface: SGNode {
 }
 
 class SGPBRSurface: SGSurface {
@@ -263,6 +244,25 @@ class SGPBRSurface: SGSurface {
             ],
             outputs: [
                 .init(name: "out", dataType: .surface)
+            ])
+    }
+}
+
+public class SGGeometryModifier: SGNode {
+    init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, userAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
+        super.init(
+            nodeType: "ND_realitykit_geometrymodifier_vertexshader",
+            inputs: [
+                .init(name: "modelPositionOffset", dataType: .vector3f, connection: modelPositionOffset),
+                .init(name: "normal", dataType: .vector3f, connection: normal),
+                .init(name: "color", dataType: .color4f, connection: color),
+                .init(name: "bitangent", dataType: .vector3f, connection: bitangent),
+                .init(name: "userAttribute", dataType: .vector4f, connection: userAttribute),
+                .init(name: "uv0", dataType: .vector2f, connection: uv0),
+                .init(name: "uv1", dataType: .vector2f, connection: uv1),
+            ],
+            outputs: [
+                .init(name: "out", dataType: .geometryModifier)
             ])
     }
 }

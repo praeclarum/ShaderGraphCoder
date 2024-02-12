@@ -8,7 +8,7 @@
 import Foundation
 import RealityKit
 
-extension SGValue {
+public extension SGValue {
     static func color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .constant(.color3f(value, colorSpace: colorSpace)))
     }

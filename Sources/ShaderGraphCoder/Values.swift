@@ -8,7 +8,7 @@
 import Foundation
 import RealityKit
 
-class SGNumeric: SGValue {
+public class SGNumeric: SGValue {
     static func binary<T>(_ nodeType: String, left: SGNumeric, right: SGNumeric) -> T where T: SGNumeric {
         var errors: [String] = []
         var l = left
@@ -148,7 +148,7 @@ class SGNumeric: SGValue {
     }
 }
 
-class SGScalar: SGNumeric {
+public class SGScalar: SGNumeric {
     static func + (left: SGScalar, right: SGScalar) -> SGScalar { left.add(right) }
     static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
     static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
@@ -163,7 +163,7 @@ class SGScalar: SGNumeric {
     static func / (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).divide(right) }
 }
 
-class SGSIMD: SGNumeric {
+public class SGSIMD: SGNumeric {
     private var separate: SGNode? = nil
     func getSeparateOutput(_ name: String) -> SGScalar {
         if let esep = separate {
@@ -211,7 +211,7 @@ class SGSIMD: SGNumeric {
     }
 }
 
-class SGVector: SGSIMD {
+public class SGVector: SGSIMD {
     static func + (left: SGVector, right: SGVector) -> SGVector { left.add(right) }
     static func - (left: SGVector, right: SGVector) -> SGVector { left.subtract(right) }
     static func * (left: SGVector, right: SGVector) -> SGVector { left.multiply(right) }
@@ -237,7 +237,7 @@ class SGVector: SGSIMD {
     var xyz: SGVector { combine(values: [x, y, z], dataType: .vector3f) }
 }
 
-class SGColor: SGSIMD {
+public class SGColor: SGSIMD {
     static func + (left: SGColor, right: SGColor) -> SGColor { left.add(right) }
     static func - (left: SGColor, right: SGColor) -> SGColor { left.subtract(right) }
     static func * (left: SGColor, right: SGColor) -> SGColor { left.multiply(right) }
@@ -263,11 +263,11 @@ class SGColor: SGSIMD {
     var bgr: SGColor { combine(values: [b, g, r], dataType: .color3f) }
 }
 
-class SGString: SGValue {
+public class SGString: SGValue {
     
 }
 
-class SGTexture1D: SGValue {
+public class SGTexture1D: SGValue {
     func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
@@ -284,7 +284,7 @@ class SGTexture1D: SGValue {
     }
 }
 
-class SGTexture2D: SGValue {
+public class SGTexture2D: SGValue {
     func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
@@ -301,7 +301,7 @@ class SGTexture2D: SGValue {
     }
 }
 
-class SGTexture3D: SGValue {
+public class SGTexture3D: SGValue {
     func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {

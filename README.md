@@ -36,9 +36,10 @@ The following value types are supported:
 
 | Type | Description |
 | ---- | ----------- |
-| `SGValue` | The parent value type containing static methods and properties to get global values |
-| `SGScalar: SGValue` | A single number |
-| `SGSIMD: SGValue` | Base class for SIMD types color and vector |
+| `SGValue` | Base value type |
+| `SGNumeric: SGValue` | Base class for numeric types scalar, vector, and color |
+| `SGScalar: SGNumeric` | A single number |
+| `SGSIMD: SGNumeric` | Base class for SIMD types color and vector |
 | `SGColor: SGSIMD` | A vector of color values, with either 3 or 4 elements |
 | `SGVector: SGSIMD` | A vector of values, with either 2, 3, or 4 elements |
 | `SGTexture1D: SGValue` | A 1D texture that can be sampled |
