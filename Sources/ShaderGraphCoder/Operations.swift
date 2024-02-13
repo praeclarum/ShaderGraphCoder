@@ -160,6 +160,10 @@ public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeri
     return T(source: .nodeOutput(node))
 }
 
+public func normalize(_ x: SGVector) -> SGVector {
+    SGNumeric.unary("ND_normalize_", x: x)
+}
+
 public func oneMinus<T>(_ x: T) -> T where T: SGNumeric {
     SGNumeric.unary("ND_realitykit_oneminus_", x: x)
 }

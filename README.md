@@ -77,6 +77,7 @@ The following operators are supported:
 | `max` | Maximum of two values |
 | `min` | Minimum of two values |
 | `mix` | Linear interpolation |
+| `normalize` | Normalize a vector |
 | `oneMinus` | One minus a value |
 | `pow` | Power |
 | `round` | Round |
