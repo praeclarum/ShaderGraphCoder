@@ -11,7 +11,7 @@ import RealityKit
 #if os(visionOS)
 
 public extension ShaderGraphMaterial {
-    public init(surface: SGSurface?, geometryModifier: SGGeometryModifier?) async throws {
+    init(surface: SGSurface?, geometryModifier: SGGeometryModifier?) async throws {
         let materialName = "ShaderGraphCoderMaterial"
         let (usda, errors) = getUSDA(materialName: materialName, surface: surface, geometryModifier: geometryModifier)
         if errors.count > 0 {

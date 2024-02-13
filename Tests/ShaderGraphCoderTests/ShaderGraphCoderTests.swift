@@ -2,44 +2,52 @@ import XCTest
 import RealityKit
 @testable import ShaderGraphCoder
 
-let testSurfaceShaders: [String: () -> SGSurface] = [
-    "red": {
-        let color: SGColor = .color3f([1, 0, 0])
-        return SGPBRSurface(baseColor: color)
-    },
-    "pulsingBlue": {
-        let frequency = SGValue.floatParameter(name: "Frequency", defaultValue: 2)
-        let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency * (2*Float.pi))
-        return SGPBRSurface(baseColor: color)
-    }
-]
+final class ShaderGraphCoderTests: XCTestCase {
 
+    private func surfaceTest(_ surface: SGSurface) throws {
 #if os(visionOS)
-
-struct VisionTests {
-    func runTests() async {
-        for (tn, t) in testSurfaceShaders {
+        let expectation = XCTestExpectation(description: "Load the materials")
+        Task {
             do {
-                print(tn)
-                let surface = try await t()
                 let _ = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
-                print("SHADER OK!")
             }
             catch {
-                print("\nSHADER ERROR: \(error)\n")
-                print()
+                XCTFail("MATERIAL ERROR: \(error)")
             }
         }
-    }
-}
-
+        expectation.fulfill()
 #endif
-
-final class ShaderGraphCoderTests: XCTestCase {
-    func testRed() throws {
-        let _ = testSurfaceShaders["red"]!()
     }
+
+    private func colorTest(_ color: SGColor) throws {
+        try surfaceTest(SGPBRSurface(baseColor: color))
+    }
+    private func vectorTest(_ vector: SGVector) throws {
+        try surfaceTest(SGPBRSurface(normal: vector))
+    }
+    private func scalarTest(_ scalar: SGScalar) throws {
+        try surfaceTest(SGPBRSurface(opacity: scalar))
+    }
+    
+    func testRound() throws {
+        try scalarTest(round(.float(-2.1)))
+        try colorTest(round(.color3f(-2.1, 0, 1.5)))
+        try vectorTest(round(.vector3f(-2.1, 0, 1.5)))
+    }
+    
+    func testSign() throws {
+        try scalarTest(sign(.float(-2)))
+        try colorTest(sign(.color3f(-2, 0, 1)))
+        try vectorTest(sign(.vector3f(-2, 0, 1)))
+    }
+    
+    func testRed() throws {
+        try colorTest(.color3f(1, 0, 0))
+    }
+
     func testPulsingBlue() throws {
-        let _ = testSurfaceShaders["pulsingBlue"]!()
+        let frequency = SGValue.floatParameter(name: "Frequency", defaultValue: 2)
+        let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency * (2*Float.pi))
+        try colorTest(color)
     }
 }
