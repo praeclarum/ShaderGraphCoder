@@ -62,16 +62,25 @@ The following operators are supported:
 | `*` | Multiplication |
 | `/` | Division |
 | `abs` | Absolute value |
+| `ceil` | Ceiling |
 | `clamp` | Clamp a value to a range |
 | `color3f` | Create an RGB color from computed elements |
 | `color4f` | Create an RGBA color from computed elements |
 | `cos` | Cosine of an angle in radians |
+| `floor` | Floor |
+| `fract` | Fractional part |
 | `ifGreaterOrEqual` | Conditional operator |
 | `ifLess` | Conditional operator |
 | `length` | Length (magnitude) of a vector or color |
 | `map` | Linearly map a value from one range to another |
+| `max` | Maximum of two values |
+| `min` | Minimum of two values |
 | `mix` | Linear interpolation |
+| `oneMinus` | One minus a value |
 | `pow` | Power |
+| `round` | Round |
+| `safePow` | Safe power |
+| `sign` | Sign of a value |
 | `sin` | Sine of an angle in radians |
 | `vector2f` | Create a 2D vector from computed elements |
 | `vector3f` | Create a 3D vector from computed elements |
@@ -96,6 +105,10 @@ The following sources are supported:
 | `SGValue.color4fParameter` | An RGBA color parameter that can be set by later mutating the material |
 | `SVValue.float` | A constant floating point number |
 | `SGValue.floatParameter` | A parameter that can be set by later mutating the material |
+| `SGValue.modelNormal` | The model normal of the vertex or fragment being processed |
+| `SGValue.modelPosition` | The model position of the vertex or fragment being processed |
+| `SGValue.objectNormal` | The object normal of the vertex or fragment being processed |
+| `SGValue.objectPosition` | The object position of the vertex or fragment being processed |
 | `SGValue.texture1DParameter` | A 1D texture parameter that can be set by later mutating the material |
 | `SGValue.texture2DParameter` | A 2D texture parameter that can be set by later mutating the material |
 | `SGValue.texture3DParameter` | A 3D texture parameter that can be set by later mutating the material |

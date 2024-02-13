@@ -54,6 +54,10 @@ public func abs<T>(_ x: T) -> T where T: SGNumeric {
     SGNumeric.unary("ND_absval_", x: x)
 }
 
+public func ceil<T>(_ x: T) -> T where T: SGNumeric {
+    SGNumeric.unary("ND_ceil_", x: x)
+}
+
 public func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
     let node = SGNode(
         nodeType: "ND_clamp_" + getNodeSuffixForDataType(x.dataType),
@@ -72,6 +76,14 @@ public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
 
 public func cos<T>(_ x: T) -> T where T: SGNumeric {
     SGNumeric.unary("ND_cos_", x: x)
+}
+
+public func floor<T>(_ x: T) -> T where T: SGNumeric {
+    SGNumeric.unary("ND_floor_", x: x)
+}
+
+public func fract<T>(_ x: T) -> T where T: SGNumeric {
+    SGNumeric.unary("ND_realitykit_fractional_", x: x)
 }
 
 public func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
@@ -128,6 +140,14 @@ public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGVector, y2: SGV
     return m*(x - x1) + y1
 }
 
+public func max<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
+    SGNumeric.binary("ND_max_", left: x, right: y)
+}
+
+public func min<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
+    SGNumeric.binary("ND_min_", left: x, right: y)
+}
+
 public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
     let node = SGNode(
         nodeType: "ND_mix_" + getNodeSuffixForDataType(x.dataType),
@@ -140,12 +160,28 @@ public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeri
     return T(source: .nodeOutput(node))
 }
 
+public func oneMinus<T>(_ x: T) -> T where T: SGNumeric {
+    SGNumeric.unary("ND_realitykit_oneminus_", x: x)
+}
+
 public func pow<T>(_ x: T, _ y: SGNumeric) -> T where T: SGNumeric {
     SGNumeric.binary("ND_power_", left: x, right: y)
 }
 
 public func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
     SGNumeric.binary("ND_power_", left: x, right: .float(y))
+}
+
+public func round<T>(_ x: T) -> T where T: SGNumeric {
+    SGNumeric.unary("ND_round_", x: x)
+}
+
+public func safePow<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
+    SGNumeric.binary("ND_safepower_", left: x, right: y)
+}
+
+public func sign<T>(_ x: T) -> T where T: SGNumeric {
+    SGNumeric.unary("ND_sign_", x: x)
 }
 
 public func sin<T>(_ x: T) -> T where T: SGNumeric {
