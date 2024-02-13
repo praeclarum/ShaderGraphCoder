@@ -146,6 +146,9 @@ public class SGNumeric: SGValue {
     func divide<T>(_ right: SGNumeric) -> T where T: SGNumeric {
         return SGNumeric.binary("ND_divide_", left: self, right: right)
     }
+    func modulo<T>(_ right: SGNumeric) -> T where T: SGNumeric {
+        return SGNumeric.binary("ND_modulo_", left: self, right: right)
+    }
 }
 
 public class SGScalar: SGNumeric {
@@ -153,14 +156,17 @@ public class SGScalar: SGNumeric {
     public static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
     public static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
     public static func / (left: SGScalar, right: SGScalar) -> SGScalar { left.divide(right) }
+    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { SGNumeric.binary("ND_modulo_", left: left, right: right) }
     public static func + (left: SGScalar, right: Float) -> SGScalar { left.add(.float(right)) }
     public static func - (left: SGScalar, right: Float) -> SGScalar { left.subtract(.float(right)) }
     public static func * (left: SGScalar, right: Float) -> SGScalar { left.multiply(.float(right)) }
     public static func / (left: SGScalar, right: Float) -> SGScalar { left.divide(.float(right)) }
+    public static func % (left: SGScalar, right: Float) -> SGScalar { left % .float(right) }
     public static func + (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).add(right) }
     public static func - (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).subtract(right) }
     public static func * (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).multiply(right) }
     public static func / (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).divide(right) }
+    public static func % (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left) % right }
 }
 
 public class SGSIMD: SGNumeric {
@@ -216,14 +222,17 @@ public class SGVector: SGSIMD {
     public static func - (left: SGVector, right: SGVector) -> SGVector { left.subtract(right) }
     public static func * (left: SGVector, right: SGVector) -> SGVector { left.multiply(right) }
     public static func / (left: SGVector, right: SGVector) -> SGVector { left.divide(right) }
+    public static func % (left: SGVector, right: SGVector) -> SGVector { left.modulo(right) }
     public static func + (left: SGVector, right: SGScalar) -> SGVector { left.add(right) }
     public static func - (left: SGVector, right: SGScalar) -> SGVector { left.subtract(right) }
     public static func * (left: SGVector, right: SGScalar) -> SGVector { left.multiply(right) }
     public static func / (left: SGVector, right: SGScalar) -> SGVector { left.divide(right) }
+    public static func % (left: SGVector, right: SGScalar) -> SGVector { left.modulo(right) }
     public static func + (left: SGVector, right: Float) -> SGVector { left.add(.float(right)) }
     public static func - (left: SGVector, right: Float) -> SGVector { left.subtract(.float(right)) }
     public static func * (left: SGVector, right: Float) -> SGVector { left.multiply(.float(right)) }
     public static func / (left: SGVector, right: Float) -> SGVector { left.divide(.float(right)) }
+    public static func % (left: SGVector, right: Float) -> SGVector { left.modulo(.float(right)) }
     public static func + (left: SGScalar, right: SGVector) -> SGVector { right.add(left) }
     public static func * (left: SGScalar, right: SGVector) -> SGVector { right.multiply(left) }
     public static func + (left: Float, right: SGVector) -> SGVector { right.add(.float(left)) }
@@ -242,14 +251,17 @@ public class SGColor: SGSIMD {
     public static func - (left: SGColor, right: SGColor) -> SGColor { left.subtract(right) }
     public static func * (left: SGColor, right: SGColor) -> SGColor { left.multiply(right) }
     public static func / (left: SGColor, right: SGColor) -> SGColor { left.divide(right) }
+    public static func % (left: SGColor, right: SGColor) -> SGColor { left.modulo(right) }
     public static func + (left: SGColor, right: SGScalar) -> SGColor { left.add(right) }
     public static func - (left: SGColor, right: SGScalar) -> SGColor { left.subtract(right) }
     public static func * (left: SGColor, right: SGScalar) -> SGColor { left.multiply(right) }
     public static func / (left: SGColor, right: SGScalar) -> SGColor { left.divide(right) }
+    public static func % (left: SGColor, right: SGScalar) -> SGColor { left.modulo(right) }
     public static func + (left: SGColor, right: Float) -> SGColor { left.add(.float(right)) }
     public static func - (left: SGColor, right: Float) -> SGColor { left.subtract(.float(right)) }
     public static func * (left: SGColor, right: Float) -> SGColor { left.multiply(.float(right)) }
     public static func / (left: SGColor, right: Float) -> SGColor { left.divide(.float(right)) }
+    public static func % (left: SGColor, right: Float) -> SGColor { left.modulo(.float(right)) }
     public static func + (left: SGScalar, right: SGColor) -> SGColor { right.add(left) }
     public static func * (left: SGScalar, right: SGColor) -> SGColor { right.multiply(left) }
     public static func + (left: Float, right: SGColor) -> SGColor { right.add(.float(left)) }

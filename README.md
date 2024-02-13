@@ -61,6 +61,7 @@ The following operators are supported:
 | `-` | Subtraction |
 | `*` | Multiplication |
 | `/` | Division |
+| `%` | Modulo |
 | `abs` | Absolute value |
 | `ceil` | Ceiling |
 | `clamp` | Clamp a value to a range |

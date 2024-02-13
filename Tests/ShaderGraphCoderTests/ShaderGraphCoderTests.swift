@@ -29,6 +29,14 @@ final class ShaderGraphCoderTests: XCTestCase {
         try surfaceTest(SGPBRSurface(opacity: scalar))
     }
     
+    func testModulus() throws {
+        try scalarTest(round(.float(-2.1) % .float(2)))
+        try colorTest(round(.color3f(-2.1, 0, 1.5) % .float(2)))
+        try vectorTest(round(.vector3f(-2.1, 0, 1.5) % .float(2)))
+        try colorTest(round(.color3f(-2.1, 0, 1.5) % .color3f([2, 3, 4])))
+        try vectorTest(round(.vector3f(-2.1, 0, 1.5) % .vector3f([2, 3, 4])))
+    }
+    
     func testRound() throws {
         try scalarTest(round(.float(-2.1)))
         try colorTest(round(.color3f(-2.1, 0, 1.5)))
