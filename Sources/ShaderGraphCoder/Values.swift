@@ -9,145 +9,20 @@ import Foundation
 import RealityKit
 
 public class SGNumeric: SGValue {
-    static func binary<T>(_ nodeType: String, left: SGNumeric, right: SGNumeric) -> T where T: SGNumeric {
-        var errors: [String] = []
-        var l = left
-        var r = right
-        if l.dataType.isScalar && !r.dataType.isScalar {
-            switch nodeType {
-            case "ND_multiply_":
-                (l, r) = (r, l)
-            case "ND_add_":
-                (l, r) = (r, l)
-            default:
-                errors.append("\(l.dataType.usda) cannot be on the left hand side of \(r.dataType.usda) in \(nodeType)")
-            }
-        }
-        let nodeDataType = inferBinaryOutputType(left: l.dataType, right: r.dataType)
-        var nt = nodeType
-        if nt.hasSuffix("_") {
-            switch nodeDataType {
-            case .asset:
-                ()
-            case .bool:
-                nt += "bool"
-            case .color3f:
-                if r.dataType.isScalar {
-                    nt += "color3FA"
-                }
-                else {
-                    nt += "color3"
-                }
-            case .color4f:
-                if r.dataType.isScalar {
-                    nt += "color4FA"
-                }
-                else {
-                    nt += "color4"
-                }
-            case .float:
-                nt += "float"
-            case .int:
-                nt += "int"
-            case .string:
-                ()
-            case .surface:
-                ()
-            case .vector2f:
-                if r.dataType.isScalar {
-                    nt += "vector2FA"
-                }
-                else {
-                    nt += "vector2"
-                }
-            case .vector3f:
-                if r.dataType.isScalar {
-                    nt += "vector3FA"
-                }
-                else {
-                    nt += "vector3"
-                }
-            case .vector4f:
-                if r.dataType.isScalar {
-                    nt += "vector4FA"
-                }
-                else {
-                    nt += "vector4"
-                }
-            case .geometryModifier:
-                ()
-            }
-        }
-        let node = SGNode(
-            nodeType: nt,
-            inputs: [
-                .init(name: "in1", connection: l),
-                .init(name: "in2", connection: r),
-            ],
-            outputs: [.init(name: "out", dataType: nodeDataType)],
-            errors: errors)
-        return T(source: .nodeOutput(node, "out"))
-    }
-    private static func inferBinaryOutputType(left: SGDataType, right: SGDataType) -> SGDataType {
-        if left.isScalar {
-            return right
-        }
-        return left
-    }
-    static func unary<T>(_ nodeType: String, x: SGNumeric, dataType: SGDataType? = nil) -> T where T: SGNumeric {
-        let nodeDataType = dataType ?? x.dataType
-        var nt = nodeType
-        if nt.hasSuffix("_") {
-            switch nodeDataType {
-            case .asset:
-                ()
-            case .bool:
-                nt += "bool"
-            case .color3f:
-                nt += "color3FA"
-            case .color4f:
-                nt += "color4FA"
-            case .float:
-                nt += "float"
-            case .int:
-                nt += "int"
-            case .string:
-                ()
-            case .surface:
-                ()
-            case .vector2f:
-                nt += "vector2"
-            case .vector3f:
-                nt += "vector3"
-            case .vector4f:
-                nt += "vector4"
-            case .geometryModifier:
-                ()
-            }
-        }
-        let node = SGNode(
-            nodeType: nt,
-            inputs: [
-                .init(name: "in", connection: x),
-            ],
-            outputs: [.init(name: "out", dataType: nodeDataType)],
-            errors: [])
-        return T(source: .nodeOutput(node, "out"))
-    }
     func add<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return SGNumeric.binary("ND_add_", left: self, right: right)
+        return binop("ND_add_", left: self, right: right)
     }
     func subtract<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return SGNumeric.binary("ND_subtract_", left: self, right: right)
+        return binop("ND_subtract_", left: self, right: right)
     }
     func multiply<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return SGNumeric.binary("ND_multiply_", left: self, right: right)
+        return binop("ND_multiply_", left: self, right: right)
     }
     func divide<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return SGNumeric.binary("ND_divide_", left: self, right: right)
+        return binop("ND_divide_", left: self, right: right)
     }
     func modulo<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return SGNumeric.binary("ND_modulo_", left: self, right: right)
+        return binop("ND_modulo_", left: self, right: right)
     }
 }
 
@@ -156,7 +31,7 @@ public class SGScalar: SGNumeric {
     public static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
     public static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
     public static func / (left: SGScalar, right: SGScalar) -> SGScalar { left.divide(right) }
-    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { SGNumeric.binary("ND_modulo_", left: left, right: right) }
+    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { binop("ND_modulo_", left: left, right: right) }
     public static func + (left: SGScalar, right: Float) -> SGScalar { left.add(.float(right)) }
     public static func - (left: SGScalar, right: Float) -> SGScalar { left.subtract(.float(right)) }
     public static func * (left: SGScalar, right: Float) -> SGScalar { left.multiply(.float(right)) }

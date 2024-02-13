@@ -51,11 +51,11 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
 }
 
 public func abs<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_absval_", x: x)
+    unop("ND_absval_", x: x)
 }
 
 public func ceil<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_ceil_", x: x)
+    unop("ND_ceil_", x: x)
 }
 
 public func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
@@ -75,15 +75,15 @@ public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
 }
 
 public func cos<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_cos_", x: x)
+    unop("ND_cos_", x: x)
 }
 
 public func floor<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_floor_", x: x)
+    unop("ND_floor_", x: x)
 }
 
 public func fract<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_realitykit_fractional_", x: x)
+    unop("ND_realitykit_fractional_", x: x)
 }
 
 public func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
@@ -141,11 +141,11 @@ public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGVector, y2: SGV
 }
 
 public func max<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
-    SGNumeric.binary("ND_max_", left: x, right: y)
+    binop("ND_max_", left: x, right: y)
 }
 
 public func min<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
-    SGNumeric.binary("ND_min_", left: x, right: y)
+    binop("ND_min_", left: x, right: y)
 }
 
 public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
@@ -161,35 +161,39 @@ public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeri
 }
 
 public func normalize(_ x: SGVector) -> SGVector {
-    SGNumeric.unary("ND_normalize_", x: x)
+    unop("ND_normalize_", x: x)
 }
 
 public func oneMinus<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_realitykit_oneminus_", x: x)
+    unop("ND_realitykit_oneminus_", x: x)
 }
 
 public func pow<T>(_ x: T, _ y: SGNumeric) -> T where T: SGNumeric {
-    SGNumeric.binary("ND_power_", left: x, right: y)
+    binop("ND_power_", left: x, right: y)
 }
 
 public func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
-    SGNumeric.binary("ND_power_", left: x, right: .float(y))
+    binop("ND_power_", left: x, right: .float(y))
 }
 
 public func round<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_round_", x: x)
+    unop("ND_round_", x: x)
 }
 
 public func safePow<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
-    SGNumeric.binary("ND_safepower_", left: x, right: y)
+    binop("ND_safepower_", left: x, right: y)
+}
+
+public func safePow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
+    binop("ND_safepower_", left: x, right: .float(y))
 }
 
 public func sign<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_sign_", x: x)
+    unop("ND_sign_", x: x)
 }
 
 public func sin<T>(_ x: T) -> T where T: SGNumeric {
-    SGNumeric.unary("ND_sin_", x: x)
+    unop("ND_sin_", x: x)
 }
 
 public func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
@@ -233,4 +237,130 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
     case .surface:
         return "token"
     }
+}
+
+func binop<T>(_ nodeType: String, left: SGNumeric, right: SGNumeric) -> T where T: SGNumeric {
+    var errors: [String] = []
+    var l = left
+    var r = right
+    if l.dataType.isScalar && !r.dataType.isScalar {
+        switch nodeType {
+        case "ND_multiply_":
+            (l, r) = (r, l)
+        case "ND_add_":
+            (l, r) = (r, l)
+        default:
+            errors.append("\(l.dataType.usda) cannot be on the left hand side of \(r.dataType.usda) in \(nodeType)")
+        }
+    }
+    let nodeDataType = inferBinaryOutputType(left: l.dataType, right: r.dataType)
+    var nt = nodeType
+    if nt.hasSuffix("_") {
+        switch nodeDataType {
+        case .asset:
+            ()
+        case .bool:
+            nt += "bool"
+        case .color3f:
+            if r.dataType.isScalar {
+                nt += "color3FA"
+            }
+            else {
+                nt += "color3"
+            }
+        case .color4f:
+            if r.dataType.isScalar {
+                nt += "color4FA"
+            }
+            else {
+                nt += "color4"
+            }
+        case .float:
+            nt += "float"
+        case .int:
+            nt += "int"
+        case .string:
+            ()
+        case .surface:
+            ()
+        case .vector2f:
+            if r.dataType.isScalar {
+                nt += "vector2FA"
+            }
+            else {
+                nt += "vector2"
+            }
+        case .vector3f:
+            if r.dataType.isScalar {
+                nt += "vector3FA"
+            }
+            else {
+                nt += "vector3"
+            }
+        case .vector4f:
+            if r.dataType.isScalar {
+                nt += "vector4FA"
+            }
+            else {
+                nt += "vector4"
+            }
+        case .geometryModifier:
+            ()
+        }
+    }
+    let node = SGNode(
+        nodeType: nt,
+        inputs: [
+            .init(name: "in1", connection: l),
+            .init(name: "in2", connection: r),
+        ],
+        outputs: [.init(name: "out", dataType: nodeDataType)],
+        errors: errors)
+    return T(source: .nodeOutput(node, "out"))
+}
+private func inferBinaryOutputType(left: SGDataType, right: SGDataType) -> SGDataType {
+    if left.isScalar {
+        return right
+    }
+    return left
+}
+func unop<T>(_ nodeType: String, x: SGNumeric, dataType: SGDataType? = nil) -> T where T: SGNumeric {
+    let nodeDataType = dataType ?? x.dataType
+    var nt = nodeType
+    if nt.hasSuffix("_") {
+        switch nodeDataType {
+        case .asset:
+            ()
+        case .bool:
+            nt += "bool"
+        case .color3f:
+            nt += "color3FA"
+        case .color4f:
+            nt += "color4FA"
+        case .float:
+            nt += "float"
+        case .int:
+            nt += "int"
+        case .string:
+            ()
+        case .surface:
+            ()
+        case .vector2f:
+            nt += "vector2"
+        case .vector3f:
+            nt += "vector3"
+        case .vector4f:
+            nt += "vector4"
+        case .geometryModifier:
+            ()
+        }
+    }
+    let node = SGNode(
+        nodeType: nt,
+        inputs: [
+            .init(name: "in", connection: x),
+        ],
+        outputs: [.init(name: "out", dataType: nodeDataType)],
+        errors: [])
+    return T(source: .nodeOutput(node, "out"))
 }
