@@ -24,6 +24,18 @@ public extension SGValue {
     static func floatParameter(name: String, defaultValue: Float) -> SGScalar {
         SGScalar(source: .parameter(name: name, defaultValue: .float(defaultValue)))
     }
+    static var modelNormal: SGVector {
+        SGVector(source: SGValueSource.nodeOutput(SGNode.modelNormal, "out"))
+    }
+    static var modelPosition: SGVector {
+        SGVector(source: SGValueSource.nodeOutput(SGNode.modelPosition, "out"))
+    }
+    static var objectNormal: SGVector {
+        SGVector(source: SGValueSource.nodeOutput(SGNode.objectNormal, "out"))
+    }
+    static var objectPosition: SGVector {
+        SGVector(source: SGValueSource.nodeOutput(SGNode.objectPosition, "out"))
+    }
     static func texture1DParameter(name: String) -> SGTexture1D {
         SGTexture1D(source: .parameter(name: name, defaultValue: .emptyTexture1D))
     }
@@ -69,6 +81,10 @@ public extension SGValue {
 }
 
 public extension SGNode {
+    static let modelNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
+    static let modelPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
+    static let objectNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])
+    static let objectPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])
     static let time = SGNode(nodeType: "ND_time_float", inputs: [], outputs: [.init(name: "out", dataType: .float)])
     static let worldCameraPosition = SGNode(nodeType: "ND_realitykit_cameraposition_vector3", inputs: [], outputs: [.init(name: "out", dataType: .vector3f)])
     static let worldPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
