@@ -20,7 +20,6 @@ public extension ShaderGraphMaterial {
         guard let usdaData = usda.data(using: .utf8) else {
             throw ShaderGraphCoderError.failedToEncodeUSDAsData
         }
-        print("\n\n========\nUSDA\n========\n\(usda)\n")
         try await self.init(named: "/Root/\(materialName)", from: usdaData)
     }
 }
