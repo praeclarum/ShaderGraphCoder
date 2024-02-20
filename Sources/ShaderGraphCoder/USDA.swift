@@ -37,6 +37,10 @@ public extension SGConstantValue {
             return "\"\""
         case .emptyTexture3D:
             return "\"\""
+        case .float(let v):
+            return "\(v)"
+        case .int(let v):
+            return "\(v)"
         case .string(let v):
             return "\"\(v)\""
         case .vector2f(let v):
@@ -45,8 +49,6 @@ public extension SGConstantValue {
             return "(\(v.x), \(v.y), \(v.z))"
         case .vector4f(let v):
             return "(\(v.x), \(v.y), \(v.z), \(v.w)"
-        case .float(let v):
-            return "\(v)"
         }
     }
 }

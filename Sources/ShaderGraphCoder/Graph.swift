@@ -181,6 +181,7 @@ public enum SGConstantValue {
     case emptyTexture2D
     case emptyTexture3D
     case float(_ value: Float)
+    case int(_ value: Int)
     case string(_ value: String)
     case vector2f(_ value: SIMD2<Float>)
     case vector3f(_ value: SIMD3<Float>)
@@ -199,6 +200,8 @@ public enum SGConstantValue {
             return .asset
         case .float:
             return .float
+        case .int:
+            return .int
         case .string:
             return .string
         case .vector2f:

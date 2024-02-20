@@ -24,6 +24,9 @@ public extension SGValue {
     static func color4fParameter(name: String, defaultValue: SIMD4<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color4f(defaultValue, colorSpace: colorSpace)))
     }
+    static func int(_ value: Int) -> SGScalar {
+        SGScalar(source: .constant(.int(value)))
+    }
     static func float(_ value: Float) -> SGScalar {
         SGScalar(source: .constant(.float(value)))
     }
@@ -31,16 +34,19 @@ public extension SGValue {
         SGScalar(source: .parameter(name: name, defaultValue: .float(defaultValue)))
     }
     static var modelNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.modelNormal, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.modelNormal))
     }
     static var modelPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.modelPosition, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.modelPosition))
     }
     static var objectNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.objectNormal, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.objectNormal))
     }
     static var objectPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.objectPosition, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.objectPosition))
+    }
+    static func string(_ value: String) -> SGString {
+        SGString(source: .constant(.string(value)))
     }
     static func texture1DParameter(name: String) -> SGTexture1D {
         SGTexture1D(source: .parameter(name: name, defaultValue: .emptyTexture1D))
@@ -51,11 +57,11 @@ public extension SGValue {
     static func texture3DParameter(name: String) -> SGTexture3D {
         SGTexture3D(source: .parameter(name: name, defaultValue: .emptyTexture3D))
     }
-    static func string(_ value: String) -> SGString {
-        SGString(source: .constant(.string(value)))
-    }
     static var time: SGScalar {
-        SGScalar(source: SGValueSource.nodeOutput(SGNode.time, "out"))
+        SGScalar(source: SGValueSource.nodeOutput(SGNode.time))
+    }
+    static func uv(index: Int) -> SGVector {
+        SGVector(source: SGValueSource.nodeOutput(SGNode.uv(index: index)))
     }
     static func vector2f(_ value: SIMD2<Float>) -> SGVector {
         SGVector(source: .constant(.vector2f(value)))
@@ -85,13 +91,13 @@ public extension SGValue {
         SGVector(source: .parameter(name: name, defaultValue: .vector4f(defaultValue)))
     }
     static var worldCameraPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldCameraPosition, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.worldCameraPosition))
     }
     static var worldPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldPosition, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.worldPosition))
     }
     static var worldNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldNormal, "out"))
+        SGVector(source: SGValueSource.nodeOutput(SGNode.worldNormal))
     }
 }
 
@@ -104,4 +110,7 @@ public extension SGNode {
     static let worldCameraPosition = SGNode(nodeType: "ND_realitykit_cameraposition_vector3", inputs: [], outputs: [.init(name: "out", dataType: .vector3f)])
     static let worldPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
     static let worldNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
+    static func uv(index: Int) -> SGNode {
+        SGNode(nodeType: "ND_texcoord_vector2", inputs: [.init(name: "index", connection: .int(index))], outputs: [.init(name: "out", dataType: .vector2f)])
+    }
 }
