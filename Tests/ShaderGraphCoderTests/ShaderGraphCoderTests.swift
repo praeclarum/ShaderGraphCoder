@@ -5,18 +5,37 @@ import RealityKit
 final class ShaderGraphCoderTests: XCTestCase {
 
     private func surfaceTest(_ surface: SGSurface) throws {
-#if os(visionOS)
-        let expectation = XCTestExpectation(description: "Load the materials")
+        let expectation = self.expectation(description: "Load the surface material")
         Task {
             do {
+#if os(visionOS)
+                // APPLE BUG: [Foundation.IO] Could not locate file 'default-binaryarchive.metallib' in bundle. Tool-hosted testing is unavailable on device destinations. Select a host application for the test target, or use a simulator destination instead.
                 let _ = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
+#endif
             }
             catch {
-                XCTFail("MATERIAL ERROR: \(error)")
+                XCTFail("SURFACE MATERIAL ERROR: \(error)")
             }
+            expectation.fulfill()
         }
-        expectation.fulfill()
+        waitForExpectations(timeout: 1.0)
+    }
+
+    private func geometryTest(_ geometryModifier: SGGeometryModifier) throws {
+        let expectation = self.expectation(description: "Load the geometry material")
+        Task {
+            do {
+#if os(visionOS)
+                // APPLE BUG: [Foundation.IO] Could not locate file 'default-binaryarchive.metallib' in bundle. Tool-hosted testing is unavailable on device destinations. Select a host application for the test target, or use a simulator destination instead.
+                let _ = try await ShaderGraphMaterial(surface: nil, geometryModifier: geometryModifier)
 #endif
+            }
+            catch {
+                XCTFail("GEOMETRY MATERIAL ERROR: \(error)")
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 1.0)
     }
 
     private func colorTest(_ color: SGColor) throws {
@@ -30,11 +49,11 @@ final class ShaderGraphCoderTests: XCTestCase {
     }
     
     func testModulus() throws {
-        try scalarTest(round(.float(-2.1) % .float(2)))
-        try colorTest(round(.color3f(-2.1, 0, 1.5) % .float(2)))
-        try vectorTest(round(.vector3f(-2.1, 0, 1.5) % .float(2)))
-        try colorTest(round(.color3f(-2.1, 0, 1.5) % .color3f([2, 3, 4])))
-        try vectorTest(round(.vector3f(-2.1, 0, 1.5) % .vector3f([2, 3, 4])))
+        try scalarTest(.float(-2.1) % .float(2))
+        try colorTest(.color3f(-2.1, 0, 1.5) % .float(2))
+        try vectorTest(.vector3f(-2.1, 0, 1.5) % .float(2))
+        try colorTest(.color3f(-2.1, 0, 1.5) % .color3f([2, 3, 4]))
+        try vectorTest(.vector3f(-2.1, 0, 1.5) % .vector3f([2, 3, 4]))
     }
 
     func testNormalize() throws {
