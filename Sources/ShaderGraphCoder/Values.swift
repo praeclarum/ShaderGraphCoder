@@ -78,7 +78,7 @@ public class SGSIMD: SGNumeric {
         }
         let inputs: [SGNode.Input] = [.init(name: "in", connection: self)]
         var outputs: [SGNode.Output] = []
-        let names = iscolor ? ["outr", "outg", "outb", "outa"] : ["outx", "outy", "outz", "outw"]
+        let names = iscolor ? ["outr", "outg", "outb", "outa"] : (n < 4 ? ["outx", "outy", "outz"] : ["outw", "outx", "outy", "outz"])
         for i in 0..<n {
             outputs.append(.init(name: names[i], dataType: elementType))
         }

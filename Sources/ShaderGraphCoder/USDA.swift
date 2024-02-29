@@ -48,7 +48,7 @@ public extension SGConstantValue {
         case .vector3f(let v):
             return "(\(v.x), \(v.y), \(v.z))"
         case .vector4f(let v):
-            return "(\(v.x), \(v.y), \(v.z), \(v.w)"
+            return "(\(v.x), \(v.y), \(v.z), \(v.w))"
         }
     }
 }
