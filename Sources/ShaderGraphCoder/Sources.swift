@@ -63,6 +63,9 @@ public extension SGValue {
     static func uv(index: Int) -> SGVector {
         SGVector(source: SGValueSource.nodeOutput(SGNode.uv(index: index)))
     }
+    static var uv0: SGVector {
+        SGValue.uv(index: 0)
+    }
     static func vector2f(_ value: SIMD2<Float>) -> SGVector {
         SGVector(source: .constant(.vector2f(value)))
     }

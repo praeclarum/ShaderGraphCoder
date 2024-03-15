@@ -7,18 +7,16 @@ let package = Package(
     name: "ShaderGraphCoder",
     platforms: [.visionOS(.v1), .iOS(.v13), .watchOS(.v6), .tvOS(.v13), .macOS(.v10_15)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "ShaderGraphCoder",
             targets: ["ShaderGraphCoder"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "ShaderGraphCoder"),
         .testTarget(
             name: "ShaderGraphCoderTests",
-            dependencies: ["ShaderGraphCoder"]),
+            dependencies: ["ShaderGraphCoder"],
+            resources: [.process("Resources/TestTexture.png")]),
     ]
 )

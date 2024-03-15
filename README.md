@@ -115,6 +115,8 @@ The following sources are supported:
 | `SGValue.texture2DParameter` | A 2D texture parameter that can be set by later mutating the material |
 | `SGValue.texture3DParameter` | A 3D texture parameter that can be set by later mutating the material |
 | `SGValue.time` | The time in seconds |
+| `SGValue.uv(index)` | UV coordinate of the vertex or pixel |
+| `SGValue.uv0` | The first UV coordinate of the vertex or pixel |
 | `SGValue.vector2f` | A constant 2D vector |
 | `SGValue.vector2fParameter` | A 2D vector parameter that can be set by later mutating the material |
 | `SGValue.vector3f` | A constant 3D vector |
