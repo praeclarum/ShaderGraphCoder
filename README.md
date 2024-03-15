@@ -22,6 +22,25 @@ func pulsingBlue() async throws -> ShaderGraphMaterial {
     let surface = SGPBRSurface(baseColor: color)
     return try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
 }
+
+// Create a texture mapped material for visionOS
+func textureMap() async throws -> ShaderGraphMaterial {
+    // Create the material
+    let texture = SGValue.texture2DParameter(name: "ColorTexture")
+    let color = texture.sample(texcoord: SGValue.uv0)
+    var mat = try await ShaderGraphMaterial(surface: SGPBRSurface(baseColor: color), geometryModifier: nil)
+    
+    // Load the texture as a TextureResource
+    guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
+        throw URLError(.fileDoesNotExist)
+    }
+    let textureResource = try TextureResource.load(contentsOf: textureURL)
+    
+    // Bind the texure to the material's texture parameter
+    try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
+    
+    return mat
+}
 ```
 
 
