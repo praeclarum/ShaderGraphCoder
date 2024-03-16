@@ -87,6 +87,8 @@ The following operators are supported:
 | `color3f` | Create an RGB color from computed elements |
 | `color4f` | Create an RGBA color from computed elements |
 | `cos` | Cosine of an angle in radians |
+| `cross` | Cross product |
+| `dot` | Dot product |
 | `floor` | Floor |
 | `fract` | Fractional part |
 | `ifGreaterOrEqual` | Conditional operator |
@@ -103,6 +105,7 @@ The following operators are supported:
 | `safePow` | Safe power |
 | `sign` | Sign of a value |
 | `sin` | Sine of an angle in radians |
+| `tan` | Tangent of an angle in radians |
 | `vector2f` | Create a 2D vector from computed elements |
 | `vector3f` | Create a 3D vector from computed elements |
 | `vector4f` | Create a 4D vector from computed elements |

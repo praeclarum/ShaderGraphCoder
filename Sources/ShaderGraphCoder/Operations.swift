@@ -78,6 +78,14 @@ public func cos<T>(_ x: T) -> T where T: SGNumeric {
     unop("ND_cos_", x: x)
 }
 
+public func cross(_ x: SGVector, _ y: SGVector) -> SGVector {
+    binop("ND_crossproduct_", left: x, right: y)
+}
+
+public func dot(_ x: SGVector, _ y: SGVector) -> SGScalar {
+    binop("ND_dotproduct_", left: x, right: y)
+}
+
 public func floor<T>(_ x: T) -> T where T: SGNumeric {
     unop("ND_floor_", x: x)
 }
@@ -194,6 +202,10 @@ public func sign<T>(_ x: T) -> T where T: SGNumeric {
 
 public func sin<T>(_ x: T) -> T where T: SGNumeric {
     unop("ND_sin_", x: x)
+}
+
+public func tan<T>(_ x: T) -> T where T: SGNumeric {
+    unop("ND_tan_", x: x)
 }
 
 public func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
