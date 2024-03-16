@@ -17,7 +17,7 @@ final class ShaderGraphCoderTests: XCTestCase {
         XCTAssertNotNil(root, "Failed to load the USD file")
     }
     
-    private func surfaceTest(_ surface: SGSurface) throws {
+    private func surfaceTest(_ surface: SGSurface, geometryModifier: SGGeometryModifier? = nil) throws {
         let expectation = self.expectation(description: "Load the surface material")
         Task {
             do {
@@ -25,28 +25,14 @@ final class ShaderGraphCoderTests: XCTestCase {
                 // APPLE BUG: [Foundation.IO] Could not locate file 'default-binaryarchive.metallib' in bundle. Tool-hosted testing is unavailable on device destinations. Select a host application for the test target, or use a simulator destination instead.
 //                let _ = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
 #endif
-                let usda = surface.usda(materialName: "TestMat")
+                let (usda, errors) = getUSDA(materialName: "TestMat", surface: surface, geometryModifier: geometryModifier)
+                if errors.count > 0 {
+                    XCTFail("USDA ERRORS: \(errors)")
+                }
                 try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
             }
             catch {
                 XCTFail("SURFACE MATERIAL ERROR: \(error)")
-            }
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 1.0)
-    }
-
-    private func geometryTest(_ geometryModifier: SGGeometryModifier) throws {
-        let expectation = self.expectation(description: "Load the geometry material")
-        Task {
-            do {
-#if os(visionOS)
-                // APPLE BUG: [Foundation.IO] Could not locate file 'default-binaryarchive.metallib' in bundle. Tool-hosted testing is unavailable on device destinations. Select a host application for the test target, or use a simulator destination instead.
-                let _ = try await ShaderGraphMaterial(surface: nil, geometryModifier: geometryModifier)
-#endif
-            }
-            catch {
-                XCTFail("GEOMETRY MATERIAL ERROR: \(error)")
             }
             expectation.fulfill()
         }
@@ -119,5 +105,14 @@ final class ShaderGraphCoderTests: XCTestCase {
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0)
+    }
+    
+    func testCustomAttribute() throws {
+        let pos: SGVector = .modelPosition
+        let attrS: SGVector = vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
+        let geom = SGGeometryModifier(customAttribute: attrS)
+        let attr = SGValue.customAttribute
+        let color = color3f(attr.x, attr.y, attr.z)
+        try surfaceTest(SGPBRSurface(baseColor: color), geometryModifier: geom)
     }
 }

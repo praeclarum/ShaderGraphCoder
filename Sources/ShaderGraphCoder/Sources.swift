@@ -24,6 +24,9 @@ public extension SGValue {
     static func color4fParameter(name: String, defaultValue: SIMD4<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color4f(defaultValue, colorSpace: colorSpace)))
     }
+    static var customAttribute: SGVector {
+        SGVector(source: SGValueSource.nodeOutput(SGNode.customAttribute, "customAttribute"))
+    }
     static func int(_ value: Int) -> SGScalar {
         SGScalar(source: .constant(.int(value)))
     }
@@ -66,6 +69,9 @@ public extension SGValue {
     static var uv0: SGVector {
         SGValue.uv(index: 0)
     }
+    static var uv1: SGVector {
+        SGValue.uv(index: 1)
+    }
     static func vector2f(_ value: SIMD2<Float>) -> SGVector {
         SGVector(source: .constant(.vector2f(value)))
     }
@@ -105,6 +111,7 @@ public extension SGValue {
 }
 
 public extension SGNode {
+    static let customAttribute = SGNode(nodeType: "ND_realitykit_surface_custom_attribute", inputs: [], outputs: [.init(name: "customAttribute", dataType: .vector4f)])
     static let modelNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
     static let modelPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
     static let objectNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])

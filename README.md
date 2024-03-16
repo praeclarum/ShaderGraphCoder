@@ -127,6 +127,7 @@ The following sources are supported:
 | `SGValue.color3fParameter` | An RGB color parameter that can be set by later mutating the material |
 | `SGValue.color4f` | A constant RGBA color with a color space |
 | `SGValue.color4fParameter` | An RGBA color parameter that can be set by later mutating the material |
+| `SGValue.customAttribute` | A value passed from the geometry modifier to the surface shader |
 | `SVValue.float` | A constant floating point number |
 | `SGValue.floatParameter` | A parameter that can be set by later mutating the material |
 | `SGValue.modelNormal` | The model normal of the vertex or fragment being processed |
@@ -139,6 +140,7 @@ The following sources are supported:
 | `SGValue.time` | The time in seconds |
 | `SGValue.uv(index)` | UV coordinate of the vertex or pixel |
 | `SGValue.uv0` | The first UV coordinate of the vertex or pixel |
+| `SGValue.uv1` | The second UV coordinate of the vertex or pixel |
 | `SGValue.vector2f` | A constant 2D vector |
 | `SGValue.vector2fParameter` | A 2D vector parameter that can be set by later mutating the material |
 | `SGValue.vector3f` | A constant 3D vector |

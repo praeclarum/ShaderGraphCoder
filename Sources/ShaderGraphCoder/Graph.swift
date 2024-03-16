@@ -252,7 +252,7 @@ public class SGPBRSurface: SGSurface {
 }
 
 public class SGGeometryModifier: SGNode {
-    public init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, userAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
+    public init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, customAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
         super.init(
             nodeType: "ND_realitykit_geometrymodifier_vertexshader",
             inputs: [
@@ -260,7 +260,7 @@ public class SGGeometryModifier: SGNode {
                 .init(name: "normal", dataType: .vector3f, connection: normal),
                 .init(name: "color", dataType: .color4f, connection: color),
                 .init(name: "bitangent", dataType: .vector3f, connection: bitangent),
-                .init(name: "userAttribute", dataType: .vector4f, connection: userAttribute),
+                .init(name: "userAttribute", dataType: .vector4f, connection: customAttribute),
                 .init(name: "uv0", dataType: .vector2f, connection: uv0),
                 .init(name: "uv1", dataType: .vector2f, connection: uv1),
             ],
