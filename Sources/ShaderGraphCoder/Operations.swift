@@ -204,6 +204,10 @@ public func sin<T>(_ x: T) -> T where T: SGNumeric {
     unop("ND_sin_", x: x)
 }
 
+public func sqrt<T>(_ x: T) -> T where T: SGNumeric {
+    unop("ND_sqrt_", x: x)
+}
+
 public func tan<T>(_ x: T) -> T where T: SGNumeric {
     unop("ND_tan_", x: x)
 }

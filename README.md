@@ -105,6 +105,7 @@ The following operators are supported:
 | `safePow` | Safe power |
 | `sign` | Sign of a value |
 | `sin` | Sine of an angle in radians |
+| `sqrt` | Square root |
 | `tan` | Tangent of an angle in radians |
 | `vector2f` | Create a 2D vector from computed elements |
 | `vector3f` | Create a 3D vector from computed elements |
