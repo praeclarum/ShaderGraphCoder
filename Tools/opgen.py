@@ -315,19 +315,39 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             w.write(', ')
     sgc_output_type = sgc_shared_output_type if sgc_output_type_is_shared else "SGValue"
     w.write_line(f') -> {sgc_output_type} {{')
+    for i, input in enumerate(first_node.inputs):
+        if not usd_param_type_is_shared[i]:
+            continue
+        sgc_datatype = usd_type_to_sgc_datatype(input.usd_type_name)
+        w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
+        w.write_line(f'        return SGError("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).")')
+        w.write_line(f'    }}')
     w.write_line(f'    let inputs: [SGNode.Input] = [')
     for i, input in enumerate(first_node.inputs):
         w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
     w.write_line(f'    ]')
     for suffix_type_name, node in overloads.overloads:
         sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
-        w.write_line(f'    if false {{')
-        w.write_line(f'        return {sgc_output_type}(source: .nodeOutput(SGNode(')
-        w.write_line(f'            nodeType: "{node.name}",')
-        w.write_line(f'            inputs: inputs,')
-        w.write_line(f'            outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
-        w.write_line(f'    }}')
-    w.write_line(f'    return SGError("Unsupported input data types for {swift_name}")')
+        conds: List[str] = []
+        for i, input in enumerate(node.inputs):
+            if usd_param_type_is_shared[i]:
+                continue
+            name = param_names[i]
+            conds.append(f'{name}.dataType == {usd_type_to_sgc_datatype(input.usd_type_name)}')
+        if len(conds) == 0:
+            indent = ""
+        else:
+            cond = " && ".join(conds)
+            w.write_line(f'    if {cond} {{')
+            indent = "    "
+        w.write_line(f'    {indent}return {sgc_output_type}(source: .nodeOutput(SGNode(')
+        w.write_line(f'        {indent}nodeType: "{node.name}",')
+        w.write_line(f'        {indent}inputs: inputs,')
+        w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
+        if len(conds) > 0:
+            w.write_line(f'    }}')
+    if num_unshared_usd_params > 0:
+        w.write_line(f'    return SGError("Unsupported input data types for {swift_name}")')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))

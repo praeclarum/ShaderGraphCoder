@@ -3,803 +3,584 @@ import Foundation
 public func frame() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_frame_float",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for frame")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_frame_float",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func geometry_modifier_bitangent() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_bitangent",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_bitangent")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_bitangent",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_color() -> SGColor {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGColor(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_color",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_color")
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_color",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color4f)])))
 }
 public func geometry_modifier_custom_attribute() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometry_modifier_custom_attribute_half2_0() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_0",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute_half2_0")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_0",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func geometry_modifier_custom_attribute_half2_1() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_1",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute_half2_1")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_1",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func geometry_modifier_custom_attribute_half4_0() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_0",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute_half4_0")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_0",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_attribute_half4_1() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_1",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute_half4_1")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_1",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_attribute_half4_2() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute_half4_2")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_2",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_attribute_half4_3() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_attribute_half4_3")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_3",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_parameter() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_custom_parameter",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_custom_parameter")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_custom_parameter",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometry_modifier_model_position_offset() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_model_position_offset",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_model_position_offset")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_model_position_offset",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_model_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_model_to_view",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_model_to_view")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_model_to_view",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_model_to_world() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_model_to_world",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_model_to_world")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_model_to_world",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_normal() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_normal",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_normal")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_normal",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_normal_to_world() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_normal_to_world",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix33f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_normal_to_world")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_normal_to_world",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
 }
 public func geometry_modifier_position() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_position",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_position")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_position",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_projection_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_projection_to_view",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_projection_to_view")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_projection_to_view",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_time() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_time",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_time")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_time",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func geometry_modifier_uv0() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_uv0",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_uv0")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_uv0",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv0_offset() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_uv0_offset",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_uv0_offset")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_uv0_offset",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv0_transform() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_uv0_transform",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix22f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_uv0_transform")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_uv0_transform",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
 }
 public func geometry_modifier_uv1() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_uv1",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_uv1")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_uv1",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv1_offset() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_uv1_offset",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_uv1_offset")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_uv1_offset",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv1_transform() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_uv1_transform",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix22f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_uv1_transform")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_uv1_transform",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
 }
 public func geometry_modifier_vertex_id() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_vertex_id",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_vertex_id")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_vertex_id",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.int)])))
 }
 public func geometry_modifier_view_to_projection() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_view_to_projection",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_view_to_projection")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_view_to_projection",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_world_to_model() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_modifier_world_to_model",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for geometry_modifier_world_to_model")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometry_modifier_world_to_model",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func material_parameters_base_color_tint() -> SGColor {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGColor(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_base_color_tint",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_base_color_tint")
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_base_color_tint",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color3f)])))
 }
 public func material_parameters_clearcoat_roughness_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_clearcoat_roughness_scale",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_clearcoat_roughness_scale")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_clearcoat_roughness_scale",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_clearcoat_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_clearcoat_scale",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_clearcoat_scale")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_clearcoat_scale",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_emissive_color() -> SGColor {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGColor(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_emissive_color",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_emissive_color")
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_emissive_color",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color3f)])))
 }
 public func material_parameters_metallic_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_metallic_scale",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_metallic_scale")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_metallic_scale",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_opacity_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_opacity_scale",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_opacity_scale")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_opacity_scale",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_opacity_threshold() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_opacity_threshold",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_opacity_threshold")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_opacity_threshold",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_roughness_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_roughness_scale",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_roughness_scale")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_roughness_scale",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_specular_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_material_parameters_specular_scale",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for material_parameters_specular_scale")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_material_parameters_specular_scale",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func occlusion_surfaceshader() -> String {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return String(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_occlusion_surfaceshader",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.string)])))
-    }
-    return SGError("Unsupported input data types for occlusion_surfaceshader")
+    return String(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_occlusion_surfaceshader",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func shadowreceiver_surfaceshader() -> String {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return String(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_shadowreceiver_surfaceshader",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.string)])))
-    }
-    return SGError("Unsupported input data types for shadowreceiver_surfaceshader")
+    return String(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_shadowreceiver_surfaceshader",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func surface_ambient_occlusion() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_ambient_occlusion",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_ambient_occlusion")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_ambient_occlusion",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_base_color() -> SGColor {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGColor(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_base_color",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    return SGError("Unsupported input data types for surface_base_color")
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_base_color",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color3f)])))
 }
 public func surface_clearcoat() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_clearcoat",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_clearcoat")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_clearcoat",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_clearcoat_roughness() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_clearcoat_roughness",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_clearcoat_roughness")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_clearcoat_roughness",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_color() -> SGColor {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGColor(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_color",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    return SGError("Unsupported input data types for surface_color")
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_color",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color4f)])))
 }
 public func surface_custom_attribute() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_custom_attribute_half2_0() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half2_0",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute_half2_0")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute_half2_0",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func surface_custom_attribute_half2_1() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half2_1",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute_half2_1")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute_half2_1",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func surface_custom_attribute_half4_0() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_0",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute_half4_0")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute_half4_0",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_attribute_half4_1() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_1",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute_half4_1")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute_half4_1",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_attribute_half4_2() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute_half4_2")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute_half4_2",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_attribute_half4_3() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_attribute_half4_3")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_attribute_half4_3",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_parameter() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_parameter",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return SGError("Unsupported input data types for surface_custom_parameter")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_custom_parameter",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_emissive_color() -> SGColor {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGColor(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_emissive_color",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    return SGError("Unsupported input data types for surface_emissive_color")
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_emissive_color",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color3f)])))
 }
 public func surface_geometry_bitangent() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_geometry_bitangent",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_geometry_bitangent")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_geometry_bitangent",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_geometry_normal() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_geometry_normal",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_geometry_normal")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_geometry_normal",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_geometry_tangent() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_geometry_tangent",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_geometry_tangent")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_geometry_tangent",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_metallic() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_metallic",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_metallic")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_metallic",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_model_position() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_model_position",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_model_position")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_model_position",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_model_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_model_to_view",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for surface_model_to_view")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_model_to_view",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_model_to_world() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_model_to_world",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for surface_model_to_world")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_model_to_world",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_opacity() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_opacity",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_opacity")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_opacity",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_projection_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_projection_to_view",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for surface_projection_to_view")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_projection_to_view",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_roughness() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_roughness",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_roughness")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_roughness",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_screen_position() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_screen_position",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return SGError("Unsupported input data types for surface_screen_position")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_screen_position",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_specular() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_specular",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_specular")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_specular",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_tangent_space_normal() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_tangent_space_normal",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_tangent_space_normal")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_tangent_space_normal",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_time() -> SGScalar {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_time",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGError("Unsupported input data types for surface_time")
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_time",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_uv0() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_uv0",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    return SGError("Unsupported input data types for surface_uv0")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_uv0",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func surface_uv1() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_uv1",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    return SGError("Unsupported input data types for surface_uv1")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_uv1",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func surface_view_direction() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_view_direction",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_view_direction")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_view_direction",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_view_to_projection() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_view_to_projection",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for surface_view_to_projection")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_view_to_projection",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_world_position() -> SGVector {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_world_position",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGError("Unsupported input data types for surface_world_position")
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_world_position",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_world_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
     ]
-    if false {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_world_to_view",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix44f)])))
-    }
-    return SGError("Unsupported input data types for surface_world_to_view")
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_surface_world_to_view",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
