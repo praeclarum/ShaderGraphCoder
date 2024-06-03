@@ -1,5 +1,5 @@
 import os
-from typing import List, Union
+from typing import Dict, List, Optional, Tuple, Union
 from pxr import Usd
 
 class Node():
@@ -41,6 +41,10 @@ def should_output_node(node: Node):
     if len(node.outputs) != 1:
         print(f'Skipping {node.name} because it has {len(node.outputs)} outputs')
         return False
+    for i in node.inputs:
+        if i.type_is_array:
+            print(f'Skipping {node.name} because it has an array input')
+            return False
     if node.outputs[0].type_is_array:
         print(f'Skipping {node.name} because its output is an array')
         return False
@@ -49,9 +53,13 @@ def should_output_node(node: Node):
 suffix_type_names: List[str] = [
     "_boolean",
     "_color3",
+    "_color3B",
     "_color3FA",
+    "_color3I",
     "_color4",
+    "_color4B",
     "_color4FA",
+    "_color4I",
     "_half",
     "_half2",
     "_half2B",
@@ -69,6 +77,7 @@ suffix_type_names: List[str] = [
     "_integer2",
     "_integer3",
     "_integer4",
+    "_filename",
     "_float",
     "_matrix22",
     "_matrix22FA",
@@ -78,18 +87,25 @@ suffix_type_names: List[str] = [
     "_matrix44FA",
     "_string",
     "_vector2",
-    "_vector3",
-    "_vector4",
+    "_vector2B",
     "_vector2FA",
+    "_vector2I",
+    "_vector3",
+    "_vector3B",
     "_vector3FA",
+    "_vector3I",
+    "_vector4",
+    "_vector4B",
     "_vector4FA",
+    "_vector4I",
 ]
 
-def get_node_suffix_type_name(node: Node):
+def get_node_suffix_type_name(node: Node) -> Tuple[str, Optional[str]]:
     for suffix in suffix_type_names:
         if node.name.endswith(suffix):
-            return suffix
-    return None
+            base_name = node.name[:-len(suffix)]
+            return base_name, suffix
+    return node.name, None
 
 class SwiftWriter():
     def __init__(self):
@@ -124,19 +140,81 @@ class SwiftWriter():
     def write(self, text: str):
         self.current_line += text
 
-def write_node(node: Node, w: SwiftWriter):
-    suffix_type_name = get_node_suffix_type_name(node)
-    base_name = node.name[:-len(suffix_type_name)] if suffix_type_name else node.name
-    swift_name = base_name
+class NodeOverloads():
+    overloads: List[Tuple[Optional[str], Node]]
+    is_src: bool
+    def __init__(self, base_name: str, first_suffix_type_name: Optional[str], first_node: Node):
+        self.base_name = base_name
+        self.overloads = [(first_suffix_type_name, first_node)]
+        self.is_src = len(first_node.inputs) == 0
+    def add_overload(self, suffix_type_name: Optional[str], node: Node):
+        self.overloads.append((suffix_type_name, node))
+
+node_overloads: Dict[str, NodeOverloads] = {}
+
+def add_node_to_overloads(node: Node):
+    base_name, suffix_type_name = get_node_suffix_type_name(node)
+    if base_name not in node_overloads:
+        node_overloads[base_name] = NodeOverloads(base_name, suffix_type_name, node)
+    else:
+        node_overloads[base_name].add_overload(suffix_type_name, node)
+
+def usd_type_to_sgc_type(usd_type: str) -> str:
+    if usd_type == 'bool':
+        return 'Bool'
+    if usd_type == 'float':
+        return 'SGValue'
+    if usd_type == 'GfMatrix2d':
+        return 'SGValue'
+    if usd_type == 'GfMatrix3d':
+        return 'SGValue'
+    if usd_type == 'GfMatrix4d':
+        return 'SGValue'
+    if usd_type == 'GfVec2f':
+        return 'SGValue'
+    if usd_type == 'GfVec2h':
+        return 'SGValue'
+    if usd_type == 'GfVec2i':
+        return 'SGValue'
+    if usd_type == 'GfVec3f':
+        return 'SGValue'
+    if usd_type == 'GfVec3h':
+        return 'SGValue'
+    if usd_type == 'GfVec3i':
+        return 'SGValue'
+    if usd_type == 'GfVec4f':
+        return 'SGValue'
+    if usd_type == 'GfVec4h':
+        return 'SGValue'
+    if usd_type == 'GfVec4i':
+        return 'SGValue'
+    if usd_type == 'int':
+        return 'SGValue'
+    if usd_type == 'pxr_half::half':
+        return 'String'
+    if usd_type == 'SdfAssetPath':
+        return 'TextureResource'
+    if usd_type == 'string':
+        return 'String'
+    if usd_type == 'TfToken':
+        return 'String'
+    print("Unknown USD type:", usd_type)
+    return usd_type
+
+def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
+    swift_name = overloads.base_name
+    if swift_name.startswith('ND_realitykit_'):
+        swift_name = swift_name[len('ND_realitykit_'):]
+    elif swift_name.startswith('ND_'):
+        swift_name = swift_name[len('ND_'):]
+    first_node = overloads.overloads[0][1]
     w.write(f'public func {swift_name}(')
-    for i, input in enumerate(node.inputs):
-        w.write(f'{input.name}: {input.type_name}')
-        if i < len(node.inputs) - 1:
+    for i, input in enumerate(first_node.inputs):
+        w.write(f'{input.name}: {usd_type_to_sgc_type(input.type_name)}')
+        if i < len(first_node.inputs) - 1:
             w.write(', ')
-    w.write(') -> ')
-    output = node.outputs[0]
-    w.write(f'{output.type_name}')
-    w.write_line(' {')
+    output = first_node.outputs[0]
+    w.write_line(f') -> {usd_type_to_sgc_type(output.type_name)} {{')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
@@ -144,6 +222,7 @@ schemas_path = os.path.join(tools_path, 'schemas.usda')
 src_path = os.path.abspath(os.path.join(tools_path, '..', 'Sources', 'ShaderGraphCoder'))
 
 ops_out_path = os.path.join(src_path, 'Operations.g.swift')
+srcs_out_path = os.path.join(src_path, 'Sources.g.swift')
 
 stage = Usd.Stage.Open(schemas_path)
 all_prims = [x for x in stage.Traverse()]  
@@ -151,8 +230,25 @@ nodes = [Node(x) for x in all_prims if is_node(x)]
 print(f'Found {len(nodes)} nodes')
 output_nodes = [x for x in nodes if should_output_node(x)]
 print(f'Outputting {len(output_nodes)} nodes')
+for node in output_nodes:
+    add_node_to_overloads(node)
+print(f'Outputting {len(node_overloads)} overloads')
+src_nodes: List[NodeOverloads] = []
+op_nodes: List[NodeOverloads] = []
+for base_name, no in node_overloads.items():
+    if no.is_src:
+        src_nodes.append(no)
+    else:
+        op_nodes.append(no)
+print(f'Outputting {len(op_nodes)} operations')
+print(f'Outputting {len(src_nodes)} sources')
 
 ops_writer = SwiftWriter()
-for node in output_nodes:
-    write_node(node, ops_writer)
+for node in op_nodes:
+    write_node_overloads(node, ops_writer)
 ops_writer.output_to_file(ops_out_path)
+
+srcs_writer = SwiftWriter()
+for node in src_nodes:
+    write_node_overloads(node, srcs_writer)
+srcs_writer.output_to_file(srcs_out_path)
