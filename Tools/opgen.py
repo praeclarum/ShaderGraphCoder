@@ -35,7 +35,8 @@ class NodeProperty():
         self.property_name = property_name
         self.name = property_name.split(':')[-1]
         t = p.GetTypeName()
-        self.usd_type_name = t.type.typeName
+        self.usd_type_aliases = t.aliasesAsStrings
+        self.usd_type_name = self.usd_type_aliases[0] if len(self.usd_type_aliases) > 0 else t.type.typeName
         self.type_is_array = t.isArray
         self.default_value = p.Get() if p.HasValue() else None
 
@@ -48,21 +49,21 @@ def is_node(prim):
 
 def should_output_node(node: Node):
     if node.name.startswith('ND_Internal'):
-        print(f'Skipping {node.name} because it is internal')
+        # print(f'Skipping {node.name} because it is internal')
         return False
     if len(node.outputs) != 1:
-        print(f'Skipping {node.name} because it has {len(node.outputs)} outputs')
+        # print(f'Skipping {node.name} because it has {len(node.outputs)} outputs')
         return False
     for i in node.inputs:
         if i.type_is_array:
-            print(f'Skipping {node.name} because it has an array input')
+            # print(f'Skipping {node.name} because it has an array input')
             return False
     if node.outputs[0].type_is_array:
-        print(f'Skipping {node.name} because its output is an array')
+        # print(f'Skipping {node.name} because its output is an array')
         return False
     for prefix in manual_node_prefixes:
         if node.name.startswith(prefix):
-            print(f'Skipping {node.name} because it is a manual node')
+            # print(f'Skipping {node.name} because it is a manual node')
             return False
     return True
 
@@ -134,41 +135,45 @@ def get_node_suffix_type_name(node: Node) -> Tuple[str, Optional[str]]:
 def usd_type_to_sgc_type(usd_type: str) -> str:
     if usd_type == 'bool':
         return 'SGValue'
+    if usd_type == 'color3f':
+        return 'SGColor'
+    if usd_type == 'color4f':
+        return 'SGColor'
     if usd_type == 'float':
         return 'SGScalar'
-    if usd_type == 'GfMatrix2d':
+    if usd_type == 'matrix2d':
         return 'SGValue'
-    if usd_type == 'GfMatrix3d':
+    if usd_type == 'matrix3d':
         return 'SGValue'
-    if usd_type == 'GfMatrix4d':
+    if usd_type == 'matrix4d':
         return 'SGValue'
-    if usd_type == 'GfVec2f':
+    if usd_type == 'float2':
         return 'SGVector'
-    if usd_type == 'GfVec2h':
+    if usd_type == 'half2':
         return 'SGVector'
-    if usd_type == 'GfVec2i':
+    if usd_type == 'int2':
         return 'SGVector'
-    if usd_type == 'GfVec3f':
+    if usd_type == 'float3':
         return 'SGVector'
-    if usd_type == 'GfVec3h':
+    if usd_type == 'half3':
         return 'SGVector'
-    if usd_type == 'GfVec3i':
+    if usd_type == 'int3':
         return 'SGVector'
-    if usd_type == 'GfVec4f':
+    if usd_type == 'float4':
         return 'SGVector'
-    if usd_type == 'GfVec4h':
+    if usd_type == 'half4':
         return 'SGVector'
-    if usd_type == 'GfVec4i':
+    if usd_type == 'int4':
         return 'SGVector'
     if usd_type == 'int':
         return 'SGScalar'
-    if usd_type == 'pxr_half::half':
+    if usd_type == 'half':
         return 'SGScalar'
-    if usd_type == 'SdfAssetPath':
+    if usd_type == 'asset':
         return 'TextureResource'
     if usd_type == 'string':
         return 'SGString'
-    if usd_type == 'TfToken':
+    if usd_type == 'token':
         return 'String'
     print("Unknown USD type:", usd_type)
     return usd_type
@@ -176,44 +181,48 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
 def usd_type_to_sgc_datatype(usd_type: str) -> str:
     if usd_type == 'bool':
         return 'SGDataType.bool'
+    if usd_type == 'color3f':
+        return 'SGDataType.color3f'
+    if usd_type == 'color4f':
+        return 'SGDataType.color4f'
     if usd_type == 'float':
         return 'SGDataType.float'
-    if usd_type == 'GfMatrix2d':
+    if usd_type == 'matrix2d':
         return 'SGDataType.matrix22f'
-    if usd_type == 'GfMatrix3d':
+    if usd_type == 'matrix3d':
         return 'SGDataType.matrix33f'
-    if usd_type == 'GfMatrix4d':
+    if usd_type == 'matrix4d':
         return 'SGDataType.matrix44f'
-    if usd_type == 'GfVec2f':
+    if usd_type == 'float2':
         return 'SGDataType.vector2f'
-    if usd_type == 'GfVec2h':
+    if usd_type == 'half2':
         return 'SGDataType.vector2h'
-    if usd_type == 'GfVec2i':
+    if usd_type == 'int2':
         return 'SGDataType.vector2i'
-    if usd_type == 'GfVec3f':
+    if usd_type == 'float3':
         return 'SGDataType.vector3f'
-    if usd_type == 'GfVec3h':
+    if usd_type == 'half3':
         return 'SGDataType.vector3h'
-    if usd_type == 'GfVec3i':
+    if usd_type == 'int3':
         return 'SGDataType.vector3i'
-    if usd_type == 'GfVec4f':
+    if usd_type == 'float4':
         return 'SGDataType.vector4f'
-    if usd_type == 'GfVec4h':
+    if usd_type == 'half4':
         return 'SGDataType.vector4h'
-    if usd_type == 'GfVec4i':
+    if usd_type == 'int4':
         return 'SGDataType.vector4i'
     if usd_type == 'int':
         return 'SGDataType.int'
-    if usd_type == 'pxr_half::half':
+    if usd_type == 'half':
         return 'SGDataType.half'
-    if usd_type == 'SdfAssetPath':
+    if usd_type == 'asset':
         return 'SGDataType.asset'
     if usd_type == 'string':
         return 'SGDataType.string'
-    if usd_type == 'TfToken':
+    if usd_type == 'token':
         return 'SGDataType.string'
     print("Unknown USD datatype:", usd_type)
-    return usd_type
+    return f"SGDataType.{usd_type}"
 
 class SwiftWriter():
     def __init__(self):
@@ -312,10 +321,13 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     w.write_line(f'    ]')
     for suffix_type_name, node in overloads.overloads:
         sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
-        w.write_line(f'    return {sgc_output_type}(source: .nodeOutput(SGNode(')
-        w.write_line(f'        nodeType: "{node.name}",')
-        w.write_line(f'        inputs: inputs,')
-        w.write_line(f'        outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
+        w.write_line(f'    if false {{')
+        w.write_line(f'        return {sgc_output_type}(source: .nodeOutput(SGNode(')
+        w.write_line(f'            nodeType: "{node.name}",')
+        w.write_line(f'            inputs: inputs,')
+        w.write_line(f'            outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
+        w.write_line(f'    }}')
+    w.write_line(f'    return SGError("Unsupported input data types for {swift_name}")')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
@@ -327,6 +339,11 @@ srcs_out_path = os.path.join(src_path, 'Sources.g.swift')
 
 stage = Usd.Stage.Open(schemas_path)
 all_prims = [x for x in stage.Traverse()]  
+
+test_prim = [x for x in all_prims if x.GetName() == 'ND_realitykit_oneminus_vector2'][0]
+dir(test_prim.GetAttribute('inputs:in').GetTypeName())
+test_prim.GetAttribute('inputs:in').GetTypeName().aliasesAsStrings
+
 nodes = [Node(x) for x in all_prims if is_node(x)]
 print(f'Found {len(nodes)} nodes')
 output_nodes = [x for x in nodes if should_output_node(x)]
