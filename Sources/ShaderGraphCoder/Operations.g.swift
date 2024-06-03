@@ -993,54 +993,6 @@ public func add(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     }
     return SGError("Unsupported input data types for add")
 }
-public func add_displacementshader(_ in1: String, _ in2: String) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid add_displacementshader input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.string else {
-        return SGError("Invalid add_displacementshader input. Expected in2 data type to be SGDataType.string, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_add_displacementshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func add_surfaceshader(_ in1: String, _ in2: String) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid add_surfaceshader input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.string else {
-        return SGError("Invalid add_surfaceshader input. Expected in2 data type to be SGDataType.string, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_add_surfaceshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func add_volumeshader(_ in1: String, _ in2: String) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid add_volumeshader input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.string else {
-        return SGError("Invalid add_volumeshader input. Expected in2 data type to be SGDataType.string, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_add_volumeshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
 public func ambientocclusion(coneangle: SGScalar, maxdistance: SGScalar) -> SGScalar {
     guard coneangle.dataType == SGDataType.float else {
         return SGError("Invalid ambientocclusion input. Expected coneangle data type to be SGDataType.float, but got \(coneangle.dataType).")
@@ -1894,70 +1846,6 @@ public func dot(_ in: SGValue, note: SGString) -> SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGError("Unsupported input data types for dot")
-}
-public func dot_displacementshader(_ in: String, note: SGString) -> String {
-    guard in.dataType == SGDataType.string else {
-        return SGError("Invalid dot_displacementshader input. Expected in data type to be SGDataType.string, but got \(in.dataType).")
-    }
-    guard note.dataType == SGDataType.string else {
-        return SGError("Invalid dot_displacementshader input. Expected note data type to be SGDataType.string, but got \(note.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in),
-        .init(name: "note", connection: note),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_dot_displacementshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func dot_lightshader(_ in: String, note: SGString) -> String {
-    guard in.dataType == SGDataType.string else {
-        return SGError("Invalid dot_lightshader input. Expected in data type to be SGDataType.string, but got \(in.dataType).")
-    }
-    guard note.dataType == SGDataType.string else {
-        return SGError("Invalid dot_lightshader input. Expected note data type to be SGDataType.string, but got \(note.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in),
-        .init(name: "note", connection: note),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_dot_lightshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func dot_surfaceshader(_ in: String, note: SGString) -> String {
-    guard in.dataType == SGDataType.string else {
-        return SGError("Invalid dot_surfaceshader input. Expected in data type to be SGDataType.string, but got \(in.dataType).")
-    }
-    guard note.dataType == SGDataType.string else {
-        return SGError("Invalid dot_surfaceshader input. Expected note data type to be SGDataType.string, but got \(note.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in),
-        .init(name: "note", connection: note),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_dot_surfaceshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func dot_volumeshader(_ in: String, note: SGString) -> String {
-    guard in.dataType == SGDataType.string else {
-        return SGError("Invalid dot_volumeshader input. Expected in data type to be SGDataType.string, but got \(in.dataType).")
-    }
-    guard note.dataType == SGDataType.string else {
-        return SGError("Invalid dot_volumeshader input. Expected note data type to be SGDataType.string, but got \(note.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in),
-        .init(name: "note", connection: note),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_dot_volumeshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func dotproduct(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -3472,66 +3360,6 @@ public func mix(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     }
     return SGError("Unsupported input data types for mix")
 }
-public func mix_displacementshader(fg: String, bg: String, mix: SGScalar) -> String {
-    guard fg.dataType == SGDataType.string else {
-        return SGError("Invalid mix_displacementshader input. Expected fg data type to be SGDataType.string, but got \(fg.dataType).")
-    }
-    guard bg.dataType == SGDataType.string else {
-        return SGError("Invalid mix_displacementshader input. Expected bg data type to be SGDataType.string, but got \(bg.dataType).")
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGError("Invalid mix_displacementshader input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_mix_displacementshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func mix_surfaceshader(fg: String, bg: String, mix: SGScalar) -> String {
-    guard fg.dataType == SGDataType.string else {
-        return SGError("Invalid mix_surfaceshader input. Expected fg data type to be SGDataType.string, but got \(fg.dataType).")
-    }
-    guard bg.dataType == SGDataType.string else {
-        return SGError("Invalid mix_surfaceshader input. Expected bg data type to be SGDataType.string, but got \(bg.dataType).")
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGError("Invalid mix_surfaceshader input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_mix_surfaceshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func mix_volumeshader(fg: String, bg: String, mix: SGScalar) -> String {
-    guard fg.dataType == SGDataType.string else {
-        return SGError("Invalid mix_volumeshader input. Expected fg data type to be SGDataType.string, but got \(fg.dataType).")
-    }
-    guard bg.dataType == SGDataType.string else {
-        return SGError("Invalid mix_volumeshader input. Expected bg data type to be SGDataType.string, but got \(bg.dataType).")
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGError("Invalid mix_volumeshader input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_mix_volumeshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
 public func modulo(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
@@ -3707,102 +3535,6 @@ public func multiply(_ in1: SGValue, _ in2: SGValue) -> SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGError("Unsupported input data types for multiply")
-}
-public func multiply_displacementshaderF(_ in1: String, _ in2: SGScalar) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid multiply_displacementshaderF input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.float else {
-        return SGError("Invalid multiply_displacementshaderF input. Expected in2 data type to be SGDataType.float, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_multiply_displacementshaderF",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func multiply_displacementshaderV(_ in1: String, _ in2: SGVector) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid multiply_displacementshaderV input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.vector3f else {
-        return SGError("Invalid multiply_displacementshaderV input. Expected in2 data type to be SGDataType.vector3f, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_multiply_displacementshaderV",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func multiply_surfaceshaderC(_ in1: String, _ in2: SGColor) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid multiply_surfaceshaderC input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.color3f else {
-        return SGError("Invalid multiply_surfaceshaderC input. Expected in2 data type to be SGDataType.color3f, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_multiply_surfaceshaderC",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func multiply_surfaceshaderF(_ in1: String, _ in2: SGScalar) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid multiply_surfaceshaderF input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.float else {
-        return SGError("Invalid multiply_surfaceshaderF input. Expected in2 data type to be SGDataType.float, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_multiply_surfaceshaderF",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func multiply_volumeshaderC(_ in1: String, _ in2: SGColor) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid multiply_volumeshaderC input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.color3f else {
-        return SGError("Invalid multiply_volumeshaderC input. Expected in2 data type to be SGDataType.color3f, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_multiply_volumeshaderC",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
-public func multiply_volumeshaderF(_ in1: String, _ in2: SGScalar) -> String {
-    guard in1.dataType == SGDataType.string else {
-        return SGError("Invalid multiply_volumeshaderF input. Expected in1 data type to be SGDataType.string, but got \(in1.dataType).")
-    }
-    guard in2.dataType == SGDataType.float else {
-        return SGError("Invalid multiply_volumeshaderF input. Expected in2 data type to be SGDataType.float, but got \(in2.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_multiply_volumeshaderF",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func noise2d(amplitude: SGValue, pivot: SGScalar, texcoord: SGVector) -> SGValue {
     guard pivot.dataType == SGDataType.float else {
@@ -4760,66 +4492,6 @@ public func geometry_switch_cameraindex(mono: SGValue, left: SGValue, right: SGV
     }
     return SGError("Unsupported input data types for geometry_switch_cameraindex")
 }
-public func geometrymodifier_vertexshader(modelPositionOffset: SGVector, color: SGColor, normal: SGVector, bitangent: SGVector, uv0: SGVector, uv1: SGVector, userAttribute: SGVector, userAttributeHalf4_0: SGVector, userAttributeHalf4_1: SGVector, userAttributeHalf4_2: SGVector, userAttributeHalf4_3: SGVector, userAttributeHalf2_0: SGVector, userAttributeHalf2_1: SGVector) -> String {
-    guard modelPositionOffset.dataType == SGDataType.vector3f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected modelPositionOffset data type to be SGDataType.vector3f, but got \(modelPositionOffset.dataType).")
-    }
-    guard color.dataType == SGDataType.color4f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected color data type to be SGDataType.color4f, but got \(color.dataType).")
-    }
-    guard normal.dataType == SGDataType.vector3f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType).")
-    }
-    guard bitangent.dataType == SGDataType.vector3f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected bitangent data type to be SGDataType.vector3f, but got \(bitangent.dataType).")
-    }
-    guard uv0.dataType == SGDataType.vector2f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected uv0 data type to be SGDataType.vector2f, but got \(uv0.dataType).")
-    }
-    guard uv1.dataType == SGDataType.vector2f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected uv1 data type to be SGDataType.vector2f, but got \(uv1.dataType).")
-    }
-    guard userAttribute.dataType == SGDataType.vector4f else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttribute data type to be SGDataType.vector4f, but got \(userAttribute.dataType).")
-    }
-    guard userAttributeHalf4_0.dataType == SGDataType.vector4h else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttributeHalf4_0 data type to be SGDataType.vector4h, but got \(userAttributeHalf4_0.dataType).")
-    }
-    guard userAttributeHalf4_1.dataType == SGDataType.vector4h else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttributeHalf4_1 data type to be SGDataType.vector4h, but got \(userAttributeHalf4_1.dataType).")
-    }
-    guard userAttributeHalf4_2.dataType == SGDataType.vector4h else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttributeHalf4_2 data type to be SGDataType.vector4h, but got \(userAttributeHalf4_2.dataType).")
-    }
-    guard userAttributeHalf4_3.dataType == SGDataType.vector4h else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttributeHalf4_3 data type to be SGDataType.vector4h, but got \(userAttributeHalf4_3.dataType).")
-    }
-    guard userAttributeHalf2_0.dataType == SGDataType.vector2h else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttributeHalf2_0 data type to be SGDataType.vector2h, but got \(userAttributeHalf2_0.dataType).")
-    }
-    guard userAttributeHalf2_1.dataType == SGDataType.vector2h else {
-        return SGError("Invalid geometrymodifier_vertexshader input. Expected userAttributeHalf2_1 data type to be SGDataType.vector2h, but got \(userAttributeHalf2_1.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "modelPositionOffset", connection: modelPositionOffset),
-        .init(name: "color", connection: color),
-        .init(name: "normal", connection: normal),
-        .init(name: "bitangent", connection: bitangent),
-        .init(name: "uv0", connection: uv0),
-        .init(name: "uv1", connection: uv1),
-        .init(name: "userAttribute", connection: userAttribute),
-        .init(name: "userAttributeHalf4_0", connection: userAttributeHalf4_0),
-        .init(name: "userAttributeHalf4_1", connection: userAttributeHalf4_1),
-        .init(name: "userAttributeHalf4_2", connection: userAttributeHalf4_2),
-        .init(name: "userAttributeHalf4_3", connection: userAttributeHalf4_3),
-        .init(name: "userAttributeHalf2_0", connection: userAttributeHalf2_0),
-        .init(name: "userAttributeHalf2_1", connection: userAttributeHalf2_1),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_geometrymodifier_vertexshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
 public func image_bias(file: TextureResource, default: SGValue, texcoord: SGVector, bias: SGScalar, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     guard file.dataType == SGDataType.asset else {
         return SGError("Invalid image_bias input. Expected file data type to be SGDataType.asset, but got \(file.dataType).")
@@ -5676,62 +5348,6 @@ public func oneminus(_ in: SGValue) -> SGValue {
     }
     return SGError("Unsupported input data types for oneminus")
 }
-public func pbr_surfaceshader(baseColor: SGColor, emissiveColor: SGColor, normal: SGVector, roughness: SGScalar, metallic: SGScalar, ambientOcclusion: SGScalar, specular: SGScalar, opacity: SGScalar, opacityThreshold: SGScalar, clearcoat: SGScalar, clearcoatRoughness: SGScalar, hasPremultipliedAlpha: SGValue) -> String {
-    guard baseColor.dataType == SGDataType.color3f else {
-        return SGError("Invalid pbr_surfaceshader input. Expected baseColor data type to be SGDataType.color3f, but got \(baseColor.dataType).")
-    }
-    guard emissiveColor.dataType == SGDataType.color3f else {
-        return SGError("Invalid pbr_surfaceshader input. Expected emissiveColor data type to be SGDataType.color3f, but got \(emissiveColor.dataType).")
-    }
-    guard normal.dataType == SGDataType.vector3f else {
-        return SGError("Invalid pbr_surfaceshader input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType).")
-    }
-    guard roughness.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected roughness data type to be SGDataType.float, but got \(roughness.dataType).")
-    }
-    guard metallic.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected metallic data type to be SGDataType.float, but got \(metallic.dataType).")
-    }
-    guard ambientOcclusion.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected ambientOcclusion data type to be SGDataType.float, but got \(ambientOcclusion.dataType).")
-    }
-    guard specular.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected specular data type to be SGDataType.float, but got \(specular.dataType).")
-    }
-    guard opacity.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected opacity data type to be SGDataType.float, but got \(opacity.dataType).")
-    }
-    guard opacityThreshold.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected opacityThreshold data type to be SGDataType.float, but got \(opacityThreshold.dataType).")
-    }
-    guard clearcoat.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected clearcoat data type to be SGDataType.float, but got \(clearcoat.dataType).")
-    }
-    guard clearcoatRoughness.dataType == SGDataType.float else {
-        return SGError("Invalid pbr_surfaceshader input. Expected clearcoatRoughness data type to be SGDataType.float, but got \(clearcoatRoughness.dataType).")
-    }
-    guard hasPremultipliedAlpha.dataType == SGDataType.bool else {
-        return SGError("Invalid pbr_surfaceshader input. Expected hasPremultipliedAlpha data type to be SGDataType.bool, but got \(hasPremultipliedAlpha.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "baseColor", connection: baseColor),
-        .init(name: "emissiveColor", connection: emissiveColor),
-        .init(name: "normal", connection: normal),
-        .init(name: "roughness", connection: roughness),
-        .init(name: "metallic", connection: metallic),
-        .init(name: "ambientOcclusion", connection: ambientOcclusion),
-        .init(name: "specular", connection: specular),
-        .init(name: "opacity", connection: opacity),
-        .init(name: "opacityThreshold", connection: opacityThreshold),
-        .init(name: "clearcoat", connection: clearcoat),
-        .init(name: "clearcoatRoughness", connection: clearcoatRoughness),
-        .init(name: "hasPremultipliedAlpha", connection: hasPremultipliedAlpha),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_pbr_surfaceshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
 public func reflect(_ in: SGVector, normal: SGVector) -> SGVector {
     guard in.dataType == SGDataType.vector3f else {
         return SGError("Invalid reflect input. Expected in data type to be SGDataType.vector3f, but got \(in.dataType).")
@@ -5810,34 +5426,6 @@ public func step(_ in: SGValue, edge: SGValue) -> SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGError("Unsupported input data types for step")
-}
-public func unlit_surfaceshader(color: SGColor, opacity: SGScalar, opacityThreshold: SGScalar, applyPostProcessToneMap: SGValue, hasPremultipliedAlpha: SGValue) -> String {
-    guard color.dataType == SGDataType.color3f else {
-        return SGError("Invalid unlit_surfaceshader input. Expected color data type to be SGDataType.color3f, but got \(color.dataType).")
-    }
-    guard opacity.dataType == SGDataType.float else {
-        return SGError("Invalid unlit_surfaceshader input. Expected opacity data type to be SGDataType.float, but got \(opacity.dataType).")
-    }
-    guard opacityThreshold.dataType == SGDataType.float else {
-        return SGError("Invalid unlit_surfaceshader input. Expected opacityThreshold data type to be SGDataType.float, but got \(opacityThreshold.dataType).")
-    }
-    guard applyPostProcessToneMap.dataType == SGDataType.bool else {
-        return SGError("Invalid unlit_surfaceshader input. Expected applyPostProcessToneMap data type to be SGDataType.bool, but got \(applyPostProcessToneMap.dataType).")
-    }
-    guard hasPremultipliedAlpha.dataType == SGDataType.bool else {
-        return SGError("Invalid unlit_surfaceshader input. Expected hasPremultipliedAlpha data type to be SGDataType.bool, but got \(hasPremultipliedAlpha.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "color", connection: color),
-        .init(name: "opacity", connection: opacity),
-        .init(name: "opacityThreshold", connection: opacityThreshold),
-        .init(name: "applyPostProcessToneMap", connection: applyPostProcessToneMap),
-        .init(name: "hasPremultipliedAlpha", connection: hasPremultipliedAlpha),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_unlit_surfaceshader",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func viewdirection(space: SGString) -> SGVector {
     guard space.dataType == SGDataType.string else {
@@ -6745,22 +6333,6 @@ public func subtract(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     }
     return SGError("Unsupported input data types for subtract")
 }
-public func surfacematerial(surfaceshader: String, displacementshader: String) -> String {
-    guard surfaceshader.dataType == SGDataType.string else {
-        return SGError("Invalid surfacematerial input. Expected surfaceshader data type to be SGDataType.string, but got \(surfaceshader.dataType).")
-    }
-    guard displacementshader.dataType == SGDataType.string else {
-        return SGError("Invalid surfacematerial input. Expected displacementshader data type to be SGDataType.string, but got \(displacementshader.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "surfaceshader", connection: surfaceshader),
-        .init(name: "displacementshader", connection: displacementshader),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_surfacematerial",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
-}
 public func switch(_ in1: SGValue, _ in2: SGValue, _ in3: SGValue, _ in4: SGValue, _ in5: SGValue, _ in6: SGValue, _ in7: SGValue, _ in8: SGValue, _ in9: SGValue, _ in10: SGValue, which: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
@@ -7301,18 +6873,6 @@ public func updirection(space: SGString) -> SGVector {
         nodeType: "ND_updirection_vector3",
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
-}
-public func volumematerial(volumeshader: String) -> String {
-    guard volumeshader.dataType == SGDataType.string else {
-        return SGError("Invalid volumematerial input. Expected volumeshader data type to be SGDataType.string, but got \(volumeshader.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "volumeshader", connection: volumeshader),
-    ]
-    return String(source: .nodeOutput(SGNode(
-        nodeType: "ND_volumematerial",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func worleynoise2d(texcoord: SGVector, jitter: SGScalar) -> SGValue {
     guard texcoord.dataType == SGDataType.vector2f else {
