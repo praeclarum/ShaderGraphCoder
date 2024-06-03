@@ -204,3 +204,12 @@ public class SGTexture3D: SGValue {
         return SGColor(source: .nodeOutput(node))
     }
 }
+
+public class SGError: SGValue {
+    public init(_ error: String) {
+        super.init(source: .constant(.string(error)))
+    }
+    public required init(source: SGValueSource) {
+        super.init(source: source)
+    }
+}
