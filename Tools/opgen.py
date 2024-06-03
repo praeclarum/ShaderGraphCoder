@@ -173,6 +173,48 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
     print("Unknown USD type:", usd_type)
     return usd_type
 
+def usd_type_to_sgc_datatype(usd_type: str) -> str:
+    if usd_type == 'bool':
+        return 'SGDataType.bool'
+    if usd_type == 'float':
+        return 'SGDataType.float'
+    if usd_type == 'GfMatrix2d':
+        return 'SGDataType.matrix22f'
+    if usd_type == 'GfMatrix3d':
+        return 'SGDataType.matrix33f'
+    if usd_type == 'GfMatrix4d':
+        return 'SGDataType.matrix44f'
+    if usd_type == 'GfVec2f':
+        return 'SGDataType.vector2f'
+    if usd_type == 'GfVec2h':
+        return 'SGDataType.vector2h'
+    if usd_type == 'GfVec2i':
+        return 'SGDataType.vector2i'
+    if usd_type == 'GfVec3f':
+        return 'SGDataType.vector3f'
+    if usd_type == 'GfVec3h':
+        return 'SGDataType.vector3h'
+    if usd_type == 'GfVec3i':
+        return 'SGDataType.vector3i'
+    if usd_type == 'GfVec4f':
+        return 'SGDataType.vector4f'
+    if usd_type == 'GfVec4h':
+        return 'SGDataType.vector4h'
+    if usd_type == 'GfVec4i':
+        return 'SGDataType.vector4i'
+    if usd_type == 'int':
+        return 'SGDataType.int'
+    if usd_type == 'pxr_half::half':
+        return 'SGDataType.half'
+    if usd_type == 'SdfAssetPath':
+        return 'SGDataType.asset'
+    if usd_type == 'string':
+        return 'SGDataType.string'
+    if usd_type == 'TfToken':
+        return 'SGDataType.string'
+    print("Unknown USD datatype:", usd_type)
+    return usd_type
+
 class SwiftWriter():
     def __init__(self):
         self.lines = []
@@ -273,7 +315,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         w.write_line(f'    return {sgc_output_type}(source: .nodeOutput(SGNode(')
         w.write_line(f'        nodeType: "{node.name}",')
         w.write_line(f'        inputs: inputs,')
-        w.write_line(f'        outputs: [])))')
+        w.write_line(f'        outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))

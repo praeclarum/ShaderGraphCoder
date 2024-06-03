@@ -22,15 +22,15 @@ public func RealityKitTexture2DGradient(file: TextureResource, u_wrap_mode: SGSt
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DGradient_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DGradient_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DGradient_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTexture2DLOD(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, lod: SGScalar, offset: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -52,15 +52,15 @@ public func RealityKitTexture2DLOD(file: TextureResource, u_wrap_mode: SGString,
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DLOD_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DLOD_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DLOD_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTexture2DPixelGradient(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, dynamic_min_lod_clamp: SGScalar, gradient_dPdx: SGVector, gradient_dPdy: SGVector, offset: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -82,15 +82,15 @@ public func RealityKitTexture2DPixelGradient(file: TextureResource, u_wrap_mode:
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixelGradient_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixelGradient_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixelGradient_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTexture2DPixelLOD(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, lod: SGScalar, offset: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -110,15 +110,15 @@ public func RealityKitTexture2DPixelLOD(file: TextureResource, u_wrap_mode: SGSt
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixelLOD_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixelLOD_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixelLOD_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTexture2DPixel(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, bias: SGScalar, dynamic_min_lod_clamp: SGScalar, offset: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -139,15 +139,15 @@ public func RealityKitTexture2DPixel(file: TextureResource, u_wrap_mode: SGStrin
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixel_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixel_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2DPixel_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTexture2D(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, bias: SGScalar, dynamic_min_lod_clamp: SGScalar, offset: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -170,15 +170,15 @@ public func RealityKitTexture2D(file: TextureResource, u_wrap_mode: SGString, v_
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2D_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2D_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTexture2D_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTextureCubeGradient(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, dynamic_min_lod_clamp: SGScalar, gradientcube_dPdx: SGVector, gradientcube_dPdy: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -201,11 +201,11 @@ public func RealityKitTextureCubeGradient(file: TextureResource, u_wrap_mode: SG
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureCubeGradient_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureCubeGradient_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTextureCubeLOD(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, lod: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -226,11 +226,11 @@ public func RealityKitTextureCubeLOD(file: TextureResource, u_wrap_mode: SGStrin
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureCubeLOD_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureCubeLOD_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTextureCube(file: TextureResource, u_wrap_mode: SGString, v_wrap_mode: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, max_lod_clamp: SGScalar, min_lod_clamp: SGScalar, default: SGVector, texcoord: SGVector, bias: SGScalar, dynamic_min_lod_clamp: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -252,11 +252,11 @@ public func RealityKitTextureCube(file: TextureResource, u_wrap_mode: SGString, 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureCube_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureCube_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func RealityKitTextureRead(file: TextureResource, default: SGVector, x: SGScalar, y: SGScalar, lod: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -269,11 +269,11 @@ public func RealityKitTextureRead(file: TextureResource, default: SGVector, x: S
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureRead_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_RealityKitTextureRead_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func UsdPrimvarReader(varname: SGString, fallback: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -283,31 +283,31 @@ public func UsdPrimvarReader(varname: SGString, fallback: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_boolean",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_integer",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.int)])))
     return SGString(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_string",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdPrimvarReader_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func UsdTransform2d(_ in: SGVector, rotation: SGScalar, scale: SGVector, translation: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -319,7 +319,7 @@ public func UsdTransform2d(_ in: SGVector, rotation: SGScalar, scale: SGVector, 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_UsdTransform2d",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func absval(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -328,31 +328,31 @@ public func absval(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_absval_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func acos(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -361,35 +361,35 @@ public func acos(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_acos_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func add(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -399,75 +399,75 @@ public func add(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_add_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_add_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_add_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_add_matrix22FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_add_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_add_matrix33FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_add_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_add_matrix44FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_add_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func add_displacementshader(_ in1: String, _ in2: String) -> String {
     let inputs: [SGNode.Input] = [
@@ -477,7 +477,7 @@ public func add_displacementshader(_ in1: String, _ in2: String) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_add_displacementshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func add_surfaceshader(_ in1: String, _ in2: String) -> String {
     let inputs: [SGNode.Input] = [
@@ -487,7 +487,7 @@ public func add_surfaceshader(_ in1: String, _ in2: String) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_add_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func add_volumeshader(_ in1: String, _ in2: String) -> String {
     let inputs: [SGNode.Input] = [
@@ -497,7 +497,7 @@ public func add_volumeshader(_ in1: String, _ in2: String) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_add_volumeshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func ambientocclusion(coneangle: SGScalar, maxdistance: SGScalar) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -507,7 +507,7 @@ public func ambientocclusion(coneangle: SGScalar, maxdistance: SGScalar) -> SGSc
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ambientocclusion_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func asin(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -516,35 +516,35 @@ public func asin(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_asin_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func atan2(iny: SGValue, inx: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -554,35 +554,35 @@ public func atan2(iny: SGValue, inx: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_atan2_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func bitangent(space: SGString, index: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -592,7 +592,7 @@ public func bitangent(space: SGString, index: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_bitangent_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func blur(_ in: SGValue, size: SGScalar, filtertype: SGString) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -603,31 +603,31 @@ public func blur(_ in: SGValue, size: SGScalar, filtertype: SGString) -> SGValue
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_blur_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func burn(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -638,19 +638,19 @@ public func burn(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_burn_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_burn_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_burn_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_burn_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func ceil(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -659,31 +659,31 @@ public func ceil(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ceil_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func cellnoise2d(texcoord: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -692,7 +692,7 @@ public func cellnoise2d(texcoord: SGVector) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cellnoise2d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func cellnoise3d(position: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -701,7 +701,7 @@ public func cellnoise3d(position: SGVector) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cellnoise3d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func clamp(_ in: SGValue, low: SGValue, high: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -712,75 +712,75 @@ public func clamp(_ in: SGValue, low: SGValue, high: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_half4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_clamp_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func contrast(_ in: SGValue, amount: SGValue, pivot: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -791,47 +791,47 @@ public func contrast(_ in: SGValue, amount: SGValue, pivot: SGValue) -> SGValue 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_contrast_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func cos(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -840,35 +840,35 @@ public func cos(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_cos_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func crossproduct(_ in1: SGVector, _ in2: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -878,11 +878,11 @@ public func crossproduct(_ in1: SGVector, _ in2: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_crossproduct_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_crossproduct_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func determinant(_ in: SGValue) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -891,15 +891,15 @@ public func determinant(_ in: SGValue) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_determinant_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_determinant_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_determinant_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func difference(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -910,19 +910,19 @@ public func difference(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_difference_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_difference_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_difference_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_difference_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func disjointover(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -933,7 +933,7 @@ public func disjointover(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_disjointover_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func divide(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -943,63 +943,63 @@ public func divide(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_divide_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func dodge(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1010,19 +1010,19 @@ public func dodge(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dodge_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dodge_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dodge_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dodge_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func dot(_ in: SGValue, note: SGString) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1032,55 +1032,55 @@ public func dot(_ in: SGValue, note: SGString) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_boolean",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return TextureResource(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_filename",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.asset)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_integer",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.int)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGString(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_string",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func dot_displacementshader(_ in: String, note: SGString) -> String {
     let inputs: [SGNode.Input] = [
@@ -1090,7 +1090,7 @@ public func dot_displacementshader(_ in: String, note: SGString) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_displacementshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func dot_lightshader(_ in: String, note: SGString) -> String {
     let inputs: [SGNode.Input] = [
@@ -1100,7 +1100,7 @@ public func dot_lightshader(_ in: String, note: SGString) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_lightshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func dot_surfaceshader(_ in: String, note: SGString) -> String {
     let inputs: [SGNode.Input] = [
@@ -1110,7 +1110,7 @@ public func dot_surfaceshader(_ in: String, note: SGString) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func dot_volumeshader(_ in: String, note: SGString) -> String {
     let inputs: [SGNode.Input] = [
@@ -1120,7 +1120,7 @@ public func dot_volumeshader(_ in: String, note: SGString) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_dot_volumeshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func dotproduct(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -1130,27 +1130,27 @@ public func dotproduct(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dotproduct_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dotproduct_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dotproduct_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dotproduct_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dotproduct_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_dotproduct_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func exp(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1159,35 +1159,35 @@ public func exp(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_exp_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func extract(_ in: SGVector, index: SGScalar) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -1197,23 +1197,23 @@ public func extract(_ in: SGVector, index: SGScalar) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_extract_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_extract_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_extract_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_extract_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_extract_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func floor(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1222,31 +1222,31 @@ public func floor(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_floor_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func fractal3d(amplitude: SGValue, octaves: SGScalar, lacunarity: SGScalar, diminish: SGScalar, position: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1259,47 +1259,47 @@ public func fractal3d(amplitude: SGValue, octaves: SGScalar, lacunarity: SGScala
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_fractal3d_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geomcolor(index: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1308,15 +1308,15 @@ public func geomcolor(index: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geomcolor_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geomcolor_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_geomcolor_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func geompropvalue(geomprop: SGString, default: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1326,43 +1326,43 @@ public func geompropvalue(geomprop: SGString, default: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_boolean",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_integer",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.int)])))
     return SGString(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_string",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_geompropvalue_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func heighttonormal(_ in: SGScalar, scale: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1372,7 +1372,7 @@ public func heighttonormal(_ in: SGScalar, scale: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_heighttonormal_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func hsvadjust(_ in: SGVector, amount: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1382,11 +1382,11 @@ public func hsvadjust(_ in: SGVector, amount: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_hsvadjust_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_hsvadjust_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func hsvtorgb(_ in: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1395,11 +1395,11 @@ public func hsvtorgb(_ in: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_hsvtorgb_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_hsvtorgb_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func ifequal(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1411,123 +1411,123 @@ public func ifequal(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_color3B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_color3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_color4B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_color4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_floatB",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_floatI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half2B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half3B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half4B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_half4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_halfB",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_halfI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector2B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector3B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector4B",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifequal_vector4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func ifgreater(value1: SGScalar, value2: SGScalar, in1: SGValue, in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1539,83 +1539,83 @@ public func ifgreater(value1: SGScalar, value2: SGScalar, in1: SGValue, in2: SGV
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_color3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_color4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_floatI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_half4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_halfI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_vector2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_vector3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreater_vector4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func ifgreatereq(value1: SGScalar, value2: SGScalar, in1: SGValue, in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1627,83 +1627,83 @@ public func ifgreatereq(value1: SGScalar, value2: SGScalar, in1: SGValue, in2: S
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_color3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_color4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_floatI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_half4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_halfI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_vector2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_vector3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ifgreatereq_vector4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func image(file: TextureResource, layer: SGString, default: SGValue, texcoord: SGVector, uaddressmode: SGString, vaddressmode: SGString, filtertype: SGString, framerange: SGString, frameoffset: SGScalar, frameendaction: SGString) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1721,31 +1721,31 @@ public func image(file: TextureResource, layer: SGString, default: SGValue, texc
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_image_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_image_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_image_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_image_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_image_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_image_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_image_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func in(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1756,7 +1756,7 @@ public func in(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_in_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func inside(_ in: SGValue, mask: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1766,19 +1766,19 @@ public func inside(_ in: SGValue, mask: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_inside_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_inside_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_inside_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_inside_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func invertmatrix(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1787,15 +1787,15 @@ public func invertmatrix(_ in: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_invertmatrix_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_invertmatrix_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_invertmatrix_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func ln(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1804,35 +1804,35 @@ public func ln(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ln_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func luminance(_ in: SGVector, lumacoeffs: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1842,11 +1842,11 @@ public func luminance(_ in: SGVector, lumacoeffs: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_luminance_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_luminance_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func magnitude(_ in: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -1855,27 +1855,27 @@ public func magnitude(_ in: SGVector) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_magnitude_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_magnitude_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_magnitude_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_magnitude_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_magnitude_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_magnitude_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func mask(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1886,7 +1886,7 @@ public func mask(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mask_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func matte(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -1897,7 +1897,7 @@ public func matte(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_matte_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func max(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1907,75 +1907,75 @@ public func max(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_max_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_half4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_max_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func min(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -1985,75 +1985,75 @@ public func min(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_min_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_half4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_min_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func minus(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2064,19 +2064,19 @@ public func minus(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_minus_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_minus_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_minus_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_minus_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func mix(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2087,43 +2087,43 @@ public func mix(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func mix_displacementshader(fg: String, bg: String, mix: SGScalar) -> String {
     let inputs: [SGNode.Input] = [
@@ -2134,7 +2134,7 @@ public func mix_displacementshader(fg: String, bg: String, mix: SGScalar) -> Str
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_displacementshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func mix_surfaceshader(fg: String, bg: String, mix: SGScalar) -> String {
     let inputs: [SGNode.Input] = [
@@ -2145,7 +2145,7 @@ public func mix_surfaceshader(fg: String, bg: String, mix: SGScalar) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func mix_volumeshader(fg: String, bg: String, mix: SGScalar) -> String {
     let inputs: [SGNode.Input] = [
@@ -2156,7 +2156,7 @@ public func mix_volumeshader(fg: String, bg: String, mix: SGScalar) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_mix_volumeshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func modulo(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2166,51 +2166,51 @@ public func modulo(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_modulo_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func multiply(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2220,63 +2220,63 @@ public func multiply(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func multiply_displacementshaderF(_ in1: String, _ in2: SGScalar) -> String {
     let inputs: [SGNode.Input] = [
@@ -2286,7 +2286,7 @@ public func multiply_displacementshaderF(_ in1: String, _ in2: SGScalar) -> Stri
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_displacementshaderF",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func multiply_displacementshaderV(_ in1: String, _ in2: SGVector) -> String {
     let inputs: [SGNode.Input] = [
@@ -2296,7 +2296,7 @@ public func multiply_displacementshaderV(_ in1: String, _ in2: SGVector) -> Stri
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_displacementshaderV",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func multiply_surfaceshaderC(_ in1: String, _ in2: SGVector) -> String {
     let inputs: [SGNode.Input] = [
@@ -2306,7 +2306,7 @@ public func multiply_surfaceshaderC(_ in1: String, _ in2: SGVector) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_surfaceshaderC",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func multiply_surfaceshaderF(_ in1: String, _ in2: SGScalar) -> String {
     let inputs: [SGNode.Input] = [
@@ -2316,7 +2316,7 @@ public func multiply_surfaceshaderF(_ in1: String, _ in2: SGScalar) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_surfaceshaderF",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func multiply_volumeshaderC(_ in1: String, _ in2: SGVector) -> String {
     let inputs: [SGNode.Input] = [
@@ -2326,7 +2326,7 @@ public func multiply_volumeshaderC(_ in1: String, _ in2: SGVector) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_volumeshaderC",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func multiply_volumeshaderF(_ in1: String, _ in2: SGScalar) -> String {
     let inputs: [SGNode.Input] = [
@@ -2336,7 +2336,7 @@ public func multiply_volumeshaderF(_ in1: String, _ in2: SGScalar) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_multiply_volumeshaderF",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func noise2d(amplitude: SGValue, pivot: SGScalar, texcoord: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2347,47 +2347,47 @@ public func noise2d(amplitude: SGValue, pivot: SGScalar, texcoord: SGVector) -> 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise2d_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func noise3d(amplitude: SGValue, pivot: SGScalar, position: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2398,47 +2398,47 @@ public func noise3d(amplitude: SGValue, pivot: SGScalar, position: SGVector) -> 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_noise3d_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func normal_map_decode(_ in: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2447,7 +2447,7 @@ public func normal_map_decode(_ in: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normal_map_decode",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func normal(space: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2456,7 +2456,7 @@ public func normal(space: SGString) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normal_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func normalize(_ in: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2465,27 +2465,27 @@ public func normalize(_ in: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalize_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalize_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalize_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalize_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalize_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalize_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func normalmap(_ in: SGVector, space: SGString, scale: SGValue, normal: SGVector, tangent: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2498,11 +2498,11 @@ public func normalmap(_ in: SGVector, space: SGString, scale: SGValue, normal: S
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalmap",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normalmap_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func out(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2513,7 +2513,7 @@ public func out(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_out_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func outside(_ in: SGValue, mask: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2523,19 +2523,19 @@ public func outside(_ in: SGValue, mask: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_outside_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_outside_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_outside_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_outside_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func over(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2546,7 +2546,7 @@ public func over(fg: SGVector, bg: SGVector, mix: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_over_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func overlay(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2557,19 +2557,19 @@ public func overlay(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_overlay_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_overlay_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_overlay_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_overlay_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func place2d(texcoord: SGVector, pivot: SGVector, scale: SGVector, rotate: SGScalar, offset: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2582,7 +2582,7 @@ public func place2d(texcoord: SGVector, pivot: SGVector, scale: SGVector, rotate
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_place2d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func plus(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2593,19 +2593,19 @@ public func plus(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_plus_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_plus_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_plus_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_plus_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func position(space: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2614,7 +2614,7 @@ public func position(space: SGString) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_position_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func power(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2624,51 +2624,51 @@ public func power(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_power_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_power_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_power_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func premult(_ in: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2677,7 +2677,7 @@ public func premult(_ in: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_premult_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func ramp4(valuetl: SGValue, valuetr: SGValue, valuebl: SGValue, valuebr: SGValue, texcoord: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2690,27 +2690,27 @@ public func ramp4(valuetl: SGValue, valuetr: SGValue, valuebl: SGValue, valuebr:
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramp4_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramp4_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ramp4_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramp4_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramp4_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramp4_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func ramplr(valuel: SGValue, valuer: SGValue, texcoord: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2721,43 +2721,43 @@ public func ramplr(valuel: SGValue, valuer: SGValue, texcoord: SGVector) -> SGVa
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramplr_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func ramptb(valuet: SGValue, valueb: SGValue, texcoord: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2768,43 +2768,43 @@ public func ramptb(valuet: SGValue, valueb: SGValue, texcoord: SGVector) -> SGVa
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_ramptb_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func range(_ in: SGValue, inlow: SGValue, inhigh: SGValue, gamma: SGValue, outlow: SGValue, outhigh: SGValue, doclamp: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2819,47 +2819,47 @@ public func range(_ in: SGValue, inlow: SGValue, inhigh: SGValue, gamma: SGValue
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_range_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_range_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func cameraposition(space: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -2868,7 +2868,7 @@ public func cameraposition(space: SGString) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cameraposition_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func cubeimage(file: TextureResource, default: SGValue, texcoord: SGVector, filtertype: SGString) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2880,27 +2880,27 @@ public func cubeimage(file: TextureResource, default: SGValue, texcoord: SGVecto
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cubeimage_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cubeimage_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cubeimage_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cubeimage_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cubeimage_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_cubeimage_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func fractional(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2909,27 +2909,27 @@ public func fractional(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_fractional_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_fractional_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_fractional_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_fractional_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_fractional_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_fractional_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometry_switch_cameraindex(mono: SGValue, left: SGValue, right: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -2940,31 +2940,31 @@ public func geometry_switch_cameraindex(mono: SGValue, left: SGValue, right: SGV
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_integer",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.int)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_switch_cameraindex_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometrymodifier_vertexshader(modelPositionOffset: SGVector, color: SGVector, normal: SGVector, bitangent: SGVector, uv0: SGVector, uv1: SGVector, userAttribute: SGVector, userAttributeHalf4_0: SGVector, userAttributeHalf4_1: SGVector, userAttributeHalf4_2: SGVector, userAttributeHalf4_3: SGVector, userAttributeHalf2_0: SGVector, userAttributeHalf2_1: SGVector) -> String {
     let inputs: [SGNode.Input] = [
@@ -2985,7 +2985,7 @@ public func geometrymodifier_vertexshader(modelPositionOffset: SGVector, color: 
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometrymodifier_vertexshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func image_bias(file: TextureResource, default: SGValue, texcoord: SGVector, bias: SGScalar, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3007,35 +3007,35 @@ public func image_bias(file: TextureResource, default: SGValue, texcoord: SGVect
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func image_bias_min_lod_clamp(file: TextureResource, default: SGValue, texcoord: SGVector, bias: SGScalar, min_lod_clamp: SGScalar, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3058,35 +3058,35 @@ public func image_bias_min_lod_clamp(file: TextureResource, default: SGValue, te
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_bias_min_lod_clamp_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func image(file: TextureResource, default: SGValue, texcoord: SGVector, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3107,35 +3107,35 @@ public func image(file: TextureResource, default: SGValue, texcoord: SGVector, c
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func image_gradient2d(file: TextureResource, default: SGValue, texcoord: SGVector, gradient2d_x: SGString, gradient2d_y: SGString, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3158,35 +3158,35 @@ public func image_gradient2d(file: TextureResource, default: SGValue, texcoord: 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func image_gradient2d_min_lod_clamp(file: TextureResource, default: SGValue, texcoord: SGVector, gradient2d_x: SGString, gradient2d_y: SGString, min_lod_clamp: SGScalar, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3210,35 +3210,35 @@ public func image_gradient2d_min_lod_clamp(file: TextureResource, default: SGVal
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_gradient2d_min_lod_clamp_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func image_lod(file: TextureResource, default: SGValue, texcoord: SGVector, level: SGScalar, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3260,35 +3260,35 @@ public func image_lod(file: TextureResource, default: SGValue, texcoord: SGVecto
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_lod_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func image_min_lod_clamp(file: TextureResource, default: SGValue, texcoord: SGVector, min_lod_clamp: SGScalar, coord: SGString, s_address: SGString, t_address: SGString, border_color: SGString, mag_filter: SGString, min_filter: SGString, mip_filter: SGString, max_anisotropy: SGScalar, lod_min: SGScalar, lod_max: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3310,35 +3310,35 @@ public func image_min_lod_clamp(file: TextureResource, default: SGValue, texcoor
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_image_min_lod_clamp_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func logical_and(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3348,7 +3348,7 @@ public func logical_and(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_and",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
 }
 public func logical_not(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3357,7 +3357,7 @@ public func logical_not(_ in: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_not",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
 }
 public func logical_or(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3367,7 +3367,7 @@ public func logical_or(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_or",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
 }
 public func logical_xor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3377,7 +3377,7 @@ public func logical_xor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_xor",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.bool)])))
 }
 public func oneminus(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3386,27 +3386,27 @@ public func oneminus(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_oneminus_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_oneminus_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_oneminus_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_oneminus_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_oneminus_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_oneminus_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func pbr_surfaceshader(baseColor: SGVector, emissiveColor: SGVector, normal: SGVector, roughness: SGScalar, metallic: SGScalar, ambientOcclusion: SGScalar, specular: SGScalar, opacity: SGScalar, opacityThreshold: SGScalar, clearcoat: SGScalar, clearcoatRoughness: SGScalar, hasPremultipliedAlpha: SGValue) -> String {
     let inputs: [SGNode.Input] = [
@@ -3426,7 +3426,7 @@ public func pbr_surfaceshader(baseColor: SGVector, emissiveColor: SGVector, norm
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_pbr_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func reflect(_ in: SGVector, normal: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3436,7 +3436,7 @@ public func reflect(_ in: SGVector, normal: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_reflect_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func refract(_ in: SGVector, normal: SGVector, eta: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3447,7 +3447,7 @@ public func refract(_ in: SGVector, normal: SGVector, eta: SGScalar) -> SGVector
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_refract_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func step(_ in: SGValue, edge: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3457,27 +3457,27 @@ public func step(_ in: SGValue, edge: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_step_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_step_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_step_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_step_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_step_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_step_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func unlit_surfaceshader(color: SGVector, opacity: SGScalar, opacityThreshold: SGScalar, applyPostProcessToneMap: SGValue, hasPremultipliedAlpha: SGValue) -> String {
     let inputs: [SGNode.Input] = [
@@ -3490,7 +3490,7 @@ public func unlit_surfaceshader(color: SGVector, opacity: SGScalar, opacityThres
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_unlit_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func viewdirection(space: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3499,7 +3499,7 @@ public func viewdirection(space: SGString) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_viewdirection_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func remap(_ in: SGValue, inlow: SGValue, inhigh: SGValue, outlow: SGValue, outhigh: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3512,75 +3512,75 @@ public func remap(_ in: SGValue, inlow: SGValue, inhigh: SGValue, outlow: SGValu
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_half4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_remap_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func rgbtohsv(_ in: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3589,11 +3589,11 @@ public func rgbtohsv(_ in: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rgbtohsv_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rgbtohsv_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func rotate2d(_ in: SGVector, amount: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3603,7 +3603,7 @@ public func rotate2d(_ in: SGVector, amount: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rotate2d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func rotate3d(_ in: SGVector, amount: SGScalar, axis: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3614,7 +3614,7 @@ public func rotate3d(_ in: SGVector, amount: SGScalar, axis: SGVector) -> SGVect
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rotate3d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func round(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3623,31 +3623,31 @@ public func round(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_round_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_round_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_round_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_round_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_round_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_round_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_round_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func safepower(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3657,51 +3657,51 @@ public func safepower(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_safepower_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func saturate(_ in: SGVector, amount: SGScalar, lumacoeffs: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -3712,11 +3712,11 @@ public func saturate(_ in: SGVector, amount: SGScalar, lumacoeffs: SGVector) -> 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_saturate_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_saturate_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func screen(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3727,19 +3727,19 @@ public func screen(fg: SGValue, bg: SGValue, mix: SGScalar) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_screen_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_screen_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_screen_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_screen_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
 }
 public func sign(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3748,43 +3748,43 @@ public func sign(_ in: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sign_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func sin(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3793,35 +3793,35 @@ public func sin(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sin_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func smoothstep(_ in: SGValue, low: SGValue, high: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3832,75 +3832,75 @@ public func smoothstep(_ in: SGValue, low: SGValue, high: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_half4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_smoothstep_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func splitlr(valuel: SGValue, valuer: SGValue, center: SGScalar, texcoord: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3912,31 +3912,31 @@ public func splitlr(valuel: SGValue, valuer: SGValue, center: SGScalar, texcoord
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splitlr_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func splittb(valuet: SGValue, valueb: SGValue, center: SGScalar, texcoord: SGVector) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3948,43 +3948,43 @@ public func splittb(valuet: SGValue, valueb: SGValue, center: SGScalar, texcoord
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_splittb_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func sqrt(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -3993,35 +3993,35 @@ public func sqrt(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_sqrt_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func subtract(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4031,75 +4031,75 @@ public func subtract(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_color3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_color4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_matrix22FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_matrix33FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_matrix44FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_vector2FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_vector3FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_subtract_vector4FA",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surfacematerial(surfaceshader: String, displacementshader: String) -> String {
     let inputs: [SGNode.Input] = [
@@ -4109,7 +4109,7 @@ public func surfacematerial(surfaceshader: String, displacementshader: String) -
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_surfacematerial",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func switch(_ in1: SGValue, _ in2: SGValue, _ in3: SGValue, _ in4: SGValue, _ in5: SGValue, _ in6: SGValue, _ in7: SGValue, _ in8: SGValue, _ in9: SGValue, _ in10: SGValue, which: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4128,59 +4128,59 @@ public func switch(_ in1: SGValue, _ in2: SGValue, _ in3: SGValue, _ in4: SGValu
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_color3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_color4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_floatI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_halfI",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_vector2I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_vector3I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_switch_vector4I",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func tan(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4189,35 +4189,35 @@ public func tan(_ in: SGValue) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_half2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_half3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_half4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tan_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func tangent(space: SGString, index: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4227,7 +4227,7 @@ public func tangent(space: SGString, index: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tangent_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func texcoord(index: SGScalar) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4236,11 +4236,11 @@ public func texcoord(index: SGScalar) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_texcoord_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_texcoord_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func tiledimage(file: TextureResource, default: SGValue, texcoord: SGVector, uvtiling: SGVector, uvoffset: SGVector, realworldimagesize: SGVector, realworldtilesize: SGVector, filtertype: SGString, framerange: SGString, frameoffset: SGScalar, frameendaction: SGString) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4259,31 +4259,31 @@ public func tiledimage(file: TextureResource, default: SGValue, texcoord: SGVect
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_half",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.half)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tiledimage_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func time(fps: SGScalar) -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -4292,7 +4292,7 @@ public func time(fps: SGScalar) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_time_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func transformmatrix(_ in: SGVector, mat: SGValue) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4302,15 +4302,15 @@ public func transformmatrix(_ in: SGVector, mat: SGValue) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformmatrix_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformmatrix_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformmatrix_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func transformmatrix_vector2M3(_ in: SGVector, mat: SGValue) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4320,7 +4320,7 @@ public func transformmatrix_vector2M3(_ in: SGVector, mat: SGValue) -> SGVector 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformmatrix_vector2M3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func transformmatrix_vector3M4(_ in: SGVector, mat: SGValue) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4330,7 +4330,7 @@ public func transformmatrix_vector3M4(_ in: SGVector, mat: SGValue) -> SGVector 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformmatrix_vector3M4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func transformnormal(_ in: SGVector, fromspace: SGString, tospace: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4341,7 +4341,7 @@ public func transformnormal(_ in: SGVector, fromspace: SGString, tospace: SGStri
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformnormal_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func transformpoint(_ in: SGVector, fromspace: SGString, tospace: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4352,7 +4352,7 @@ public func transformpoint(_ in: SGVector, fromspace: SGString, tospace: SGStrin
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformpoint_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func transformvector(_ in: SGVector, fromspace: SGString, tospace: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4363,7 +4363,7 @@ public func transformvector(_ in: SGVector, fromspace: SGString, tospace: SGStri
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformvector_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func transpose(_ in: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4372,15 +4372,15 @@ public func transpose(_ in: SGValue) -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_transpose_matrix22",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_transpose_matrix33",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_transpose_matrix44",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func triplanarprojection(filex: TextureResource, filey: TextureResource, filez: TextureResource, layerx: SGString, layery: SGString, layerz: SGString, default: SGValue, position: SGVector, normal: SGVector, filtertype: SGString, framerange: SGString, frameoffset: SGScalar, frameendaction: SGString) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4401,27 +4401,27 @@ public func triplanarprojection(filex: TextureResource, filey: TextureResource, 
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_triplanarprojection_color3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_triplanarprojection_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_triplanarprojection_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_triplanarprojection_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_triplanarprojection_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_triplanarprojection_vector4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func unpremult(_ in: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4430,7 +4430,7 @@ public func unpremult(_ in: SGVector) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_unpremult_color4",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func updirection(space: SGString) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -4439,7 +4439,7 @@ public func updirection(space: SGString) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_updirection_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func volumematerial(volumeshader: String) -> String {
     let inputs: [SGNode.Input] = [
@@ -4448,7 +4448,7 @@ public func volumematerial(volumeshader: String) -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_volumematerial",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func worleynoise2d(texcoord: SGVector, jitter: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4458,15 +4458,15 @@ public func worleynoise2d(texcoord: SGVector, jitter: SGScalar) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func worleynoise3d(position: SGVector, jitter: SGScalar) -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -4476,13 +4476,13 @@ public func worleynoise3d(position: SGVector, jitter: SGScalar) -> SGValue {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_vector2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_vector3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }

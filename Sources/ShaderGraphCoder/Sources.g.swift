@@ -6,7 +6,7 @@ public func frame() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_frame_float",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func geometry_modifier_bitangent() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -14,7 +14,7 @@ public func geometry_modifier_bitangent() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_bitangent",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_color() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -22,7 +22,7 @@ public func geometry_modifier_color() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_color",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometry_modifier_custom_attribute() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -30,7 +30,7 @@ public func geometry_modifier_custom_attribute() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometry_modifier_custom_attribute_half2_0() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -38,7 +38,7 @@ public func geometry_modifier_custom_attribute_half2_0() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_0",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func geometry_modifier_custom_attribute_half2_1() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -46,7 +46,7 @@ public func geometry_modifier_custom_attribute_half2_1() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_1",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func geometry_modifier_custom_attribute_half4_0() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -54,7 +54,7 @@ public func geometry_modifier_custom_attribute_half4_0() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_0",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_attribute_half4_1() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -62,7 +62,7 @@ public func geometry_modifier_custom_attribute_half4_1() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_1",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_attribute_half4_2() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -70,7 +70,7 @@ public func geometry_modifier_custom_attribute_half4_2() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_attribute_half4_3() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -78,7 +78,7 @@ public func geometry_modifier_custom_attribute_half4_3() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func geometry_modifier_custom_parameter() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -86,7 +86,7 @@ public func geometry_modifier_custom_parameter() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_custom_parameter",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func geometry_modifier_model_position_offset() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -94,7 +94,7 @@ public func geometry_modifier_model_position_offset() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_model_position_offset",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_model_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -102,7 +102,7 @@ public func geometry_modifier_model_to_view() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_model_to_view",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_model_to_world() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -110,7 +110,7 @@ public func geometry_modifier_model_to_world() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_model_to_world",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_normal() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -118,7 +118,7 @@ public func geometry_modifier_normal() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_normal",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_normal_to_world() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -126,7 +126,7 @@ public func geometry_modifier_normal_to_world() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_normal_to_world",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix33f)])))
 }
 public func geometry_modifier_position() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -134,7 +134,7 @@ public func geometry_modifier_position() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_position",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func geometry_modifier_projection_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -142,7 +142,7 @@ public func geometry_modifier_projection_to_view() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_projection_to_view",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_time() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -150,7 +150,7 @@ public func geometry_modifier_time() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_time",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func geometry_modifier_uv0() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -158,7 +158,7 @@ public func geometry_modifier_uv0() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_uv0",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv0_offset() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -166,7 +166,7 @@ public func geometry_modifier_uv0_offset() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_uv0_offset",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv0_transform() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -174,7 +174,7 @@ public func geometry_modifier_uv0_transform() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_uv0_transform",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
 }
 public func geometry_modifier_uv1() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -182,7 +182,7 @@ public func geometry_modifier_uv1() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_uv1",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv1_offset() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -190,7 +190,7 @@ public func geometry_modifier_uv1_offset() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_uv1_offset",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func geometry_modifier_uv1_transform() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -198,7 +198,7 @@ public func geometry_modifier_uv1_transform() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_uv1_transform",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix22f)])))
 }
 public func geometry_modifier_vertex_id() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -206,7 +206,7 @@ public func geometry_modifier_vertex_id() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_vertex_id",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.int)])))
 }
 public func geometry_modifier_view_to_projection() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -214,7 +214,7 @@ public func geometry_modifier_view_to_projection() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_view_to_projection",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func geometry_modifier_world_to_model() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -222,7 +222,7 @@ public func geometry_modifier_world_to_model() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_geometry_modifier_world_to_model",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func material_parameters_base_color_tint() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -230,7 +230,7 @@ public func material_parameters_base_color_tint() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_base_color_tint",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func material_parameters_clearcoat_roughness_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -238,7 +238,7 @@ public func material_parameters_clearcoat_roughness_scale() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_clearcoat_roughness_scale",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_clearcoat_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -246,7 +246,7 @@ public func material_parameters_clearcoat_scale() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_clearcoat_scale",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_emissive_color() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -254,7 +254,7 @@ public func material_parameters_emissive_color() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_emissive_color",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func material_parameters_metallic_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -262,7 +262,7 @@ public func material_parameters_metallic_scale() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_metallic_scale",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_opacity_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -270,7 +270,7 @@ public func material_parameters_opacity_scale() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_opacity_scale",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_opacity_threshold() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -278,7 +278,7 @@ public func material_parameters_opacity_threshold() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_opacity_threshold",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_roughness_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -286,7 +286,7 @@ public func material_parameters_roughness_scale() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_roughness_scale",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func material_parameters_specular_scale() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -294,7 +294,7 @@ public func material_parameters_specular_scale() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_material_parameters_specular_scale",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func occlusion_surfaceshader() -> String {
     let inputs: [SGNode.Input] = [
@@ -302,7 +302,7 @@ public func occlusion_surfaceshader() -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_occlusion_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func shadowreceiver_surfaceshader() -> String {
     let inputs: [SGNode.Input] = [
@@ -310,7 +310,7 @@ public func shadowreceiver_surfaceshader() -> String {
     return String(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_shadowreceiver_surfaceshader",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.string)])))
 }
 public func surface_ambient_occlusion() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -318,7 +318,7 @@ public func surface_ambient_occlusion() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_ambient_occlusion",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_base_color() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -326,7 +326,7 @@ public func surface_base_color() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_base_color",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_clearcoat() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -334,7 +334,7 @@ public func surface_clearcoat() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_clearcoat",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_clearcoat_roughness() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -342,7 +342,7 @@ public func surface_clearcoat_roughness() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_clearcoat_roughness",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_color() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -350,7 +350,7 @@ public func surface_color() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_color",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_custom_attribute() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -358,7 +358,7 @@ public func surface_custom_attribute() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_custom_attribute_half2_0() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -366,7 +366,7 @@ public func surface_custom_attribute_half2_0() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute_half2_0",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func surface_custom_attribute_half2_1() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -374,7 +374,7 @@ public func surface_custom_attribute_half2_1() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute_half2_1",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2h)])))
 }
 public func surface_custom_attribute_half4_0() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -382,7 +382,7 @@ public func surface_custom_attribute_half4_0() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute_half4_0",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_attribute_half4_1() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -390,7 +390,7 @@ public func surface_custom_attribute_half4_1() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute_half4_1",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_attribute_half4_2() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -398,7 +398,7 @@ public func surface_custom_attribute_half4_2() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute_half4_2",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_attribute_half4_3() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -406,7 +406,7 @@ public func surface_custom_attribute_half4_3() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_attribute_half4_3",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4h)])))
 }
 public func surface_custom_parameter() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -414,7 +414,7 @@ public func surface_custom_parameter() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_custom_parameter",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_emissive_color() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -422,7 +422,7 @@ public func surface_emissive_color() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_emissive_color",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_geometry_bitangent() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -430,7 +430,7 @@ public func surface_geometry_bitangent() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_geometry_bitangent",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_geometry_normal() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -438,7 +438,7 @@ public func surface_geometry_normal() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_geometry_normal",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_geometry_tangent() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -446,7 +446,7 @@ public func surface_geometry_tangent() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_geometry_tangent",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_metallic() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -454,7 +454,7 @@ public func surface_metallic() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_metallic",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_model_position() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -462,7 +462,7 @@ public func surface_model_position() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_model_position",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_model_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -470,7 +470,7 @@ public func surface_model_to_view() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_model_to_view",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_model_to_world() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -478,7 +478,7 @@ public func surface_model_to_world() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_model_to_world",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_opacity() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -486,7 +486,7 @@ public func surface_opacity() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_opacity",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_projection_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -494,7 +494,7 @@ public func surface_projection_to_view() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_projection_to_view",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_roughness() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -502,7 +502,7 @@ public func surface_roughness() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_roughness",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_screen_position() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -510,7 +510,7 @@ public func surface_screen_position() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_screen_position",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 public func surface_specular() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -518,7 +518,7 @@ public func surface_specular() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_specular",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_tangent_space_normal() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -526,7 +526,7 @@ public func surface_tangent_space_normal() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_tangent_space_normal",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_time() -> SGScalar {
     let inputs: [SGNode.Input] = [
@@ -534,7 +534,7 @@ public func surface_time() -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_time",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func surface_uv0() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -542,7 +542,7 @@ public func surface_uv0() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_uv0",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func surface_uv1() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -550,7 +550,7 @@ public func surface_uv1() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_uv1",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 public func surface_view_direction() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -558,7 +558,7 @@ public func surface_view_direction() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_view_direction",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_view_to_projection() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -566,7 +566,7 @@ public func surface_view_to_projection() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_view_to_projection",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
 public func surface_world_position() -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -574,7 +574,7 @@ public func surface_world_position() -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_world_position",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public func surface_world_to_view() -> SGValue {
     let inputs: [SGNode.Input] = [
@@ -582,5 +582,5 @@ public func surface_world_to_view() -> SGValue {
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_surface_world_to_view",
         inputs: inputs,
-        outputs: [])))
+        outputs: [.init(dataType: SGDataType.matrix44f)])))
 }
