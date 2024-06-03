@@ -2,7 +2,17 @@ import os
 from typing import Dict, List, Optional, Tuple, Union
 from pxr import Usd
 
+manual_node_prefixes = [
+    'ND_combine',
+    'ND_convert_',
+    'ND_constant_',
+    'ND_swizzle_',
+]
+
 class Node():
+    name: str
+    inputs: List['NodeProperty']
+    outputs: List['NodeProperty']
     def __init__(self, prim):
         self.name = str(prim.GetName())
         property_names = prim.GetPropertyNames()
@@ -23,23 +33,16 @@ class NodeProperty():
         self.property_name = property_name
         self.name = property_name.split(':')[-1]
         t = p.GetTypeName()
-        self.type_name = t.type.typeName
+        self.usd_type_name = t.type.typeName
         self.type_is_array = t.isArray
         self.default_value = p.Get() if p.HasValue() else None
 
     def __str__(self):
-        return f'{self.name}: {self.type_name} = {self.default_value}'
+        return f'{self.name}: {self.usd_type_name} = {self.default_value}'
 
 def is_node(prim):
     path = str(prim.GetPath()).split('/')
     return len(path) == 2 and len(path[0]) == 0 and path[1].startswith('ND_')
-
-manual_node_prefixes = [
-    'ND_combine',
-    'ND_convert_',
-    'ND_constant_',
-    'ND_swizzle_',
-]
 
 def should_output_node(node: Node):
     if node.name.startswith('ND_Internal'):
@@ -124,9 +127,9 @@ def get_node_suffix_type_name(node: Node) -> Tuple[str, Optional[str]]:
 
 def usd_type_to_sgc_type(usd_type: str) -> str:
     if usd_type == 'bool':
-        return 'Bool'
-    if usd_type == 'float':
         return 'SGValue'
+    if usd_type == 'float':
+        return 'SGScalar'
     if usd_type == 'GfMatrix2d':
         return 'SGValue'
     if usd_type == 'GfMatrix3d':
@@ -134,31 +137,31 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
     if usd_type == 'GfMatrix4d':
         return 'SGValue'
     if usd_type == 'GfVec2f':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec2h':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec2i':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec3f':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec3h':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec3i':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec4f':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec4h':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'GfVec4i':
-        return 'SGValue'
+        return 'SGVector'
     if usd_type == 'int':
-        return 'SGValue'
+        return 'SGScalar'
     if usd_type == 'pxr_half::half':
-        return 'String'
+        return 'SGScalar'
     if usd_type == 'SdfAssetPath':
         return 'TextureResource'
     if usd_type == 'string':
-        return 'String'
+        return 'SGString'
     if usd_type == 'TfToken':
         return 'String'
     print("Unknown USD type:", usd_type)
@@ -223,13 +226,30 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     elif swift_name.startswith('ND_'):
         swift_name = swift_name[len('ND_'):]
     first_node = overloads.overloads[0][1]
+    first_output = first_node.outputs[0]
+    usd_param_type_is_shared = [True for _ in first_node.inputs]
+    sgc_param_type_is_shared = [True for _ in first_node.inputs]
+    sgc_output_type_is_shared = True
+    usd_shared_param_type = [p.usd_type_name for p in first_node.inputs]
+    sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type_name) for p in first_node.inputs]
+    sgc_shared_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    for suffix_type_name, node in overloads.overloads[1:]:
+        for i, input in enumerate(node.inputs):
+            if input.usd_type_name != usd_shared_param_type[i]:
+                usd_param_type_is_shared[i] = False
+            if usd_type_to_sgc_type(input.usd_type_name) != sgc_shared_param_type[i]:
+                sgc_param_type_is_shared[i] = False
+        if usd_type_to_sgc_type(node.outputs[0].usd_type_name) != usd_type_to_sgc_type(first_node.outputs[0].usd_type_name):
+            sgc_output_type_is_shared = False
     w.write(f'public func {swift_name}(')
     for i, input in enumerate(first_node.inputs):
-        w.write(f'{input.name}: {usd_type_to_sgc_type(input.type_name)}')
+        sgc_type_is_shared = sgc_param_type_is_shared[i]
+        sgc_type = sgc_shared_param_type[i] if sgc_type_is_shared else "SGValue"
+        w.write(f'{input.name}: {sgc_type}')
         if i < len(first_node.inputs) - 1:
             w.write(', ')
-    output = first_node.outputs[0]
-    w.write_line(f') -> {usd_type_to_sgc_type(output.type_name)} {{')
+    sgc_output_type = sgc_shared_output_type if sgc_output_type_is_shared else "SGValue"
+    w.write_line(f') -> {sgc_output_type} {{')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
