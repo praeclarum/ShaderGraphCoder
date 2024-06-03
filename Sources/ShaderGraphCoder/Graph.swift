@@ -107,6 +107,7 @@ public enum SGDataType: String {
     case bool = "bool"
     case color3f = "color3f"
     case color4f = "color4f"
+    case half = "half"
     case float = "float"
     case geometryModifier = "GeometryModifier"
     case int = "int"
@@ -115,60 +116,31 @@ public enum SGDataType: String {
     case vector2f = "float2"
     case vector3f = "float3"
     case vector4f = "float4"
+    case vector2h = "half2"
+    case vector3h = "half3"
+    case vector4h = "half4"
     
     public var isScalar: Bool {
         switch self {
-        case .asset:
-            return false
         case .bool:
             return true
-        case .color3f:
-            return false
-        case .color4f:
-            return false
         case .float:
+            return true
+        case .half:
             return true
         case .int:
             return true
-        case .string:
-            return false
-        case .surface:
-            return false
-        case .vector2f:
-            return false
-        case .vector3f:
-            return false
-        case .vector4f:
-            return false
-        case .geometryModifier:
+        default:
             return false
         }
     }
     public var isColor: Bool {
         switch self {
-        case .asset:
-            return false
-        case .bool:
-            return false
         case .color3f:
             return true
         case .color4f:
             return true
-        case .float:
-            return false
-        case .int:
-            return false
-        case .string:
-            return false
-        case .surface:
-            return false
-        case .vector2f:
-            return false
-        case .vector3f:
-            return false
-        case .vector4f:
-            return false
-        case .geometryModifier:
+        default:
             return false
         }
     }
@@ -181,11 +153,15 @@ public enum SGConstantValue {
     case emptyTexture2D
     case emptyTexture3D
     case float(_ value: Float)
+    case half(_ value: Float16)
     case int(_ value: Int)
     case string(_ value: String)
     case vector2f(_ value: SIMD2<Float>)
     case vector3f(_ value: SIMD3<Float>)
     case vector4f(_ value: SIMD4<Float>)
+    case vector2h(_ value: SIMD2<Float16>)
+    case vector3h(_ value: SIMD3<Float16>)
+    case vector4h(_ value: SIMD4<Float16>)
     public var dataType: SGDataType {
         switch self {
         case .color3f:
@@ -200,6 +176,8 @@ public enum SGConstantValue {
             return .asset
         case .float:
             return .float
+        case .half:
+            return .half
         case .int:
             return .int
         case .string:
@@ -210,6 +188,12 @@ public enum SGConstantValue {
             return .vector3f
         case .vector4f:
             return .vector4f
+        case .vector2h:
+            return .vector2h
+        case .vector3h:
+            return .vector3h
+        case .vector4h:
+            return .vector4h
         }
     }
 }
