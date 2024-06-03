@@ -39,6 +39,8 @@ public extension SGConstantValue {
             return "\"\""
         case .float(let v):
             return "\(v)"
+        case .half(let v):
+            return "\(v)"
         case .int(let v):
             return "\(v)"
         case .string(let v):
@@ -48,6 +50,12 @@ public extension SGConstantValue {
         case .vector3f(let v):
             return "(\(v.x), \(v.y), \(v.z))"
         case .vector4f(let v):
+            return "(\(v.x), \(v.y), \(v.z), \(v.w))"
+        case .vector2h(let v):
+            return "(\(v.x), \(v.y))"
+        case .vector3h(let v):
+            return "(\(v.x), \(v.y), \(v.z))"
+        case .vector4h(let v):
             return "(\(v.x), \(v.y), \(v.z), \(v.w))"
         }
     }

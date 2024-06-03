@@ -154,7 +154,11 @@ public class SGString: SGValue {
     
 }
 
-public class SGTexture1D: SGValue {
+public class SGTexture: SGValue {
+    
+}
+
+public class SGTexture1D: SGTexture {
     public func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
@@ -171,7 +175,7 @@ public class SGTexture1D: SGValue {
     }
 }
 
-public class SGTexture2D: SGValue {
+public class SGTexture2D: SGTexture {
     public func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
@@ -188,7 +192,7 @@ public class SGTexture2D: SGValue {
     }
 }
 
-public class SGTexture3D: SGValue {
+public class SGTexture3D: SGTexture {
     public func sample(texcoord: SGValue? = nil) -> SGColor {
         var errors: [String] = []
         if dataType != .asset {
@@ -205,7 +209,50 @@ public class SGTexture3D: SGValue {
     }
 }
 
-public class SGError: SGValue {
+public class SGMatrix: SGValue {
+    
+}
+
+public protocol SGErrorValue {
+}
+
+public class SGColorError: SGColor, SGErrorValue {
+    public init(_ error: String) {
+        super.init(source: .constant(.string(error)))
+    }
+    public required init(source: SGValueSource) {
+        super.init(source: source)
+    }
+}
+
+public class SGMatrixError: SGMatrix, SGErrorValue {
+    public init(_ error: String) {
+        super.init(source: .constant(.string(error)))
+    }
+    public required init(source: SGValueSource) {
+        super.init(source: source)
+    }
+}
+
+public class SGScalarError: SGScalar, SGErrorValue {
+    public init(_ error: String) {
+        super.init(source: .constant(.string(error)))
+    }
+    public required init(source: SGValueSource) {
+        super.init(source: source)
+    }
+}
+
+public class SGValueError: SGValue, SGErrorValue {
+    public init(_ error: String) {
+        super.init(source: .constant(.string(error)))
+    }
+    public required init(source: SGValueSource) {
+        super.init(source: source)
+    }
+}
+
+public class SGVectorError: SGVector, SGErrorValue {
     public init(_ error: String) {
         super.init(source: .constant(.string(error)))
     }

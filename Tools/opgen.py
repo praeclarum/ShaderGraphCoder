@@ -28,6 +28,8 @@ manual_node_prefixes = [
     'ND_mix_volumeshader',
     'ND_multiply_volumeshader',
     'ND_dot_lightshader',
+
+    'ND_RealityKitTexture',
 ]
 
 param_renames: Dict[str, str] = {
@@ -171,11 +173,11 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
     if usd_type == 'float':
         return 'SGScalar'
     if usd_type == 'matrix2d':
-        return 'SGValue'
+        return 'SGMatrix'
     if usd_type == 'matrix3d':
-        return 'SGValue'
+        return 'SGMatrix'
     if usd_type == 'matrix4d':
-        return 'SGValue'
+        return 'SGMatrix'
     if usd_type == 'float2':
         return 'SGVector'
     if usd_type == 'half2':
@@ -199,11 +201,11 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
     if usd_type == 'half':
         return 'SGScalar'
     if usd_type == 'asset':
-        return 'TextureResource'
+        return 'SGTexture'
     if usd_type == 'string':
         return 'SGString'
     if usd_type == 'token':
-        return 'String'
+        return 'SGString'
     print("Unknown USD type:", usd_type)
     return usd_type
 
@@ -217,11 +219,11 @@ def usd_type_to_sgc_datatype(usd_type: str) -> str:
     if usd_type == 'float':
         return 'SGDataType.float'
     if usd_type == 'matrix2d':
-        return 'SGDataType.matrix22f'
+        return 'SGDataType.matrix2d'
     if usd_type == 'matrix3d':
-        return 'SGDataType.matrix33f'
+        return 'SGDataType.matrix3d'
     if usd_type == 'matrix4d':
-        return 'SGDataType.matrix44f'
+        return 'SGDataType.matrix4d'
     if usd_type == 'float2':
         return 'SGDataType.vector2f'
     if usd_type == 'half2':
@@ -359,7 +361,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             continue
         sgc_datatype = usd_type_to_sgc_datatype(input.usd_type_name)
         w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
-        w.write_line(f'        return SGError("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).")')
+        w.write_line(f'        return {sgc_output_type}Error("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).")')
         w.write_line(f'    }}')
     w.write_line(f'    let inputs: [SGNode.Input] = [')
     for i, input in enumerate(first_node.inputs):
@@ -386,7 +388,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         if len(conds) > 0:
             w.write_line(f'    }}')
     if num_unshared_usd_params > 0:
-        w.write_line(f'    return SGError("Unsupported input data types for {swift_name}")')
+        w.write_line(f'    return {sgc_output_type}Error("Unsupported input data types for {swift_name}")')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))

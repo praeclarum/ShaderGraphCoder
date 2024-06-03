@@ -230,12 +230,26 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
         return "color4"
     case .float:
         return "float"
+    case .half:
+        return "half"
     case .vector2f:
         return "vector2"
     case .vector3f:
         return "vector3"
     case .vector4f:
         return "vector4"
+    case .vector2h:
+        return "half2"
+    case .vector3h:
+        return "half3"
+    case .vector4h:
+        return "half4"
+    case .matrix2d:
+        return "matrix22"
+    case .matrix3d:
+        return "matrix33"
+    case .matrix4d:
+        return "matrix44"
     case .asset:
         return "asset"
     case .bool:
@@ -289,6 +303,8 @@ func binop<T>(_ nodeType: String, left: SGNumeric, right: SGNumeric) -> T where 
             }
         case .float:
             nt += "float"
+        case .half:
+            nt += "half"
         case .int:
             nt += "int"
         case .string:
@@ -315,6 +331,48 @@ func binop<T>(_ nodeType: String, left: SGNumeric, right: SGNumeric) -> T where 
             }
             else {
                 nt += "vector4"
+            }
+        case .vector2h:
+            if r.dataType.isScalar {
+                nt += "half2FA"
+            }
+            else {
+                nt += "half2"
+            }
+        case .vector3h:
+            if r.dataType.isScalar {
+                nt += "half3FA"
+            }
+            else {
+                nt += "half3"
+            }
+        case .vector4h:
+            if r.dataType.isScalar {
+                nt += "half4FA"
+            }
+            else {
+                nt += "half4"
+            }
+        case .matrix2d:
+            if r.dataType.isScalar {
+                nt += "matrix22FA"
+            }
+            else {
+                nt += "matrix22"
+            }
+        case .matrix3d:
+            if r.dataType.isScalar {
+                nt += "matrix33FA"
+            }
+            else {
+                nt += "matrix33"
+            }
+        case .matrix4d:
+            if r.dataType.isScalar {
+                nt += "matrix44FA"
+            }
+            else {
+                nt += "matrix44"
             }
         case .geometryModifier:
             ()
@@ -351,6 +409,8 @@ func unop<T>(_ nodeType: String, x: SGNumeric, dataType: SGDataType? = nil) -> T
             nt += "color4FA"
         case .float:
             nt += "float"
+        case .half:
+            nt += "half"
         case .int:
             nt += "int"
         case .string:
@@ -363,6 +423,18 @@ func unop<T>(_ nodeType: String, x: SGNumeric, dataType: SGDataType? = nil) -> T
             nt += "vector3"
         case .vector4f:
             nt += "vector4"
+        case .vector2h:
+            nt += "half2"
+        case .vector3h:
+            nt += "half3"
+        case .vector4h:
+            nt += "half4"
+        case .matrix2d:
+            nt += "matrix22"
+        case .matrix3d:
+            nt += "matrix33"
+        case .matrix4d:
+            nt += "matrix44"
         case .geometryModifier:
             ()
         }
