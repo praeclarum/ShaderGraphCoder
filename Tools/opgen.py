@@ -37,6 +37,7 @@ def is_node(prim):
 manual_node_prefixes = [
     'ND_combine',
     'ND_convert_',
+    'ND_constant_',
     'ND_swizzle_',
 ]
 
