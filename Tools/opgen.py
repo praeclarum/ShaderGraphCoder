@@ -1,4 +1,5 @@
 import os
+import re
 from typing import Dict, List, Optional, Tuple, Union
 from pxr import Usd
 
@@ -64,6 +65,10 @@ def should_output_node(node: Node):
             print(f'Skipping {node.name} because it is a manual node')
             return False
     return True
+
+default_input_name_re = re.compile(r'^in(\d+)?$')
+def is_default_input_name(name: str) -> bool:
+    return default_input_name_re.match(name) is not None
 
 suffix_type_names: List[str] = [
     "_boolean",
@@ -234,6 +239,10 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     usd_shared_param_type = [p.usd_type_name for p in first_node.inputs]
     sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type_name) for p in first_node.inputs]
     sgc_shared_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    num_default_inputs = 0
+    for i, input in enumerate(first_node.inputs):
+        if i == num_default_inputs and is_default_input_name(input.name):
+            num_default_inputs += 1
     for suffix_type_name, node in overloads.overloads[1:]:
         for i, input in enumerate(node.inputs):
             if input.usd_type_name != usd_shared_param_type[i]:
@@ -242,15 +251,23 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
                 sgc_param_type_is_shared[i] = False
         if usd_type_to_sgc_type(node.outputs[0].usd_type_name) != usd_type_to_sgc_type(first_node.outputs[0].usd_type_name):
             sgc_output_type_is_shared = False
+    num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
     w.write(f'public func {swift_name}(')
     for i, input in enumerate(first_node.inputs):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
         sgc_type = sgc_shared_param_type[i] if sgc_type_is_shared else "SGValue"
-        w.write(f'{input.name}: {sgc_type}')
+        name = f"_ {input.name}" if i < num_default_inputs else input.name
+        w.write(f'{name}: {sgc_type}')
         if i < len(first_node.inputs) - 1:
             w.write(', ')
     sgc_output_type = sgc_shared_output_type if sgc_output_type_is_shared else "SGValue"
     w.write_line(f') -> {sgc_output_type} {{')
+    for suffix_type_name, node in overloads.overloads:
+        sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
+        w.write_line(f'    return {sgc_output_type}(source: .nodeOutput(SGNode(')
+        w.write_line(f'        nodeType: "{node.name}",')
+        w.write_line(f'        inputs: [],')
+        w.write_line(f'        outputs: [])))')
     w.write_line('}')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
@@ -265,6 +282,7 @@ all_prims = [x for x in stage.Traverse()]
 nodes = [Node(x) for x in all_prims if is_node(x)]
 print(f'Found {len(nodes)} nodes')
 output_nodes = [x for x in nodes if should_output_node(x)]
+output_nodes = sorted(output_nodes, key=lambda x: x.name)
 print(f'Outputting {len(output_nodes)} nodes')
 for node in output_nodes:
     add_node_to_overloads(node)
@@ -276,8 +294,6 @@ for base_name, no in node_overloads.items():
         src_nodes.append(no)
     else:
         op_nodes.append(no)
-src_nodes = sorted(src_nodes, key=lambda x: x.base_name)
-op_nodes = sorted(op_nodes, key=lambda x: x.base_name)
 print(f'Outputting {len(op_nodes)} operations')
 print(f'Outputting {len(src_nodes)} sources')
 
