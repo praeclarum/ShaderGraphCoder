@@ -6,9 +6,10 @@ from pxr import Usd
 manual_node_prefixes = [
     'ND_combine',
     'ND_realitykit_combine',
-    'ND_convert_',
     'ND_constant_',
     'ND_swizzle_',
+    'ND_convert_',
+
     'ND_surfacematerial',
     'ND_realitykit_geometrymodifier_vertexshader',
     'ND_realitykit_pbr_surfaceshader',
@@ -28,6 +29,16 @@ manual_node_prefixes = [
     'ND_multiply_volumeshader',
     'ND_dot_lightshader',
 ]
+
+param_renames: Dict[str, str] = {
+    "in": "in1",
+    "default": "defaultValue",
+}
+
+node_renames: Dict[str, str] = {
+    "in": "mixColor",
+    "switch": "switchValue",
+}
 
 class Node():
     name: str
@@ -294,12 +305,22 @@ def add_node_to_overloads(node: Node):
     else:
         node_overloads[base_name].add_overload(suffix_type_name, node)
 
+def get_param_name(name: str) -> str:
+    if name in param_renames:
+        return param_renames[name]
+    return name
+
+def get_node_name(name: str) -> str:
+    if name.startswith('ND_realitykit_'):
+        name = name[len('ND_realitykit_'):]
+    elif name.startswith('ND_'):
+        name = name[len('ND_'):]
+    if name in node_renames:
+        return node_renames[name]
+    return name
+
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
-    swift_name = overloads.base_name
-    if swift_name.startswith('ND_realitykit_'):
-        swift_name = swift_name[len('ND_realitykit_'):]
-    elif swift_name.startswith('ND_'):
-        swift_name = swift_name[len('ND_'):]
+    swift_name = get_node_name(overloads.base_name)
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
     usd_param_type_is_shared = [True for _ in first_node.inputs]
@@ -313,7 +334,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     for i, input in enumerate(first_node.inputs):
         if i == num_default_inputs and is_default_input_name(input.name):
             num_default_inputs += 1
-        param_names.append(input.name)
+        param_names.append(get_param_name(input.name))
     for suffix_type_name, node in overloads.overloads[1:]:
         for i, input in enumerate(node.inputs):
             if input.usd_type_name != usd_shared_param_type[i]:
@@ -327,7 +348,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     for i, input in enumerate(first_node.inputs):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
         sgc_type = sgc_shared_param_type[i] if sgc_type_is_shared else "SGValue"
-        name = f"_ {input.name}" if i < num_default_inputs else input.name
+        name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
         if i < len(first_node.inputs) - 1:
             w.write(', ')
