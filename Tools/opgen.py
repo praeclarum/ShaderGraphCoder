@@ -34,6 +34,12 @@ def is_node(prim):
     path = str(prim.GetPath()).split('/')
     return len(path) == 2 and len(path[0]) == 0 and path[1].startswith('ND_')
 
+manual_node_prefixes = [
+    'ND_combine',
+    'ND_convert_',
+    'ND_swizzle_',
+]
+
 def should_output_node(node: Node):
     if node.name.startswith('ND_Internal'):
         print(f'Skipping {node.name} because it is internal')
@@ -48,6 +54,10 @@ def should_output_node(node: Node):
     if node.outputs[0].type_is_array:
         print(f'Skipping {node.name} because its output is an array')
         return False
+    for prefix in manual_node_prefixes:
+        if node.name.startswith(prefix):
+            print(f'Skipping {node.name} because it is a manual node')
+            return False
     return True
 
 suffix_type_names: List[str] = [
@@ -60,6 +70,10 @@ suffix_type_names: List[str] = [
     "_color4B",
     "_color4FA",
     "_color4I",
+    "_filename",
+    "_float",
+    "_floatB",
+    "_floatI",
     "_half",
     "_half2",
     "_half2B",
@@ -73,12 +87,12 @@ suffix_type_names: List[str] = [
     "_half4B",
     "_half4FA",
     "_half4I",
+    "_halfB",
+    "_halfI",
     "_integer",
     "_integer2",
     "_integer3",
     "_integer4",
-    "_filename",
-    "_float",
     "_matrix22",
     "_matrix22FA",
     "_matrix33",
@@ -106,6 +120,48 @@ def get_node_suffix_type_name(node: Node) -> Tuple[str, Optional[str]]:
             base_name = node.name[:-len(suffix)]
             return base_name, suffix
     return node.name, None
+
+def usd_type_to_sgc_type(usd_type: str) -> str:
+    if usd_type == 'bool':
+        return 'Bool'
+    if usd_type == 'float':
+        return 'SGValue'
+    if usd_type == 'GfMatrix2d':
+        return 'SGValue'
+    if usd_type == 'GfMatrix3d':
+        return 'SGValue'
+    if usd_type == 'GfMatrix4d':
+        return 'SGValue'
+    if usd_type == 'GfVec2f':
+        return 'SGValue'
+    if usd_type == 'GfVec2h':
+        return 'SGValue'
+    if usd_type == 'GfVec2i':
+        return 'SGValue'
+    if usd_type == 'GfVec3f':
+        return 'SGValue'
+    if usd_type == 'GfVec3h':
+        return 'SGValue'
+    if usd_type == 'GfVec3i':
+        return 'SGValue'
+    if usd_type == 'GfVec4f':
+        return 'SGValue'
+    if usd_type == 'GfVec4h':
+        return 'SGValue'
+    if usd_type == 'GfVec4i':
+        return 'SGValue'
+    if usd_type == 'int':
+        return 'SGValue'
+    if usd_type == 'pxr_half::half':
+        return 'String'
+    if usd_type == 'SdfAssetPath':
+        return 'TextureResource'
+    if usd_type == 'string':
+        return 'String'
+    if usd_type == 'TfToken':
+        return 'String'
+    print("Unknown USD type:", usd_type)
+    return usd_type
 
 class SwiftWriter():
     def __init__(self):
@@ -158,48 +214,6 @@ def add_node_to_overloads(node: Node):
         node_overloads[base_name] = NodeOverloads(base_name, suffix_type_name, node)
     else:
         node_overloads[base_name].add_overload(suffix_type_name, node)
-
-def usd_type_to_sgc_type(usd_type: str) -> str:
-    if usd_type == 'bool':
-        return 'Bool'
-    if usd_type == 'float':
-        return 'SGValue'
-    if usd_type == 'GfMatrix2d':
-        return 'SGValue'
-    if usd_type == 'GfMatrix3d':
-        return 'SGValue'
-    if usd_type == 'GfMatrix4d':
-        return 'SGValue'
-    if usd_type == 'GfVec2f':
-        return 'SGValue'
-    if usd_type == 'GfVec2h':
-        return 'SGValue'
-    if usd_type == 'GfVec2i':
-        return 'SGValue'
-    if usd_type == 'GfVec3f':
-        return 'SGValue'
-    if usd_type == 'GfVec3h':
-        return 'SGValue'
-    if usd_type == 'GfVec3i':
-        return 'SGValue'
-    if usd_type == 'GfVec4f':
-        return 'SGValue'
-    if usd_type == 'GfVec4h':
-        return 'SGValue'
-    if usd_type == 'GfVec4i':
-        return 'SGValue'
-    if usd_type == 'int':
-        return 'SGValue'
-    if usd_type == 'pxr_half::half':
-        return 'String'
-    if usd_type == 'SdfAssetPath':
-        return 'TextureResource'
-    if usd_type == 'string':
-        return 'String'
-    if usd_type == 'TfToken':
-        return 'String'
-    print("Unknown USD type:", usd_type)
-    return usd_type
 
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     swift_name = overloads.base_name

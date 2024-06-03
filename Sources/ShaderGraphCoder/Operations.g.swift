@@ -56,45 +56,7 @@ public func cellnoise3d(position: SGValue) -> SGValue {
 }
 public func clamp(in: SGValue, low: SGValue, high: SGValue) -> SGValue {
 }
-public func combine2(in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func combine2_color4CF(in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func combine2_vector4VF(in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func combine2_vector4VV(in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func combine3(in1: SGValue, in2: SGValue, in3: SGValue) -> SGValue {
-}
-public func combine4(in1: SGValue, in2: SGValue, in3: SGValue, in4: SGValue) -> SGValue {
-}
-public func constant(value: SGValue) -> SGValue {
-}
 public func contrast(in: SGValue, amount: SGValue, pivot: SGValue) -> SGValue {
-}
-public func convert_boolean(in: Bool) -> SGValue {
-}
-public func convert_color3(in: SGValue) -> SGValue {
-}
-public func convert_color4(in: SGValue) -> SGValue {
-}
-public func convert_float(in: SGValue) -> SGValue {
-}
-public func convert_half(in: String) -> SGValue {
-}
-public func convert_half2(in: SGValue) -> SGValue {
-}
-public func convert_half3(in: SGValue) -> SGValue {
-}
-public func convert_half4(in: SGValue) -> SGValue {
-}
-public func convert_integer(in: SGValue) -> SGValue {
-}
-public func convert_vector2(in: SGValue) -> SGValue {
-}
-public func convert_vector3(in: SGValue) -> SGValue {
-}
-public func convert_vector4(in: SGValue) -> SGValue {
 }
 public func cos(in: SGValue) -> SGValue {
 }
@@ -142,25 +104,9 @@ public func hsvtorgb(in: SGValue) -> SGValue {
 }
 public func ifequal(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
 }
-public func ifequal_floatB(value1: Bool, value2: Bool, in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func ifequal_floatI(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func ifequal_halfB(value1: Bool, value2: Bool, in1: String, in2: String) -> String {
-}
-public func ifequal_halfI(value1: SGValue, value2: SGValue, in1: String, in2: String) -> String {
-}
 public func ifgreater(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
 }
-public func ifgreater_floatI(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func ifgreater_halfI(value1: SGValue, value2: SGValue, in1: String, in2: String) -> String {
-}
 public func ifgreatereq(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func ifgreatereq_floatI(value1: SGValue, value2: SGValue, in1: SGValue, in2: SGValue) -> SGValue {
-}
-public func ifgreatereq_halfI(value1: SGValue, value2: SGValue, in1: String, in2: String) -> String {
 }
 public func image(file: TextureResource, layer: String, default: SGValue, texcoord: SGValue, uaddressmode: String, vaddressmode: String, filtertype: String, framerange: String, frameoffset: SGValue, frameendaction: String) -> SGValue {
 }
@@ -333,24 +279,6 @@ public func subtract(in1: SGValue, in2: SGValue) -> SGValue {
 public func surfacematerial(surfaceshader: String, displacementshader: String) -> String {
 }
 public func switch(in1: SGValue, in2: SGValue, in3: SGValue, in4: SGValue, in5: SGValue, in6: SGValue, in7: SGValue, in8: SGValue, in9: SGValue, in10: SGValue, which: SGValue) -> SGValue {
-}
-public func switch_floatI(in1: SGValue, in2: SGValue, in3: SGValue, in4: SGValue, in5: SGValue, in6: SGValue, in7: SGValue, in8: SGValue, in9: SGValue, in10: SGValue, which: SGValue) -> SGValue {
-}
-public func switch_halfI(in1: String, in2: String, in3: String, in4: String, in5: String, in6: String, in7: String, in8: String, in9: String, in10: String, which: SGValue) -> String {
-}
-public func swizzle_color3(in: SGValue, channels: String) -> SGValue {
-}
-public func swizzle_color4(in: SGValue, channels: String) -> SGValue {
-}
-public func swizzle_float(in: SGValue, channels: String) -> SGValue {
-}
-public func swizzle_half(in: String, channels: String) -> SGValue {
-}
-public func swizzle_vector2(in: SGValue, channels: String) -> SGValue {
-}
-public func swizzle_vector3(in: SGValue, channels: String) -> SGValue {
-}
-public func swizzle_vector4(in: SGValue, channels: String) -> SGValue {
 }
 public func tan(in: SGValue) -> SGValue {
 }
