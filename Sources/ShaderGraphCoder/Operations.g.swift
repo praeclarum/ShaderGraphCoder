@@ -196,12 +196,6 @@ public func range(in: SGValue, inlow: SGValue, inhigh: SGValue, gamma: SGValue, 
 }
 public func cameraposition(space: SGString) -> SGVector {
 }
-public func combine2(in1: SGVector, in2: SGVector) -> SGValue {
-}
-public func combine3(in1: SGVector, in2: SGVector, in3: SGVector) -> SGValue {
-}
-public func combine4(in1: SGVector, in2: SGVector, in3: SGVector, in4: SGVector) -> SGValue {
-}
 public func cubeimage(file: TextureResource, default: SGValue, texcoord: SGVector, filtertype: SGString) -> SGValue {
 }
 public func fractional(in: SGValue) -> SGValue {
