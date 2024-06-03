@@ -240,6 +240,8 @@ for base_name, no in node_overloads.items():
         src_nodes.append(no)
     else:
         op_nodes.append(no)
+src_nodes = sorted(src_nodes, key=lambda x: x.base_name)
+op_nodes = sorted(op_nodes, key=lambda x: x.base_name)
 print(f'Outputting {len(op_nodes)} operations')
 print(f'Outputting {len(src_nodes)} sources')
 

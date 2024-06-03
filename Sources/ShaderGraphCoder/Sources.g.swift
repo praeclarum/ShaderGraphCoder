@@ -2,69 +2,15 @@
 import Foundation
 public func frame() -> SGValue {
 }
-public func occlusion_surfaceshader() -> String {
-}
-public func shadowreceiver_surfaceshader() -> String {
-}
-public func material_parameters_base_color_tint() -> SGValue {
-}
-public func material_parameters_opacity_scale() -> SGValue {
-}
-public func material_parameters_opacity_threshold() -> SGValue {
-}
-public func material_parameters_roughness_scale() -> SGValue {
-}
-public func material_parameters_metallic_scale() -> SGValue {
-}
-public func material_parameters_specular_scale() -> SGValue {
-}
-public func material_parameters_emissive_color() -> SGValue {
-}
-public func material_parameters_clearcoat_scale() -> SGValue {
-}
-public func material_parameters_clearcoat_roughness_scale() -> SGValue {
-}
-public func geometry_modifier_time() -> SGValue {
-}
-public func geometry_modifier_uv0_offset() -> SGValue {
-}
-public func geometry_modifier_uv0_transform() -> SGValue {
-}
-public func geometry_modifier_uv1_offset() -> SGValue {
-}
-public func geometry_modifier_uv1_transform() -> SGValue {
-}
-public func geometry_modifier_custom_parameter() -> SGValue {
-}
-public func geometry_modifier_model_to_world() -> SGValue {
-}
-public func geometry_modifier_world_to_model() -> SGValue {
-}
-public func geometry_modifier_normal_to_world() -> SGValue {
-}
-public func geometry_modifier_model_to_view() -> SGValue {
-}
-public func geometry_modifier_view_to_projection() -> SGValue {
-}
-public func geometry_modifier_projection_to_view() -> SGValue {
-}
-public func geometry_modifier_vertex_id() -> SGValue {
-}
-public func geometry_modifier_position() -> SGValue {
-}
-public func geometry_modifier_model_position_offset() -> SGValue {
+public func geometry_modifier_bitangent() -> SGValue {
 }
 public func geometry_modifier_color() -> SGValue {
 }
-public func geometry_modifier_normal() -> SGValue {
-}
-public func geometry_modifier_bitangent() -> SGValue {
-}
-public func geometry_modifier_uv0() -> SGValue {
-}
-public func geometry_modifier_uv1() -> SGValue {
-}
 public func geometry_modifier_custom_attribute() -> SGValue {
+}
+public func geometry_modifier_custom_attribute_half2_0() -> SGValue {
+}
+public func geometry_modifier_custom_attribute_half2_1() -> SGValue {
 }
 public func geometry_modifier_custom_attribute_half4_0() -> SGValue {
 }
@@ -74,45 +20,79 @@ public func geometry_modifier_custom_attribute_half4_2() -> SGValue {
 }
 public func geometry_modifier_custom_attribute_half4_3() -> SGValue {
 }
-public func geometry_modifier_custom_attribute_half2_0() -> SGValue {
+public func geometry_modifier_custom_parameter() -> SGValue {
 }
-public func geometry_modifier_custom_attribute_half2_1() -> SGValue {
+public func geometry_modifier_model_position_offset() -> SGValue {
 }
-public func surface_time() -> SGValue {
+public func geometry_modifier_model_to_view() -> SGValue {
 }
-public func surface_custom_parameter() -> SGValue {
+public func geometry_modifier_model_to_world() -> SGValue {
 }
-public func surface_model_to_world() -> SGValue {
+public func geometry_modifier_normal() -> SGValue {
 }
-public func surface_model_to_view() -> SGValue {
+public func geometry_modifier_normal_to_world() -> SGValue {
 }
-public func surface_world_to_view() -> SGValue {
+public func geometry_modifier_position() -> SGValue {
 }
-public func surface_view_to_projection() -> SGValue {
+public func geometry_modifier_projection_to_view() -> SGValue {
 }
-public func surface_projection_to_view() -> SGValue {
+public func geometry_modifier_time() -> SGValue {
 }
-public func surface_model_position() -> SGValue {
+public func geometry_modifier_uv0() -> SGValue {
 }
-public func surface_screen_position() -> SGValue {
+public func geometry_modifier_uv0_offset() -> SGValue {
 }
-public func surface_world_position() -> SGValue {
+public func geometry_modifier_uv0_transform() -> SGValue {
 }
-public func surface_view_direction() -> SGValue {
+public func geometry_modifier_uv1() -> SGValue {
+}
+public func geometry_modifier_uv1_offset() -> SGValue {
+}
+public func geometry_modifier_uv1_transform() -> SGValue {
+}
+public func geometry_modifier_vertex_id() -> SGValue {
+}
+public func geometry_modifier_view_to_projection() -> SGValue {
+}
+public func geometry_modifier_world_to_model() -> SGValue {
+}
+public func material_parameters_base_color_tint() -> SGValue {
+}
+public func material_parameters_clearcoat_roughness_scale() -> SGValue {
+}
+public func material_parameters_clearcoat_scale() -> SGValue {
+}
+public func material_parameters_emissive_color() -> SGValue {
+}
+public func material_parameters_metallic_scale() -> SGValue {
+}
+public func material_parameters_opacity_scale() -> SGValue {
+}
+public func material_parameters_opacity_threshold() -> SGValue {
+}
+public func material_parameters_roughness_scale() -> SGValue {
+}
+public func material_parameters_specular_scale() -> SGValue {
+}
+public func occlusion_surfaceshader() -> String {
+}
+public func shadowreceiver_surfaceshader() -> String {
+}
+public func surface_ambient_occlusion() -> SGValue {
+}
+public func surface_base_color() -> SGValue {
+}
+public func surface_clearcoat() -> SGValue {
+}
+public func surface_clearcoat_roughness() -> SGValue {
 }
 public func surface_color() -> SGValue {
 }
-public func surface_geometry_normal() -> SGValue {
-}
-public func surface_geometry_tangent() -> SGValue {
-}
-public func surface_geometry_bitangent() -> SGValue {
-}
-public func surface_uv0() -> SGValue {
-}
-public func surface_uv1() -> SGValue {
-}
 public func surface_custom_attribute() -> SGValue {
+}
+public func surface_custom_attribute_half2_0() -> SGValue {
+}
+public func surface_custom_attribute_half2_1() -> SGValue {
 }
 public func surface_custom_attribute_half4_0() -> SGValue {
 }
@@ -122,27 +102,47 @@ public func surface_custom_attribute_half4_2() -> SGValue {
 }
 public func surface_custom_attribute_half4_3() -> SGValue {
 }
-public func surface_custom_attribute_half2_0() -> SGValue {
-}
-public func surface_custom_attribute_half2_1() -> SGValue {
-}
-public func surface_base_color() -> SGValue {
-}
-public func surface_tangent_space_normal() -> SGValue {
+public func surface_custom_parameter() -> SGValue {
 }
 public func surface_emissive_color() -> SGValue {
 }
-public func surface_roughness() -> SGValue {
+public func surface_geometry_bitangent() -> SGValue {
+}
+public func surface_geometry_normal() -> SGValue {
+}
+public func surface_geometry_tangent() -> SGValue {
 }
 public func surface_metallic() -> SGValue {
 }
-public func surface_ambient_occlusion() -> SGValue {
+public func surface_model_position() -> SGValue {
 }
-public func surface_specular() -> SGValue {
+public func surface_model_to_view() -> SGValue {
+}
+public func surface_model_to_world() -> SGValue {
 }
 public func surface_opacity() -> SGValue {
 }
-public func surface_clearcoat() -> SGValue {
+public func surface_projection_to_view() -> SGValue {
 }
-public func surface_clearcoat_roughness() -> SGValue {
+public func surface_roughness() -> SGValue {
+}
+public func surface_screen_position() -> SGValue {
+}
+public func surface_specular() -> SGValue {
+}
+public func surface_tangent_space_normal() -> SGValue {
+}
+public func surface_time() -> SGValue {
+}
+public func surface_uv0() -> SGValue {
+}
+public func surface_uv1() -> SGValue {
+}
+public func surface_view_direction() -> SGValue {
+}
+public func surface_view_to_projection() -> SGValue {
+}
+public func surface_world_position() -> SGValue {
+}
+public func surface_world_to_view() -> SGValue {
 }
