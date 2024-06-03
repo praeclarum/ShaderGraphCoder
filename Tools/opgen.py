@@ -240,9 +240,11 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type_name) for p in first_node.inputs]
     sgc_shared_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
     num_default_inputs = 0
+    param_names: List[str] = []
     for i, input in enumerate(first_node.inputs):
         if i == num_default_inputs and is_default_input_name(input.name):
             num_default_inputs += 1
+        param_names.append(input.name)
     for suffix_type_name, node in overloads.overloads[1:]:
         for i, input in enumerate(node.inputs):
             if input.usd_type_name != usd_shared_param_type[i]:
@@ -262,11 +264,15 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             w.write(', ')
     sgc_output_type = sgc_shared_output_type if sgc_output_type_is_shared else "SGValue"
     w.write_line(f') -> {sgc_output_type} {{')
+    w.write_line(f'    let inputs: [SGNode.Input] = [')
+    for i, input in enumerate(first_node.inputs):
+        w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
+    w.write_line(f'    ]')
     for suffix_type_name, node in overloads.overloads:
         sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
         w.write_line(f'    return {sgc_output_type}(source: .nodeOutput(SGNode(')
         w.write_line(f'        nodeType: "{node.name}",')
-        w.write_line(f'        inputs: [],')
+        w.write_line(f'        inputs: inputs,')
         w.write_line(f'        outputs: [])))')
     w.write_line('}')
 
