@@ -43,6 +43,11 @@ param_renames: Dict[str, str] = {
 node_renames: Dict[str, str] = {
     "in": "mixColor",
     "switch": "switchValue",
+    "absval": "abs",
+    "crossproduct": "cross",
+    "fractional": "fract",
+    "magnitude": "length",
+    "oneminus": "oneMinus",
 }
 
 def prop_is_supported(prop):

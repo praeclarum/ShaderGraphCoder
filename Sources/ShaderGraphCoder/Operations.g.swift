@@ -33,7 +33,7 @@ public enum SGTransformSpace: String, CaseIterable {
     case world = "world"
 }
 /// Abs
-public func absval<T>(_ in1: T) -> T where T: SGNumeric {
+public func abs<T>(_ in1: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -79,7 +79,7 @@ public func absval<T>(_ in1: T) -> T where T: SGNumeric {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for absval"))
+    return T(source: .error("Unsupported input data types for abs"))
 }
 /// Acos
 public func acos<T>(_ in1: T) -> T where T: SGNumeric {
@@ -795,7 +795,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for cos"))
 }
 /// Cross Product
-public func crossproduct(_ in1: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0]))), _ in2: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0])))) -> SGVector {
+public func cross(_ in1: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0]))), _ in2: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0])))) -> SGVector {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
         .init(name: "in2", connection: in2),
@@ -812,7 +812,7 @@ public func crossproduct(_ in1: SGVector = SGVector(source: .constant(.vector3h(
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    return SGVector(source: .error("Unsupported input data types for crossproduct"))
+    return SGVector(source: .error("Unsupported input data types for cross"))
 }
 /// Determinant
 public func determinant(_ in1: SGMatrix) -> SGScalar {
@@ -2206,7 +2206,7 @@ public func luminance(_ in1: SGColor, lumacoeffs: SGColor = SGColor(source: .con
     return SGColor(source: .error("Unsupported input data types for luminance"))
 }
 /// Magnitude
-public func magnitude(_ in1: SGVector) -> SGScalar {
+public func length(_ in1: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -2246,7 +2246,7 @@ public func magnitude(_ in1: SGVector) -> SGScalar {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    return SGScalar(source: .error("Unsupported input data types for magnitude"))
+    return SGScalar(source: .error("Unsupported input data types for length"))
 }
 public func mask(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
@@ -3611,7 +3611,7 @@ public func cameraposition(space: SGSpace = SGSpace.world) -> SGVector {
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Fractional
-public func fractional<T>(_ in1: T) -> T where T: SGNumeric {
+public func fract<T>(_ in1: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -3651,7 +3651,7 @@ public func fractional<T>(_ in1: T) -> T where T: SGNumeric {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for fractional"))
+    return T(source: .error("Unsupported input data types for fract"))
 }
 /// Camera Index Switch
 public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
@@ -3769,7 +3769,7 @@ public func logicalXor(_ in1: SGValue = SGValue(source: .constant(.bool(false)))
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// One Minus
-public func oneminus<T>(_ in1: T) -> T where T: SGNumeric {
+public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -3809,7 +3809,7 @@ public func oneminus<T>(_ in1: T) -> T where T: SGNumeric {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for oneminus"))
+    return T(source: .error("Unsupported input data types for oneMinus"))
 }
 /// Reflect
 public func reflect(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {

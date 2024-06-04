@@ -50,10 +50,6 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     return T(source: .nodeOutput(sep))
 }
 
-public func abs<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_absval_", x: x)
-}
-
 public func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
     let node = SGNode(
         nodeType: "ND_clamp_" + getNodeSuffixForDataType(x.dataType),
@@ -70,16 +66,8 @@ public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
     clamp(x, min: SGValue.float(min), max: SGValue.float(max))
 }
 
-public func cross(_ x: SGVector, _ y: SGVector) -> SGVector {
-    binop("ND_crossproduct_", left: x, right: y)
-}
-
 public func dot(_ x: SGVector, _ y: SGVector) -> SGScalar {
     binop("ND_dotproduct_", left: x, right: y)
-}
-
-public func fract<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_realitykit_fractional_", x: x)
 }
 
 public func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
@@ -107,14 +95,6 @@ public func ifLess<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: 
     ifGreaterOrEqual(value2, value1, trueResult: .float(trueResult), falseResult: .float(falseResult))
 }
 
-public func length<T>(_ x: T) -> SGScalar where T: SGSIMD {
-    let node = SGNode(
-        nodeType: "ND_magnitude_" + getNodeSuffixForDataType(x.dataType),
-        inputs: [.init(name: "in", connection: x)],
-        outputs: [.init(dataType: .float)])
-    return SGScalar(source: .nodeOutput(node))
-}
-
 public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGScalar, y2: SGScalar) -> SGScalar {
     let dx = x2 - x1
     let dy = y2 - y1
@@ -134,30 +114,6 @@ public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGVector, y2: SGV
     let dy = y2 - y1
     let m = dy / dx
     return m*(x - x1) + y1
-}
-
-public func max<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
-    binop("ND_max_", left: x, right: y)
-}
-
-public func min<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
-    binop("ND_min_", left: x, right: y)
-}
-
-public func mix<T, U>(_ x: T, _ y: T, t: U) -> T where T: SGNumeric, U: SGNumeric {
-    let node = SGNode(
-        nodeType: "ND_mix_" + getNodeSuffixForDataType(x.dataType),
-        inputs: [
-            .init(name: "bg", connection: x), // when t = 0
-            .init(name: "fg", connection: y), // when t = 1
-            .init(name: "mix", connection: t),
-        ],
-        outputs: [.init(dataType: x.dataType)])
-    return T(source: .nodeOutput(node))
-}
-
-public func oneMinus<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_realitykit_oneminus_", x: x)
 }
 
 public func pow<T>(_ x: T, _ y: SGNumeric) -> T where T: SGNumeric {
