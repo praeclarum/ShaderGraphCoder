@@ -330,9 +330,21 @@ def add_node_to_overloads(node: Node):
     else:
         node_overloads[base_name].add_overload(suffix_type_name, node)
 
+def capitalize_first_letter(name: str) -> str:
+    if name == "uv0":
+        return "UV0"
+    if name == "uv1":
+        return "UV1"
+    return name.capitalize()
+
+def snake_to_camel(name: str) -> str:
+    parts = name.split('_')
+    return parts[0] + ''.join(capitalize_first_letter(x) for x in parts[1:])
+
 def get_param_name(name: str) -> str:
     if name in param_renames:
         return param_renames[name]
+    name = snake_to_camel(name)
     return name
 
 def get_node_name(name: str) -> str:
@@ -342,6 +354,7 @@ def get_node_name(name: str) -> str:
         name = name[len('ND_'):]
     if name in node_renames:
         return node_renames[name]
+    name = snake_to_camel(name)
     return name
 
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):

@@ -2980,9 +2980,9 @@ public func noise3d(amplitude: SGValue, pivot: SGScalar, position: SGVector) -> 
     }
     return SGVectorError("Unsupported input data types for noise3d")
 }
-public func normal_map_decode(_ in1: SGVector) -> SGVector {
+public func normalMapDecode(_ in1: SGVector) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
-        return SGVectorError("Invalid normal_map_decode input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType).")
+        return SGVectorError("Invalid normalMapDecode input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -3672,7 +3672,7 @@ public func fractional(_ in1: SGValue) -> SGValue {
     }
     return SGVectorError("Unsupported input data types for fractional")
 }
-public func geometry_switch_cameraindex(mono: SGValue, left: SGValue, right: SGValue) -> SGValue {
+public func geometrySwitchCameraindex(mono: SGValue, left: SGValue, right: SGValue) -> SGValue {
     let inputs: [SGNode.Input] = [
         .init(name: "mono", connection: mono),
         .init(name: "left", connection: left),
@@ -3720,14 +3720,14 @@ public func geometry_switch_cameraindex(mono: SGValue, left: SGValue, right: SGV
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return SGVectorError("Unsupported input data types for geometry_switch_cameraindex")
+    return SGVectorError("Unsupported input data types for geometrySwitchCameraindex")
 }
-public func logical_and(_ in1: SGValue, _ in2: SGValue) -> SGValue {
+public func logicalAnd(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_and input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).")
+        return SGValueError("Invalid logicalAnd input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).")
     }
     guard in2.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_and input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).")
+        return SGValueError("Invalid logicalAnd input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
@@ -3738,9 +3738,9 @@ public func logical_and(_ in1: SGValue, _ in2: SGValue) -> SGValue {
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.bool)])))
 }
-public func logical_not(_ in1: SGValue) -> SGValue {
+public func logicalNot(_ in1: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_not input. Expected in data type to be SGDataType.bool, but got \(in1.dataType).")
+        return SGValueError("Invalid logicalNot input. Expected in data type to be SGDataType.bool, but got \(in1.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -3750,12 +3750,12 @@ public func logical_not(_ in1: SGValue) -> SGValue {
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.bool)])))
 }
-public func logical_or(_ in1: SGValue, _ in2: SGValue) -> SGValue {
+public func logicalOr(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_or input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).")
+        return SGValueError("Invalid logicalOr input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).")
     }
     guard in2.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_or input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).")
+        return SGValueError("Invalid logicalOr input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
@@ -3766,12 +3766,12 @@ public func logical_or(_ in1: SGValue, _ in2: SGValue) -> SGValue {
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.bool)])))
 }
-public func logical_xor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
+public func logicalXor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_xor input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).")
+        return SGValueError("Invalid logicalXor input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).")
     }
     guard in2.dataType == SGDataType.bool else {
-        return SGValueError("Invalid logical_xor input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).")
+        return SGValueError("Invalid logicalXor input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
@@ -5096,12 +5096,12 @@ public func transformmatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
     }
     return SGVectorError("Unsupported input data types for transformmatrix")
 }
-public func transformmatrix_vector2M3(_ in1: SGVector, mat: SGMatrix) -> SGVector {
+public func transformmatrixVector2m3(_ in1: SGVector, mat: SGMatrix) -> SGVector {
     guard in1.dataType == SGDataType.vector2f else {
-        return SGVectorError("Invalid transformmatrix_vector2M3 input. Expected in data type to be SGDataType.vector2f, but got \(in1.dataType).")
+        return SGVectorError("Invalid transformmatrixVector2m3 input. Expected in data type to be SGDataType.vector2f, but got \(in1.dataType).")
     }
     guard mat.dataType == SGDataType.matrix3d else {
-        return SGVectorError("Invalid transformmatrix_vector2M3 input. Expected mat data type to be SGDataType.matrix3d, but got \(mat.dataType).")
+        return SGVectorError("Invalid transformmatrixVector2m3 input. Expected mat data type to be SGDataType.matrix3d, but got \(mat.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -5112,12 +5112,12 @@ public func transformmatrix_vector2M3(_ in1: SGVector, mat: SGMatrix) -> SGVecto
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
-public func transformmatrix_vector3M4(_ in1: SGVector, mat: SGMatrix) -> SGVector {
+public func transformmatrixVector3m4(_ in1: SGVector, mat: SGMatrix) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
-        return SGVectorError("Invalid transformmatrix_vector3M4 input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType).")
+        return SGVectorError("Invalid transformmatrixVector3m4 input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType).")
     }
     guard mat.dataType == SGDataType.matrix4d else {
-        return SGVectorError("Invalid transformmatrix_vector3M4 input. Expected mat data type to be SGDataType.matrix4d, but got \(mat.dataType).")
+        return SGVectorError("Invalid transformmatrixVector3m4 input. Expected mat data type to be SGDataType.matrix4d, but got \(mat.dataType).")
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),

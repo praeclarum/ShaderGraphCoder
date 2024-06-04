@@ -7,331 +7,331 @@ public extension SGValue {
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var geometry_modifier_custom_attribute: SGVector {
+    var geometryModifierCustomAttribute: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    var geometry_modifier_custom_attribute_half2_0: SGVector {
+    var geometryModifierCustomAttributeHalf20: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_0",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    var geometry_modifier_custom_attribute_half2_1: SGVector {
+    var geometryModifierCustomAttributeHalf21: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half2_1",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    var geometry_modifier_custom_attribute_half4_0: SGVector {
+    var geometryModifierCustomAttributeHalf40: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_0",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var geometry_modifier_custom_attribute_half4_1: SGVector {
+    var geometryModifierCustomAttributeHalf41: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_1",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var geometry_modifier_custom_attribute_half4_2: SGVector {
+    var geometryModifierCustomAttributeHalf42: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_2",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var geometry_modifier_custom_attribute_half4_3: SGVector {
+    var geometryModifierCustomAttributeHalf43: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_attribute_half4_3",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var geometry_modifier_custom_parameter: SGVector {
+    var geometryModifierCustomParameter: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_custom_parameter",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    var geometry_modifier_model_position_offset: SGVector {
+    var geometryModifierModelPositionOffset: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_model_position_offset",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    var geometry_modifier_model_to_view: SGMatrix {
+    var geometryModifierModelToView: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_model_to_view",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var geometry_modifier_model_to_world: SGMatrix {
+    var geometryModifierModelToWorld: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_model_to_world",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var geometry_modifier_normal_to_world: SGMatrix {
+    var geometryModifierNormalToWorld: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_normal_to_world",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    var geometry_modifier_projection_to_view: SGMatrix {
+    var geometryModifierProjectionToView: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_projection_to_view",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var geometry_modifier_uv0_offset: SGVector {
+    var geometryModifierUV0Offset: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_uv0_offset",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    var geometry_modifier_uv0_transform: SGMatrix {
+    var geometryModifierUV0Transform: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_uv0_transform",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    var geometry_modifier_uv1_offset: SGVector {
+    var geometryModifierUV1Offset: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_uv1_offset",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    var geometry_modifier_uv1_transform: SGMatrix {
+    var geometryModifierUV1Transform: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_uv1_transform",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    var geometry_modifier_vertex_id: SGScalar {
+    var geometryModifierVertexId: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_vertex_id",
             inputs: [],
             outputs: [.init(dataType: SGDataType.int)])))
     }
-    var geometry_modifier_view_to_projection: SGMatrix {
+    var geometryModifierViewToProjection: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_view_to_projection",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var geometry_modifier_world_to_model: SGMatrix {
+    var geometryModifierWorldToModel: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_modifier_world_to_model",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var material_parameters_base_color_tint: SGColor {
+    var materialParametersBaseColorTint: SGColor {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_base_color_tint",
             inputs: [],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    var material_parameters_clearcoat_roughness_scale: SGScalar {
+    var materialParametersClearcoatRoughnessScale: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_clearcoat_roughness_scale",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var material_parameters_clearcoat_scale: SGScalar {
+    var materialParametersClearcoatScale: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_clearcoat_scale",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var material_parameters_emissive_color: SGColor {
+    var materialParametersEmissiveColor: SGColor {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_emissive_color",
             inputs: [],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    var material_parameters_metallic_scale: SGScalar {
+    var materialParametersMetallicScale: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_metallic_scale",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var material_parameters_opacity_scale: SGScalar {
+    var materialParametersOpacityScale: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_opacity_scale",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var material_parameters_opacity_threshold: SGScalar {
+    var materialParametersOpacityThreshold: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_opacity_threshold",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var material_parameters_roughness_scale: SGScalar {
+    var materialParametersRoughnessScale: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_roughness_scale",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var material_parameters_specular_scale: SGScalar {
+    var materialParametersSpecularScale: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_material_parameters_specular_scale",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var occlusion_surfaceshader: SGString {
+    var occlusionSurfaceshader: SGString {
         return SGString(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_occlusion_surfaceshader",
             inputs: [],
             outputs: [.init(dataType: SGDataType.string)])))
     }
-    var shadowreceiver_surfaceshader: SGString {
+    var shadowreceiverSurfaceshader: SGString {
         return SGString(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_shadowreceiver_surfaceshader",
             inputs: [],
             outputs: [.init(dataType: SGDataType.string)])))
     }
-    var surface_ambient_occlusion: SGScalar {
+    var surfaceAmbientOcclusion: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_ambient_occlusion",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_base_color: SGColor {
+    var surfaceBaseColor: SGColor {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_base_color",
             inputs: [],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    var surface_clearcoat: SGScalar {
+    var surfaceClearcoat: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_clearcoat",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_clearcoat_roughness: SGScalar {
+    var surfaceClearcoatRoughness: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_clearcoat_roughness",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_custom_attribute: SGVector {
+    var surfaceCustomAttribute: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    var surface_custom_attribute_half2_0: SGVector {
+    var surfaceCustomAttributeHalf20: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute_half2_0",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    var surface_custom_attribute_half2_1: SGVector {
+    var surfaceCustomAttributeHalf21: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute_half2_1",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    var surface_custom_attribute_half4_0: SGVector {
+    var surfaceCustomAttributeHalf40: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute_half4_0",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var surface_custom_attribute_half4_1: SGVector {
+    var surfaceCustomAttributeHalf41: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute_half4_1",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var surface_custom_attribute_half4_2: SGVector {
+    var surfaceCustomAttributeHalf42: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute_half4_2",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var surface_custom_attribute_half4_3: SGVector {
+    var surfaceCustomAttributeHalf43: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_attribute_half4_3",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    var surface_custom_parameter: SGVector {
+    var surfaceCustomParameter: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_custom_parameter",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    var surface_emissive_color: SGColor {
+    var surfaceEmissiveColor: SGColor {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_emissive_color",
             inputs: [],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    var surface_metallic: SGScalar {
+    var surfaceMetallic: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_metallic",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_model_to_view: SGMatrix {
+    var surfaceModelToView: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_model_to_view",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var surface_model_to_world: SGMatrix {
+    var surfaceModelToWorld: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_model_to_world",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var surface_opacity: SGScalar {
+    var surfaceOpacity: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_opacity",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_projection_to_view: SGMatrix {
+    var surfaceProjectionToView: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_projection_to_view",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var surface_roughness: SGScalar {
+    var surfaceRoughness: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_roughness",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_screen_position: SGVector {
+    var surfaceScreenPosition: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_screen_position",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    var surface_specular: SGScalar {
+    var surfaceSpecular: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_specular",
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var surface_view_direction: SGVector {
+    var surfaceViewDirection: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_view_direction",
             inputs: [],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    var surface_view_to_projection: SGMatrix {
+    var surfaceViewToProjection: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_view_to_projection",
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    var surface_world_to_view: SGMatrix {
+    var surfaceWorldToView: SGMatrix {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_world_to_view",
             inputs: [],
