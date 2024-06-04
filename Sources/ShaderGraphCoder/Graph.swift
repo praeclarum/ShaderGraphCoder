@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import simd
 
 public class SGNode: Identifiable, Equatable, Hashable {
     private static var nextId: Int = 1
@@ -153,8 +154,9 @@ public enum SGDataType: String {
 }
 
 public enum SGConstantValue {
-    case color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace)
-    case color4f(_ value: SIMD4<Float>, colorSpace: SGColorSpace)
+    case bool(_ value: Bool)
+    case color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace?)
+    case color4f(_ value: SIMD4<Float>, colorSpace: SGColorSpace?)
     case emptyTexture1D
     case emptyTexture2D
     case emptyTexture3D
@@ -168,8 +170,13 @@ public enum SGConstantValue {
     case vector2h(_ value: SIMD2<Float16>)
     case vector3h(_ value: SIMD3<Float16>)
     case vector4h(_ value: SIMD4<Float16>)
+    case matrix2d(_ value: simd_float2x2)
+    case matrix3d(_ value: simd_float3x3)
+    case matrix4d(_ value: simd_float4x4)
     public var dataType: SGDataType {
         switch self {
+        case .bool:
+            return .bool
         case .color3f:
             return .color3f
         case .color4f:
@@ -200,7 +207,19 @@ public enum SGConstantValue {
             return .vector3h
         case .vector4h:
             return .vector4h
+        case .matrix2d:
+            return .matrix2d
+        case .matrix3d:
+            return .matrix3d
+        case .matrix4d:
+            return .matrix4d
         }
+    }
+    public static func color3f(_ value: SIMD3<Float>) -> SGConstantValue {
+        return SGConstantValue.color3f(value, colorSpace: nil)
+    }
+    public static func color4f(_ value: SIMD4<Float>) -> SGConstantValue {
+        return SGConstantValue.color4f(value, colorSpace: nil)
     }
 }
 

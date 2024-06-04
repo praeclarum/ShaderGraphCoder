@@ -24,13 +24,37 @@ public extension SGDataType {
     }
 }
 
+public extension SIMD2<Float> {
+    var usda: String {
+        return "(\(self.x), \(self.y))"
+    }
+}
+
+public extension SIMD3<Float> {
+    var usda: String {
+        return "(\(self.x), \(self.y), \(self.z))"
+    }
+}
+
+public extension SIMD4<Float> {
+    var usda: String {
+        return "(\(self.x), \(self.y), \(self.z), \(self.w))"
+    }
+}
+
 public extension SGConstantValue {
     var usda: String {
         switch self {
-        case .color3f(let v, colorSpace: let cs):
-            return "(\(v.x), \(v.y), \(v.z)) (colorSpace = \"\(cs.rawValue)\")"
-        case .color4f(let v, colorSpace: let cs):
-            return "(\(v.x), \(v.y), \(v.z), \(v.w)) (colorSpace = \"\(cs.rawValue)\")"
+        case .bool(let v):
+            return v ? "True" : "False"
+        case .color3f(let v, colorSpace: .some(let cs)):
+            return "\(v.usda) (colorSpace = \"\(cs.rawValue)\")"
+        case .color4f(let v, colorSpace: .some(let cs)):
+            return "\(v.usda) (colorSpace = \"\(cs.rawValue)\")"
+        case .color3f(let v, colorSpace: .none):
+            return v.usda
+        case .color4f(let v, colorSpace: .none):
+            return v.usda
         case .emptyTexture1D:
             return "\"\""
         case .emptyTexture2D:
@@ -46,17 +70,23 @@ public extension SGConstantValue {
         case .string(let v):
             return "\"\(v)\""
         case .vector2f(let v):
-            return "(\(v.x), \(v.y))"
+            return v.usda
         case .vector3f(let v):
-            return "(\(v.x), \(v.y), \(v.z))"
+            return v.usda
         case .vector4f(let v):
-            return "(\(v.x), \(v.y), \(v.z), \(v.w))"
+            return v.usda
         case .vector2h(let v):
             return "(\(v.x), \(v.y))"
         case .vector3h(let v):
             return "(\(v.x), \(v.y), \(v.z))"
         case .vector4h(let v):
             return "(\(v.x), \(v.y), \(v.z), \(v.w))"
+        case .matrix2d(let v):
+            return "(\(v.columns.0.usda), \(v.columns.1.usda))"
+        case .matrix3d(let v):
+            return "(\(v.columns.0.usda), \(v.columns.1.usda), \(v.columns.2.usda))"
+        case .matrix4d(let v):
+            return "(\(v.columns.0.usda), \(v.columns.1.usda), \(v.columns.2.usda), \(v.columns.3.usda))"
         }
     }
 }
