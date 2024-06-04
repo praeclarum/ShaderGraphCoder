@@ -458,6 +458,13 @@ class NodeOverloads():
         self.overloads.append((suffix_type_name, node))
     def first_node(self) -> Node:
         return self.overloads[0][1]
+    def all_inputs_shared(self) -> bool:
+        first_inputs = self.first_node().inputs
+        for _, node in self.overloads[1:]:
+            for i, input in enumerate(node.inputs):
+                if input.usd_type != first_inputs[i].usd_type:
+                    return False
+        return True
 
 node_overloads: Dict[str, NodeOverloads] = {}
 
@@ -468,16 +475,24 @@ def add_node_to_overloads(node: Node):
     else:
         node_overloads[base_name].add_overload(suffix_type_name, node)
 
-def capitalize_first_letter(name: str) -> str:
-    if name == "uv0":
-        return "UV0"
-    if name == "uv1":
-        return "UV1"
-    return name.capitalize()
+def snake_to_camel_part(part: str, cap: bool) -> str:
+    if cap:
+        if part == "uv0":
+            return "UV0"
+        if part == "uv1":
+            return "UV1"
+        part = part.capitalize()
+    if part.endswith('2d'):
+        part = part[:-2] + '2D'
+    if part.endswith('3d'):
+        part = part[:-2] + '3D'
+    if part.endswith('4d'):
+        part = part[:-2] + '4D'
+    return part
 
 def snake_to_camel(name: str) -> str:
     parts = name.split('_')
-    ident = parts[0] + ''.join(capitalize_first_letter(x) for x in parts[1:])
+    ident = snake_to_camel_part(parts[0], False) + ''.join(snake_to_camel_part(x, True) for x in parts[1:])
     if ident == "repeat":
         ident = "repeated"
     return ident
@@ -774,10 +789,17 @@ print(f'Outputting {len(output_nodes)} nodes')
 for node in output_nodes:
     node.resolve_enums()
     add_node_to_overloads(node)
+for key, no in list(node_overloads.items()):
+    if len(no.overloads) > 1 and no.all_inputs_shared():
+        del node_overloads[key]
+        for suffix_type_name, node in no.overloads:
+            new_base_name = key + suffix_type_name
+            new_no = NodeOverloads(new_base_name, suffix_type_name, node)
+            node_overloads[new_base_name] = new_no
 print(f'Outputting {len(node_overloads)} overloads')
 src_nodes: List[NodeOverloads] = []
 op_nodes: List[NodeOverloads] = []
-for base_name, no in node_overloads.items():
+for no in sorted([x[1] for x in node_overloads.items()], key=lambda x: x.base_name):
     if no.is_src:
         src_nodes.append(no)
     else:
