@@ -1,6 +1,6 @@
 import os
 import re
-from typing import Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Set, Tuple, Union
 from pxr import Usd
 import plistlib
 
@@ -330,6 +330,8 @@ class NodeOverloads():
         self.is_src = len(first_node.inputs) == 0
     def add_overload(self, suffix_type_name: Optional[str], node: Node):
         self.overloads.append((suffix_type_name, node))
+    def first_node(self) -> Node:
+        return self.overloads[0][1]
 
 node_overloads: Dict[str, NodeOverloads] = {}
 
@@ -412,11 +414,31 @@ def get_base_sg_type(sg_types: List[str]) -> str:
     print("Warning: Could not determine base SG type for", composite_type)
     return "SGValue"
 
+def find_generic_params(overloads: NodeOverloads) -> Optional[Tuple[List[int], str]]:
+    param_type_matches_output_type = [True for _ in overloads.first_node().inputs]
+    sgc_output_types: Set[str] = set()
+    for _, node in overloads.overloads:
+        sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
+        sgc_output_types.add(sgc_output_type)
+        for i, input in enumerate(node.inputs):
+            sgc_param_type = usd_type_to_sgc_type(input.usd_type_name)
+            if sgc_param_type != sgc_output_type:
+                param_type_matches_output_type[i] = False
+    generic_indices = [i for i, x in enumerate(param_type_matches_output_type) if x]
+    if len(generic_indices) == 0:
+        return None
+    if len(sgc_output_types) == 1:
+        return None
+    return generic_indices, get_base_sg_type(sgc_output_types)
+
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     swift_name = get_node_name(overloads.base_name)
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
     description = get_node_description(first_node)
+    generic_params = find_generic_params(overloads)
+    if generic_params is not None:
+        print(f"Found generic params for {swift_name}: {generic_params}")
     usd_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_output_type_is_shared = True
@@ -440,33 +462,41 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
     if len(description) > 0:
         w.write_line(f'/// {description}')
-    w.write(f'public func {swift_name}(')
+    w.write(f'public func {swift_name}')
+    if generic_params is not None:
+        w.write('<T>')
+    w.write(f'(')
     for i, input in enumerate(first_node.inputs):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
         sgc_type = sgc_shared_param_type[i]
         if not sgc_type_is_shared:
             all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type_name) for o in overloads.overloads]
             sgc_type = get_base_sg_type(all_types)
+        if generic_params is not None and i in generic_params[0]:
+            sgc_type = 'T'
         name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
         if i < len(first_node.inputs) - 1:
             w.write(', ')
     sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type_name) for o in overloads.overloads]
     sgc_output_type = get_base_sg_type(sgc_output_types)
-    w.write_line(f') -> {sgc_output_type} {{')
+    if generic_params is not None:
+        sgc_output_type = 'T'
+        w.write_line(f') -> T where T: {generic_params[1]} {{')
+    else:
+        w.write_line(f') -> {sgc_output_type} {{')
     for i, input in enumerate(first_node.inputs):
         if not usd_param_type_is_shared[i]:
             continue
         sgc_datatype = usd_type_to_sgc_datatype(input.usd_type_name)
         w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
-        w.write_line(f'        return {sgc_output_type}Error("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).")')
+        w.write_line(f'        return {sgc_output_type}(source: .error("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType)."))')
         w.write_line(f'    }}')
     w.write_line(f'    let inputs: [SGNode.Input] = [')
     for i, input in enumerate(first_node.inputs):
         w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
     w.write_line(f'    ]')
     for suffix_type_name, node in overloads.overloads:
-        sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
         conds: List[str] = []
         for i, input in enumerate(node.inputs):
             if usd_param_type_is_shared[i]:
@@ -481,14 +511,17 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             cond = " && ".join(conds)
             w.write_line(f'    if {cond} {{')
             indent = "    "
-        w.write_line(f'    {indent}return {sgc_output_type}(source: .nodeOutput(SGNode(')
+        sgc_node_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
+        if generic_params is not None:
+            sgc_node_output_type = 'T'
+        w.write_line(f'    {indent}return {sgc_node_output_type}(source: .nodeOutput(SGNode(')
         w.write_line(f'        {indent}nodeType: "{node.name}",')
         w.write_line(f'        {indent}inputs: inputs,')
         w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
         if len(conds) > 0:
             w.write_line(f'    }}')
     if num_unshared_usd_params > 0:
-        w.write_line(f'    return {sgc_output_type}Error("Unsupported input data types for {swift_name}")')
+        w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types for {swift_name}"))')
     w.write_line('}')
 
 def write_src_node(overloads: NodeOverloads, w: SwiftWriter):

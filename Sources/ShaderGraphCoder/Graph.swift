@@ -82,6 +82,7 @@ public enum SGValueSource {
     case nodeOutput(_ node: SGNode, _ outputName: String)
     case constant(_ value: SGConstantValue)
     case parameter(name: String, defaultValue: SGConstantValue)
+    case error(_ error: String)
     
     public var dataType: SGDataType {
         switch self {
@@ -94,6 +95,8 @@ public enum SGValueSource {
             return value.dataType
         case .parameter(name: _, defaultValue: let defaultValue):
             return defaultValue.dataType
+        case .error:
+            return .string
         }
     }
 
