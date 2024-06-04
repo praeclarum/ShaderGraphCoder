@@ -46,7 +46,7 @@ public extension SGConstantValue {
     var usda: String {
         switch self {
         case .bool(let v):
-            return v ? "True" : "False"
+            return v ? "1" : "0"
         case .color3f(let v, colorSpace: .some(let cs)):
             return "\(v.usda) (colorSpace = \"\(cs.rawValue)\")"
         case .color4f(let v, colorSpace: .some(let cs)):
