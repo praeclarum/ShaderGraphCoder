@@ -2,6 +2,7 @@ import os
 import re
 from typing import Dict, List, Optional, Tuple, Union
 from pxr import Usd
+import plistlib
 
 manual_node_prefixes = [
     'ND_combine',
@@ -281,6 +282,12 @@ def usd_type_to_sgc_datatype(usd_type: str) -> str:
     print("Unknown USD datatype:", usd_type)
     return f"SGDataType.{usd_type}"
 
+def load_plist_strings(plist_path) -> Dict[str, str]:
+    with open(plist_path, 'rb') as f:
+        plist = plistlib.load(f)
+    print(plist)
+    return plist
+
 class SwiftWriter():
     def __init__(self):
         self.lines = []
@@ -360,10 +367,20 @@ def get_node_name(name: str) -> str:
     name = snake_to_camel(name)
     return name
 
+def get_node_description(node: Node) -> str:
+    if node.name in node_descriptions:
+        description = node_descriptions[node.name].strip()
+        if description.endswith(')'):
+            leftp_index = description.rfind('(')
+            if leftp_index != -1:
+                return description[:leftp_index].strip()
+    return ""
+
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     swift_name = get_node_name(overloads.base_name)
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
+    description = get_node_description(first_node)
     usd_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_output_type_is_shared = True
@@ -385,6 +402,8 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         if usd_type_to_sgc_type(node.outputs[0].usd_type_name) != usd_type_to_sgc_type(first_node.outputs[0].usd_type_name):
             sgc_output_type_is_shared = False
     num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
+    if len(description) > 0:
+        w.write_line(f'/// {description}')
     w.write(f'public func {swift_name}(')
     for i, input in enumerate(first_node.inputs):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
@@ -436,10 +455,10 @@ def write_src_node(overloads: NodeOverloads, w: SwiftWriter):
     swift_name = get_node_name(overloads.base_name)
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
-    sgc_output_type_is_shared = True
+    description = get_node_description(first_node)
     sgc_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
-    num_default_inputs = 0
-    param_names: List[str] = []
+    if len(description) > 0:
+        w.write_line(f'    /// {description}')
     w.write_line(f'    var {swift_name}: {sgc_output_type} {{')
     sgc_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
     indent = "    "
@@ -451,7 +470,9 @@ def write_src_node(overloads: NodeOverloads, w: SwiftWriter):
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
 schemas_path = os.path.join(tools_path, 'schemas.usda')
+plist_path = os.path.join(tools_path, 'schemas.plist') 
 src_path = os.path.abspath(os.path.join(tools_path, '..', 'Sources', 'ShaderGraphCoder'))
+node_descriptions = load_plist_strings(plist_path)
 
 ops_out_path = os.path.join(src_path, 'Operations.g.swift')
 srcs_out_path = os.path.join(src_path, 'Sources.g.swift')
