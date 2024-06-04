@@ -286,7 +286,6 @@ def usd_type_to_sgc_datatype(usd_type: str) -> str:
 def load_plist_strings(plist_path) -> Dict[str, str]:
     with open(plist_path, 'rb') as f:
         plist = plistlib.load(f)
-    print(plist)
     return plist
 
 class SwiftWriter():
@@ -406,7 +405,9 @@ def get_base_sg_type(sg_types: List[str]) -> str:
        composite_type == "SGMatrixSGColorSGVectorSGScalar" or \
        composite_type == "SGColorSGVectorSGScalar":
         return "SGNumeric"
-    if composite_type == "":
+    if composite_type == "" or \
+       composite_type == "SGColorSGVectorSGScalarSGString" or \
+       composite_type == "SGMatrixSGColorSGVectorSGScalarSGString":
         return "SGValue"
     print("Warning: Could not determine base SG type for", composite_type)
     return "SGValue"
