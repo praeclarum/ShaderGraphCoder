@@ -209,7 +209,7 @@ public class SGTexture3D: SGTexture {
     }
 }
 
-public class SGMatrix: SGValue {
+public class SGMatrix: SGNumeric {
     
 }
 
@@ -226,6 +226,15 @@ public class SGColorError: SGColor, SGErrorValue {
 }
 
 public class SGMatrixError: SGMatrix, SGErrorValue {
+    public init(_ error: String) {
+        super.init(source: .constant(.string(error)))
+    }
+    public required init(source: SGValueSource) {
+        super.init(source: source)
+    }
+}
+
+public class SGNumericError: SGNumeric, SGErrorValue {
     public init(_ error: String) {
         super.init(source: .constant(.string(error)))
     }

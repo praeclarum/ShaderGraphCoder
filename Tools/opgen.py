@@ -32,6 +32,7 @@ manual_node_prefixes = [
     'ND_UsdPreviewSurface_surfaceshader',
 
     'ND_RealityKitTexture',
+    'ND_Usd',
 ]
 
 param_renames: Dict[str, str] = {
@@ -376,6 +377,40 @@ def get_node_description(node: Node) -> str:
                 return description[:leftp_index].strip()
     return ""
 
+def get_base_sg_type(sg_types: List[str]) -> str:
+    def has_sg_type(sg_type: str) -> bool:
+        return any(sg_type in x for x in sg_types)
+    composite_type = ""
+    if has_sg_type('SGMatrix'):
+        composite_type += 'SGMatrix'
+    if has_sg_type('SGColor'):
+        composite_type += 'SGColor'
+    if has_sg_type('SGVector'):
+        composite_type += 'SGVector'
+    if has_sg_type('SGScalar'):
+        composite_type += 'SGScalar'
+    if has_sg_type('SGString'):
+        composite_type += 'SGString'
+    if composite_type == "SGMatrix":
+        return "SGMatrix"
+    if composite_type == "SGColor":
+        return "SGColor"
+    if composite_type == "SGVector":
+        return "SGVector"
+    if composite_type == "SGScalar":
+        return "SGScalar"
+    if composite_type == "SGColorSGVector":
+        return "SGSIMD"
+    if composite_type == "SGVectorSGScalar" or \
+       composite_type == "SGColorSGScalar" or \
+       composite_type == "SGMatrixSGColorSGVectorSGScalar" or \
+       composite_type == "SGColorSGVectorSGScalar":
+        return "SGNumeric"
+    if composite_type == "":
+        return "SGValue"
+    print("Warning: Could not determine base SG type for", composite_type)
+    return "SGValue"
+
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     swift_name = get_node_name(overloads.base_name)
     first_node = overloads.overloads[0][1]
@@ -407,12 +442,16 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     w.write(f'public func {swift_name}(')
     for i, input in enumerate(first_node.inputs):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
-        sgc_type = sgc_shared_param_type[i] if sgc_type_is_shared else "SGValue"
+        sgc_type = sgc_shared_param_type[i]
+        if not sgc_type_is_shared:
+            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type_name) for o in overloads.overloads]
+            sgc_type = get_base_sg_type(all_types)
         name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
         if i < len(first_node.inputs) - 1:
             w.write(', ')
-    sgc_output_type = sgc_shared_output_type if sgc_output_type_is_shared else "SGValue"
+    sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type_name) for o in overloads.overloads]
+    sgc_output_type = get_base_sg_type(sgc_output_types)
     w.write_line(f') -> {sgc_output_type} {{')
     for i, input in enumerate(first_node.inputs):
         if not usd_param_type_is_shared[i]:
