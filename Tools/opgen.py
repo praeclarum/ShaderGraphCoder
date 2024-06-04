@@ -86,8 +86,15 @@ class Node():
     def __str__(self):
         return f'{self.name} ({len(self.inputs)} inputs, {len(self.outputs)} outputs)'
     
+    def resolve_enums(self):
+        for i in self.inputs:
+            i.resolve_enums()
+        for o in self.outputs:
+            o.resolve_enums()
+    
 class NodeProperty():
     def __init__(self, node: Node, property_name: str, p):
+        self.node = node
         self.property_name = property_name
         self.name = property_name.split(':')[-1]
         t = p.GetTypeName()
@@ -97,11 +104,10 @@ class NodeProperty():
         self.default_value = p.Get() if p.HasValue() else None
         metadata = p.GetAllMetadata()
         self.is_enum = False
+        self.enum_members = []
         if self.usd_type == "string" and "allowedTokens" in metadata:
-            enum_members = list(metadata["allowedTokens"])
-            if len(enum_members) > 0:
-                self.enum = get_enum(enum_members, node)
-                self.usd_type = self.enum.gen_usd_type
+            self.enum_members = list(metadata["allowedTokens"])
+            if len(self.enum_members) > 0:
                 self.is_enum = True
         if "connectability" in metadata and metadata["connectability"] == "interfaceOnly":
             self.interface_only = True
@@ -114,6 +120,11 @@ class NodeProperty():
 
     def __str__(self):
         return f'{self.name}: {self.usd_type} = {self.default_value}'
+    
+    def resolve_enums(self):
+        if self.is_enum:
+            self.enum = get_enum(self.enum_members, self.node)
+            self.usd_type = self.enum.gen_usd_type
 
 class EnumType():
     def __init__(self, id: int, structural_type_id: str, members: List[str], node: Node):
@@ -626,6 +637,7 @@ output_nodes = [x for x in nodes if should_output_node(x)]
 output_nodes = sorted(output_nodes, key=lambda x: x.name)
 print(f'Outputting {len(output_nodes)} nodes')
 for node in output_nodes:
+    node.resolve_enums()
     add_node_to_overloads(node)
 print(f'Outputting {len(node_overloads)} overloads')
 src_nodes: List[NodeOverloads] = []
