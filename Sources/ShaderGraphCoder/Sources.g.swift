@@ -439,4 +439,10 @@ public extension SGValue {
             inputs: [],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
+    var time: SGScalar {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_time_float",
+            inputs: [],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
 }

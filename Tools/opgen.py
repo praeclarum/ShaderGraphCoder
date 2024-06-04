@@ -28,6 +28,7 @@ manual_node_prefixes = [
     'ND_mix_volumeshader',
     'ND_multiply_volumeshader',
     'ND_dot_lightshader',
+    'ND_UsdPreviewSurface_surfaceshader',
 
     'ND_RealityKitTexture',
 ]
@@ -42,6 +43,16 @@ node_renames: Dict[str, str] = {
     "switch": "switchValue",
 }
 
+def prop_is_supported(prop):
+    cd = prop.GetCustomData()
+    if cd is not None and "realitykit" in cd:
+        rk = cd["realitykit"]
+        if "unsupported" in rk:
+            u = rk["unsupported"]
+            if u is not None:
+                return not u
+    return True
+
 class Node():
     name: str
     inputs: List['NodeProperty']
@@ -53,6 +64,8 @@ class Node():
         self.outputs = []
         for pn in property_names:
             p = prim.GetAttribute(pn)
+            if not prop_is_supported(p):
+                continue
             if pn.startswith('inputs:'):
                 self.inputs.append(NodeProperty(self, pn, p))
             if pn.startswith('outputs:'):
@@ -418,9 +431,11 @@ srcs_out_path = os.path.join(src_path, 'Sources.g.swift')
 stage = Usd.Stage.Open(schemas_path)
 all_prims = [x for x in stage.Traverse()]  
 
-test_prim = [x for x in all_prims if x.GetName() == 'ND_realitykit_oneminus_vector2'][0]
+test_prim = [x for x in all_prims if x.GetName() == 'ND_time_float'][0]
 dir(test_prim.GetAttribute('inputs:in').GetTypeName())
 test_prim.GetAttribute('inputs:in').GetTypeName().aliasesAsStrings
+
+prop_is_supported(test_prim.GetAttribute('inputs:fps'))
 
 nodes = [Node(x) for x in all_prims if is_node(x)]
 print(f'Found {len(nodes)} nodes')

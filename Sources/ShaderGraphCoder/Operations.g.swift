@@ -2013,12 +2013,9 @@ public func ifgreatereq(value1: SGScalar, value2: SGScalar, in1: SGValue, in2: S
     }
     return SGVectorError("Unsupported input data types for ifgreatereq")
 }
-public func image(file: SGTexture, layer: SGString, defaultValue: SGValue, texcoord: SGVector, uaddressmode: SGString, vaddressmode: SGString, filtertype: SGString, framerange: SGString, frameoffset: SGScalar, frameendaction: SGString) -> SGValue {
+public func image(file: SGTexture, defaultValue: SGValue, texcoord: SGVector, uaddressmode: SGString, vaddressmode: SGString, filtertype: SGString) -> SGValue {
     guard file.dataType == SGDataType.asset else {
         return SGValueError("Invalid image input. Expected file data type to be SGDataType.asset, but got \(file.dataType).")
-    }
-    guard layer.dataType == SGDataType.string else {
-        return SGValueError("Invalid image input. Expected layer data type to be SGDataType.string, but got \(layer.dataType).")
     }
     guard texcoord.dataType == SGDataType.vector2f else {
         return SGValueError("Invalid image input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).")
@@ -2032,26 +2029,13 @@ public func image(file: SGTexture, layer: SGString, defaultValue: SGValue, texco
     guard filtertype.dataType == SGDataType.string else {
         return SGValueError("Invalid image input. Expected filtertype data type to be SGDataType.string, but got \(filtertype.dataType).")
     }
-    guard framerange.dataType == SGDataType.string else {
-        return SGValueError("Invalid image input. Expected framerange data type to be SGDataType.string, but got \(framerange.dataType).")
-    }
-    guard frameoffset.dataType == SGDataType.int else {
-        return SGValueError("Invalid image input. Expected frameoffset data type to be SGDataType.int, but got \(frameoffset.dataType).")
-    }
-    guard frameendaction.dataType == SGDataType.string else {
-        return SGValueError("Invalid image input. Expected frameendaction data type to be SGDataType.string, but got \(frameendaction.dataType).")
-    }
     let inputs: [SGNode.Input] = [
         .init(name: "file", connection: file),
-        .init(name: "layer", connection: layer),
         .init(name: "default", connection: defaultValue),
         .init(name: "texcoord", connection: texcoord),
         .init(name: "uaddressmode", connection: uaddressmode),
         .init(name: "vaddressmode", connection: vaddressmode),
         .init(name: "filtertype", connection: filtertype),
-        .init(name: "framerange", connection: framerange),
-        .init(name: "frameoffset", connection: frameoffset),
-        .init(name: "frameendaction", connection: frameendaction),
     ]
     if defaultValue.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
@@ -5819,7 +5803,7 @@ public func texcoord(index: SGScalar) -> SGVector {
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
-public func tiledimage(file: SGTexture, defaultValue: SGValue, texcoord: SGVector, uvtiling: SGVector, uvoffset: SGVector, realworldimagesize: SGVector, realworldtilesize: SGVector, filtertype: SGString, framerange: SGString, frameoffset: SGScalar, frameendaction: SGString) -> SGValue {
+public func tiledimage(file: SGTexture, defaultValue: SGValue, texcoord: SGVector, uvtiling: SGVector, uvoffset: SGVector, realworldimagesize: SGVector, realworldtilesize: SGVector, filtertype: SGString) -> SGValue {
     guard file.dataType == SGDataType.asset else {
         return SGValueError("Invalid tiledimage input. Expected file data type to be SGDataType.asset, but got \(file.dataType).")
     }
@@ -5841,15 +5825,6 @@ public func tiledimage(file: SGTexture, defaultValue: SGValue, texcoord: SGVecto
     guard filtertype.dataType == SGDataType.string else {
         return SGValueError("Invalid tiledimage input. Expected filtertype data type to be SGDataType.string, but got \(filtertype.dataType).")
     }
-    guard framerange.dataType == SGDataType.string else {
-        return SGValueError("Invalid tiledimage input. Expected framerange data type to be SGDataType.string, but got \(framerange.dataType).")
-    }
-    guard frameoffset.dataType == SGDataType.int else {
-        return SGValueError("Invalid tiledimage input. Expected frameoffset data type to be SGDataType.int, but got \(frameoffset.dataType).")
-    }
-    guard frameendaction.dataType == SGDataType.string else {
-        return SGValueError("Invalid tiledimage input. Expected frameendaction data type to be SGDataType.string, but got \(frameendaction.dataType).")
-    }
     let inputs: [SGNode.Input] = [
         .init(name: "file", connection: file),
         .init(name: "default", connection: defaultValue),
@@ -5859,9 +5834,6 @@ public func tiledimage(file: SGTexture, defaultValue: SGValue, texcoord: SGVecto
         .init(name: "realworldimagesize", connection: realworldimagesize),
         .init(name: "realworldtilesize", connection: realworldtilesize),
         .init(name: "filtertype", connection: filtertype),
-        .init(name: "framerange", connection: framerange),
-        .init(name: "frameoffset", connection: frameoffset),
-        .init(name: "frameendaction", connection: frameendaction),
     ]
     if defaultValue.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
@@ -5906,18 +5878,6 @@ public func tiledimage(file: SGTexture, defaultValue: SGValue, texcoord: SGVecto
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGVectorError("Unsupported input data types for tiledimage")
-}
-public func time(fps: SGScalar) -> SGScalar {
-    guard fps.dataType == SGDataType.float else {
-        return SGScalarError("Invalid time input. Expected fps data type to be SGDataType.float, but got \(fps.dataType).")
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fps", connection: fps),
-    ]
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_time_float",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.float)])))
 }
 public func transformmatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
     let inputs: [SGNode.Input] = [
@@ -6060,7 +6020,7 @@ public func transpose(_ in1: SGMatrix) -> SGMatrix {
     }
     return SGMatrixError("Unsupported input data types for transpose")
 }
-public func triplanarprojection(filex: SGTexture, filey: SGTexture, filez: SGTexture, layerx: SGString, layery: SGString, layerz: SGString, defaultValue: SGValue, position: SGVector, normal: SGVector, filtertype: SGString, framerange: SGString, frameoffset: SGScalar, frameendaction: SGString) -> SGValue {
+public func triplanarprojection(filex: SGTexture, filey: SGTexture, filez: SGTexture, defaultValue: SGValue, position: SGVector, normal: SGVector, filtertype: SGString) -> SGValue {
     guard filex.dataType == SGDataType.asset else {
         return SGValueError("Invalid triplanarprojection input. Expected filex data type to be SGDataType.asset, but got \(filex.dataType).")
     }
@@ -6069,15 +6029,6 @@ public func triplanarprojection(filex: SGTexture, filey: SGTexture, filez: SGTex
     }
     guard filez.dataType == SGDataType.asset else {
         return SGValueError("Invalid triplanarprojection input. Expected filez data type to be SGDataType.asset, but got \(filez.dataType).")
-    }
-    guard layerx.dataType == SGDataType.string else {
-        return SGValueError("Invalid triplanarprojection input. Expected layerx data type to be SGDataType.string, but got \(layerx.dataType).")
-    }
-    guard layery.dataType == SGDataType.string else {
-        return SGValueError("Invalid triplanarprojection input. Expected layery data type to be SGDataType.string, but got \(layery.dataType).")
-    }
-    guard layerz.dataType == SGDataType.string else {
-        return SGValueError("Invalid triplanarprojection input. Expected layerz data type to be SGDataType.string, but got \(layerz.dataType).")
     }
     guard position.dataType == SGDataType.vector3f else {
         return SGValueError("Invalid triplanarprojection input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).")
@@ -6088,29 +6039,14 @@ public func triplanarprojection(filex: SGTexture, filey: SGTexture, filez: SGTex
     guard filtertype.dataType == SGDataType.string else {
         return SGValueError("Invalid triplanarprojection input. Expected filtertype data type to be SGDataType.string, but got \(filtertype.dataType).")
     }
-    guard framerange.dataType == SGDataType.string else {
-        return SGValueError("Invalid triplanarprojection input. Expected framerange data type to be SGDataType.string, but got \(framerange.dataType).")
-    }
-    guard frameoffset.dataType == SGDataType.int else {
-        return SGValueError("Invalid triplanarprojection input. Expected frameoffset data type to be SGDataType.int, but got \(frameoffset.dataType).")
-    }
-    guard frameendaction.dataType == SGDataType.string else {
-        return SGValueError("Invalid triplanarprojection input. Expected frameendaction data type to be SGDataType.string, but got \(frameendaction.dataType).")
-    }
     let inputs: [SGNode.Input] = [
         .init(name: "filex", connection: filex),
         .init(name: "filey", connection: filey),
         .init(name: "filez", connection: filez),
-        .init(name: "layerx", connection: layerx),
-        .init(name: "layery", connection: layery),
-        .init(name: "layerz", connection: layerz),
         .init(name: "default", connection: defaultValue),
         .init(name: "position", connection: position),
         .init(name: "normal", connection: normal),
         .init(name: "filtertype", connection: filtertype),
-        .init(name: "framerange", connection: framerange),
-        .init(name: "frameoffset", connection: frameoffset),
-        .init(name: "frameendaction", connection: frameendaction),
     ]
     if defaultValue.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
