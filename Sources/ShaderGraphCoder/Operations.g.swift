@@ -1518,7 +1518,7 @@ public func hsvtorgb(_ in1: SGColor) -> SGColor {
     return SGColorError("Unsupported input data types for hsvtorgb")
 }
 /// If Equal
-public func ifequal(value1: SGScalar, value2: SGScalar, in1: SGNumeric, in2: SGNumeric) -> SGNumeric {
+public func ifequal(value1: SGValue, value2: SGValue, in1: SGNumeric, in2: SGNumeric) -> SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),

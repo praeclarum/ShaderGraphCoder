@@ -390,6 +390,8 @@ def get_base_sg_type(sg_types: List[str]) -> str:
         composite_type += 'SGScalar'
     if has_sg_type('SGString'):
         composite_type += 'SGString'
+    if has_sg_type('SGValue'):
+        composite_type += 'SGValue'
     if composite_type == "SGMatrix":
         return "SGMatrix"
     if composite_type == "SGColor":
