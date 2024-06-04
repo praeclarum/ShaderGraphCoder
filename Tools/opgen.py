@@ -129,10 +129,14 @@ class NodeProperty():
 class EnumType():
     def __init__(self, id: int, structural_type_id: str, members: List[str], node: Node):
         self.id = id
-        self.gen_usd_type = f'enum{id}'
-        self.gen_sgc_type = f'SGEnum{id}_' + '_'.join(members)
         self.structural_type_id = structural_type_id
         self.members = sorted(members)
+        self.gen_usd_type = f'enum{id}'
+        self.gen_sgc_type = f'SGEnum{id}_' + '_'.join(self.members)
+        if structural_type_id in enum_sgc_types:
+            self.gen_sgc_type = enum_sgc_types[structural_type_id]
+        else:
+            print(f'Warning: No SGC type for enum \"{structural_type_id}\"')
         self.first_node_name = node.name
         print(f'{self.first_node_name} created enum {self.gen_usd_type} with members {members}')
 
@@ -155,6 +159,15 @@ def get_enum(members: List[str], node: Node) -> EnumType:
     enums_by_structural_type_id[structural_type_id] = enum
     enums_by_gen_usd_type[enum.gen_usd_type] = enum
     return enum
+
+enum_sgc_types: Dict[str, str] = {
+    "box|gaussian": "SGBlurFilterType",
+    "clamp|constant|mirror|periodic": "SGAddressMode",
+    "closest|cubic|linear": "SGFilterType",
+    "model|object|tangent|world": "SGSpace",
+    "model|object|unspecified|world": "SGTransformSpace",
+    "object|tangent": "SGNormalSpace",
+}
 
 def is_node(prim):
     path = str(prim.GetPath()).split('/')
