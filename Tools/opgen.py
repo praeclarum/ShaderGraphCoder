@@ -33,6 +33,8 @@ manual_node_prefixes = [
 
     'ND_RealityKitTexture',
     'ND_Usd',
+
+    'ND_dot_',
 ]
 
 param_renames: Dict[str, str] = {
@@ -41,13 +43,14 @@ param_renames: Dict[str, str] = {
 }
 
 node_renames: Dict[str, str] = {
-    "in": "mixColor",
-    "switch": "switchValue",
     "absval": "abs",
+    "dotproduct": "dot",
     "crossproduct": "cross",
     "fractional": "fract",
+    "in": "mixColor",
     "magnitude": "length",
     "oneminus": "oneMinus",
+    "switch": "switchValue",
 }
 
 def prop_is_supported(prop):

@@ -50,24 +50,13 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     return T(source: .nodeOutput(sep))
 }
 
-public func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
-    let node = SGNode(
-        nodeType: "ND_clamp_" + getNodeSuffixForDataType(x.dataType),
-        inputs: [
-            .init(name: "in", connection: x),
-            .init(name: "high", connection: max),
-            .init(name: "low", connection: min),
-        ],
-        outputs: [.init(dataType: x.dataType)])
-    return T(source: .nodeOutput(node))
+public func clamp(_ x: SGScalar, low: Float, high: Float) -> SGScalar {
+    clamp<SGScalar>(x, low: SGValue.float(low), high: SGValue.float(high))
 }
 
+@available(*, deprecated, message: "Min and max were renamed to low and high")
 public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
-    clamp(x, min: SGValue.float(min), max: SGValue.float(max))
-}
-
-public func dot(_ x: SGVector, _ y: SGVector) -> SGScalar {
-    binop("ND_dotproduct_", left: x, right: y)
+    clamp<SGScalar>(x, low: min, high: max)
 }
 
 public func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {

@@ -1023,94 +1023,8 @@ public func dodge<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.f
     }
     return T(source: .error("Unsupported input data types for dodge"))
 }
-/// Dot
-public func dot<T>(_ in1: T, note: String = "") -> T where T: SGValue {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "note", connection: SGString(source: .constant(.string(note)))),
-    ]
-    if in1.dataType == SGDataType.bool {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_boolean",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if in1.dataType == SGDataType.color3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_color3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    if in1.dataType == SGDataType.color4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_color4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    if in1.dataType == SGDataType.asset {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_filename",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.asset)])))
-    }
-    if in1.dataType == SGDataType.float {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_float",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.half {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_half",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if in1.dataType == SGDataType.int {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_integer",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    if in1.dataType == SGDataType.matrix3d {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_matrix33",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix3d)])))
-    }
-    if in1.dataType == SGDataType.matrix4d {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_matrix44",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.matrix4d)])))
-    }
-    if in1.dataType == SGDataType.string {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_string",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.string)])))
-    }
-    if in1.dataType == SGDataType.vector2f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if in1.dataType == SGDataType.vector3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_vector3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if in1.dataType == SGDataType.vector4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_dot_vector4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types for dot"))
-}
 /// Dot Product
-public func dotproduct(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
+public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
         .init(name: "in2", connection: in2),
@@ -1151,7 +1065,7 @@ public func dotproduct(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    return SGScalar(source: .error("Unsupported input data types for dotproduct"))
+    return SGScalar(source: .error("Unsupported input data types for dot"))
 }
 /// Exp
 public func exp<T>(_ in1: T) -> T where T: SGNumeric {
