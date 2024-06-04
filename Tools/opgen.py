@@ -400,6 +400,8 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             conds.append(f'{name}.dataType == {usd_type_to_sgc_datatype(input.usd_type_name)}')
         if len(conds) == 0:
             indent = ""
+            if len(overloads.overloads) > 1:
+                print(f'Warning: {swift_name} has multiple overloads but none of the inputs have unique types')
         else:
             cond = " && ".join(conds)
             w.write_line(f'    if {cond} {{')
