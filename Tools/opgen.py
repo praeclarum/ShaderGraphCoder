@@ -92,12 +92,58 @@ class NodeProperty():
         self.name = property_name.split(':')[-1]
         t = p.GetTypeName()
         self.usd_type_aliases = t.aliasesAsStrings
-        self.usd_type_name = self.usd_type_aliases[0] if len(self.usd_type_aliases) > 0 else t.type.typeName
+        self.usd_type = self.usd_type_aliases[0] if len(self.usd_type_aliases) > 0 else t.type.typeName
         self.type_is_array = t.isArray
         self.default_value = p.Get() if p.HasValue() else None
+        metadata = p.GetAllMetadata()
+        self.is_enum = False
+        if self.usd_type == "string" and "allowedTokens" in metadata:
+            enum_members = list(metadata["allowedTokens"])
+            if len(enum_members) > 0:
+                self.enum = get_enum(enum_members, node)
+                self.usd_type = self.enum.gen_usd_type
+                self.is_enum = True
+        if "connectability" in metadata and metadata["connectability"] == "interfaceOnly":
+            self.interface_only = True
+        else:
+            self.interface_only = False
+        if "displayName" in metadata:
+            self.display_name = str(metadata["displayName"])
+        else:
+            self.display_name = self.name
 
     def __str__(self):
-        return f'{self.name}: {self.usd_type_name} = {self.default_value}'
+        return f'{self.name}: {self.usd_type} = {self.default_value}'
+
+class EnumType():
+    def __init__(self, id: int, structural_type_id: str, members: List[str], node: Node):
+        self.id = id
+        self.gen_usd_type = f'enum{id}'
+        self.gen_sgc_type = f'SGEnum{id}_' + '_'.join(members)
+        self.structural_type_id = structural_type_id
+        self.members = sorted(members)
+        self.first_node_name = node.name
+        print(f'{self.first_node_name} created enum {self.gen_usd_type} with members {members}')
+
+    def __str__(self):
+        return self.type_id
+
+def get_enum_structural_type_id(members: List[str]) -> str:
+    sorted_members = sorted(members)
+    return '|'.join(sorted_members)
+
+enums_by_structural_type_id: Dict[str, EnumType] = {}
+enums_by_gen_usd_type: Dict[str, EnumType] = {}
+
+def get_enum(members: List[str], node: Node) -> EnumType:
+    structural_type_id = get_enum_structural_type_id(members)
+    if structural_type_id in enums_by_structural_type_id:
+        return enums_by_structural_type_id[structural_type_id]
+    enum_id = len(enums_by_structural_type_id)
+    enum = EnumType(enum_id, structural_type_id, members, node)
+    enums_by_structural_type_id[structural_type_id] = enum
+    enums_by_gen_usd_type[enum.gen_usd_type] = enum
+    return enum
 
 def is_node(prim):
     path = str(prim.GetPath()).split('/')
@@ -117,7 +163,7 @@ def should_output_node(node: Node):
     if node.outputs[0].type_is_array:
         # print(f'Skipping {node.name} because its output is an array')
         return False
-    if node.outputs[0].usd_type_name == 'token':
+    if node.outputs[0].usd_type == 'token':
         # print(f'Skipping {node.name} because its output is a token')
         return False
     for prefix in manual_node_prefixes:
@@ -234,6 +280,8 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
         return 'SGString'
     if usd_type == 'token':
         return 'SGString'
+    if usd_type in enums_by_gen_usd_type:
+        return enums_by_gen_usd_type[usd_type].gen_sgc_type
     print("Unknown USD type:", usd_type)
     return usd_type
 
@@ -280,6 +328,8 @@ def usd_type_to_sgc_datatype(usd_type: str) -> str:
         return 'SGDataType.string'
     if usd_type == 'token':
         return 'SGDataType.string'
+    if usd_type in enums_by_gen_usd_type:
+        return f"SGDataType.string"
     print("Unknown USD datatype:", usd_type)
     return f"SGDataType.{usd_type}"
 
@@ -351,7 +401,10 @@ def capitalize_first_letter(name: str) -> str:
 
 def snake_to_camel(name: str) -> str:
     parts = name.split('_')
-    return parts[0] + ''.join(capitalize_first_letter(x) for x in parts[1:])
+    ident = parts[0] + ''.join(capitalize_first_letter(x) for x in parts[1:])
+    if ident == "repeat":
+        ident = "repeated"
+    return ident
 
 def get_param_name(name: str) -> str:
     if name in param_renames:
@@ -418,10 +471,10 @@ def find_generic_params(overloads: NodeOverloads) -> Optional[Tuple[List[int], s
     param_type_matches_output_type = [True for _ in overloads.first_node().inputs]
     sgc_output_types: Set[str] = set()
     for _, node in overloads.overloads:
-        sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
+        sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type)
         sgc_output_types.add(sgc_output_type)
         for i, input in enumerate(node.inputs):
-            sgc_param_type = usd_type_to_sgc_type(input.usd_type_name)
+            sgc_param_type = usd_type_to_sgc_type(input.usd_type)
             if sgc_param_type != sgc_output_type:
                 param_type_matches_output_type[i] = False
     generic_indices = [i for i, x in enumerate(param_type_matches_output_type) if x]
@@ -431,20 +484,25 @@ def find_generic_params(overloads: NodeOverloads) -> Optional[Tuple[List[int], s
         return None
     return generic_indices, get_base_sg_type(sgc_output_types)
 
+def write_enums(w: SwiftWriter):
+    for enum in enums_by_gen_usd_type.values():
+        w.write_line(f'public enum {enum.gen_sgc_type}: String, CaseIterable {{')
+        for member in enum.members:
+            swift_name = snake_to_camel(member)
+            w.write_line(f'    case {swift_name} = "{member}"')
+        w.write_line('}')
+        w.write_line('')
+
 def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     swift_name = get_node_name(overloads.base_name)
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
     description = get_node_description(first_node)
     generic_params = find_generic_params(overloads)
-    if generic_params is not None:
-        print(f"Found generic params for {swift_name}: {generic_params}")
     usd_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_param_type_is_shared = [True for _ in first_node.inputs]
-    sgc_output_type_is_shared = True
-    usd_shared_param_type = [p.usd_type_name for p in first_node.inputs]
-    sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type_name) for p in first_node.inputs]
-    sgc_shared_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    usd_shared_param_type = [p.usd_type for p in first_node.inputs]
+    sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type) for p in first_node.inputs]
     num_default_inputs = 0
     param_names: List[str] = []
     for i, input in enumerate(first_node.inputs):
@@ -453,12 +511,10 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         param_names.append(get_param_name(input.name))
     for suffix_type_name, node in overloads.overloads[1:]:
         for i, input in enumerate(node.inputs):
-            if input.usd_type_name != usd_shared_param_type[i]:
+            if input.usd_type != usd_shared_param_type[i]:
                 usd_param_type_is_shared[i] = False
-            if usd_type_to_sgc_type(input.usd_type_name) != sgc_shared_param_type[i]:
+            if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
                 sgc_param_type_is_shared[i] = False
-        if usd_type_to_sgc_type(node.outputs[0].usd_type_name) != usd_type_to_sgc_type(first_node.outputs[0].usd_type_name):
-            sgc_output_type_is_shared = False
     num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
     if len(description) > 0:
         w.write_line(f'/// {description}')
@@ -470,7 +526,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
         sgc_type = sgc_shared_param_type[i]
         if not sgc_type_is_shared:
-            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type_name) for o in overloads.overloads]
+            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in overloads.overloads]
             sgc_type = get_base_sg_type(all_types)
         if generic_params is not None and i in generic_params[0]:
             sgc_type = 'T'
@@ -478,7 +534,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         w.write(f'{name}: {sgc_type}')
         if i < len(first_node.inputs) - 1:
             w.write(', ')
-    sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type_name) for o in overloads.overloads]
+    sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type) for o in overloads.overloads]
     sgc_output_type = get_base_sg_type(sgc_output_types)
     if generic_params is not None:
         sgc_output_type = 'T'
@@ -488,13 +544,18 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     for i, input in enumerate(first_node.inputs):
         if not usd_param_type_is_shared[i]:
             continue
-        sgc_datatype = usd_type_to_sgc_datatype(input.usd_type_name)
+        if first_node.inputs[i].is_enum:
+            continue
+        sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
         w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
         w.write_line(f'        return {sgc_output_type}(source: .error("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType)."))')
         w.write_line(f'    }}')
     w.write_line(f'    let inputs: [SGNode.Input] = [')
     for i, input in enumerate(first_node.inputs):
-        w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
+        if input.is_enum:
+            w.write_line(f'        .init(name: "{input.name}", connection: SGString(source: .constant(.string({param_names[i]}.rawValue)))),')
+        else:
+            w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
     w.write_line(f'    ]')
     for suffix_type_name, node in overloads.overloads:
         conds: List[str] = []
@@ -502,7 +563,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             if usd_param_type_is_shared[i]:
                 continue
             name = param_names[i]
-            conds.append(f'{name}.dataType == {usd_type_to_sgc_datatype(input.usd_type_name)}')
+            conds.append(f'{name}.dataType == {usd_type_to_sgc_datatype(input.usd_type)}')
         if len(conds) == 0:
             indent = ""
             if len(overloads.overloads) > 1:
@@ -511,13 +572,13 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             cond = " && ".join(conds)
             w.write_line(f'    if {cond} {{')
             indent = "    "
-        sgc_node_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type_name)
+        sgc_node_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type)
         if generic_params is not None:
             sgc_node_output_type = 'T'
         w.write_line(f'    {indent}return {sgc_node_output_type}(source: .nodeOutput(SGNode(')
         w.write_line(f'        {indent}nodeType: "{node.name}",')
         w.write_line(f'        {indent}inputs: inputs,')
-        w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type_name)})])))')
+        w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type)})])))')
         if len(conds) > 0:
             w.write_line(f'    }}')
     if num_unshared_usd_params > 0:
@@ -529,16 +590,16 @@ def write_src_node(overloads: NodeOverloads, w: SwiftWriter):
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
     description = get_node_description(first_node)
-    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type)
     if len(description) > 0:
         w.write_line(f'    /// {description}')
     w.write_line(f'    var {swift_name}: {sgc_output_type} {{')
-    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type)
     indent = "    "
     w.write_line(f'    {indent}return {sgc_output_type}(source: .nodeOutput(SGNode(')
     w.write_line(f'        {indent}nodeType: "{first_node.name}",')
     w.write_line(f'        {indent}inputs: [],')
-    w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(first_output.usd_type_name)})])))')
+    w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(first_output.usd_type)})])))')
     w.write_line('    }')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
@@ -553,9 +614,9 @@ srcs_out_path = os.path.join(src_path, 'Sources.g.swift')
 stage = Usd.Stage.Open(schemas_path)
 all_prims = [x for x in stage.Traverse()]  
 
-test_prim = [x for x in all_prims if x.GetName() == 'ND_time_float'][0]
-dir(test_prim.GetAttribute('inputs:in').GetTypeName())
-test_prim.GetAttribute('inputs:in').GetTypeName().aliasesAsStrings
+test_prim = [x for x in all_prims if x.GetName() == 'ND_realitykit_image_half'][0]
+dir(test_prim.GetAttribute('inputs:border_color').GetAllMetadata()["allowedTokens"])
+list(test_prim.GetAttribute('inputs:border_color').GetAllMetadata()["allowedTokens"])
 
 prop_is_supported(test_prim.GetAttribute('inputs:fps'))
 
@@ -578,6 +639,7 @@ print(f'Outputting {len(op_nodes)} operations')
 print(f'Outputting {len(src_nodes)} sources')
 
 ops_writer = SwiftWriter()
+write_enums(ops_writer)
 for node in op_nodes:
     write_node_overloads(node, ops_writer)
 ops_writer.output_to_file(ops_out_path)
