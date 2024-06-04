@@ -59,29 +59,16 @@ public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
     clamp<SGScalar>(x, low: min, high: max)
 }
 
-public func ifGreaterOrEqual<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
-    let node = SGNode(
-        nodeType: "ND_ifgreatereq_" + getNodeSuffixForDataType(trueResult.dataType),
-        inputs: [
-            .init(name: "in1", connection: trueResult),
-            .init(name: "in2", connection: falseResult),
-            .init(name: "value1", connection: value1),
-            .init(name: "value2", connection: value2),
-        ],
-        outputs: [.init(dataType: trueResult.dataType)])
-    return U(source: .nodeOutput(node))
+public func ifGreaterOrEqual(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
+    ifGreaterOrEqual<SGScalar>(value1: value1, value2: value2, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
-public func ifGreaterOrEqual<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: Float) -> SGScalar where T: SGNumeric {
-    ifGreaterOrEqual(value1, value2, trueResult: .float(trueResult), falseResult: .float(falseResult))
+public func ifLess<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
+    ifGreaterOrEqual<T>(value1: value2, value2: value1, trueResult: trueResult, falseResult: falseResult)
 }
 
-public func ifLess<T, U>(_ value1: T, _ value2: T, trueResult: U, falseResult: U) -> U where T: SGNumeric, U: SGValue {
-    ifGreaterOrEqual(value2, value1, trueResult: trueResult, falseResult: falseResult)
-}
-
-public func ifLess<T>(_ value1: T, _ value2: T, trueResult: Float, falseResult: Float) -> SGScalar where T: SGNumeric {
-    ifGreaterOrEqual(value2, value1, trueResult: .float(trueResult), falseResult: .float(falseResult))
+public func ifLess(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
+    ifGreaterOrEqual<SGScalar>(value1: value2, value2: value1, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
 public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGScalar, y2: SGScalar) -> SGScalar {

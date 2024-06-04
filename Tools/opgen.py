@@ -47,6 +47,7 @@ node_renames: Dict[str, str] = {
     "dotproduct": "dot",
     "crossproduct": "cross",
     "fractional": "fract",
+    "ifgreatereq": "ifGreaterOrEqual",
     "in": "mixColor",
     "magnitude": "length",
     "oneminus": "oneMinus",
@@ -507,9 +508,14 @@ def snake_to_camel(name: str) -> str:
         ident = "repeated"
     return ident
 
-def get_param_name(name: str) -> str:
+def get_param_name(name: str, node: Node) -> str:
     if name in param_renames:
         return param_renames[name]
+    if node.name.startswith("ND_ifgreatereq_"):
+        if name == "in1":
+            return "trueResult"
+        if name == "in2":
+            return "falseResult"
     name = snake_to_camel(name)
     return name
 
@@ -663,7 +669,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     for i, input in enumerate(first_node.inputs):
         if i == num_default_inputs and is_default_input_name(input.name):
             num_default_inputs += 1
-        param_names.append(get_param_name(input.name))
+        param_names.append(get_param_name(input.name, first_node))
     for suffix_type_name, node in overloads.overloads[1:]:
         for i, input in enumerate(node.inputs):
             if input.usd_type != usd_shared_param_type[i]:

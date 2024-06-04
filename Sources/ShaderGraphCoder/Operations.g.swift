@@ -1775,134 +1775,134 @@ public func ifgreater<T>(value1: SGScalar = SGScalar(source: .constant(.float(1.
     return T(source: .error("Unsupported input data types for ifgreater"))
 }
 /// If Greater Or Equal
-public func ifgreatereq<T>(value1: SGScalar = SGScalar(source: .constant(.float(1.0))), value2: SGScalar = SGScalar(source: .constant(.float(0.0))), in1: T, in2: T) -> T where T: SGNumeric {
+public func ifGreaterOrEqual<T>(value1: SGScalar = SGScalar(source: .constant(.float(1.0))), value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
+        .init(name: "in1", connection: trueResult),
+        .init(name: "in2", connection: falseResult),
     ]
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color3",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color3I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color4I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_float",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_floatI",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half2",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half2I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half3",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half3I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half4I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_halfI",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector2",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector2I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector3",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector3I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector4I",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for ifgreatereq"))
+    return T(source: .error("Unsupported input data types for ifGreaterOrEqual"))
 }
 /// Image
 public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uaddressmode: SGAddressMode = SGAddressMode.periodic, vaddressmode: SGAddressMode = SGAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
