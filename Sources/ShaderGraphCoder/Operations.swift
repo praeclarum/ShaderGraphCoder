@@ -54,10 +54,6 @@ public func abs<T>(_ x: T) -> T where T: SGNumeric {
     unop("ND_absval_", x: x)
 }
 
-public func ceil<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_ceil_", x: x)
-}
-
 public func clamp<T>(_ x: T, min: T, max: T) -> T where T: SGNumeric {
     let node = SGNode(
         nodeType: "ND_clamp_" + getNodeSuffixForDataType(x.dataType),
@@ -74,20 +70,12 @@ public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
     clamp(x, min: SGValue.float(min), max: SGValue.float(max))
 }
 
-public func cos<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_cos_", x: x)
-}
-
 public func cross(_ x: SGVector, _ y: SGVector) -> SGVector {
     binop("ND_crossproduct_", left: x, right: y)
 }
 
 public func dot(_ x: SGVector, _ y: SGVector) -> SGScalar {
     binop("ND_dotproduct_", left: x, right: y)
-}
-
-public func floor<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_floor_", x: x)
 }
 
 public func fract<T>(_ x: T) -> T where T: SGNumeric {
@@ -180,32 +168,12 @@ public func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
     binop("ND_power_", left: x, right: .float(y))
 }
 
-public func round<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_round_", x: x)
-}
-
 public func safePow<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
     binop("ND_safepower_", left: x, right: y)
 }
 
 public func safePow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
     binop("ND_safepower_", left: x, right: .float(y))
-}
-
-public func sign<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_sign_", x: x)
-}
-
-public func sin<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_sin_", x: x)
-}
-
-public func sqrt<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_sqrt_", x: x)
-}
-
-public func tan<T>(_ x: T) -> T where T: SGNumeric {
-    unop("ND_tan_", x: x)
 }
 
 public func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {

@@ -70,6 +70,8 @@ public extension SGValueSource {
             return "</Root/\(materialName)/\(inode.usdaName).outputs:\(inodeOut)>"
         case .parameter(name: let name, defaultValue: _):
             return "</Root/\(materialName).inputs:\(name)>"
+        case .error(let error):
+            return "\"\(error)\""
         }
     }
 }
