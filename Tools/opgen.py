@@ -138,7 +138,7 @@ class EnumType():
         else:
             print(f'Warning: No SGC type for enum \"{structural_type_id}\"')
         self.first_node_name = node.name
-        print(f'{self.first_node_name} created enum {self.gen_usd_type} with members {members}')
+        # print(f'{self.first_node_name} created enum {self.gen_usd_type} with members {members}')
 
     def __str__(self):
         return self.type_id
@@ -357,6 +357,54 @@ def usd_type_to_sgc_datatype(usd_type: str) -> str:
     print("Unknown USD datatype:", usd_type)
     return f"SGDataType.{usd_type}"
 
+def usd_type_to_primitive_type(usd_type: str) -> str:
+    if usd_type == 'bool':
+        return 'Bool'
+    if usd_type == 'color3f':
+        return 'SIMD3<Float>'
+    if usd_type == 'color4f':
+        return 'SIMD4<Float>'
+    if usd_type == 'float':
+        return 'Float'
+    if usd_type == 'matrix2d':
+        return 'SIMD2x2<Float>'
+    if usd_type == 'matrix3d':
+        return 'SIMD3x3<Float>'
+    if usd_type == 'matrix4d':
+        return 'SIMD4x4<Float>'
+    if usd_type == 'float2':
+        return 'SIMD2<Float>'
+    if usd_type == 'half2':
+        return 'SIMD2<Float16>'
+    if usd_type == 'int2':
+        return 'SIMD2<Int32>'
+    if usd_type == 'float3':
+        return 'SIMD3<Float>'
+    if usd_type == 'half3':
+        return 'SIMD3<Float16>'
+    if usd_type == 'int3':
+        return 'SIMD3<Int32>'
+    if usd_type == 'float4':
+        return 'SIMD4<Float>'
+    if usd_type == 'half4':
+        return 'SIMD4<Float16>'
+    if usd_type == 'int4':
+        return 'SIMD4<Int32>'
+    if usd_type == 'int':
+        return 'Int'
+    if usd_type == 'half':
+        return 'Float16'
+    if usd_type == 'asset':
+        return 'SGTexture'
+    if usd_type == 'string':
+        return 'String'
+    if usd_type == 'token':
+        return 'String'
+    if usd_type in enums_by_gen_usd_type:
+        return enums_by_gen_usd_type[usd_type].gen_sgc_type
+    print("Unknown USD primitive type:", usd_type)
+    return f"Any"
+
 def load_plist_strings(plist_path) -> Dict[str, str]:
     with open(plist_path, 'rb') as f:
         plist = plistlib.load(f)
@@ -508,6 +556,14 @@ def find_generic_params(overloads: NodeOverloads) -> Optional[Tuple[List[int], s
         return None
     return generic_indices, get_base_sg_type(sgc_output_types)
 
+def find_interface_only_params(overloads: NodeOverloads) -> List[bool]:
+    interface_only = [i.usd_type != "asset" for i in overloads.first_node().inputs]
+    for _, node in overloads.overloads:
+        for i, input in enumerate(node.inputs):
+            if not input.interface_only:
+                interface_only[i] = False
+    return interface_only
+
 def write_enums(w: SwiftWriter):
     for enum in enums_by_gen_usd_type.values():
         w.write_line(f'public enum {enum.gen_sgc_type}: String, CaseIterable {{')
@@ -523,6 +579,7 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     first_output = first_node.outputs[0]
     description = get_node_description(first_node)
     generic_params = find_generic_params(overloads)
+    interface_only_params = find_interface_only_params(overloads)
     usd_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_param_type_is_shared = [True for _ in first_node.inputs]
     usd_shared_param_type = [p.usd_type for p in first_node.inputs]
@@ -552,7 +609,9 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         if not sgc_type_is_shared:
             all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in overloads.overloads]
             sgc_type = get_base_sg_type(all_types)
-        if generic_params is not None and i in generic_params[0]:
+        if interface_only_params[i]:
+            sgc_type = usd_type_to_primitive_type(input.usd_type)
+        elif generic_params is not None and i in generic_params[0]:
             sgc_type = 'T'
         name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
@@ -570,6 +629,8 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             continue
         if first_node.inputs[i].is_enum:
             continue
+        if interface_only_params[i]:
+            continue
         sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
         w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
         w.write_line(f'        return {sgc_output_type}(source: .error("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType)."))')
@@ -578,6 +639,10 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     for i, input in enumerate(first_node.inputs):
         if input.is_enum:
             w.write_line(f'        .init(name: "{input.name}", connection: SGString(source: .constant(.string({param_names[i]}.rawValue)))),')
+        elif interface_only_params[i]:
+            sgct = usd_type_to_sgc_type(input.usd_type)
+            ctor = usd_type_to_sgc_datatype(input.usd_type).replace('SGDataType.', '.')
+            w.write_line(f'        .init(name: "{input.name}", connection: {sgct}(source: .constant({ctor}({param_names[i]})))),')
         else:
             w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
     w.write_line(f'    ]')
@@ -675,3 +740,5 @@ for node in src_nodes:
     write_src_node(node, srcs_writer)
 srcs_writer.write_line('}')
 srcs_writer.output_to_file(srcs_out_path)
+
+print('Done')

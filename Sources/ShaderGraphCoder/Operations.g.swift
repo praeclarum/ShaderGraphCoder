@@ -379,13 +379,10 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for atan2"))
 }
-public func bitangent(space: SGSpace, index: SGScalar) -> SGVector {
-    guard index.dataType == SGDataType.int else {
-        return SGVector(source: .error("Invalid bitangent input. Expected index data type to be SGDataType.int, but got \(index.dataType)."))
-    }
+public func bitangent(space: SGSpace, index: Int) -> SGVector {
     let inputs: [SGNode.Input] = [
         .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-        .init(name: "index", connection: index),
+        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
     ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_bitangent_vector3",
@@ -1026,13 +1023,10 @@ public func dodge<T>(fg: T, bg: T, mix: SGScalar) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for dodge"))
 }
 /// Dot
-public func dot<T>(_ in1: T, note: SGString) -> T where T: SGValue {
-    guard note.dataType == SGDataType.string else {
-        return T(source: .error("Invalid dot input. Expected note data type to be SGDataType.string, but got \(note.dataType)."))
-    }
+public func dot<T>(_ in1: T, note: String) -> T where T: SGValue {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
-        .init(name: "note", connection: note),
+        .init(name: "note", connection: SGString(source: .constant(.string(note)))),
     ]
     if in1.dataType == SGDataType.bool {
         return T(source: .nodeOutput(SGNode(
@@ -1214,13 +1208,10 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for exp"))
 }
 /// Extract
-public func extract(_ in1: SGSIMD, index: SGScalar) -> SGScalar {
-    guard index.dataType == SGDataType.int else {
-        return SGScalar(source: .error("Invalid extract input. Expected index data type to be SGDataType.int, but got \(index.dataType)."))
-    }
+public func extract(_ in1: SGSIMD, index: Int) -> SGScalar {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
-        .init(name: "index", connection: index),
+        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
     ]
     if in1.dataType == SGDataType.color3f {
         return SGScalar(source: .nodeOutput(SGNode(
@@ -1393,12 +1384,9 @@ public func fractal3d(amplitude: SGNumeric, octaves: SGScalar, lacunarity: SGSca
     return SGNumeric(source: .error("Unsupported input data types for fractal3d"))
 }
 /// Geometry Color
-public func geomcolor(index: SGScalar) -> SGNumeric {
-    guard index.dataType == SGDataType.int else {
-        return SGNumeric(source: .error("Invalid geomcolor input. Expected index data type to be SGDataType.int, but got \(index.dataType)."))
-    }
+public func geomcolor(index: Int) -> SGNumeric {
     let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: index),
+        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
     ]
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_geomcolor_color3",
@@ -1414,12 +1402,9 @@ public func geomcolor(index: SGScalar) -> SGNumeric {
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Geometric Property
-public func geompropvalue<T>(geomprop: SGString, defaultValue: T) -> T where T: SGValue {
-    guard geomprop.dataType == SGDataType.string else {
-        return T(source: .error("Invalid geompropvalue input. Expected geomprop data type to be SGDataType.string, but got \(geomprop.dataType)."))
-    }
+public func geompropvalue<T>(geomprop: String, defaultValue: T) -> T where T: SGValue {
     let inputs: [SGNode.Input] = [
-        .init(name: "geomprop", connection: geomprop),
+        .init(name: "geomprop", connection: SGString(source: .constant(.string(geomprop)))),
         .init(name: "default", connection: defaultValue),
     ]
     if defaultValue.dataType == SGDataType.bool {
@@ -4968,13 +4953,10 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for tan"))
 }
-public func tangent(space: SGSpace, index: SGScalar) -> SGVector {
-    guard index.dataType == SGDataType.int else {
-        return SGVector(source: .error("Invalid tangent input. Expected index data type to be SGDataType.int, but got \(index.dataType)."))
-    }
+public func tangent(space: SGSpace, index: Int) -> SGVector {
     let inputs: [SGNode.Input] = [
         .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-        .init(name: "index", connection: index),
+        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
     ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_tangent_vector3",
@@ -4982,12 +4964,9 @@ public func tangent(space: SGSpace, index: SGScalar) -> SGVector {
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Texture Coordinates
-public func texcoord(index: SGScalar) -> SGVector {
-    guard index.dataType == SGDataType.int else {
-        return SGVector(source: .error("Invalid texcoord input. Expected index data type to be SGDataType.int, but got \(index.dataType)."))
-    }
+public func texcoord(index: Int) -> SGVector {
     let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: index),
+        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
     ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_texcoord_vector2",
