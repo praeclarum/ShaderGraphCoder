@@ -400,6 +400,8 @@ def get_base_sg_type(sg_types: List[str]) -> str:
         return "SGVector"
     if composite_type == "SGScalar":
         return "SGScalar"
+    if "SGValue" in composite_type:
+        return "SGValue"
     if composite_type == "SGColorSGVector":
         return "SGSIMD"
     if composite_type == "SGVectorSGScalar" or \
@@ -407,10 +409,6 @@ def get_base_sg_type(sg_types: List[str]) -> str:
        composite_type == "SGMatrixSGColorSGVectorSGScalar" or \
        composite_type == "SGColorSGVectorSGScalar":
         return "SGNumeric"
-    if composite_type == "" or \
-       composite_type == "SGColorSGVectorSGScalarSGString" or \
-       composite_type == "SGMatrixSGColorSGVectorSGScalarSGString":
-        return "SGValue"
     print("Warning: Could not determine base SG type for", composite_type)
     return "SGValue"
 
