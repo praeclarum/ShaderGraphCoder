@@ -105,20 +105,12 @@ public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGVector, y2: SGV
     return m*(x - x1) + y1
 }
 
-public func pow<T>(_ x: T, _ y: SGNumeric) -> T where T: SGNumeric {
-    binop("ND_power_", left: x, right: y)
-}
-
 public func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
-    binop("ND_power_", left: x, right: .float(y))
-}
-
-public func safePow<T>(_ x: T, _ y: T) -> T where T: SGNumeric {
-    binop("ND_safepower_", left: x, right: y)
+    pow<T>(x, SGValue.float(y))
 }
 
 public func safePow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
-    binop("ND_safepower_", left: x, right: .float(y))
+    safePow<T>(x, SGValue.float(y))
 }
 
 public func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {

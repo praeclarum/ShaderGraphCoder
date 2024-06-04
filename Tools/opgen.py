@@ -50,6 +50,8 @@ node_renames: Dict[str, str] = {
     "in": "mixColor",
     "magnitude": "length",
     "oneminus": "oneMinus",
+    "power": "pow",
+    "safepower": "safePow",
     "switch": "switchValue",
 }
 

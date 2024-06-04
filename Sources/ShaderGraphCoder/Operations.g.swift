@@ -3147,7 +3147,7 @@ public func position(space: SGSpace = SGSpace.object) -> SGVector {
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Power
-public func power<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
+public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
         .init(name: "in2", connection: in2),
@@ -3224,7 +3224,7 @@ public func power<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for power"))
+    return T(source: .error("Unsupported input data types for pow"))
 }
 public func premult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 1])))) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
@@ -4041,7 +4041,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for round"))
 }
 /// Safe Power
-public func safepower<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
+public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
         .init(name: "in2", connection: in2),
@@ -4118,7 +4118,7 @@ public func safepower<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for safepower"))
+    return T(source: .error("Unsupported input data types for safePow"))
 }
 /// Saturate
 public func saturate(_ in1: SGColor, amount: SGScalar = SGScalar(source: .constant(.float(1.0))), lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
