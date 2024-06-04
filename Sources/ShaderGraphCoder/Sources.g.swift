@@ -181,18 +181,6 @@ public extension SGValue {
             inputs: [],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    var occlusionSurfaceshader: SGString {
-        return SGString(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_occlusion_surfaceshader",
-            inputs: [],
-            outputs: [.init(dataType: SGDataType.string)])))
-    }
-    var shadowreceiverSurfaceshader: SGString {
-        return SGString(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_shadowreceiver_surfaceshader",
-            inputs: [],
-            outputs: [.init(dataType: SGDataType.string)])))
-    }
     var surfaceAmbientOcclusion: SGScalar {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_surface_ambient_occlusion",

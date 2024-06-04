@@ -115,6 +115,9 @@ def should_output_node(node: Node):
     if node.outputs[0].type_is_array:
         # print(f'Skipping {node.name} because its output is an array')
         return False
+    if node.outputs[0].usd_type_name == 'token':
+        # print(f'Skipping {node.name} because its output is a token')
+        return False
     for prefix in manual_node_prefixes:
         if node.name.startswith(prefix):
             # print(f'Skipping {node.name} because it is a manual node')
