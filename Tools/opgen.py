@@ -391,6 +391,23 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         w.write_line(f'    return {sgc_output_type}Error("Unsupported input data types for {swift_name}")')
     w.write_line('}')
 
+def write_src_node(overloads: NodeOverloads, w: SwiftWriter):
+    swift_name = get_node_name(overloads.base_name)
+    first_node = overloads.overloads[0][1]
+    first_output = first_node.outputs[0]
+    sgc_output_type_is_shared = True
+    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    num_default_inputs = 0
+    param_names: List[str] = []
+    w.write_line(f'    var {swift_name}: {sgc_output_type} {{')
+    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type_name)
+    indent = "    "
+    w.write_line(f'    {indent}return {sgc_output_type}(source: .nodeOutput(SGNode(')
+    w.write_line(f'        {indent}nodeType: "{first_node.name}",')
+    w.write_line(f'        {indent}inputs: [],')
+    w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(first_output.usd_type_name)})])))')
+    w.write_line('    }')
+
 tools_path = os.path.dirname(os.path.abspath(__file__))
 schemas_path = os.path.join(tools_path, 'schemas.usda')
 src_path = os.path.abspath(os.path.join(tools_path, '..', 'Sources', 'ShaderGraphCoder'))
@@ -429,6 +446,8 @@ for node in op_nodes:
 ops_writer.output_to_file(ops_out_path)
 
 srcs_writer = SwiftWriter()
+srcs_writer.write_line('public extension SGValue {')
 for node in src_nodes:
-    write_node_overloads(node, srcs_writer)
+    write_src_node(node, srcs_writer)
+srcs_writer.write_line('}')
 srcs_writer.output_to_file(srcs_out_path)
