@@ -53,6 +53,16 @@ def prop_is_supported(prop):
                 return not u
     return True
 
+def prim_is_supported(prim):
+    cd = prim.GetCustomData()
+    if cd is not None and "realitykit" in cd:
+        rk = cd["realitykit"]
+        if "availability" in rk:
+            a = rk["availability"]
+            if a is not None and a == "deprecated":
+                return False
+    return True
+
 class Node():
     name: str
     inputs: List['NodeProperty']
@@ -437,7 +447,7 @@ test_prim.GetAttribute('inputs:in').GetTypeName().aliasesAsStrings
 
 prop_is_supported(test_prim.GetAttribute('inputs:fps'))
 
-nodes = [Node(x) for x in all_prims if is_node(x)]
+nodes = [Node(x) for x in all_prims if is_node(x) and prim_is_supported(x)]
 print(f'Found {len(nodes)} nodes')
 output_nodes = [x for x in nodes if should_output_node(x)]
 output_nodes = sorted(output_nodes, key=lambda x: x.name)
