@@ -514,9 +514,9 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for ceil"))
 }
 /// Cellular Noise 2D
-public func cellnoise2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGScalar {
+public func cellNoise2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGScalar {
     guard texcoord.dataType == SGDataType.vector2f else {
-        return SGScalar(source: .error("Invalid cellnoise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
+        return SGScalar(source: .error("Invalid cellNoise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "texcoord", connection: texcoord),
@@ -527,9 +527,9 @@ public func cellnoise2D(texcoord: SGVector = SGVector(source: .constant(.vector2
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Cellular Noise 3D
-public func cellnoise3D(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGScalar {
+public func cellNoise3D(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGScalar {
     guard position.dataType == SGDataType.vector3f else {
-        return SGScalar(source: .error("Invalid cellnoise3D input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
+        return SGScalar(source: .error("Invalid cellNoise3D input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "position", connection: position),
@@ -1454,12 +1454,12 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
     return T(source: .error("Unsupported input data types for geompropvalue"))
 }
 /// Height To Normal
-public func heighttonormal(_ in1: SGScalar = SGScalar(source: .constant(.float(0.0))), scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func heightToNormal(_ in1: SGScalar = SGScalar(source: .constant(.float(0.0))), scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard in1.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid heighttonormal input. Expected in data type to be SGDataType.float, but got \(in1.dataType)."))
+        return SGVector(source: .error("Invalid heightToNormal input. Expected in data type to be SGDataType.float, but got \(in1.dataType)."))
     }
     guard scale.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid heighttonormal input. Expected scale data type to be SGDataType.float, but got \(scale.dataType)."))
+        return SGVector(source: .error("Invalid heightToNormal input. Expected scale data type to be SGDataType.float, but got \(scale.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -1471,9 +1471,9 @@ public func heighttonormal(_ in1: SGScalar = SGScalar(source: .constant(.float(0
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// HSV Adjust
-public func hsvadjust(_ in1: SGColor, amount: SGVector = SGVector(source: .constant(.vector3f([0, 1, 1])))) -> SGColor {
+public func hsvAdjust(_ in1: SGColor, amount: SGVector = SGVector(source: .constant(.vector3f([0, 1, 1])))) -> SGColor {
     guard amount.dataType == SGDataType.vector3f else {
-        return SGColor(source: .error("Invalid hsvadjust input. Expected amount data type to be SGDataType.vector3f, but got \(amount.dataType)."))
+        return SGColor(source: .error("Invalid hsvAdjust input. Expected amount data type to be SGDataType.vector3f, but got \(amount.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -1491,10 +1491,10 @@ public func hsvadjust(_ in1: SGColor, amount: SGVector = SGVector(source: .const
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    return SGColor(source: .error("Unsupported input data types for hsvadjust"))
+    return SGColor(source: .error("Unsupported input data types for hsvAdjust"))
 }
 /// HSV to RGB
-public func hsvtorgb(_ in1: SGColor) -> SGColor {
+public func hsvToRGB(_ in1: SGColor) -> SGColor {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -1510,7 +1510,7 @@ public func hsvtorgb(_ in1: SGColor) -> SGColor {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    return SGColor(source: .error("Unsupported input data types for hsvtorgb"))
+    return SGColor(source: .error("Unsupported input data types for hsvToRGB"))
 }
 /// If Equal
 public func ifEqual<T>(value1: SGValue = SGValue(source: .constant(.float(0.0))), value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {

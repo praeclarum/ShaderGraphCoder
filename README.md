@@ -73,6 +73,13 @@ For more details see [Values.swift](Sources/ShaderGraphCoder/Values.swift).
 
 ## Operations
 
+There are over 100 operators that combine
+`SGScalar`, `SGVector`, `SGColor`, and `SGMatrix` values
+in varied and wonderful ways. From simple arithmetic to complex
+blends, a bit of everything is available.
+
+The `ifGreaterOrEqual` and `ifLess` operators are conditional operators that take a condition, a value if true, and a value if false. The `mix` operator is a linear interpolation operator that takes two values and a weight. Since runtime conditionals are not supported in RealityKit, the `ifGreaterOrEqual` and `ifLess` operators are the best way to implement runtime logic.
+
 The following operators are supported:
 
 | Operator | Description |
@@ -197,10 +204,6 @@ The following operators are supported:
 | `worleynoise3DFloat(position, jitter)` | Worley Noise 3D |
 | `worleynoise3DVector2(position, jitter)` | Worley Noise 3D |
 | `worleynoise3DVector3(position, jitter)` | Worley Noise 3D |
-
-Most operators work on `SGScalar`, `SGVector`, and `SGColor` types.
-
-The `ifGreaterOrEqual` and `ifLess` operators are conditional operators that take a condition, a value if true, and a value if false. The `mix` operator is a linear interpolation operator that takes two values and a weight. Since runtime conditionals are not supported in RealityKit, the `ifGreaterOrEqual` and `ifLess` operators are the best way to implement runtime logic.
 
 For more details see [Operations.swift](Sources/ShaderGraphCoder/Operations.swift) and [Operations.g.swift](Sources/ShaderGraphCoder/Operations.g.swift).
 
