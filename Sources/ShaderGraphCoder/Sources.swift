@@ -184,11 +184,23 @@ public extension SGValue {
         SGVector(source: .parameter(name: name, defaultValue: .vector4i(defaultValue)))
     }
 
+    static var modelCameraPosition: SGVector {
+        cameraPosition(space: .model)
+    }
     static var modelNormal: SGVector {
         normal(space: .model)
     }
     static var modelPosition: SGVector {
         position(space: .model)
+    }
+    static var modelUpDirection: SGVector {
+        upDirection(space: .model)
+    }
+    static var modelViewDirection: SGVector {
+        viewDirection(space: .model)
+    }
+    static var objectCameraPosition: SGVector {
+        cameraPosition(space: .object)
     }
     static var objectNormal: SGVector {
         normal(space: .object)
@@ -196,13 +208,25 @@ public extension SGValue {
     static var objectPosition: SGVector {
         position(space: .object)
     }
+    static var objectUpDirection: SGVector {
+        upDirection(space: .object)
+    }
+    static var objectViewDirection: SGVector {
+        viewDirection(space: .object)
+    }
     static var worldCameraPosition: SGVector {
         cameraPosition(space: .world)
+    }
+    static var worldNormal: SGVector {
+        normal(space: .world)
     }
     static var worldPosition: SGVector {
         position(space: .world)
     }
-    static var worldNormal: SGVector {
-        normal(space: .world)
+    static var worldUpDirection: SGVector {
+        upDirection(space: .world)
+    }
+    static var worldViewDirection: SGVector {
+        viewDirection(space: .world)
     }
 }
