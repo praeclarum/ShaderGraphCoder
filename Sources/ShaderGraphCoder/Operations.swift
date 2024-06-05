@@ -55,19 +55,23 @@ public func clamp<T>(_ in1: T, min: Float, max: Float) -> T where T: SGNumeric {
 }
 
 public func ifGreaterOrEqual(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
-    ifGreaterOrEqual<SGScalar>(value1: value1, value2: value2, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
+    ifGreaterOrEqual(value1, value2, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
 public func ifLess<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    ifGreaterOrEqual<T>(value1: value2, value2: value1, trueResult: trueResult, falseResult: falseResult)
+    ifGreaterOrEqual(value2, value1, trueResult: trueResult, falseResult: falseResult)
 }
 
 public func ifLess(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
-    ifGreaterOrEqual<SGScalar>(value1: value2, value2: value1, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
+    ifGreaterOrEqual(value2, value1, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
-public func ifLessOrEqual<T>(value1: SGScalar, value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    ifGreater(value1: value2, value2: value1, trueResult: trueResult, falseResult: falseResult)
+public func ifLessOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
+    ifGreater(value2, value1, trueResult: trueResult, falseResult: falseResult)
+}
+
+public func ifLessOrEqual(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
+    ifGreater(value2, value1, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
 public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGScalar, y2: SGScalar) -> SGScalar {

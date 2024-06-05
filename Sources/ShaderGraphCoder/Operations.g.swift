@@ -1520,7 +1520,7 @@ public func hsvToRGB(_ in1: SGColor) -> SGColor {
     return SGColor(source: .error("Unsupported input data types in hsvToRGB(in1: \(in1.dataType))", values: [in1]))
 }
 /// If Equal
-public func ifEqual<T>(value1: SGValue = SGValue(source: .constant(.float(0.0))), value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+public func ifEqual<T>(_ value1: SGValue = SGValue(source: .constant(.float(0.0))), _ value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
@@ -1710,7 +1710,7 @@ public func ifEqual<T>(value1: SGValue = SGValue(source: .constant(.float(0.0)))
     return T(source: .error("Unsupported input data types in ifEqual(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// If Greater
-public func ifGreater<T>(value1: SGScalar = SGScalar(source: .constant(.float(1.0))), value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+public func ifGreater<T>(_ value1: SGScalar = SGScalar(source: .constant(.float(1.0))), _ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
@@ -1840,7 +1840,7 @@ public func ifGreater<T>(value1: SGScalar = SGScalar(source: .constant(.float(1.
     return T(source: .error("Unsupported input data types in ifGreater(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// If Greater Or Equal
-public func ifGreaterOrEqual<T>(value1: SGScalar = SGScalar(source: .constant(.float(1.0))), value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+public func ifGreaterOrEqual<T>(_ value1: SGScalar = SGScalar(source: .constant(.float(1.0))), _ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
@@ -5187,8 +5187,8 @@ public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant
 }
 public extension SGValue {
     /// If Equal
-    func ifEqual<T>(value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
-        ShaderGraphCoder.ifEqual(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
+    func ifEqual<T>(_ value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+        ShaderGraphCoder.ifEqual(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
     /// And
     func logicalAnd(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
@@ -5427,12 +5427,12 @@ public extension SGScalar {
         ShaderGraphCoder.heightToNormal(self, scale: scale)
     }
     /// If Greater
-    func ifGreater<T>(value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
-        ShaderGraphCoder.ifGreater(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
+    func ifGreater<T>(_ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+        ShaderGraphCoder.ifGreater(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
     /// If Greater Or Equal
-    func ifGreaterOrEqual<T>(value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
-        ShaderGraphCoder.ifGreaterOrEqual(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
+    func ifGreaterOrEqual<T>(_ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+        ShaderGraphCoder.ifGreaterOrEqual(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
 }
 public extension SGColor {

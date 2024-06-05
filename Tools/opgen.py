@@ -243,8 +243,13 @@ def should_output_node(node: Node):
     return True
 
 default_input_name_re = re.compile(r'^in(\d+)?$')
-def is_unnamed_input_name(name: str) -> bool:
-    return default_input_name_re.match(name) is not None
+def is_unnamed_input_name(i: int, input: NodeProperty, node: Node) -> bool:
+    if node.name.startswith("ND_if"):
+        return i < 2
+    name = input.name
+    if default_input_name_re.match(name) is not None:
+        return True
+    return False
 
 suffix_type_names: List[str] = [
     "_boolean",
@@ -559,7 +564,7 @@ class NodeOverloads():
         default_value_params = self.find_default_value_params()
         num_unnamed_inputs = 0
         for i, input in enumerate(first_node.inputs):
-            if i == num_unnamed_inputs and is_unnamed_input_name(input.name):
+            if i == num_unnamed_inputs and is_unnamed_input_name(i, input, first_node):
                 num_unnamed_inputs += 1
             else:
                 break
