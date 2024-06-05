@@ -727,10 +727,13 @@ def write_sgc_value(w: SwiftWriter, value, usd_type: str, sgc_type: str):
 
 def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_static: bool, w: SwiftWriter):
     swift_name = overloads.swift_name
-    first_node = overloads.overloads[0][1]
-    first_output = first_node.outputs[0]
+    first_node = overloads.first_node()
     num_inputs = len(first_node.inputs)
     generic_params = find_generic_params(overloads)
+    sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type) for o in overloads.overloads]
+    sgc_output_type = get_base_sg_type(sgc_output_types)
+    if generic_params is not None:
+        sgc_output_type = 'T'
     interface_only_params = find_interface_only_params(overloads)
     primitive_params = find_primitive_params(overloads, interface_only_params)
     default_value_params = find_default_value_params(overloads)
@@ -738,64 +741,22 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
     sgc_param_type_is_shared = [True for _ in first_node.inputs]
     usd_shared_param_type = [p.usd_type for p in first_node.inputs]
     sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type) for p in first_node.inputs]
+    write_func = num_inputs > 0
     num_default_inputs = 0
     param_names: List[str] = []
     for i, input in enumerate(first_node.inputs):
         if i == num_default_inputs and is_default_input_name(input.name):
             num_default_inputs += 1
         param_names.append(get_param_name(input.name, first_node))
-    for suffix_type_name, node in overloads.overloads[1:]:
+    for _, node in overloads.overloads[1:]:
         for i, input in enumerate(node.inputs):
             if input.usd_type != usd_shared_param_type[i]:
                 usd_param_type_is_shared[i] = False
             if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
                 sgc_param_type_is_shared[i] = False
     num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
-    if len(first_node.description) > 0:
-        w.write_line(f'/// {first_node.description}')
-    write_func = num_inputs > 0
-    if decl_public:
-        w.write('public ')
-    if decl_static:
-        w.write('static ')
-    if write_func:
-        w.write(f'func {swift_name}')
-        if generic_params is not None:
-            w.write('<T>')
-        w.write(f'(')
-    else:
-        w.write(f'var {swift_name}')
-    for i, input in enumerate(first_node.inputs):
-        sgc_type_is_shared = sgc_param_type_is_shared[i]
-        sgc_type = sgc_shared_param_type[i]
-        is_primitive = primitive_params[i]
-        if not sgc_type_is_shared:
-            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in overloads.overloads]
-            sgc_type = get_base_sg_type(all_types)
-        if is_primitive:
-            sgc_type = usd_type_to_primitive_type(input.usd_type)
-        elif generic_params is not None and i in generic_params[0]:
-            sgc_type = 'T'
-        name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
-        w.write(f'{name}: {sgc_type}')
-        if default_value_params[i] is not None:
-            w.write(f' = ')
-            if is_primitive:
-                write_primitive_value(w, default_value_params[i], input.usd_type, sgc_type)
-            else:
-                write_sgc_value(w, default_value_params[i], input.usd_type, sgc_type)
-        if i < len(first_node.inputs) - 1:
-            w.write(', ')
-    sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type) for o in overloads.overloads]
-    sgc_output_type = get_base_sg_type(sgc_output_types)
-    if write_func:
-        if generic_params is not None:
-            sgc_output_type = 'T'
-            w.write_line(f') -> T where T: {generic_params[1]} {{')
-        else:
-            w.write_line(f') -> {sgc_output_type} {{')
-    else:
-        w.write_line(f': {sgc_output_type} {{')
+    write_node_overloads_prototype(overloads, decl_public, decl_static, write_func, w, swift_name, first_node, generic_params, primitive_params, default_value_params, sgc_param_type_is_shared, sgc_shared_param_type, num_default_inputs, param_names, sgc_output_type)
+    w.write_line(f' {{')
     for i, input in enumerate(first_node.inputs):
         if not usd_param_type_is_shared[i]:
             continue
@@ -818,7 +779,7 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
         else:
             w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
     w.write_line(f'    ]')
-    for suffix_type_name, node in overloads.overloads:
+    for _, node in overloads.overloads:
         conds: List[str] = []
         for i, input in enumerate(node.inputs):
             if usd_param_type_is_shared[i]:
@@ -854,6 +815,49 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
         vals_str = "[" + ", ".join(vals) + "]"
         w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types in {swift_name}{args_str}", values: {vals_str}))')
     w.write_line('}')
+
+def write_node_overloads_prototype(overloads: NodeOverloads, decl_public: bool, decl_static: bool, write_func: bool, w: CodeWriter, swift_name: str, first_node: Node, generic_params, primitive_params: List[bool], default_value_params, sgc_param_type_is_shared: List[bool], sgc_shared_param_type: List[str], num_default_inputs: int, param_names: List[str], sgc_output_type: str):
+    if len(first_node.description) > 0:
+        w.write_line(f'/// {first_node.description}')
+    if decl_public:
+        w.write('public ')
+    if decl_static:
+        w.write('static ')
+    if write_func:
+        w.write(f'func {swift_name}')
+        if generic_params is not None:
+            w.write('<T>')
+        w.write(f'(')
+    else:
+        w.write(f'var {swift_name}')
+    for i, input in enumerate(first_node.inputs):
+        sgc_type_is_shared = sgc_param_type_is_shared[i]
+        sgc_type = sgc_shared_param_type[i]
+        is_primitive = primitive_params[i]
+        if not sgc_type_is_shared:
+            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in overloads.overloads]
+            sgc_type = get_base_sg_type(all_types)
+        if is_primitive:
+            sgc_type = usd_type_to_primitive_type(input.usd_type)
+        elif generic_params is not None and i in generic_params[0]:
+            sgc_type = 'T'
+        name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
+        w.write(f'{name}: {sgc_type}')
+        if default_value_params[i] is not None:
+            w.write(f' = ')
+            if is_primitive:
+                write_primitive_value(w, default_value_params[i], input.usd_type, sgc_type)
+            else:
+                write_sgc_value(w, default_value_params[i], input.usd_type, sgc_type)
+        if i < len(first_node.inputs) - 1:
+            w.write(', ')
+    if write_func:
+        if generic_params is not None:
+            w.write(f') -> T where T: {generic_params[1]}')
+        else:
+            w.write(f') -> {sgc_output_type}')
+    else:
+        w.write(f': {sgc_output_type}')
 
 def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, prefix_name: str = ""):
     w.write(f"| `{prefix_name}{overloads.swift_name}")
