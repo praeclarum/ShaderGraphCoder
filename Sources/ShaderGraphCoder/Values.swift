@@ -136,11 +136,15 @@ public class SGColor: SGSIMD {
 }
 
 public class SGString: SGValue {
-    
+
 }
 
-public class SGTexture: SGValue {
-    
+public class SGAsset: SGValue {
+
+}
+
+public class SGTexture: SGAsset {
+
 }
 
 public class SGTexture1D: SGTexture {
