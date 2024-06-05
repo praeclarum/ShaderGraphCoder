@@ -21,16 +21,16 @@ public class SGNode: Identifiable, Equatable, Hashable {
     public struct Input {
         public let name: String
         public let dataType: SGDataType
-        public let connection: SGValue?
+        public let value: SGValue?
         public init(name: String, dataType: SGDataType, connection: SGValue?) {
             self.name = name
             self.dataType = dataType
-            self.connection = connection
+            self.value = connection
         }
         public init(name: String, connection: SGValue) {
             self.name = name
             self.dataType = connection.dataType
-            self.connection = connection
+            self.value = connection
         }
     }
     
@@ -73,7 +73,7 @@ public enum SGValueSource {
     case nodeOutput(_ node: SGNode, _ outputName: String)
     case constant(_ value: SGConstantValue)
     case parameter(name: String, defaultValue: SGConstantValue)
-    case error(_ error: String)
+    case error(_ error: String, values: [SGValue])
     
     public var dataType: SGDataType {
         switch self {
@@ -87,7 +87,7 @@ public enum SGValueSource {
         case .parameter(name: _, defaultValue: let defaultValue):
             return defaultValue.dataType
         case .error:
-            return .string
+            return .error
         }
     }
 
@@ -101,6 +101,7 @@ public enum SGDataType: String {
     case bool = "bool"
     case color3f = "color3f"
     case color4f = "color4f"
+    case error = "error"
     case half = "half"
     case float = "float"
     case geometryModifier = "GeometryModifier"
@@ -278,7 +279,7 @@ func collectParameters(nodes rootNodes: [SGNode]) -> [(String, SGConstantValue)]
         nodesToWrite.remove(at: 0)
         nodesWritten.insert(node)
         for i in node.inputs {
-            if let c = i.connection {
+            if let c = i.value {
                 if case .parameter(name: let name, defaultValue: let dv) = c.source {
                     parameters[name] = dv
                 }
@@ -297,20 +298,26 @@ func collectErrors(nodes rootNodes: [SGNode]) -> [String] {
     var nodesToWrite: [SGNode] = rootNodes
     var nodesWritten: Set<SGNode> = []
     var errors: [String] = []
+    func queueValueInputNodes(v: SGValue) {
+        if case .nodeOutput(let inode, _) = v.source {
+            if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
+                nodesToWrite.append(inode)
+            }
+        }
+        else if case .error(let e, let vals) = v.source {
+            errors.append(e)
+            for vv in vals {
+                queueValueInputNodes(v: vv)
+            }
+        }
+    }
     while nodesToWrite.count > 0 {
         let node = nodesToWrite[0]
         nodesToWrite.remove(at: 0)
         nodesWritten.insert(node)
         for i in node.inputs {
-            if let c = i.connection?.source {
-                if case .nodeOutput(let inode, _) = c {
-                    if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
-                        nodesToWrite.append(inode)
-                    }
-                }
-                else if case .error(let e) = c {
-                    errors.append(e)
-                }
+            if let c = i.value {
+                queueValueInputNodes(v: c)
             }
         }
     }

@@ -805,7 +805,7 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             continue
         sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
         w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
-        w.write_line(f'        return {sgc_output_type}(source: .error("Invalid {swift_name} input. Expected {input.name} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType)."))')
+        w.write_line(f'        return {sgc_output_type}(source: .error("Invalid {swift_name} input. Expected {param_names[i]} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).", values: [{param_names[i]}]))')
         w.write_line(f'    }}')
     w.write_line(f'    let inputs: [SGNode.Input] = [')
     for i, input in enumerate(first_node.inputs):
@@ -843,7 +843,16 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
         if len(conds) > 0:
             w.write_line(f'    }}')
     if num_unshared_usd_params > 0:
-        w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types for {swift_name}"))')
+        args: List[str] = []
+        vals: List[str] = []
+        for i, input in enumerate(first_node.inputs):
+            if usd_param_type_is_shared[i]:
+                continue
+            vals.append(param_names[i])
+            args.append(f'{param_names[i]}: \({param_names[i]}.dataType)')
+        args_str = "(" + ", ".join(args) + ")"
+        vals_str = "[" + ", ".join(vals) + "]"
+        w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types in {swift_name}{args_str}", values: {vals_str}))')
     w.write_line('}')
 
 def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, prefix_name: str = ""):

@@ -33,18 +33,6 @@ public extension SGValue {
     static func floatParameter(name: String, defaultValue: Float) -> SGScalar {
         SGScalar(source: .parameter(name: name, defaultValue: .float(defaultValue)))
     }
-    static var modelNormal: SGVector {
-        normal(space: .model)
-    }
-    static var modelPosition: SGVector {
-        position(space: .model)
-    }
-    static var objectNormal: SGVector {
-        normal(space: .object)
-    }
-    static var objectPosition: SGVector {
-        position(space: .object)
-    }
     static func string(_ value: String) -> SGString {
         SGString(source: .constant(.string(value)))
     }
@@ -66,6 +54,7 @@ public extension SGValue {
     static var uv1: SGVector {
         SGValue.uv(index: 1)
     }
+
     static func vector2f(_ value: SIMD2<Float>) -> SGVector {
         SGVector(source: .constant(.vector2f(value)))
     }
@@ -92,6 +81,47 @@ public extension SGValue {
     }
     static func vector4fParameter(name: String, defaultValue: SIMD4<Float>) -> SGVector {
         SGVector(source: .parameter(name: name, defaultValue: .vector4f(defaultValue)))
+    }
+
+    static func vector2h(_ value: SIMD2<Float16>) -> SGVector {
+        SGVector(source: .constant(.vector2h(value)))
+    }
+    static func vector2h(_ x: Float16, _ y: Float16) -> SGVector {
+        SGVector(source: .constant(.vector2h([x, y])))
+    }
+    static func vector2hParameter(name: String, defaultValue: SIMD2<Float16>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector2h(defaultValue)))
+    }
+    static func vector3h(_ value: SIMD3<Float16>) -> SGVector {
+        SGVector(source: .constant(.vector3h(value)))
+    }
+    static func vector3h(_ x: Float16, _ y: Float16, _ z: Float16) -> SGVector {
+        SGVector(source: .constant(.vector3h([x, y, z])))
+    }
+    static func vector3hParameter(name: String, defaultValue: SIMD3<Float16>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector3h(defaultValue)))
+    }
+    static func vector4h(_ value: SIMD4<Float16>) -> SGVector {
+        SGVector(source: .constant(.vector4h(value)))
+    }
+    static func vector4h(_ x: Float16, _ y: Float16, _ z: Float16, _ w: Float16) -> SGVector {
+        SGVector(source: .constant(.vector4h([x, y, z, w])))
+    }
+    static func vector4hParameter(name: String, defaultValue: SIMD4<Float16>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector4h(defaultValue)))
+    }
+
+    static var modelNormal: SGVector {
+        normal(space: .model)
+    }
+    static var modelPosition: SGVector {
+        position(space: .model)
+    }
+    static var objectNormal: SGVector {
+        normal(space: .object)
+    }
+    static var objectPosition: SGVector {
+        position(space: .object)
     }
     static var worldCameraPosition: SGVector {
         cameraPosition(space: .world)

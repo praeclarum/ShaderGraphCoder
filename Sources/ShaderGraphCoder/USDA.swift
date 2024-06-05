@@ -100,7 +100,7 @@ public extension SGValueSource {
             return "</Root/\(materialName)/\(inode.usdaName).outputs:\(inodeOut)>"
         case .parameter(name: let name, defaultValue: _):
             return "</Root/\(materialName).inputs:\(name)>"
-        case .error(let error):
+        case .error(let error, _):
             return "\"\(error)\""
         }
     }
@@ -159,7 +159,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
         line("            uniform token info:id = \"\(node.nodeType)\"")
         for i in node.inputs {
             var decl = "\(i.dataType.usda) inputs:\(i.name)"
-            if let c = i.connection?.source {
+            if let c = i.value?.source {
                 if case .nodeOutput = c {
                     decl += ".connect"
                 }
@@ -167,7 +167,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
                     decl += ".connect"
                 }
             }
-            if let value = i.connection?.source.getUSDAReference(materialName: materialName) {
+            if let value = i.value?.source.getUSDAReference(materialName: materialName) {
                 line("            \(decl) = \(value)")
             }
             else {
@@ -180,7 +180,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
         }
         line("        }")
         for i in node.inputs {
-            if case .nodeOutput(let inode, _) = i.connection?.source {
+            if case .nodeOutput(let inode, _) = i.value?.source {
                 if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
                     nodesToWrite.append(inode)
                 }

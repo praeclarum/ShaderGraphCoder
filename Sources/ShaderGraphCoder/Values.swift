@@ -72,7 +72,7 @@ public class SGSIMD: SGNumeric {
             n = 4
             type = "vector4"
         default:
-            return SGScalar(source: .error("Cannot separate \(self.dataType.usda)"))
+            return SGScalar(source: .error("Cannot separate \(self.dataType.usda)", values: [self]))
         }
         let inputs: [SGNode.Input] = [.init(name: "in", connection: self)]
         var outputs: [SGNode.Output] = []

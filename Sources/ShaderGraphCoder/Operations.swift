@@ -119,6 +119,8 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
         return "color3"
     case .color4f:
         return "color4"
+    case .error:
+        return "error"
     case .float:
         return "float"
     case .half:
