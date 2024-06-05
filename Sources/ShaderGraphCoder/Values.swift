@@ -9,39 +9,24 @@ import Foundation
 import RealityKit
 
 public class SGNumeric: SGValue {
-    func add<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_add_", left: self, right: right)
-    }
-    func subtract<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_subtract_", left: self, right: right)
-    }
-    func multiply<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_multiply_", left: self, right: right)
-    }
-    func divide<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_divide_", left: self, right: right)
-    }
-    func modulo<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_modulo_", left: self, right: right)
-    }
 }
 
 public class SGScalar: SGNumeric {
-    public static func + (left: SGScalar, right: SGScalar) -> SGScalar { left.add(right) }
-    public static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
-    public static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
-    public static func / (left: SGScalar, right: SGScalar) -> SGScalar { left.divide(right) }
-    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { binop("ND_modulo_", left: left, right: right) }
-    public static func + (left: SGScalar, right: Float) -> SGScalar { left.add(.float(right)) }
-    public static func - (left: SGScalar, right: Float) -> SGScalar { left.subtract(.float(right)) }
-    public static func * (left: SGScalar, right: Float) -> SGScalar { left.multiply(.float(right)) }
-    public static func / (left: SGScalar, right: Float) -> SGScalar { left.divide(.float(right)) }
-    public static func % (left: SGScalar, right: Float) -> SGScalar { left % .float(right) }
-    public static func + (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).add(right) }
-    public static func - (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).subtract(right) }
-    public static func * (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).multiply(right) }
-    public static func / (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).divide(right) }
-    public static func % (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left) % right }
+    public static func + (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func % (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.modulo(left, .float(right)) }
+    public static func + (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.add(.float(left), right) }
+    public static func - (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.subtract(.float(left), right) }
+    public static func * (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.multiply(.float(left), right) }
+    public static func / (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.divide(.float(left), right) }
+    public static func % (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.modulo(.float(left), right) }
 }
 
 public class SGSIMD: SGNumeric {
@@ -93,25 +78,25 @@ public class SGSIMD: SGNumeric {
 }
 
 public class SGVector: SGSIMD {
-    public static func + (left: SGVector, right: SGVector) -> SGVector { left.add(right) }
-    public static func - (left: SGVector, right: SGVector) -> SGVector { left.subtract(right) }
-    public static func * (left: SGVector, right: SGVector) -> SGVector { left.multiply(right) }
-    public static func / (left: SGVector, right: SGVector) -> SGVector { left.divide(right) }
-    public static func % (left: SGVector, right: SGVector) -> SGVector { left.modulo(right) }
-    public static func + (left: SGVector, right: SGScalar) -> SGVector { left.add(right) }
-    public static func - (left: SGVector, right: SGScalar) -> SGVector { left.subtract(right) }
-    public static func * (left: SGVector, right: SGScalar) -> SGVector { left.multiply(right) }
-    public static func / (left: SGVector, right: SGScalar) -> SGVector { left.divide(right) }
-    public static func % (left: SGVector, right: SGScalar) -> SGVector { left.modulo(right) }
-    public static func + (left: SGVector, right: Float) -> SGVector { left.add(.float(right)) }
-    public static func - (left: SGVector, right: Float) -> SGVector { left.subtract(.float(right)) }
-    public static func * (left: SGVector, right: Float) -> SGVector { left.multiply(.float(right)) }
-    public static func / (left: SGVector, right: Float) -> SGVector { left.divide(.float(right)) }
-    public static func % (left: SGVector, right: Float) -> SGVector { left.modulo(.float(right)) }
-    public static func + (left: SGScalar, right: SGVector) -> SGVector { right.add(left) }
-    public static func * (left: SGScalar, right: SGVector) -> SGVector { right.multiply(left) }
-    public static func + (left: Float, right: SGVector) -> SGVector { right.add(.float(left)) }
-    public static func * (left: Float, right: SGVector) -> SGVector { right.multiply(.float(left)) }
+    public static func + (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func % (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.modulo(left, .float(right)) }
+    public static func + (left: SGScalar, right: SGVector) -> SGVector { ShaderGraphCoder.add(right, left) }
+    public static func * (left: SGScalar, right: SGVector) -> SGVector { ShaderGraphCoder.multiply(right, left) }
+    public static func + (left: Float, right: SGVector) -> SGVector { ShaderGraphCoder.add(right, .float(left)) }
+    public static func * (left: Float, right: SGVector) -> SGVector { ShaderGraphCoder.multiply(right, .float(left)) }
 
     public var x: SGScalar { getSeparateOutput("outx") }
     public var y: SGScalar { getSeparateOutput("outy") }
@@ -122,25 +107,25 @@ public class SGVector: SGSIMD {
 }
 
 public class SGColor: SGSIMD {
-    public static func + (left: SGColor, right: SGColor) -> SGColor { left.add(right) }
-    public static func - (left: SGColor, right: SGColor) -> SGColor { left.subtract(right) }
-    public static func * (left: SGColor, right: SGColor) -> SGColor { left.multiply(right) }
-    public static func / (left: SGColor, right: SGColor) -> SGColor { left.divide(right) }
-    public static func % (left: SGColor, right: SGColor) -> SGColor { left.modulo(right) }
-    public static func + (left: SGColor, right: SGScalar) -> SGColor { left.add(right) }
-    public static func - (left: SGColor, right: SGScalar) -> SGColor { left.subtract(right) }
-    public static func * (left: SGColor, right: SGScalar) -> SGColor { left.multiply(right) }
-    public static func / (left: SGColor, right: SGScalar) -> SGColor { left.divide(right) }
-    public static func % (left: SGColor, right: SGScalar) -> SGColor { left.modulo(right) }
-    public static func + (left: SGColor, right: Float) -> SGColor { left.add(.float(right)) }
-    public static func - (left: SGColor, right: Float) -> SGColor { left.subtract(.float(right)) }
-    public static func * (left: SGColor, right: Float) -> SGColor { left.multiply(.float(right)) }
-    public static func / (left: SGColor, right: Float) -> SGColor { left.divide(.float(right)) }
-    public static func % (left: SGColor, right: Float) -> SGColor { left.modulo(.float(right)) }
-    public static func + (left: SGScalar, right: SGColor) -> SGColor { right.add(left) }
-    public static func * (left: SGScalar, right: SGColor) -> SGColor { right.multiply(left) }
-    public static func + (left: Float, right: SGColor) -> SGColor { right.add(.float(left)) }
-    public static func * (left: Float, right: SGColor) -> SGColor { right.multiply(.float(left)) }
+    public static func + (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func % (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.modulo(left, .float(right)) }
+    public static func + (left: SGScalar, right: SGColor) -> SGColor { ShaderGraphCoder.add(right, left) }
+    public static func * (left: SGScalar, right: SGColor) -> SGColor { ShaderGraphCoder.multiply(right, left) }
+    public static func + (left: Float, right: SGColor) -> SGColor { ShaderGraphCoder.add(right, .float(left)) }
+    public static func * (left: Float, right: SGColor) -> SGColor { ShaderGraphCoder.multiply(right, .float(left)) }
 
     public var r: SGScalar { getSeparateOutput("outr") }
     public var g: SGScalar { getSeparateOutput("outg") }
