@@ -14,7 +14,6 @@ public class SGNode: Identifiable, Equatable, Hashable {
     public let nodeType: String
     public let inputs: [Input]
     public let outputs: [Output]
-    public let errors: [String]
     
     public var dataType: SGDataType { outputs[0].dataType }
     public var outputName: String { outputs[0].name }
@@ -48,13 +47,12 @@ public class SGNode: Identifiable, Equatable, Hashable {
         }
     }
     
-    public init(nodeType: String, inputs: [Input], outputs: [Output], errors: [String] = []) {
+    public init(nodeType: String, inputs: [Input], outputs: [Output]) {
         self.id = SGNode.nextId
         SGNode.nextId += 1
         self.nodeType = nodeType
         self.inputs = inputs
         self.outputs = outputs
-        self.errors = errors
     }
     public static func == (lhs: SGNode, rhs: SGNode) -> Bool {
         lhs.id == rhs.id
@@ -303,13 +301,15 @@ func collectErrors(nodes rootNodes: [SGNode]) -> [String] {
         let node = nodesToWrite[0]
         nodesToWrite.remove(at: 0)
         nodesWritten.insert(node)
-        errors.append(contentsOf: node.errors)
         for i in node.inputs {
             if let c = i.connection?.source {
                 if case .nodeOutput(let inode, _) = c {
                     if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
                         nodesToWrite.append(inode)
                     }
+                }
+                else if case .error(let e) = c {
+                    errors.append(e)
                 }
             }
         }

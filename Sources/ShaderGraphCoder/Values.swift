@@ -49,7 +49,6 @@ public class SGSIMD: SGNumeric {
         if let esep = separate {
             return SGScalar(source: .nodeOutput(esep, name))
         }
-        var errors: [String] = []
         var n = 3
         var type = "vector"
         var iscolor = false
@@ -73,7 +72,7 @@ public class SGSIMD: SGNumeric {
             n = 4
             type = "vector4"
         default:
-            errors.append("Cannot separate \(self.dataType.usda)")
+            return SGScalar(source: .error("Cannot separate \(self.dataType.usda)"))
         }
         let inputs: [SGNode.Input] = [.init(name: "in", connection: self)]
         var outputs: [SGNode.Output] = []
@@ -84,8 +83,7 @@ public class SGSIMD: SGNumeric {
         let sep = SGNode(
             nodeType: "ND_separate\(n)_\(type)",
             inputs: inputs,
-            outputs: outputs,
-            errors: errors)
+            outputs: outputs)
         separate = sep
         return SGScalar(source: .nodeOutput(sep, name))
     }

@@ -17,7 +17,7 @@ final class ShaderGraphCoderTests: XCTestCase {
         XCTAssertNotNil(root, "Failed to load the USD file")
     }
     
-    private func surfaceTest(_ surface: SGSurface, geometryModifier: SGGeometryModifier? = nil) throws {
+    private func surfaceTest(_ surface: SGSurface, geometryModifier: SGGeometryModifier? = nil, expectErrors: Bool = false) throws {
         let expectation = self.expectation(description: "Load the surface material")
         Task {
             do {
@@ -27,9 +27,13 @@ final class ShaderGraphCoderTests: XCTestCase {
 #endif
                 let (usda, errors) = getUSDA(materialName: "TestMat", surface: surface, geometryModifier: geometryModifier)
                 if errors.count > 0 {
-                    XCTFail("USDA ERRORS: \(errors)")
+                    if !expectErrors {
+                        XCTFail("USDA ERRORS: \(errors)")
+                    }
                 }
-                try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
+                else {
+                    try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
+                }
             }
             catch {
                 XCTFail("SURFACE MATERIAL ERROR: \(error)")
@@ -42,8 +46,8 @@ final class ShaderGraphCoderTests: XCTestCase {
     private func colorTest(_ color: SGColor) throws {
         try surfaceTest(SGPBRSurface(baseColor: color))
     }
-    private func vectorTest(_ vector: SGVector) throws {
-        try surfaceTest(SGPBRSurface(normal: vector))
+    private func vectorTest(_ vector: SGVector, expectErrors: Bool = false) throws {
+        try surfaceTest(SGPBRSurface(normal: vector), expectErrors: expectErrors)
     }
     private func scalarTest(_ scalar: SGScalar) throws {
         try surfaceTest(SGPBRSurface(opacity: scalar))
@@ -111,8 +115,15 @@ final class ShaderGraphCoderTests: XCTestCase {
         let pos: SGVector = .modelPosition
         let attrS: SGVector = vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
         let geom = SGGeometryModifier(customAttribute: attrS)
-        let attr = SGValue.customAttribute
+        let attr = SGValue.surfaceCustomAttribute
         let color = color3f(attr.x, attr.y, attr.z)
         try surfaceTest(SGPBRSurface(baseColor: color), geometryModifier: geom)
+    }
+    
+    func testTypeError() throws {
+        let v1 = SGValue.vector2f(1, 2)
+        let v2 = SGValue.vector3f(3, 4, 5)
+        let r = v1 + v2
+        try vectorTest(r, expectErrors: true)
     }
 }
