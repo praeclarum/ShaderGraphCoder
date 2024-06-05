@@ -24,9 +24,6 @@ public extension SGValue {
     static func color4fParameter(name: String, defaultValue: SIMD4<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color4f(defaultValue, colorSpace: colorSpace)))
     }
-    static var customAttribute: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.customAttribute, "customAttribute"))
-    }
     static func int(_ value: Int) -> SGScalar {
         SGScalar(source: .constant(.int(value)))
     }
@@ -105,8 +102,4 @@ public extension SGValue {
     static var worldNormal: SGVector {
         normal(space: .world)
     }
-}
-
-public extension SGNode {
-    static let customAttribute = SGNode(nodeType: "ND_realitykit_surface_custom_attribute", inputs: [], outputs: [.init(name: "customAttribute", dataType: .vector4f)])
 }
