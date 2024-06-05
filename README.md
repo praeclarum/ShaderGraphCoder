@@ -160,6 +160,9 @@ The following operators are supported:
 | `outside(in, mask)` | Outside |
 | `over(fg, bg, mix)` | Over |
 | `overlay(fg, bg, mix)` | Overlay |
+| `pixel(file, u_wrap_mode, v_wrap_mode, border_color, filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, bias, dynamic_min_lod_clamp, offset)` | Image 2D Pixel |
+| `pixelGradient(file, u_wrap_mode, v_wrap_mode, border_color, filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, dynamic_min_lod_clamp, gradient_dPdx, gradient_dPdy, offset)` | Image 2D Gradient Pixel |
+| `pixelLOD(file, u_wrap_mode, v_wrap_mode, border_color, filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, lod, offset)` | Image 2D LOD Pixel |
 | `place2D(texcoord, pivot, scale, rotate, offset)` | Place 2D |
 | `plus(fg, bg, mix)` | Additive Mix |
 | `pow(in1, in2)` | Power |
@@ -168,6 +171,7 @@ The following operators are supported:
 | `ramplr(valuel, valuer, texcoord)` | Ramp Horizontal |
 | `ramptb(valuet, valueb, texcoord)` | Ramp Vertical |
 | `range(in, inlow, inhigh, gamma, outlow, outhigh, doclamp)` | Range |
+| `read(file, default, x, y, lod)` | Image 2D Read |
 | `reflect(in, normal)` | Reflect |
 | `refract(in, normal, eta)` | Refract |
 | `remap(in, inlow, inhigh, outlow, outhigh)` | Remap |
@@ -176,6 +180,12 @@ The following operators are supported:
 | `rotate3D(in, amount, axis)` | Rotate 3D |
 | `round(in)` | Round |
 | `safePow(in1, in2)` | Safe Power |
+| `sample(file, u_wrap_mode, v_wrap_mode, border_color, mag_filter, min_filter, mip_filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, bias, dynamic_min_lod_clamp, offset)` | Image 2D |
+| `sampleCube(file, u_wrap_mode, v_wrap_mode, border_color, mag_filter, min_filter, mip_filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, bias, dynamic_min_lod_clamp)` | Cube Image |
+| `sampleCubeGradient(file, u_wrap_mode, v_wrap_mode, border_color, mag_filter, min_filter, mip_filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, dynamic_min_lod_clamp, gradientcube_dPdx, gradientcube_dPdy)` | Cube Image Gradient |
+| `sampleCubeLOD(file, u_wrap_mode, v_wrap_mode, border_color, mag_filter, min_filter, mip_filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, lod)` | Cube Image LOD |
+| `sampleGradient(file, u_wrap_mode, v_wrap_mode, border_color, mag_filter, min_filter, mip_filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, dynamic_min_lod_clamp, gradient_dPdx, gradient_dPdy, offset)` | Image 2D Gradient |
+| `sampleLOD(file, u_wrap_mode, v_wrap_mode, border_color, mag_filter, min_filter, mip_filter, max_anisotropy, max_lod_clamp, min_lod_clamp, default, texcoord, lod, offset)` | Image 2D LOD |
 | `saturate(in, amount, lumacoeffs)` | Saturate |
 | `screen(fg, bg, mix)` | Screen |
 | `sign(in)` | Sign |

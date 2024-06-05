@@ -2,6 +2,37 @@
 import Foundation
 import simd
 
+public enum SGSamplerAddressMode: String, CaseIterable {
+    case clampToBorder = "clamp_to_border"
+    case clampToEdge = "clamp_to_edge"
+    case clampToZero = "clamp_to_zero"
+    case mirroredRepeat = "mirrored_repeat"
+    case repeated = "repeat"
+}
+
+public enum SGSamplerBorderColor: String, CaseIterable {
+    case opaqueBlack = "opaque_black"
+    case opaqueWhite = "opaque_white"
+    case transparentBlack = "transparent_black"
+}
+
+public enum SGSamplerMinMagFilter: String, CaseIterable {
+    case linear = "linear"
+    case nearest = "nearest"
+}
+
+public enum SGSamplerMipFilter: String, CaseIterable {
+    case linear = "linear"
+    case nearest = "nearest"
+    case none = "none"
+}
+
+public enum SGSamplerAddressModeWithoutRepeat: String, CaseIterable {
+    case clampToBorder = "clamp_to_border"
+    case clampToEdge = "clamp_to_edge"
+    case clampToZero = "clamp_to_zero"
+}
+
 public enum SGSpace: String, CaseIterable {
     case model = "model"
     case object = "object"
@@ -14,7 +45,7 @@ public enum SGBlurFilterType: String, CaseIterable {
     case gaussian = "gaussian"
 }
 
-public enum SGAddressMode: String, CaseIterable {
+public enum SGImageAddressMode: String, CaseIterable {
     case clamp = "clamp"
     case constant = "constant"
     case mirror = "mirror"
@@ -1970,7 +2001,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
     return T(source: .error("Unsupported input data types in ifGreaterOrEqual(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// Image
-public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uaddressmode: SGAddressMode = SGAddressMode.periodic, vaddressmode: SGAddressMode = SGAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid image input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
@@ -3246,6 +3277,189 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(
     }
     return T(source: .error("Unsupported input data types in overlay(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
+/// Image 2D Pixel
+public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid pixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid pixel input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixel input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixel input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid pixel input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard bias.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixel input. Expected bias data type to be SGDataType.float, but got \(bias.dataType).", values: [bias]))
+    }
+    guard dynamicMinLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixel input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
+    }
+    guard offset.dataType == SGDataType.vector2i else {
+        return T(source: .error("Invalid pixel input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "filter", connection: SGString(source: .constant(.string(filter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "bias", connection: bias),
+        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
+        .init(name: "offset", connection: offset),
+    ]
+    if defaultValue.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixel_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixel_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixel_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in pixel(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Gradient Pixel
+public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientDpdx: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), gradientDpdy: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid pixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid pixelGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixelGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixelGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid pixelGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard dynamicMinLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixelGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
+    }
+    guard gradientDpdx.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid pixelGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx.dataType).", values: [gradientDpdx]))
+    }
+    guard gradientDpdy.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid pixelGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy.dataType).", values: [gradientDpdy]))
+    }
+    guard offset.dataType == SGDataType.vector2i else {
+        return T(source: .error("Invalid pixelGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "filter", connection: SGString(source: .constant(.string(filter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
+        .init(name: "gradient_dPdx", connection: gradientDpdx),
+        .init(name: "gradient_dPdy", connection: gradientDpdy),
+        .init(name: "offset", connection: offset),
+    ]
+    if defaultValue.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixelGradient_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixelGradient_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixelGradient_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in pixelGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D LOD Pixel
+public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid pixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid pixelLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixelLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixelLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid pixelLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard lod.dataType == SGDataType.float else {
+        return T(source: .error("Invalid pixelLOD input. Expected lod data type to be SGDataType.float, but got \(lod.dataType).", values: [lod]))
+    }
+    guard offset.dataType == SGDataType.vector2i else {
+        return T(source: .error("Invalid pixelLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "filter", connection: SGString(source: .constant(.string(filter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "lod", connection: lod),
+        .init(name: "offset", connection: offset),
+    ]
+    if defaultValue.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixelLOD_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixelLOD_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DPixelLOD_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in pixelLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
 /// Place 2D
 public func place2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), pivot: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), scale: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), rotate: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGVector {
     guard texcoord.dataType == SGDataType.vector2f else {
@@ -3677,6 +3891,41 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
     }
     return T(source: .error("Unsupported input data types in range(in1: \(in1.dataType), inlow: \(inlow.dataType), inhigh: \(inhigh.dataType), gamma: \(gamma.dataType), outlow: \(outlow.dataType), outhigh: \(outhigh.dataType))", values: [in1, inlow, inhigh, gamma, outlow, outhigh]))
 }
+/// Image 2D Read
+public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar = SGScalar(source: .constant(.int(0))), y: SGScalar = SGScalar(source: .constant(.int(0))), lod: SGScalar = SGScalar(source: .constant(.int(0)))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid read input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard x.dataType == SGDataType.int else {
+        return T(source: .error("Invalid read input. Expected x data type to be SGDataType.int, but got \(x.dataType).", values: [x]))
+    }
+    guard y.dataType == SGDataType.int else {
+        return T(source: .error("Invalid read input. Expected y data type to be SGDataType.int, but got \(y.dataType).", values: [y]))
+    }
+    guard lod.dataType == SGDataType.int else {
+        return T(source: .error("Invalid read input. Expected lod data type to be SGDataType.int, but got \(lod.dataType).", values: [lod]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "x", connection: x),
+        .init(name: "y", connection: y),
+        .init(name: "lod", connection: lod),
+    ]
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureRead_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureRead_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in read(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
 /// Reflect
 public func reflect(_ in1: SGVector, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
@@ -4019,6 +4268,354 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in safePow(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
+}
+/// Image 2D
+public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid sample input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid sample input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sample input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sample input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid sample input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard bias.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sample input. Expected bias data type to be SGDataType.float, but got \(bias.dataType).", values: [bias]))
+    }
+    guard dynamicMinLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sample input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
+    }
+    guard offset.dataType == SGDataType.vector2i else {
+        return T(source: .error("Invalid sample input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "bias", connection: bias),
+        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
+        .init(name: "offset", connection: offset),
+    ]
+    if defaultValue.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2D_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2D_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2D_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sample(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Cube Image
+public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid sampleCube input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid sampleCube input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCube input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCube input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector3f else {
+        return T(source: .error("Invalid sampleCube input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard bias.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCube input. Expected bias data type to be SGDataType.float, but got \(bias.dataType).", values: [bias]))
+    }
+    guard dynamicMinLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCube input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "bias", connection: bias),
+        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
+    ]
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureCube_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureCube_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sampleCube(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Cube Image Gradient
+public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientcubeDpdx: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), gradientcubeDpdy: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector3f else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard dynamicMinLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
+    }
+    guard gradientcubeDpdx.dataType == SGDataType.vector3f else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected gradientcubeDpdx data type to be SGDataType.vector3f, but got \(gradientcubeDpdx.dataType).", values: [gradientcubeDpdx]))
+    }
+    guard gradientcubeDpdy.dataType == SGDataType.vector3f else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected gradientcubeDpdy data type to be SGDataType.vector3f, but got \(gradientcubeDpdy.dataType).", values: [gradientcubeDpdy]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
+        .init(name: "gradientcube_dPdx", connection: gradientcubeDpdx),
+        .init(name: "gradientcube_dPdy", connection: gradientcubeDpdy),
+    ]
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureCubeGradient_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureCubeGradient_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sampleCubeGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Cube Image LOD
+public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector3f else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard lod.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected lod data type to be SGDataType.float, but got \(lod.dataType).", values: [lod]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "lod", connection: lod),
+    ]
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureCubeLOD_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTextureCubeLOD_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sampleCubeLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Gradient
+public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientDpdx: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), gradientDpdy: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid sampleGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid sampleGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid sampleGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard dynamicMinLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
+    }
+    guard gradientDpdx.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid sampleGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx.dataType).", values: [gradientDpdx]))
+    }
+    guard gradientDpdy.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid sampleGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy.dataType).", values: [gradientDpdy]))
+    }
+    guard offset.dataType == SGDataType.vector2i else {
+        return T(source: .error("Invalid sampleGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
+        .init(name: "gradient_dPdx", connection: gradientDpdx),
+        .init(name: "gradient_dPdy", connection: gradientDpdy),
+        .init(name: "offset", connection: offset),
+    ]
+    if defaultValue.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DGradient_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DGradient_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DGradient_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sampleGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D LOD
+public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    guard file.dataType == SGDataType.asset else {
+        return T(source: .error("Invalid sampleLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard maxAnisotropy.dataType == SGDataType.int else {
+        return T(source: .error("Invalid sampleLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
+    }
+    guard maxLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
+    }
+    guard minLodClamp.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
+    }
+    guard texcoord.dataType == SGDataType.vector2f else {
+        return T(source: .error("Invalid sampleLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
+    }
+    guard lod.dataType == SGDataType.float else {
+        return T(source: .error("Invalid sampleLOD input. Expected lod data type to be SGDataType.float, but got \(lod.dataType).", values: [lod]))
+    }
+    guard offset.dataType == SGDataType.vector2i else {
+        return T(source: .error("Invalid sampleLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "file", connection: file),
+        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+        .init(name: "max_anisotropy", connection: maxAnisotropy),
+        .init(name: "max_lod_clamp", connection: maxLodClamp),
+        .init(name: "min_lod_clamp", connection: minLodClamp),
+        .init(name: "default", connection: defaultValue),
+        .init(name: "texcoord", connection: texcoord),
+        .init(name: "lod", connection: lod),
+        .init(name: "offset", connection: offset),
+    ]
+    if defaultValue.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DLOD_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if defaultValue.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DLOD_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if defaultValue.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DLOD_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sampleLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Saturate
 public func saturate(_ in1: SGColor, amount: SGScalar = SGScalar(source: .constant(.float(1.0))), lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {

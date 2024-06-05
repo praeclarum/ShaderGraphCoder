@@ -31,7 +31,6 @@ manual_node_prefixes = [
     'ND_dot_lightshader',
     'ND_UsdPreviewSurface_surfaceshader',
 
-    'ND_RealityKitTexture',
     'ND_Usd',
 
     'ND_dot_',
@@ -82,6 +81,30 @@ node_renames: Dict[str, str] = {
     "worleynoise3d_float": "worleyNoise3DFloat",
     "worleynoise3d_vector2": "worleyNoise3DVector2",
     "worleynoise3d_vector3": "worleyNoise3DVector3",
+    "RealityKitTexture2D": "sample",
+    "RealityKitTexture2DGradient": "sampleGradient",
+    "RealityKitTexture2DLOD": "sampleLOD",
+    "RealityKitTexture2DPixel": "pixel",
+    "RealityKitTexture2DPixelGradient": "pixelGradient",
+    "RealityKitTexture2DPixelLOD": "pixelLOD",
+    "RealityKitTextureCube": "sampleCube",
+    "RealityKitTextureCubeGradient": "sampleCubeGradient",
+    "RealityKitTextureCubeLOD": "sampleCubeLOD",
+    "RealityKitTextureRead": "read",
+}
+
+enum_sgc_types: Dict[str, str] = {
+    "box|gaussian": "SGBlurFilterType",
+    "clamp|constant|mirror|periodic": "SGImageAddressMode",
+    "clamp_to_border|clamp_to_edge|clamp_to_zero": "SGSamplerAddressModeWithoutRepeat",
+    "clamp_to_border|clamp_to_edge|clamp_to_zero|mirrored_repeat|repeat": "SGSamplerAddressMode",
+    "closest|cubic|linear": "SGFilterType",
+    "linear|nearest": "SGSamplerMinMagFilter",
+    "linear|nearest|none": "SGSamplerMipFilter",
+    "model|object|tangent|world": "SGSpace",
+    "model|object|unspecified|world": "SGTransformSpace",
+    "object|tangent": "SGNormalSpace",
+    "opaque_black|opaque_white|transparent_black": "SGSamplerBorderColor",
 }
 
 def prop_is_supported(prop):
@@ -206,15 +229,6 @@ def get_enum(members: List[str], node: Node) -> EnumType:
     enums_by_structural_type_id[structural_type_id] = enum
     enums_by_gen_usd_type[enum.gen_usd_type] = enum
     return enum
-
-enum_sgc_types: Dict[str, str] = {
-    "box|gaussian": "SGBlurFilterType",
-    "clamp|constant|mirror|periodic": "SGAddressMode",
-    "closest|cubic|linear": "SGFilterType",
-    "model|object|tangent|world": "SGSpace",
-    "model|object|unspecified|world": "SGTransformSpace",
-    "object|tangent": "SGNormalSpace",
-}
 
 def is_node(prim):
     path = str(prim.GetPath()).split('/')
@@ -752,8 +766,8 @@ def write_enums(w: SwiftWriter):
     for enum in enums_by_gen_usd_type.values():
         w.write_line(f'public enum {enum.gen_sgc_type}: String, CaseIterable {{')
         for member in enum.members:
-            swift_name = snake_to_camel(member)
-            w.write_line(f'    case {swift_name} = "{member}"')
+            case_swift_name = snake_to_camel(member)
+            w.write_line(f'    case {case_swift_name} = "{member}"')
         w.write_line('}')
         w.write_line('')
 
