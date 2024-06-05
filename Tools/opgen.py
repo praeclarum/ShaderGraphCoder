@@ -96,6 +96,14 @@ class Node():
                 self.inputs.append(NodeProperty(self, pn, p))
             if pn.startswith('outputs:'):
                 self.outputs.append(NodeProperty(self, pn, p))
+        if self.name in node_descriptions:
+            self.description = node_descriptions[self.name].strip()
+            if self.description.endswith(')'):
+                leftp_index = self.description.rfind('(')
+                if leftp_index != -1:
+                    self.description = self.description[:leftp_index].strip()
+        else:
+            self.description = ""
 
     def __str__(self):
         return f'{self.name} ({len(self.inputs)} inputs, {len(self.outputs)} outputs)'
@@ -556,15 +564,6 @@ def get_node_name(name: str) -> str:
     name = snake_to_camel(name)
     return name
 
-def get_node_description(node: Node) -> str:
-    if node.name in node_descriptions:
-        description = node_descriptions[node.name].strip()
-        if description.endswith(')'):
-            leftp_index = description.rfind('(')
-            if leftp_index != -1:
-                return description[:leftp_index].strip()
-    return ""
-
 def get_base_sg_type(sg_types: List[str]) -> str:
     def has_sg_type(sg_type: str) -> bool:
         return any(sg_type in x for x in sg_types)
@@ -693,7 +692,6 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
     num_inputs = len(first_node.inputs)
-    description = get_node_description(first_node)
     generic_params = find_generic_params(overloads)
     interface_only_params = find_interface_only_params(overloads)
     primitive_params = find_primitive_params(overloads, interface_only_params)
@@ -715,8 +713,8 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
                 sgc_param_type_is_shared[i] = False
     num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
-    if len(description) > 0:
-        w.write_line(f'/// {description}')
+    if len(first_node.description) > 0:
+        w.write_line(f'/// {first_node.description}')
     write_func = num_inputs > 0
     if decl_public:
         w.write('public ')

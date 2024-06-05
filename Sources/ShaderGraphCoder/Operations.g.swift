@@ -513,6 +513,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for ceil"))
 }
+/// Cellular Noise 2D
 public func cellnoise2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGScalar {
     guard texcoord.dataType == SGDataType.vector2f else {
         return SGScalar(source: .error("Invalid cellnoise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
@@ -525,6 +526,7 @@ public func cellnoise2D(texcoord: SGVector = SGVector(source: .constant(.vector2
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.float)])))
 }
+/// Cellular Noise 3D
 public func cellnoise3D(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGScalar {
     guard position.dataType == SGDataType.vector3f else {
         return SGScalar(source: .error("Invalid cellnoise3D input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
@@ -862,6 +864,7 @@ public func difference<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .consta
     }
     return T(source: .error("Unsupported input data types for difference"))
 }
+/// Disjoint Over
 public func disjointover(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid disjointover input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
@@ -1450,6 +1453,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
     }
     return T(source: .error("Unsupported input data types for geompropvalue"))
 }
+/// Height To Normal
 public func heighttonormal(_ in1: SGScalar = SGScalar(source: .constant(.float(0.0))), scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard in1.dataType == SGDataType.float else {
         return SGVector(source: .error("Invalid heighttonormal input. Expected in data type to be SGDataType.float, but got \(in1.dataType)."))
@@ -2260,6 +2264,7 @@ public func luminance(_ in1: SGColor, lumacoeffs: SGColor = SGColor(source: .con
     }
     return SGColor(source: .error("Unsupported input data types for luminance"))
 }
+/// Mask
 public func mask(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid mask input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
@@ -2280,6 +2285,7 @@ public func mask(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
+/// Matte
 public func matte(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid matte input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
@@ -2634,6 +2640,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.flo
     }
     return T(source: .error("Unsupported input data types for mix"))
 }
+/// In
 public func mixColor(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid mixColor input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
@@ -2994,6 +3001,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar = SGScalar(source: .co
     }
     return SGNumeric(source: .error("Unsupported input data types for noise3D"))
 }
+/// Normal Map Decode
 public func normalMapDecode(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMapDecode input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -3049,6 +3057,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
     }
     return SGVector(source: .error("Unsupported input data types for normalize"))
 }
+/// Normal Map
 public func normalmap(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1]))), space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalmap input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -3123,6 +3132,7 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for oneMinus"))
 }
+/// Out
 public func out(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid out input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
@@ -3175,6 +3185,7 @@ public func outside<T>(_ in1: T, mask: SGScalar = SGScalar(source: .constant(.fl
     }
     return T(source: .error("Unsupported input data types for outside"))
 }
+/// Over
 public func over(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid over input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
@@ -3228,6 +3239,7 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(
     }
     return T(source: .error("Unsupported input data types for overlay"))
 }
+/// Place 2D
 public func place2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), pivot: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), scale: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), rotate: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGVector {
     guard texcoord.dataType == SGDataType.vector2f else {
         return SGVector(source: .error("Invalid place2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
@@ -3369,6 +3381,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for pow"))
 }
+/// Premultiply
 public func premult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 1])))) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid premult input. Expected in data type to be SGDataType.color4f, but got \(in1.dataType)."))
@@ -3833,6 +3846,7 @@ public func rgbtohsv(_ in1: SGColor) -> SGColor {
     }
     return SGColor(source: .error("Unsupported input data types for rgbtohsv"))
 }
+/// Rotate 2D
 public func rotate2D(_ in1: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
     guard in1.dataType == SGDataType.vector2f else {
         return SGVector(source: .error("Invalid rotate2D input. Expected in data type to be SGDataType.vector2f, but got \(in1.dataType)."))
@@ -3849,6 +3863,7 @@ public func rotate2D(_ in1: SGVector = SGVector(source: .constant(.vector2f([0, 
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
+/// Rotate 3D
 public func rotate3D(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), amount: SGScalar = SGScalar(source: .constant(.float(0.0))), axis: SGVector = SGVector(source: .constant(.vector3f([0, 1, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid rotate3D input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -4936,6 +4951,7 @@ public func transformmatrixVector3m4(_ in1: SGVector = SGVector(source: .constan
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
+/// Transform Normal
 public func transformnormal(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 1]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformnormal input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -4950,6 +4966,7 @@ public func transformnormal(_ in1: SGVector = SGVector(source: .constant(.vector
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
+/// Transform Point
 public func transformpoint(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformpoint input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -4964,6 +4981,7 @@ public func transformpoint(_ in1: SGVector = SGVector(source: .constant(.vector3
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
+/// Transform Vector
 public func transformvector(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformvector input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -5067,6 +5085,7 @@ public func triplanarprojection<T>(filex: SGTexture, filey: SGTexture, filez: SG
     }
     return T(source: .error("Unsupported input data types for triplanarprojection"))
 }
+/// Unpremultiply
 public func unpremult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 1])))) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid unpremult input. Expected in data type to be SGDataType.color4f, but got \(in1.dataType)."))

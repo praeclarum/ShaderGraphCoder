@@ -81,11 +81,17 @@ The following operators are supported:
 | `*` | Multiplication |
 | `/` | Division |
 | `%` | Modulo |
+| `color3f` | Create an RGB color from computed elements |
+| `color4f` | Create an RGBA color from computed elements |
+| `vector2f` | Create a 2D vector from computed elements |
+| `vector3f` | Create a 3D vector from computed elements |
+| `vector4f` | Create a 4D vector from computed elements |
+| `vector2h` | Create a 2D vector from computed elements |
+| `vector3h` | Create a 3D vector from computed elements |
+| `vector4h` | Create a 4D vector from computed elements |
 | `abs` | Absolute value |
 | `ceil` | Ceiling |
 | `clamp` | Clamp a value to a range |
-| `color3f` | Create an RGB color from computed elements |
-| `color4f` | Create an RGBA color from computed elements |
 | `cos` | Cosine of an angle in radians |
 | `cross` | Cross product |
 | `dot` | Dot product |
@@ -107,9 +113,6 @@ The following operators are supported:
 | `sin` | Sine of an angle in radians |
 | `sqrt` | Square root |
 | `tan` | Tangent of an angle in radians |
-| `vector2f` | Create a 2D vector from computed elements |
-| `vector3f` | Create a 3D vector from computed elements |
-| `vector4f` | Create a 4D vector from computed elements |
 
 Most operators work on `SGScalar`, `SGVector`, and `SGColor` types.
 

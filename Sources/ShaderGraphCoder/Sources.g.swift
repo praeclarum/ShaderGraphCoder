@@ -2,6 +2,7 @@
 import Foundation
 import simd
 public extension SGValue {
+    /// Bitangent
     static func bitangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
@@ -322,6 +323,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
+    /// Normal
     static func normal(space: SGSpace = SGSpace.object) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
@@ -331,6 +333,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
+    /// Position
     static func position(space: SGSpace = SGSpace.object) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
@@ -556,6 +559,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
+    /// Tangent
     static func tangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
@@ -595,6 +599,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
+    /// Up Direction
     static func updirection(space: SGSpace = SGSpace.world) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
