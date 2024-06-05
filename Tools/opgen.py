@@ -66,6 +66,8 @@ node_renames: Dict[str, str] = {
     "transformmatrix": "transformMatrix",
     "transformnormal": "transformNormal",
     "transformvector": "transformVector",
+    "updirection": "upDirection",
+    "viewdirection": "viewDirection",
 }
 
 def prop_is_supported(prop):
@@ -454,10 +456,9 @@ class CodeWriter():
         self.indent_level = 0
 
     def commit_current_line(self):
-        if len(self.current_line) > 0:
-            self.lines.append(self.current_line)
-            self.current_line = ""
-            self.needs_indent = True
+        self.lines.append(self.current_line)
+        self.current_line = ""
+        self.needs_indent = True
 
     def output_to_file(self, file_path: str):
         with open(file_path, 'w') as f:
@@ -465,6 +466,18 @@ class CodeWriter():
             for line in self.lines:
                 f.write(line)
                 f.write('\n')
+
+    def replace_in_file(self, file_path: str, re_to_replace: str):
+        replacement = self.__str__()
+        with open(file_path, 'r') as f:
+            original_file_contents = f.read()
+        r = re.compile(re_to_replace, re.MULTILINE|re.DOTALL)
+        new_file_contents = r.sub(replacement, original_file_contents)
+        with open(file_path, 'w') as f:
+            f.write(new_file_contents)
+
+    def __str__(self) -> str:
+        return "\n".join(self.lines) + "\n"
 
     def write_footer(self, f):
         self.write_line('')
@@ -841,7 +854,7 @@ node_descriptions = load_plist_strings(plist_path)
 
 ops_out_path = os.path.join(src_path, 'Operations.g.swift')
 srcs_out_path = os.path.join(src_path, 'Sources.g.swift')
-readme_path = os.path.join(repo_path, 'README.g.md')
+readme_path = os.path.join(repo_path, 'README.md')
 
 stage = Usd.Stage.Open(schemas_path)
 all_prims = [x for x in stage.Traverse()]  
@@ -881,25 +894,26 @@ print(f'Outputting {len(op_nodes)} operations')
 print(f'Outputting {len(src_nodes)} sources')
 
 ops_writer = SwiftWriter()
-readme_writer = CodeWriter()
-readme_writer.write_line('# Operations')
+ops_readme_writer = CodeWriter()
 write_enums(ops_writer)
 for node in op_nodes:
     write_node_overloads(node, True, False, ops_writer)
-    write_node_overload_table_entry(node, readme_writer)
+    write_node_overload_table_entry(node, ops_readme_writer)
 ops_writer.output_to_file(ops_out_path)
+ops_readme_writer.write_line('')
+ops_readme_writer.replace_in_file(readme_path, r"\| \`abs.*?\n\n")
 
 srcs_writer = SwiftWriter()
+srcs_readme_writer = CodeWriter()
 srcs_writer.write_line('public extension SGValue {')
 srcs_writer.indent()
-readme_writer.write_line('# Sources')
 for node in src_nodes:
     write_node_overloads(node, False, True, srcs_writer)
-    write_node_overload_table_entry(node, readme_writer, prefix_name="SGValue.")
+    write_node_overload_table_entry(node, srcs_readme_writer, prefix_name="SGValue.")
 srcs_writer.unindent()
 srcs_writer.write_line('}')
 srcs_writer.output_to_file(srcs_out_path)
-
-readme_writer.output_to_file(readme_path)
+srcs_readme_writer.write_line('')
+srcs_readme_writer.replace_in_file(readme_path, r"\| \`SGValue\.bitangent.*?\n\n")
 
 print('Done')

@@ -106,8 +106,8 @@ The following operators are supported:
 | `blur(in, size, filtertype)` | Blur |
 | `burn(fg, bg, mix)` | Burn |
 | `ceil(in)` | Ceiling |
-| `cellnoise2D(texcoord)` | Cellular Noise 2D |
-| `cellnoise3D(position)` | Cellular Noise 3D |
+| `cellNoise2D(texcoord)` | Cellular Noise 2D |
+| `cellNoise3D(position)` | Cellular Noise 3D |
 | `clamp(in, low, high)` | Clamp |
 | `contrast(in, amount, pivot)` | Contrast |
 | `cos(in)` | Cos |
@@ -125,9 +125,9 @@ The following operators are supported:
 | `fractal3D(amplitude, octaves, lacunarity, diminish, position)` | Fractal Noise 3D |
 | `geometrySwitchCameraindex(mono, left, right)` | Camera Index Switch |
 | `geompropvalue(geomprop, default)` | Geometric Property |
-| `heighttonormal(in, scale)` | Height To Normal |
-| `hsvadjust(in, amount)` | HSV Adjust |
-| `hsvtorgb(in)` | HSV to RGB |
+| `heightToNormal(in, scale)` | Height To Normal |
+| `hsvAdjust(in, amount)` | HSV Adjust |
+| `hsvToRGB(in)` | HSV to RGB |
 | `ifEqual(value1, value2, in1, in2)` | If Equal |
 | `ifGreater(value1, value2, in1, in2)` | If Greater |
 | `ifGreaterOrEqual(value1, value2, in1, in2)` | If Greater Or Equal |
@@ -189,12 +189,10 @@ The following operators are supported:
 | `switchValue(in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, which)` | Switch |
 | `tan(in)` | Tan |
 | `tiledimage(file, default, texcoord, uvtiling, uvoffset, realworldimagesize, realworldtilesize, filtertype)` | Tiled Image |
-| `transformmatrix(in, mat)` | Transform Matrix |
-| `transformmatrixVector2m3(in, mat)` | Transform Matrix |
-| `transformmatrixVector3m4(in, mat)` | Transform Matrix |
-| `transformnormal(in, fromspace, tospace)` | Transform Normal |
-| `transformpoint(in, fromspace, tospace)` | Transform Point |
-| `transformvector(in, fromspace, tospace)` | Transform Vector |
+| `transformMatrix(in, mat)` | Transform Matrix |
+| `transformNormal(in, fromspace, tospace)` | Transform Normal |
+| `transformPoint(in, fromspace, tospace)` | Transform Point |
+| `transformVector(in, fromspace, tospace)` | Transform Vector |
 | `transpose(in)` | Transpose |
 | `triplanarprojection(filex, filey, filez, default, position, normal, filtertype)` | Triplanar Projection |
 | `unpremult(in)` | Unpremultiply |
@@ -204,6 +202,7 @@ The following operators are supported:
 | `worleynoise3DFloat(position, jitter)` | Worley Noise 3D |
 | `worleynoise3DVector2(position, jitter)` | Worley Noise 3D |
 | `worleynoise3DVector3(position, jitter)` | Worley Noise 3D |
+
 
 For more details see [Operations.swift](Sources/ShaderGraphCoder/Operations.swift) and [Operations.g.swift](Sources/ShaderGraphCoder/Operations.g.swift).
 
@@ -305,8 +304,9 @@ The following sources are supported:
 | `SGValue.texcoordVector2(index)` | Texture Coordinates |
 | `SGValue.texcoordVector3(index)` | Texture Coordinates |
 | `SGValue.time` | Time |
-| `SGValue.updirection(space)` | Up Direction |
-| `SGValue.viewdirection(space)` | View Direction |
+| `SGValue.upDirection(space)` | Up Direction |
+| `SGValue.viewDirection(space)` | View Direction |
+
 
 For more details see [Sources.swift](Sources/ShaderGraphCoder/Sources.swift) and [Sources.g.swift](Sources/ShaderGraphCoder/Sources.g.swift).
 
