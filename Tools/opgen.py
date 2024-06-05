@@ -58,6 +58,7 @@ node_renames: Dict[str, str] = {
     "ifgreatereq": "ifGreaterOrEqual",
     "in": "mixColor",
     "invertmatrix": "invertMatrix",
+    "ln": "log",
     "magnitude": "length",
     "normalmap": "normalMap",
     "oneminus": "oneMinus",

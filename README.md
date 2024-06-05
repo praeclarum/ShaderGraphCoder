@@ -135,7 +135,7 @@ The following operators are supported:
 | `inside(in, mask)` | Inside |
 | `invertMatrix(in)` | Invert Matrix |
 | `length(in)` | Magnitude |
-| `ln(in)` | Natural Log |
+| `log(in)` | Natural Log |
 | `logicalAnd(in1, in2)` | And |
 | `logicalNot(in)` | Not |
 | `logicalOr(in1, in2)` | Or |

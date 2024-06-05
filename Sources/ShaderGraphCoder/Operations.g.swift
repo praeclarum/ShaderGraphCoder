@@ -2130,7 +2130,7 @@ public func length(_ in1: SGVector) -> SGScalar {
     return SGScalar(source: .error("Unsupported input data types for length"))
 }
 /// Natural Log
-public func ln<T>(_ in1: T) -> T where T: SGNumeric {
+public func log<T>(_ in1: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -2182,7 +2182,7 @@ public func ln<T>(_ in1: T) -> T where T: SGNumeric {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for ln"))
+    return T(source: .error("Unsupported input data types for log"))
 }
 /// And
 public func logicalAnd(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
