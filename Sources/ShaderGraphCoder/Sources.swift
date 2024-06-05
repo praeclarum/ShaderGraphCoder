@@ -37,16 +37,16 @@ public extension SGValue {
         SGScalar(source: .parameter(name: name, defaultValue: .float(defaultValue)))
     }
     static var modelNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.modelNormal))
+        normal(space: .model)
     }
     static var modelPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.modelPosition))
+        position(space: .model)
     }
     static var objectNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.objectNormal))
+        normal(space: .object)
     }
     static var objectPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.objectPosition))
+        position(space: .object)
     }
     static func string(_ value: String) -> SGString {
         SGString(source: .constant(.string(value)))
@@ -60,11 +60,8 @@ public extension SGValue {
     static func texture3DParameter(name: String) -> SGTexture3D {
         SGTexture3D(source: .parameter(name: name, defaultValue: .emptyTexture3D))
     }
-    static var time: SGScalar {
-        SGScalar(source: SGValueSource.nodeOutput(SGNode.time))
-    }
     static func uv(index: Int) -> SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.uv(index: index)))
+        texcoordVector2(index: index)
     }
     static var uv0: SGVector {
         SGValue.uv(index: 0)
@@ -100,27 +97,16 @@ public extension SGValue {
         SGVector(source: .parameter(name: name, defaultValue: .vector4f(defaultValue)))
     }
     static var worldCameraPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldCameraPosition))
+        cameraPosition(space: .world)
     }
     static var worldPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldPosition))
+        position(space: .world)
     }
     static var worldNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldNormal))
+        normal(space: .world)
     }
 }
 
 public extension SGNode {
     static let customAttribute = SGNode(nodeType: "ND_realitykit_surface_custom_attribute", inputs: [], outputs: [.init(name: "customAttribute", dataType: .vector4f)])
-    static let modelNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let modelPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let objectNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let objectPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let time = SGNode(nodeType: "ND_time_float", inputs: [], outputs: [.init(name: "out", dataType: .float)])
-    static let worldCameraPosition = SGNode(nodeType: "ND_realitykit_cameraposition_vector3", inputs: [], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let worldPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let worldNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static func uv(index: Int) -> SGNode {
-        SGNode(nodeType: "ND_texcoord_vector2", inputs: [.init(name: "index", connection: .int(index))], outputs: [.init(name: "out", dataType: .vector2f)])
-    }
 }

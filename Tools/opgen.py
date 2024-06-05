@@ -45,6 +45,7 @@ param_renames: Dict[str, str] = {
 node_renames: Dict[str, str] = {
     "absval": "abs",
     "dotproduct": "dot",
+    "cameraposition": "cameraPosition",
     "crossproduct": "cross",
     "fractional": "fract",
     "ifequal": "ifEqual",
@@ -687,7 +688,7 @@ def write_sgc_value(w: SwiftWriter, value, usd_type: str, sgc_type: str):
     write_primitive_value(w, value, usd_type, sgc_type)
     w.write(f')))')
 
-def write_node_overloads(overloads: NodeOverloads, needs_public: bool, w: SwiftWriter):
+def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_static: bool, w: SwiftWriter):
     swift_name = overloads.swift_name
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
@@ -717,8 +718,10 @@ def write_node_overloads(overloads: NodeOverloads, needs_public: bool, w: SwiftW
     if len(description) > 0:
         w.write_line(f'/// {description}')
     write_func = num_inputs > 0
-    if needs_public:
+    if decl_public:
         w.write('public ')
+    if decl_static:
+        w.write('static ')
     if write_func:
         w.write(f'func {swift_name}')
         if generic_params is not None:
@@ -857,14 +860,14 @@ print(f'Outputting {len(src_nodes)} sources')
 ops_writer = SwiftWriter()
 write_enums(ops_writer)
 for node in op_nodes:
-    write_node_overloads(node, True, ops_writer)
+    write_node_overloads(node, True, False, ops_writer)
 ops_writer.output_to_file(ops_out_path)
 
 srcs_writer = SwiftWriter()
 srcs_writer.write_line('public extension SGValue {')
 srcs_writer.indent()
 for node in src_nodes:
-    write_node_overloads(node, False, srcs_writer)
+    write_node_overloads(node, False, True, srcs_writer)
 srcs_writer.unindent()
 srcs_writer.write_line('}')
 srcs_writer.output_to_file(srcs_out_path)

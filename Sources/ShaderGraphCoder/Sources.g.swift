@@ -2,7 +2,7 @@
 import Foundation
 import simd
 public extension SGValue {
-    func bitangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
+    static func bitangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
@@ -13,7 +13,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Camera Position
-    func cameraposition(space: SGSpace = SGSpace.world) -> SGVector {
+    static func cameraPosition(space: SGSpace = SGSpace.world) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
         ]
@@ -23,7 +23,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Frame
-    var frame: SGScalar {
+    static var frame: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -32,7 +32,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Geometry Color
-    func geomcolorColor3(index: Int = 0) -> SGColor {
+    static func geomcolorColor3(index: Int = 0) -> SGColor {
         let inputs: [SGNode.Input] = [
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
         ]
@@ -42,7 +42,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     /// Geometry Color
-    func geomcolorColor4(index: Int = 0) -> SGColor {
+    static func geomcolorColor4(index: Int = 0) -> SGColor {
         let inputs: [SGNode.Input] = [
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
         ]
@@ -52,7 +52,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     /// Geometry Color
-    func geomcolorFloat(index: Int = 0) -> SGScalar {
+    static func geomcolorFloat(index: Int = 0) -> SGScalar {
         let inputs: [SGNode.Input] = [
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
         ]
@@ -62,7 +62,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Geometry Modifier Custom Attribute
-    var geometryModifierCustomAttribute: SGVector {
+    static var geometryModifierCustomAttribute: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -71,7 +71,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     /// Geometry Modifier Custom Attribute 0
-    var geometryModifierCustomAttributeHalf20: SGVector {
+    static var geometryModifierCustomAttributeHalf20: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -80,7 +80,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     /// Geometry Modifier Custom Attribute 1
-    var geometryModifierCustomAttributeHalf21: SGVector {
+    static var geometryModifierCustomAttributeHalf21: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -89,7 +89,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     /// Geometry Modifier Custom Attribute 0
-    var geometryModifierCustomAttributeHalf40: SGVector {
+    static var geometryModifierCustomAttributeHalf40: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -98,7 +98,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Geometry Modifier Custom Attribute 1
-    var geometryModifierCustomAttributeHalf41: SGVector {
+    static var geometryModifierCustomAttributeHalf41: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -107,7 +107,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Geometry Modifier Custom Attribute 2
-    var geometryModifierCustomAttributeHalf42: SGVector {
+    static var geometryModifierCustomAttributeHalf42: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -116,7 +116,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Geometry Modifier Custom Attribute 3
-    var geometryModifierCustomAttributeHalf43: SGVector {
+    static var geometryModifierCustomAttributeHalf43: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -125,7 +125,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Geometry Modifier Custom Parameter
-    var geometryModifierCustomParameter: SGVector {
+    static var geometryModifierCustomParameter: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -134,7 +134,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     /// Geometry Modifier Model Position Offset
-    var geometryModifierModelPositionOffset: SGVector {
+    static var geometryModifierModelPositionOffset: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -143,7 +143,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Geometry Modifier Model To View
-    var geometryModifierModelToView: SGMatrix {
+    static var geometryModifierModelToView: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -152,7 +152,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Geometry Modifier Model To World
-    var geometryModifierModelToWorld: SGMatrix {
+    static var geometryModifierModelToWorld: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -161,7 +161,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Geometry Modifier Normal To World
-    var geometryModifierNormalToWorld: SGMatrix {
+    static var geometryModifierNormalToWorld: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -170,7 +170,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     /// Geometry Modifier Projection To View
-    var geometryModifierProjectionToView: SGMatrix {
+    static var geometryModifierProjectionToView: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -179,7 +179,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Geometry Modifier uv0 Offset
-    var geometryModifierUV0Offset: SGVector {
+    static var geometryModifierUV0Offset: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -188,7 +188,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     /// Geometry Modifier uv0 Transform
-    var geometryModifierUV0Transform: SGMatrix {
+    static var geometryModifierUV0Transform: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -197,7 +197,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     /// Geometry Modifier uv1 Offset
-    var geometryModifierUV1Offset: SGVector {
+    static var geometryModifierUV1Offset: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -206,7 +206,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     /// Geometry Modifier uv1 Transform
-    var geometryModifierUV1Transform: SGMatrix {
+    static var geometryModifierUV1Transform: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -215,7 +215,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     /// Geometry Modifier Vertex ID
-    var geometryModifierVertexId: SGScalar {
+    static var geometryModifierVertexId: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -224,7 +224,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.int)])))
     }
     /// Geometry Modifier View To Projection
-    var geometryModifierViewToProjection: SGMatrix {
+    static var geometryModifierViewToProjection: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -233,7 +233,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Geometry Modifier World To Model
-    var geometryModifierWorldToModel: SGMatrix {
+    static var geometryModifierWorldToModel: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -242,7 +242,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Material Parameter Base Color Tint
-    var materialParametersBaseColorTint: SGColor {
+    static var materialParametersBaseColorTint: SGColor {
         let inputs: [SGNode.Input] = [
         ]
         return SGColor(source: .nodeOutput(SGNode(
@@ -251,7 +251,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     /// Material Parameter Roughness Scale
-    var materialParametersClearcoatRoughnessScale: SGScalar {
+    static var materialParametersClearcoatRoughnessScale: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -260,7 +260,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Material Parameter Clearcoat Scale
-    var materialParametersClearcoatScale: SGScalar {
+    static var materialParametersClearcoatScale: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -269,7 +269,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Material Parameter Emissive Color
-    var materialParametersEmissiveColor: SGColor {
+    static var materialParametersEmissiveColor: SGColor {
         let inputs: [SGNode.Input] = [
         ]
         return SGColor(source: .nodeOutput(SGNode(
@@ -278,7 +278,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     /// Material Parameter Metallic Scale
-    var materialParametersMetallicScale: SGScalar {
+    static var materialParametersMetallicScale: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -287,7 +287,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Material Parameter Opacity Scale
-    var materialParametersOpacityScale: SGScalar {
+    static var materialParametersOpacityScale: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -296,7 +296,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Material Parameter Opacity Threshold
-    var materialParametersOpacityThreshold: SGScalar {
+    static var materialParametersOpacityThreshold: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -305,7 +305,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Material Parameter Roughness Scale
-    var materialParametersRoughnessScale: SGScalar {
+    static var materialParametersRoughnessScale: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -314,7 +314,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Material Parameter Specular Scale
-    var materialParametersSpecularScale: SGScalar {
+    static var materialParametersSpecularScale: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -322,7 +322,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    func normal(space: SGSpace = SGSpace.object) -> SGVector {
+    static func normal(space: SGSpace = SGSpace.object) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
         ]
@@ -331,7 +331,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    func position(space: SGSpace = SGSpace.object) -> SGVector {
+    static func position(space: SGSpace = SGSpace.object) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
         ]
@@ -341,7 +341,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Surface Ambient Occlusion
-    var surfaceAmbientOcclusion: SGScalar {
+    static var surfaceAmbientOcclusion: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -350,7 +350,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface Base Color
-    var surfaceBaseColor: SGColor {
+    static var surfaceBaseColor: SGColor {
         let inputs: [SGNode.Input] = [
         ]
         return SGColor(source: .nodeOutput(SGNode(
@@ -359,7 +359,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     /// Surface Clearcoat
-    var surfaceClearcoat: SGScalar {
+    static var surfaceClearcoat: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -368,7 +368,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface Clearcoat Roughness
-    var surfaceClearcoatRoughness: SGScalar {
+    static var surfaceClearcoatRoughness: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -377,7 +377,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface Custom Attribute
-    var surfaceCustomAttribute: SGVector {
+    static var surfaceCustomAttribute: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -386,7 +386,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     /// Surface Custom Attribute 0
-    var surfaceCustomAttributeHalf20: SGVector {
+    static var surfaceCustomAttributeHalf20: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -395,7 +395,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     /// Surface Custom Attribute 1
-    var surfaceCustomAttributeHalf21: SGVector {
+    static var surfaceCustomAttributeHalf21: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -404,7 +404,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     /// Surface Custom Attribute 0
-    var surfaceCustomAttributeHalf40: SGVector {
+    static var surfaceCustomAttributeHalf40: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -413,7 +413,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Surface Custom Attribute 1
-    var surfaceCustomAttributeHalf41: SGVector {
+    static var surfaceCustomAttributeHalf41: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -422,7 +422,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Surface Custom Attribute 2
-    var surfaceCustomAttributeHalf42: SGVector {
+    static var surfaceCustomAttributeHalf42: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -431,7 +431,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Surface Custom Attribute 3
-    var surfaceCustomAttributeHalf43: SGVector {
+    static var surfaceCustomAttributeHalf43: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -440,7 +440,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     /// Surface Custom Parameter
-    var surfaceCustomParameter: SGVector {
+    static var surfaceCustomParameter: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -449,7 +449,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     /// Surface Emissive Color
-    var surfaceEmissiveColor: SGColor {
+    static var surfaceEmissiveColor: SGColor {
         let inputs: [SGNode.Input] = [
         ]
         return SGColor(source: .nodeOutput(SGNode(
@@ -458,7 +458,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     /// Surface Metallic
-    var surfaceMetallic: SGScalar {
+    static var surfaceMetallic: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -467,7 +467,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface Model To View
-    var surfaceModelToView: SGMatrix {
+    static var surfaceModelToView: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -476,7 +476,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Surface Model To World
-    var surfaceModelToWorld: SGMatrix {
+    static var surfaceModelToWorld: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -485,7 +485,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Surface Opacity
-    var surfaceOpacity: SGScalar {
+    static var surfaceOpacity: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -494,7 +494,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface Projection To View
-    var surfaceProjectionToView: SGMatrix {
+    static var surfaceProjectionToView: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -503,7 +503,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Surface Roughness
-    var surfaceRoughness: SGScalar {
+    static var surfaceRoughness: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -512,7 +512,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface Screen Position
-    var surfaceScreenPosition: SGVector {
+    static var surfaceScreenPosition: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -521,7 +521,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     /// Surface Specular
-    var surfaceSpecular: SGScalar {
+    static var surfaceSpecular: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -530,7 +530,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     /// Surface View Direction
-    var surfaceViewDirection: SGVector {
+    static var surfaceViewDirection: SGVector {
         let inputs: [SGNode.Input] = [
         ]
         return SGVector(source: .nodeOutput(SGNode(
@@ -539,7 +539,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Surface View To Projection
-    var surfaceViewToProjection: SGMatrix {
+    static var surfaceViewToProjection: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -548,7 +548,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     /// Surface World To View
-    var surfaceWorldToView: SGMatrix {
+    static var surfaceWorldToView: SGMatrix {
         let inputs: [SGNode.Input] = [
         ]
         return SGMatrix(source: .nodeOutput(SGNode(
@@ -556,7 +556,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    func tangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
+    static func tangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
@@ -567,7 +567,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Texture Coordinates
-    func texcoordVector2(index: Int = 0) -> SGVector {
+    static func texcoordVector2(index: Int = 0) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
         ]
@@ -577,7 +577,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     /// Texture Coordinates
-    func texcoordVector3(index: Int = 0) -> SGVector {
+    static func texcoordVector3(index: Int = 0) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
         ]
@@ -587,7 +587,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// Time
-    var time: SGScalar {
+    static var time: SGScalar {
         let inputs: [SGNode.Input] = [
         ]
         return SGScalar(source: .nodeOutput(SGNode(
@@ -595,7 +595,7 @@ public extension SGValue {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    func updirection(space: SGSpace = SGSpace.world) -> SGVector {
+    static func updirection(space: SGSpace = SGSpace.world) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
         ]
@@ -605,7 +605,7 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     /// View Direction
-    func viewdirection(space: SGSpace = SGSpace.world) -> SGVector {
+    static func viewdirection(space: SGSpace = SGSpace.world) -> SGVector {
         let inputs: [SGNode.Input] = [
             .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
         ]
