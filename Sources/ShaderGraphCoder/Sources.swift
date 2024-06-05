@@ -24,6 +24,15 @@ public extension SGValue {
     static func color4fParameter(name: String, defaultValue: SIMD4<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color4f(defaultValue, colorSpace: colorSpace)))
     }
+    static var identity2d: SGMatrix {
+        .matrix2d(col0: [1, 0], col1: [0, 1])
+    }
+    static var identity3d: SGMatrix {
+        .matrix3d(col0: [1, 0, 0], col1: [0, 1, 0], col2: [0, 0, 1])
+    }
+    static var identity4d: SGMatrix {
+        .matrix4d(col0: [1, 0, 0, 0], col1: [0, 1, 0, 0], col2: [0, 0, 1, 0], col3: [0, 0, 0, 1])
+    }
     static func int(_ value: Int) -> SGScalar {
         SGScalar(source: .constant(.int(value)))
     }
