@@ -57,6 +57,10 @@ node_renames: Dict[str, str] = {
     "power": "pow",
     "safepower": "safePow",
     "switch": "switchValue",
+    "transformpoint": "transformPoint",
+    "transformmatrix": "transformMatrix",
+    "transformnormal": "transformNormal",
+    "transformvector": "transformVector",
 }
 
 def prop_is_supported(prop):
@@ -266,10 +270,12 @@ suffix_type_names: List[str] = [
     "_vector2B",
     "_vector2FA",
     "_vector2I",
+    "_vector2M3",
     "_vector3",
     "_vector3B",
     "_vector3FA",
     "_vector3I",
+    "_vector3M4",
     "_vector4",
     "_vector4B",
     "_vector4FA",

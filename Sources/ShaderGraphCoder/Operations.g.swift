@@ -4892,7 +4892,7 @@ public func tiledimage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector =
     return T(source: .error("Unsupported input data types for tiledimage"))
 }
 /// Transform Matrix
-public func transformmatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
+public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
         .init(name: "mat", connection: mat),
@@ -4903,9 +4903,21 @@ public func transformmatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
+    if in1.dataType == SGDataType.vector2f && mat.dataType == SGDataType.matrix3d {
+        return SGVector(source: .nodeOutput(SGNode(
+            nodeType: "ND_transformmatrix_vector2M3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
     if in1.dataType == SGDataType.vector3f && mat.dataType == SGDataType.matrix3d {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if in1.dataType == SGDataType.vector3f && mat.dataType == SGDataType.matrix4d {
+        return SGVector(source: .nodeOutput(SGNode(
+            nodeType: "ND_transformmatrix_vector3M4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
@@ -4915,46 +4927,12 @@ public func transformmatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return SGVector(source: .error("Unsupported input data types for transformmatrix"))
-}
-/// Transform Matrix
-public func transformmatrixVector2m3(_ in1: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), mat: SGMatrix = SGMatrix(source: .constant(.matrix3d(simd_float3x3(columns: ( [1, 0, 0], [0, 1, 0], [0, 0, 1] )))))) -> SGVector {
-    guard in1.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid transformmatrixVector2m3 input. Expected in data type to be SGDataType.vector2f, but got \(in1.dataType)."))
-    }
-    guard mat.dataType == SGDataType.matrix3d else {
-        return SGVector(source: .error("Invalid transformmatrixVector2m3 input. Expected mat data type to be SGDataType.matrix3d, but got \(mat.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "mat", connection: mat),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_transformmatrix_vector2M3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector2f)])))
-}
-/// Transform Matrix
-public func transformmatrixVector3m4(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), mat: SGMatrix = SGMatrix(source: .constant(.matrix4d(simd_float4x4(columns: ( [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1] )))))) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid transformmatrixVector3m4 input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
-    }
-    guard mat.dataType == SGDataType.matrix4d else {
-        return SGVector(source: .error("Invalid transformmatrixVector3m4 input. Expected mat data type to be SGDataType.matrix4d, but got \(mat.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "mat", connection: mat),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_transformmatrix_vector3M4",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
+    return SGVector(source: .error("Unsupported input data types for transformMatrix"))
 }
 /// Transform Normal
-public func transformnormal(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 1]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+public func transformNormal(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 1]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid transformnormal input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
+        return SGVector(source: .error("Invalid transformNormal input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -4967,9 +4945,9 @@ public func transformnormal(_ in1: SGVector = SGVector(source: .constant(.vector
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transform Point
-public func transformpoint(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+public func transformPoint(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid transformpoint input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
+        return SGVector(source: .error("Invalid transformPoint input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
@@ -4982,9 +4960,9 @@ public func transformpoint(_ in1: SGVector = SGVector(source: .constant(.vector3
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transform Vector
-public func transformvector(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+public func transformVector(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid transformvector input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
+        return SGVector(source: .error("Invalid transformVector input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
