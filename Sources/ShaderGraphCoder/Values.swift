@@ -8,6 +8,20 @@
 import Foundation
 import RealityKit
 
+infix operator ^^ : LogicalDisjunctionPrecedence
+
+public class SGValue {
+    public let source: SGValueSource
+    public var dataType: SGDataType { source.dataType }
+    public required init(source: SGValueSource) {
+        self.source = source
+    }
+    public static func && (left: SGValue, right: SGValue) -> SGValue { ShaderGraphCoder.logicalAnd(left, right) }
+    public static func || (left: SGValue, right: SGValue) -> SGValue { ShaderGraphCoder.logicalOr(left, right) }
+    public static func ^^ (left: SGValue, right: SGValue) -> SGValue { ShaderGraphCoder.logicalXor(left, right) }
+    public static prefix func ! (left: SGValue) -> SGValue { ShaderGraphCoder.logicalNot(left) }
+}
+
 public class SGNumeric: SGValue {
 }
 

@@ -71,14 +71,6 @@ public class SGNode: Identifiable, Equatable, Hashable {
     }
 }
 
-public class SGValue {
-    public let source: SGValueSource
-    public var dataType: SGDataType { source.dataType }
-    public required init(source: SGValueSource) {
-        self.source = source
-    }
-}
-
 public enum SGValueSource {
     case nodeOutput(_ node: SGNode, _ outputName: String)
     case constant(_ value: SGConstantValue)
