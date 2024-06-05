@@ -5185,4 +5185,110 @@ public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
+extension SGVector {
+    /// Cellular Noise 2D
+    func cellNoise2D() -> SGScalar {
+        ShaderGraphCoder.cellNoise2D(texcoord: self)
+    }
+    /// Cellular Noise 3D
+    func cellNoise3D() -> SGScalar {
+        ShaderGraphCoder.cellNoise3D(position: self)
+    }
+    /// Cross Product
+    func cross(_ in2: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0])))) -> SGVector {
+        ShaderGraphCoder.cross(self, in2)
+    }
+    /// Dot Product
+    func dot(_ in2: SGVector) -> SGScalar {
+        ShaderGraphCoder.dot(self, in2)
+    }
+    /// Fractal Noise 3D
+    func fractal3D(octaves: SGScalar = SGScalar(source: .constant(.int(3))), lacunarity: SGScalar = SGScalar(source: .constant(.float(2.0))), diminish: SGScalar = SGScalar(source: .constant(.float(0.5))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
+        ShaderGraphCoder.fractal3D(amplitude: self, octaves: octaves, lacunarity: lacunarity, diminish: diminish, position: position)
+    }
+    /// Magnitude
+    func length() -> SGScalar {
+        ShaderGraphCoder.length(self)
+    }
+    /// Noise 2D
+    func noise2D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGNumeric {
+        ShaderGraphCoder.noise2D(amplitude: self, pivot: pivot, texcoord: texcoord)
+    }
+    /// Noise 3D
+    func noise3D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
+        ShaderGraphCoder.noise3D(amplitude: self, pivot: pivot, position: position)
+    }
+    /// Normal Map
+    func normalMap(space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+        ShaderGraphCoder.normalMap(self, space: space, scale: scale, normal: normal, tangent: tangent)
+    }
+    /// Normal Map Decode
+    func normalMapDecode() -> SGVector {
+        ShaderGraphCoder.normalMapDecode(self)
+    }
+    /// Normalize
+    func normalize() -> SGVector {
+        ShaderGraphCoder.normalize(self)
+    }
+    /// Place 2D
+    func place2D(pivot: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), scale: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), rotate: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGVector {
+        ShaderGraphCoder.place2D(texcoord: self, pivot: pivot, scale: scale, rotate: rotate, offset: offset)
+    }
+    /// Reflect
+    func reflect(normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+        ShaderGraphCoder.reflect(self, normal: normal)
+    }
+    /// Refract
+    func refract(normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), eta: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+        ShaderGraphCoder.refract(self, normal: normal, eta: eta)
+    }
+    /// Rotate 2D
+    func rotate2D(amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
+        ShaderGraphCoder.rotate2D(self, amount: amount)
+    }
+    /// Rotate 3D
+    func rotate3D(amount: SGScalar = SGScalar(source: .constant(.float(0.0))), axis: SGVector = SGVector(source: .constant(.vector3f([0, 1, 0])))) -> SGVector {
+        ShaderGraphCoder.rotate3D(self, amount: amount, axis: axis)
+    }
+    /// Transform Matrix
+    func transformMatrix(mat: SGMatrix) -> SGVector {
+        ShaderGraphCoder.transformMatrix(self, mat: mat)
+    }
+    /// Transform Normal
+    func transformNormal(fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+        ShaderGraphCoder.transformNormal(self, fromspace: fromspace, tospace: tospace)
+    }
+    /// Transform Point
+    func transformPoint(fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+        ShaderGraphCoder.transformPoint(self, fromspace: fromspace, tospace: tospace)
+    }
+    /// Transform Vector
+    func transformVector(fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+        ShaderGraphCoder.transformVector(self, fromspace: fromspace, tospace: tospace)
+    }
+    /// Worley Noise 2D
+    func worleyNoise2DFloat(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
+        ShaderGraphCoder.worleyNoise2DFloat(texcoord: self, jitter: jitter)
+    }
+    /// Worley Noise 2D
+    func worleyNoise2DVector2(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+        ShaderGraphCoder.worleyNoise2DVector2(texcoord: self, jitter: jitter)
+    }
+    /// Worley Noise 2D
+    func worleyNoise2DVector3(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+        ShaderGraphCoder.worleyNoise2DVector3(texcoord: self, jitter: jitter)
+    }
+    /// Worley Noise 3D
+    func worleyNoise3DFloat(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
+        ShaderGraphCoder.worleyNoise3DFloat(position: self, jitter: jitter)
+    }
+    /// Worley Noise 3D
+    func worleyNoise3DVector2(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+        ShaderGraphCoder.worleyNoise3DVector2(position: self, jitter: jitter)
+    }
+    /// Worley Noise 3D
+    func worleyNoise3DVector3(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+        ShaderGraphCoder.worleyNoise3DVector3(position: self, jitter: jitter)
+    }
+}
 

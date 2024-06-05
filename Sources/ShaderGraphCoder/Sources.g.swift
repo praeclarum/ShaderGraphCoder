@@ -621,4 +621,3 @@ public extension SGValue {
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
 }
-
