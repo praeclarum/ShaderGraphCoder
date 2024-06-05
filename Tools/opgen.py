@@ -574,7 +574,21 @@ class NodeOverloads():
                 if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
                     sgc_param_type_is_shared[i] = False
         num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
+        self.sgc_shared_param_type = sgc_shared_param_type
+        self.sgc_param_type_is_shared = sgc_param_type_is_shared
+        self.primitive_params = primitive_params
+        self.generic_params = generic_params
         return generic_params,sgc_output_type,interface_only_params,primitive_params,param_names,default_value_params,num_unnamed_inputs,usd_param_type_is_shared,sgc_param_type_is_shared,sgc_shared_param_type,num_unshared_usd_params
+    def get_param_sgc_type(self, i) -> str:
+        sgc_type = self.sgc_shared_param_type[i]
+        if not self.sgc_param_type_is_shared[i]:
+            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in self.overloads]
+            sgc_type = get_base_sg_type(all_types)
+        if self.primitive_params[i]:
+            sgc_type = usd_type_to_primitive_type(self.first_node().inputs[i].usd_type)
+        elif self.generic_params is not None and i in self.generic_params[0]:
+            sgc_type = 'T'
+        return sgc_type
     def find_generic_params(self) -> Optional[Tuple[List[int], str]]:
         param_type_matches_output_type = [True for _ in self.first_node().inputs]
         sgc_output_types: Set[str] = set()
@@ -637,7 +651,9 @@ def add_node_to_overloads(node: Node):
 node_overloads_by_first_input_sgc_type: Dict[str, List[NodeOverloads]] = {}
 def group_by_first_input_sgc_type(node_overloadss: List[NodeOverloads]):
     for overloads in node_overloadss:
-        first_input_sgc_type = usd_type_to_sgc_type(overloads.first_node().inputs[0].usd_type)
+        first_input_sgc_type = overloads.get_param_sgc_type(0)
+        # if first_input_sgc_type == "T":
+        #     first_input_sgc_type = overloads.generic_params[0][0]
         if first_input_sgc_type not in node_overloads_by_first_input_sgc_type:
             node_overloads_by_first_input_sgc_type[first_input_sgc_type] = []
         node_overloads_by_first_input_sgc_type[first_input_sgc_type].append(overloads)
@@ -843,16 +859,8 @@ def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl
     for i, input in enumerate(first_node.inputs):
         if i < skip_params:
             continue
-        sgc_type_is_shared = sgc_param_type_is_shared[i]
-        sgc_type = sgc_shared_param_type[i]
         is_primitive = primitive_params[i]
-        if not sgc_type_is_shared:
-            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in overloads.overloads]
-            sgc_type = get_base_sg_type(all_types)
-        if is_primitive:
-            sgc_type = usd_type_to_primitive_type(input.usd_type)
-        elif generic_params is not None and i in generic_params[0]:
-            sgc_type = 'T'
+        sgc_type = overloads.get_param_sgc_type(i)
         name = f"_ {param_names[i]}" if i < num_unnamed_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
         if default_value_params[i] is not None:
@@ -893,7 +901,6 @@ def write_extension_node_overloads(w: SwiftWriter, ext_sgc_type: str, overloadss
         w.write_line('}')
     w.unindent()
     w.write_line('}')
-    w.write_line('')
 
 def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, prefix_name: str = ""):
     w.write(f"| `{prefix_name}{overloads.swift_name}")
@@ -954,7 +961,6 @@ src_nodes = sorted(src_nodes, key=lambda x: x.swift_name)
 op_nodes = sorted(op_nodes, key=lambda x: x.swift_name)
 print(f'Outputting {len(op_nodes)} operations')
 print(f'Outputting {len(src_nodes)} sources')
-group_by_first_input_sgc_type(op_nodes)
 
 ops_writer = SwiftWriter()
 ops_readme_writer = CodeWriter()
@@ -962,7 +968,8 @@ write_enums(ops_writer)
 for node in op_nodes:
     write_node_overloads(node, True, False, ops_writer)
     write_node_overload_table_entry(node, ops_readme_writer)
-for sgc_type in ["SGVector"]:
+group_by_first_input_sgc_type(op_nodes)
+for sgc_type in ["SGValue", "SGScalar", "SGColor", "SGVector", "SGMatrix"]:
     if sgc_type in node_overloads_by_first_input_sgc_type:
         write_extension_node_overloads(ops_writer, sgc_type, node_overloads_by_first_input_sgc_type[sgc_type])
 ops_writer.output_to_file(ops_out_path)

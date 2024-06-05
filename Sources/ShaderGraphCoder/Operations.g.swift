@@ -5185,6 +5185,100 @@ public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
+extension SGValue {
+    /// If Equal
+    func ifEqual<T>(value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+        ShaderGraphCoder.ifEqual(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
+    }
+    /// And
+    func logicalAnd(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+        ShaderGraphCoder.logicalAnd(self, in2)
+    }
+    /// Not
+    func logicalNot() -> SGValue {
+        ShaderGraphCoder.logicalNot(self)
+    }
+    /// Or
+    func logicalOr(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+        ShaderGraphCoder.logicalOr(self, in2)
+    }
+    /// XOR
+    func logicalXor(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+        ShaderGraphCoder.logicalXor(self, in2)
+    }
+}
+extension SGScalar {
+    /// Ambient Occlusion
+    func ambientocclusion(maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
+        ShaderGraphCoder.ambientocclusion(coneangle: self, maxdistance: maxdistance)
+    }
+    /// Height To Normal
+    func heightToNormal(scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+        ShaderGraphCoder.heightToNormal(self, scale: scale)
+    }
+    /// If Greater
+    func ifGreater<T>(value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+        ShaderGraphCoder.ifGreater(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
+    }
+    /// If Greater Or Equal
+    func ifGreaterOrEqual<T>(value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+        ShaderGraphCoder.ifGreaterOrEqual(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
+    }
+}
+extension SGColor {
+    /// Disjoint Over
+    func disjointover(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+        ShaderGraphCoder.disjointover(fg: self, bg: bg, mix: mix)
+    }
+    /// HSV Adjust
+    func hsvAdjust(amount: SGVector = SGVector(source: .constant(.vector3f([0, 1, 1])))) -> SGColor {
+        ShaderGraphCoder.hsvAdjust(self, amount: amount)
+    }
+    /// HSV to RGB
+    func hsvToRGB() -> SGColor {
+        ShaderGraphCoder.hsvToRGB(self)
+    }
+    /// Luminance
+    func luminance(lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
+        ShaderGraphCoder.luminance(self, lumacoeffs: lumacoeffs)
+    }
+    /// Mask
+    func mask(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+        ShaderGraphCoder.mask(fg: self, bg: bg, mix: mix)
+    }
+    /// Matte
+    func matte(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+        ShaderGraphCoder.matte(fg: self, bg: bg, mix: mix)
+    }
+    /// In
+    func mixColor(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+        ShaderGraphCoder.mixColor(fg: self, bg: bg, mix: mix)
+    }
+    /// Out
+    func out(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+        ShaderGraphCoder.out(fg: self, bg: bg, mix: mix)
+    }
+    /// Over
+    func over(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+        ShaderGraphCoder.over(fg: self, bg: bg, mix: mix)
+    }
+    /// Premultiply
+    func premult() -> SGColor {
+        ShaderGraphCoder.premult(self)
+    }
+    /// RGB to HSV
+    func rgbToHSV() -> SGColor {
+        ShaderGraphCoder.rgbToHSV(self)
+    }
+    /// Saturate
+    func saturate(amount: SGScalar = SGScalar(source: .constant(.float(1.0))), lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
+        ShaderGraphCoder.saturate(self, amount: amount, lumacoeffs: lumacoeffs)
+    }
+    /// Unpremultiply
+    func unpremult() -> SGColor {
+        ShaderGraphCoder.unpremult(self)
+    }
+}
 extension SGVector {
     /// Cellular Noise 2D
     func cellNoise2D() -> SGScalar {
@@ -5202,21 +5296,9 @@ extension SGVector {
     func dot(_ in2: SGVector) -> SGScalar {
         ShaderGraphCoder.dot(self, in2)
     }
-    /// Fractal Noise 3D
-    func fractal3D(octaves: SGScalar = SGScalar(source: .constant(.int(3))), lacunarity: SGScalar = SGScalar(source: .constant(.float(2.0))), diminish: SGScalar = SGScalar(source: .constant(.float(0.5))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
-        ShaderGraphCoder.fractal3D(amplitude: self, octaves: octaves, lacunarity: lacunarity, diminish: diminish, position: position)
-    }
     /// Magnitude
     func length() -> SGScalar {
         ShaderGraphCoder.length(self)
-    }
-    /// Noise 2D
-    func noise2D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGNumeric {
-        ShaderGraphCoder.noise2D(amplitude: self, pivot: pivot, texcoord: texcoord)
-    }
-    /// Noise 3D
-    func noise3D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
-        ShaderGraphCoder.noise3D(amplitude: self, pivot: pivot, position: position)
     }
     /// Normal Map
     func normalMap(space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
@@ -5291,4 +5373,17 @@ extension SGVector {
         ShaderGraphCoder.worleyNoise3DVector3(position: self, jitter: jitter)
     }
 }
-
+extension SGMatrix {
+    /// Determinant
+    func determinant() -> SGScalar {
+        ShaderGraphCoder.determinant(self)
+    }
+    /// Invert Matrix
+    func invertMatrix() -> SGMatrix {
+        ShaderGraphCoder.invertMatrix(self)
+    }
+    /// Transpose
+    func transpose() -> SGMatrix {
+        ShaderGraphCoder.transpose(self)
+    }
+}
