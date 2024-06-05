@@ -210,6 +210,32 @@ The following sources are supported:
 
 | Source | Description |
 | ------ | ----------- |
+| `SGValue.color3f` | A constant RGB color with a color space |
+| `SGValue.color3fParameter` | An RGB color parameter that can be set by later mutating the material |
+| `SGValue.color4f` | A constant RGBA color with a color space |
+| `SGValue.color4fParameter` | An RGBA color parameter that can be set by later mutating the material |
+| `SGValue.customAttribute` | A value passed from the geometry modifier to the surface shader |
+| `SVValue.float` | A constant floating point number |
+| `SGValue.floatParameter` | A parameter that can be set by later mutating the material |
+| `SGValue.modelNormal` | The model normal of the vertex or fragment being processed |
+| `SGValue.modelPosition` | The model position of the vertex or fragment being processed |
+| `SGValue.objectNormal` | The object normal of the vertex or fragment being processed |
+| `SGValue.objectPosition` | The object position of the vertex or fragment being processed |
+| `SGValue.texture1DParameter` | A 1D texture parameter that can be set by later mutating the material |
+| `SGValue.texture2DParameter` | A 2D texture parameter that can be set by later mutating the material |
+| `SGValue.texture3DParameter` | A 3D texture parameter that can be set by later mutating the material |
+| `SGValue.uv(index)` | UV coordinate of the vertex or pixel |
+| `SGValue.uv0` | The first UV coordinate of the vertex or pixel |
+| `SGValue.uv1` | The second UV coordinate of the vertex or pixel |
+| `SGValue.vector2f` | A constant 2D vector |
+| `SGValue.vector2fParameter` | A 2D vector parameter that can be set by later mutating the material |
+| `SGValue.vector3f` | A constant 3D vector |
+| `SGValue.vector3fParameter` | A 3D vector parameter that can be set by later mutating the material |
+| `SGValue.vector4f` | A constant 4D vector |
+| `SGValue.vector4fParameter` | A 4D vector parameter that can be set by later mutating the material |
+| `SGValue.worldCameraPosition` | The world position of the camera |
+| `SGValue.worldNormal` | The world normal of the vertex or fragment being processed |
+| `SGValue.worldPosition` | The world position of the vertex or fragment being processed |
 | `SGValue.bitangent(space, index)` | Bitangent |
 | `SGValue.cameraPosition(space)` | Camera Position |
 | `SGValue.frame` | Frame |
