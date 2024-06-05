@@ -430,12 +430,15 @@ class SwiftWriter():
     def __init__(self):
         self.lines = []
         self.current_line = ""
+        self.needs_indent = True
+        self.indent_level = 0
         self.write_header()
 
     def commit_current_line(self):
         if len(self.current_line) > 0:
             self.lines.append(self.current_line)
             self.current_line = ""
+            self.needs_indent = True
 
     def output_to_file(self, file_path: str):
         with open(file_path, 'w') as f:
@@ -454,19 +457,27 @@ class SwiftWriter():
         self.write_line('')
 
     def write_line(self, text: str):
-        self.current_line += text
+        self.write(text)
         self.commit_current_line()
 
     def write(self, text: str):
+        if self.needs_indent:
+            self.current_line += '    ' * self.indent_level
+            self.needs_indent = False
         self.current_line += text
+
+    def indent(self):
+        self.indent_level += 1
+
+    def unindent(self):
+        self.indent_level -= 1
 
 class NodeOverloads():
     overloads: List[Tuple[Optional[str], Node]]
-    is_src: bool
     def __init__(self, base_name: str, first_suffix_type_name: Optional[str], first_node: Node):
         self.base_name = base_name
+        self.swift_name = get_node_name(self.base_name)
         self.overloads = [(first_suffix_type_name, first_node)]
-        self.is_src = len(first_node.inputs) == 0
     def add_overload(self, suffix_type_name: Optional[str], node: Node):
         self.overloads.append((suffix_type_name, node))
     def first_node(self) -> Node:
@@ -478,6 +489,14 @@ class NodeOverloads():
                 if input.usd_type != first_inputs[i].usd_type:
                     return False
         return True
+    def is_src(self) -> bool:
+        if len(self.overloads) != 1:
+            return False
+        if len(self.first_node().inputs) == 0:
+            return True
+        interface_only = find_interface_only_params(self)
+        prims = find_primitive_params(self, interface_only)
+        return all(prims)
 
 node_overloads: Dict[str, NodeOverloads] = {}
 
@@ -606,6 +625,15 @@ def find_interface_only_params(overloads: NodeOverloads) -> List[bool]:
                 interface_only[i] = False
     return interface_only
 
+def find_primitive_params(overloads: NodeOverloads, interface_only_params: List[bool]) -> List[bool]:
+    primitive = [True for i in overloads.first_node().inputs]
+    for _, node in overloads.overloads:
+        for i, input in enumerate(node.inputs):
+            is_primitive = input.is_enum or interface_only_params[i]
+            if not is_primitive:
+                primitive[i] = False
+    return primitive
+
 def find_default_value_params(overloads: NodeOverloads) -> List[Optional[object]]:
     def default_ok(value, usd_type):
         if usd_type == "asset":
@@ -659,13 +687,15 @@ def write_sgc_value(w: SwiftWriter, value, usd_type: str, sgc_type: str):
     write_primitive_value(w, value, usd_type, sgc_type)
     w.write(f')))')
 
-def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
-    swift_name = get_node_name(overloads.base_name)
+def write_node_overloads(overloads: NodeOverloads, needs_public: bool, w: SwiftWriter):
+    swift_name = overloads.swift_name
     first_node = overloads.overloads[0][1]
     first_output = first_node.outputs[0]
+    num_inputs = len(first_node.inputs)
     description = get_node_description(first_node)
     generic_params = find_generic_params(overloads)
     interface_only_params = find_interface_only_params(overloads)
+    primitive_params = find_primitive_params(overloads, interface_only_params)
     default_value_params = find_default_value_params(overloads)
     usd_param_type_is_shared = [True for _ in first_node.inputs]
     sgc_param_type_is_shared = [True for _ in first_node.inputs]
@@ -686,20 +716,25 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
     num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
     if len(description) > 0:
         w.write_line(f'/// {description}')
-    w.write(f'public func {swift_name}')
-    if generic_params is not None:
-        w.write('<T>')
-    w.write(f'(')
+    write_func = num_inputs > 0
+    if needs_public:
+        w.write('public ')
+    if write_func:
+        w.write(f'func {swift_name}')
+        if generic_params is not None:
+            w.write('<T>')
+        w.write(f'(')
+    else:
+        w.write(f'var {swift_name}')
     for i, input in enumerate(first_node.inputs):
         sgc_type_is_shared = sgc_param_type_is_shared[i]
         sgc_type = sgc_shared_param_type[i]
-        is_primitive = input.is_enum
+        is_primitive = primitive_params[i]
         if not sgc_type_is_shared:
             all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in overloads.overloads]
             sgc_type = get_base_sg_type(all_types)
-        if interface_only_params[i]:
+        if is_primitive:
             sgc_type = usd_type_to_primitive_type(input.usd_type)
-            is_primitive = True
         elif generic_params is not None and i in generic_params[0]:
             sgc_type = 'T'
         name = f"_ {param_names[i]}" if i < num_default_inputs else param_names[i]
@@ -714,11 +749,14 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
             w.write(', ')
     sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type) for o in overloads.overloads]
     sgc_output_type = get_base_sg_type(sgc_output_types)
-    if generic_params is not None:
-        sgc_output_type = 'T'
-        w.write_line(f') -> T where T: {generic_params[1]} {{')
+    if write_func:
+        if generic_params is not None:
+            sgc_output_type = 'T'
+            w.write_line(f') -> T where T: {generic_params[1]} {{')
+        else:
+            w.write_line(f') -> {sgc_output_type} {{')
     else:
-        w.write_line(f') -> {sgc_output_type} {{')
+        w.write_line(f': {sgc_output_type} {{')
     for i, input in enumerate(first_node.inputs):
         if not usd_param_type_is_shared[i]:
             continue
@@ -769,22 +807,6 @@ def write_node_overloads(overloads: NodeOverloads, w: SwiftWriter):
         w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types for {swift_name}"))')
     w.write_line('}')
 
-def write_src_node(overloads: NodeOverloads, w: SwiftWriter):
-    swift_name = get_node_name(overloads.base_name)
-    first_node = overloads.overloads[0][1]
-    first_output = first_node.outputs[0]
-    description = get_node_description(first_node)
-    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type)
-    if len(description) > 0:
-        w.write_line(f'    /// {description}')
-    w.write_line(f'    var {swift_name}: {sgc_output_type} {{')
-    sgc_output_type = usd_type_to_sgc_type(first_output.usd_type)
-    indent = "    "
-    w.write_line(f'    {indent}return {sgc_output_type}(source: .nodeOutput(SGNode(')
-    w.write_line(f'        {indent}nodeType: "{first_node.name}",')
-    w.write_line(f'        {indent}inputs: [],')
-    w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(first_output.usd_type)})])))')
-    w.write_line('    }')
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
 schemas_path = os.path.join(tools_path, 'schemas.usda')
@@ -822,24 +844,28 @@ for key, no in list(node_overloads.items()):
 print(f'Outputting {len(node_overloads)} overloads')
 src_nodes: List[NodeOverloads] = []
 op_nodes: List[NodeOverloads] = []
-for no in sorted([x[1] for x in node_overloads.items()], key=lambda x: x.base_name):
-    if no.is_src:
+for no in (x[1] for x in node_overloads.items()):
+    if no.is_src():
         src_nodes.append(no)
     else:
         op_nodes.append(no)
+src_nodes = sorted(src_nodes, key=lambda x: x.swift_name)
+op_nodes = sorted(op_nodes, key=lambda x: x.swift_name)
 print(f'Outputting {len(op_nodes)} operations')
 print(f'Outputting {len(src_nodes)} sources')
 
 ops_writer = SwiftWriter()
 write_enums(ops_writer)
 for node in op_nodes:
-    write_node_overloads(node, ops_writer)
+    write_node_overloads(node, True, ops_writer)
 ops_writer.output_to_file(ops_out_path)
 
 srcs_writer = SwiftWriter()
 srcs_writer.write_line('public extension SGValue {')
+srcs_writer.indent()
 for node in src_nodes:
-    write_src_node(node, srcs_writer)
+    write_node_overloads(node, False, srcs_writer)
+srcs_writer.unindent()
 srcs_writer.write_line('}')
 srcs_writer.output_to_file(srcs_out_path)
 

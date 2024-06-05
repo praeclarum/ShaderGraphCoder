@@ -380,16 +380,6 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for atan2"))
 }
-public func bitangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_bitangent_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
-}
 /// Blur
 public func blur<T>(_ in1: T, size: SGScalar = SGScalar(source: .constant(.float(0.0))), filtertype: SGBlurFilterType = SGBlurFilterType.box) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
@@ -1209,6 +1199,49 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for floor"))
 }
+/// Fractional
+public func fract<T>(_ in1: T) -> T where T: SGNumeric {
+    let inputs: [SGNode.Input] = [
+        .init(name: "in", connection: in1),
+    ]
+    if in1.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if in1.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if in1.dataType == SGDataType.float {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_float",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector2f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_vector2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if in1.dataType == SGDataType.vector3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_vector3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if in1.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types for fract"))
+}
 /// Fractal Noise 3D
 public func fractal3D(amplitude: SGNumeric, octaves: SGScalar = SGScalar(source: .constant(.int(3))), lacunarity: SGScalar = SGScalar(source: .constant(.float(2.0))), diminish: SGScalar = SGScalar(source: .constant(.float(0.5))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
     guard octaves.dataType == SGDataType.int else {
@@ -1298,35 +1331,56 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar = SGScalar(source:
     }
     return SGNumeric(source: .error("Unsupported input data types for fractal3D"))
 }
-/// Geometry Color
-public func geomcolorColor3(index: Int = 0) -> SGColor {
+/// Camera Index Switch
+public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
+        .init(name: "mono", connection: mono),
+        .init(name: "left", connection: left),
+        .init(name: "right", connection: right),
     ]
-    return SGColor(source: .nodeOutput(SGNode(
-        nodeType: "ND_geomcolor_color3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.color3f)])))
-}
-/// Geometry Color
-public func geomcolorColor4(index: Int = 0) -> SGColor {
-    let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
-    return SGColor(source: .nodeOutput(SGNode(
-        nodeType: "ND_geomcolor_color4",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.color4f)])))
-}
-/// Geometry Color
-public func geomcolorFloat(index: Int = 0) -> SGScalar {
-    let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_geomcolor_float",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.float)])))
+    if mono.dataType == SGDataType.color3f && left.dataType == SGDataType.color3f && right.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if mono.dataType == SGDataType.color4f && left.dataType == SGDataType.color4f && right.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if mono.dataType == SGDataType.float && left.dataType == SGDataType.float && right.dataType == SGDataType.float {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_float",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if mono.dataType == SGDataType.int && left.dataType == SGDataType.int && right.dataType == SGDataType.int {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_integer",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if mono.dataType == SGDataType.vector2f && left.dataType == SGDataType.vector2f && right.dataType == SGDataType.vector2f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_vector2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if mono.dataType == SGDataType.vector3f && left.dataType == SGDataType.vector3f && right.dataType == SGDataType.vector3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_vector3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if mono.dataType == SGDataType.vector4f && left.dataType == SGDataType.vector4f && right.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types for geometrySwitchCameraindex"))
 }
 /// Geometric Property
 public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where T: SGValue {
@@ -1964,26 +2018,6 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVe
     }
     return T(source: .error("Unsupported input data types for image"))
 }
-public func mixColor(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid mixColor input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid mixColor input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType)."))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid mixColor input. Expected mix data type to be SGDataType.float, but got \(mix.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
-    return SGColor(source: .nodeOutput(SGNode(
-        nodeType: "ND_in_color4",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.color4f)])))
-}
 /// Inside
 public func inside<T>(_ in1: T, mask: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
@@ -2041,6 +2075,49 @@ public func invertmatrix(_ in1: SGMatrix) -> SGMatrix {
     }
     return SGMatrix(source: .error("Unsupported input data types for invertmatrix"))
 }
+/// Magnitude
+public func length(_ in1: SGVector) -> SGScalar {
+    let inputs: [SGNode.Input] = [
+        .init(name: "in", connection: in1),
+    ]
+    if in1.dataType == SGDataType.vector2h {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_magnitude_half2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector3h {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_magnitude_half3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector4h {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_magnitude_half4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector2f {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_magnitude_vector2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector3f {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_magnitude_vector3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector4f {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_magnitude_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    return SGScalar(source: .error("Unsupported input data types for length"))
+}
 /// Natural Log
 public func ln<T>(_ in1: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
@@ -2096,6 +2173,70 @@ public func ln<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for ln"))
 }
+/// And
+public func logicalAnd(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    guard in1.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalAnd input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType)."))
+    }
+    guard in2.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalAnd input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType)."))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "in1", connection: in1),
+        .init(name: "in2", connection: in2),
+    ]
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_logical_and",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.bool)])))
+}
+/// Not
+public func logicalNot(_ in1: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    guard in1.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalNot input. Expected in data type to be SGDataType.bool, but got \(in1.dataType)."))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "in", connection: in1),
+    ]
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_logical_not",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.bool)])))
+}
+/// Or
+public func logicalOr(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    guard in1.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalOr input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType)."))
+    }
+    guard in2.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalOr input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType)."))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "in1", connection: in1),
+        .init(name: "in2", connection: in2),
+    ]
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_logical_or",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.bool)])))
+}
+/// XOR
+public func logicalXor(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    guard in1.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalXor input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType)."))
+    }
+    guard in2.dataType == SGDataType.bool else {
+        return SGValue(source: .error("Invalid logicalXor input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType)."))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "in1", connection: in1),
+        .init(name: "in2", connection: in2),
+    ]
+    return SGValue(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_logical_xor",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.bool)])))
+}
 /// Luminance
 public func luminance(_ in1: SGColor, lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
     guard lumacoeffs.dataType == SGDataType.color3f else {
@@ -2118,49 +2259,6 @@ public func luminance(_ in1: SGColor, lumacoeffs: SGColor = SGColor(source: .con
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     return SGColor(source: .error("Unsupported input data types for luminance"))
-}
-/// Magnitude
-public func length(_ in1: SGVector) -> SGScalar {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
-    if in1.dataType == SGDataType.vector2h {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_magnitude_half2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector3h {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_magnitude_half3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector4h {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_magnitude_half4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector2f {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_magnitude_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector3f {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_magnitude_vector3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector4f {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_magnitude_vector4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    return SGScalar(source: .error("Unsupported input data types for length"))
 }
 public func mask(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
@@ -2536,6 +2634,26 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.flo
     }
     return T(source: .error("Unsupported input data types for mix"))
 }
+public func mixColor(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    guard fg.dataType == SGDataType.color4f else {
+        return SGColor(source: .error("Invalid mixColor input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType)."))
+    }
+    guard bg.dataType == SGDataType.color4f else {
+        return SGColor(source: .error("Invalid mixColor input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType)."))
+    }
+    guard mix.dataType == SGDataType.float else {
+        return SGColor(source: .error("Invalid mixColor input. Expected mix data type to be SGDataType.float, but got \(mix.dataType)."))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "fg", connection: fg),
+        .init(name: "bg", connection: bg),
+        .init(name: "mix", connection: mix),
+    ]
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_in_color4",
+        inputs: inputs,
+        outputs: [.init(dataType: SGDataType.color4f)])))
+}
 /// Modulo
 public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
@@ -2876,15 +2994,6 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar = SGScalar(source: .co
     }
     return SGNumeric(source: .error("Unsupported input data types for noise3D"))
 }
-public func normal(space: SGSpace = SGSpace.object) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_normal_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
-}
 public func normalMapDecode(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMapDecode input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
@@ -2970,6 +3079,49 @@ public func normalmap(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     return SGVector(source: .error("Unsupported input data types for normalmap"))
+}
+/// One Minus
+public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
+    let inputs: [SGNode.Input] = [
+        .init(name: "in", connection: in1),
+    ]
+    if in1.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if in1.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if in1.dataType == SGDataType.float {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_float",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector2f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_vector2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if in1.dataType == SGDataType.vector3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_vector3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if in1.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types for oneMinus"))
 }
 public func out(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
     guard fg.dataType == SGDataType.color4f else {
@@ -3136,15 +3288,6 @@ public func plus<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.fl
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types for plus"))
-}
-public func position(space: SGSpace = SGSpace.object) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_position_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Power
 public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
@@ -3514,217 +3657,6 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
     }
     return T(source: .error("Unsupported input data types for range"))
 }
-/// Camera Position
-public func cameraposition(space: SGSpace = SGSpace.world) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_cameraposition_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
-}
-/// Fractional
-public func fract<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
-    if in1.dataType == SGDataType.color3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_fractional_color3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    if in1.dataType == SGDataType.color4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_fractional_color4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    if in1.dataType == SGDataType.float {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_fractional_float",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector2f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_fractional_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if in1.dataType == SGDataType.vector3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_fractional_vector3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if in1.dataType == SGDataType.vector4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_fractional_vector4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types for fract"))
-}
-/// Camera Index Switch
-public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "mono", connection: mono),
-        .init(name: "left", connection: left),
-        .init(name: "right", connection: right),
-    ]
-    if mono.dataType == SGDataType.color3f && left.dataType == SGDataType.color3f && right.dataType == SGDataType.color3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_color3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    if mono.dataType == SGDataType.color4f && left.dataType == SGDataType.color4f && right.dataType == SGDataType.color4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_color4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    if mono.dataType == SGDataType.float && left.dataType == SGDataType.float && right.dataType == SGDataType.float {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_float",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if mono.dataType == SGDataType.int && left.dataType == SGDataType.int && right.dataType == SGDataType.int {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_integer",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    if mono.dataType == SGDataType.vector2f && left.dataType == SGDataType.vector2f && right.dataType == SGDataType.vector2f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if mono.dataType == SGDataType.vector3f && left.dataType == SGDataType.vector3f && right.dataType == SGDataType.vector3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_vector3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if mono.dataType == SGDataType.vector4f && left.dataType == SGDataType.vector4f && right.dataType == SGDataType.vector4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_geometry_switch_cameraindex_vector4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types for geometrySwitchCameraindex"))
-}
-/// And
-public func logicalAnd(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalAnd input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType)."))
-    }
-    guard in2.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalAnd input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return SGValue(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_logical_and",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.bool)])))
-}
-/// Not
-public func logicalNot(_ in1: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalNot input. Expected in data type to be SGDataType.bool, but got \(in1.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
-    return SGValue(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_logical_not",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.bool)])))
-}
-/// Or
-public func logicalOr(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalOr input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType)."))
-    }
-    guard in2.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalOr input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return SGValue(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_logical_or",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.bool)])))
-}
-/// XOR
-public func logicalXor(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalXor input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType)."))
-    }
-    guard in2.dataType == SGDataType.bool else {
-        return SGValue(source: .error("Invalid logicalXor input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
-    return SGValue(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_logical_xor",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.bool)])))
-}
-/// One Minus
-public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
-    if in1.dataType == SGDataType.color3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_oneminus_color3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    if in1.dataType == SGDataType.color4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_oneminus_color4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    if in1.dataType == SGDataType.float {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_oneminus_float",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector2f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_oneminus_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if in1.dataType == SGDataType.vector3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_oneminus_vector3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if in1.dataType == SGDataType.vector4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_oneminus_vector4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types for oneMinus"))
-}
 /// Reflect
 public func reflect(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
@@ -3760,60 +3692,6 @@ public func refract(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0
     ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_refract_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
-}
-/// Step
-public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "edge", connection: edge),
-    ]
-    if in1.dataType == SGDataType.color3f && edge.dataType == SGDataType.color3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_step_color3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    if in1.dataType == SGDataType.color4f && edge.dataType == SGDataType.color4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_step_color4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    if in1.dataType == SGDataType.float && edge.dataType == SGDataType.float {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_step_float",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if in1.dataType == SGDataType.vector2f && edge.dataType == SGDataType.vector2f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_step_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if in1.dataType == SGDataType.vector3f && edge.dataType == SGDataType.vector3f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_step_vector3",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if in1.dataType == SGDataType.vector4f && edge.dataType == SGDataType.vector4f {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_step_vector4",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types for step"))
-}
-/// View Direction
-public func viewdirection(space: SGSpace = SGSpace.world) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_viewdirection_vector3",
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
@@ -4608,6 +4486,50 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types for sqrt"))
 }
+/// Step
+public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
+    let inputs: [SGNode.Input] = [
+        .init(name: "in", connection: in1),
+        .init(name: "edge", connection: edge),
+    ]
+    if in1.dataType == SGDataType.color3f && edge.dataType == SGDataType.color3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_color3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if in1.dataType == SGDataType.color4f && edge.dataType == SGDataType.color4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_color4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if in1.dataType == SGDataType.float && edge.dataType == SGDataType.float {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_float",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if in1.dataType == SGDataType.vector2f && edge.dataType == SGDataType.vector2f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_vector2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if in1.dataType == SGDataType.vector3f && edge.dataType == SGDataType.vector3f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_vector3",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if in1.dataType == SGDataType.vector4f && edge.dataType == SGDataType.vector4f {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_vector4",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types for step"))
+}
 /// Subtract
 public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
@@ -4879,36 +4801,6 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types for tan"))
-}
-public func tangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_tangent_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
-}
-/// Texture Coordinates
-public func texcoordVector2(index: Int = 0) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_texcoord_vector2",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector2f)])))
-}
-/// Texture Coordinates
-public func texcoordVector3(index: Int = 0) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_texcoord_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Tiled Image
 public func tiledimage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uvtiling: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), uvoffset: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), realworldimagesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), realworldtilesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
@@ -5186,15 +5078,6 @@ public func unpremult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0,
         nodeType: "ND_unpremult_color4",
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.color4f)])))
-}
-public func updirection(space: SGSpace = SGSpace.world) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-    ]
-    return SGVector(source: .nodeOutput(SGNode(
-        nodeType: "ND_updirection_vector3",
-        inputs: inputs,
-        outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Worley Noise 2D
 public func worleynoise2DFloat(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
