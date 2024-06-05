@@ -43,6 +43,25 @@ public class SGScalar: SGNumeric {
     public static func % (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.modulo(.float(left), right) }
 }
 
+public class SGMatrix: SGNumeric {
+    public static func + (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.divide(left, right) }
+    public static func + (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.divide(left, right) }
+    public static func + (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func + (left: SGScalar, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.add(right, left) }
+    public static func * (left: SGScalar, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.multiply(right, left) }
+    public static func + (left: Float, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.add(right, .float(left)) }
+    public static func * (left: Float, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.multiply(right, .float(left)) }
+}
+
 public class SGSIMD: SGNumeric {
     private var separate: SGNode? = nil
     func getSeparateOutput(_ name: String) -> SGScalar {
@@ -208,8 +227,4 @@ public class SGTexture3D: SGTexture {
             outputs: [.init(dataType: .color4f)])
         return SGColor(source: .nodeOutput(node))
     }
-}
-
-public class SGMatrix: SGNumeric {
-    
 }
