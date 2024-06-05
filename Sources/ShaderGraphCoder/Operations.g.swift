@@ -260,12 +260,12 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types in add(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Ambient Occlusion
-public func ambientocclusion(coneangle: SGScalar = SGScalar(source: .constant(.float(90.0))), maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
+public func ambientOcclusion(coneangle: SGScalar = SGScalar(source: .constant(.float(90.0))), maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
     guard coneangle.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid ambientocclusion input. Expected coneangle data type to be SGDataType.float, but got \(coneangle.dataType).", values: [coneangle]))
+        return SGScalar(source: .error("Invalid ambientOcclusion input. Expected coneangle data type to be SGDataType.float, but got \(coneangle.dataType).", values: [coneangle]))
     }
     guard maxdistance.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid ambientocclusion input. Expected maxdistance data type to be SGDataType.float, but got \(maxdistance.dataType).", values: [maxdistance]))
+        return SGScalar(source: .error("Invalid ambientOcclusion input. Expected maxdistance data type to be SGDataType.float, but got \(maxdistance.dataType).", values: [maxdistance]))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "coneangle", connection: coneangle),
@@ -794,7 +794,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types in cos(in1: \(in1.dataType))", values: [in1]))
 }
 /// Cross Product
-public func cross(_ in1: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0]))), _ in2: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0])))) -> SGVector {
+public func cross(_ in1: SGVector, _ in2: SGVector) -> SGVector {
     let inputs: [SGNode.Input] = [
         .init(name: "in1", connection: in1),
         .init(name: "in2", connection: in2),
@@ -1461,7 +1461,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
     return T(source: .error("Unsupported input data types in geompropvalue(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Height To Normal
-public func heightToNormal(_ in1: SGScalar = SGScalar(source: .constant(.float(0.0))), scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func heightToNormal(_ in1: SGScalar, scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard in1.dataType == SGDataType.float else {
         return SGVector(source: .error("Invalid heightToNormal input. Expected in1 data type to be SGDataType.float, but got \(in1.dataType).", values: [in1]))
     }
@@ -1520,7 +1520,7 @@ public func hsvToRGB(_ in1: SGColor) -> SGColor {
     return SGColor(source: .error("Unsupported input data types in hsvToRGB(in1: \(in1.dataType))", values: [in1]))
 }
 /// If Equal
-public func ifEqual<T>(_ value1: SGValue = SGValue(source: .constant(.float(0.0))), _ value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
@@ -1710,7 +1710,7 @@ public func ifEqual<T>(_ value1: SGValue = SGValue(source: .constant(.float(0.0)
     return T(source: .error("Unsupported input data types in ifEqual(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// If Greater
-public func ifGreater<T>(_ value1: SGScalar = SGScalar(source: .constant(.float(1.0))), _ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
@@ -1840,7 +1840,7 @@ public func ifGreater<T>(_ value1: SGScalar = SGScalar(source: .constant(.float(
     return T(source: .error("Unsupported input data types in ifGreater(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// If Greater Or Equal
-public func ifGreaterOrEqual<T>(_ value1: SGScalar = SGScalar(source: .constant(.float(1.0))), _ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "value1", connection: value1),
         .init(name: "value2", connection: value2),
@@ -2185,7 +2185,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types in log(in1: \(in1.dataType))", values: [in1]))
 }
 /// And
-public func logicalAnd(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+public func logicalAnd(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalAnd input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
@@ -2202,7 +2202,7 @@ public func logicalAnd(_ in1: SGValue = SGValue(source: .constant(.bool(false)))
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// Not
-public func logicalNot(_ in1: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+public func logicalNot(_ in1: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalNot input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
@@ -2215,7 +2215,7 @@ public func logicalNot(_ in1: SGValue = SGValue(source: .constant(.bool(false)))
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// Or
-public func logicalOr(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+public func logicalOr(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalOr input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
@@ -2232,7 +2232,7 @@ public func logicalOr(_ in1: SGValue = SGValue(source: .constant(.bool(false))),
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// XOR
-public func logicalXor(_ in1: SGValue = SGValue(source: .constant(.bool(false))), _ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+public func logicalXor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalXor input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
@@ -3009,7 +3009,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar = SGScalar(source: .co
     return SGNumeric(source: .error("Unsupported input data types in noise3D(amplitude: \(amplitude.dataType))", values: [amplitude]))
 }
 /// Normal Map
-public func normalMap(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1]))), space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMap input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -3041,7 +3041,7 @@ public func normalMap(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.
     return SGVector(source: .error("Unsupported input data types in normalMap(scale: \(scale.dataType))", values: [scale]))
 }
 /// Normal Map Decode
-public func normalMapDecode(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1])))) -> SGVector {
+public func normalMapDecode(_ in1: SGVector) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMapDecode input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -3389,7 +3389,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types in pow(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Premultiply
-public func premult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 1])))) -> SGColor {
+public func premult(_ in1: SGColor) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid premult input. Expected in1 data type to be SGDataType.color4f, but got \(in1.dataType).", values: [in1]))
     }
@@ -3678,7 +3678,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
     return T(source: .error("Unsupported input data types in range(in1: \(in1.dataType), inlow: \(inlow.dataType), inhigh: \(inhigh.dataType), gamma: \(gamma.dataType), outlow: \(outlow.dataType), outhigh: \(outhigh.dataType))", values: [in1, inlow, inhigh, gamma, outlow, outhigh]))
 }
 /// Reflect
-public func reflect(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+public func reflect(_ in1: SGVector, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid reflect input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -3695,7 +3695,7 @@ public func reflect(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Refract
-public func refract(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), eta: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func refract(_ in1: SGVector, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), eta: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid refract input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -3854,7 +3854,7 @@ public func rgbToHSV(_ in1: SGColor) -> SGColor {
     return SGColor(source: .error("Unsupported input data types in rgbToHSV(in1: \(in1.dataType))", values: [in1]))
 }
 /// Rotate 2D
-public func rotate2D(_ in1: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
+public func rotate2D(_ in1: SGVector, amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
     guard in1.dataType == SGDataType.vector2f else {
         return SGVector(source: .error("Invalid rotate2D input. Expected in1 data type to be SGDataType.vector2f, but got \(in1.dataType).", values: [in1]))
     }
@@ -3871,7 +3871,7 @@ public func rotate2D(_ in1: SGVector = SGVector(source: .constant(.vector2f([0, 
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Rotate 3D
-public func rotate3D(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), amount: SGScalar = SGScalar(source: .constant(.float(0.0))), axis: SGVector = SGVector(source: .constant(.vector3f([0, 1, 0])))) -> SGVector {
+public func rotate3D(_ in1: SGVector, amount: SGScalar = SGScalar(source: .constant(.float(0.0))), axis: SGVector = SGVector(source: .constant(.vector3f([0, 1, 0])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid rotate3D input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -4937,7 +4937,7 @@ public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
     return SGVector(source: .error("Unsupported input data types in transformMatrix(in1: \(in1.dataType), mat: \(mat.dataType))", values: [in1, mat]))
 }
 /// Transform Normal
-public func transformNormal(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 1]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+public func transformNormal(_ in1: SGVector, fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformNormal input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -4952,7 +4952,7 @@ public func transformNormal(_ in1: SGVector = SGVector(source: .constant(.vector
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transform Point
-public func transformPoint(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+public func transformPoint(_ in1: SGVector, fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformPoint input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -4967,7 +4967,7 @@ public func transformPoint(_ in1: SGVector = SGVector(source: .constant(.vector3
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transform Vector
-public func transformVector(_ in1: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
+public func transformVector(_ in1: SGVector, fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformVector input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
@@ -5071,7 +5071,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
     return T(source: .error("Unsupported input data types in triplanarProjection(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Unpremultiply
-public func unpremult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 1])))) -> SGColor {
+public func unpremult(_ in1: SGColor) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid unpremult input. Expected in1 data type to be SGDataType.color4f, but got \(in1.dataType).", values: [in1]))
     }
@@ -5187,11 +5187,11 @@ public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant
 }
 public extension SGValue {
     /// If Equal
-    func ifEqual<T>(_ value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+    func ifEqual<T>(_ value2: SGValue, trueResult: T, falseResult: T) -> T where T: SGNumeric {
         ShaderGraphCoder.ifEqual(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
     /// And
-    func logicalAnd(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    func logicalAnd(_ in2: SGValue) -> SGValue {
         ShaderGraphCoder.logicalAnd(self, in2)
     }
     /// Not
@@ -5199,11 +5199,11 @@ public extension SGValue {
         ShaderGraphCoder.logicalNot(self)
     }
     /// Or
-    func logicalOr(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    func logicalOr(_ in2: SGValue) -> SGValue {
         ShaderGraphCoder.logicalOr(self, in2)
     }
     /// XOR
-    func logicalXor(_ in2: SGValue = SGValue(source: .constant(.bool(false)))) -> SGValue {
+    func logicalXor(_ in2: SGValue) -> SGValue {
         ShaderGraphCoder.logicalXor(self, in2)
     }
 }
@@ -5419,19 +5419,19 @@ public extension SGNumeric {
 }
 public extension SGScalar {
     /// Ambient Occlusion
-    func ambientocclusion(maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
-        ShaderGraphCoder.ambientocclusion(coneangle: self, maxdistance: maxdistance)
+    func ambientOcclusion(maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
+        ShaderGraphCoder.ambientOcclusion(coneangle: self, maxdistance: maxdistance)
     }
     /// Height To Normal
     func heightToNormal(scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
         ShaderGraphCoder.heightToNormal(self, scale: scale)
     }
     /// If Greater
-    func ifGreater<T>(_ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+    func ifGreater<T>(_ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
         ShaderGraphCoder.ifGreater(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
     /// If Greater Or Equal
-    func ifGreaterOrEqual<T>(_ value2: SGScalar = SGScalar(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
+    func ifGreaterOrEqual<T>(_ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
         ShaderGraphCoder.ifGreaterOrEqual(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
 }
@@ -5499,7 +5499,7 @@ public extension SGVector {
         ShaderGraphCoder.cellNoise3D(position: self)
     }
     /// Cross Product
-    func cross(_ in2: SGVector = SGVector(source: .constant(.vector3h([0, 0, 0])))) -> SGVector {
+    func cross(_ in2: SGVector) -> SGVector {
         ShaderGraphCoder.cross(self, in2)
     }
     /// Dot Product

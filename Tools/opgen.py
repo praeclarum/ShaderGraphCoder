@@ -44,6 +44,7 @@ param_renames: Dict[str, str] = {
 
 node_renames: Dict[str, str] = {
     "absval": "abs",
+    "ambientocclusion": "ambientOcclusion",
     "dotproduct": "dot",
     "cameraposition": "cameraPosition",
     "cellnoise2d": "cellNoise2D",
@@ -250,6 +251,145 @@ def is_unnamed_input_name(i: int, input: NodeProperty, node: Node) -> bool:
     if default_input_name_re.match(name) is not None:
         return True
     return False
+
+class NodeOverloads():
+    overloads: List[Tuple[Optional[str], Node]]
+    def __init__(self, base_name: str, first_suffix_type_name: Optional[str], first_node: Node):
+        self.base_name = base_name
+        self.swift_name = get_node_name(self.base_name)
+        self.overloads = [(first_suffix_type_name, first_node)]
+        self.num_inputs = len(first_node.inputs)
+        self.write_func = self.num_inputs > 0
+    def add_overload(self, suffix_type_name: Optional[str], node: Node):
+        self.overloads.append((suffix_type_name, node))
+    def first_node(self) -> Node:
+        return self.overloads[0][1]
+    def all_inputs_shared(self) -> bool:
+        first_inputs = self.first_node().inputs
+        for _, node in self.overloads[1:]:
+            for i, input in enumerate(node.inputs):
+                if input.usd_type != first_inputs[i].usd_type:
+                    return False
+        return True
+    def is_src(self) -> bool:
+        if len(self.overloads) != 1:
+            return False
+        if len(self.first_node().inputs) == 0:
+            return True
+        interface_only = self.find_interface_only_params()
+        prims = self.find_primitive_params(interface_only)
+        return all(prims)
+    def analyze(self):
+        first_node = self.first_node()
+        generic_params = self.find_generic_params()
+        sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type) for o in self.overloads]
+        sgc_output_type = get_base_sg_type(sgc_output_types)
+        if generic_params is not None:
+            sgc_output_type = 'T'
+        interface_only_params = self.find_interface_only_params()
+        primitive_params = self.find_primitive_params(interface_only_params)
+        param_names: List[str] = [get_param_name(input.name, first_node) for input in first_node.inputs]
+        num_unnamed_inputs = 0
+        for i, input in enumerate(first_node.inputs):
+            if i == num_unnamed_inputs and is_unnamed_input_name(i, input, first_node):
+                num_unnamed_inputs += 1
+            else:
+                break
+        default_value_params = self.find_default_value_params(num_unnamed_inputs)
+        usd_param_type_is_shared = [True for _ in first_node.inputs]
+        sgc_param_type_is_shared = [True for _ in first_node.inputs]
+        usd_shared_param_type = [p.usd_type for p in first_node.inputs]
+        sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type) for p in first_node.inputs]
+        for _, node in self.overloads[1:]:
+            for i, input in enumerate(node.inputs):
+                if input.usd_type != usd_shared_param_type[i]:
+                    usd_param_type_is_shared[i] = False
+                if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
+                    sgc_param_type_is_shared[i] = False
+        num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
+        self.sgc_shared_param_type = sgc_shared_param_type
+        self.sgc_param_type_is_shared = sgc_param_type_is_shared
+        self.primitive_params = primitive_params
+        self.generic_params = generic_params
+        return generic_params,sgc_output_type,interface_only_params,primitive_params,param_names,default_value_params,num_unnamed_inputs,usd_param_type_is_shared,sgc_param_type_is_shared,sgc_shared_param_type,num_unshared_usd_params
+    def get_param_sgc_type(self, i) -> str:
+        sgc_type = self.sgc_shared_param_type[i]
+        if not self.sgc_param_type_is_shared[i]:
+            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in self.overloads]
+            sgc_type = get_base_sg_type(all_types)
+        if self.primitive_params[i]:
+            sgc_type = usd_type_to_primitive_type(self.first_node().inputs[i].usd_type)
+        elif self.generic_params is not None and i in self.generic_params[0]:
+            sgc_type = 'T'
+        return sgc_type
+    def find_generic_params(self) -> Optional[Tuple[List[int], str]]:
+        param_type_matches_output_type = [True for _ in self.first_node().inputs]
+        sgc_output_types: Set[str] = set()
+        for _, node in self.overloads:
+            sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type)
+            sgc_output_types.add(sgc_output_type)
+            for i, input in enumerate(node.inputs):
+                sgc_param_type = usd_type_to_sgc_type(input.usd_type)
+                if sgc_param_type != sgc_output_type:
+                    param_type_matches_output_type[i] = False
+        generic_indices = [i for i, x in enumerate(param_type_matches_output_type) if x]
+        if len(generic_indices) == 0:
+            return None
+        if len(sgc_output_types) == 1:
+            return None
+        return generic_indices, get_base_sg_type(sgc_output_types)
+    def find_interface_only_params(self) -> List[bool]:
+        interface_only = [i.usd_type != "asset" for i in self.first_node().inputs]
+        for _, node in self.overloads:
+            for i, input in enumerate(node.inputs):
+                if not input.interface_only:
+                    interface_only[i] = False
+        return interface_only
+    def find_primitive_params(self, interface_only_params: List[bool]) -> List[bool]:
+        primitive = [True for i in self.first_node().inputs]
+        for _, node in self.overloads:
+            for i, input in enumerate(node.inputs):
+                is_primitive = input.is_enum or interface_only_params[i]
+                if not is_primitive:
+                    primitive[i] = False
+        return primitive
+    def find_default_value_params(self, num_unnamed_params) -> List[Optional[object]]:
+        def default_ok(value, usd_type):
+            if usd_type == "asset":
+                return False
+            elif usd_type in enums_by_gen_usd_type:
+                return len(str(value)) > 0
+            return value is not None
+        default_values = [(p.default_value if default_ok(p.default_value, p.usd_type) and i >= num_unnamed_params else None) for i, p in enumerate(self.first_node().inputs)]
+        default_value_valid = [v is not None for v in default_values]
+        for _, node in self.overloads:
+            for i, input in enumerate(node.inputs):
+                if default_value_valid[i]:
+                    if input.default_value != default_values[i]:
+                        default_value_valid[i] = False
+        for i, valid in enumerate(default_value_valid):
+            if not valid:
+                default_values[i] = None
+        return default_values
+
+node_overloads: Dict[str, NodeOverloads] = {}
+
+def add_node_to_overloads(node: Node):
+    base_name, suffix_type_name = get_node_suffix_type_name(node)
+    if base_name not in node_overloads:
+        node_overloads[base_name] = NodeOverloads(base_name, suffix_type_name, node)
+    else:
+        node_overloads[base_name].add_overload(suffix_type_name, node)
+
+node_overloads_by_first_input_sgc_type: Dict[str, List[NodeOverloads]] = {}
+def group_by_first_input_sgc_type(node_overloadss: List[NodeOverloads]):
+    for overloads in node_overloadss:
+        first_input_sgc_type = overloads.get_param_sgc_type(0)
+        if first_input_sgc_type == "T":
+            first_input_sgc_type = overloads.generic_params[1]
+        if first_input_sgc_type not in node_overloads_by_first_input_sgc_type:
+            node_overloads_by_first_input_sgc_type[first_input_sgc_type] = []
+        node_overloads_by_first_input_sgc_type[first_input_sgc_type].append(overloads)
 
 suffix_type_names: List[str] = [
     "_boolean",
@@ -523,145 +663,6 @@ class SwiftWriter(CodeWriter):
         self.write_line('import Foundation')
         self.write_line('import simd')
         self.write_line('')
-
-class NodeOverloads():
-    overloads: List[Tuple[Optional[str], Node]]
-    def __init__(self, base_name: str, first_suffix_type_name: Optional[str], first_node: Node):
-        self.base_name = base_name
-        self.swift_name = get_node_name(self.base_name)
-        self.overloads = [(first_suffix_type_name, first_node)]
-        self.num_inputs = len(first_node.inputs)
-        self.write_func = self.num_inputs > 0
-    def add_overload(self, suffix_type_name: Optional[str], node: Node):
-        self.overloads.append((suffix_type_name, node))
-    def first_node(self) -> Node:
-        return self.overloads[0][1]
-    def all_inputs_shared(self) -> bool:
-        first_inputs = self.first_node().inputs
-        for _, node in self.overloads[1:]:
-            for i, input in enumerate(node.inputs):
-                if input.usd_type != first_inputs[i].usd_type:
-                    return False
-        return True
-    def is_src(self) -> bool:
-        if len(self.overloads) != 1:
-            return False
-        if len(self.first_node().inputs) == 0:
-            return True
-        interface_only = self.find_interface_only_params()
-        prims = self.find_primitive_params(interface_only)
-        return all(prims)
-    def analyze(self):
-        first_node = self.first_node()
-        generic_params = self.find_generic_params()
-        sgc_output_types = [usd_type_to_sgc_type(o[1].outputs[0].usd_type) for o in self.overloads]
-        sgc_output_type = get_base_sg_type(sgc_output_types)
-        if generic_params is not None:
-            sgc_output_type = 'T'
-        interface_only_params = self.find_interface_only_params()
-        primitive_params = self.find_primitive_params(interface_only_params)
-        param_names: List[str] = [get_param_name(input.name, first_node) for input in first_node.inputs]
-        default_value_params = self.find_default_value_params()
-        num_unnamed_inputs = 0
-        for i, input in enumerate(first_node.inputs):
-            if i == num_unnamed_inputs and is_unnamed_input_name(i, input, first_node):
-                num_unnamed_inputs += 1
-            else:
-                break
-        usd_param_type_is_shared = [True for _ in first_node.inputs]
-        sgc_param_type_is_shared = [True for _ in first_node.inputs]
-        usd_shared_param_type = [p.usd_type for p in first_node.inputs]
-        sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type) for p in first_node.inputs]
-        for _, node in self.overloads[1:]:
-            for i, input in enumerate(node.inputs):
-                if input.usd_type != usd_shared_param_type[i]:
-                    usd_param_type_is_shared[i] = False
-                if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
-                    sgc_param_type_is_shared[i] = False
-        num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
-        self.sgc_shared_param_type = sgc_shared_param_type
-        self.sgc_param_type_is_shared = sgc_param_type_is_shared
-        self.primitive_params = primitive_params
-        self.generic_params = generic_params
-        return generic_params,sgc_output_type,interface_only_params,primitive_params,param_names,default_value_params,num_unnamed_inputs,usd_param_type_is_shared,sgc_param_type_is_shared,sgc_shared_param_type,num_unshared_usd_params
-    def get_param_sgc_type(self, i) -> str:
-        sgc_type = self.sgc_shared_param_type[i]
-        if not self.sgc_param_type_is_shared[i]:
-            all_types = [usd_type_to_sgc_type(o[1].inputs[i].usd_type) for o in self.overloads]
-            sgc_type = get_base_sg_type(all_types)
-        if self.primitive_params[i]:
-            sgc_type = usd_type_to_primitive_type(self.first_node().inputs[i].usd_type)
-        elif self.generic_params is not None and i in self.generic_params[0]:
-            sgc_type = 'T'
-        return sgc_type
-    def find_generic_params(self) -> Optional[Tuple[List[int], str]]:
-        param_type_matches_output_type = [True for _ in self.first_node().inputs]
-        sgc_output_types: Set[str] = set()
-        for _, node in self.overloads:
-            sgc_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type)
-            sgc_output_types.add(sgc_output_type)
-            for i, input in enumerate(node.inputs):
-                sgc_param_type = usd_type_to_sgc_type(input.usd_type)
-                if sgc_param_type != sgc_output_type:
-                    param_type_matches_output_type[i] = False
-        generic_indices = [i for i, x in enumerate(param_type_matches_output_type) if x]
-        if len(generic_indices) == 0:
-            return None
-        if len(sgc_output_types) == 1:
-            return None
-        return generic_indices, get_base_sg_type(sgc_output_types)
-    def find_interface_only_params(self) -> List[bool]:
-        interface_only = [i.usd_type != "asset" for i in self.first_node().inputs]
-        for _, node in self.overloads:
-            for i, input in enumerate(node.inputs):
-                if not input.interface_only:
-                    interface_only[i] = False
-        return interface_only
-    def find_primitive_params(self, interface_only_params: List[bool]) -> List[bool]:
-        primitive = [True for i in self.first_node().inputs]
-        for _, node in self.overloads:
-            for i, input in enumerate(node.inputs):
-                is_primitive = input.is_enum or interface_only_params[i]
-                if not is_primitive:
-                    primitive[i] = False
-        return primitive
-    def find_default_value_params(self) -> List[Optional[object]]:
-        def default_ok(value, usd_type):
-            if usd_type == "asset":
-                return False
-            elif usd_type in enums_by_gen_usd_type:
-                return len(str(value)) > 0
-            return value is not None
-        default_values = [(i.default_value if default_ok(i.default_value, i.usd_type) else None) for i in self.first_node().inputs]
-        default_value_valid = [v is not None for v in default_values]
-        for _, node in self.overloads:
-            for i, input in enumerate(node.inputs):
-                if default_value_valid[i]:
-                    if input.default_value != default_values[i]:
-                        default_value_valid[i] = False
-        for i, valid in enumerate(default_value_valid):
-            if not valid:
-                default_values[i] = None
-        return default_values
-
-node_overloads: Dict[str, NodeOverloads] = {}
-
-def add_node_to_overloads(node: Node):
-    base_name, suffix_type_name = get_node_suffix_type_name(node)
-    if base_name not in node_overloads:
-        node_overloads[base_name] = NodeOverloads(base_name, suffix_type_name, node)
-    else:
-        node_overloads[base_name].add_overload(suffix_type_name, node)
-
-node_overloads_by_first_input_sgc_type: Dict[str, List[NodeOverloads]] = {}
-def group_by_first_input_sgc_type(node_overloadss: List[NodeOverloads]):
-    for overloads in node_overloadss:
-        first_input_sgc_type = overloads.get_param_sgc_type(0)
-        if first_input_sgc_type == "T":
-            first_input_sgc_type = overloads.generic_params[1]
-        if first_input_sgc_type not in node_overloads_by_first_input_sgc_type:
-            node_overloads_by_first_input_sgc_type[first_input_sgc_type] = []
-        node_overloads_by_first_input_sgc_type[first_input_sgc_type].append(overloads)
 
 def snake_to_camel_part(part: str, cap: bool) -> str:
     if cap:

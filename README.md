@@ -100,7 +100,7 @@ The following operators are supported:
 | `abs(in)` | Abs |
 | `acos(in)` | Acos |
 | `add(in1, in2)` | Add |
-| `ambientocclusion(coneangle, maxdistance)` | Ambient Occlusion |
+| `ambientOcclusion(coneangle, maxdistance)` | Ambient Occlusion |
 | `asin(in)` | Asin |
 | `atan2(iny, inx)` | Atan2 |
 | `blur(in, size, filtertype)` | Blur |
