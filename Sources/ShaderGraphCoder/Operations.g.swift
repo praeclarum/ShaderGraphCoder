@@ -2062,7 +2062,7 @@ public func inside<T>(_ in1: T, mask: SGScalar = SGScalar(source: .constant(.flo
     return T(source: .error("Unsupported input data types for inside"))
 }
 /// Invert Matrix
-public func invertmatrix(_ in1: SGMatrix) -> SGMatrix {
+public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -2084,7 +2084,7 @@ public func invertmatrix(_ in1: SGMatrix) -> SGMatrix {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    return SGMatrix(source: .error("Unsupported input data types for invertmatrix"))
+    return SGMatrix(source: .error("Unsupported input data types for invertMatrix"))
 }
 /// Magnitude
 public func length(_ in1: SGVector) -> SGScalar {
@@ -3008,6 +3008,38 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar = SGScalar(source: .co
     }
     return SGNumeric(source: .error("Unsupported input data types for noise3D"))
 }
+/// Normal Map
+public func normalMap(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1]))), space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+    guard in1.dataType == SGDataType.vector3f else {
+        return SGVector(source: .error("Invalid normalMap input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
+    }
+    guard normal.dataType == SGDataType.vector3f else {
+        return SGVector(source: .error("Invalid normalMap input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType)."))
+    }
+    guard tangent.dataType == SGDataType.vector3f else {
+        return SGVector(source: .error("Invalid normalMap input. Expected tangent data type to be SGDataType.vector3f, but got \(tangent.dataType)."))
+    }
+    let inputs: [SGNode.Input] = [
+        .init(name: "in", connection: in1),
+        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
+        .init(name: "scale", connection: scale),
+        .init(name: "normal", connection: normal),
+        .init(name: "tangent", connection: tangent),
+    ]
+    if scale.dataType == SGDataType.float {
+        return SGVector(source: .nodeOutput(SGNode(
+            nodeType: "ND_normalmap",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if scale.dataType == SGDataType.vector2f {
+        return SGVector(source: .nodeOutput(SGNode(
+            nodeType: "ND_normalmap_vector2",
+            inputs: inputs,
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    return SGVector(source: .error("Unsupported input data types for normalMap"))
+}
 /// Normal Map Decode
 public func normalMapDecode(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1])))) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
@@ -3063,38 +3095,6 @@ public func normalize(_ in1: SGVector) -> SGVector {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGVector(source: .error("Unsupported input data types for normalize"))
-}
-/// Normal Map
-public func normalmap(_ in1: SGVector = SGVector(source: .constant(.vector3f([0.5, 0.5, 1]))), space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid normalmap input. Expected in data type to be SGDataType.vector3f, but got \(in1.dataType)."))
-    }
-    guard normal.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid normalmap input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType)."))
-    }
-    guard tangent.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid normalmap input. Expected tangent data type to be SGDataType.vector3f, but got \(tangent.dataType)."))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-        .init(name: "scale", connection: scale),
-        .init(name: "normal", connection: normal),
-        .init(name: "tangent", connection: tangent),
-    ]
-    if scale.dataType == SGDataType.float {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_normalmap",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if scale.dataType == SGDataType.vector2f {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_normalmap_vector2",
-            inputs: inputs,
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    return SGVector(source: .error("Unsupported input data types for normalmap"))
 }
 /// One Minus
 public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
@@ -3835,7 +3835,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
     return T(source: .error("Unsupported input data types for remap"))
 }
 /// RGB to HSV
-public func rgbtohsv(_ in1: SGColor) -> SGColor {
+public func rgbToHSV(_ in1: SGColor) -> SGColor {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
     ]
@@ -3851,7 +3851,7 @@ public func rgbtohsv(_ in1: SGColor) -> SGColor {
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    return SGColor(source: .error("Unsupported input data types for rgbtohsv"))
+    return SGColor(source: .error("Unsupported input data types for rgbToHSV"))
 }
 /// Rotate 2D
 public func rotate2D(_ in1: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
@@ -4203,7 +4203,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for sin"))
 }
 /// Smooth Step
-public func smoothstep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where T: SGNumeric {
+public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
         .init(name: "low", connection: low),
@@ -4317,7 +4317,7 @@ public func smoothstep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for smoothstep"))
+    return T(source: .error("Unsupported input data types for smoothStep"))
 }
 /// Split Horizontal
 public func splitlr<T>(valuel: T, valuer: T, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> T where T: SGNumeric {
@@ -4825,24 +4825,24 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types for tan"))
 }
 /// Tiled Image
-public func tiledimage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uvtiling: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), uvoffset: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), realworldimagesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), realworldtilesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uvtiling: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), uvoffset: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), realworldimagesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), realworldtilesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard file.dataType == SGDataType.asset else {
-        return T(source: .error("Invalid tiledimage input. Expected file data type to be SGDataType.asset, but got \(file.dataType)."))
+        return T(source: .error("Invalid tiledImage input. Expected file data type to be SGDataType.asset, but got \(file.dataType)."))
     }
     guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledimage input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
+        return T(source: .error("Invalid tiledImage input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
     }
     guard uvtiling.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledimage input. Expected uvtiling data type to be SGDataType.vector2f, but got \(uvtiling.dataType)."))
+        return T(source: .error("Invalid tiledImage input. Expected uvtiling data type to be SGDataType.vector2f, but got \(uvtiling.dataType)."))
     }
     guard uvoffset.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledimage input. Expected uvoffset data type to be SGDataType.vector2f, but got \(uvoffset.dataType)."))
+        return T(source: .error("Invalid tiledImage input. Expected uvoffset data type to be SGDataType.vector2f, but got \(uvoffset.dataType)."))
     }
     guard realworldimagesize.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledimage input. Expected realworldimagesize data type to be SGDataType.vector2f, but got \(realworldimagesize.dataType)."))
+        return T(source: .error("Invalid tiledImage input. Expected realworldimagesize data type to be SGDataType.vector2f, but got \(realworldimagesize.dataType)."))
     }
     guard realworldtilesize.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledimage input. Expected realworldtilesize data type to be SGDataType.vector2f, but got \(realworldtilesize.dataType)."))
+        return T(source: .error("Invalid tiledImage input. Expected realworldtilesize data type to be SGDataType.vector2f, but got \(realworldtilesize.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "file", connection: file),
@@ -4896,7 +4896,7 @@ public func tiledimage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector =
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for tiledimage"))
+    return T(source: .error("Unsupported input data types for tiledImage"))
 }
 /// Transform Matrix
 public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
@@ -5007,21 +5007,21 @@ public func transpose(_ in1: SGMatrix) -> SGMatrix {
     return SGMatrix(source: .error("Unsupported input data types for transpose"))
 }
 /// Triplanar Projection
-public func triplanarprojection<T>(filex: SGTexture, filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard filex.dataType == SGDataType.asset else {
-        return T(source: .error("Invalid triplanarprojection input. Expected filex data type to be SGDataType.asset, but got \(filex.dataType)."))
+        return T(source: .error("Invalid triplanarProjection input. Expected filex data type to be SGDataType.asset, but got \(filex.dataType)."))
     }
     guard filey.dataType == SGDataType.asset else {
-        return T(source: .error("Invalid triplanarprojection input. Expected filey data type to be SGDataType.asset, but got \(filey.dataType)."))
+        return T(source: .error("Invalid triplanarProjection input. Expected filey data type to be SGDataType.asset, but got \(filey.dataType)."))
     }
     guard filez.dataType == SGDataType.asset else {
-        return T(source: .error("Invalid triplanarprojection input. Expected filez data type to be SGDataType.asset, but got \(filez.dataType)."))
+        return T(source: .error("Invalid triplanarProjection input. Expected filez data type to be SGDataType.asset, but got \(filez.dataType)."))
     }
     guard position.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid triplanarprojection input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
+        return T(source: .error("Invalid triplanarProjection input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
     }
     guard normal.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid triplanarprojection input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType)."))
+        return T(source: .error("Invalid triplanarProjection input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "filex", connection: filex),
@@ -5068,7 +5068,7 @@ public func triplanarprojection<T>(filex: SGTexture, filey: SGTexture, filez: SG
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types for triplanarprojection"))
+    return T(source: .error("Unsupported input data types for triplanarProjection"))
 }
 /// Unpremultiply
 public func unpremult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 1])))) -> SGColor {
@@ -5084,12 +5084,12 @@ public func unpremult(_ in1: SGColor = SGColor(source: .constant(.color4f([0, 0,
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Worley Noise 2D
-public func worleynoise2DFloat(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
+public func worleyNoise2DFloat(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
     guard texcoord.dataType == SGDataType.vector2f else {
-        return SGScalar(source: .error("Invalid worleynoise2DFloat input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
+        return SGScalar(source: .error("Invalid worleyNoise2DFloat input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
     }
     guard jitter.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid worleynoise2DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
+        return SGScalar(source: .error("Invalid worleyNoise2DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "texcoord", connection: texcoord),
@@ -5101,12 +5101,12 @@ public func worleynoise2DFloat(texcoord: SGVector = SGVector(source: .constant(.
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Worley Noise 2D
-public func worleynoise2DVector2(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func worleyNoise2DVector2(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard texcoord.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid worleynoise2DVector2 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise2DVector2 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
     }
     guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleynoise2DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise2DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "texcoord", connection: texcoord),
@@ -5118,12 +5118,12 @@ public func worleynoise2DVector2(texcoord: SGVector = SGVector(source: .constant
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Worley Noise 2D
-public func worleynoise2DVector3(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func worleyNoise2DVector3(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard texcoord.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid worleynoise2DVector3 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise2DVector3 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType)."))
     }
     guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleynoise2DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise2DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "texcoord", connection: texcoord),
@@ -5135,12 +5135,12 @@ public func worleynoise2DVector3(texcoord: SGVector = SGVector(source: .constant
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Worley Noise 3D
-public func worleynoise3DFloat(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
+public func worleyNoise3DFloat(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
     guard position.dataType == SGDataType.vector3f else {
-        return SGScalar(source: .error("Invalid worleynoise3DFloat input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
+        return SGScalar(source: .error("Invalid worleyNoise3DFloat input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
     }
     guard jitter.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid worleynoise3DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
+        return SGScalar(source: .error("Invalid worleyNoise3DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "position", connection: position),
@@ -5152,12 +5152,12 @@ public func worleynoise3DFloat(position: SGVector = SGVector(source: .constant(.
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Worley Noise 3D
-public func worleynoise3DVector2(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func worleyNoise3DVector2(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard position.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid worleynoise3DVector2 input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise3DVector2 input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
     }
     guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleynoise3DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise3DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "position", connection: position),
@@ -5169,12 +5169,12 @@ public func worleynoise3DVector2(position: SGVector = SGVector(source: .constant
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Worley Noise 3D
-public func worleynoise3DVector3(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
     guard position.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid worleynoise3DVector3 input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise3DVector3 input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType)."))
     }
     guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleynoise3DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
+        return SGVector(source: .error("Invalid worleyNoise3DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType)."))
     }
     let inputs: [SGNode.Input] = [
         .init(name: "position", connection: position),

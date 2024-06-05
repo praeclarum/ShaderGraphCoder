@@ -133,7 +133,7 @@ The following operators are supported:
 | `ifGreaterOrEqual(value1, value2, in1, in2)` | If Greater Or Equal |
 | `image(file, default, texcoord, uaddressmode, vaddressmode, filtertype)` | Image |
 | `inside(in, mask)` | Inside |
-| `invertmatrix(in)` | Invert Matrix |
+| `invertMatrix(in)` | Invert Matrix |
 | `length(in)` | Magnitude |
 | `ln(in)` | Natural Log |
 | `logicalAnd(in1, in2)` | And |
@@ -152,9 +152,9 @@ The following operators are supported:
 | `multiply(in1, in2)` | Multiply |
 | `noise2D(amplitude, pivot, texcoord)` | Noise 2D |
 | `noise3D(amplitude, pivot, position)` | Noise 3D |
+| `normalMap(in, space, scale, normal, tangent)` | Normal Map |
 | `normalMapDecode(in)` | Normal Map Decode |
 | `normalize(in)` | Normalize |
-| `normalmap(in, space, scale, normal, tangent)` | Normal Map |
 | `oneMinus(in)` | One Minus |
 | `out(fg, bg, mix)` | Out |
 | `outside(in, mask)` | Outside |
@@ -171,7 +171,7 @@ The following operators are supported:
 | `reflect(in, normal)` | Reflect |
 | `refract(in, normal, eta)` | Refract |
 | `remap(in, inlow, inhigh, outlow, outhigh)` | Remap |
-| `rgbtohsv(in)` | RGB to HSV |
+| `rgbToHSV(in)` | RGB to HSV |
 | `rotate2D(in, amount)` | Rotate 2D |
 | `rotate3D(in, amount, axis)` | Rotate 3D |
 | `round(in)` | Round |
@@ -180,7 +180,7 @@ The following operators are supported:
 | `screen(fg, bg, mix)` | Screen |
 | `sign(in)` | Sign |
 | `sin(in)` | Sin |
-| `smoothstep(in, low, high)` | Smooth Step |
+| `smoothStep(in, low, high)` | Smooth Step |
 | `splitlr(valuel, valuer, center, texcoord)` | Split Horizontal |
 | `splittb(valuet, valueb, center, texcoord)` | Split Vertical |
 | `sqrt(in)` | Square Root |
@@ -188,20 +188,20 @@ The following operators are supported:
 | `subtract(in1, in2)` | Subtract |
 | `switchValue(in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, which)` | Switch |
 | `tan(in)` | Tan |
-| `tiledimage(file, default, texcoord, uvtiling, uvoffset, realworldimagesize, realworldtilesize, filtertype)` | Tiled Image |
+| `tiledImage(file, default, texcoord, uvtiling, uvoffset, realworldimagesize, realworldtilesize, filtertype)` | Tiled Image |
 | `transformMatrix(in, mat)` | Transform Matrix |
 | `transformNormal(in, fromspace, tospace)` | Transform Normal |
 | `transformPoint(in, fromspace, tospace)` | Transform Point |
 | `transformVector(in, fromspace, tospace)` | Transform Vector |
 | `transpose(in)` | Transpose |
-| `triplanarprojection(filex, filey, filez, default, position, normal, filtertype)` | Triplanar Projection |
+| `triplanarProjection(filex, filey, filez, default, position, normal, filtertype)` | Triplanar Projection |
 | `unpremult(in)` | Unpremultiply |
-| `worleynoise2DFloat(texcoord, jitter)` | Worley Noise 2D |
-| `worleynoise2DVector2(texcoord, jitter)` | Worley Noise 2D |
-| `worleynoise2DVector3(texcoord, jitter)` | Worley Noise 2D |
-| `worleynoise3DFloat(position, jitter)` | Worley Noise 3D |
-| `worleynoise3DVector2(position, jitter)` | Worley Noise 3D |
-| `worleynoise3DVector3(position, jitter)` | Worley Noise 3D |
+| `worleyNoise2DFloat(texcoord, jitter)` | Worley Noise 2D |
+| `worleyNoise2DVector2(texcoord, jitter)` | Worley Noise 2D |
+| `worleyNoise2DVector3(texcoord, jitter)` | Worley Noise 2D |
+| `worleyNoise3DFloat(position, jitter)` | Worley Noise 3D |
+| `worleyNoise3DVector2(position, jitter)` | Worley Noise 3D |
+| `worleyNoise3DVector3(position, jitter)` | Worley Noise 3D |
 
 
 For more details see [Operations.swift](Sources/ShaderGraphCoder/Operations.swift) and [Operations.g.swift](Sources/ShaderGraphCoder/Operations.g.swift).
