@@ -71,6 +71,10 @@ public func ifLess(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, fa
     ifGreaterOrEqual<SGScalar>(value1: value2, value2: value1, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
+public func ifLessOrEqual<T>(value1: SGScalar, value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
+    ifGreater(value1: value2, value2: value1, trueResult: trueResult, falseResult: falseResult)
+}
+
 public func map(_ x: SGScalar, x1: SGScalar, x2: SGScalar, y1: SGScalar, y2: SGScalar) -> SGScalar {
     let dx = x2 - x1
     let dy = y2 - y1

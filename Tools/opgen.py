@@ -47,6 +47,8 @@ node_renames: Dict[str, str] = {
     "dotproduct": "dot",
     "crossproduct": "cross",
     "fractional": "fract",
+    "ifequal": "ifEqual",
+    "ifgreater": "ifGreater",
     "ifgreatereq": "ifGreaterOrEqual",
     "in": "mixColor",
     "magnitude": "length",
@@ -511,7 +513,7 @@ def snake_to_camel(name: str) -> str:
 def get_param_name(name: str, node: Node) -> str:
     if name in param_renames:
         return param_renames[name]
-    if node.name.startswith("ND_ifgreatereq_"):
+    if node.name.startswith("ND_ifequal_") or node.name.startswith("ND_ifgreater_") or node.name.startswith("ND_ifgreatereq_"):
         if name == "in1":
             return "trueResult"
         if name == "in2":
