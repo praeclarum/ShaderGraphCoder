@@ -73,6 +73,7 @@ public extension SGValue {
     static func string(_ value: String) -> SGString {
         SGString(source: .constant(.string(value)))
     }
+
     static func texture1DParameter(name: String) -> SGTexture1D {
         SGTexture1D(source: .parameter(name: name, defaultValue: .emptyTexture1D))
     }
@@ -82,6 +83,13 @@ public extension SGValue {
     static func texture3DParameter(name: String) -> SGTexture3D {
         SGTexture3D(source: .parameter(name: name, defaultValue: .emptyTexture3D))
     }
+    
+    static let black = SGColor(source: .constant(.color3f([0, 0, 0])))
+    static let white = SGColor(source: .constant(.color3f([1, 1, 1])))
+    static let opaqueBlack = SGColor(source: .constant(.color4f([0, 0, 0, 1])))
+    static let opaqueWhite = SGColor(source: .constant(.color4f([1, 1, 1, 1])))
+    static let transparentBlack = SGColor(source: .constant(.color4f([0, 0, 0, 0])))
+
     static func uv(index: Int) -> SGVector {
         texcoordVector2(index: index)
     }

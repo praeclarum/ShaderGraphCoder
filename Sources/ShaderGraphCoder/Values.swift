@@ -196,19 +196,13 @@ public class SGTexture1D: SGTexture {
 }
 
 public class SGTexture2D: SGTexture {
-    public func sample(texcoord: SGValue? = nil) -> SGColor {
-        var errors: [String] = []
-        if dataType != .asset {
-            errors.append("Cannot sample `\(dataType.usda)`. Use a `texture2DParameter` to sample.")
+    public func sample(texcoord: SGVector? = nil) -> SGColor {
+        if let uv = texcoord {
+            ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack, texcoord: uv)
         }
-        let node = SGNode(
-            nodeType: "ND_RealityKitTexture2D_color4",
-            inputs: [
-                .init(name: "file", dataType: .asset, connection: self),
-                .init(name: "texcoord", dataType: .vector2f, connection: texcoord),
-            ],
-            outputs: [.init(dataType: .color4f)])
-        return SGColor(source: .nodeOutput(node))
+        else {
+            ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack)
+        }
     }
 }
 

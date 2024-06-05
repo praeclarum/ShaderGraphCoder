@@ -999,7 +999,7 @@ for node in op_nodes:
     write_node_overloads(node, True, False, ops_writer)
     write_node_overload_table_entry(node, ops_readme_writer)
 group_by_first_input_sgc_type(op_nodes)
-for sgc_type in ["SGValue", "SGNumeric", "SGScalar", "SGColor", "SGVector", "SGMatrix"]:
+for sgc_type in ["SGValue", "SGNumeric", "SGScalar", "SGColor", "SGVector", "SGMatrix", "SGTexture"]:
     if sgc_type in node_overloads_by_first_input_sgc_type:
         write_extension_node_overloads(ops_writer, sgc_type, node_overloads_by_first_input_sgc_type[sgc_type])
 ops_writer.output_to_file(ops_out_path)
