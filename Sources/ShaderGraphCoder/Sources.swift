@@ -33,6 +33,12 @@ public extension SGValue {
     static func floatParameter(name: String, defaultValue: Float) -> SGScalar {
         SGScalar(source: .parameter(name: name, defaultValue: .float(defaultValue)))
     }
+    static func half(_ value: Float16) -> SGScalar {
+        SGScalar(source: .constant(.half(value)))
+    }
+    static func halfParameter(name: String, defaultValue: Float16) -> SGScalar {
+        SGScalar(source: .parameter(name: name, defaultValue: .half(defaultValue)))
+    }
     static func string(_ value: String) -> SGString {
         SGString(source: .constant(.string(value)))
     }

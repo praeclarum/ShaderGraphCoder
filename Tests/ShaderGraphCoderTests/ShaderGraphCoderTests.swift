@@ -32,7 +32,12 @@ final class ShaderGraphCoderTests: XCTestCase {
                     }
                 }
                 else {
-                    try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
+                    if expectErrors != 0 {
+                        XCTFail("SHOULD HAVE PRODUCED ERRORS")
+                    }
+                    else {
+                        try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
+                    }
                 }
             }
             catch {
@@ -140,5 +145,15 @@ final class ShaderGraphCoderTests: XCTestCase {
         let v3 = SGValue.vector3h(6, 7, 8)
         let r = (v1 + v2) + v3
         try vectorTest(r, expectErrors: 2)
+    }
+    
+    func testChainHalf() throws {
+        let r = SGValue.half(1).add(.half(2)).divide(.half(2))
+        try scalarTest(r)
+    }
+
+    func testChainVector3() throws {
+        let r = SGValue.vector3f(1, 2, 3).add(.vector3f(4, 5, 6)).divide(.float(2))
+        try vectorTest(r)
     }
 }

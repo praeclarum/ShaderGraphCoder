@@ -5207,6 +5207,216 @@ extension SGValue {
         ShaderGraphCoder.logicalXor(self, in2)
     }
 }
+extension SGNumeric {
+    /// Abs
+    func abs() -> Self {
+        ShaderGraphCoder.abs(self)
+    }
+    /// Acos
+    func acos() -> Self {
+        ShaderGraphCoder.acos(self)
+    }
+    /// Add
+    func add(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.add(self, in2)
+    }
+    /// Asin
+    func asin() -> Self {
+        ShaderGraphCoder.asin(self)
+    }
+    /// Atan2
+    func atan2(inx: SGNumeric) -> Self {
+        ShaderGraphCoder.atan2(iny: self, inx: inx) as! Self
+    }
+    /// Blur
+    func blur(size: SGScalar = SGScalar(source: .constant(.float(0.0))), filtertype: SGBlurFilterType = SGBlurFilterType.box) -> Self {
+        ShaderGraphCoder.blur(self, size: size, filtertype: filtertype)
+    }
+    /// Burn
+    func burn(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.burn(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Ceiling
+    func ceil() -> Self {
+        ShaderGraphCoder.ceil(self)
+    }
+    /// Clamp
+    func clamp(min: SGNumeric, max: SGNumeric) -> Self {
+        ShaderGraphCoder.clamp(self, min: min, max: max)
+    }
+    /// Contrast
+    func contrast(amount: SGNumeric, pivot: SGNumeric) -> Self {
+        ShaderGraphCoder.contrast(self, amount: amount, pivot: pivot)
+    }
+    /// Cos
+    func cos() -> Self {
+        ShaderGraphCoder.cos(self)
+    }
+    /// Difference
+    func difference(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.difference(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Divide
+    func divide(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.divide(self, in2)
+    }
+    /// Dodge
+    func dodge(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.dodge(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Exp
+    func exp() -> Self {
+        ShaderGraphCoder.exp(self)
+    }
+    /// Floor
+    func floor() -> Self {
+        ShaderGraphCoder.floor(self)
+    }
+    /// Fractional
+    func fract() -> Self {
+        ShaderGraphCoder.fract(self)
+    }
+    /// Fractal Noise 3D
+    func fractal3D(octaves: SGScalar = SGScalar(source: .constant(.int(3))), lacunarity: SGScalar = SGScalar(source: .constant(.float(2.0))), diminish: SGScalar = SGScalar(source: .constant(.float(0.5))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
+        ShaderGraphCoder.fractal3D(amplitude: self, octaves: octaves, lacunarity: lacunarity, diminish: diminish, position: position)
+    }
+    /// Camera Index Switch
+    func geometrySwitchCameraindex(left: SGNumeric, right: SGNumeric) -> Self {
+        ShaderGraphCoder.geometrySwitchCameraindex(mono: self, left: left, right: right) as! Self
+    }
+    /// Inside
+    func inside(mask: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.inside(self, mask: mask)
+    }
+    /// Natural Log
+    func log() -> Self {
+        ShaderGraphCoder.log(self)
+    }
+    /// Max
+    func max(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.max(self, in2)
+    }
+    /// Min
+    func min(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.min(self, in2)
+    }
+    /// Subtractive Mix
+    func minus(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.minus(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Mix
+    func mix(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> Self {
+        ShaderGraphCoder.mix(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Modulo
+    func modulo(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.modulo(self, in2)
+    }
+    /// Multiply
+    func multiply(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.multiply(self, in2)
+    }
+    /// Noise 2D
+    func noise2D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGNumeric {
+        ShaderGraphCoder.noise2D(amplitude: self, pivot: pivot, texcoord: texcoord)
+    }
+    /// Noise 3D
+    func noise3D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
+        ShaderGraphCoder.noise3D(amplitude: self, pivot: pivot, position: position)
+    }
+    /// One Minus
+    func oneMinus() -> Self {
+        ShaderGraphCoder.oneMinus(self)
+    }
+    /// Outside
+    func outside(mask: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> Self {
+        ShaderGraphCoder.outside(self, mask: mask)
+    }
+    /// Overlay
+    func overlay(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.overlay(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Additive Mix
+    func plus(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.plus(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Power
+    func pow(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.pow(self, in2)
+    }
+    /// Ramp 4 Corners
+    func ramp4(valuetr: SGNumeric, valuebl: SGNumeric, valuebr: SGNumeric, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+        ShaderGraphCoder.ramp4(valuetl: self, valuetr: valuetr, valuebl: valuebl, valuebr: valuebr, texcoord: texcoord) as! Self
+    }
+    /// Ramp Horizontal
+    func ramplr(valuer: SGNumeric, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+        ShaderGraphCoder.ramplr(valuel: self, valuer: valuer, texcoord: texcoord) as! Self
+    }
+    /// Ramp Vertical
+    func ramptb(valueb: SGNumeric, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+        ShaderGraphCoder.ramptb(valuet: self, valueb: valueb, texcoord: texcoord) as! Self
+    }
+    /// Range
+    func range(inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue = SGValue(source: .constant(.bool(false)))) -> Self {
+        ShaderGraphCoder.range(self, inlow: inlow, inhigh: inhigh, gamma: gamma, outlow: outlow, outhigh: outhigh, doclamp: doclamp)
+    }
+    /// Remap
+    func remap(inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric) -> Self {
+        ShaderGraphCoder.remap(self, inlow: inlow, inhigh: inhigh, outlow: outlow, outhigh: outhigh)
+    }
+    /// Round
+    func round() -> Self {
+        ShaderGraphCoder.round(self)
+    }
+    /// Safe Power
+    func safePow(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.safePow(self, in2)
+    }
+    /// Screen
+    func screen(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+        ShaderGraphCoder.screen(fg: self, bg: bg, mix: mix) as! Self
+    }
+    /// Sign
+    func sign() -> Self {
+        ShaderGraphCoder.sign(self)
+    }
+    /// Sin
+    func sin() -> Self {
+        ShaderGraphCoder.sin(self)
+    }
+    /// Smooth Step
+    func smoothStep(low: SGNumeric, high: SGNumeric) -> Self {
+        ShaderGraphCoder.smoothStep(self, low: low, high: high)
+    }
+    /// Split Horizontal
+    func splitlr(valuer: SGNumeric, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+        ShaderGraphCoder.splitlr(valuel: self, valuer: valuer, center: center, texcoord: texcoord) as! Self
+    }
+    /// Split Vertical
+    func splittb(valueb: SGNumeric, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+        ShaderGraphCoder.splittb(valuet: self, valueb: valueb, center: center, texcoord: texcoord) as! Self
+    }
+    /// Square Root
+    func sqrt() -> Self {
+        ShaderGraphCoder.sqrt(self)
+    }
+    /// Step
+    func step(edge: SGNumeric) -> Self {
+        ShaderGraphCoder.step(self, edge: edge) as! Self
+    }
+    /// Subtract
+    func subtract(_ in2: SGNumeric) -> Self {
+        ShaderGraphCoder.subtract(self, in2)
+    }
+    /// Switch
+    func switchValue(_ in2: SGNumeric, _ in3: SGNumeric, _ in4: SGNumeric, _ in5: SGNumeric, _ in6: SGNumeric, _ in7: SGNumeric, _ in8: SGNumeric, _ in9: SGNumeric, _ in10: SGNumeric, which: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> Self {
+        ShaderGraphCoder.switchValue(self, in2, in3, in4, in5, in6, in7, in8, in9, in10, which: which) as! Self
+    }
+    /// Tan
+    func tan() -> Self {
+        ShaderGraphCoder.tan(self)
+    }
+}
 extension SGScalar {
     /// Ambient Occlusion
     func ambientocclusion(maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {

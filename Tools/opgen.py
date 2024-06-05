@@ -652,8 +652,8 @@ node_overloads_by_first_input_sgc_type: Dict[str, List[NodeOverloads]] = {}
 def group_by_first_input_sgc_type(node_overloadss: List[NodeOverloads]):
     for overloads in node_overloadss:
         first_input_sgc_type = overloads.get_param_sgc_type(0)
-        # if first_input_sgc_type == "T":
-        #     first_input_sgc_type = overloads.generic_params[0][0]
+        if first_input_sgc_type == "T":
+            first_input_sgc_type = overloads.generic_params[1]
         if first_input_sgc_type not in node_overloads_by_first_input_sgc_type:
             node_overloads_by_first_input_sgc_type[first_input_sgc_type] = []
         node_overloads_by_first_input_sgc_type[first_input_sgc_type].append(overloads)
@@ -778,7 +778,7 @@ def write_sgc_value(w: SwiftWriter, value, usd_type: str, sgc_type: str):
 
 def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_static: bool, w: SwiftWriter):
     generic_params, sgc_output_type, interface_only_params, primitive_params, param_names, default_value_params, num_unnamed_inputs, usd_param_type_is_shared, sgc_param_type_is_shared, sgc_shared_param_type, num_unshared_usd_params = overloads.analyze()
-    write_node_overloads_prototype(overloads, w, decl_public, decl_static, generic_params, primitive_params, default_value_params, sgc_param_type_is_shared, sgc_shared_param_type, num_unnamed_inputs, param_names, sgc_output_type, skip_params=0)
+    write_node_overloads_prototype(overloads, w, decl_public, decl_static, generic_params, primitive_params, default_value_params, sgc_param_type_is_shared, sgc_shared_param_type, num_unnamed_inputs, param_names, sgc_output_type, skip_params=0, generic_is_self=False)
     first_node_inputs = overloads.first_node().inputs
     w.write_line(f' {{')
     for i, input in enumerate(first_node_inputs):
@@ -840,7 +840,7 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
         w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types in {overloads.swift_name}{args_str}", values: {vals_str}))')
     w.write_line('}')
 
-def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl_public: bool, decl_static: bool, generic_params, primitive_params: List[bool], default_value_params, sgc_param_type_is_shared: List[bool], sgc_shared_param_type: List[str], num_unnamed_inputs: int, param_names: List[str], sgc_output_type: str, skip_params: int):
+def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl_public: bool, decl_static: bool, generic_params, primitive_params: List[bool], default_value_params, sgc_param_type_is_shared: List[bool], sgc_shared_param_type: List[str], num_unnamed_inputs: int, param_names: List[str], sgc_output_type: str, skip_params: int, generic_is_self: bool):
     first_node = overloads.first_node()
     swift_name = overloads.swift_name
     if len(first_node.description) > 0:
@@ -851,7 +851,7 @@ def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl
         w.write('static ')
     if overloads.write_func:
         w.write(f'func {swift_name}')
-        if generic_params is not None:
+        if generic_params is not None and not generic_is_self:
             w.write('<T>')
         w.write(f'(')
     else:
@@ -861,6 +861,8 @@ def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl
             continue
         is_primitive = primitive_params[i]
         sgc_type = overloads.get_param_sgc_type(i)
+        if sgc_type == "T" and generic_is_self:
+            sgc_type = generic_params[1]
         name = f"_ {param_names[i]}" if i < num_unnamed_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
         if default_value_params[i] is not None:
@@ -873,7 +875,10 @@ def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl
             w.write(', ')
     if overloads.write_func:
         if generic_params is not None:
-            w.write(f') -> T where T: {generic_params[1]}')
+            if generic_is_self:
+                w.write(f') -> Self')
+            else:
+                w.write(f') -> T where T: {generic_params[1]}')
         else:
             w.write(f') -> {sgc_output_type}')
     else:
@@ -884,11 +889,13 @@ def write_extension_node_overloads(w: SwiftWriter, ext_sgc_type: str, overloadss
     w.indent()
     for overloads in overloadss:
         generic_params, sgc_output_type, interface_only_params, primitive_params, param_names, default_value_params, num_unnamed_inputs, usd_param_type_is_shared, sgc_param_type_is_shared, sgc_shared_param_type, num_unshared_usd_params = overloads.analyze()
-        write_node_overloads_prototype(overloads, w, False, False, generic_params, primitive_params, default_value_params, sgc_param_type_is_shared, sgc_shared_param_type, num_unnamed_inputs, param_names, sgc_output_type, skip_params=1)
+        generic_is_self = overloads.generic_params is not None and 0 in overloads.generic_params[0]
+        write_node_overloads_prototype(overloads, w, False, False, generic_params, primitive_params, default_value_params, sgc_param_type_is_shared, sgc_shared_param_type, num_unnamed_inputs, param_names, sgc_output_type, skip_params=1, generic_is_self=generic_is_self)
         w.write_line(' {')
         w.indent()
         w.write(f'ShaderGraphCoder.{overloads.swift_name}(')
         head = ""
+        has_generic_param = any(overloads.get_param_sgc_type(i) == "T" for i in range(len(overloads.first_node().inputs)) if i > 0)
         for i, input in enumerate(overloads.first_node().inputs):
             prefix = "" if i < num_unnamed_inputs else f"{param_names[i]}: "
             if i == 0:
@@ -896,7 +903,10 @@ def write_extension_node_overloads(w: SwiftWriter, ext_sgc_type: str, overloadss
             else:
                 w.write(f'{head}{prefix}{param_names[i]}')
             head = ", "
-        w.write_line(')')
+        w.write(')')
+        if generic_is_self and has_generic_param:
+            w.write(' as! Self')
+        w.write_line("")
         w.unindent()
         w.write_line('}')
     w.unindent()
@@ -969,7 +979,7 @@ for node in op_nodes:
     write_node_overloads(node, True, False, ops_writer)
     write_node_overload_table_entry(node, ops_readme_writer)
 group_by_first_input_sgc_type(op_nodes)
-for sgc_type in ["SGValue", "SGScalar", "SGColor", "SGVector", "SGMatrix"]:
+for sgc_type in ["SGValue", "SGNumeric", "SGScalar", "SGColor", "SGVector", "SGMatrix"]:
     if sgc_type in node_overloads_by_first_input_sgc_type:
         write_extension_node_overloads(ops_writer, sgc_type, node_overloads_by_first_input_sgc_type[sgc_type])
 ops_writer.output_to_file(ops_out_path)
