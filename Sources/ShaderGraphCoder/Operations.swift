@@ -7,13 +7,8 @@
 
 import Foundation
 
-
-public func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
-    return combine(values: [r, g, b], dataType: .color3f)
-}
-
-public func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
-    return combine(values: [r, g, b, a], dataType: .color4f)
+public func clamp<T>(_ in1: T, min: Float, max: Float) -> T where T: SGNumeric {
+    clamp<T>(in1, min: SGValue.float(min), max: SGValue.float(max))
 }
 
 func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
@@ -50,12 +45,24 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     return T(source: .nodeOutput(sep))
 }
 
-public func clamp<T>(_ in1: T, min: Float, max: Float) -> T where T: SGNumeric {
-    clamp<T>(in1, min: SGValue.float(min), max: SGValue.float(max))
+public func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
+    return combine(values: [r, g, b], dataType: .color3f)
+}
+
+public func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
+    return combine(values: [r, g, b, a], dataType: .color4f)
+}
+
+public func ifEqual(_ value1: SGValue, _ value2: SGValue, trueResult: Float, falseResult: Float) -> SGScalar {
+    ifEqual(value1, value2, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
 public func ifGreaterOrEqual(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
     ifGreaterOrEqual(value1, value2, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
+}
+
+public func ifGreater(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {
+    ifGreater(value1, value2, trueResult: SGValue.float(trueResult), falseResult: SGValue.float(falseResult))
 }
 
 public func ifLess<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
