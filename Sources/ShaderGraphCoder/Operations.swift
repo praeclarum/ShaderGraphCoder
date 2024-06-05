@@ -148,6 +148,12 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
         return "half3"
     case .vector4h:
         return "half4"
+    case .vector2i:
+        return "int2"
+    case .vector3i:
+        return "int3"
+    case .vector4i:
+        return "int4"
     case .matrix2d:
         return "matrix22"
     case .matrix3d:

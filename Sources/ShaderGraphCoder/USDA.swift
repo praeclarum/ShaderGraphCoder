@@ -81,6 +81,12 @@ public extension SGConstantValue {
             return "(\(v.x), \(v.y), \(v.z))"
         case .vector4h(let v):
             return "(\(v.x), \(v.y), \(v.z), \(v.w))"
+        case .vector2i(let v):
+            return "(\(v.x), \(v.y))"
+        case .vector3i(let v):
+            return "(\(v.x), \(v.y), \(v.z))"
+        case .vector4i(let v):
+            return "(\(v.x), \(v.y), \(v.z), \(v.w))"
         case .matrix2d(let v):
             return "(\(v.columns.0.usda), \(v.columns.1.usda))"
         case .matrix3d(let v):

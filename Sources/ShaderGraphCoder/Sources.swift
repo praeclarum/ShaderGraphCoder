@@ -156,6 +156,34 @@ public extension SGValue {
         SGVector(source: .parameter(name: name, defaultValue: .vector4h(defaultValue)))
     }
 
+    static func vector2i(_ value: SIMD2<Int>) -> SGVector {
+        SGVector(source: .constant(.vector2i(value)))
+    }
+    static func vector2i(_ x: Int, _ y: Int) -> SGVector {
+        SGVector(source: .constant(.vector2i([x, y])))
+    }
+    static func vector2iParameter(name: String, defaultValue: SIMD2<Int>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector2i(defaultValue)))
+    }
+    static func vector3i(_ value: SIMD3<Int>) -> SGVector {
+        SGVector(source: .constant(.vector3i(value)))
+    }
+    static func vector3i(_ x: Int, _ y: Int, _ z: Int) -> SGVector {
+        SGVector(source: .constant(.vector3i([x, y, z])))
+    }
+    static func vector3iParameter(name: String, defaultValue: SIMD3<Int>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector3i(defaultValue)))
+    }
+    static func vector4i(_ value: SIMD4<Int>) -> SGVector {
+        SGVector(source: .constant(.vector4i(value)))
+    }
+    static func vector4i(_ x: Int, _ y: Int, _ z: Int, _ w: Int) -> SGVector {
+        SGVector(source: .constant(.vector4i([x, y, z, w])))
+    }
+    static func vector4iParameter(name: String, defaultValue: SIMD4<Int>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector4i(defaultValue)))
+    }
+
     static var modelNormal: SGVector {
         normal(space: .model)
     }
