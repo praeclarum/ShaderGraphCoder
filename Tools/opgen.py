@@ -885,7 +885,7 @@ def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl
         w.write(f': {sgc_output_type}')
 
 def write_extension_node_overloads(w: SwiftWriter, ext_sgc_type: str, overloadss: List[NodeOverloads]):
-    w.write_line(f'extension {ext_sgc_type} {{')
+    w.write_line(f'public extension {ext_sgc_type} {{')
     w.indent()
     for overloads in overloadss:
         generic_params, sgc_output_type, interface_only_params, primitive_params, param_names, default_value_params, num_unnamed_inputs, usd_param_type_is_shared, sgc_param_type_is_shared, sgc_shared_param_type, num_unshared_usd_params = overloads.analyze()

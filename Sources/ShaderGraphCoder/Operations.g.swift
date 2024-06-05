@@ -5185,7 +5185,7 @@ public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant
         inputs: inputs,
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
-extension SGValue {
+public extension SGValue {
     /// If Equal
     func ifEqual<T>(value2: SGValue = SGValue(source: .constant(.float(0.0))), trueResult: T, falseResult: T) -> T where T: SGNumeric {
         ShaderGraphCoder.ifEqual(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
@@ -5207,7 +5207,7 @@ extension SGValue {
         ShaderGraphCoder.logicalXor(self, in2)
     }
 }
-extension SGNumeric {
+public extension SGNumeric {
     /// Abs
     func abs() -> Self {
         ShaderGraphCoder.abs(self)
@@ -5417,7 +5417,7 @@ extension SGNumeric {
         ShaderGraphCoder.tan(self)
     }
 }
-extension SGScalar {
+public extension SGScalar {
     /// Ambient Occlusion
     func ambientocclusion(maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
         ShaderGraphCoder.ambientocclusion(coneangle: self, maxdistance: maxdistance)
@@ -5435,7 +5435,7 @@ extension SGScalar {
         ShaderGraphCoder.ifGreaterOrEqual(value1: self, value2: value2, trueResult: trueResult, falseResult: falseResult)
     }
 }
-extension SGColor {
+public extension SGColor {
     /// Disjoint Over
     func disjointover(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
         ShaderGraphCoder.disjointover(fg: self, bg: bg, mix: mix)
@@ -5489,7 +5489,7 @@ extension SGColor {
         ShaderGraphCoder.unpremult(self)
     }
 }
-extension SGVector {
+public extension SGVector {
     /// Cellular Noise 2D
     func cellNoise2D() -> SGScalar {
         ShaderGraphCoder.cellNoise2D(texcoord: self)
@@ -5583,7 +5583,7 @@ extension SGVector {
         ShaderGraphCoder.worleyNoise3DVector3(position: self, jitter: jitter)
     }
 }
-extension SGMatrix {
+public extension SGMatrix {
     /// Determinant
     func determinant() -> SGScalar {
         ShaderGraphCoder.determinant(self)
