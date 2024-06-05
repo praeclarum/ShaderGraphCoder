@@ -61,6 +61,7 @@ The following value types are supported:
 | `SGSIMD: SGNumeric` | Base class for SIMD types color and vector |
 | `SGColor: SGSIMD` | A vector of color values, with either 3 or 4 elements |
 | `SGVector: SGSIMD` | A vector of values, with either 2, 3, or 4 elements |
+| `SGMatrix: SGNumeric` | A square matrix with either 2, 3, or 4 dimensions |
 | `SGTexture1D: SGValue` | A 1D texture that can be sampled |
 | `SGTexture2D: SGValue` | A 2D texture that can be sampled |
 | `SGTexture3D: SGValue` | A 3D texture that can be sampled |
@@ -201,7 +202,7 @@ Most operators work on `SGScalar`, `SGVector`, and `SGColor` types.
 
 The `ifGreaterOrEqual` and `ifLess` operators are conditional operators that take a condition, a value if true, and a value if false. The `mix` operator is a linear interpolation operator that takes two values and a weight. Since runtime conditionals are not supported in RealityKit, the `ifGreaterOrEqual` and `ifLess` operators are the best way to implement runtime logic.
 
-For more details see [Operations.swift](Sources/ShaderGraphCoder/Operations.swift).
+For more details see [Operations.swift](Sources/ShaderGraphCoder/Operations.swift) and [Operations.g.swift](Sources/ShaderGraphCoder/Operations.g.swift).
 
 
 ## Sources
@@ -304,7 +305,7 @@ The following sources are supported:
 | `SGValue.updirection(space)` | Up Direction |
 | `SGValue.viewdirection(space)` | View Direction |
 
-For more details see [Sources.swift](Sources/ShaderGraphCoder/Sources.swift).
+For more details see [Sources.swift](Sources/ShaderGraphCoder/Sources.swift) and [Sources.g.swift](Sources/ShaderGraphCoder/Sources.g.swift).
 
 
 ## Building on the Command Line
