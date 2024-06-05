@@ -193,6 +193,9 @@ public extension SGValue {
         SGVector(source: .parameter(name: name, defaultValue: .vector4i(defaultValue)))
     }
 
+    static var modelBitangent0: SGVector {
+        bitangent(space: .model, index: 0)
+    }
     static var modelCameraPosition: SGVector {
         cameraPosition(space: .model)
     }
@@ -202,11 +205,17 @@ public extension SGValue {
     static var modelPosition: SGVector {
         position(space: .model)
     }
+    static var modelTangent0: SGVector {
+        tangent(space: .model, index: 0)
+    }
     static var modelUpDirection: SGVector {
         upDirection(space: .model)
     }
     static var modelViewDirection: SGVector {
         viewDirection(space: .model)
+    }
+    static var objectBitangent0: SGVector {
+        bitangent(space: .object, index: 0)
     }
     static var objectCameraPosition: SGVector {
         cameraPosition(space: .object)
@@ -217,6 +226,9 @@ public extension SGValue {
     static var objectPosition: SGVector {
         position(space: .object)
     }
+    static var objectTangent0: SGVector {
+        tangent(space: .object, index: 0)
+    }
     static var objectUpDirection: SGVector {
         upDirection(space: .object)
     }
@@ -226,11 +238,17 @@ public extension SGValue {
     static var worldCameraPosition: SGVector {
         cameraPosition(space: .world)
     }
+    static var worldBitangent0: SGVector {
+        bitangent(space: .world, index: 0)
+    }
     static var worldNormal: SGVector {
         normal(space: .world)
     }
     static var worldPosition: SGVector {
         position(space: .world)
+    }
+    static var worldTangent0: SGVector {
+        tangent(space: .world, index: 0)
     }
     static var worldUpDirection: SGVector {
         upDirection(space: .world)
