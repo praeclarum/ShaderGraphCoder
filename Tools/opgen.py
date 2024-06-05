@@ -518,6 +518,11 @@ def get_param_name(name: str, node: Node) -> str:
             return "trueResult"
         if name == "in2":
             return "falseResult"
+    elif node.name.startswith("ND_clamp_"):
+        if name == "low":
+            return "min"
+        if name == "high":
+            return "max"
     name = snake_to_camel(name)
     return name
 

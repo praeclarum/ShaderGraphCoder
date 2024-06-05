@@ -50,13 +50,8 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     return T(source: .nodeOutput(sep))
 }
 
-public func clamp<T>(_ in1: T, low: Float, high: Float) -> T where T: SGNumeric {
-    clamp<T>(in1, low: SGValue.float(low), high: SGValue.float(high))
-}
-
-@available(*, deprecated, message: "Min and max were renamed to low and high")
-public func clamp(_ x: SGScalar, min: Float, max: Float) -> SGScalar {
-    clamp<SGScalar>(x, low: min, high: max)
+public func clamp<T>(_ in1: T, min: Float, max: Float) -> T where T: SGNumeric {
+    clamp<T>(in1, min: SGValue.float(min), max: SGValue.float(max))
 }
 
 public func ifGreaterOrEqual(_ value1: SGScalar, _ value2: SGScalar, trueResult: Float, falseResult: Float) -> SGScalar {

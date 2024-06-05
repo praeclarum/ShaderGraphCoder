@@ -548,115 +548,115 @@ public func cellnoise3D(position: SGVector = SGVector(source: .constant(.vector3
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Clamp
-public func clamp<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where T: SGNumeric {
+public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGNumeric {
     let inputs: [SGNode.Input] = [
         .init(name: "in", connection: in1),
-        .init(name: "low", connection: low),
-        .init(name: "high", connection: high),
+        .init(name: "low", connection: min),
+        .init(name: "high", connection: max),
     ]
-    if in1.dataType == SGDataType.color3f && low.dataType == SGDataType.color3f && high.dataType == SGDataType.color3f {
+    if in1.dataType == SGDataType.color3f && min.dataType == SGDataType.color3f && max.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color3",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.color3f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color3FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && low.dataType == SGDataType.color4f && high.dataType == SGDataType.color4f {
+    if in1.dataType == SGDataType.color4f && min.dataType == SGDataType.color4f && max.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.color4f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color4FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.float && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_float",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && low.dataType == SGDataType.half && high.dataType == SGDataType.half {
+    if in1.dataType == SGDataType.half && min.dataType == SGDataType.half && max.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h && low.dataType == SGDataType.vector2h && high.dataType == SGDataType.vector2h {
+    if in1.dataType == SGDataType.vector2h && min.dataType == SGDataType.vector2h && max.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half2",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector2h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.vector2h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half2FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h && low.dataType == SGDataType.vector3h && high.dataType == SGDataType.vector3h {
+    if in1.dataType == SGDataType.vector3h && min.dataType == SGDataType.vector3h && max.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half3",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.vector3h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half3FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h && low.dataType == SGDataType.vector4h && high.dataType == SGDataType.vector4h {
+    if in1.dataType == SGDataType.vector4h && min.dataType == SGDataType.vector4h && max.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector4h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.vector4h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half4FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f && low.dataType == SGDataType.vector2f && high.dataType == SGDataType.vector2f {
+    if in1.dataType == SGDataType.vector2f && min.dataType == SGDataType.vector2f && max.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector2",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.vector2f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector2FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && low.dataType == SGDataType.vector3f && high.dataType == SGDataType.vector3f {
+    if in1.dataType == SGDataType.vector3f && min.dataType == SGDataType.vector3f && max.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector3",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.vector3f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector3FA",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && low.dataType == SGDataType.vector4f && high.dataType == SGDataType.vector4f {
+    if in1.dataType == SGDataType.vector4f && min.dataType == SGDataType.vector4f && max.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector4",
             inputs: inputs,
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if in1.dataType == SGDataType.vector4f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector4FA",
             inputs: inputs,
