@@ -173,7 +173,7 @@ public enum SGDataType: String {
 
 public enum SGTextureSource {
     case texture(_ texture: TextureResource)
-    case generate(from: CGImage, options: TextureResource.CreateOptions)
+    case cgImage(_ image: CGImage, options: TextureResource.CreateOptions)
     case loadNamed(_ named: String, in: Bundle?, options: TextureResource.CreateOptions?)
     case loadContentsOf(_ url: URL, options: TextureResource.CreateOptions?)
     case mtlBuffer(width: Int, height: Int, format: TextureResource.Format, unsafeBuffer: any MTLBuffer, offset: Int, size: Int, bytesPerRow: Int)
@@ -184,7 +184,7 @@ public enum SGTextureSource {
         switch self {
         case .texture(let t):
             return t
-        case .generate(let from, let options):
+        case .cgImage(let from, let options):
             return try TextureResource.generate(from: from, options: options)
         case .loadNamed(let named, let bundle, .some(let options)):
             return try TextureResource.load(named: named, in: bundle, options: options)

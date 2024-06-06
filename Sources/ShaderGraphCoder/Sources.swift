@@ -119,7 +119,7 @@ public extension SGValue {
     static func texture(from: CGImage, options: TextureResource.CreateOptions) -> SGTexture {
         let name = "_texture\(nextTextureId)"
         nextTextureId += 1
-        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.generate(from: from, options: options))))
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.cgImage(from, options: options))))
     }
     static func texture(named: String, in bundle: Bundle? = nil, options: TextureResource.CreateOptions? = nil) -> SGTexture {
         let name = "_texture\(nextTextureId)"
