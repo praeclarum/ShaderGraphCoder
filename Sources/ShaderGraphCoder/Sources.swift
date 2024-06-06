@@ -120,12 +120,12 @@ public extension SGValue {
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.generate(from: from, options: options))))
     }
-    static func texture(named: String, in bundle: Bundle?, options: TextureResource.CreateOptions?) -> SGTexture {
+    static func texture(named: String, in bundle: Bundle? = nil, options: TextureResource.CreateOptions? = nil) -> SGTexture {
         let name = "texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadNamed(named, in: bundle, options: options))))
     }
-    static func texture(contentsOf: URL, options: TextureResource.CreateOptions?) -> SGTexture {
+    static func texture(contentsOf: URL, options: TextureResource.CreateOptions? = nil) -> SGTexture {
         let name = "texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadContentsOf(contentsOf, options: options))))
