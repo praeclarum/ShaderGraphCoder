@@ -321,6 +321,7 @@ class NodeOverloads():
                 if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
                     sgc_param_type_is_shared[i] = False
         num_unshared_usd_params = len([x for x in usd_param_type_is_shared if not x])
+        self.param_names = param_names
         self.sgc_shared_param_type = sgc_shared_param_type
         self.sgc_param_type_is_shared = sgc_param_type_is_shared
         self.primitive_params = primitive_params
@@ -951,7 +952,10 @@ def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, pr
         w.write(f"(")
         head = ""
         for i, input in enumerate(node.inputs):
-            w.write(f"{head}{input.name}")
+            if i >= 4:
+                w.write(f"{head}...")
+                break
+            w.write(f"{head}{overloads.param_names[i]}")
             head = ", "
         w.write(f")")
     w.write_line(f"` | {node.description} |")
