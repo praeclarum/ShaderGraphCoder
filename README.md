@@ -1,5 +1,7 @@
 # ShaderGraphCoder
 
+[![Build](https://github.com/praeclarum/ShaderGraphCoder/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/praeclarum/ShaderGraphCoder/actions/workflows/build.yml)
+
 Are you building the next great visionOS app?
 Are you also super tired of drawing shader code with boxes and lines?
 **ShaderGraphCoder** is an embedded DSL to write RealityKit shader graphs
