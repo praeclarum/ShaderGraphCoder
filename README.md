@@ -77,7 +77,7 @@ Or you can just use a preview:
 
 This will show a blue box and a blue sphere in the Xcode canvas:
 
-![ShaderGraphPreview](Documentation/ShaderGraphPreview.png)
+![ShaderGraphPreview](Documentation/ShaderGraphPreview.jpg)
 
 All 100+ shader operations are supported and it's a really fun environment
 to play around in.
