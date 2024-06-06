@@ -92,6 +92,10 @@ public extension SGValue {
     static let opaqueBlack = SGColor(source: .constant(.color4f([0, 0, 0, 1])))
     static let opaqueWhite = SGColor(source: .constant(.color4f([1, 1, 1, 1])))
     static let transparentBlack = SGColor(source: .constant(.color4f([0, 0, 0, 0])))
+    
+    static let vector2fZero = SGVector(source: .constant(.vector2f([0, 0])))
+    static let vector3fZero = SGVector(source: .constant(.vector3f([0, 0, 0])))
+    static let vector4fZero = SGVector(source: .constant(.vector4f([0, 0, 0, 0])))
 
     static func uv(index: Int) -> SGVector {
         texcoordVector2(index: index)

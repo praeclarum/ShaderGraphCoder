@@ -176,6 +176,9 @@ public class SGAsset: SGValue {
 
 public class SGTexture: SGAsset {
     public func sample(texcoord: SGVector? = nil) -> SGColor {
-        ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack, texcoord: texcoord)
+        ShaderGraphCoder.sample(file: self, defaultValue: .transparentBlack, texcoord: texcoord)
+    }
+    public func sampleVector(texcoord: SGVector? = nil) -> SGVector {
+        ShaderGraphCoder.sample(file: self, defaultValue: .vector4fZero, texcoord: texcoord)
     }
 }
