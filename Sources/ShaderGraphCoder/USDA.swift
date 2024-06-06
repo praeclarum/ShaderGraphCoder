@@ -69,6 +69,8 @@ public extension SGConstantValue {
             return "\(v)"
         case .string(let v):
             return "\"\(v)\""
+        case .token(let v):
+            return "\"\(v)\""
         case .vector2f(let v):
             return v.usda
         case .vector3f(let v):

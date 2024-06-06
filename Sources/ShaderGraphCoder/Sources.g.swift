@@ -307,14 +307,6 @@ public extension SGValue {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    /// Surface Ambient Occlusion
-    static var surfaceAmbientOcclusion: SGScalar {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_ambient_occlusion",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
     /// Surface Base Color
     static var surfaceBaseColor: SGColor {
         return SGColor(source: .nodeOutput(SGNode(

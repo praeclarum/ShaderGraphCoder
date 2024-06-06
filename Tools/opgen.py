@@ -11,10 +11,11 @@ manual_node_prefixes = [
     'ND_swizzle_',
     'ND_convert_',
 
+    'ND_realitykit_occlusion_surfaceshader',
+    'ND_realitykit_shadowreceiver_surfaceshader',
+    'ND_realitykit_surface_ambient_occlusion',
+
     'ND_surfacematerial',
-    'ND_realitykit_geometrymodifier_vertexshader',
-    'ND_realitykit_pbr_surfaceshader',
-    'ND_realitykit_unlit_surfaceshader',
     'ND_add_surfaceshader',
     'ND_dot_surfaceshader',
     'ND_mix_surfaceshader',
@@ -34,6 +35,8 @@ manual_node_prefixes = [
     'ND_Usd',
 
     'ND_dot_',
+
+    'ND_geompropvalue',
 ]
 
 param_renames: Dict[str, str] = {
@@ -50,6 +53,7 @@ node_renames: Dict[str, str] = {
     "cellnoise3d": "cellNoise3D",
     "crossproduct": "cross",
     "fractional": "fract",
+    "geometrymodifier_vertexshader": "geometryModifier",
     "heighttonormal": "heightToNormal",
     "hsvadjust": "hsvAdjust",
     "hsvtorgb": "hsvToRGB",
@@ -62,6 +66,7 @@ node_renames: Dict[str, str] = {
     "magnitude": "length",
     "normalmap": "normalMap",
     "oneminus": "oneMinus",
+    "pbr_surfaceshader": "pbrSurface",
     "power": "pow",
     "rgbtohsv": "rgbToHSV",
     "safepower": "safePow",
@@ -73,6 +78,7 @@ node_renames: Dict[str, str] = {
     "transformnormal": "transformNormal",
     "transformvector": "transformVector",
     "triplanarprojection": "triplanarProjection",
+    "unlit_surfaceshader": "unlitSurface",
     "updirection": "upDirection",
     "viewdirection": "viewDirection",
     "worleynoise2d_float": "worleyNoise2DFloat",
@@ -248,9 +254,9 @@ def should_output_node(node: Node):
     if node.outputs[0].type_is_array:
         # print(f'Skipping {node.name} because its output is an array')
         return False
-    if node.outputs[0].usd_type == 'token':
-        # print(f'Skipping {node.name} because its output is a token')
-        return False
+    # if node.outputs[0].usd_type == 'token':
+    #     # print(f'Skipping {node.name} because its output is a token')
+    #     return False
     for prefix in manual_node_prefixes:
         if node.name.startswith(prefix):
             # print(f'Skipping {node.name} because it is a manual node')
@@ -511,7 +517,7 @@ def usd_type_to_sgc_type(usd_type: str) -> str:
     if usd_type == 'string':
         return 'SGString'
     if usd_type == 'token':
-        return 'SGString'
+        return 'SGToken'
     if usd_type in enums_by_gen_usd_type:
         return enums_by_gen_usd_type[usd_type].gen_sgc_type
     print("Unknown USD type:", usd_type)
@@ -559,7 +565,7 @@ def usd_type_to_sgc_datatype(usd_type: str) -> str:
     if usd_type == 'string':
         return 'SGDataType.string'
     if usd_type == 'token':
-        return 'SGDataType.string'
+        return 'SGDataType.token'
     if usd_type in enums_by_gen_usd_type:
         return f"SGDataType.string"
     print("Unknown USD datatype:", usd_type)
@@ -728,6 +734,9 @@ def get_node_name(name: str) -> str:
     return name
 
 def get_base_sg_type(sg_types: List[str]) -> str:
+    if len(sg_types) == 0:
+        print("Warning: No SG types")
+        return "SGValue"
     def has_sg_type(sg_type: str) -> bool:
         return any(sg_type in x for x in sg_types)
     composite_type = ""
@@ -741,6 +750,8 @@ def get_base_sg_type(sg_types: List[str]) -> str:
         composite_type += 'SGScalar'
     if has_sg_type('SGString'):
         composite_type += 'SGString'
+    if has_sg_type('SGToken'):
+        composite_type += 'SGToken'
     if has_sg_type('SGValue'):
         composite_type += 'SGValue'
     if composite_type == "SGMatrix":
@@ -751,6 +762,10 @@ def get_base_sg_type(sg_types: List[str]) -> str:
         return "SGVector"
     if composite_type == "SGScalar":
         return "SGScalar"
+    if composite_type == "SGString":
+        return "SGString"
+    if composite_type == "SGToken":
+        return "SGToken"
     if "SGValue" in composite_type:
         return "SGValue"
     if composite_type == "SGColorSGVector":
@@ -1015,7 +1030,7 @@ for node in op_nodes:
     write_node_overloads(node, True, False, ops_writer)
     write_node_overload_table_entry(node, ops_readme_writer)
 group_by_first_input_sgc_type(op_nodes)
-for sgc_type in ["SGValue", "SGNumeric", "SGScalar", "SGColor", "SGVector", "SGMatrix", "SGTexture"]:
+for sgc_type in ["SGValue", "SGNumeric", "SGScalar", "SGColor", "SGVector", "SGMatrix", "SGTexture", "SGToken"]:
     if sgc_type in node_overloads_by_first_input_sgc_type:
         write_extension_node_overloads(ops_writer, sgc_type, node_overloads_by_first_input_sgc_type[sgc_type])
 ops_writer.output_to_file(ops_out_path)

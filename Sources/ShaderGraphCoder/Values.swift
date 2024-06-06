@@ -170,6 +170,10 @@ public class SGString: SGValue {
 
 }
 
+public class SGToken: SGValue {
+
+}
+
 public class SGAsset: SGValue {
 
 }

@@ -123,8 +123,8 @@ The following operators are supported:
 | `floor(in1)` | Floor |
 | `fract(in1)` | Fractional |
 | `fractal3D(amplitude, octaves, ...)` | Fractal Noise 3D |
+| `geometryModifier(modelPositionOffset, color, ...)` | Geometry Modifier |
 | `geometrySwitchCameraindex(mono, left, ...)` | Camera Index Switch |
-| `geompropvalue(geomprop, defaultValue)` | Geometric Property |
 | `heightToNormal(in1, scale)` | Height To Normal |
 | `hsvAdjust(in1, amount)` | HSV Adjust |
 | `hsvToRGB(in1)` | HSV to RGB |
@@ -160,6 +160,7 @@ The following operators are supported:
 | `outside(in1, mask)` | Outside |
 | `over(fg, bg, ...)` | Over |
 | `overlay(fg, bg, ...)` | Overlay |
+| `pbrSurface(baseColor, emissiveColor, ...)` | PBR Surface |
 | `pixel(file, uWrapMode, ...)` | Image 2D Pixel |
 | `pixelGradient(file, uWrapMode, ...)` | Image 2D Gradient Pixel |
 | `pixelLOD(file, uWrapMode, ...)` | Image 2D LOD Pixel |
@@ -205,6 +206,7 @@ The following operators are supported:
 | `transformVector(in1, fromspace, ...)` | Transform Vector |
 | `transpose(in1)` | Transpose |
 | `triplanarProjection(filex, filey, ...)` | Triplanar Projection |
+| `unlitSurface(color, opacity, ...)` | Unlit Surface |
 | `unpremult(in1)` | Unpremultiply |
 | `worleyNoise2DFloat(texcoord, jitter)` | Worley Noise 2D |
 | `worleyNoise2DVector2(texcoord, jitter)` | Worley Noise 2D |
@@ -286,7 +288,6 @@ The following sources are supported:
 | `SGValue.materialParametersSpecularScale` | Material Parameter Specular Scale |
 | `SGValue.normal(space)` | Normal |
 | `SGValue.position(space)` | Position |
-| `SGValue.surfaceAmbientOcclusion` | Surface Ambient Occlusion |
 | `SGValue.surfaceBaseColor` | Surface Base Color |
 | `SGValue.surfaceClearcoat` | Surface Clearcoat |
 | `SGValue.surfaceClearcoatRoughness` | Surface Clearcoat Roughness |

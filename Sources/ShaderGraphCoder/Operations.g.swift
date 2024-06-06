@@ -1824,6 +1824,66 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
     }
     return SGNumeric(source: .error("Unsupported input data types in fractal3D(amplitude: \(amplitude.dataType))", values: [amplitude]))
 }
+/// Geometry Modifier
+public func geometryModifier(modelPositionOffset: SGVector? = nil, color: SGColor? = nil, normal: SGVector? = nil, bitangent: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil, userAttribute: SGVector? = nil, userAttributeHalf40: SGVector? = nil, userAttributeHalf41: SGVector? = nil, userAttributeHalf42: SGVector? = nil, userAttributeHalf43: SGVector? = nil, userAttributeHalf20: SGVector? = nil, userAttributeHalf21: SGVector? = nil) -> SGToken {
+    guard SGDataType.vector3f.matches(modelPositionOffset) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected modelPositionOffset data type to be SGDataType.vector3f, but got \(modelPositionOffset?.dataType.rawValue ?? "nil").", values: [modelPositionOffset]))
+    }
+    guard SGDataType.color4f.matches(color) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected color data type to be SGDataType.color4f, but got \(color?.dataType.rawValue ?? "nil").", values: [color]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
+    }
+    guard SGDataType.vector3f.matches(bitangent) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected bitangent data type to be SGDataType.vector3f, but got \(bitangent?.dataType.rawValue ?? "nil").", values: [bitangent]))
+    }
+    guard SGDataType.vector2f.matches(uv0) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected uv0 data type to be SGDataType.vector2f, but got \(uv0?.dataType.rawValue ?? "nil").", values: [uv0]))
+    }
+    guard SGDataType.vector2f.matches(uv1) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected uv1 data type to be SGDataType.vector2f, but got \(uv1?.dataType.rawValue ?? "nil").", values: [uv1]))
+    }
+    guard SGDataType.vector4f.matches(userAttribute) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttribute data type to be SGDataType.vector4f, but got \(userAttribute?.dataType.rawValue ?? "nil").", values: [userAttribute]))
+    }
+    guard SGDataType.vector4h.matches(userAttributeHalf40) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf40 data type to be SGDataType.vector4h, but got \(userAttributeHalf40?.dataType.rawValue ?? "nil").", values: [userAttributeHalf40]))
+    }
+    guard SGDataType.vector4h.matches(userAttributeHalf41) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf41 data type to be SGDataType.vector4h, but got \(userAttributeHalf41?.dataType.rawValue ?? "nil").", values: [userAttributeHalf41]))
+    }
+    guard SGDataType.vector4h.matches(userAttributeHalf42) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf42 data type to be SGDataType.vector4h, but got \(userAttributeHalf42?.dataType.rawValue ?? "nil").", values: [userAttributeHalf42]))
+    }
+    guard SGDataType.vector4h.matches(userAttributeHalf43) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf43 data type to be SGDataType.vector4h, but got \(userAttributeHalf43?.dataType.rawValue ?? "nil").", values: [userAttributeHalf43]))
+    }
+    guard SGDataType.vector2h.matches(userAttributeHalf20) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf20 data type to be SGDataType.vector2h, but got \(userAttributeHalf20?.dataType.rawValue ?? "nil").", values: [userAttributeHalf20]))
+    }
+    guard SGDataType.vector2h.matches(userAttributeHalf21) else {
+        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf21 data type to be SGDataType.vector2h, but got \(userAttributeHalf21?.dataType.rawValue ?? "nil").", values: [userAttributeHalf21]))
+    }
+    return SGToken(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometrymodifier_vertexshader",
+        inputs: [
+            .init(name: "modelPositionOffset", dataType: SGDataType.vector3f, connection: modelPositionOffset),
+            .init(name: "color", dataType: SGDataType.color4f, connection: color),
+            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+            .init(name: "bitangent", dataType: SGDataType.vector3f, connection: bitangent),
+            .init(name: "uv0", dataType: SGDataType.vector2f, connection: uv0),
+            .init(name: "uv1", dataType: SGDataType.vector2f, connection: uv1),
+            .init(name: "userAttribute", dataType: SGDataType.vector4f, connection: userAttribute),
+            .init(name: "userAttributeHalf4_0", dataType: SGDataType.vector4h, connection: userAttributeHalf40),
+            .init(name: "userAttributeHalf4_1", dataType: SGDataType.vector4h, connection: userAttributeHalf41),
+            .init(name: "userAttributeHalf4_2", dataType: SGDataType.vector4h, connection: userAttributeHalf42),
+            .init(name: "userAttributeHalf4_3", dataType: SGDataType.vector4h, connection: userAttributeHalf43),
+            .init(name: "userAttributeHalf2_0", dataType: SGDataType.vector2h, connection: userAttributeHalf20),
+            .init(name: "userAttributeHalf2_1", dataType: SGDataType.vector2h, connection: userAttributeHalf21),
+        ],
+        outputs: [.init(dataType: SGDataType.token)])))
+}
 /// Camera Index Switch
 public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(mono) && SGDataType.color3f.matches(left) && SGDataType.color3f.matches(right) {
@@ -1897,100 +1957,6 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in geometrySwitchCameraindex(mono: \(mono.dataType), left: \(left.dataType), right: \(right.dataType))", values: [mono, left, right]))
-}
-/// Geometric Property
-public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where T: SGValue {
-    if SGDataType.bool.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_boolean",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.bool, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.color3f.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_color3",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.color3f)])))
-    }
-    if SGDataType.color4f.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_color4",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.color4f)])))
-    }
-    if SGDataType.float.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_float",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.float, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_half",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.half, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.int.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_integer",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.int, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    if SGDataType.string.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_string",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.string, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.string)])))
-    }
-    if SGDataType.vector2f.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_vector2",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.vector2f, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_vector3",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.vector3f, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(defaultValue) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_geompropvalue_vector4",
-            inputs: [
-                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
-                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in geompropvalue(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Height To Normal
 public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector {
@@ -4516,6 +4482,59 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in overlay(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
+}
+/// PBR Surface
+public func pbrSurface(baseColor: SGColor? = nil, emissiveColor: SGColor? = nil, normal: SGVector? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, ambientOcclusion: SGScalar? = nil, specular: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, hasPremultipliedAlpha: Bool = false) -> SGToken {
+    guard SGDataType.color3f.matches(baseColor) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected baseColor data type to be SGDataType.color3f, but got \(baseColor?.dataType.rawValue ?? "nil").", values: [baseColor]))
+    }
+    guard SGDataType.color3f.matches(emissiveColor) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected emissiveColor data type to be SGDataType.color3f, but got \(emissiveColor?.dataType.rawValue ?? "nil").", values: [emissiveColor]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
+    }
+    guard SGDataType.float.matches(roughness) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected roughness data type to be SGDataType.float, but got \(roughness?.dataType.rawValue ?? "nil").", values: [roughness]))
+    }
+    guard SGDataType.float.matches(metallic) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected metallic data type to be SGDataType.float, but got \(metallic?.dataType.rawValue ?? "nil").", values: [metallic]))
+    }
+    guard SGDataType.float.matches(ambientOcclusion) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected ambientOcclusion data type to be SGDataType.float, but got \(ambientOcclusion?.dataType.rawValue ?? "nil").", values: [ambientOcclusion]))
+    }
+    guard SGDataType.float.matches(specular) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected specular data type to be SGDataType.float, but got \(specular?.dataType.rawValue ?? "nil").", values: [specular]))
+    }
+    guard SGDataType.float.matches(opacity) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected opacity data type to be SGDataType.float, but got \(opacity?.dataType.rawValue ?? "nil").", values: [opacity]))
+    }
+    guard SGDataType.float.matches(opacityThreshold) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected opacityThreshold data type to be SGDataType.float, but got \(opacityThreshold?.dataType.rawValue ?? "nil").", values: [opacityThreshold]))
+    }
+    guard SGDataType.float.matches(clearcoat) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected clearcoat data type to be SGDataType.float, but got \(clearcoat?.dataType.rawValue ?? "nil").", values: [clearcoat]))
+    }
+    guard SGDataType.float.matches(clearcoatRoughness) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected clearcoatRoughness data type to be SGDataType.float, but got \(clearcoatRoughness?.dataType.rawValue ?? "nil").", values: [clearcoatRoughness]))
+    }
+    return SGToken(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_pbr_surfaceshader",
+        inputs: [
+            .init(name: "baseColor", dataType: SGDataType.color3f, connection: baseColor),
+            .init(name: "emissiveColor", dataType: SGDataType.color3f, connection: emissiveColor),
+            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+            .init(name: "roughness", dataType: SGDataType.float, connection: roughness),
+            .init(name: "metallic", dataType: SGDataType.float, connection: metallic),
+            .init(name: "ambientOcclusion", dataType: SGDataType.float, connection: ambientOcclusion),
+            .init(name: "specular", dataType: SGDataType.float, connection: specular),
+            .init(name: "opacity", dataType: SGDataType.float, connection: opacity),
+            .init(name: "opacityThreshold", dataType: SGDataType.float, connection: opacityThreshold),
+            .init(name: "clearcoat", dataType: SGDataType.float, connection: clearcoat),
+            .init(name: "clearcoatRoughness", dataType: SGDataType.float, connection: clearcoatRoughness),
+            .init(name: "hasPremultipliedAlpha", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(hasPremultipliedAlpha)))),
+        ],
+        outputs: [.init(dataType: SGDataType.token)])))
 }
 /// Image 2D Pixel
 public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
@@ -8020,6 +8039,28 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
     }
     return T(source: .error("Unsupported input data types in triplanarProjection(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
+/// Unlit Surface
+public func unlitSurface(color: SGColor? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, applyPostProcessToneMap: Bool = true, hasPremultipliedAlpha: Bool = false) -> SGToken {
+    guard SGDataType.color3f.matches(color) else {
+        return SGToken(source: .error("Invalid unlitSurface input. Expected color data type to be SGDataType.color3f, but got \(color?.dataType.rawValue ?? "nil").", values: [color]))
+    }
+    guard SGDataType.float.matches(opacity) else {
+        return SGToken(source: .error("Invalid unlitSurface input. Expected opacity data type to be SGDataType.float, but got \(opacity?.dataType.rawValue ?? "nil").", values: [opacity]))
+    }
+    guard SGDataType.float.matches(opacityThreshold) else {
+        return SGToken(source: .error("Invalid unlitSurface input. Expected opacityThreshold data type to be SGDataType.float, but got \(opacityThreshold?.dataType.rawValue ?? "nil").", values: [opacityThreshold]))
+    }
+    return SGToken(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_unlit_surfaceshader",
+        inputs: [
+            .init(name: "color", dataType: SGDataType.color3f, connection: color),
+            .init(name: "opacity", dataType: SGDataType.float, connection: opacity),
+            .init(name: "opacityThreshold", dataType: SGDataType.float, connection: opacityThreshold),
+            .init(name: "applyPostProcessToneMap", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(applyPostProcessToneMap)))),
+            .init(name: "hasPremultipliedAlpha", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(hasPremultipliedAlpha)))),
+        ],
+        outputs: [.init(dataType: SGDataType.token)])))
+}
 /// Unpremultiply
 public func unpremult(_ in1: SGColor) -> SGColor {
     guard SGDataType.color4f.matches(in1) else {
@@ -8415,6 +8456,10 @@ public extension SGColor {
     func over(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.over(fg: self, bg: bg, mix: mix)
     }
+    /// PBR Surface
+    func pbrSurface(emissiveColor: SGColor? = nil, normal: SGVector? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, ambientOcclusion: SGScalar? = nil, specular: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, hasPremultipliedAlpha: Bool = false) -> SGToken {
+        ShaderGraphCoder.pbrSurface(baseColor: self, emissiveColor: emissiveColor, normal: normal, roughness: roughness, metallic: metallic, ambientOcclusion: ambientOcclusion, specular: specular, opacity: opacity, opacityThreshold: opacityThreshold, clearcoat: clearcoat, clearcoatRoughness: clearcoatRoughness, hasPremultipliedAlpha: hasPremultipliedAlpha)
+    }
     /// Premultiply
     func premult() -> SGColor {
         ShaderGraphCoder.premult(self)
@@ -8426,6 +8471,10 @@ public extension SGColor {
     /// Saturate
     func saturate(amount: SGScalar? = nil, lumacoeffs: SGColor? = nil) -> SGColor {
         ShaderGraphCoder.saturate(self, amount: amount, lumacoeffs: lumacoeffs)
+    }
+    /// Unlit Surface
+    func unlitSurface(opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, applyPostProcessToneMap: Bool = true, hasPremultipliedAlpha: Bool = false) -> SGToken {
+        ShaderGraphCoder.unlitSurface(color: self, opacity: opacity, opacityThreshold: opacityThreshold, applyPostProcessToneMap: applyPostProcessToneMap, hasPremultipliedAlpha: hasPremultipliedAlpha)
     }
     /// Unpremultiply
     func unpremult() -> SGColor {
@@ -8448,6 +8497,10 @@ public extension SGVector {
     /// Dot Product
     func dot(_ in2: SGVector) -> SGScalar {
         ShaderGraphCoder.dot(self, in2)
+    }
+    /// Geometry Modifier
+    func geometryModifier(color: SGColor? = nil, normal: SGVector? = nil, bitangent: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil, userAttribute: SGVector? = nil, userAttributeHalf40: SGVector? = nil, userAttributeHalf41: SGVector? = nil, userAttributeHalf42: SGVector? = nil, userAttributeHalf43: SGVector? = nil, userAttributeHalf20: SGVector? = nil, userAttributeHalf21: SGVector? = nil) -> SGToken {
+        ShaderGraphCoder.geometryModifier(modelPositionOffset: self, color: color, normal: normal, bitangent: bitangent, uv0: uv0, uv1: uv1, userAttribute: userAttribute, userAttributeHalf40: userAttributeHalf40, userAttributeHalf41: userAttributeHalf41, userAttributeHalf42: userAttributeHalf42, userAttributeHalf43: userAttributeHalf43, userAttributeHalf20: userAttributeHalf20, userAttributeHalf21: userAttributeHalf21)
     }
     /// Magnitude
     func length() -> SGScalar {

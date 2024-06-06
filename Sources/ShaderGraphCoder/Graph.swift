@@ -111,11 +111,12 @@ public enum SGDataType: String {
     case float = "float"
     case geometryModifier = "GeometryModifier"
     case int = "int"
-    case string = "string"
-    case surface = "Surface"
     case matrix2d = "matrix2d"
     case matrix3d = "matrix3d"
     case matrix4d = "matrix4d"
+    case string = "string"
+    case surface = "Surface"
+    case token = "token"
     case vector2f = "float2"
     case vector3f = "float3"
     case vector4f = "float4"
@@ -170,7 +171,9 @@ public enum SGConstantValue {
     case float(_ value: Float)
     case half(_ value: Float16)
     case int(_ value: Int)
-    case string(_ value: String)
+    case matrix2d(_ value: simd_float2x2)
+    case matrix3d(_ value: simd_float3x3)
+    case matrix4d(_ value: simd_float4x4)
     case vector2f(_ value: SIMD2<Float>)
     case vector3f(_ value: SIMD3<Float>)
     case vector4f(_ value: SIMD4<Float>)
@@ -180,9 +183,8 @@ public enum SGConstantValue {
     case vector2i(_ value: SIMD2<Int>)
     case vector3i(_ value: SIMD3<Int>)
     case vector4i(_ value: SIMD4<Int>)
-    case matrix2d(_ value: simd_float2x2)
-    case matrix3d(_ value: simd_float3x3)
-    case matrix4d(_ value: simd_float4x4)
+    case string(_ value: String)
+    case token(_ value: String)
     public var dataType: SGDataType {
         switch self {
         case .bool:
@@ -211,6 +213,8 @@ public enum SGConstantValue {
             return .matrix4d
         case .string:
             return .string
+        case .token:
+            return .token
         case .vector2f:
             return .vector2f
         case .vector3f:

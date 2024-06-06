@@ -172,6 +172,8 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
         return "string"
     case .surface:
         return "token"
+    case .token:
+        return "token"
     }
 }
 
