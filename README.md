@@ -12,7 +12,7 @@ An embedded DSL to write RealityKit shaders in Swift.
 func solidRed() async throws -> ShaderGraphMaterial {
     let color: SGColor = .color3f([1, 0, 0])
     let surface = pbrSurface(baseColor: color)
-    return try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
+    return try await ShaderGraphMaterial(surface: surface)
 }
 
 // Create a pulsing blue material for visionOS
@@ -20,26 +20,18 @@ func pulsingBlue() async throws -> ShaderGraphMaterial {
     let frequency = SGValue.floatParameter(name: "Frequency", defaultValue: 2)
     let color: SGColor = .color3f([0, 0, 1]) * sin(SGValue.time * frequency * (2*Float.pi))
     let surface = pbrSurface(baseColor: color)
-    return try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
+    return try await ShaderGraphMaterial(surface: surface)
 }
 
 // Create a texture mapped material for visionOS
-func textureMap() async throws -> ShaderGraphMaterial {
-    // Create the material
-    let texture = SGValue.textureParameter(name: "ColorTexture")
-    let color = texture.sampleColor3f(texcoord: SGValue.uv0)
-    var mat = try await ShaderGraphMaterial(surface: pbrSurface(baseColor: color), geometryModifier: nil)
-    
-    // Load the texture as a TextureResource
-    guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
-        throw URLError(.fileDoesNotExist)
-    }
-    let textureResource = try TextureResource.load(contentsOf: textureURL)
-    
-    // Bind the texure to the material's texture parameter
-    try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
-    
-    return mat
+func textureMap(textureLocalURL: URL) async throws -> ShaderGraphMaterial {
+    // Create the surface by sampling the texture map
+    let surface =
+        SGValue
+        .texture(contentsOf: textureLocalURL)
+        .sampleColor3f(texcoord: SGValue.uv0)
+        .pbrSurface()
+    return try await ShaderGraphMaterial(surface: surface)
 }
 ```
 

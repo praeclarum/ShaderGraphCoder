@@ -12,7 +12,7 @@ import RealityKit
 
 public extension ShaderGraphMaterial {
     @MainActor
-    init(surface: SGToken?, geometryModifier: SGToken?) async throws {
+    init(surface: SGToken?, geometryModifier: SGToken? = nil) async throws {
         let materialName = "ShaderGraphCoderMaterial"
         let (usda, textures, errors) = getUSDA(materialName: materialName, surface: surface, geometryModifier: geometryModifier)
         if errors.count > 0 {
