@@ -101,7 +101,7 @@ final class ShaderGraphCoderTests: XCTestCase {
         let expectation = self.expectation(description: "Load the texture material")
         Task {
             // Create the material
-            let texture = SGValue.texture2DParameter(name: "ColorTexture")
+            let texture = SGValue.textureParameter(name: "ColorTexture")
             let color = texture.sample(texcoord: SGValue.uv0)
             #if os(visionOS)
             do {

@@ -175,45 +175,7 @@ public class SGAsset: SGValue {
 }
 
 public class SGTexture: SGAsset {
-
-}
-
-public class SGTexture1D: SGTexture {
-    public func sample(texcoord: SGValue? = nil) -> SGColor {
-        var errors: [String] = []
-        if dataType != .asset {
-            errors.append("Cannot sample `\(dataType.usda)`. Use a `texture1DParameter` to sample.")
-        }
-        let node = SGNode(
-            nodeType: "ND_RealityKitTexture1D_color4",
-            inputs: [
-                .init(name: "file", dataType: .asset, connection: self),
-                .init(name: "texcoord", dataType: .float, connection: texcoord),
-            ],
-            outputs: [.init(dataType: .color4f)])
-        return SGColor(source: .nodeOutput(node))
-    }
-}
-
-public class SGTexture2D: SGTexture {
     public func sample(texcoord: SGVector? = nil) -> SGColor {
         ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack, texcoord: texcoord)
-    }
-}
-
-public class SGTexture3D: SGTexture {
-    public func sample(texcoord: SGValue? = nil) -> SGColor {
-        var errors: [String] = []
-        if dataType != .asset {
-            errors.append("Cannot sample `\(dataType.usda)`. Use a `texture3DParameter` to sample.")
-        }
-        let node = SGNode(
-            nodeType: "ND_RealityKitTexture3D_color4",
-            inputs: [
-                .init(name: "file", dataType: .asset, connection: self),
-                .init(name: "texcoord", dataType: .vector3f, connection: texcoord),
-            ],
-            outputs: [.init(dataType: .color4f)])
-        return SGColor(source: .nodeOutput(node))
     }
 }
