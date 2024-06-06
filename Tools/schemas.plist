@@ -1,0 +1,3271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ND_ramptb_vector4</key>
+	<string>Ramp Vertical (vector4f)</string>
+	<key>in3</key>
+	<string>In 3</string>
+	<key>ND_transformvector_vector3</key>
+	<string>Transform Vector</string>
+	<key>crossproduct.genericNodeGroup</key>
+	<string>Cross Product</string>
+	<key>ND_noise3d_vector3</key>
+	<string>Noise 3D (vector3f)</string>
+	<key>ND_swizzle_color4_float</key>
+	<string>Swizzle (color4f float)</string>
+	<key>ND_subtract_color3</key>
+	<string>Subtract (color3f)</string>
+	<key>ND_realitykit_shadowreceiver_surfaceshader.menuDescriptionShort</key>
+	<string>A surface shader that defines properties for a RealityKit Occlusion material that receives dynamic lighting.</string>
+	<key>ND_invert_vector4FA</key>
+	<string>Invert (vector4f FA)</string>
+	<key>Shader.ND_ifequal_vector3.inputs:in1</key>
+	<string>True Result</string>
+	<key>in4</key>
+	<string>In 4</string>
+	<key>uchar</key>
+	<string>UChar</string>
+	<key>Shader.ND_ifequal_floatI.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_fractal3d_vector4</key>
+	<string>Fractal Noise 3D (vector4f)</string>
+	<key>ND_swizzle_vector3_half</key>
+	<string>Swizzle (vector3f half)</string>
+	<key>curveadjust.genericNodeGroup</key>
+	<string>Curve Adjust</string>
+	<key>dodge.genericNodeGroup</key>
+	<string>Dodge</string>
+	<key>dotproduct.genericNodeGroup</key>
+	<string>Dot Product</string>
+	<key>ND_absval_color4</key>
+	<string>Abs (color4f)</string>
+	<key>in5</key>
+	<string>In 5</string>
+	<key>vector3h</key>
+	<string>3D Vector (Half)</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_1</key>
+	<string>Surface Custom Attribute 1 (vector4h)</string>
+	<key>Shader.ND_ifequal_floatI.inputs:in2</key>
+	<string>False Result</string>
+	<key>Shader.ND_ifequal_vector3.inputs:in2</key>
+	<string>False Result</string>
+	<key>in6</key>
+	<string>In 6</string>
+	<key>ND_ifgreater_half</key>
+	<string>If Greater (half)</string>
+	<key>ND_ln_vector3</key>
+	<string>Natural Log (vector3f)</string>
+	<key>ND_realitykit_fractional_vector2</key>
+	<string>Fractional (vector2f)</string>
+	<key>ND_realitykit_fractional_vector3</key>
+	<string>Fractional (vector3f)</string>
+	<key>ND_realitykit_reflect_vector3.menuDescriptionShort</key>
+	<string>Reflects a vector about another vector.</string>
+	<key>ND_exp_vector3</key>
+	<string>Exp (vector3f)</string>
+	<key>ND_realitykit_fractional_vector4</key>
+	<string>Fractional (vector4f)</string>
+	<key>ND_subtract_float</key>
+	<string>Subtract (float)</string>
+	<key>ND_swizzle_vector4_float</key>
+	<string>Swizzle (vector4f float)</string>
+	<key>UsdPreviewSurface.menuDescriptionShort</key>
+	<string>A node that models a physically based surface.</string>
+	<key>ND_splittb_color4</key>
+	<string>Split Vertical (color4f)</string>
+	<key>doclamp</key>
+	<string>Do Clamp</string>
+	<key>in7</key>
+	<string>In 7</string>
+	<key>Shader.ND_UsdUVTexture.outputs:rgba</key>
+	<string>RGBA</string>
+	<key>ND_fractal3d_color3</key>
+	<string>Fractal Noise 3D (color3f)</string>
+	<key>ND_realitykit_image_vector2</key>
+	<string>RealityKit Image (vector2f)</string>
+	<key>in8</key>
+	<string>In 8</string>
+	<key>ND_arrayappend_color4_color4array</key>
+	<string>Array Append (RGBA + RGBA Array)</string>
+	<key>outside.genericNodeGroup</key>
+	<string>Outside</string>
+	<key>ND_dotproduct_vector2</key>
+	<string>Dot Product (vector2f)</string>
+	<key>ND_min_color4</key>
+	<string>Min (color4f)</string>
+	<key>in9</key>
+	<string>In 9</string>
+	<key>ND_add_matrix44FA</key>
+	<string>Add (matrix4x4f + float)</string>
+	<key>ND_image_vector3</key>
+	<string>Image (vector3f)</string>
+	<key>ND_convert_half_vector4</key>
+	<string>Convert (half vector4f)</string>
+	<key>ND_ifgreater_color3I</key>
+	<string>If Greater (color3f integer)</string>
+	<key>Shader.ND_ifgreatereq_vector2I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_RealityKitTextureCube_color4</key>
+	<string>Cube Image (color4)</string>
+	<key>ND_floor_color3</key>
+	<string>Floor (color3f)</string>
+	<key>ND_ifgreatereq_float</key>
+	<string>If Greater Or Equal (float)</string>
+	<key>hsvadjust.genericNodeGroup</key>
+	<string>HSV Adjust</string>
+	<key>ND_contrast_vector2</key>
+	<string>Contrast (vector2f)</string>
+	<key>ior</key>
+	<string>Index of Refraction</string>
+	<key>swizzle.menuDescriptionShort</key>
+	<string>Performs an arbitrary permutation of the channels of the input stream, returning a new stream of the specified type.</string>
+	<key>curvelookup.genericNodeGroup</key>
+	<string>Curve Lookup</string>
+	<key>ND_disjointover_color4</key>
+	<string>Disjoint Over</string>
+	<key>invert.menuDescriptionShort</key>
+	<string>The inverse of the input.</string>
+	<key>ND_sign_half</key>
+	<string>Sign (half)</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMembershipsWithDestinationSubgraph.description</key>
+	<string>%@ cannot connect to %@ (in subgraph).</string>
+	<key>ND_ifequal_floatI</key>
+	<string>If Equal (float integer)</string>
+	<key>ND_splitlr_float</key>
+	<string>Split Horizontal (float)</string>
+	<key>ND_min_vector4</key>
+	<string>Min (vector4f)</string>
+	<key>determinant.genericNodeGroup</key>
+	<string>Determinant</string>
+	<key>ND_realitykit_combine4_matrix44</key>
+	<string>Combine 4 (matrix4x4f)</string>
+	<key>matrix3d</key>
+	<string>3x3 Matrix</string>
+	<key>Shader.ND_separate4_color4.outputs:outb</key>
+	<string>b</string>
+	<key>ND_power_vector3</key>
+	<string>Power (vector3f)</string>
+	<key>ND_power_vector3FA</key>
+	<string>Power (vector3f FA)</string>
+	<key>ND_switch_floatI</key>
+	<string>Switch (float integer)</string>
+	<key>GraphEditorStateNodeError.invalidInput.description</key>
+	<string>%@ has invalid input &apos;%@&apos;.</string>
+	<key>Shader.ND_ifgreatereq_color3I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_divide_vector4FA</key>
+	<string>Divide (vector4f / float)</string>
+	<key>tiledimage.menuDescriptionShort</key>
+	<string>Samples data from an image with provisions for offsetting and tiling in UV space.</string>
+	<key>ND_luminance_color4</key>
+	<string>Luminance (color4f)</string>
+	<key>ND_remap_vector2FA</key>
+	<string>Remap (vector2f FA)</string>
+	<key>ND_ifgreatereq_color3</key>
+	<string>If Greater Or Equal (color3f)</string>
+	<key>ND_convert_half_color3</key>
+	<string>Convert (half color3f)</string>
+	<key>ND_ifgreatereq_half2</key>
+	<string>If Greater Or Equal (vector2h)</string>
+	<key>ND_tangent_vector3</key>
+	<string>Tangent</string>
+	<key>combine3.genericNodeGroup</key>
+	<string>Combine 3</string>
+	<key>UsdPrimvarReader_point.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume point data defined on geometry.</string>
+	<key>ND_realitykit_image_bias_color3</key>
+	<string>Biased Image (color3f)</string>
+	<key>ND_realitykit_geometry_modifier_uv0_offset</key>
+	<string>Geometry Modifier uv0 Offset (RealityKit)</string>
+	<key>separate3.menuDescriptionShort</key>
+	<string>Outputs each of the channels of a color3 or vector3 as a separate float output.</string>
+	<key>frame4d</key>
+	<string>4D Frame</string>
+	<key>ND_premult_color4</key>
+	<string>Premultiply</string>
+	<key>realitykit_cubeimage.menuDescriptionShort</key>
+	<string>A cube map in .ktx format, corresponding to Metal texture `typeCube`. Can be used for skybox or environment maps.</string>
+	<key>ND_worleynoise3d_vector3</key>
+	<string>Worley Noise 3D (vector3f)</string>
+	<key>ND_UsdPrimvarReader_string</key>
+	<string>Primvar Reader (string)</string>
+	<key>ND_convert_vector3_color3</key>
+	<string>Convert (vector3f to color3f)</string>
+	<key>GraphEditorStateConnectionError.incompatibleTypes.title</key>
+	<string>Incompatible types</string>
+	<key>ND_absval_vector4</key>
+	<string>Abs (vector4f)</string>
+	<key>ND_realitykit_surface_view_to_projection</key>
+	<string>Surface View To Projection (RealityKit)</string>
+	<key>ND_splittb_half3</key>
+	<string>Split Vertical (vector3h)</string>
+	<key>ND_swizzle_vector4_vector3</key>
+	<string>Swizzle (vector4f vector3f)</string>
+	<key>ND_convert_vector2_half2</key>
+	<string>Convert (vector2f vector2h)</string>
+	<key>ND_convert_float_color4</key>
+	<string>Convert (float color4f)</string>
+	<key>ND_mix_color4</key>
+	<string>Mix (color4f)</string>
+	<key>ND_range_vector3FA</key>
+	<string>Range (vector3f FA)</string>
+	<key>ND_ifequal_color3</key>
+	<string>If Equal (color3f)</string>
+	<key>ND_fractal3d_color4</key>
+	<string>Fractal Noise 3D (color4f)</string>
+	<key>ND_over_color4.menuDescriptionShort</key>
+	<string>A merge operation that layers foreground over background, using the alpha of the foreground.</string>
+	<key>ND_swizzle_float_color4</key>
+	<string>Swizzle (float color4f)</string>
+	<key>ND_burn_float</key>
+	<string>Burn (float)</string>
+	<key>ND_invert_color4FA</key>
+	<string>Invert (color4f FA)</string>
+	<key>valuebr</key>
+	<string>Bottom Right</string>
+	<key>normalmap.menuDescriptionShort</key>
+	<string>Transforms a normal vector from object or tangent space into world space.</string>
+	<key>ND_cos_float</key>
+	<string>Cos (float)</string>
+	<key>ND_asin_half</key>
+	<string>Asin (half)</string>
+	<key>ND_realitykit_geometry_modifier_uv0</key>
+	<string>Geometry Modifier uv0 (RealityKit)</string>
+	<key>ND_swizzle_color4_vector4</key>
+	<string>Swizzle (color4f vector4f)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute_half2_1</key>
+	<string>Geometry Modifier Custom Attribute 1 (vector2h)</string>
+	<key>ND_worleynoise2d_float</key>
+	<string>Worley Noise 2D (float)</string>
+	<key>ND_divide_float</key>
+	<string>Divide (float)</string>
+	<key>realitykit_cubeimage.genericNodeGroup</key>
+	<string>Cube Image (RealityKit)</string>
+	<key>ND_combine4_integer4</key>
+	<string>Combine 4 (integer4)</string>
+	<key>ND_realitykit_geometry_modifier_uv1</key>
+	<string>Geometry Modifier uv1 (RealityKit)</string>
+	<key>ND_contrast_vector3</key>
+	<string>Contrast (vector3f)</string>
+	<key>ND_ramp4_vector2</key>
+	<string>Ramp 4 Corners (vector2f)</string>
+	<key>Shader.ND_ifequal_vector2.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_noise3d_color4FA</key>
+	<string>Noise 3D (color4f FA)</string>
+	<key>ND_curveadjust_float</key>
+	<string>Curve Adjust (float)</string>
+	<key>min.menuDescriptionShort</key>
+	<string>Outputs the minimum of two incoming values.</string>
+	<key>texCoord3f</key>
+	<string>3D Texture Coordinate (Float)</string>
+	<key>ND_realitykit_surface_model_position</key>
+	<string>Surface Model Position (RealityKit)</string>
+	<key>Shader.ND_ifequal_color3B.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_RealityKitTexture2DGradient_color3</key>
+	<string>Image 2D Gradient (color3)</string>
+	<key>Shader.ND_ifequal_vector2.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_realitykit_cameraposition_vector3</key>
+	<string>Camera Position (RealityKit)</string>
+	<key>ND_max_color3FA</key>
+	<string>Max (color3f FA)</string>
+	<key>ND_min_half4</key>
+	<string>Min (vector4h)</string>
+	<key>ND_disjointover_color4.menuDescriptionShort</key>
+	<string>A merge operation that layers foreground over background color, but assumes no overlap in partially transparent areas covered by both.</string>
+	<key>ND_geompropvalue_half</key>
+	<string>Geometric Property (half)</string>
+	<key>ND_mix_half4</key>
+	<string>Mix (vector4h)</string>
+	<key>Shader.ND_ifequal_color3B.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_smoothstep_half4FA</key>
+	<string>Smooth Step (vector4h FA)</string>
+	<key>ND_ln_vector2</key>
+	<string>Natural Log (vector2f)</string>
+	<key>Shader.ND_ifequal_vector3I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_floor_vector3</key>
+	<string>Floor (vector3f)</string>
+	<key>ND_ramptb_half</key>
+	<string>Ramp Vertical (half)</string>
+	<key>application</key>
+	<string>Application</string>
+	<key>ND_realitykit_surface_world_position</key>
+	<string>Surface World Position (RealityKit)</string>
+	<key>ND_swizzle_color3_vector2</key>
+	<string>Swizzle (color3f vector2f)</string>
+	<key>ND_combine4_color4</key>
+	<string>Combine 4 (color4f)</string>
+	<key>invert.genericNodeGroup</key>
+	<string>Invert</string>
+	<key>ND_RealityKitTexture2DGradient_color4</key>
+	<string>Image 2D Gradient (color4)</string>
+	<key>normalmap.genericNodeGroup</key>
+	<string>Normal Map</string>
+	<key>ND_ifgreatereq_half4I</key>
+	<string>If Greater Or Equal (vector4h integer)</string>
+	<key>ND_convert_integer_float</key>
+	<string>Convert (integer float)</string>
+	<key>step.menuDescriptionShort</key>
+	<string>Step</string>
+	<key>ND_clamp_vector4FA</key>
+	<string>Clamp (vector4f FA)</string>
+	<key>ND_min_color3</key>
+	<string>Min (color3f)</string>
+	<key>ND_splittb_half</key>
+	<string>Split Vertical (half)</string>
+	<key>ND_sin_float</key>
+	<string>Sin (float)</string>
+	<key>ND_fractal3d_float</key>
+	<string>Fractal Noise 3D (float)</string>
+	<key>ND_contrast_color4</key>
+	<string>Contrast (color4f)</string>
+	<key>ND_divide_vector2</key>
+	<string>Divide (vector2f)</string>
+	<key>ND_ifgreater_vector3I</key>
+	<string>If Greater (vector3f integer)</string>
+	<key>Shader.ND_ifequal_vector4B.inputs:in1</key>
+	<string>True Result</string>
+	<key>texCoord2f</key>
+	<string>2D Texture Coordinate (Float)</string>
+	<key>ND_atan2_half2</key>
+	<string>Atan2 (vector2h)</string>
+	<key>Shader.ND_ifequal_vector3I.inputs:in2</key>
+	<string>False Result</string>
+	<key>transformmatrix.menuDescriptionShort</key>
+	<string>Transforms a vector by a matrix.</string>
+	<key>ND_time_float.menuDescriptionShort</key>
+	<string>The current time in seconds.</string>
+	<key>ND_ramplr_color4</key>
+	<string>Ramp Horizontal (color4f)</string>
+	<key>ND_UsdPrimvarReader_integer.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume integer data defined on geometry.</string>
+	<key>ND_ramptb_half3</key>
+	<string>Ramp Vertical (vector3h)</string>
+	<key>fractal3d.genericNodeGroup</key>
+	<string>Fractal Noise 3D</string>
+	<key>inside.genericNodeGroup</key>
+	<string>Inside</string>
+	<key>ND_realitykit_step_vector2</key>
+	<string>Step (vector2f)</string>
+	<key>ND_ifequal_vector2B</key>
+	<string>If Equal (vector2f bool)</string>
+	<key>filename</key>
+	<string>Filename</string>
+	<key>ND_frame_float.menuDescriptionShort</key>
+	<string>The current frame number.</string>
+	<key>ND_multiply_matrix33</key>
+	<string>Multiply (matrix3x3f)</string>
+	<key>ND_absval_half</key>
+	<string>Abs (half)</string>
+	<key>ND_image_color4</key>
+	<string>Image (color4f)</string>
+	<key>ND_realitykit_cubeimage_float</key>
+	<string>Cube Image (float)</string>
+	<key>GraphEditorStateConnectionError.incompatibleVariabilities.title</key>
+	<string>Incompatible variability</string>
+	<key>ifgreatereq.genericNodeGroup</key>
+	<string>If Greater Or Equal</string>
+	<key>ND_subtract_matrix44FA</key>
+	<string>Subtract (matrix4x4f - float)</string>
+	<key>Shader.ND_ifequal_vector4B.inputs:in2</key>
+	<string>False Result</string>
+	<key>burn.menuDescriptionShort</key>
+	<string>A blend operation that darkens the foreground layer using the background.
+1 - (1 - B) / F</string>
+	<key>ND_overlay_float</key>
+	<string>Overlay (float)</string>
+	<key>ND_premult_color4.menuDescriptionShort</key>
+	<string>Multiplies the RGB channels of the input by the alpha channel.</string>
+	<key>double2</key>
+	<string>2D Double</string>
+	<key>ND_sqrt_float</key>
+	<string>Square Root (float)</string>
+	<key>ND_modulo_vector4</key>
+	<string>Modulo (vector4f)</string>
+	<key>Shader.ND_ifgreatereq_vector2.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_dot_matrix33</key>
+	<string>Dot (matrix3x3f)</string>
+	<key>ND_constant_string.menuDescriptionShort</key>
+	<string>A constant string (text) value.</string>
+	<key>ND_safepower_vector2</key>
+	<string>Safe Power (vector2f)</string>
+	<key>ND_ifgreater_half4I</key>
+	<string>If Greater (vector4h integer)</string>
+	<key>separate3.genericNodeGroup</key>
+	<string>Separate 3</string>
+	<key>ND_contrast_vector4</key>
+	<string>Contrast (vector4f)</string>
+	<key>ND_swizzle_float_vector4</key>
+	<string>Swizzle (float vector4f)</string>
+	<key>ND_constant_half.menuDescriptionShort</key>
+	<string>A constant half-precision floating-point numeric value.</string>
+	<key>ND_separate3_integer3.menuDescriptionShort</key>
+	<string>Outputs each of the channels of a integer3 as a separate integer output.</string>
+	<key>ND_arrayappend_vector2_vector2array</key>
+	<string>Array Append (2D Vector + 2D Vector Array)</string>
+	<key>ND_unpremult_color4.menuDescriptionShort</key>
+	<string>Divides the RGB channels of the input by the alpha channel.</string>
+	<key>ND_ifgreatereq_vector4I</key>
+	<string>If Greater Or Equal (vector4f integer)</string>
+	<key>ND_transformpoint_vector3.menuDescriptionShort</key>
+	<string>Transforms a coordinate from one space to another.</string>
+	<key>ND_realitykit_fractional_color4</key>
+	<string>Fractional (color4f)</string>
+	<key>ND_subtract_color4FA</key>
+	<string>Subtract (color4f - float)</string>
+	<key>RealityKitTexture2DPixelLOD.genericNodeGroup</key>
+	<string>Image 2D LOD Pixel (RealityKit)</string>
+	<key>ND_sin_vector4</key>
+	<string>Sin (vector4f)</string>
+	<key>realitykit_geometry_switch_cameraindex.genericNodeGroup</key>
+	<string>Camera Index Switch (RealityKit)</string>
+	<key>ND_splittb_float</key>
+	<string>Split Vertical (float)</string>
+	<key>Shader.UsdUVTexture.outputs:g</key>
+	<string>Green</string>
+	<key>overlay.menuDescriptionShort</key>
+	<string>A blend operation that multiplies dark areas and screens light areas.
+2 * F * B if F &lt; 0.5; 1 - (1 - F)(1 - B) if F &gt;= 0.5</string>
+	<key>ND_asin_float</key>
+	<string>Asin (float)</string>
+	<key>Zoom Fit</key>
+	<string>Zoom Fit</string>
+	<key>ND_ramplr_half3</key>
+	<string>Ramp Horizontal (vector3h)</string>
+	<key>ND_UsdPrimvarReader_vector3</key>
+	<string>Primvar Reader (vector3f)</string>
+	<key>ND_fractal3d_vector4FA</key>
+	<string>Fractal Noise 3D (vector4f FA)</string>
+	<key>ND_realitykit_environment_radiance</key>
+	<string>Environment Radiance (RealityKit)</string>
+	<key>Shader.ND_ifgreatereq_color3I.inputs:in2</key>
+	<string>False Result</string>
+	<key>normal3d</key>
+	<string>3D Normal (Double)</string>
+	<key>ND_ifgreatereq_half3</key>
+	<string>If Greater Or Equal (vector3h)</string>
+	<key>range.menuDescriptionShort</key>
+	<string>Remaps incoming values from one range to another.</string>
+	<key>ND_mix_color3</key>
+	<string>Mix (color3f)</string>
+	<key>ND_ifgreatereq_halfI</key>
+	<string>If Greater Or Equal (half integer)</string>
+	<key>ND_convert_half4_vector4</key>
+	<string>Convert (vector4h vector4f)</string>
+	<key>switch.menuDescriptionShort</key>
+	<string>Outputs the value from one of ten input streams, according to a selector &lt;which&gt;.</string>
+	<key>Mesh</key>
+	<string>Mesh</string>
+	<key>ND_realitykit_image_half</key>
+	<string>RealityKit Image (half)</string>
+	<key>ND_realitykit_surface_geometry_tangent</key>
+	<string>Surface Tangent (RealityKit)</string>
+	<key>separate4.menuDescriptionShort</key>
+	<string>Outputs each of the channels of a color4 or vector4 as a separate float output.</string>
+	<key>ND_transpose_matrix22</key>
+	<string>Transpose (matrix2x2f)</string>
+	<key>RealityKitTexture2DPixelGradient.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties. Level of detail gradient. Pixel texture coordinates.</string>
+	<key>ND_ifequal_vector2</key>
+	<string>If Equal (vector2f)</string>
+	<key>ND_add_vector4</key>
+	<string>Add (vector4f)</string>
+	<key>GraphEditorStateConnectionError.incompatibleVariabilities.description</key>
+	<string>Attribute with variability &apos;%@&apos; cannot connect to attribute with variability &apos;%@&apos;.</string>
+	<key>ND_swizzle_vector2_vector3</key>
+	<string>Swizzle (vector2f vector3f)</string>
+	<key>ND_invert_color4</key>
+	<string>Invert (color4f)</string>
+	<key>ND_transformmatrix_vector3</key>
+	<string>Transform Matrix (vector3f)</string>
+	<key>ND_realitykit_pbr_surfaceshader</key>
+	<string>PBR Surface (RealityKit)</string>
+	<key>ND_saturate_color3</key>
+	<string>Saturate (color3f)</string>
+	<key>UsdPrimvarReader_matrix.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume matrix data defined on geometry.</string>
+	<key>ND_range_float</key>
+	<string>Range (float)</string>
+	<key>ND_separate2_integer2.menuDescriptionShort</key>
+	<string>Outputs each of the channels of a integer2 as a separate integer output.</string>
+	<key>Shader.UsdUVTexture.outputs:b</key>
+	<string>Blue</string>
+	<key>ND_ln_float</key>
+	<string>Natural Log (float)</string>
+	<key>ND_realitykit_viewdirection_vector3</key>
+	<string>View Direction (RealityKit)</string>
+	<key>ND_realitykit_cubeimage_vector4</key>
+	<string>Cube Image (vector4f)</string>
+	<key>ND_realitykit_surface_view_direction.menuDescriptionShort</key>
+	<string>A vector from a position in the scene to the view reference point.</string>
+	<key>ND_realitykit_geometry_modifier_normal_to_world</key>
+	<string>Geometry Modifier Normal To World (RealityKit)</string>
+	<key>ND_triplanarprojection_color3</key>
+	<string>Triplanar Projection (color3f)</string>
+	<key>ND_multiply_float</key>
+	<string>Multiply (float)</string>
+	<key>ND_convert_float_half</key>
+	<string>Convert (float half)</string>
+	<key>UsdPrimvarReader_matrix</key>
+	<string>USD Primvar Reader (Matrix)</string>
+	<key>ND_transformpoint_vector3</key>
+	<string>Transform Point</string>
+	<key>ND_geompropvalue_integer</key>
+	<string>Geometric Property (integer)</string>
+	<key>ND_exp_half3</key>
+	<string>Exp (vector3h)</string>
+	<key>ND_swizzle_half_color3</key>
+	<string>Swizzle (half color3f)</string>
+	<key>ramplr.menuDescriptionShort</key>
+	<string>A left-to-right linear value ramp (gradient) generator.</string>
+	<key>ND_realitykit_surface_custom_attribute_half2_1</key>
+	<string>Surface Custom Attribute 1 (vector2h)</string>
+	<key>ND_range_vector4</key>
+	<string>Range (vector4f)</string>
+	<key>Shader.ND_ifequal_color3I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_ifequal_vector3I</key>
+	<string>If Equal (vector3f integer)</string>
+	<key>double3</key>
+	<string>3D Double</string>
+	<key>ND_min_half2</key>
+	<string>Min (vector2h)</string>
+	<key>ND_mix_half2</key>
+	<string>Mix (vector2h)</string>
+	<key>ND_realitykit_geometry_modifier_custom_parameter</key>
+	<string>Geometry Modifier Custom Parameter (RealityKit)</string>
+	<key>ND_blur_vector3</key>
+	<string>Blur (vector3f)</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_0</key>
+	<string>Surface Custom Attribute 0 (vector4h)</string>
+	<key>Shader.ND_ifequal_color3I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ifgreatereq.menuDescriptionShort</key>
+	<string>Outputs True Result or False Result depending on whether value1 &gt;= value2.</string>
+	<key>ND_minus_color3</key>
+	<string>Subtractive Mix (color3f)</string>
+	<key>tan.genericNodeGroup</key>
+	<string>Tan</string>
+	<key>uvoffset</key>
+	<string>UV Offset</string>
+	<key>ND_exp_vector2</key>
+	<string>Exp (vector2f)</string>
+	<key>ND_ifequal_half2I</key>
+	<string>If Equal (vector2h integer)</string>
+	<key>ND_noise2d_color3FA</key>
+	<string>Noise 2D (color3f FA)</string>
+	<key>ND_normalmap</key>
+	<string>Normal Map</string>
+	<key>minus.genericNodeGroup</key>
+	<string>Subtractive Mix</string>
+	<key>realworldtilesize</key>
+	<string>Real World Tile Size</string>
+	<key>RealityKitTexture2D.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties. Adjustable level of detail.</string>
+	<key>Material</key>
+	<string>Material</string>
+	<key>ND_RealityKitTextureCubeLOD_color4</key>
+	<string>Cube Image LOD (color4)</string>
+	<key>ND_smoothstep_half3FA</key>
+	<string>Smooth Step (vector3h FA)</string>
+	<key>ND_swizzle_color4_vector3</key>
+	<string>Swizzle (color4f vector3f)</string>
+	<key>valuel</key>
+	<string>Left</string>
+	<key>ND_realitykit_unlit_surfaceshader.menuDescriptionShort</key>
+	<string>A surface shader that defines properties for a RealityKit Unlit material.</string>
+	<key>divide.menuDescriptionShort</key>
+	<string>Divides two values. Division of two matrices is the product of &lt;in1&gt; and the inverse of &lt;in2&gt;.</string>
+	<key>ND_constant_boolean.menuDescriptionShort</key>
+	<string>A constant boolean (true/false) value.</string>
+	<key>add.genericNodeGroup</key>
+	<string>Add</string>
+	<key>ND_RealityKitTexture2D_color4</key>
+	<string>Image 2D (color4)</string>
+	<key>quatd</key>
+	<string>Quaternion (Double)</string>
+	<key>ND_realitykit_surface_view_to_projection.menuDescriptionShort</key>
+	<string>The view-to-projection transformation Matrix4x4 (Float).</string>
+	<key>RealityKitTextureCubeGradient.genericNodeGroup</key>
+	<string>Cube Image Gradient (RealityKit)</string>
+	<key>ND_sign_color4</key>
+	<string>Sign (color4f)</string>
+	<key>ND_divide_color3</key>
+	<string>Divide (color3f)</string>
+	<key>UsdPreviewSurface</key>
+	<string>USD Preview Surface</string>
+	<key>ND_add_surfaceshader</key>
+	<string>Add (Surface Shader)</string>
+	<key>ND_curveadjust_color3</key>
+	<string>Curve Adjust (color3f)</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMemberships.description</key>
+	<string>%@ cannot connect to %@.</string>
+	<key>ND_ceil_color4</key>
+	<string>Ceiling (color4f)</string>
+	<key>ND_outside_color3</key>
+	<string>Outside (color3f)</string>
+	<key>ND_realitykit_geometry_modifier_projection_to_view</key>
+	<string>Geometry Modifier Projection To View (RealityKit)</string>
+	<key>ND_min_color3FA</key>
+	<string>Min (color3f FA)</string>
+	<key>ND_ifequal_vector4</key>
+	<string>If Equal (vector4f)</string>
+	<key>ND_realitykit_image_lod_vector2</key>
+	<string>LOD Image (vector2f)</string>
+	<key>ND_realitykit_material_parameters_emissive_color</key>
+	<string>Material Parameter Emissive Color (RealityKit)</string>
+	<key>ND_RealityKitTextureRead_color4</key>
+	<string>Image 2D Read (color4)</string>
+	<key>UsdPrimvarReader_float3</key>
+	<string>USD Primvar Reader (Float3)</string>
+	<key>ND_realitykit_image_lod_color3</key>
+	<string>LOD Image (color3f)</string>
+	<key>ND_min_vector3</key>
+	<string>Min (vector3f)</string>
+	<key>divide.genericNodeGroup</key>
+	<string>Divide</string>
+	<key>ND_add_matrix33FA</key>
+	<string>Add (matrix3x3f + float)</string>
+	<key>max.genericNodeGroup</key>
+	<string>Max</string>
+	<key>ND_tan_half3</key>
+	<string>Tan (vector3h)</string>
+	<key>ND_realitykit_fractional_float</key>
+	<string>Fractional (float)</string>
+	<key>ND_constant_float.menuDescriptionShort</key>
+	<string>A constant floating-point numeric value.</string>
+	<key>ND_convert_vector3_vector4</key>
+	<string>Convert (vector3f vector4f)</string>
+	<key>realitykit_image.genericNodeGroup</key>
+	<string>Image (RealityKit)</string>
+	<key>ND_convert_integer_half</key>
+	<string>Convert (integer half)</string>
+	<key>ND_place2d_vector2</key>
+	<string>Place 2D</string>
+	<key>ND_dotproduct_vector3</key>
+	<string>Dot Product (vector3f)</string>
+	<key>Subtype</key>
+	<string>Subtype</string>
+	<key>ND_ifequal_half3</key>
+	<string>If Equal (vector3h)</string>
+	<key>matrix44</key>
+	<string>4x4 Matrix</string>
+	<key>ND_range_color4</key>
+	<string>Range (color4f)</string>
+	<key>quatf</key>
+	<string>Quaternion (Float)</string>
+	<key>UsdPrimvarReader_vector</key>
+	<string>USD Primvar Reader (Vector)</string>
+	<key>ND_realitykit_cubeimage_color4</key>
+	<string>Cube Image (color4f)</string>
+	<key>ND_realitykit_geometry_modifier_view_to_projection.menuDescriptionShort</key>
+	<string>The view-to-projection transformation Matrix4x4 (Float).</string>
+	<key>ND_swizzle_vector2_color4</key>
+	<string>Swizzle (vector2f color4f)</string>
+	<key>ND_UsdPrimvarReader_boolean</key>
+	<string>Primvar Reader (bool)</string>
+	<key>splittb.menuDescriptionShort</key>
+	<string>A top-to-bottom split matte, split at a specified V value.</string>
+	<key>double4</key>
+	<string>4D Double</string>
+	<key>ND_triplanarprojection_vector2</key>
+	<string>Triplanar Projection (vector2f)</string>
+	<key>Shader.ND_ifgreatereq_vector2.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_safepower_vector3</key>
+	<string>Safe Power (vector3f)</string>
+	<key>UsdPrimvarReader_float</key>
+	<string>USD Primvar Reader (Float)</string>
+	<key>RealityKitTexture2D.genericNodeGroup</key>
+	<string>Image 2D (RealityKit)</string>
+	<key>int</key>
+	<string>Int</string>
+	<key>screen.menuDescriptionShort</key>
+	<string>A blend operation that lightens areas that are darker than white.
+1 - (1 - F)(1 - B)</string>
+	<key>ND_realitykit_surface_clearcoat</key>
+	<string>Surface Clearcoat (RealityKit)</string>
+	<key>ND_sign_vector3</key>
+	<string>Sign (vector3f)</string>
+	<key>ND_multiply_volumeshaderC</key>
+	<string>Multiply (Volume Shader C)</string>
+	<key>ND_frame_float</key>
+	<string>Frame (float)</string>
+	<key>conditional</key>
+	<string>Logic</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_vector3</key>
+	<string>Camera Index Switch (vector3f)</string>
+	<key>ND_realitykit_logical_xor</key>
+	<string>XOR (RealityKit)</string>
+	<key>ND_swizzle_float_vector2</key>
+	<string>Swizzle (float vector2f)</string>
+	<key>swizzle.genericNodeGroup</key>
+	<string>Swizzle</string>
+	<key>ND_convert_vector3_half3</key>
+	<string>Convert (vector3f vector3h)</string>
+	<key>ramptb.menuDescriptionShort</key>
+	<string>A top-to-bottom linear value ramp (gradient) generator.</string>
+	<key>ND_screen_color3</key>
+	<string>Screen (color3f)</string>
+	<key>ND_constant_half</key>
+	<string>Half</string>
+	<key>ND_overlay_half</key>
+	<string>Overlay (half)</string>
+	<key>ND_convert_color4_vector4</key>
+	<string>Convert (color4f vector4f)</string>
+	<key>ND_separate3_color3</key>
+	<string>Separate 3 (color3f)</string>
+	<key>ND_switch_vector3</key>
+	<string>Switch (vector3f)</string>
+	<key>RealityKitTextureRead.genericNodeGroup</key>
+	<string>Image 2D Read (RealityKit)</string>
+	<key>ND_add_displacementshader</key>
+	<string>Add (Displacement Shader)</string>
+	<key>ND_realitykit_geometry_modifier_bitangent</key>
+	<string>Geometry Modifier Bitangent (RealityKit)</string>
+	<key>convert.menuDescriptionShort</key>
+	<string>Converts a stream from one data type to another.</string>
+	<key>ND_ifgreatereq_color4</key>
+	<string>If Greater Or Equal (color4f)</string>
+	<key>ND_smoothstep_vector2</key>
+	<string>Smooth Step (vector2f)</string>
+	<key>Shader.ND_separate3_color3.outputs:outr</key>
+	<string>r</string>
+	<key>ND_ifgreatereq_half4</key>
+	<string>If Greater Or Equal (vector4h)</string>
+	<key>add.menuDescriptionShort</key>
+	<string>Adds two values.</string>
+	<key>hsvtorgb.menuDescriptionShort</key>
+	<string>Converts a color from HSV to RGB space.</string>
+	<key>ND_smoothstep_color4FA</key>
+	<string>Smooth Step (color4f FA)</string>
+	<key>quath</key>
+	<string>Quaternion (Half)</string>
+	<key>ND_tangent_vector3.menuDescriptionShort</key>
+	<string>The geometric tangent of the currently-processed data in a given coordinate space.</string>
+	<key>RealityKitTextureCubeLOD.genericNodeGroup</key>
+	<string>Cube Image LOD (RealityKit)</string>
+	<key>ifequal.menuDescriptionShort</key>
+	<string>Outputs True Result or False Result depending on whether value1 == value2.</string>
+	<key>ND_invertmatrix_matrix22</key>
+	<string>Invert Matrix (matrix2x2f)</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMembershipsWithDestinationSubgraph.title</key>
+	<string>Incompatible node connection</string>
+	<key>ramptb.genericNodeGroup</key>
+	<string>Ramp Vertical</string>
+	<key>ND_ramptb_vector3</key>
+	<string>Ramp Vertical (vector3f)</string>
+	<key>ND_switch_color4I</key>
+	<string>Switch (color4f integer)</string>
+	<key>ND_remap_color4FA</key>
+	<string>Remap (color4f FA)</string>
+	<key>ND_realitykit_shadowreceiver_surfaceshader</key>
+	<string>Shadow Receiving Occlusion Surface (RealityKit)</string>
+	<key>ND_separate4_integer4.menuDescriptionShort</key>
+	<string>Outputs each of the channels of a integer4 as a separate integer output.</string>
+	<key>ND_round_vector4</key>
+	<string>Round (vector4f)</string>
+	<key>difference.genericNodeGroup</key>
+	<string>Difference</string>
+	<key>ND_normal_vector3</key>
+	<string>Normal</string>
+	<key>Empty Graph</key>
+	<string>Empty Graph</string>
+	<key>ND_magnitude_vector2</key>
+	<string>Magnitude (vector2f)</string>
+	<key>ND_normalize_half3</key>
+	<string>Normalize (vector3h)</string>
+	<key>ND_ramptb_color4</key>
+	<string>Ramp Vertical (color4f)</string>
+	<key>ND_modulo_half</key>
+	<string>Modulo (half)</string>
+	<key>ND_acos_half</key>
+	<string>Acos (half)</string>
+	<key>texcoord</key>
+	<string>Texture Coordinates</string>
+	<key>ND_realitykit_viewdirection_vector3.menuDescriptionShort</key>
+	<string>A vector from a position in the scene to the view reference point.</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_1.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector4 (Half) data that’s from the geometry modifier.</string>
+	<key>ND_splittb_vector2</key>
+	<string>Split Vertical (vector2f)</string>
+	<key>asin.menuDescriptionShort</key>
+	<string>The arcsine of the incoming value in radians.</string>
+	<key>ND_splittb_color3</key>
+	<string>Split Vertical (color3f)</string>
+	<key>ND_noise3d_vector4FA</key>
+	<string>Noise 3D (vector4f FA)</string>
+	<key>ND_subtract_matrix44</key>
+	<string>Subtract (matrix4x4f)</string>
+	<key>ND_geompropvalue_boolean</key>
+	<string>Geometric Property (bool)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute_half4_2</key>
+	<string>Geometry Modifier Custom Attribute 2 (vector4h)</string>
+	<key>ND_realitykit_geometrymodifier_vertexshader</key>
+	<string>Geometry Modifier (RealityKit)</string>
+	<key>ND_screen_float</key>
+	<string>Screen (float)</string>
+	<key>ND_smoothstep_half2FA</key>
+	<string>Smooth Step (vector2h FA)</string>
+	<key>ND_cos_half4</key>
+	<string>Cos (vector4h)</string>
+	<key>ND_realitykit_surface_time</key>
+	<string>Surface Time (RealityKit)</string>
+	<key>ND_swizzle_vector4_vector2</key>
+	<string>Swizzle (vector4f vector2f)</string>
+	<key>ND_convert_color4_color3</key>
+	<string>Convert (color4f color3f)</string>
+	<key>color3</key>
+	<string>RGB</string>
+	<key>combine2.menuDescriptionShort</key>
+	<string>Combines the channels from two streams into two channels of a single output stream of a compatible type.</string>
+	<key>ND_max_half4FA</key>
+	<string>Max (vector4h FA)</string>
+	<key>ND_position_vector3.menuDescriptionShort</key>
+	<string>The coordinates of the currently-processed data in a given coordinate space.</string>
+	<key>GraphEditorStateConnectionError.incompatibleTypes.description</key>
+	<string>%@ cannot connect to %@.</string>
+	<key>outlow</key>
+	<string>Out Low</string>
+	<key>ND_ln_half</key>
+	<string>Natural Log (half)</string>
+	<key>ND_combine3_integer3</key>
+	<string>Combine 3 (integer3)</string>
+	<key>ND_acos_vector3</key>
+	<string>Acos (vector3f)</string>
+	<key>ND_mix_vector4</key>
+	<string>Mix (vector4f)</string>
+	<key>ND_constant_color4</key>
+	<string>Color4 (Float)</string>
+	<key>ND_realitykit_occlusion_surfaceshader</key>
+	<string>Occlusion Surface (RealityKit)</string>
+	<key>mtlxSurface</key>
+	<string>MaterialX Surface</string>
+	<key>ND_ceil_vector4</key>
+	<string>Ceiling (vector4f)</string>
+	<key>Shader.ND_separate4_color4.outputs:outg</key>
+	<string>g</string>
+	<key>splitlr.menuDescriptionShort</key>
+	<string>A left-to-right split matte, split at a specified U value.</string>
+	<key>GraphEditorStateNodeError.invalidInput.title</key>
+	<string>Invalid input</string>
+	<key>ND_rgbtohsv_color4</key>
+	<string>RGB to HSV (color4f)</string>
+	<key>ND_swizzle_color4_vector2</key>
+	<string>Swizzle (color4f vector2f)</string>
+	<key>ND_arrayappend_vector3array_vector3array</key>
+	<string>Array Append (3D Vector Array + 3D Vector Array)</string>
+	<key>ND_outside_half</key>
+	<string>Outside (half)</string>
+	<key>ND_floor_half</key>
+	<string>Floor (half)</string>
+	<key>ND_ifequal_float</key>
+	<string>If Equal (float)</string>
+	<key>clamp.genericNodeGroup</key>
+	<string>Clamp</string>
+	<key>combine2.genericNodeGroup</key>
+	<string>Combine 2</string>
+	<key>mix.menuDescriptionShort</key>
+	<string>Mixes foreground and background inputs, weighting based on mix value.
+F * m + B(1 - m)</string>
+	<key>Material.outputs:mtlx:surface</key>
+	<string>Custom Surface</string>
+	<key>ND_clamp_color3</key>
+	<string>Clamp (color3f)</string>
+	<key>ND_atan2_vector4</key>
+	<string>Atan2 (vector4f)</string>
+	<key>ND_invert_vector4</key>
+	<string>Invert (vector4f)</string>
+	<key>ND_sin_vector3</key>
+	<string>Sin (vector3f)</string>
+	<key>ND_extract_vector2</key>
+	<string>Extract (vector2f)</string>
+	<key>variabilityVarying</key>
+	<string>varying</string>
+	<key>ND_RealityKitTexture2DPixelLOD_color3</key>
+	<string>Image 2D LOD Pixel (color3)</string>
+	<key>texcoord.menuDescriptionShort</key>
+	<string>The 2D or 3D texture coordinates of the currently-processed data.</string>
+	<key>color4</key>
+	<string>RGBA</string>
+	<key>mtlx</key>
+	<string>MaterialX</string>
+	<key>ND_sin_half4</key>
+	<string>Sin (vector4h)</string>
+	<key>ND_UsdPreviewSurface_surfaceshader</key>
+	<string>Preview Surface</string>
+	<key>Capsule</key>
+	<string>Capsule</string>
+	<key>ND_curveadjust_vector4</key>
+	<string>Curve Adjust (vector4f)</string>
+	<key>ND_dotproduct_half2</key>
+	<string>Dot Product (vector2h)</string>
+	<key>Shader.ND_ifgreater_color4I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_range_color4FA</key>
+	<string>Range (color4f FA)</string>
+	<key>subtract.menuDescriptionShort</key>
+	<string>Subtracts two values.</string>
+	<key>Material.menuDescriptionShort</key>
+	<string>A node that defines a shading material for the renderer.</string>
+	<key>ND_max_half3</key>
+	<string>Max (vector3h)</string>
+	<key>ND_realitykit_image_float</key>
+	<string>RealityKit Image (float)</string>
+	<key>organization</key>
+	<string>Organization</string>
+	<key>saturate.menuDescriptionShort</key>
+	<string>Adjusts the saturation of a color.</string>
+	<key>ND_asin_vector3</key>
+	<string>Asin (vector3f)</string>
+	<key>ND_realitykit_surface_opacity</key>
+	<string>Surface Opacity (RealityKit)</string>
+	<key>ND_absval_vector3</key>
+	<string>Abs (vector3f)</string>
+	<key>UsdPrimvarReader_string.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume string data defined on geometry.</string>
+	<key>ND_subtract_half</key>
+	<string>Subtract (half)</string>
+	<key>texcoord.genericNodeGroup</key>
+	<string>Texture Coordinates</string>
+	<key>ND_RealityKitTexture2DPixelLOD_color4</key>
+	<string>Image 2D LOD Pixel (color4)</string>
+	<key>ND_realitykit_material_parameters_clearcoat_scale</key>
+	<string>Material Parameter Clearcoat Scale (RealityKit)</string>
+	<key>ND_convert_half_vector3</key>
+	<string>Convert (half vector3f)</string>
+	<key>ND_splittb_vector4</key>
+	<string>Split Vertical (vector4f)</string>
+	<key>ND_add_vector3</key>
+	<string>Add (vector3f)</string>
+	<key>ND_ramp4_color3</key>
+	<string>Ramp 4 Corners (color3f)</string>
+	<key>Promote to</key>
+	<string>Promote to</string>
+	<key>ND_round_color3</key>
+	<string>Round (color3f)</string>
+	<key>ND_safepower_vector4</key>
+	<string>Safe Power (vector4f)</string>
+	<key>ND_swizzle_vector3_float</key>
+	<string>Swizzle (vector3f float)</string>
+	<key>atan2.menuDescriptionShort</key>
+	<string>The arctangent of the expression (iny/inx) in radians.</string>
+	<key>ND_remap_color4</key>
+	<string>Remap (color4f)</string>
+	<key>GraphEditorStateConnectionError.mismatchingSupergraphs.description</key>
+	<string>Prims cannot connect outside of their supergraphs. &apos;%@&apos; != &apos;%@&apos;.</string>
+	<key>UsdPrimvarReader_normal.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume normal data defined on geometry.</string>
+	<key>ND_swizzle_vector2_color3</key>
+	<string>Swizzle (vector2f color3f)</string>
+	<key>mix.genericNodeGroup</key>
+	<string>Mix</string>
+	<key>inhigh</key>
+	<string>In High</string>
+	<key>Shader.ND_ifequal_float.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_dodge_float</key>
+	<string>Dodge (float)</string>
+	<key>atan.genericNodeGroup</key>
+	<string>Atan</string>
+	<key>Shader.ND_ifequal_float.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_RealityKitTextureRead_vector4</key>
+	<string>Image 2D Read (vector4)</string>
+	<key>ND_subtract_matrix22</key>
+	<string>Subtract (matrix2x2f)</string>
+	<key>ND_realitykit_surface_custom_attribute_half2_0</key>
+	<string>Surface Custom Attribute 0 (vector2h)</string>
+	<key>ND_sqrt_vector4</key>
+	<string>Square Root (vector4f)</string>
+	<key>Shader.ND_ifgreater_color4I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_dot_matrix44</key>
+	<string>Dot (matrix4x4f)</string>
+	<key>valuer</key>
+	<string>Right</string>
+	<key>string</key>
+	<string>String</string>
+	<key>ND_clamp_vector4</key>
+	<string>Clamp (vector4f)</string>
+	<key>UsdPrimvarReader_int</key>
+	<string>USD Primvar Reader (Integer)</string>
+	<key>luminance.menuDescriptionShort</key>
+	<string>Outputs a grayscale value containing the luminance of the incoming RGB color in all color channels.</string>
+	<key>ND_realitykit_combine3_matrix33</key>
+	<string>Combine 3 (matrix3x3f)</string>
+	<key>blur.genericNodeGroup</key>
+	<string>Blur</string>
+	<key>normal3f</key>
+	<string>3D Normal (Float)</string>
+	<key>ND_modulo_color3FA</key>
+	<string>Modulo (color3f % float)</string>
+	<key>ND_noise2d_color4FA</key>
+	<string>Noise 2D (color4f FA)</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_color4</key>
+	<string>Camera Index Switch (color4f)</string>
+	<key>ND_transformmatrix_vector2M3</key>
+	<string>Transform Matrix (vector2f matrix3x3f)</string>
+	<key>ND_UsdPrimvarReader_vector3.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float3 data defined on geometry.</string>
+	<key>Shader.ND_ifgreater_vector4I.inputs:in1</key>
+	<string>True Result</string>
+	<key>UsdPrimvarReader_float2.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float2 data defined on geometry.</string>
+	<key>ND_separate4_integer4</key>
+	<string>Separate 4</string>
+	<key>ND_separate4_vector4</key>
+	<string>Separate 4 (vector4f)</string>
+	<key>ND_ifgreatereq_vector2I</key>
+	<string>If Greater Or Equal (vector2f integer)</string>
+	<key>knotvalues</key>
+	<string>Knot Values</string>
+	<key>ND_remap_half</key>
+	<string>Remap (half)</string>
+	<key>ND_RealityKitTexture2DGradient_vector4</key>
+	<string>Image 2D Gradient (vector4)</string>
+	<key>Shader.ND_ifgreatereq_color4.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_worleynoise2d_vector3</key>
+	<string>Worley Noise 2D (vector3f)</string>
+	<key>ND_extract_vector4</key>
+	<string>Extract (vector4f)</string>
+	<key>RealityKitTextureCube.genericNodeGroup</key>
+	<string>Cube Image (RealityKit)</string>
+	<key>ND_constant_integer4.menuDescriptionShort</key>
+	<string>A constant Integer4 value.</string>
+	<key>ND_realitykit_logical_not</key>
+	<string>Not (RealityKit)</string>
+	<key>floor.genericNodeGroup</key>
+	<string>Floor</string>
+	<key>ND_swizzle_color3_color3</key>
+	<string>Swizzle (color3f color3f)</string>
+	<key>ND_ifequal_color4B</key>
+	<string>If Equal (color4f bool)</string>
+	<key>ln.genericNodeGroup</key>
+	<string>Natural Log</string>
+	<key>ND_safepower_vector2FA</key>
+	<string>Safe Power (vector2f FA)</string>
+	<key>ifgreater.menuDescriptionShort</key>
+	<string>Outputs True Result or False Result depending on whether value1 &gt; value2.</string>
+	<key>transpose.menuDescriptionShort</key>
+	<string>Outputs the tranpose of a matrix.</string>
+	<key>ND_magnitude_vector3</key>
+	<string>Magnitude (vector3f)</string>
+	<key>ND_realitykit_surface_model_to_world.menuDescriptionShort</key>
+	<string>The model-to-world transformation Matrix4x4 (Float).</string>
+	<key>ND_mix_volumeshader</key>
+	<string>Mix (Volume Shader)</string>
+	<key>ND_arrayappend_integerarray_integerarray</key>
+	<string>Array Append (Integer Array + Integer Array)</string>
+	<key>ND_convert_float_color3</key>
+	<string>Convert (float color3f)</string>
+	<key>ND_cos_half2</key>
+	<string>Cos (vector2h)</string>
+	<key>ND_dotproduct_half3</key>
+	<string>Dot Product (vector3h)</string>
+	<key>ND_noise2d_color4</key>
+	<string>Noise 2D (color4f)</string>
+	<key>ND_max_half3FA</key>
+	<string>Max (vector3h FA)</string>
+	<key>ND_sign_color3</key>
+	<string>Sign (color3f)</string>
+	<key>ND_swizzle_float_color3</key>
+	<string>Swizzle (float color3f)</string>
+	<key>absval.genericNodeGroup</key>
+	<string>Abs</string>
+	<key>ND_constant_float</key>
+	<string>Float</string>
+	<key>ND_switch_vector3I</key>
+	<string>Switch (vector3f integer)</string>
+	<key>Shader.ND_ifgreater_vector3I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_ifequal_half4B</key>
+	<string>If Equal (vector4h bool)</string>
+	<key>UsdTransform2d</key>
+	<string>USD Transform 2D</string>
+	<key>ND_ceil_color3</key>
+	<string>Ceiling (color3f)</string>
+	<key>geomcolor.menuDescriptionShort</key>
+	<string>The color associated with the geometry at the currently-processed geometric position, typically defined by vertex color.</string>
+	<key>ND_swizzle_vector2_vector2</key>
+	<string>Swizzle (vector2f vector2f)</string>
+	<key>ND_realitykit_surface_screen_position.menuDescriptionShort</key>
+	<string>The coordinates of the currently-processed data in screen space.</string>
+	<key>atan.menuDescriptionShort</key>
+	<string>The arctangent of the incoming value in radians.</string>
+	<key>ND_transformmatrix_vector2</key>
+	<string>Transform Matrix (vector2f)</string>
+	<key>double</key>
+	<string>Double</string>
+	<key>ND_min_vector2</key>
+	<string>Min (vector2f)</string>
+	<key>texCoord3d</key>
+	<string>3D Texture Coordinate (Double)</string>
+	<key>ND_constant_half4</key>
+	<string>Vector4 (Half)</string>
+	<key>ND_ifgreater_half2</key>
+	<string>If Greater (vector2h)</string>
+	<key>ND_noise2d_vector4FA</key>
+	<string>Noise 2D (vector4f FA)</string>
+	<key>noise2d.genericNodeGroup</key>
+	<string>Noise 2D</string>
+	<key>ND_remap_vector4</key>
+	<string>Remap (vector4f)</string>
+	<key>Shader.UsdUVTexture.outputs:rgba</key>
+	<string>RGBA</string>
+	<key>ND_geompropvalue_vector4</key>
+	<string>Geometric Property (vector4f)</string>
+	<key>ND_ifgreatereq_vector3</key>
+	<string>If Greater Or Equal (vector3f)</string>
+	<key>ND_out_color4</key>
+	<string>Out</string>
+	<key>Shader.ND_ifgreater_color4.inputs:in1</key>
+	<string>True Result</string>
+	<key>acos.genericNodeGroup</key>
+	<string>Acos</string>
+	<key>GraphEditorStatePathDirection.inputPassthrough</key>
+	<string>Input passthrough</string>
+	<key>ND_convert_half_float</key>
+	<string>Convert (half float)</string>
+	<key>ND_modulo_vector3</key>
+	<string>Modulo (vector3f)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute_half4_0</key>
+	<string>Geometry Modifier Custom Attribute 0 (vector4h)</string>
+	<key>ND_power_color3FA</key>
+	<string>Power (color3f FA)</string>
+	<key>Shader.ND_ifgreatereq_vector4.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_sign_half4</key>
+	<string>Sign (vector4h)</string>
+	<key>ND_contrast_vector4FA</key>
+	<string>Contrast (vector4f FA)</string>
+	<key>ND_realitykit_surface_clearcoat_roughness</key>
+	<string>Surface Clearcoat Roughness (RealityKit)</string>
+	<key>valuet</key>
+	<string>Top</string>
+	<key>ND_contrast_float</key>
+	<string>Contrast (float)</string>
+	<key>ND_cellnoise3d_float.menuDescriptionShort</key>
+	<string>A 3D cellular noise generator.</string>
+	<key>Shader.ND_ifgreater_color4.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_sin_half2</key>
+	<string>Sin (vector2h)</string>
+	<key>ND_add_matrix22FA</key>
+	<string>Add (matrix2x2f + float)</string>
+	<key>ND_normalize_vector2</key>
+	<string>Normalize (vector2f)</string>
+	<key>ND_divide_color3FA</key>
+	<string>Divide (color3f / float)</string>
+	<key>ND_safepower_float</key>
+	<string>Safe Power (float)</string>
+	<key>ND_curveadjust_color4</key>
+	<string>Curve Adjust (color4f)</string>
+	<key>color4d</key>
+	<string>RGBA Color (Double)</string>
+	<key>Shader.ND_ifgreater_vector4I.inputs:in2</key>
+	<string>False Result</string>
+	<key>texCoord2d</key>
+	<string>2D Texture Coordinate (Double)</string>
+	<key>ND_ifgreatereq_floatI</key>
+	<string>If Greater Or Equal (float integer)</string>
+	<key>ND_image_float</key>
+	<string>Image (float)</string>
+	<key>ND_min_half</key>
+	<string>Min (half)</string>
+	<key>ND_magnitude_half2</key>
+	<string>Magnitude (vector2h)</string>
+	<key>geompropvalue.menuDescriptionShort</key>
+	<string>The value of the specified geometric property (defined using &lt;geompropdef&gt;) of the currently-bound geometry.</string>
+	<key>ND_swizzle_color3_float</key>
+	<string>Swizzle (color3f float)</string>
+	<key>ND_constant_vector4.menuDescriptionShort</key>
+	<string>A constant Vector4 (Float) value.</string>
+	<key>ND_multiply_surfaceshaderF</key>
+	<string>Multiply (Surface Shader F)</string>
+	<key>ND_max_color4FA</key>
+	<string>Max (color4f FA)</string>
+	<key>Camera</key>
+	<string>Camera</string>
+	<key>Shader.ND_ifgreatereq_color4.inputs:in2</key>
+	<string>False Result</string>
+	<key>extract.menuDescriptionShort</key>
+	<string>Generates a float stream from one channel of a color​N o​r vector​N ​stream.</string>
+	<key>oneminus.genericNodeGroup</key>
+	<string>One Minus (RealityKit)</string>
+	<key>realitykit_geometry_switch_cameraindex.menuDescriptionShort</key>
+	<string>Render different results for each eye in a stereoscopic render.</string>
+	<key>ND_convert_float_vector3</key>
+	<string>Convert (float vector3f)</string>
+	<key>ND_constant_matrix33</key>
+	<string>Matrix3x3 (Float)</string>
+	<key>ND_ifgreater_halfI</key>
+	<string>If Greater (half integer)</string>
+	<key>ND_realitykit_surface_color</key>
+	<string>Surface Color (RealityKit)</string>
+	<key>ND_exp_half</key>
+	<string>Exp (half)</string>
+	<key>ND_constant_half4.menuDescriptionShort</key>
+	<string>A constant half-precision floating-point Vector4 numeric value.</string>
+	<key>ND_realitykit_surface_specular</key>
+	<string>Surface Specular (RealityKit)</string>
+	<key>ND_modulo_color4</key>
+	<string>Modulo (color4f)</string>
+	<key>ND_dotproduct_half4</key>
+	<string>Dot Product (vector4h)</string>
+	<key>ND_clamp_vector2FA</key>
+	<string>Clamp (vector2f FA)</string>
+	<key>ND_RealityKitTexture2DLOD_color3</key>
+	<string>Image 2D LOD (color3)</string>
+	<key>ND_dotproduct_vector4</key>
+	<string>Dot Product (vector4f)</string>
+	<key>ND_RealityKitTexture2DLOD_color4</key>
+	<string>Image 2D LOD (color4)</string>
+	<key>ND_ifgreater_half3I</key>
+	<string>If Greater (vector3h integer)</string>
+	<key>ND_realitykit_occlusion_surfaceshader.menuDescriptionShort</key>
+	<string>A surface shader that defines properties for a RealityKit Occlusion material that does not receive dynamic lighting.</string>
+	<key>ND_cellnoise3d_float</key>
+	<string>Cellular Noise 3D</string>
+	<key>triplanarprojection.genericNodeGroup</key>
+	<string>Triplanar Projection</string>
+	<key>ND_convert_vector4_half4</key>
+	<string>Convert (vector4f vector4h)</string>
+	<key>ND_modulo_float</key>
+	<string>Modulo (float)</string>
+	<key>Shader.ND_ifgreater_vector3I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_multiply_color4</key>
+	<string>Multiply (color4f)</string>
+	<key>ND_subtract_color3FA</key>
+	<string>Subtract (color3f - float)</string>
+	<key>ND_realitykit_surface_model_to_view.menuDescriptionShort</key>
+	<string>The model-to-view transformation Matrix4x4 (Float).</string>
+	<key>ND_UsdPrimvarReader_string.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume string data defined on geometry.</string>
+	<key>ND_separate2_integer2</key>
+	<string>Separate 2</string>
+	<key>ND_swizzle_color4_half</key>
+	<string>Swizzle (color4f half)</string>
+	<key>modulo.genericNodeGroup</key>
+	<string>Modulo</string>
+	<key>ND_ifgreater_half4</key>
+	<string>If Greater (vector4h)</string>
+	<key>noise3d.menuDescriptionShort</key>
+	<string>A 3D Perlin noise generator.</string>
+	<key>Shader.ND_separate2_vector2.outputs:outx</key>
+	<string>x</string>
+	<key>ND_invertmatrix_matrix33</key>
+	<string>Invert Matrix (matrix3x3f)</string>
+	<key>Shader.ND_ifequal_vector2I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_range_vector2</key>
+	<string>Range (vector2f)</string>
+	<key>max.menuDescriptionShort</key>
+	<string>Outputs the maximum of two incoming values.</string>
+	<key>GraphEditorStateConnectionError.incompatiblePinTypes.description</key>
+	<string>%@ cannot connect to %@.</string>
+	<key>range.genericNodeGroup</key>
+	<string>Range</string>
+	<key>usdshade</key>
+	<string>UsdShade</string>
+	<key>ND_power_vector4FA</key>
+	<string>Power (vector4f FA)</string>
+	<key>ND_safepower_color4FA</key>
+	<string>Safe Power (color4f FA)</string>
+	<key>ND_splitlr_vector2</key>
+	<string>Split Horizontal (vector2f)</string>
+	<key>ND_geompropvalue_float</key>
+	<string>Geometric Property (float)</string>
+	<key>ND_realitykit_image_lod_float</key>
+	<string>LOD Image (float)</string>
+	<key>ND_remap_vector3FA</key>
+	<string>Remap (vector3f FA)</string>
+	<key>ND_geomcolor_color3</key>
+	<string>Geometry Color (color3f)</string>
+	<key>ND_realitykit_logical_and</key>
+	<string>And (RealityKit)</string>
+	<key>ND_swizzle_vector3_vector4</key>
+	<string>Swizzle (vector3f vector4f)</string>
+	<key>modulo.menuDescriptionShort</key>
+	<string>Outputs the remaining fraction after dividing the input by a value and subtracting the integer portion.</string>
+	<key>ND_ifgreater_color4I</key>
+	<string>If Greater (color4f integer)</string>
+	<key>ND_image_vector4</key>
+	<string>Image (vector4f)</string>
+	<key>ND_swizzle_vector4_color4</key>
+	<string>Swizzle (vector4f color4f)</string>
+	<key>worleynoise3d.menuDescriptionShort</key>
+	<string>A 3D Worley noise generator.</string>
+	<key>ND_ln_half4</key>
+	<string>Natural Log (vector4h)</string>
+	<key>Shader.ND_ifequal_vector3B.inputs:in1</key>
+	<string>True Result</string>
+	<key>ceil.menuDescriptionShort</key>
+	<string>Outputs the nearest integer value, per-channel, greater than or equal to the incoming values.</string>
+	<key>Shader.ND_ifequal_vector2I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_convert_half_color4</key>
+	<string>Convert (half color4f)</string>
+	<key>ND_smoothstep_vector3</key>
+	<string>Smooth Step (vector3f)</string>
+	<key>procedural3d</key>
+	<string>3D Procedural</string>
+	<key>ND_realitykit_geometry_modifier_color</key>
+	<string>Geometry Modifier Color (RealityKit)</string>
+	<key>ND_clamp_color4FA</key>
+	<string>Clamp (color4f FA)</string>
+	<key>ND_realitykit_cubeimage_color3</key>
+	<string>Cube Image (color3f)</string>
+	<key>ND_convert_vector4_color4</key>
+	<string>Convert (vector4f color4f)</string>
+	<key>ND_max_half2FA</key>
+	<string>Max (vector2h FA)</string>
+	<key>ND_ramptb_half2</key>
+	<string>Ramp Vertical (vector2h)</string>
+	<key>ND_realitykit_unlit_surfaceshader</key>
+	<string>Unlit Surface (RealityKit)</string>
+	<key>ND_swizzle_color4_color3</key>
+	<string>Swizzle (color4f color3f)</string>
+	<key>int64</key>
+	<string>Int64</string>
+	<key>ND_magnitude_half4</key>
+	<string>Magnitude (vector4h)</string>
+	<key>triplanarprojection.menuDescriptionShort</key>
+	<string>Samples data from three images and projects each along its respective coordinate axis and blends them by geometric normal.</string>
+	<key>ND_image_color3</key>
+	<string>Image (color3f)</string>
+	<key>blur.menuDescriptionShort</key>
+	<string>A convolution blur for 2D images.</string>
+	<key>ND_range_vector4FA</key>
+	<string>Range (vector4f FA)</string>
+	<key>RealityKitTexture2DPixel.genericNodeGroup</key>
+	<string>Image 2D Pixel (RealityKit)</string>
+	<key>Shader.ND_ifequal_vector3B.inputs:in2</key>
+	<string>False Result</string>
+	<key>UsdPrimvarReader_float3.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float3 data defined on geometry.</string>
+	<key>ND_mix_vector3</key>
+	<string>Mix (vector3f)</string>
+	<key>ND_power_vector4</key>
+	<string>Power (vector4f)</string>
+	<key>plus.menuDescriptionShort</key>
+	<string>Adds foreground and background values.
+B + F</string>
+	<key>ND_ifequal_vector2I</key>
+	<string>If Equal (vector2f integer)</string>
+	<key>ND_ifgreatereq_half3I</key>
+	<string>If Greater Or Equal (vector3h integer)</string>
+	<key>ND_magnitude_vector4</key>
+	<string>Magnitude (vector4f)</string>
+	<key>ND_hsvtorgb_color4</key>
+	<string>HSV to RGB (color4f)</string>
+	<key>ND_realitykit_geometry_modifier_world_to_model</key>
+	<string>Geometry Modifier World To Model (RealityKit)</string>
+	<key>Shader.ND_ifequal_color4.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_realitykit_geometry_modifier_model_position_offset</key>
+	<string>Geometry Modifier Model Position Offset (RealityKit)</string>
+	<key>ln.menuDescriptionShort</key>
+	<string>The natural log of the input.</string>
+	<key>uint64</key>
+	<string>UInt64</string>
+	<key>ND_multiply_displacementshaderF</key>
+	<string>Multiply (Displacement Shader F)</string>
+	<key>tan.menuDescriptionShort</key>
+	<string>The tangent of the incoming value in radians.</string>
+	<key>Shader.ND_ifequal_color4.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_exp_float</key>
+	<string>Exp (float)</string>
+	<key>ND_ifgreater_vector2I</key>
+	<string>If Greater (vector2f integer)</string>
+	<key>ND_constant_matrix22.menuDescriptionShort</key>
+	<string>A constant Matrix2x2 (Float) value. (Row-major order.)</string>
+	<key>ND_realitykit_geometry_modifier_vertex_id</key>
+	<string>Geometry Modifier Vertex ID (RealityKit)</string>
+	<key>ND_UsdPrimvarReader_float</key>
+	<string>Primvar Reader (float)</string>
+	<key>switch.genericNodeGroup</key>
+	<string>Switch</string>
+	<key>ND_arrayappend_color4array_color4array</key>
+	<string>Array Append (RGBA Array + RGBA Array)</string>
+	<key>ND_min_vector2FA</key>
+	<string>Min (vector2f FA)</string>
+	<key>realitykitGeometryModifier</key>
+	<string>Geometry Modifier</string>
+	<key>multiply.genericNodeGroup</key>
+	<string>Multiply</string>
+	<key>ND_realitykit_logical_not.menuDescriptionShort</key>
+	<string>Returns !input.</string>
+	<key>UsdTransform2d.menuDescriptionShort</key>
+	<string>A node that applies an affine transformation to a 2d input.</string>
+	<key>ND_add_color3FA</key>
+	<string>Add (color3f + float)</string>
+	<key>ND_UsdTransform2d</key>
+	<string>Transform 2D</string>
+	<key>ND_sign_half3</key>
+	<string>Sign (vector3h)</string>
+	<key>ND_sin_vector2</key>
+	<string>Sin (vector2f)</string>
+	<key>ND_splittb_half4</key>
+	<string>Split Vertical (vector4h)</string>
+	<key>ND_realitykit_surface_custom_attribute</key>
+	<string>Surface Custom Attribute (RealityKit)</string>
+	<key>realitykit_image.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties.</string>
+	<key>ND_realitykit_step_color4</key>
+	<string>Step (color4f)</string>
+	<key>ND_in_color4.menuDescriptionShort</key>
+	<string>Outputs areas of foreground that overlap with the alpha of background.</string>
+	<key>ND_ramplr_half2</key>
+	<string>Ramp Horizontal (vector2h)</string>
+	<key>ND_min_vector3FA</key>
+	<string>Min (vector3f FA)</string>
+	<key>ND_realitykit_logical_and.menuDescriptionShort</key>
+	<string>Boolean operation in1 &amp;&amp; in2.</string>
+	<key>ND_rotate2d_vector2.menuDescriptionShort</key>
+	<string>Rotates a Vector2 (Float) about the origin in 2D.</string>
+	<key>ND_contrast_vector3FA</key>
+	<string>Contrast (vector3f FA)</string>
+	<key>ND_noise2d_vector2</key>
+	<string>Noise 2D (vector2f)</string>
+	<key>ND_acos_half4</key>
+	<string>Acos (vector4h)</string>
+	<key>ND_splitlr_vector4</key>
+	<string>Split Horizontal (vector4f)</string>
+	<key>ND_geomcolor_color4</key>
+	<string>Geometry Color (color4f)</string>
+	<key>ND_multiply_color4FA</key>
+	<string>Multiply (color4f * float)</string>
+	<key>ND_geompropvalue_vector2</key>
+	<string>Geometric Property (vector2f)</string>
+	<key>Shader.ND_ifgreatereq_vector4.inputs:in2</key>
+	<string>False Result</string>
+	<key>Material.outputs:realitykit:vertex</key>
+	<string>Custom Geometry Modifier</string>
+	<key>RealityKitTextureCubeLOD.menuDescriptionShort</key>
+	<string>A texturecube with RealityKit properties. Explicit level of detail.</string>
+	<key>ND_realitykit_material_parameters_opacity_scale</key>
+	<string>Material Parameter Opacity Scale (RealityKit)</string>
+	<key>ND_add_vector2</key>
+	<string>Add (vector2f)</string>
+	<key>ND_ramptb_float</key>
+	<string>Ramp Vertical (float)</string>
+	<key>ND_normalize_vector3</key>
+	<string>Normalize (vector3f)</string>
+	<key>ND_min_vector4FA</key>
+	<string>Min (vector4f FA)</string>
+	<key>ND_invert_float</key>
+	<string>Invert (float)</string>
+	<key>ND_ramp4_vector3</key>
+	<string>Ramp 4 Corners (vector3f)</string>
+	<key>color4f</key>
+	<string>RGBA Color (Float)</string>
+	<key>power.genericNodeGroup</key>
+	<string>Power</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_vector2</key>
+	<string>Camera Index Switch (vector2f)</string>
+	<key>ND_arrayappend_color3array_color3array</key>
+	<string>Array Append (RGB Array + RGB Array)</string>
+	<key>ND_constant_integer</key>
+	<string>Integer</string>
+	<key>ND_switch_vector2</key>
+	<string>Switch (vector2f)</string>
+	<key>ND_noise2d_float</key>
+	<string>Noise 2D (float)</string>
+	<key>ND_RealityKitTextureCubeGradient_vector4</key>
+	<string>Cube Image Gradient (vector4)</string>
+	<key>ND_ifgreatereq_color3I</key>
+	<string>If Greater Or Equal (color3f integer)</string>
+	<key>UsdPrimvarReader_float2</key>
+	<string>USD Primvar Reader (Float2)</string>
+	<key>ND_tan_float</key>
+	<string>Tan (float)</string>
+	<key>ND_outside_float</key>
+	<string>Outside (float)</string>
+	<key>ND_realitykit_geometry_modifier_time</key>
+	<string>Geometry Modifier Time (RealityKit)</string>
+	<key>RealityKitTexture2DPixelLOD.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties. Explicit level of detail. Pixel texture coordinates.</string>
+	<key>ND_floor_vector4</key>
+	<string>Floor (vector4f)</string>
+	<key>ND_combine3_color3</key>
+	<string>Combine 3 (color3f)</string>
+	<key>ND_separate3_vector3</key>
+	<string>Separate 3 (vector3f)</string>
+	<key>ND_multiply_half</key>
+	<string>Multiply (half)</string>
+	<key>ND_blur_vector2</key>
+	<string>Blur (vector2f)</string>
+	<key>ND_ramptb_vector2</key>
+	<string>Ramp Vertical (vector2f)</string>
+	<key>matrix2d</key>
+	<string>2x2 Matrix</string>
+	<key>ND_crossproduct_vector3</key>
+	<string>Cross Product</string>
+	<key>ND_min_color4FA</key>
+	<string>Min (color4f FA)</string>
+	<key>ND_realitykit_surface_uv1</key>
+	<string>Surface uv1 (RealityKit)</string>
+	<key>ND_round_vector2</key>
+	<string>Round (vector2f)</string>
+	<key>ifgreater.genericNodeGroup</key>
+	<string>If Greater</string>
+	<key>ND_atan2_half</key>
+	<string>Atan2 (half)</string>
+	<key>ND_realitykit_oneminus_vector4</key>
+	<string>One Minus (vector4f)</string>
+	<key>half</key>
+	<string>Half</string>
+	<key>ND_noise3d_vector2</key>
+	<string>Noise 3D (vector2f)</string>
+	<key>ND_switch_color3I</key>
+	<string>Switch (color3f integer)</string>
+	<key>ND_normal_vector3.menuDescriptionShort</key>
+	<string>The geometric normal of the currently-processed data in a given coordinate space.</string>
+	<key>ND_ramplr_float</key>
+	<string>Ramp Horizontal (float)</string>
+	<key>ND_dot_lightshader</key>
+	<string>Dot (Light Shader)</string>
+	<key>ND_safepower_color3FA</key>
+	<string>Safe Power (color3f FA)</string>
+	<key>ND_ramplr_vector4</key>
+	<string>Ramp Horizontal (vector4f)</string>
+	<key>Shader.ND_separate2_vector2.outputs:outy</key>
+	<string>y</string>
+	<key>Shader.ND_ifequal_color3.inputs:in1</key>
+	<string>True Result</string>
+	<key>in10</key>
+	<string>In 10</string>
+	<key>Shader.UsdUVTexture.outputs:r</key>
+	<string>Red</string>
+	<key>Shader.ND_separate3_color3.outputs:outb</key>
+	<string>b</string>
+	<key>ND_noise2d_vector4</key>
+	<string>Noise 2D (vector4f)</string>
+	<key>Shader.ND_ifequal_color3.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_ramp4_float</key>
+	<string>Ramp 4 Corners (float)</string>
+	<key>ND_transformnormal_vector3.menuDescriptionShort</key>
+	<string>Transforms a normal from one space to another.</string>
+	<key>ND_realitykit_logical_xor.menuDescriptionShort</key>
+	<string>Returns true if only one of the inputs is true.</string>
+	<key>ND_UsdPreviewSurface_surfaceshader.menuDescriptionShort</key>
+	<string>A MaterialX version of USD Preview Surface.</string>
+	<key>ND_realitykit_surface_model_to_world</key>
+	<string>Surface Model To World (RealityKit)</string>
+	<key>round.genericNodeGroup</key>
+	<string>Round</string>
+	<key>RealityKitTexture2DLOD.genericNodeGroup</key>
+	<string>Image 2D LOD (RealityKit)</string>
+	<key>ND_switch_color3</key>
+	<string>Switch (color3f)</string>
+	<key>Shader.ND_separate3_vector3.outputs:outx</key>
+	<string>x</string>
+	<key>burn.genericNodeGroup</key>
+	<string>Burn</string>
+	<key>integer</key>
+	<string>Integer</string>
+	<key>ND_triplanarprojection_float</key>
+	<string>Triplanar Projection (float)</string>
+	<key>normal3h</key>
+	<string>3D Normal (Half)</string>
+	<key>min.genericNodeGroup</key>
+	<string>Min</string>
+	<key>ND_swizzle_vector4_color3</key>
+	<string>Swizzle (vector4f color3f)</string>
+	<key>Shader.ND_ifgreater_vector2I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_realitykit_image_color4</key>
+	<string>RealityKit Image (color4f)</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_0.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector2 (Half) data that’s from the geometry modifier.</string>
+	<key>ND_constant_integer.menuDescriptionShort</key>
+	<string>A constant integer numeric value.</string>
+	<key>ND_crossproduct_vector3.menuDescriptionShort</key>
+	<string>Outputs the cross product of two vectors.</string>
+	<key>ND_cos_half</key>
+	<string>Cos (half)</string>
+	<key>ND_range_color3</key>
+	<string>Range (color3f)</string>
+	<key>ND_sign_half2</key>
+	<string>Sign (vector2h)</string>
+	<key>ND_noise3d_vector3FA</key>
+	<string>Noise 3D (vector3f FA)</string>
+	<key>ND_realitykit_surface_base_color</key>
+	<string>Surface Base Color (RealityKit)</string>
+	<key>UsdPrimvarReader_float4.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float4 data defined on geometry.</string>
+	<key>ND_arrayappend_string_stringarray</key>
+	<string>Array Append (String + String Array)</string>
+	<key>ND_separate2_vector2.menuDescriptionShort</key>
+	<string>Outputs each of the channels of a vector2 as a separate float output.</string>
+	<key>safepower.menuDescriptionShort</key>
+	<string>Raises the incoming value to an exponent and assigns the sign of the base to the output.
+safepow(x,y) = sign(x) * pow(abs(x), y)</string>
+	<key>ND_clamp_half2FA</key>
+	<string>Clamp (vector2h FA)</string>
+	<key>ND_dodge_color4</key>
+	<string>Dodge (color4f)</string>
+	<key>token</key>
+	<string>Token</string>
+	<key>ND_atan2_vector2</key>
+	<string>Atan2 (vector2f)</string>
+	<key>ND_invert_vector3</key>
+	<string>Invert (vector3f)</string>
+	<key>ND_swizzle_half_color4</key>
+	<string>Swizzle (half color4f)</string>
+	<key>ND_tiledimage_vector2</key>
+	<string>Tiled Image (vector2f)</string>
+	<key>sign.menuDescriptionShort</key>
+	<string>The per-channel sign of the input value: -1 for negative, +1 for positive, 0 for zero.</string>
+	<key>ND_sign_vector2</key>
+	<string>Sign (vector2f)</string>
+	<key>ND_acos_half3</key>
+	<string>Acos (vector3h)</string>
+	<key>ND_arrayappend_float_floatarray</key>
+	<string>Array Append (Float + Float Array)</string>
+	<key>ND_swizzle_color3_half</key>
+	<string>Swizzle (color3f half)</string>
+	<key>Shader.UsdUVTexture.outputs:rgb</key>
+	<string>RGB</string>
+	<key>ND_noise3d_vector4</key>
+	<string>Noise 3D (vector4f)</string>
+	<key>UsdPrimvarReader_point</key>
+	<string>USD Primvar Reader (Point)</string>
+	<key>ND_burn_half</key>
+	<string>Burn (half)</string>
+	<key>ND_subtract_color4</key>
+	<string>Subtract (color4f)</string>
+	<key>procedural</key>
+	<string>Procedural</string>
+	<key>Shader.ND_ifgreater_vector4.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_clamp_half3FA</key>
+	<string>Clamp (vector3h FA)</string>
+	<key>ND_contrast_vector2FA</key>
+	<string>Contrast (vector2f FA)</string>
+	<key>filtertype</key>
+	<string>Filter Type</string>
+	<key>ND_inside_color3</key>
+	<string>Inside (color3f)</string>
+	<key>round.menuDescriptionShort</key>
+	<string>Rounds to the nearest integer value, per-channel.
+floor(i + 0.5)</string>
+	<key>ND_absval_vector2</key>
+	<string>Abs (vector2f)</string>
+	<key>ND_realitykit_geometry_modifier_world_to_model.menuDescriptionShort</key>
+	<string>The world-to-model transformation Matrix4x4 (Float).</string>
+	<key>ND_subtract_vector4FA</key>
+	<string>Subtract (vector4f - float)</string>
+	<key>magnitude.genericNodeGroup</key>
+	<string>Magnitude</string>
+	<key>ND_UsdPrimvarReader_vector2</key>
+	<string>Primvar Reader (vector2f)</string>
+	<key>ND_tan_half</key>
+	<string>Tan (half)</string>
+	<key>float2</key>
+	<string>2D Float</string>
+	<key>color3d</key>
+	<string>RGB Color (Double)</string>
+	<key>ND_realitykit_step_color3</key>
+	<string>Step (color3f)</string>
+	<key>ND_add_color4</key>
+	<string>Add (color4f)</string>
+	<key>ND_smoothstep_half2</key>
+	<string>Smooth Step (vector2h)</string>
+	<key>ND_realitykit_fractional_color3</key>
+	<string>Fractional (color3f)</string>
+	<key>ND_combine2_vector2</key>
+	<string>Combine 2 (vector2f)</string>
+	<key>ND_clamp_half4FA</key>
+	<string>Clamp (vector4h FA)</string>
+	<key>geompropvalue.genericNodeGroup</key>
+	<string>Geometric Property</string>
+	<key>ND_mask_color4.menuDescriptionShort</key>
+	<string>Outputs areas of background that overlap with the alpha of foreground.</string>
+	<key>image.genericNodeGroup</key>
+	<string>Image</string>
+	<key>ND_cellnoise2d_float.menuDescriptionShort</key>
+	<string>A 2D cellular noise generator.</string>
+	<key>ND_realitykit_oneminus_color3</key>
+	<string>One Minus (color3f)</string>
+	<key>global</key>
+	<string>Global</string>
+	<key>ND_normalize_vector4</key>
+	<string>Normalize (vector4f)</string>
+	<key>arrayappend.menuDescriptionShort</key>
+	<string>Appends a value to the end of an array, or create an array of two base-type values.</string>
+	<key>boolean</key>
+	<string>Boolean</string>
+	<key>matrix33</key>
+	<string>3x3 Matrix</string>
+	<key>ND_RealityKitTexture2DPixelLOD_vector4</key>
+	<string>Image 2D LOD Pixel (vector4)</string>
+	<key>ND_triplanarprojection_color4</key>
+	<string>Triplanar Projection (color4f)</string>
+	<key>ND_ifgreater_vector2</key>
+	<string>If Greater (vector2f)</string>
+	<key>ND_realitykit_surface_ambient_occlusion</key>
+	<string>Surface Ambient Occlusion (RealityKit)</string>
+	<key>color4h</key>
+	<string>RGBA Color (Half)</string>
+	<key>Shader.ND_ifgreater_vector2I.inputs:in2</key>
+	<string>False Result</string>
+	<key>Shader.ND_ifgreater_vector4.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_dot_string</key>
+	<string>Dot (string)</string>
+	<key>ND_clamp_vector2</key>
+	<string>Clamp (vector2f)</string>
+	<key>ND_ifgreater_floatI</key>
+	<string>If Greater (Float integer)</string>
+	<key>ND_updirection_vector3.menuDescriptionShort</key>
+	<string>The direction of the up vector.</string>
+	<key>ND_realitykit_geometry_modifier_uv1_offset</key>
+	<string>Geometry Modifier uv1 Offset (RealityKit)</string>
+	<key>ND_invertmatrix_matrix44</key>
+	<string>Invert Matrix (matrix4x4f)</string>
+	<key>ND_combine3_vector3</key>
+	<string>Combine 3 (vector3f)</string>
+	<key>ND_transformnormal_vector3</key>
+	<string>Transform Normal</string>
+	<key>point3d</key>
+	<string>3D Point (Double)</string>
+	<key>ND_place2d_vector2.menuDescriptionShort</key>
+	<string>Transforms UV texture coordinates for 2D texture placement.</string>
+	<key>exp.menuDescriptionShort</key>
+	<string>&apos;e&apos; to the power of the input. </string>
+	<key>float3</key>
+	<string>3D Float</string>
+	<key>Cylinder</key>
+	<string>Cylinder</string>
+	<key>ND_divide_color4</key>
+	<string>Divide (color4f)</string>
+	<key>ND_curveadjust_vector2</key>
+	<string>Curve Adjust (vector2f)</string>
+	<key>ND_clamp_half</key>
+	<string>Clamp (half)</string>
+	<key>ND_max_float</key>
+	<string>Max (float)</string>
+	<key>ND_realitykit_cubeimage_vector3</key>
+	<string>Cube Image (vector3f)</string>
+	<key>ND_difference_color3</key>
+	<string>Difference (color3f)</string>
+	<key>ND_constant_string</key>
+	<string>String</string>
+	<key>ND_arrayappend_vector4array_vector4array</key>
+	<string>Array Append (4D Vector Array + 4D Vector Array)</string>
+	<key>ND_in_color4</key>
+	<string>In</string>
+	<key>cos.genericNodeGroup</key>
+	<string>Cos</string>
+	<key>ND_constant_half2.menuDescriptionShort</key>
+	<string>A constant half-precision floating-point Vector2 numeric value.</string>
+	<key>ND_combine4_vector4</key>
+	<string>Combine 4 (vector4f)</string>
+	<key>ND_updirection_vector3</key>
+	<string>Up Direction</string>
+	<key>ND_add_matrix22</key>
+	<string>Add (matrix2x2f)</string>
+	<key>ND_mix_half</key>
+	<string>Mix (half)</string>
+	<key>ramp4.menuDescriptionShort</key>
+	<string>A four-point linear value ramp (gradient) generator.</string>
+	<key>ND_convert_half_vector2</key>
+	<string>Convert (half vector2f)</string>
+	<key>worleynoise2d.genericNodeGroup</key>
+	<string>Worley Noise 2D</string>
+	<key>ND_noise2d_color3</key>
+	<string>Noise 2D (color3f)</string>
+	<key>ND_acos_vector2</key>
+	<string>Acos (vector2f)</string>
+	<key>ND_contrast_color3</key>
+	<string>Contrast (color3f)</string>
+	<key>ND_ifequal_vector4B</key>
+	<string>If Equal (vector4f bool)</string>
+	<key>ND_mix_vector2</key>
+	<string>Mix (vector2f)</string>
+	<key>ND_realitykit_surface_uv0</key>
+	<string>Surface uv0 (RealityKit)</string>
+	<key>ND_remap_half4</key>
+	<string>Remap (vector4h)</string>
+	<key>ND_multiply_matrix44</key>
+	<string>Multiply (matrix4x4f)</string>
+	<key>sin.genericNodeGroup</key>
+	<string>Sin</string>
+	<key>ND_ifequal_color3I</key>
+	<string>If Equal (color3f integer)</string>
+	<key>ND_swizzle_half_half2</key>
+	<string>Swizzle (half vector2h)</string>
+	<key>ND_ceil_vector3</key>
+	<string>Ceiling (vector3f)</string>
+	<key>fg</key>
+	<string>Foreground</string>
+	<key>ND_ifequal_half4</key>
+	<string>If Equal (vector4h)</string>
+	<key>filex</key>
+	<string>File X</string>
+	<key>ND_tiledimage_float</key>
+	<string>Tiled Image (float)</string>
+	<key>ND_ifequal_halfI</key>
+	<string>If Equal (half integer)</string>
+	<key>ND_overlay_color4</key>
+	<string>Overlay (color4f)</string>
+	<key>ND_switch_halfI</key>
+	<string>Switch (half integer)</string>
+	<key>ND_constant_half3</key>
+	<string>Vector3 (Half)</string>
+	<key>ND_geomcolor_float</key>
+	<string>Geometry Color (float)</string>
+	<key>float4</key>
+	<string>4D Float</string>
+	<key>Shader.ND_ifequal_floatB.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_smoothstep_half3</key>
+	<string>Smooth Step (vector3h)</string>
+	<key>ND_remap_vector2</key>
+	<string>Remap (vector2f)</string>
+	<key>minus.menuDescriptionShort</key>
+	<string>Subtracts foreground from background values.
+B - F</string>
+	<key>ND_swizzle_vector2_float</key>
+	<string>Swizzle (vector2f float)</string>
+	<key>ND_ifequal_half3B</key>
+	<string>If Equal (vector3h bool)</string>
+	<key>ND_worleynoise3d_float</key>
+	<string>Worley Noise 3D (float)</string>
+	<key>ND_subtract_vector2</key>
+	<string>Subtract (vector2f)</string>
+	<key>ND_smoothstep_vector4</key>
+	<string>Smooth Step (vector4f)</string>
+	<key>Shader.ND_ifequal_floatB.inputs:in2</key>
+	<string>False Result</string>
+	<key>Shader.ND_separate3_vector3.outputs:outy</key>
+	<string>y</string>
+	<key>math</key>
+	<string>Math</string>
+	<key>ND_modulo_vector2</key>
+	<string>Modulo (vector2f)</string>
+	<key>filey</key>
+	<string>File Y</string>
+	<key>ND_UsdPrimvarReader_boolean.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume boolean data defined on geometry.</string>
+	<key>ND_safepower_vector3FA</key>
+	<string>Safe Power (vector3f FA)</string>
+	<key>ND_constant_color4.menuDescriptionShort</key>
+	<string>A constant Color4 (Float) value.</string>
+	<key>ND_realitykit_geometry_modifier_model_to_view.menuDescriptionShort</key>
+	<string>The model-to-view transformation Matrix4x4 (Float).</string>
+	<key>ND_convert_vector3_vector2</key>
+	<string>Convert (vector3f vector2f)</string>
+	<key>ND_constant_integer2.menuDescriptionShort</key>
+	<string>A constant Integer2 value.</string>
+	<key>ND_realitykit_combine2_matrix22</key>
+	<string>Combine2 (matrix2x2f)</string>
+	<key>ND_realitykit_image_gradient2d_float</key>
+	<string>Gradient Image (float)</string>
+	<key>Shader.ND_ifgreater_color3I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_acos_half2</key>
+	<string>Acos (vector2h)</string>
+	<key>invertmatrix.genericNodeGroup</key>
+	<string>Invert Matrix</string>
+	<key>ND_combine2_integer2</key>
+	<string>Combine 2 (integer2)</string>
+	<key>ND_RealityKitTexture2DPixelGradient_color3</key>
+	<string>Image 2D Gradient Pixel (color3)</string>
+	<key>ND_swizzle_vector3_vector3</key>
+	<string>Swizzle (vector3f vector3f)</string>
+	<key>safepower.genericNodeGroup</key>
+	<string>Safe Power</string>
+	<key>ND_tan_vector4</key>
+	<string>Tan (vector4f)</string>
+	<key>ND_round_float</key>
+	<string>Round (float)</string>
+	<key>ND_asin_vector2</key>
+	<string>Asin (vector2f)</string>
+	<key>ND_surfacematerial</key>
+	<string>Surface Material</string>
+	<key>ND_screen_color4</key>
+	<string>Screen (color4f)</string>
+	<key>ND_worleynoise3d_vector2</key>
+	<string>Worley Noise 3D (vector2f)</string>
+	<key>matrix4d</key>
+	<string>4x4 Matrix</string>
+	<key>ND_minus_float</key>
+	<string>Subtractive Mix (float)</string>
+	<key>ND_realitykit_surface_world_to_view</key>
+	<string>Surface World To View (RealityKit)</string>
+	<key>ND_fractal3d_vector2FA</key>
+	<string>Fractal Noise 3D (vector2f FA)</string>
+	<key>ND_power_color4</key>
+	<string>Power (color4f)</string>
+	<key>filez</key>
+	<string>File Z</string>
+	<key>ND_modulo_vector2FA</key>
+	<string>Modulo (vector2f % float)</string>
+	<key>ND_noise2d_vector3FA</key>
+	<string>Noise 2D (vector3f FA)</string>
+	<key>GraphEditorStateConnectionError.incompatiblePinTypes.title</key>
+	<string>Incompatible pin types</string>
+	<key>ND_add_vector2FA</key>
+	<string>Add (vector2f + float)</string>
+	<key>ND_power_half</key>
+	<string>Power (half)</string>
+	<key>ND_remap_color3</key>
+	<string>Remap (color3f)</string>
+	<key>ND_geompropvalue_color4</key>
+	<string>Geometric Property (color4f)</string>
+	<key>ND_realitykit_material_parameters_specular_scale</key>
+	<string>Material Parameter Specular Scale (RealityKit)</string>
+	<key>material</key>
+	<string>Material</string>
+	<key>ND_add_color3</key>
+	<string>Add (color3f)</string>
+	<key>ND_arrayappend_integer_integerarray</key>
+	<string>Array Append (Integer + Integer Array)</string>
+	<key>ND_exp_half4</key>
+	<string>Exp (vector4h)</string>
+	<key>ND_subtract_vector3FA</key>
+	<string>Subtract (vector3f - float)</string>
+	<key>normalize.menuDescriptionShort</key>
+	<string>Outputs a normalized vector.</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMembershipsWithSourceSubgraph.title</key>
+	<string>Incompatible node connection</string>
+	<key>ND_separate2_vector2</key>
+	<string>Separate 2</string>
+	<key>ND_arrayappend_stringarray_stringarray</key>
+	<string>Array Append (String Array + String Array)</string>
+	<key>ND_divide_vector4</key>
+	<string>Divide (vector4f)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute_half2_0</key>
+	<string>Geometry Modifier Custom Attribute 0 (vector2h)</string>
+	<key>ND_splitlr_half</key>
+	<string>Split Horizontal (half)</string>
+	<key>ND_min_half3</key>
+	<string>Min (vector3h)</string>
+	<key>ND_RealityKitTexture2D_vector4</key>
+	<string>Image 2D (vector4)</string>
+	<key>ND_add_vector3FA</key>
+	<string>Add (vector3f + float)</string>
+	<key>ND_mix_half3</key>
+	<string>Mix (vector3h)</string>
+	<key>ND_sqrt_vector3</key>
+	<string>Square Root (vector3f)</string>
+	<key>Shader.ND_ifgreater_color3I.inputs:in2</key>
+	<string>False Result</string>
+	<key>UsdPrimvarReader_int.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume integer data defined on geometry.</string>
+	<key>dot.genericNodeGroup</key>
+	<string>Dot</string>
+	<key>plus.genericNodeGroup</key>
+	<string>Additive Mix</string>
+	<key>channel</key>
+	<string>Data</string>
+	<key>ND_absval_color3</key>
+	<string>Abs (color3f)</string>
+	<key>realworldimagesize</key>
+	<string>Real World Image Size</string>
+	<key>ND_convert_color3_color4</key>
+	<string>Convert (color3f color4f)</string>
+	<key>ND_combine3_half3</key>
+	<string>Combine 3 (vector3h)</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMembershipsWithSourceSubgraph.description</key>
+	<string>%@ (in subgraph) cannot connect to %@.</string>
+	<key>ND_multiply_vector2</key>
+	<string>Multiply (vector2f)</string>
+	<key>color3f</key>
+	<string>RGB Color (Float)</string>
+	<key>ND_RealityKitTexture2DPixel_vector4</key>
+	<string>Image 2D Pixel (vector4)</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_integer</key>
+	<string>Camera Index Switch (integer)</string>
+	<key>RealityKitTexture2DGradient.genericNodeGroup</key>
+	<string>Image 2D Gradient (RealityKit)</string>
+	<key>ND_max_vector4</key>
+	<string>Max (vector4f)</string>
+	<key>ND_smoothstep_half4</key>
+	<string>Smooth Step (vector4h)</string>
+	<key>ND_cos_vector4</key>
+	<string>Cos (vector4f)</string>
+	<key>ND_realitykit_refract_vector3</key>
+	<string>Refract (RealityKit)</string>
+	<key>ND_realitykit_image_bias_color4</key>
+	<string>Biased Image (color4f)</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMembershipsInSubgraphs.description</key>
+	<string>%@ cannot connect to %@.</string>
+	<key>ND_multiply_matrix22</key>
+	<string>Multiply (matrix2x2f)</string>
+	<key>ND_add_vector4FA</key>
+	<string>Add (vector4f + float)</string>
+	<key>ND_subtract_vector3</key>
+	<string>Subtract (vector3f)</string>
+	<key>vector3d</key>
+	<string>3D Vector (Double)</string>
+	<key>fps</key>
+	<string>FPS</string>
+	<key>ND_ifgreater_vector3</key>
+	<string>If Greater (vector3f)</string>
+	<key>ND_image_vector2</key>
+	<string>Image (vector2f)</string>
+	<key>ND_smoothstep_color3</key>
+	<string>Smooth Step (color3f)</string>
+	<key>ND_dot_integer</key>
+	<string>Dot (integer)</string>
+	<key>ND_splitlr_color4</key>
+	<string>Split Horizontal (color4f)</string>
+	<key>ND_ceil_float</key>
+	<string>Ceiling (float)</string>
+	<key>variabilityUniform</key>
+	<string>uniform</string>
+	<key>ND_ifgreater_half2I</key>
+	<string>If Greater (vector2h integer)</string>
+	<key>ND_difference_float</key>
+	<string>Difference (float)</string>
+	<key>ND_switch_half</key>
+	<string>Switch (half)</string>
+	<key>GraphEditorStatePathDirection.output</key>
+	<string>Output</string>
+	<key>ND_multiply_vector4FA</key>
+	<string>Multiply (vector4f * float)</string>
+	<key>RealityKitTextureCube.menuDescriptionShort</key>
+	<string>A texturecube with RealityKit properties. Adjustable level of detail.</string>
+	<key>point3f</key>
+	<string>3D Point (Float)</string>
+	<key>ND_dot_vector4</key>
+	<string>Dot (vector4f)</string>
+	<key>ND_realitykit_image_bias_vector2</key>
+	<string>Biased Image (vector2f)</string>
+	<key>Shader.ND_separate4_vector4.outputs:outw</key>
+	<string>w</string>
+	<key>ND_realitykit_logical_or</key>
+	<string>Or (RealityKit)</string>
+	<key>ND_plus_color4</key>
+	<string>Additive Mix (color4f)</string>
+	<key>ND_realitykit_surface_emissive_color</key>
+	<string>Surface Emissive Color (RealityKit)</string>
+	<key>ND_tan_half4</key>
+	<string>Tan (vector4h)</string>
+	<key>absval.menuDescriptionShort</key>
+	<string>Outputs the per-channel absolute value of the input.</string>
+	<key>ND_max_color4</key>
+	<string>Max (color4f)</string>
+	<key>ND_difference_color4</key>
+	<string>Difference (color4f)</string>
+	<key>UsdUVTexture</key>
+	<string>USD UV Texture</string>
+	<key>ND_clamp_half4</key>
+	<string>Clamp (vector4h)</string>
+	<key>ND_power_vector2</key>
+	<string>Power (vector2f)</string>
+	<key>ND_image_half</key>
+	<string>Image (half)</string>
+	<key>Filename</key>
+	<string>File</string>
+	<key>ND_noise3d_float</key>
+	<string>Noise 3D (float)</string>
+	<key>ND_constant_vector2</key>
+	<string>Vector2 (Float)</string>
+	<key>ND_rotate3d_vector3.menuDescriptionShort</key>
+	<string>Rotates a Vector3 (Float) about a specified unit axis vector.</string>
+	<key>remap.genericNodeGroup</key>
+	<string>Remap</string>
+	<key>Add Output</key>
+	<string>Add Output</string>
+	<key>Shader.ND_ifgreatereq_vector4I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_ifequal_vector3</key>
+	<string>If Equal (vector3f)</string>
+	<key>ND_realitykit_geometry_modifier_model_to_world.menuDescriptionShort</key>
+	<string>The model-to-world transformation Matrix4x4 (Float).</string>
+	<key>oneminus.menuDescriptionShort</key>
+	<string>One Minus</string>
+	<key>ND_rotate3d_vector3</key>
+	<string>Rotate 3D</string>
+	<key>ND_UsdTransform2d.menuDescriptionShort</key>
+	<string>A node that applies an affine transformation to a 2d input.</string>
+	<key>ND_min_half4FA</key>
+	<string>Min (vector4h FA)</string>
+	<key>noise2d.menuDescriptionShort</key>
+	<string>A 2D Perlin noise generator.</string>
+	<key>splitlr.genericNodeGroup</key>
+	<string>Split Horizontal</string>
+	<key>ND_saturate_color4</key>
+	<string>Saturate (color4f)</string>
+	<key>ND_dot_float</key>
+	<string>Dot (float)</string>
+	<key>ND_swizzle_float_vector3</key>
+	<string>Swizzle (float vector3f)</string>
+	<key>ND_RealityKitTextureCubeLOD_vector4</key>
+	<string>Cube Image LOD (vector4)</string>
+	<key>ND_dot_color4</key>
+	<string>Dot (color4f)</string>
+	<key>ND_ifequal_half</key>
+	<string>If Equal (half)</string>
+	<key>ND_ifequal_half4I</key>
+	<string>If Equal (vector4h integer)</string>
+	<key>ND_multiply_vector3</key>
+	<string>Multiply (vector3f)</string>
+	<key>ND_ln_half3</key>
+	<string>Natural Log (vector3h)</string>
+	<key>ND_splittb_half2</key>
+	<string>Split Vertical (vector2h)</string>
+	<key>ND_modulo_color4FA</key>
+	<string>Modulo (color4f % float)</string>
+	<key>ND_realitykit_reflect_vector3</key>
+	<string>Reflect (RealityKit)</string>
+	<key>ND_constant_color3.menuDescriptionShort</key>
+	<string>A constant Color3 (Float) value.</string>
+	<key>Shader.ND_ifgreater_floatI.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_subtract_vector4</key>
+	<string>Subtract (vector4f)</string>
+	<key>Shader.ND_separate3_vector3.outputs:outz</key>
+	<string>z</string>
+	<key>ND_remap_float</key>
+	<string>Remap (float)</string>
+	<key>Shader.ND_ifgreatereq_vector3I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_constant_matrix33.menuDescriptionShort</key>
+	<string>A constant Matrix3x3 (Float) value. (Row-major order.)</string>
+	<key>ND_power_vector2FA</key>
+	<string>Power (vector2f FA)</string>
+	<key>ND_difference_half</key>
+	<string>Difference (half)</string>
+	<key>fStop</key>
+	<string>f-stop</string>
+	<key>ND_sign_float</key>
+	<string>Sign (float)</string>
+	<key>ND_realitykit_oneminus_vector3</key>
+	<string>One Minus (vector3f)</string>
+	<key>ND_realitykit_geometry_modifier_model_to_world</key>
+	<string>Geometry Modifier Model To World (RealityKit)</string>
+	<key>RealityKitTextureRead.menuDescriptionShort</key>
+	<string>Direct texture read.</string>
+	<key>ND_noise3d_color4</key>
+	<string>Noise 3D (color4f)</string>
+	<key>Cube</key>
+	<string>Cube</string>
+	<key>valuetl</key>
+	<string>Top Left</string>
+	<key>ND_constant_filename</key>
+	<string>Image File</string>
+	<key>Shader.ND_ifgreater_floatI.inputs:in2</key>
+	<string>False Result</string>
+	<key>curvelookup.menuDescriptionShort</key>
+	<string>Outputs a value smoothly interpolated between a number of knotvalue values, using the position of ​the input​ within ​knots​ as the ​knotvalues​ interpolant.</string>
+	<key>ND_bitangent_vector3.menuDescriptionShort</key>
+	<string>The geometric bitangent vector of the currently-processed data in a given coordinate space.</string>
+	<key>Xform</key>
+	<string>Xform</string>
+	<key>ND_realitykit_environment_radiance.menuDescriptionShort</key>
+	<string>Returns an environment&apos;s diffuse and specular radiance value based on real-world environment, and an IBL map that is either a developer-provided map or a default map.</string>
+	<key>ND_realitykit_cameraposition_vector3.menuDescriptionShort</key>
+	<string>The position of the camera in the scene.</string>
+	<key>ND_contrast_color4FA</key>
+	<string>Contrast (color4f FA)</string>
+	<key>ND_determinant_matrix22</key>
+	<string>Determinant (matrix2x2f)</string>
+	<key>ND_ambientocclusion_float</key>
+	<string>Ambient Occlusion (float)</string>
+	<key>ND_realitykit_geometry_modifier_normal</key>
+	<string>Geometry Modifier Normal (RealityKit)</string>
+	<key>ND_remap_half2FA</key>
+	<string>Remap (vector2h FA)</string>
+	<key>ND_exp_half2</key>
+	<string>Exp (vector2h)</string>
+	<key>ND_time_float</key>
+	<string>Time (float)</string>
+	<key>geomcolor.genericNodeGroup</key>
+	<string>Geometry Color</string>
+	<key>ND_RealityKitTextureCube_vector4</key>
+	<string>Cube Image (vector4)</string>
+	<key>ND_realitykit_surface_model_to_view</key>
+	<string>Surface Model To View (RealityKit)</string>
+	<key>ND_subtract_matrix22FA</key>
+	<string>Subtract (matrix2x2f - float)</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_3</key>
+	<string>Surface Custom Attribute 3 (vector4h)</string>
+	<key>ND_power_float</key>
+	<string>Power (float)</string>
+	<key>ND_tiledimage_vector3</key>
+	<string>Tiled Image (vector3f)</string>
+	<key>ND_invert_vector2FA</key>
+	<string>Invert (vector2f FA)</string>
+	<key>ND_range_vector2FA</key>
+	<string>Range (vector2f FA)</string>
+	<key>ND_realitykit_step_vector4</key>
+	<string>Step (vector4f)</string>
+	<key>ND_ifequal_floatB</key>
+	<string>If Equal (float bool)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute_half4_3</key>
+	<string>Geometry Modifier Custom Attribute 3 (vector4h)</string>
+	<key>ND_realitykit_image_color3</key>
+	<string>RealityKit Image (color3f)</string>
+	<key>ND_subtract_vector2FA</key>
+	<string>Subtract (vector2f - float)</string>
+	<key>ND_remap_half3FA</key>
+	<string>Remap (vector3h FA)</string>
+	<key>ND_invert_color3FA</key>
+	<string>Invert (color3f FA)</string>
+	<key>ND_constant_vector3</key>
+	<string>Vector3 (Float)</string>
+	<key>invertmatrix.menuDescriptionShort</key>
+	<string>Outputs the inverse of a matrix.</string>
+	<key>ND_RealityKitTexture2DLOD_vector4</key>
+	<string>Image 2D LOD (vector4)</string>
+	<key>ND_floor_vector2</key>
+	<string>Floor (vector2f)</string>
+	<key>ND_realitykit_surface_geometry_bitangent</key>
+	<string>Surface Bitangent (RealityKit)</string>
+	<key>ND_multiply_color3FA</key>
+	<string>Multiply (color3f * float)</string>
+	<key>ND_ifgreatereq_color4I</key>
+	<string>If Greater Or Equal (color4f integer)</string>
+	<key>clamp.menuDescriptionShort</key>
+	<string>Clamps the input per-channel to a specified range.</string>
+	<key>lumacoeffs</key>
+	<string>Luma Coefficients</string>
+	<key>ND_ifgreatereq_vector4</key>
+	<string>If Greater Or Equal (vector4f)</string>
+	<key>curveadjust.menuDescriptionShort</key>
+	<string>Outputs a smooth remapping of input values using the centripetal Catmull-Rom cubic spline curve defined by specified knot values.</string>
+	<key>Shader.ND_ifequal_vector2B.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_floor_color4</key>
+	<string>Floor (color4f)</string>
+	<key>ND_geompropvalue_string</key>
+	<string>Geometric Property (string)</string>
+	<key>UsdUVTexture.menuDescriptionShort</key>
+	<string>A texture reader.</string>
+	<key>UsdPrimvarReader_vector.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume vector data defined on geometry.</string>
+	<key>convert.genericNodeGroup</key>
+	<string>Convert</string>
+	<key>mtlxLight</key>
+	<string>MaterialX Light</string>
+	<key>ND_blur_half</key>
+	<string>Blur (half)</string>
+	<key>ND_remap_half4FA</key>
+	<string>Remap (vector4h FA)</string>
+	<key>ND_rotate2d_vector2</key>
+	<string>Rotate 2D</string>
+	<key>ND_multiply_vector4</key>
+	<string>Multiply (vector4f)</string>
+	<key>ND_normalize_half2</key>
+	<string>Normalize (vector2h)</string>
+	<key>ND_ramplr_color3</key>
+	<string>Ramp Horizontal (color3f)</string>
+	<key>Shader.ND_separate3_color3.outputs:outg</key>
+	<string>g</string>
+	<key>ND_heighttonormal_vector3.menuDescriptionShort</key>
+	<string>Converts a scalar height map to a normal map.</string>
+	<key>ND_constant_vector3.menuDescriptionShort</key>
+	<string>A constant Vector3 (Float) value.</string>
+	<key>ND_divide_color4FA</key>
+	<string>Divide (color4f / float)</string>
+	<key>color3h</key>
+	<string>RGB Color (Half)</string>
+	<key>ND_add_color4FA</key>
+	<string>Add (color4f + float)</string>
+	<key>screen.genericNodeGroup</key>
+	<string>Screen</string>
+	<key>ND_arrayappend_floatarray_floatarray</key>
+	<string>Array Append (Float Array + Float Array)</string>
+	<key>ND_ifgreatereq_vector3I</key>
+	<string>If Greater Or Equal (vector3f integer)</string>
+	<key>ND_ramplr_vector3</key>
+	<string>Ramp Horizontal (vector3f)</string>
+	<key>combine4.menuDescriptionShort</key>
+	<string>Combines the channels from four streams into four channels of a single output stream of a compatible type.</string>
+	<key>Shader.ND_ifequal_vector2B.inputs:in2</key>
+	<string>False Result</string>
+	<key>smoothstep.menuDescriptionShort</key>
+	<string>Outputs a smooth remapping from low-high to 0-1.</string>
+	<key>worleynoise2d.menuDescriptionShort</key>
+	<string>A 2D Worley noise generator.</string>
+	<key>ND_dot_volumeshader</key>
+	<string>Dot (Volume Shader)</string>
+	<key>saturate.genericNodeGroup</key>
+	<string>Saturate</string>
+	<key>ND_RealityKitTexture2DPixel_color3</key>
+	<string>Image 2D Pixel (color3)</string>
+	<key>ND_ifgreater_vector4</key>
+	<string>If Greater (vector4f)</string>
+	<key>RealityKitTexture2DPixelGradient.genericNodeGroup</key>
+	<string>Image 2D Gradient Pixel (RealityKit)</string>
+	<key>ND_RealityKitTexture2DPixel_color4</key>
+	<string>Image 2D Pixel (color4)</string>
+	<key>ND_ramplr_half</key>
+	<string>Ramp Horizontal (half)</string>
+	<key>ND_realitykit_logical_or.menuDescriptionShort</key>
+	<string>Boolean operation in1 || in2.</string>
+	<key>ND_realitykit_surface_metallic</key>
+	<string>Surface Metallic (RealityKit)</string>
+	<key>ND_realitykit_oneminus_float</key>
+	<string>One Minus (float)</string>
+	<key>ND_remap_half3</key>
+	<string>Remap (vector3h)</string>
+	<key>ND_smoothstep_color4</key>
+	<string>Smooth Step (color4f)</string>
+	<key>ND_UsdPrimvarReader_vector4</key>
+	<string>Primvar Reader (vector4f)</string>
+	<key>ND_tan_half2</key>
+	<string>Tan (vector2h)</string>
+	<key>ND_max_color3</key>
+	<string>Max (color3f)</string>
+	<key>ND_RealityKitTextureCubeGradient_color4</key>
+	<string>Cube Image Gradient (color4)</string>
+	<key>rgbtohsv.genericNodeGroup</key>
+	<string>RGB to HSV</string>
+	<key>ND_realitykit_geometry_modifier_position</key>
+	<string>Geometry Modifier Position (RealityKit)</string>
+	<key>ND_blur_float</key>
+	<string>Blur (float)</string>
+	<key>ND_multiply_vector3FA</key>
+	<string>Multiply (vector3f * float)</string>
+	<key>determinant.menuDescriptionShort</key>
+	<string>Outputs the float determinant of a matrix.</string>
+	<key>Material.outputs:surface</key>
+	<string>USD Preview Surface</string>
+	<key>timecode</key>
+	<string>Timecode</string>
+	<key>ND_clamp_vector3FA</key>
+	<string>Clamp (vector3f FA)</string>
+	<key>ND_convert_boolean_float</key>
+	<string>Convert (bool float)</string>
+	<key>ND_switch_float</key>
+	<string>Switch (float)</string>
+	<key>ND_divide_vector2FA</key>
+	<string>Divide (vector2f / float)</string>
+	<key>sqrt.genericNodeGroup</key>
+	<string>Square Root</string>
+	<key>point3h</key>
+	<string>3D Point (Half)</string>
+	<key>ND_min_half3FA</key>
+	<string>Min (vector3h FA)</string>
+	<key>Shader.ND_ifgreatereq_color4I.inputs:in1</key>
+	<string>True Result</string>
+	<key>atan2.genericNodeGroup</key>
+	<string>Atan2</string>
+	<key>transpose.genericNodeGroup</key>
+	<string>Transpose</string>
+	<key>Shader.ND_separate4_vector4.outputs:outx</key>
+	<string>x</string>
+	<key>ND_constant_color3</key>
+	<string>Color3 (Float)</string>
+	<key>ND_constant_integer2</key>
+	<string>Integer2</string>
+	<key>ND_realitykit_surface_roughness</key>
+	<string>Surface Roughness (RealityKit)</string>
+	<key>ND_safepower_color3</key>
+	<string>Safe Power (color3f)</string>
+	<key>ND_ifgreater_color3</key>
+	<string>If Greater (color3f)</string>
+	<key>bg</key>
+	<string>Background</string>
+	<key>ND_dot_color3</key>
+	<string>Dot (color3f)</string>
+	<key>ND_texcoord_vector2</key>
+	<string>Texture Coordinates (vector2f)</string>
+	<key>ND_UsdUVTexture</key>
+	<string>UV Texture</string>
+	<key>ND_rgbtohsv_color3</key>
+	<string>RGB to HSV (color3f)</string>
+	<key>adjustment</key>
+	<string>Adjustment</string>
+	<key>UsdPrimvarReader_float.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float data defined on geometry.</string>
+	<key>ND_dot_boolean</key>
+	<string>Dot (bool)</string>
+	<key>arrayappend.genericNodeGroup</key>
+	<string>Array Append</string>
+	<key>Shader.UsdUVTexture.outputs:a</key>
+	<string>Alpha</string>
+	<key>worleynoise3d.genericNodeGroup</key>
+	<string>Worley Noise 3D</string>
+	<key>ND_constant_vector4</key>
+	<string>Vector4 (Float)</string>
+	<key>ND_max_half4</key>
+	<string>Max (vector4h)</string>
+	<key>ND_position_vector3</key>
+	<string>Position</string>
+	<key>ND_extract_color4</key>
+	<string>Extract (color4f)</string>
+	<key>ND_ifgreatereq_half2I</key>
+	<string>If Greater Or Equal (vector2h integer)</string>
+	<key>ND_burn_color4</key>
+	<string>Burn (color4f)</string>
+	<key>ND_convert_half2_vector2</key>
+	<string>Convert (vector2h vector2f)</string>
+	<key>ND_switch_vector4I</key>
+	<string>Switch (vector4f integer)</string>
+	<key>ND_volumematerial.menuDescriptionShort</key>
+	<string>A Volume material.</string>
+	<key>ND_tan_vector3</key>
+	<string>Tan (vector3f)</string>
+	<key>multiply.menuDescriptionShort</key>
+	<string>Multiplies two values.</string>
+	<key>ND_invert_vector2</key>
+	<string>Invert (vector2f)</string>
+	<key>ND_remap_vector4FA</key>
+	<string>Remap (vector4f FA)</string>
+	<key>ND_swizzle_half_half3</key>
+	<string>Swizzle (half vector3h)</string>
+	<key>ND_modulo_vector3FA</key>
+	<string>Modulo (vector3f % float)</string>
+	<key>asset</key>
+	<string>Asset Path</string>
+	<key>ND_max_half</key>
+	<string>Max (half)</string>
+	<key>Shader.ND_UsdUVTexture.outputs:rgb</key>
+	<string>RGB</string>
+	<key>ND_invert_color3</key>
+	<string>Invert (color3f)</string>
+	<key>ND_clamp_float</key>
+	<string>Clamp (float)</string>
+	<key>ND_realitykit_geometry_modifier_normal_to_world.menuDescriptionShort</key>
+	<string>The normal-to-world transformation Matrix3x3 (Float).</string>
+	<key>hsvtorgb.genericNodeGroup</key>
+	<string>HSV to RGB</string>
+	<key>procedural2d</key>
+	<string>2D Procedural</string>
+	<key>ND_normalize_half4</key>
+	<string>Normalize (vector4h)</string>
+	<key>ND_realitykit_image_gradient2d_vector2</key>
+	<string>Gradient Image (vector2f)</string>
+	<key>RealityKitTexture2DGradient.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties. Level of detail gradient.</string>
+	<key>ND_ifgreater_vector4I</key>
+	<string>If Greater (vector4f integer)</string>
+	<key>uvtiling</key>
+	<string>UV Tiling</string>
+	<key>ND_add_matrix33</key>
+	<string>Add (matrix3x3f)</string>
+	<key>ND_UsdPrimvarReader_vector2.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float2 data defined on geometry.</string>
+	<key>NodeGraph.menuDescriptionShort</key>
+	<string>A node that can contain shading nodes and other node graphs.</string>
+	<key>UsdPrimvarReader_string</key>
+	<string>USD Primvar Reader (String)</string>
+	<key>ND_divide_half</key>
+	<string>Divide (half)</string>
+	<key>ND_round_half</key>
+	<string>Round (half)</string>
+	<key>ND_acos_float</key>
+	<string>Acos (float)</string>
+	<key>dotproduct.menuDescriptionShort</key>
+	<string>Outputs the dot product of two vectors.
+(in1.x * in2.x) + (in1.y * in2.y)</string>
+	<key>outhigh</key>
+	<string>Out High</string>
+	<key>ND_convert_float_integer</key>
+	<string>Convert (float integer)</string>
+	<key>ND_splittb_vector3</key>
+	<string>Split Vertical (vector3f)</string>
+	<key>uint</key>
+	<string>UInt</string>
+	<key>ND_noise3d_vector2FA</key>
+	<string>Noise 3D (vector2f FA)</string>
+	<key>occlusion</key>
+	<string>Ambient Occlusion</string>
+	<key>ND_multiply_displacementshaderV</key>
+	<string>Multiply (Displacement Shader V)</string>
+	<key>ND_range_vector3</key>
+	<string>Range (vector3f)</string>
+	<key>Shader.ND_separate4_color4.outputs:outr</key>
+	<string>r</string>
+	<key>ND_remap_color3FA</key>
+	<string>Remap (color3f FA)</string>
+	<key>fractal3d.menuDescriptionShort</key>
+	<string>Zero-centered 3D fractal noise created by summing several octaves of 3D Perlin noise.</string>
+	<key>normalize.genericNodeGroup</key>
+	<string>Normalize</string>
+	<key>inside.menuDescriptionShort</key>
+	<string>Multiplies a mask to all channels of the input.</string>
+	<key>ND_dot_surfaceshader</key>
+	<string>Dot (Surface Shader)</string>
+	<key>step.genericNodeGroup</key>
+	<string>Step (RealityKit)</string>
+	<key>transformmatrix.genericNodeGroup</key>
+	<string>Transform Matrix</string>
+	<key>ND_swizzle_color3_color4</key>
+	<string>Swizzle (color3f color4f)</string>
+	<key>Shader.ND_ifequal_vector4I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_RealityKitTexture2D_color3</key>
+	<string>Image 2D (color3)</string>
+	<key>ND_subtract_matrix33</key>
+	<string>Subtract (matrix3x3f)</string>
+	<key>ND_blur_color4</key>
+	<string>Blur (color4f)</string>
+	<key>ifequal.genericNodeGroup</key>
+	<string>If Equal</string>
+	<key>ramplr.genericNodeGroup</key>
+	<string>Ramp Horizontal</string>
+	<key>vector2</key>
+	<string>2D Vector</string>
+	<key>ND_max_vector3</key>
+	<string>Max (vector3f)</string>
+	<key>ND_sqrt_half4</key>
+	<string>Square Root (vector4h)</string>
+	<key>ND_cos_vector3</key>
+	<string>Cos (vector3f)</string>
+	<key>ND_transformvector_vector3.menuDescriptionShort</key>
+	<string>Transforms a vector3 from one space to another.</string>
+	<key>ND_over_color4</key>
+	<string>Over</string>
+	<key>ND_convert_half_integer</key>
+	<string>Convert (half integer)</string>
+	<key>ND_atan2_half4</key>
+	<string>Atan2 (vector4h)</string>
+	<key>ND_safepower_color4</key>
+	<string>Safe Power (color4f)</string>
+	<key>ND_surfacematerial.menuDescriptionShort</key>
+	<string>A Surface material.</string>
+	<key>ND_triplanarprojection_vector4</key>
+	<string>Triplanar Projection (vector4f)</string>
+	<key>ND_ifgreater_color4</key>
+	<string>If Greater (color4f)</string>
+	<key>ND_ramptb_half4</key>
+	<string>Ramp Vertical (vector4h)</string>
+	<key>RealityKitTextureCubeGradient.menuDescriptionShort</key>
+	<string>A texturecube with RealityKit properties. Level of detail gradient.</string>
+	<key>Shader.ND_ifequal_vector4I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_texcoord_vector3</key>
+	<string>Texture Coordinates (vector3f)</string>
+	<key>Shader.ND_ifgreater_vector3.inputs:in1</key>
+	<string>True Result</string>
+	<key>Shader.ND_ifgreatereq_color3.inputs:in1</key>
+	<string>True Result</string>
+	<key>image.menuDescriptionShort</key>
+	<string>A texture referencing a 2D image file.</string>
+	<key>valuebl</key>
+	<string>Bottom Left</string>
+	<key>ND_divide_matrix44</key>
+	<string>Divide (matrix4x4f)</string>
+	<key>Shader.ND_ifgreatereq_floatI.inputs:in1</key>
+	<string>True Result</string>
+	<key>hsvadjust.menuDescriptionShort</key>
+	<string>Adjusts the hue, saturation and value of an RGB color by a vector &lt;amount&gt;.</string>
+	<key>splittb.genericNodeGroup</key>
+	<string>Split Vertical</string>
+	<key>ND_cos_half3</key>
+	<string>Cos (vector3h)</string>
+	<key>ND_inside_half</key>
+	<string>Inside (half)</string>
+	<key>acos.menuDescriptionShort</key>
+	<string>The arccosine of the incoming value in radians.</string>
+	<key>ND_matte_color4.menuDescriptionShort</key>
+	<string>A merge operation that layers premultiplied foreground over background.</string>
+	<key>fractional.genericNodeGroup</key>
+	<string>Fractional (RealityKit)</string>
+	<key>overlay.genericNodeGroup</key>
+	<string>Overlay</string>
+	<key>ND_convert_boolean_half</key>
+	<string>Convert (bool half)</string>
+	<key>ND_swizzle_vector3_vector2</key>
+	<string>Swizzle (vector3f vector2f)</string>
+	<key>ND_realitykit_surface_screen_position</key>
+	<string>Surface Screen Position (RealityKit)</string>
+	<key>rgbtohsv.menuDescriptionShort</key>
+	<string>Converts a color from RGB to HSV space.</string>
+	<key>ND_swizzle_vector3_color4</key>
+	<string>Swizzle (vector3f color4f)</string>
+	<key>ND_asin_half4</key>
+	<string>Asin (vector4h)</string>
+	<key>ND_extract_vector3</key>
+	<string>Extract (vector3f)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute_half4_1</key>
+	<string>Geometry Modifier Custom Attribute 1 (vector4h)</string>
+	<key>ND_realitykit_material_parameters_clearcoat_roughness_scale</key>
+	<string>Material Parameter Roughness Scale (RealityKit)</string>
+	<key>ND_dot_vector3</key>
+	<string>Dot (vector3f)</string>
+	<key>Delete</key>
+	<string>Delete</string>
+	<key>texCoord3h</key>
+	<string>3D Texture Coordinate (Half)</string>
+	<key>ND_constant_boolean</key>
+	<string>Boolean</string>
+	<key>ND_plus_color3</key>
+	<string>Additive Mix (color3f)</string>
+	<key>Shader.ND_ifgreatereq_vector3.inputs:in1</key>
+	<string>True Result</string>
+	<key>noise3d.genericNodeGroup</key>
+	<string>Noise 3D</string>
+	<key>ND_plus_half</key>
+	<string>Additive Mix (half)</string>
+	<key>ND_realitykit_geometry_modifier_uv0_transform</key>
+	<string>Geometry Modifier uv0 Transform (RealityKit)</string>
+	<key>ND_realitykit_geometry_modifier_view_to_projection</key>
+	<string>Geometry Modifier View To Projection (RealityKit)</string>
+	<key>dodge.menuDescriptionShort</key>
+	<string>A blend operation that lightens the background layer depending on the foreground.
+B / (1 - F)</string>
+	<key>ND_clamp_half3</key>
+	<string>Clamp (vector3h)</string>
+	<key>Shader.ND_ifgreater_vector3.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_UsdPrimvarReader_float.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float data defined on geometry.</string>
+	<key>ND_power_color4FA</key>
+	<string>Power (color4f FA)</string>
+	<key>ND_min_half2FA</key>
+	<string>Min (vector2h FA)</string>
+	<key>GraphEditorStateNodeError.invalidNode.title</key>
+	<string>Unsupported node</string>
+	<key>ramp4.genericNodeGroup</key>
+	<string>Ramp 4 Corners</string>
+	<key>sqrt.menuDescriptionShort</key>
+	<string>The square root of the incoming value.</string>
+	<key>ND_determinant_matrix33</key>
+	<string>Determinant (matrix3x3f)</string>
+	<key>ND_normal_map_decode</key>
+	<string>Normal Map Decode</string>
+	<key>ND_safepower_half</key>
+	<string>Safe Power (half)</string>
+	<key>ND_ifequal_half2</key>
+	<string>If Equal (vector2h)</string>
+	<key>Sphere</key>
+	<string>Sphere</string>
+	<key>vector3f</key>
+	<string>3D Vector (Float)</string>
+	<key>ND_multiply_vector2FA</key>
+	<string>Multiply (vector2f * float)</string>
+	<key>ND_overlay_color3</key>
+	<string>Overlay (color3f)</string>
+	<key>Shader.ND_ifgreatereq_float.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_constant_half2</key>
+	<string>Vector2 (Half)</string>
+	<key>ND_ifequal_color4</key>
+	<string>If Equal (color4f)</string>
+	<key>ND_convert_float_vector4</key>
+	<string>Convert (float vector4f)</string>
+	<key>ND_ramplr_half4</key>
+	<string>Ramp Horizontal (vector4h)</string>
+	<key>ND_fractal3d_vector2</key>
+	<string>Fractal Noise 3D (vector2f)</string>
+	<key>ND_realitykit_combine3_half3</key>
+	<string>Combine 3 (vector3h)</string>
+	<key>ND_realitykit_surface_projection_to_view</key>
+	<string>Surface Projection To View (RealityKit)</string>
+	<key>ND_inside_float</key>
+	<string>Inside (float)</string>
+	<key>ND_sin_half3</key>
+	<string>Sin (vector3h)</string>
+	<key>cos.menuDescriptionShort</key>
+	<string>The cosine of the incoming value in radians.</string>
+	<key>extract.genericNodeGroup</key>
+	<string>Extract</string>
+	<key>subtract.genericNodeGroup</key>
+	<string>Subtract</string>
+	<key>ND_dodge_color3</key>
+	<string>Dodge (color3f)</string>
+	<key>texCoord2h</key>
+	<string>2D Texture Cordinate (Half)</string>
+	<key>ND_realitykit_image_gradient2d_color3</key>
+	<string>Gradient Image (color3f)</string>
+	<key>ND_ifgreater_float</key>
+	<string>If Greater (float)</string>
+	<key>ND_matte_color4</key>
+	<string>Matte</string>
+	<key>ND_max_half2</key>
+	<string>Max (vector2h)</string>
+	<key>ND_range_color3FA</key>
+	<string>Range (color3f FA)</string>
+	<key>ND_realitykit_geometry_modifier_vertex_id.menuDescriptionShort</key>
+	<string>The integer index of the vertex.</string>
+	<key>ND_UsdUVTexture.menuDescriptionShort</key>
+	<string>A MaterialX version of USD UV Texture reader.</string>
+	<key>ND_cellnoise2d_float</key>
+	<string>Cellular Noise 2D</string>
+	<key>vector3</key>
+	<string>3D Vector</string>
+	<key>Shader.ND_ifgreatereq_color4I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_constant_integer3</key>
+	<string>Integer3</string>
+	<key>ND_ifequal_half2B</key>
+	<string>If Equal (vector3h bool)</string>
+	<key>ND_mix_displacementshader</key>
+	<string>Mix (Displacement Shader)</string>
+	<key>ND_ramp4_vector4</key>
+	<string>Ramp 4 Corners (vector4f)</string>
+	<key>ND_realitykit_surface_custom_attribute.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector4 (Float) data that’s from the geometry modifier.</string>
+	<key>Shader.ND_separate4_vector4.outputs:outy</key>
+	<string>y</string>
+	<key>Shader.ND_ifgreatereq_color3.inputs:in2</key>
+	<string>False Result</string>
+	<key>half2</key>
+	<string>2D Half</string>
+	<key>smoothstep.genericNodeGroup</key>
+	<string>Smooth Step</string>
+	<key>ND_realitykit_material_parameters_opacity_threshold</key>
+	<string>Material Parameter Opacity Threshold (RealityKit)</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMembershipsInSubgraphs.title</key>
+	<string>Incompatible node connection in subgraphs</string>
+	<key>ND_ifequal_vector3B</key>
+	<string>If Equal (vector3f bool)</string>
+	<key>ND_realitykit_image_gradient2d_color4</key>
+	<string>Gradient Image (color4f)</string>
+	<key>Shader.ND_ifgreatereq_vector2I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_realitykit_surface_custom_attribute_half2_1.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector2 (Half) data that’s from the geometry modifier.</string>
+	<key>Shader.ND_ifgreatereq_floatI.inputs:in2</key>
+	<string>False Result</string>
+	<key>compositing</key>
+	<string>Compositing</string>
+	<key>ND_transpose_matrix44</key>
+	<string>Transpose (matrix4x4f)</string>
+	<key>ND_realitykit_geometry_modifier_uv1_transform</key>
+	<string>Geometry Modifier uv1 Transform (RealityKit)</string>
+	<key>ND_constant_matrix44</key>
+	<string>Matrix4x4 (Float)</string>
+	<key>Shader.ND_ifgreatereq_float.inputs:in2</key>
+	<string>False Result</string>
+	<key>Shader.ND_ifgreatereq_vector4I.inputs:in2</key>
+	<string>False Result</string>
+	<key>exp.genericNodeGroup</key>
+	<string>Exp</string>
+	<key>half3</key>
+	<string>3D Half</string>
+	<key>ND_convert_half3_color3</key>
+	<string>Convert (vector3h color3f)</string>
+	<key>ND_invert_vector3FA</key>
+	<string>Invert (vector3f FA)</string>
+	<key>ND_blur_vector4</key>
+	<string>Blur (vector4f)</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_2</key>
+	<string>Surface Custom Attribute 2 (vector4h)</string>
+	<key>ND_convert_vector4_vector3</key>
+	<string>Convert (vector4f vector3f)</string>
+	<key>inlow</key>
+	<string>In Low</string>
+	<key>ND_minus_color4</key>
+	<string>Subtractive Mix (color4f)</string>
+	<key>ND_minus_half</key>
+	<string>Subtractive Mix (half)</string>
+	<key>ND_divide_matrix33</key>
+	<string>Divide (matrix3x3f)</string>
+	<key>ND_exp_vector4</key>
+	<string>Exp (vector4f)</string>
+	<key>ND_round_vector3</key>
+	<string>Round (vector3f)</string>
+	<key>ND_swizzle_vector4_vector4</key>
+	<string>Swizzle (vector4f vector4f)</string>
+	<key>ND_divide_vector3</key>
+	<string>Divide (vector3f)</string>
+	<key>ND_safepower_vector4FA</key>
+	<string>Safe Power (vector4f FA)</string>
+	<key>ND_tiledimage_color3</key>
+	<string>Tiled Image (color3f)</string>
+	<key>sign.genericNodeGroup</key>
+	<string>Sign</string>
+	<key>half4</key>
+	<string>4D Half</string>
+	<key>ND_mix_surfaceshader</key>
+	<string>Mix (Surface Shader)</string>
+	<key>ND_ramptb_color3</key>
+	<string>Ramp Vertical (color3f)</string>
+	<key>ND_swizzle_color4_color4</key>
+	<string>Swizzle (color4f color4f)</string>
+	<key>ND_multiply_color3</key>
+	<string>Multiply (color3f)</string>
+	<key>ND_sqrt_half3</key>
+	<string>Square Root (vector3h)</string>
+	<key>Shader.ND_ifgreatereq_vector3I.inputs:in2</key>
+	<string>False Result</string>
+	<key>Shader.ND_ifgreater_color3.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_realitykit_surface_projection_to_view.menuDescriptionShort</key>
+	<string>The projection-to-view transformation Matrix4x4 (Float).</string>
+	<key>ND_ifgreater_half3</key>
+	<string>If Greater (vector3h)</string>
+	<key>ND_fractal3d_vector3FA</key>
+	<string>Fractal Noise 3D (vector3f FA)</string>
+	<key>ND_noise2d_vector2FA</key>
+	<string>Noise 2D (vector2f FA)</string>
+	<key>Shader.ND_ifgreater_float.inputs:in1</key>
+	<string>True Result</string>
+	<key>floor.menuDescriptionShort</key>
+	<string>Outputs the nearest integer value, per-channel, less than or equal to the incoming values.</string>
+	<key>ND_plus_float</key>
+	<string>Additive Mix (float)</string>
+	<key>ND_realitykit_surface_geometry_normal</key>
+	<string>Surface Normal (RealityKit)</string>
+	<key>ND_UsdPrimvarReader_vector4.menuDescriptionShort</key>
+	<string>A node that provides the ability for shading networks to consume float4 data defined on geometry.</string>
+	<key>fractional.menuDescriptionShort</key>
+	<string>Returns the fractional part of a floating point number.</string>
+	<key>Shader.ND_ifgreater_float.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_3.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector4 (Half) data that’s from the geometry modifier.</string>
+	<key>ND_realitykit_surface_tangent_space_normal</key>
+	<string>Surface Tangent Space Normal (RealityKit)</string>
+	<key>ND_worleynoise2d_vector2</key>
+	<string>Worley Noise 2D (vector2f)</string>
+	<key>ND_UsdPrimvarReader_integer</key>
+	<string>Primvar Reader (integer)</string>
+	<key>ND_switch_color4</key>
+	<string>Switch (color4f)</string>
+	<key>Shader.ND_ifgreater_color3.inputs:in2</key>
+	<string>False Result</string>
+	<key>vector4</key>
+	<string>4D Vector</string>
+	<key>GraphEditorStateConnectionError.incompatibleNodeMemberships.title</key>
+	<string>Incompatible node connection</string>
+	<key>ND_splitlr_color3</key>
+	<string>Split Horizontal (color3f)</string>
+	<key>asin.genericNodeGroup</key>
+	<string>Asin</string>
+	<key>ND_asin_half3</key>
+	<string>Asin (vector3h)</string>
+	<key>ND_combine2_vector4VV</key>
+	<string>Combine 2 (vector4f VV)</string>
+	<key>ND_tiledimage_vector4</key>
+	<string>Tiled Image (vector4f)</string>
+	<key>ND_out_color4.menuDescriptionShort</key>
+	<string>Outputs areas of foreground that do not overlap with background.</string>
+	<key>ND_crossproduct_half3</key>
+	<string>Cross Product (half)</string>
+	<key>ND_realitykit_surface_world_to_view.menuDescriptionShort</key>
+	<string>The world-to-view transformation Matrix4x4 (Float).</string>
+	<key>ND_remap_half2</key>
+	<string>Remap (vector2h)</string>
+	<key>ND_combine2_color4CF</key>
+	<string>Combine 2 (color4f CF)</string>
+	<key>ND_geompropvalue_color3</key>
+	<string>Geometric Property (color3f)</string>
+	<key>ND_realitykit_material_parameters_roughness_scale</key>
+	<string>Material Parameter Roughness Scale (RealityKit)</string>
+	<key>ND_ceil_half</key>
+	<string>Ceiling (half)</string>
+	<key>ND_fractal3d_color4FA</key>
+	<string>Fractal Noise 3D (color4f FA)</string>
+	<key>mtlxVolume</key>
+	<string>MaterialX Volume</string>
+	<key>ND_ceil_vector2</key>
+	<string>Ceiling (vector2f)</string>
+	<key>power.menuDescriptionShort</key>
+	<string>Raises the incoming value to an exponent.</string>
+	<key>ND_swizzle_color3_vector4</key>
+	<string>Swizzle (color3f vector4f)</string>
+	<key>matrix22</key>
+	<string>2x2 Matrix</string>
+	<key>ND_divide_vector3FA</key>
+	<string>Divide (vector3f / float)</string>
+	<key>ND_magnitude_half3</key>
+	<string>Magnitude (vector3h)</string>
+	<key>ND_constant_filename.menuDescriptionShort</key>
+	<string>A constant path refering to an arbitrary image file on disk.</string>
+	<key>ND_realitykit_oneminus_vector2</key>
+	<string>One Minus (vector2f)</string>
+	<key>ND_ifequal_vector4I</key>
+	<string>If Equal (vector4f integer)</string>
+	<key>ND_atan2_float</key>
+	<string>Atan2 (float)</string>
+	<key>ND_bitangent_vector3</key>
+	<string>Bitangent</string>
+	<key>ND_dot_filename</key>
+	<string>Dot (imageFile)</string>
+	<key>ND_min_float</key>
+	<string>Min (float)</string>
+	<key>Cone</key>
+	<string>Cone</string>
+	<key>ND_mix_float</key>
+	<string>Mix (float)</string>
+	<key>ND_swizzle_vector2_half</key>
+	<string>Swizzle (vector2f half)</string>
+	<key>RealityKitTexture2DLOD.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties. Explicit level of detail.</string>
+	<key>ND_separate4_color4</key>
+	<string>Separate 4 (color4f)</string>
+	<key>ND_sin_half</key>
+	<string>Sin (half)</string>
+	<key>ND_geompropvalue_vector3</key>
+	<string>Geometric Property (vector3f)</string>
+	<key>ND_atan2_vector3</key>
+	<string>Atan2 (vector3f)</string>
+	<key>ND_hsvadjust_color3</key>
+	<string>HSV Adjust (color3f)</string>
+	<key>ND_smoothstep_vector4FA</key>
+	<string>Smooth Step (vector4f FA)</string>
+	<key>Shader.ND_ifgreatereq_vector3.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_hsvtorgb_color3</key>
+	<string>HSV to RGB (color3f)</string>
+	<key>separate4.genericNodeGroup</key>
+	<string>Separate 4</string>
+	<key>ND_constant_matrix22</key>
+	<string>Matrix2x2 (Float)</string>
+	<key>ND_realitykit_step_vector3</key>
+	<string>Step (vector3f)</string>
+	<key>ND_sign_vector4</key>
+	<string>Sign (vector4f)</string>
+	<key>ND_smoothstep_half</key>
+	<string>Smooth Step (half)</string>
+	<key>ND_swizzle_vector3_color3</key>
+	<string>Swizzle (vector3f color3f)</string>
+	<key>ND_subtract_matrix33FA</key>
+	<string>Subtract (matrix3x3f - float)</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_float</key>
+	<string>Camera Index Switch (float)</string>
+	<key>ND_realitykit_material_parameters_metallic_scale</key>
+	<string>Material Parameter Metallic Scale (RealityKit)</string>
+	<key>Shader.ND_ifequal_color4B.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_realitykit_step_float</key>
+	<string>Step (float)</string>
+	<key>Shader.ND_ifgreater_vector2.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_unpremult_color4</key>
+	<string>Unpremultiply</string>
+	<key>ND_floor_float</key>
+	<string>Floor (float)</string>
+	<key>ND_burn_color3</key>
+	<string>Burn (color3f)</string>
+	<key>ND_modulo_vector4FA</key>
+	<string>Modulo (vector4f % float)</string>
+	<key>ND_tan_vector2</key>
+	<string>Tan (vector2f)</string>
+	<key>Shader.ND_ifequal_color4B.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_inside_color4</key>
+	<string>Inside (color4f)</string>
+	<key>ND_multiply_volumeshaderF</key>
+	<string>Multiply (Volume Shader F)</string>
+	<key>ND_add_volumeshader</key>
+	<string>Add (Volume Shader)</string>
+	<key>ND_realitykit_geometry_modifier_custom_attribute</key>
+	<string>Geometry Modifier Custom Attribute (RealityKit)</string>
+	<key>UsdPrimvarReader_float4</key>
+	<string>USD Primvar Reader (Float4)</string>
+	<key>outside.menuDescriptionShort</key>
+	<string>Multiplies (1 - mask) to all channels of the input.</string>
+	<key>ND_power_color3</key>
+	<string>Power (color3f)</string>
+	<key>ND_dot_displacementshader</key>
+	<string>Dot (Displacement Shader)</string>
+	<key>ND_fractal3d_vector3</key>
+	<string>Fractal Noise 3D (vector3f)</string>
+	<key>Clean Up</key>
+	<string>Clean Up</string>
+	<key>ND_realitykit_material_parameters_base_color_tint</key>
+	<string>Material Parameter Base Color Tint (RealityKit)</string>
+	<key>ND_ifequal_color3B</key>
+	<string>If Equal (color3f bool)</string>
+	<key>ND_ifequal_halfB</key>
+	<string>If Equal (half bool)</string>
+	<key>RealityKitTexture2DPixel.menuDescriptionShort</key>
+	<string>A texture with RealityKit properties. Adjustable level of detail. Pixel texture coordinates.</string>
+	<key>geometric</key>
+	<string>Geometric</string>
+	<key>ND_ifequal_half3I</key>
+	<string>If Equal (vector3h integer)</string>
+	<key>combine3.menuDescriptionShort</key>
+	<string>Combines the channels from three streams into three channels of a single output stream of a compatible type.</string>
+	<key>ND_divide_matrix22</key>
+	<string>Divide (matrix2x2f)</string>
+	<key>ND_arrayappend_vector4_vector4array</key>
+	<string>Array Append (4D Vector + 4D Vector Array)</string>
+	<key>ND_splitlr_vector3</key>
+	<string>Split Horizontal (vector3f)</string>
+	<key>ND_convert_float_vector2</key>
+	<string>Convert (float vector2f)</string>
+	<key>ND_noise3d_color3FA</key>
+	<string>Noise 3D (color3f FA)</string>
+	<key>ND_arrayappend_color3_color3array</key>
+	<string>Array Append (RGB + RGB Array)</string>
+	<key>ND_RealityKitTexture2DPixelGradient_vector4</key>
+	<string>Image 2D Gradient Pixel (vector4)</string>
+	<key>ND_curveadjust_vector3</key>
+	<string>Curve Adjust (vector3f)</string>
+	<key>ND_noise3d_color3</key>
+	<string>Noise 3D (color3f)</string>
+	<key>ND_constant_integer4</key>
+	<string>Integer4</string>
+	<key>ND_switch_vector2I</key>
+	<string>Switch (vector2f integer)</string>
+	<key>ND_transformmatrix_vector3M4</key>
+	<string>Transform Matrix (vector3f matrix4x4f)</string>
+	<key>ND_separate3_integer3</key>
+	<string>Separate 3</string>
+	<key>Shader.ND_separate4_vector4.outputs:outz</key>
+	<string>z</string>
+	<key>ND_constant_vector2.menuDescriptionShort</key>
+	<string>A constant Vector2 (Float) value.</string>
+	<key>ND_realitykit_geometry_modifier_model_to_view</key>
+	<string>Geometry Modifier Model To View (RealityKit)</string>
+	<key>ND_realitykit_pbr_surfaceshader.menuDescriptionShort</key>
+	<string>A surface shader that defines properties for a RealityKit Physically Based Rendering material.</string>
+	<key>ND_sqrt_vector2</key>
+	<string>Square Root (vector2f)</string>
+	<key>Shader.ND_UsdUVTexture.outputs:a</key>
+	<string>Alpha</string>
+	<key>Shader.ND_ifgreater_vector2.inputs:in2</key>
+	<string>False Result</string>
+	<key>Shader.ND_UsdUVTexture.outputs:b</key>
+	<string>Blue</string>
+	<key>int2</key>
+	<string>2D Int</string>
+	<key>ND_ln_vector4</key>
+	<string>Natural Log (vector4f)</string>
+	<key>ND_smoothstep_vector3FA</key>
+	<string>Smooth Step (vector3f FA)</string>
+	<key>ND_clamp_vector3</key>
+	<string>Clamp (vector3f)</string>
+	<key>Shader.ND_ifequal_vector4.inputs:in1</key>
+	<string>True Result</string>
+	<key>dot.menuDescriptionShort</key>
+	<string>A pass-through node used for visually routing edges in the graph.</string>
+	<key>Shader.ND_UsdUVTexture.outputs:g</key>
+	<string>Green</string>
+	<key>texture2d</key>
+	<string>2D Texture</string>
+	<key>ND_constant_matrix44.menuDescriptionShort</key>
+	<string>A constant Matrix4x4 (Float) value. (Row-major order.)</string>
+	<key>Shader</key>
+	<string>Shader</string>
+	<key>ND_blur_color3</key>
+	<string>Blur (color3f)</string>
+	<key>int3</key>
+	<string>3D Int</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_color3</key>
+	<string>Camera Index Switch (color3f)</string>
+	<key>ND_convert_vector2_vector3</key>
+	<string>Convert (vector2f vector3f)</string>
+	<key>ND_realitykit_surface_custom_parameter</key>
+	<string>Surface Custom Parameter (RealityKit)</string>
+	<key>Shader.ND_ifequal_vector4.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_max_vector2</key>
+	<string>Max (vector2f)</string>
+	<key>ND_realitykit_oneminus_color4</key>
+	<string>One Minus (color4f)</string>
+	<key>ND_sqrt_half2</key>
+	<string>Square Root (vector2h)</string>
+	<key>ND_cos_vector2</key>
+	<string>Cos (vector2f)</string>
+	<key>ND_swizzle_half_half4</key>
+	<string>Swizzle (half vector4h)</string>
+	<key>ND_mask_color4</key>
+	<string>Mask</string>
+	<key>remap.menuDescriptionShort</key>
+	<string>Linearly remaps incoming values from one range to another.</string>
+	<key>ND_ln_half2</key>
+	<string>Natural Log (vector2h)</string>
+	<key>ND_swizzle_vector2_vector4</key>
+	<string>Swizzle (vector2f vector4f)</string>
+	<key>ND_tiledimage_half</key>
+	<string>Tiled Image (half)</string>
+	<key>Shader.ND_UsdUVTexture.outputs:r</key>
+	<string>Red</string>
+	<key>ND_transformmatrix_vector4</key>
+	<string>Transform Matrix (vector4f)</string>
+	<key>ND_atan2_half3</key>
+	<string>Atan2 (vector3h)</string>
+	<key>ND_determinant_matrix44</key>
+	<string>Determinant (matrix4x4f)</string>
+	<key>ND_hsvadjust_color4</key>
+	<string>HSV Adjust (color4f)</string>
+	<key>contrast.menuDescriptionShort</key>
+	<string>Increases or decreases contrast of values using a linear slope multiplier.</string>
+	<key>ND_convert_half3_vector3</key>
+	<string>Convert (vector3h vector3f)</string>
+	<key>difference.menuDescriptionShort</key>
+	<string>Outputs the distance between foreground and background values.
+abs(B - F)</string>
+	<key>int4</key>
+	<string>4D Int</string>
+	<key>ND_volumematerial</key>
+	<string>Volume Material</string>
+	<key>ND_realitykit_geometry_modifier_projection_to_view.menuDescriptionShort</key>
+	<string>The projection-to-view transformation Matrix4x4 (Float).</string>
+	<key>valueb</key>
+	<string>Bottom</string>
+	<key>GraphEditorStateConnectionError.mismatchingSupergraphs.title</key>
+	<string>Mismatching supergraphs</string>
+	<key>ND_clamp_color3FA</key>
+	<string>Clamp (color3f FA)</string>
+	<key>ND_outside_color4</key>
+	<string>Outside (color4f)</string>
+	<key>ND_arrayappend_vector3_vector3array</key>
+	<string>Array Append (3D Vector + 3D Vector Array)</string>
+	<key>ND_realitykit_refract_vector3.menuDescriptionShort</key>
+	<string>Refracts a vector using a given normal and index of refraction (eta).</string>
+	<key>ND_tiledimage_color4</key>
+	<string>Tiled Image (color4f)</string>
+	<key>ND_realitykit_image_bias_float</key>
+	<string>Biased Image (float)</string>
+	<key>contrast.genericNodeGroup</key>
+	<string>Contrast</string>
+	<key>ND_normalmap_vector2</key>
+	<string>Normal Map (vector2f Scale)</string>
+	<key>Scope</key>
+	<string>Scope</string>
+	<key>ND_contrast_color3FA</key>
+	<string>Contrast (color3f FA)</string>
+	<key>ND_realitykit_surface_custom_attribute_half2_0.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector2 (Half) data that’s from the geometry modifier.</string>
+	<key>ND_acos_vector4</key>
+	<string>Acos (vector4f)</string>
+	<key>ND_max_vector2FA</key>
+	<string>Max (vector2f FA)</string>
+	<key>ND_smoothstep_float</key>
+	<string>Smooth Step (float)</string>
+	<key>ND_ifgreatereq_half</key>
+	<string>If Greater Or Equal (half)</string>
+	<key>luminance.genericNodeGroup</key>
+	<string>Luminance</string>
+	<key>combine4.genericNodeGroup</key>
+	<string>Combine 4</string>
+	<key>ND_asin_half2</key>
+	<string>Asin (vector2h)</string>
+	<key>convolution2d</key>
+	<string>2D Convolution</string>
+	<key>ND_dot_vector2</key>
+	<string>Dot (vector2f)</string>
+	<key>ND_realitykit_surface_view_direction</key>
+	<string>Surface View Direction (RealityKit)</string>
+	<key>ND_ramplr_vector2</key>
+	<string>Ramp Horizontal (vector2f)</string>
+	<key>ND_constant_integer3.menuDescriptionShort</key>
+	<string>A constant Integer3 value.</string>
+	<key>ND_smoothstep_color3FA</key>
+	<string>Smooth Step (color3f FA)</string>
+	<key>Invalid Stage</key>
+	<string>Invalid Stage</string>
+	<key>valuetr</key>
+	<string>Top Right</string>
+	<key>ND_RealityKitTexture2DPixelGradient_color4</key>
+	<string>Image 2D Gradient Pixel (color4)</string>
+	<key>ND_add_matrix44</key>
+	<string>Add (matrix4x4f)</string>
+	<key>tiledimage.genericNodeGroup</key>
+	<string>Tiled Image</string>
+	<key>ND_noise2d_vector3</key>
+	<string>Noise 2D (vector3f)</string>
+	<key>ND_clamp_half2</key>
+	<string>Clamp (vector2h)</string>
+	<key>ND_max_vector3FA</key>
+	<string>Max (vector3f FA)</string>
+	<key>GraphEditorStateNodeError.invalidNode.description</key>
+	<string>Prim unsupported with info:id &apos;%@&apos;, type &apos;%@&apos;.</string>
+	<key>ND_remap_vector3</key>
+	<string>Remap (vector3f)</string>
+	<key>ND_smoothstep_vector2FA</key>
+	<string>Smooth Step (vector2f FA)</string>
+	<key>ND_ambientocclusion_float.menuDescriptionShort</key>
+	<string>The calculated ambient occlusion value for a given fragment in an offline rendering context. In RealityKit this will return a constant 1.0.</string>
+	<key>ND_add_half</key>
+	<string>Add (half)</string>
+	<key>ND_clamp_color4</key>
+	<string>Clamp (color4f)</string>
+	<key>ND_multiply_surfaceshaderC</key>
+	<string>Multiply (Surface Shader C)</string>
+	<key>texture3d</key>
+	<string>3D Texture</string>
+	<key>ND_constant_half3.menuDescriptionShort</key>
+	<string>A constant half-precision floating-point Vector3 numeric value.</string>
+	<key>ND_fractal3d_color3FA</key>
+	<string>Fractal Noise 3D (color3f FA)</string>
+	<key>ND_swizzle_vector4_half</key>
+	<string>Swizzle (vector4f half)</string>
+	<key>ND_dot_half</key>
+	<string>Dot (half)</string>
+	<key>ND_combine2_vector4VF</key>
+	<string>Combine 2 (vector4f VF)</string>
+	<key>ND_normal_map_decode.menuDescriptionShort</key>
+	<string>Remaps a normal&apos;s value from [0,1] to [-1,1] by applying 2x-1.</string>
+	<key>ND_arrayappend_vector2array_vector2array</key>
+	<string>Array Append (2D Vector + Array 2D Vector Array)</string>
+	<key>ND_max_vector4FA</key>
+	<string>Max (vector4f FA)</string>
+	<key>ND_realitykit_geometry_switch_cameraindex_vector4</key>
+	<string>Camera Index Switch (vector4f)</string>
+	<key>ND_realitykit_cubeimage_vector2</key>
+	<string>Cube Image (vector2f)</string>
+	<key>crossproduct.menuDescriptionShort</key>
+	<string>Calculates the cross product vector of 2 input vectors.</string>
+	<key>ND_realitykit_image_lod_color4</key>
+	<string>LOD Image (color4f)</string>
+	<key>ND_heighttonormal_vector3</key>
+	<string>Height To Normal</string>
+	<key>ND_absval_float</key>
+	<string>Abs (float)</string>
+	<key>Shader.ND_ifequal_color4I.inputs:in1</key>
+	<string>True Result</string>
+	<key>ND_asin_vector4</key>
+	<string>Asin (vector4f)</string>
+	<key>GraphEditorStatePathDirection.input</key>
+	<string>Input</string>
+	<key>ND_switch_vector4</key>
+	<string>Switch (vector4f)</string>
+	<key>ND_ifgreatereq_vector2</key>
+	<string>If Greater Or Equal (vector2f)</string>
+	<key>UsdPrimvarReader_normal</key>
+	<string>USD Primvar Reader (Normal)</string>
+	<key>ND_realitykit_geometrymodifier_vertexshader.menuDescriptionShort</key>
+	<string>A function that manipulates the location of a model&apos;s vertices, run once per vertex.</string>
+	<key>sin.menuDescriptionShort</key>
+	<string>The sine of the incoming value in radians.</string>
+	<key>ND_ramp4_color4</key>
+	<string>Ramp 4 Corners (color4f)</string>
+	<key>ND_round_color4</key>
+	<string>Round (color4f)</string>
+	<key>ND_swizzle_color3_vector3</key>
+	<string>Swizzle (color3f vector3f)</string>
+	<key>Shader.ND_ifequal_color4I.inputs:in2</key>
+	<string>False Result</string>
+	<key>ND_ifequal_color4I</key>
+	<string>If Equal (color4f integer)</string>
+	<key>ND_realitykit_surface_custom_attribute_half4_2.menuDescriptionShort</key>
+	<string>An interpolated user-defined Vector4 (Half) data that’s from the geometry modifier.</string>
+	<key>ND_sqrt_half</key>
+	<string>Square Root (half)</string>
+	<key>ND_extract_color3</key>
+	<string>Extract (color3f)</string>
+	<key>ND_transpose_matrix33</key>
+	<string>Transpose (matrix3x3f)</string>
+	<key>bool</key>
+	<string>Bool</string>
+	<key>float</key>
+	<string>Float</string>
+	<key>Shader.ND_separate4_color4.outputs:outa</key>
+	<string>a</string>
+	<key>in1</key>
+	<string>In 1</string>
+	<key>magnitude.menuDescriptionShort</key>
+	<string>Outputs the float magnitude of a vector.</string>
+	<key>ND_add_float</key>
+	<string>Add (float)</string>
+	<key>ceil.genericNodeGroup</key>
+	<string>Ceiling</string>
+	<key>in2</key>
+	<string>In 2</string>
+	<key>ND_convert_color3_vector3</key>
+	<string>Convert (color3f vector3f)</string>
+	<key>ND_triplanarprojection_vector3</key>
+	<string>Triplanar Projection (vector3f)</string>
+	<key>ND_luminance_color3</key>
+	<string>Luminance (color3f)</string>
+	<key>ND_modulo_color3</key>
+	<string>Modulo (color3f)</string>
+</dict>
+</plist>

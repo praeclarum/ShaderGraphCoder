@@ -11,9 +11,10 @@ import RealityKit
 #if os(visionOS)
 
 public extension ShaderGraphMaterial {
-    init(surface: SGSurface?, geometryModifier: SGGeometryModifier?) async throws {
+    @MainActor
+    init(surface: SGToken?, geometryModifier: SGToken? = nil) async throws {
         let materialName = "ShaderGraphCoderMaterial"
-        let (usda, errors) = getUSDA(materialName: materialName, surface: surface, geometryModifier: geometryModifier)
+        let (usda, textures, errors) = getUSDA(materialName: materialName, surface: surface, geometryModifier: geometryModifier)
         if errors.count > 0 {
             throw ShaderGraphCoderError.graphContainsErrors(errors: errors)
         }
@@ -21,6 +22,9 @@ public extension ShaderGraphMaterial {
             throw ShaderGraphCoderError.failedToEncodeUSDAsData
         }
         try await self.init(named: "/Root/\(materialName)", from: usdaData)
+        for t in textures {
+            try setParameter(name: t.key, value: .textureResource(try t.value.loadTextureResource()))
+        }
     }
 }
 

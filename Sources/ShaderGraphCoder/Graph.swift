@@ -5,7 +5,11 @@
 //  Created by Frank A. Krueger on 2/10/24.
 //
 
+import CoreGraphics
 import Foundation
+import Metal
+import RealityKit
+import simd
 
 public class SGNode: Identifiable, Equatable, Hashable {
     private static var nextId: Int = 1
@@ -13,7 +17,6 @@ public class SGNode: Identifiable, Equatable, Hashable {
     public let nodeType: String
     public let inputs: [Input]
     public let outputs: [Output]
-    public let errors: [String]
     
     public var dataType: SGDataType { outputs[0].dataType }
     public var outputName: String { outputs[0].name }
@@ -21,16 +24,21 @@ public class SGNode: Identifiable, Equatable, Hashable {
     public struct Input {
         public let name: String
         public let dataType: SGDataType
-        public let connection: SGValue?
+        public let value: SGValue?
         public init(name: String, dataType: SGDataType, connection: SGValue?) {
             self.name = name
             self.dataType = dataType
-            self.connection = connection
+            self.value = connection
         }
         public init(name: String, connection: SGValue) {
             self.name = name
             self.dataType = connection.dataType
-            self.connection = connection
+            self.value = connection
+        }
+        public init(name: String, dataType: SGDataType) {
+            self.name = name
+            self.dataType = dataType
+            self.value = nil
         }
     }
     
@@ -47,13 +55,12 @@ public class SGNode: Identifiable, Equatable, Hashable {
         }
     }
     
-    public init(nodeType: String, inputs: [Input], outputs: [Output], errors: [String] = []) {
+    public init(nodeType: String, inputs: [Input], outputs: [Output]) {
         self.id = SGNode.nextId
         SGNode.nextId += 1
         self.nodeType = nodeType
         self.inputs = inputs
         self.outputs = outputs
-        self.errors = errors
     }
     public static func == (lhs: SGNode, rhs: SGNode) -> Bool {
         lhs.id == rhs.id
@@ -70,18 +77,11 @@ public class SGNode: Identifiable, Equatable, Hashable {
     }
 }
 
-public class SGValue {
-    public let source: SGValueSource
-    public var dataType: SGDataType { source.dataType }
-    public required init(source: SGValueSource) {
-        self.source = source
-    }
-}
-
 public enum SGValueSource {
     case nodeOutput(_ node: SGNode, _ outputName: String)
     case constant(_ value: SGConstantValue)
     case parameter(name: String, defaultValue: SGConstantValue)
+    case error(_ error: String, values: [SGValue?])
     
     public var dataType: SGDataType {
         switch self {
@@ -94,6 +94,17 @@ public enum SGValueSource {
             return value.dataType
         case .parameter(name: _, defaultValue: let defaultValue):
             return defaultValue.dataType
+        case .error:
+            return .error
+        }
+    }
+    
+    public var node: SGNode? {
+        switch self {
+        case .nodeOutput(let node, _):
+            return node
+        default:
+            return nil
         }
     }
 
@@ -107,110 +118,170 @@ public enum SGDataType: String {
     case bool = "bool"
     case color3f = "color3f"
     case color4f = "color4f"
+    case error = "error"
+    case half = "half"
     case float = "float"
-    case geometryModifier = "GeometryModifier"
     case int = "int"
+    case matrix2d = "matrix2d"
+    case matrix3d = "matrix3d"
+    case matrix4d = "matrix4d"
     case string = "string"
-    case surface = "Surface"
+    case token = "token"
     case vector2f = "float2"
     case vector3f = "float3"
     case vector4f = "float4"
+    case vector2h = "half2"
+    case vector3h = "half3"
+    case vector4h = "half4"
+    case vector2i = "int2"
+    case vector3i = "int3"
+    case vector4i = "int4"
     
     public var isScalar: Bool {
         switch self {
-        case .asset:
-            return false
         case .bool:
             return true
-        case .color3f:
-            return false
-        case .color4f:
-            return false
         case .float:
+            return true
+        case .half:
             return true
         case .int:
             return true
-        case .string:
-            return false
-        case .surface:
-            return false
-        case .vector2f:
-            return false
-        case .vector3f:
-            return false
-        case .vector4f:
-            return false
-        case .geometryModifier:
+        default:
             return false
         }
     }
     public var isColor: Bool {
         switch self {
-        case .asset:
-            return false
-        case .bool:
-            return false
         case .color3f:
             return true
         case .color4f:
             return true
-        case .float:
+        default:
             return false
-        case .int:
-            return false
-        case .string:
-            return false
-        case .surface:
-            return false
-        case .vector2f:
-            return false
-        case .vector3f:
-            return false
-        case .vector4f:
-            return false
-        case .geometryModifier:
-            return false
+        }
+    }
+    /// Returns true if the provided value's dataType matches this dataType.
+    /// If the value is nil, this function returns true.
+    public func matches(_ value: SGValue?) -> Bool {
+        if let v = value {
+            return v.dataType == self
+        }
+        return true
+    }
+}
+
+public enum SGTextureSource {
+    case texture(_ texture: TextureResource)
+    case cgImage(_ image: CGImage, options: TextureResource.CreateOptions)
+    case loadNamed(_ named: String, in: Bundle?, options: TextureResource.CreateOptions?)
+    case loadContentsOf(_ url: URL, options: TextureResource.CreateOptions?)
+    #if os(visionOS)
+    case mtlBuffer(width: Int, height: Int, format: TextureResource.Format, unsafeBuffer: any MTLBuffer, offset: Int, size: Int, bytesPerRow: Int)
+    case data(width: Int, height: Int, format: TextureResource.Format, data: Data, bytesPerRow: Int)
+    #endif
+    
+    @MainActor
+    func loadTextureResource() throws -> TextureResource {
+        switch self {
+        case .texture(let t):
+            return t
+        case .cgImage(let from, let options):
+            return try TextureResource.generate(from: from, options: options)
+        case .loadNamed(let named, let bundle, .some(let options)):
+            return try TextureResource.load(named: named, in: bundle, options: options)
+        case .loadNamed(let named, let bundle, .none):
+            return try TextureResource.load(named: named, in: bundle)
+        case .loadContentsOf(let url, .some(let options)):
+            return try TextureResource.load(contentsOf: url, options: options)
+        case .loadContentsOf(let url, .none):
+            return try TextureResource.load(contentsOf: url)
+#if os(visionOS)
+        case .mtlBuffer(width: let width, height: let height, format: let format, unsafeBuffer: let unsafeBuffer, offset: let offset, size: let size, bytesPerRow: let bytesPerRow):
+            return try TextureResource(dimensions: .dimensions(width: width, height: height), format: format, contents: .init(mipmapLevels: [.mip(unsafeBuffer: unsafeBuffer, offset: offset, size: size, bytesPerRow: bytesPerRow)]))
+        case .data(width: let width, height: let height, format: let format, data: let data, bytesPerRow: let bytesPerRow):
+            return try TextureResource(dimensions: .dimensions(width: width, height: height), format: format, contents: .init(mipmapLevels: [.mip(data: data, bytesPerRow: bytesPerRow)]))
+#endif
         }
     }
 }
 
 public enum SGConstantValue {
-    case color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace)
-    case color4f(_ value: SIMD4<Float>, colorSpace: SGColorSpace)
-    case emptyTexture1D
-    case emptyTexture2D
-    case emptyTexture3D
+    case bool(_ value: Bool)
+    case color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace?)
+    case color4f(_ value: SIMD4<Float>, colorSpace: SGColorSpace?)
+    case emptyTexture
     case float(_ value: Float)
+    case half(_ value: Float16)
     case int(_ value: Int)
-    case string(_ value: String)
+    case matrix2d(_ value: simd_float2x2)
+    case matrix3d(_ value: simd_float3x3)
+    case matrix4d(_ value: simd_float4x4)
     case vector2f(_ value: SIMD2<Float>)
     case vector3f(_ value: SIMD3<Float>)
     case vector4f(_ value: SIMD4<Float>)
+    case vector2h(_ value: SIMD2<Float16>)
+    case vector3h(_ value: SIMD3<Float16>)
+    case vector4h(_ value: SIMD4<Float16>)
+    case vector2i(_ value: SIMD2<Int>)
+    case vector3i(_ value: SIMD3<Int>)
+    case vector4i(_ value: SIMD4<Int>)
+    case string(_ value: String)
+    case texture(_ value: SGTextureSource)
+    case token(_ value: String)
     public var dataType: SGDataType {
         switch self {
+        case .bool:
+            return .bool
         case .color3f:
             return .color3f
         case .color4f:
             return .color4f
-        case .emptyTexture1D:
-            return .asset
-        case .emptyTexture2D:
-            return .asset
-        case .emptyTexture3D:
+        case .emptyTexture:
             return .asset
         case .float:
             return .float
+        case .half:
+            return .half
         case .int:
             return .int
+        case .matrix2d:
+            return .matrix2d
+        case .matrix3d:
+            return .matrix3d
+        case .matrix4d:
+            return .matrix4d
         case .string:
             return .string
+        case .texture:
+            return .asset
+        case .token:
+            return .token
         case .vector2f:
             return .vector2f
         case .vector3f:
             return .vector3f
         case .vector4f:
             return .vector4f
+        case .vector2h:
+            return .vector2h
+        case .vector3h:
+            return .vector3h
+        case .vector4h:
+            return .vector4h
+        case .vector2i:
+            return .vector2i
+        case .vector3i:
+            return .vector3i
+        case .vector4i:
+            return .vector4i
         }
+    }
+    public static func color3f(_ value: SIMD3<Float>) -> SGConstantValue {
+        return SGConstantValue.color3f(value, colorSpace: nil)
+    }
+    public static func color4f(_ value: SIMD4<Float>) -> SGConstantValue {
+        return SGConstantValue.color4f(value, colorSpace: nil)
     }
 }
 
@@ -224,52 +295,6 @@ public enum ShaderGraphCoderError: Error {
     case graphContainsErrors(errors: [String])
 }
 
-public class SGSurface: SGNode {
-}
-
-public class SGPBRSurface: SGSurface {
-    public init(baseColor: SGColor? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, emissiveColor: SGColor? = nil, ambientOcclusion: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, normal: SGVector? = nil, hasPremultipliedAlpha: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, specular: SGScalar? = nil) {
-        super.init(
-            nodeType: "ND_realitykit_pbr_surfaceshader",
-            inputs: [
-                .init(name: "ambientOcclusion", dataType: .float, connection: ambientOcclusion),
-                .init(name: "baseColor", dataType: .color3f, connection: baseColor),
-                .init(name: "clearcoat", dataType: .float, connection: clearcoat),
-                .init(name: "clearcoatRoughness", dataType: .float, connection: clearcoatRoughness),
-                .init(name: "emissiveColor", dataType: .color3f, connection: emissiveColor),
-                .init(name: "hasPremultipliedAlpha", dataType: .bool, connection: hasPremultipliedAlpha),
-                .init(name: "metallic", dataType: .float, connection: metallic),
-                .init(name: "normal", dataType: .vector3f, connection: normal),
-                .init(name: "opacity", dataType: .float, connection: opacity),
-                .init(name: "opacityThreshold", dataType: .float, connection: opacityThreshold),
-                .init(name: "roughness", dataType: .float, connection: roughness),
-                .init(name: "specular", dataType: .float, connection: specular),
-            ],
-            outputs: [
-                .init(name: "out", dataType: .surface)
-            ])
-    }
-}
-
-public class SGGeometryModifier: SGNode {
-    public init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, customAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
-        super.init(
-            nodeType: "ND_realitykit_geometrymodifier_vertexshader",
-            inputs: [
-                .init(name: "modelPositionOffset", dataType: .vector3f, connection: modelPositionOffset),
-                .init(name: "normal", dataType: .vector3f, connection: normal),
-                .init(name: "color", dataType: .color4f, connection: color),
-                .init(name: "bitangent", dataType: .vector3f, connection: bitangent),
-                .init(name: "userAttribute", dataType: .vector4f, connection: customAttribute),
-                .init(name: "uv0", dataType: .vector2f, connection: uv0),
-                .init(name: "uv1", dataType: .vector2f, connection: uv1),
-            ],
-            outputs: [
-                .init(name: "out", dataType: .geometryModifier)
-            ])
-    }
-}
-
 func collectParameters(nodes rootNodes: [SGNode]) -> [(String, SGConstantValue)] {
     var nodesToWrite: [SGNode] = rootNodes
     var nodesWritten: Set<SGNode> = []
@@ -279,7 +304,7 @@ func collectParameters(nodes rootNodes: [SGNode]) -> [(String, SGConstantValue)]
         nodesToWrite.remove(at: 0)
         nodesWritten.insert(node)
         for i in node.inputs {
-            if let c = i.connection {
+            if let c = i.value {
                 if case .parameter(name: let name, defaultValue: let dv) = c.source {
                     parameters[name] = dv
                 }
@@ -294,22 +319,37 @@ func collectParameters(nodes rootNodes: [SGNode]) -> [(String, SGConstantValue)]
     return parameters.map { ($0.key, $0.value) }
 }
 
-func collectErrors(nodes rootNodes: [SGNode]) -> [String] {
-    var nodesToWrite: [SGNode] = rootNodes
+func collectErrors(values rootValues: [SGValue?]) -> [String] {
+    var nodesToWrite: [SGNode] = []
     var nodesWritten: Set<SGNode> = []
     var errors: [String] = []
+    func queueValueInputNodes(v: SGValue) {
+        if case .nodeOutput(let inode, _) = v.source {
+            if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
+                nodesToWrite.append(inode)
+            }
+        }
+        else if case .error(let e, let vals) = v.source {
+            errors.append(e)
+            for vvo in vals {
+                if let vv = vvo {
+                    queueValueInputNodes(v: vv)
+                }
+            }
+        }
+    }
+    for r in rootValues {
+        if let rr = r {
+            queueValueInputNodes(v: rr)
+        }
+    }
     while nodesToWrite.count > 0 {
         let node = nodesToWrite[0]
         nodesToWrite.remove(at: 0)
         nodesWritten.insert(node)
-        errors.append(contentsOf: node.errors)
         for i in node.inputs {
-            if let c = i.connection?.source {
-                if case .nodeOutput(let inode, _) = c {
-                    if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
-                        nodesToWrite.append(inode)
-                    }
-                }
+            if let c = i.value {
+                queueValueInputNodes(v: c)
             }
         }
     }

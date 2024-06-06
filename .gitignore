@@ -1,3 +1,7 @@
+/*.usda
+/README.g.md
+/schemas
+/Tools/*.usda
 .DS_Store
 /.build
 /Packages

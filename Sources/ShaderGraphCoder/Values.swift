@@ -8,40 +8,59 @@
 import Foundation
 import RealityKit
 
+infix operator ^^ : LogicalDisjunctionPrecedence
+
+public class SGValue {
+    public let source: SGValueSource
+    public var dataType: SGDataType { source.dataType }
+    public var node: SGNode? { source.node }
+    public required init(source: SGValueSource) {
+        self.source = source
+    }
+    public static func && (left: SGValue, right: SGValue) -> SGValue { ShaderGraphCoder.logicalAnd(left, right) }
+    public static func || (left: SGValue, right: SGValue) -> SGValue { ShaderGraphCoder.logicalOr(left, right) }
+    public static func ^^ (left: SGValue, right: SGValue) -> SGValue { ShaderGraphCoder.logicalXor(left, right) }
+    public static prefix func ! (left: SGValue) -> SGValue { ShaderGraphCoder.logicalNot(left) }
+}
+
 public class SGNumeric: SGValue {
-    func add<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_add_", left: self, right: right)
-    }
-    func subtract<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_subtract_", left: self, right: right)
-    }
-    func multiply<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_multiply_", left: self, right: right)
-    }
-    func divide<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_divide_", left: self, right: right)
-    }
-    func modulo<T>(_ right: SGNumeric) -> T where T: SGNumeric {
-        return binop("ND_modulo_", left: self, right: right)
-    }
 }
 
 public class SGScalar: SGNumeric {
-    public static func + (left: SGScalar, right: SGScalar) -> SGScalar { left.add(right) }
-    public static func - (left: SGScalar, right: SGScalar) -> SGScalar { left.subtract(right) }
-    public static func * (left: SGScalar, right: SGScalar) -> SGScalar { left.multiply(right) }
-    public static func / (left: SGScalar, right: SGScalar) -> SGScalar { left.divide(right) }
-    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { binop("ND_modulo_", left: left, right: right) }
-    public static func + (left: SGScalar, right: Float) -> SGScalar { left.add(.float(right)) }
-    public static func - (left: SGScalar, right: Float) -> SGScalar { left.subtract(.float(right)) }
-    public static func * (left: SGScalar, right: Float) -> SGScalar { left.multiply(.float(right)) }
-    public static func / (left: SGScalar, right: Float) -> SGScalar { left.divide(.float(right)) }
-    public static func % (left: SGScalar, right: Float) -> SGScalar { left % .float(right) }
-    public static func + (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).add(right) }
-    public static func - (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).subtract(right) }
-    public static func * (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).multiply(right) }
-    public static func / (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left).divide(right) }
-    public static func % (left: Float, right: SGScalar) -> SGScalar { SGValue.float(left) % right }
+    public static func + (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGScalar, right: SGScalar) -> SGScalar { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func % (left: SGScalar, right: Float) -> SGScalar { ShaderGraphCoder.modulo(left, .float(right)) }
+    public static func + (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.add(.float(left), right) }
+    public static func - (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.subtract(.float(left), right) }
+    public static func * (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.multiply(.float(left), right) }
+    public static func / (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.divide(.float(left), right) }
+    public static func % (left: Float, right: SGScalar) -> SGScalar { ShaderGraphCoder.modulo(.float(left), right) }
+}
+
+public class SGMatrix: SGNumeric {
+    public static func + (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGMatrix, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.divide(left, right) }
+    public static func + (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGMatrix, right: SGScalar) -> SGMatrix { ShaderGraphCoder.divide(left, right) }
+    public static func + (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGMatrix, right: Float) -> SGMatrix { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func + (left: SGScalar, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.add(right, left) }
+    public static func * (left: SGScalar, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.multiply(right, left) }
+    public static func + (left: Float, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.add(right, .float(left)) }
+    public static func * (left: Float, right: SGMatrix) -> SGMatrix { ShaderGraphCoder.multiply(right, .float(left)) }
 }
 
 public class SGSIMD: SGNumeric {
@@ -50,7 +69,6 @@ public class SGSIMD: SGNumeric {
         if let esep = separate {
             return SGScalar(source: .nodeOutput(esep, name))
         }
-        var errors: [String] = []
         var n = 3
         var type = "vector"
         var iscolor = false
@@ -74,7 +92,7 @@ public class SGSIMD: SGNumeric {
             n = 4
             type = "vector4"
         default:
-            errors.append("Cannot separate \(self.dataType.usda)")
+            return SGScalar(source: .error("Cannot separate \(self.dataType.usda)", values: [self]))
         }
         let inputs: [SGNode.Input] = [.init(name: "in", connection: self)]
         var outputs: [SGNode.Output] = []
@@ -85,33 +103,32 @@ public class SGSIMD: SGNumeric {
         let sep = SGNode(
             nodeType: "ND_separate\(n)_\(type)",
             inputs: inputs,
-            outputs: outputs,
-            errors: errors)
+            outputs: outputs)
         separate = sep
         return SGScalar(source: .nodeOutput(sep, name))
     }
 }
 
 public class SGVector: SGSIMD {
-    public static func + (left: SGVector, right: SGVector) -> SGVector { left.add(right) }
-    public static func - (left: SGVector, right: SGVector) -> SGVector { left.subtract(right) }
-    public static func * (left: SGVector, right: SGVector) -> SGVector { left.multiply(right) }
-    public static func / (left: SGVector, right: SGVector) -> SGVector { left.divide(right) }
-    public static func % (left: SGVector, right: SGVector) -> SGVector { left.modulo(right) }
-    public static func + (left: SGVector, right: SGScalar) -> SGVector { left.add(right) }
-    public static func - (left: SGVector, right: SGScalar) -> SGVector { left.subtract(right) }
-    public static func * (left: SGVector, right: SGScalar) -> SGVector { left.multiply(right) }
-    public static func / (left: SGVector, right: SGScalar) -> SGVector { left.divide(right) }
-    public static func % (left: SGVector, right: SGScalar) -> SGVector { left.modulo(right) }
-    public static func + (left: SGVector, right: Float) -> SGVector { left.add(.float(right)) }
-    public static func - (left: SGVector, right: Float) -> SGVector { left.subtract(.float(right)) }
-    public static func * (left: SGVector, right: Float) -> SGVector { left.multiply(.float(right)) }
-    public static func / (left: SGVector, right: Float) -> SGVector { left.divide(.float(right)) }
-    public static func % (left: SGVector, right: Float) -> SGVector { left.modulo(.float(right)) }
-    public static func + (left: SGScalar, right: SGVector) -> SGVector { right.add(left) }
-    public static func * (left: SGScalar, right: SGVector) -> SGVector { right.multiply(left) }
-    public static func + (left: Float, right: SGVector) -> SGVector { right.add(.float(left)) }
-    public static func * (left: Float, right: SGVector) -> SGVector { right.multiply(.float(left)) }
+    public static func + (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGVector, right: SGVector) -> SGVector { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGVector, right: SGScalar) -> SGVector { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func % (left: SGVector, right: Float) -> SGVector { ShaderGraphCoder.modulo(left, .float(right)) }
+    public static func + (left: SGScalar, right: SGVector) -> SGVector { ShaderGraphCoder.add(right, left) }
+    public static func * (left: SGScalar, right: SGVector) -> SGVector { ShaderGraphCoder.multiply(right, left) }
+    public static func + (left: Float, right: SGVector) -> SGVector { ShaderGraphCoder.add(right, .float(left)) }
+    public static func * (left: Float, right: SGVector) -> SGVector { ShaderGraphCoder.multiply(right, .float(left)) }
 
     public var x: SGScalar { getSeparateOutput("outx") }
     public var y: SGScalar { getSeparateOutput("outy") }
@@ -122,25 +139,25 @@ public class SGVector: SGSIMD {
 }
 
 public class SGColor: SGSIMD {
-    public static func + (left: SGColor, right: SGColor) -> SGColor { left.add(right) }
-    public static func - (left: SGColor, right: SGColor) -> SGColor { left.subtract(right) }
-    public static func * (left: SGColor, right: SGColor) -> SGColor { left.multiply(right) }
-    public static func / (left: SGColor, right: SGColor) -> SGColor { left.divide(right) }
-    public static func % (left: SGColor, right: SGColor) -> SGColor { left.modulo(right) }
-    public static func + (left: SGColor, right: SGScalar) -> SGColor { left.add(right) }
-    public static func - (left: SGColor, right: SGScalar) -> SGColor { left.subtract(right) }
-    public static func * (left: SGColor, right: SGScalar) -> SGColor { left.multiply(right) }
-    public static func / (left: SGColor, right: SGScalar) -> SGColor { left.divide(right) }
-    public static func % (left: SGColor, right: SGScalar) -> SGColor { left.modulo(right) }
-    public static func + (left: SGColor, right: Float) -> SGColor { left.add(.float(right)) }
-    public static func - (left: SGColor, right: Float) -> SGColor { left.subtract(.float(right)) }
-    public static func * (left: SGColor, right: Float) -> SGColor { left.multiply(.float(right)) }
-    public static func / (left: SGColor, right: Float) -> SGColor { left.divide(.float(right)) }
-    public static func % (left: SGColor, right: Float) -> SGColor { left.modulo(.float(right)) }
-    public static func + (left: SGScalar, right: SGColor) -> SGColor { right.add(left) }
-    public static func * (left: SGScalar, right: SGColor) -> SGColor { right.multiply(left) }
-    public static func + (left: Float, right: SGColor) -> SGColor { right.add(.float(left)) }
-    public static func * (left: Float, right: SGColor) -> SGColor { right.multiply(.float(left)) }
+    public static func + (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGColor, right: SGColor) -> SGColor { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.add(left, right) }
+    public static func - (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.subtract(left, right) }
+    public static func * (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.multiply(left, right) }
+    public static func / (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.divide(left, right) }
+    public static func % (left: SGColor, right: SGScalar) -> SGColor { ShaderGraphCoder.modulo(left, right) }
+    public static func + (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.add(left, .float(right)) }
+    public static func - (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.subtract(left, .float(right)) }
+    public static func * (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.multiply(left, .float(right)) }
+    public static func / (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.divide(left, .float(right)) }
+    public static func % (left: SGColor, right: Float) -> SGColor { ShaderGraphCoder.modulo(left, .float(right)) }
+    public static func + (left: SGScalar, right: SGColor) -> SGColor { ShaderGraphCoder.add(right, left) }
+    public static func * (left: SGScalar, right: SGColor) -> SGColor { ShaderGraphCoder.multiply(right, left) }
+    public static func + (left: Float, right: SGColor) -> SGColor { ShaderGraphCoder.add(right, .float(left)) }
+    public static func * (left: Float, right: SGColor) -> SGColor { ShaderGraphCoder.multiply(right, .float(left)) }
 
     public var r: SGScalar { getSeparateOutput("outr") }
     public var g: SGScalar { getSeparateOutput("outg") }
@@ -151,56 +168,25 @@ public class SGColor: SGSIMD {
 }
 
 public class SGString: SGValue {
-    
+
 }
 
-public class SGTexture1D: SGValue {
-    public func sample(texcoord: SGValue? = nil) -> SGColor {
-        var errors: [String] = []
-        if dataType != .asset {
-            errors.append("Cannot sample `\(dataType.usda)`. Use a `texture1DParameter` to sample.")
-        }
-        let node = SGNode(
-            nodeType: "ND_RealityKitTexture1D_color4",
-            inputs: [
-                .init(name: "file", dataType: .asset, connection: self),
-                .init(name: "texcoord", dataType: .float, connection: texcoord),
-            ],
-            outputs: [.init(dataType: .color4f)])
-        return SGColor(source: .nodeOutput(node))
+public class SGToken: SGValue {
+
+}
+
+public class SGAsset: SGValue {
+
+}
+
+public class SGTexture: SGAsset {
+    public func sampleColor3f(texcoord: SGVector? = nil, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> SGColor {
+        ShaderGraphCoder.sample(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: .black, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
-}
-
-public class SGTexture2D: SGValue {
-    public func sample(texcoord: SGValue? = nil) -> SGColor {
-        var errors: [String] = []
-        if dataType != .asset {
-            errors.append("Cannot sample `\(dataType.usda)`. Use a `texture2DParameter` to sample.")
-        }
-        let node = SGNode(
-            nodeType: "ND_RealityKitTexture2D_color4",
-            inputs: [
-                .init(name: "file", dataType: .asset, connection: self),
-                .init(name: "texcoord", dataType: .vector2f, connection: texcoord),
-            ],
-            outputs: [.init(dataType: .color4f)])
-        return SGColor(source: .nodeOutput(node))
+    public func sampleColor4f(texcoord: SGVector? = nil, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> SGColor {
+        ShaderGraphCoder.sample(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: .transparentBlack, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
-}
-
-public class SGTexture3D: SGValue {
-    public func sample(texcoord: SGValue? = nil) -> SGColor {
-        var errors: [String] = []
-        if dataType != .asset {
-            errors.append("Cannot sample `\(dataType.usda)`. Use a `texture3DParameter` to sample.")
-        }
-        let node = SGNode(
-            nodeType: "ND_RealityKitTexture3D_color4",
-            inputs: [
-                .init(name: "file", dataType: .asset, connection: self),
-                .init(name: "texcoord", dataType: .vector3f, connection: texcoord),
-            ],
-            outputs: [.init(dataType: .color4f)])
-        return SGColor(source: .nodeOutput(node))
+    public func sampleVector4f(texcoord: SGVector? = nil, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> SGVector {
+        ShaderGraphCoder.sample(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: .vector4fZero, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
 }

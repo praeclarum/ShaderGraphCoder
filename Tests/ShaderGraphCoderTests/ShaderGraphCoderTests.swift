@@ -17,7 +17,7 @@ final class ShaderGraphCoderTests: XCTestCase {
         XCTAssertNotNil(root, "Failed to load the USD file")
     }
     
-    private func surfaceTest(_ surface: SGSurface, geometryModifier: SGGeometryModifier? = nil) throws {
+    private func surfaceTest(_ surface: SGToken, geometryModifier: SGToken? = nil, expectErrors: Int = 0) throws {
         let expectation = self.expectation(description: "Load the surface material")
         Task {
             do {
@@ -25,11 +25,20 @@ final class ShaderGraphCoderTests: XCTestCase {
                 // APPLE BUG: [Foundation.IO] Could not locate file 'default-binaryarchive.metallib' in bundle. Tool-hosted testing is unavailable on device destinations. Select a host application for the test target, or use a simulator destination instead.
 //                let _ = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
 #endif
-                let (usda, errors) = getUSDA(materialName: "TestMat", surface: surface, geometryModifier: geometryModifier)
+                let (usda, _, errors) = getUSDA(materialName: "TestMat", surface: surface, geometryModifier: geometryModifier)
                 if errors.count > 0 {
-                    XCTFail("USDA ERRORS: \(errors)")
+                    if expectErrors != errors.count {
+                        XCTFail("USDA ERRORS: \(errors)")
+                    }
                 }
-                try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
+                else {
+                    if expectErrors != 0 {
+                        XCTFail("SHOULD HAVE PRODUCED ERRORS")
+                    }
+                    else {
+                        try verifyUSDAWithModelIO(usda: usda, materialName: "TestMat")
+                    }
+                }
             }
             catch {
                 XCTFail("SURFACE MATERIAL ERROR: \(error)")
@@ -40,13 +49,16 @@ final class ShaderGraphCoderTests: XCTestCase {
     }
 
     private func colorTest(_ color: SGColor) throws {
-        try surfaceTest(SGPBRSurface(baseColor: color))
+        try surfaceTest(pbrSurface(baseColor: color))
     }
-    private func vectorTest(_ vector: SGVector) throws {
-        try surfaceTest(SGPBRSurface(normal: vector))
+    private func vectorTest(_ vector: SGVector, expectErrors: Int = 0) throws {
+        try surfaceTest(pbrSurface(normal: vector), expectErrors: expectErrors)
     }
     private func scalarTest(_ scalar: SGScalar) throws {
-        try surfaceTest(SGPBRSurface(opacity: scalar))
+        try surfaceTest(pbrSurface(opacity: scalar))
+    }
+    private func halfTest(_ scalar: SGScalar) throws {
+        try surfaceTest(geometryModifier(userAttributeHalf40: .vector4h(scalar, .half(0), .half(0), .half(0))))
     }
     
     func testModulus() throws {
@@ -88,31 +100,66 @@ final class ShaderGraphCoderTests: XCTestCase {
         guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
             throw URLError(.fileDoesNotExist)
         }
-        let textureResource = try TextureResource.load(contentsOf: textureURL)
         let expectation = self.expectation(description: "Load the texture material")
+        let surface =
+            SGValue
+            .texture(contentsOf: textureURL)
+            .sampleColor3f(texcoord: SGValue.uv0)
+            .pbrSurface()
         Task {
             // Create the material
-            let texture = SGValue.texture2DParameter(name: "ColorTexture")
-            let color = texture.sample(texcoord: SGValue.uv0)
             #if os(visionOS)
-            do {
-                var mat = try await ShaderGraphMaterial(surface: SGPBRSurface(baseColor: color), geometryModifier: nil)
-                try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
-            }
-            catch {
-            }
+//            do {
+//                var mat = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
+//                try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
+//            }
+//            catch {
+//            }
             #endif
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0)
+        try surfaceTest(surface)
     }
     
     func testCustomAttribute() throws {
         let pos: SGVector = .modelPosition
-        let attrS: SGVector = vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
-        let geom = SGGeometryModifier(customAttribute: attrS)
-        let attr = SGValue.customAttribute
-        let color = color3f(attr.x, attr.y, attr.z)
-        try surfaceTest(SGPBRSurface(baseColor: color), geometryModifier: geom)
+        let attrS: SGVector = .vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
+        let geom = geometryModifier(userAttribute: attrS)
+        let attr = SGValue.surfaceCustomAttribute
+        let color = SGValue.color3f(attr.x, attr.y, attr.z)
+        try surfaceTest(pbrSurface(baseColor: color), geometryModifier: geom)
+    }
+    
+    func testDimError() throws {
+        let v1 = SGValue.vector2f(1, 2)
+        let v2 = SGValue.vector3f(3, 4, 5)
+        let r = v1 + v2
+        try vectorTest(r, expectErrors: 2)
+    }
+    
+    func testTypeError() throws {
+        let v1 = SGValue.vector2f(1, 2)
+        let v2 = SGValue.vector3h(3, 4, 5)
+        let r = v1 + v2
+        try vectorTest(r, expectErrors: 2)
+    }
+    
+    func testPropagatedError() throws {
+        let v1 = SGValue.vector2f(1, 2)
+        let v2 = SGValue.vector3h(3, 4, 5)
+        let v3 = SGValue.vector3h(6, 7, 8)
+        let r = (v1 + v2) + v3
+        try vectorTest(r, expectErrors: 3)
+    }
+    
+    func testChainHalf() throws {
+        let r = SGValue.half(1).add(.half(2)).divide(.half(2))
+        try halfTest(r)
+    }
+
+    func testChainVector3() throws {
+        let r = SGValue.vector3f(1, 2, 3).add(.vector3f(4, 5, 6)).divide(.float(2))
+        try vectorTest(r)
     }
 }

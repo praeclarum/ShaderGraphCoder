@@ -5,8 +5,12 @@
 //  Created by Frank A. Krueger on 2/10/24.
 //
 
+import CoreGraphics
 import Foundation
+import Metal
 import RealityKit
+
+private var nextTextureId = 1
 
 public extension SGValue {
     static func color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
@@ -15,17 +19,29 @@ public extension SGValue {
     static func color3f(_ x: Float, _ y: Float, _ z: Float, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .constant(.color3f([x, y, z], colorSpace: colorSpace)))
     }
+    static func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
+        return combine(values: [r, g, b], dataType: .color3f)
+    }
     static func color3fParameter(name: String, defaultValue: SIMD3<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color3f(defaultValue, colorSpace: colorSpace)))
     }
     static func color4f(_ x: Float, _ y: Float, _ z: Float, _ w: Float, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .constant(.color4f([x, y, z, w], colorSpace: colorSpace)))
     }
+    static func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
+        return combine(values: [r, g, b, a], dataType: .color4f)
+    }
     static func color4fParameter(name: String, defaultValue: SIMD4<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color4f(defaultValue, colorSpace: colorSpace)))
     }
-    static var customAttribute: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.customAttribute, "customAttribute"))
+    static var identity2d: SGMatrix {
+        .matrix2d(col0: [1, 0], col1: [0, 1])
+    }
+    static var identity3d: SGMatrix {
+        .matrix3d(col0: [1, 0, 0], col1: [0, 1, 0], col2: [0, 0, 1])
+    }
+    static var identity4d: SGMatrix {
+        .matrix4d(col0: [1, 0, 0, 0], col1: [0, 1, 0, 0], col2: [0, 0, 1, 0], col3: [0, 0, 0, 1])
     }
     static func int(_ value: Int) -> SGScalar {
         SGScalar(source: .constant(.int(value)))
@@ -36,35 +52,103 @@ public extension SGValue {
     static func floatParameter(name: String, defaultValue: Float) -> SGScalar {
         SGScalar(source: .parameter(name: name, defaultValue: .float(defaultValue)))
     }
-    static var modelNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.modelNormal))
+    static func half(_ value: Float16) -> SGScalar {
+        SGScalar(source: .constant(.half(value)))
     }
-    static var modelPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.modelPosition))
+    static func halfParameter(name: String, defaultValue: Float16) -> SGScalar {
+        SGScalar(source: .parameter(name: name, defaultValue: .half(defaultValue)))
     }
-    static var objectNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.objectNormal))
+
+    static func matrix2d(_ value: simd_float2x2) -> SGMatrix {
+        SGMatrix(source: .constant(.matrix2d(value)))
     }
-    static var objectPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.objectPosition))
+    static func matrix2d(col0: SIMD2<Float>, col1: SIMD2<Float>) -> SGMatrix {
+        SGMatrix(source: .constant(.matrix2d(simd_float2x2(columns: (col0, col1)))))
     }
+    static func matrix2dParameter(name: String, defaultValue: simd_float2x2) -> SGMatrix {
+        SGMatrix(source: .parameter(name: name, defaultValue: .matrix2d(defaultValue)))
+    }
+
+    static func matrix3d(_ value: simd_float3x3) -> SGMatrix {
+        SGMatrix(source: .constant(.matrix3d(value)))
+    }
+    static func matrix3d(col0: SIMD3<Float>, col1: SIMD3<Float>, col2: SIMD3<Float>) -> SGMatrix {
+        SGMatrix(source: .constant(.matrix3d(simd_float3x3(columns: (col0, col1, col2)))))
+    }
+    static func matrix3dParameter(name: String, defaultValue: simd_float3x3) -> SGMatrix {
+        SGMatrix(source: .parameter(name: name, defaultValue: .matrix3d(defaultValue)))
+    }
+
+    static func matrix4d(_ value: simd_float4x4) -> SGMatrix {
+        SGMatrix(source: .constant(.matrix4d(value)))
+    }
+    static func matrix4d(col0: SIMD4<Float>, col1: SIMD4<Float>, col2: SIMD4<Float>, col3: SIMD4<Float>) -> SGMatrix {
+        SGMatrix(source: .constant(.matrix4d(simd_float4x4(columns: (col0, col1, col2, col3)))))
+    }
+    static func matrix4dParameter(name: String, defaultValue: simd_float4x4) -> SGMatrix {
+        SGMatrix(source: .parameter(name: name, defaultValue: .matrix4d(defaultValue)))
+    }
+
     static func string(_ value: String) -> SGString {
         SGString(source: .constant(.string(value)))
     }
-    static func texture1DParameter(name: String) -> SGTexture1D {
-        SGTexture1D(source: .parameter(name: name, defaultValue: .emptyTexture1D))
+
+    static let zero = SGScalar(source: .constant(.float(0.0)))
+    static let one = SGScalar(source: .constant(.float(1.0)))
+    static let pi = SGScalar(source: .constant(.float(Float.pi)))
+    static let degToRad = SGScalar(source: .constant(.float(Float.pi/180.0)))
+    static let radToDeg = SGScalar(source: .constant(.float(180.0/Float.pi)))
+
+    static let black = SGColor(source: .constant(.color3f([0, 0, 0])))
+    static let white = SGColor(source: .constant(.color3f([1, 1, 1])))
+    static let red = SGColor(source: .constant(.color3f([1, 0, 0])))
+    static let green = SGColor(source: .constant(.color3f([0, 1, 0])))
+    static let blue = SGColor(source: .constant(.color3f([0, 0, 1])))
+    static let opaqueBlack = SGColor(source: .constant(.color4f([0, 0, 0, 1])))
+    static let opaqueWhite = SGColor(source: .constant(.color4f([1, 1, 1, 1])))
+    static let opaqueRed = SGColor(source: .constant(.color4f([1, 0, 0, 1])))
+    static let opaqueGreen = SGColor(source: .constant(.color4f([0, 1, 0, 1])))
+    static let opaqueBlue = SGColor(source: .constant(.color4f([0, 0, 1, 1])))
+    static let transparentBlack = SGColor(source: .constant(.color4f([0, 0, 0, 0])))
+    
+    static func texture(_ texture: TextureResource) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.texture(texture))))
     }
-    static func texture2DParameter(name: String) -> SGTexture2D {
-        SGTexture2D(source: .parameter(name: name, defaultValue: .emptyTexture2D))
+    static func texture(from: CGImage, options: TextureResource.CreateOptions) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.cgImage(from, options: options))))
     }
-    static func texture3DParameter(name: String) -> SGTexture3D {
-        SGTexture3D(source: .parameter(name: name, defaultValue: .emptyTexture3D))
+    static func texture(named: String, in bundle: Bundle? = nil, options: TextureResource.CreateOptions? = nil) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadNamed(named, in: bundle, options: options))))
     }
-    static var time: SGScalar {
-        SGScalar(source: SGValueSource.nodeOutput(SGNode.time))
+    static func texture(contentsOf: URL, options: TextureResource.CreateOptions? = nil) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadContentsOf(contentsOf, options: options))))
     }
+    #if os(visionOS)
+    static func texture(width: Int, height: Int, format: TextureResource.Format, data: Data, bytesPerRow: Int) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.data(width: width, height: height, format: format, data: data, bytesPerRow: bytesPerRow))))
+    }
+    static func texture(width: Int, height: Int, format: TextureResource.Format, unsafeBuffer: any MTLBuffer, offset: Int, size: Int, bytesPerRow: Int) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.mtlBuffer(width: width, height: height, format: format, unsafeBuffer: unsafeBuffer, offset: offset, size: size, bytesPerRow: bytesPerRow))))
+    }
+    #endif
+    static func textureParameter(name: String) -> SGTexture {
+        SGTexture(source: .parameter(name: name, defaultValue: .emptyTexture))
+    }
+
     static func uv(index: Int) -> SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.uv(index: index)))
+        texcoordVector2(index: index)
     }
     static var uv0: SGVector {
         SGValue.uv(index: 0)
@@ -72,6 +156,11 @@ public extension SGValue {
     static var uv1: SGVector {
         SGValue.uv(index: 1)
     }
+
+    static let vector2fZero = SGVector(source: .constant(.vector2f([0, 0])))
+    static let vector3fZero = SGVector(source: .constant(.vector3f([0, 0, 0])))
+    static let vector4fZero = SGVector(source: .constant(.vector4f([0, 0, 0, 0])))
+
     static func vector2f(_ value: SIMD2<Float>) -> SGVector {
         SGVector(source: .constant(.vector2f(value)))
     }
@@ -99,28 +188,151 @@ public extension SGValue {
     static func vector4fParameter(name: String, defaultValue: SIMD4<Float>) -> SGVector {
         SGVector(source: .parameter(name: name, defaultValue: .vector4f(defaultValue)))
     }
-    static var worldCameraPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldCameraPosition))
+    static func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+        return combine(values: [x, y], dataType: .vector2f)
     }
-    static var worldPosition: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldPosition))
+    static func vector3f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+        return combine(values: [x, y, z], dataType: .vector3f)
+    }
+    static func vector4f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+        return combine(values: [x, y, z, w], dataType: .vector4f)
+    }
+
+    static func vector2h(_ value: SIMD2<Float16>) -> SGVector {
+        SGVector(source: .constant(.vector2h(value)))
+    }
+    static func vector2h(_ x: Float16, _ y: Float16) -> SGVector {
+        SGVector(source: .constant(.vector2h([x, y])))
+    }
+    static func vector2hParameter(name: String, defaultValue: SIMD2<Float16>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector2h(defaultValue)))
+    }
+    static func vector3h(_ value: SIMD3<Float16>) -> SGVector {
+        SGVector(source: .constant(.vector3h(value)))
+    }
+    static func vector3h(_ x: Float16, _ y: Float16, _ z: Float16) -> SGVector {
+        SGVector(source: .constant(.vector3h([x, y, z])))
+    }
+    static func vector3hParameter(name: String, defaultValue: SIMD3<Float16>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector3h(defaultValue)))
+    }
+    static func vector4h(_ value: SIMD4<Float16>) -> SGVector {
+        SGVector(source: .constant(.vector4h(value)))
+    }
+    static func vector4h(_ x: Float16, _ y: Float16, _ z: Float16, _ w: Float16) -> SGVector {
+        SGVector(source: .constant(.vector4h([x, y, z, w])))
+    }
+    static func vector4hParameter(name: String, defaultValue: SIMD4<Float16>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector4h(defaultValue)))
+    }
+    static func vector2h(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+        return combine(values: [x, y], dataType: .vector2h)
+    }
+    static func vector3h(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+        return combine(values: [x, y, z], dataType: .vector3h)
+    }
+    static func vector4h(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+        return combine(values: [x, y, z, w], dataType: .vector4h)
+    }
+
+    static func vector2i(_ value: SIMD2<Int>) -> SGVector {
+        SGVector(source: .constant(.vector2i(value)))
+    }
+    static func vector2i(_ x: Int, _ y: Int) -> SGVector {
+        SGVector(source: .constant(.vector2i([x, y])))
+    }
+    static func vector2iParameter(name: String, defaultValue: SIMD2<Int>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector2i(defaultValue)))
+    }
+    static func vector3i(_ value: SIMD3<Int>) -> SGVector {
+        SGVector(source: .constant(.vector3i(value)))
+    }
+    static func vector3i(_ x: Int, _ y: Int, _ z: Int) -> SGVector {
+        SGVector(source: .constant(.vector3i([x, y, z])))
+    }
+    static func vector3iParameter(name: String, defaultValue: SIMD3<Int>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector3i(defaultValue)))
+    }
+    static func vector4i(_ value: SIMD4<Int>) -> SGVector {
+        SGVector(source: .constant(.vector4i(value)))
+    }
+    static func vector4i(_ x: Int, _ y: Int, _ z: Int, _ w: Int) -> SGVector {
+        SGVector(source: .constant(.vector4i([x, y, z, w])))
+    }
+    static func vector4iParameter(name: String, defaultValue: SIMD4<Int>) -> SGVector {
+        SGVector(source: .parameter(name: name, defaultValue: .vector4i(defaultValue)))
+    }
+    static func vector2i(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+        return combine(values: [x, y], dataType: .vector2i)
+    }
+    static func vector3i(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+        return combine(values: [x, y, z], dataType: .vector3i)
+    }
+    static func vector4i(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+        return combine(values: [x, y, z, w], dataType: .vector4i)
+    }
+
+    static var modelBitangent0: SGVector {
+        bitangent(space: .model, index: 0)
+    }
+    static var modelCameraPosition: SGVector {
+        cameraPosition(space: .model)
+    }
+    static var modelNormal: SGVector {
+        normal(space: .model)
+    }
+    static var modelPosition: SGVector {
+        position(space: .model)
+    }
+    static var modelTangent0: SGVector {
+        tangent(space: .model, index: 0)
+    }
+    static var modelUpDirection: SGVector {
+        upDirection(space: .model)
+    }
+    static var modelViewDirection: SGVector {
+        viewDirection(space: .model)
+    }
+    static var objectBitangent0: SGVector {
+        bitangent(space: .object, index: 0)
+    }
+    static var objectCameraPosition: SGVector {
+        cameraPosition(space: .object)
+    }
+    static var objectNormal: SGVector {
+        normal(space: .object)
+    }
+    static var objectPosition: SGVector {
+        position(space: .object)
+    }
+    static var objectTangent0: SGVector {
+        tangent(space: .object, index: 0)
+    }
+    static var objectUpDirection: SGVector {
+        upDirection(space: .object)
+    }
+    static var objectViewDirection: SGVector {
+        viewDirection(space: .object)
+    }
+    static var worldCameraPosition: SGVector {
+        cameraPosition(space: .world)
+    }
+    static var worldBitangent0: SGVector {
+        bitangent(space: .world, index: 0)
     }
     static var worldNormal: SGVector {
-        SGVector(source: SGValueSource.nodeOutput(SGNode.worldNormal))
+        normal(space: .world)
     }
-}
-
-public extension SGNode {
-    static let customAttribute = SGNode(nodeType: "ND_realitykit_surface_custom_attribute", inputs: [], outputs: [.init(name: "customAttribute", dataType: .vector4f)])
-    static let modelNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let modelPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("model"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let objectNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let objectPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("object"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let time = SGNode(nodeType: "ND_time_float", inputs: [], outputs: [.init(name: "out", dataType: .float)])
-    static let worldCameraPosition = SGNode(nodeType: "ND_realitykit_cameraposition_vector3", inputs: [], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let worldPosition = SGNode(nodeType: "ND_position_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static let worldNormal = SGNode(nodeType: "ND_normal_vector3", inputs: [.init(name: "space", connection: .string("world"))], outputs: [.init(name: "out", dataType: .vector3f)])
-    static func uv(index: Int) -> SGNode {
-        SGNode(nodeType: "ND_texcoord_vector2", inputs: [.init(name: "index", connection: .int(index))], outputs: [.init(name: "out", dataType: .vector2f)])
+    static var worldPosition: SGVector {
+        position(space: .world)
+    }
+    static var worldTangent0: SGVector {
+        tangent(space: .world, index: 0)
+    }
+    static var worldUpDirection: SGVector {
+        upDirection(space: .world)
+    }
+    static var worldViewDirection: SGVector {
+        viewDirection(space: .world)
     }
 }

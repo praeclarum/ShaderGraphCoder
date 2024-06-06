@@ -13,42 +13,79 @@ public extension SGNode {
 
 public extension SGDataType {
     var usda: String {
-        switch self {
-        case .surface:
-            return "token"
-        case .geometryModifier:
-            return "token"
-        default:
-            return self.rawValue
-        }
+        return self.rawValue
+    }
+}
+
+public extension SIMD2<Float> {
+    var usda: String {
+        return "(\(self.x), \(self.y))"
+    }
+}
+
+public extension SIMD3<Float> {
+    var usda: String {
+        return "(\(self.x), \(self.y), \(self.z))"
+    }
+}
+
+public extension SIMD4<Float> {
+    var usda: String {
+        return "(\(self.x), \(self.y), \(self.z), \(self.w))"
     }
 }
 
 public extension SGConstantValue {
     var usda: String {
         switch self {
-        case .color3f(let v, colorSpace: let cs):
-            return "(\(v.x), \(v.y), \(v.z)) (colorSpace = \"\(cs.rawValue)\")"
-        case .color4f(let v, colorSpace: let cs):
-            return "(\(v.x), \(v.y), \(v.z), \(v.w)) (colorSpace = \"\(cs.rawValue)\")"
-        case .emptyTexture1D:
-            return "\"\""
-        case .emptyTexture2D:
-            return "\"\""
-        case .emptyTexture3D:
+        case .bool(let v):
+            return v ? "1" : "0"
+        case .color3f(let v, colorSpace: .some(let cs)):
+            return "\(v.usda) (colorSpace = \"\(cs.rawValue)\")"
+        case .color4f(let v, colorSpace: .some(let cs)):
+            return "\(v.usda) (colorSpace = \"\(cs.rawValue)\")"
+        case .color3f(let v, colorSpace: .none):
+            return v.usda
+        case .color4f(let v, colorSpace: .none):
+            return v.usda
+        case .emptyTexture:
             return "\"\""
         case .float(let v):
+            return "\(v)"
+        case .half(let v):
             return "\(v)"
         case .int(let v):
             return "\(v)"
         case .string(let v):
             return "\"\(v)\""
+        case .texture:
+            return "\"\""
+        case .token(let v):
+            return "\"\(v)\""
         case .vector2f(let v):
-            return "(\(v.x), \(v.y))"
+            return v.usda
         case .vector3f(let v):
-            return "(\(v.x), \(v.y), \(v.z))"
+            return v.usda
         case .vector4f(let v):
+            return v.usda
+        case .vector2h(let v):
+            return "(\(v.x), \(v.y))"
+        case .vector3h(let v):
+            return "(\(v.x), \(v.y), \(v.z))"
+        case .vector4h(let v):
             return "(\(v.x), \(v.y), \(v.z), \(v.w))"
+        case .vector2i(let v):
+            return "(\(v.x), \(v.y))"
+        case .vector3i(let v):
+            return "(\(v.x), \(v.y), \(v.z))"
+        case .vector4i(let v):
+            return "(\(v.x), \(v.y), \(v.z), \(v.w))"
+        case .matrix2d(let v):
+            return "(\(v.columns.0.usda), \(v.columns.1.usda))"
+        case .matrix3d(let v):
+            return "(\(v.columns.0.usda), \(v.columns.1.usda), \(v.columns.2.usda))"
+        case .matrix4d(let v):
+            return "(\(v.columns.0.usda), \(v.columns.1.usda), \(v.columns.2.usda), \(v.columns.3.usda))"
         }
     }
 }
@@ -62,11 +99,13 @@ public extension SGValueSource {
             return "</Root/\(materialName)/\(inode.usdaName).outputs:\(inodeOut)>"
         case .parameter(name: let name, defaultValue: _):
             return "</Root/\(materialName).inputs:\(name)>"
+        case .error(let error, _):
+            return "\"\(error)\""
         }
     }
 }
 
-public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier: SGGeometryModifier?) -> (String, [String]) {
+public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: SGToken?) -> (String, [String: SGTextureSource], [String]) {
     var lines: [String] = []
     func line(_ text: String) {
         lines.append(text)
@@ -84,22 +123,27 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
     line("    def Material \"\(materialName)\"")
     line("    {")
     
-    let outputNodes = [surface, geometryModifier].compactMap { $0 }
+    let outputValues = [surface, geometryModifier]
+    let outputNodes = [surface?.node, geometryModifier?.node].compactMap { $0 }
     let parameters = collectParameters(nodes: outputNodes)
-    let errors = collectErrors(nodes: outputNodes)
+    let errors = collectErrors(values: outputValues)
+    var textureSources: [String: SGTextureSource] = [:]
     for p in parameters {
         let (name, defaultValue) = p
         line("        \(defaultValue.dataType.usda) inputs:\(name) = \(defaultValue.usda)")
+        if case SGConstantValue.texture(let source) = defaultValue {
+            textureSources[name] = source
+        }
     }
     
-    if let s = surface {
+    if let s = surface?.node {
         let v = s.getOutputValue(name: "out").getUSDAReference(materialName: materialName)
         line("        token outputs:mtlx:surface.connect = \(v)")
     }
     else {
         line("        token outputs:mtlx:surface")
     }
-    if let g = geometryModifier {
+    if let g = geometryModifier?.node {
         let v = g.getOutputValue(name: "out").getUSDAReference(materialName: materialName)
         line("        token outputs:realitykit:vertex.connect = \(v)")
     }
@@ -119,7 +163,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
         line("            uniform token info:id = \"\(node.nodeType)\"")
         for i in node.inputs {
             var decl = "\(i.dataType.usda) inputs:\(i.name)"
-            if let c = i.connection?.source {
+            if let c = i.value?.source {
                 if case .nodeOutput = c {
                     decl += ".connect"
                 }
@@ -127,7 +171,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
                     decl += ".connect"
                 }
             }
-            if let value = i.connection?.source.getUSDAReference(materialName: materialName) {
+            if let value = i.value?.source.getUSDAReference(materialName: materialName) {
                 line("            \(decl) = \(value)")
             }
             else {
@@ -140,7 +184,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
         }
         line("        }")
         for i in node.inputs {
-            if case .nodeOutput(let inode, _) = i.connection?.source {
+            if case .nodeOutput(let inode, _) = i.value?.source {
                 if !(nodesWritten.contains(inode) || nodesToWrite.contains(inode)) {
                     nodesToWrite.append(inode)
                 }
@@ -151,17 +195,5 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
     line("    }")
     line("}")
     
-    return (lines.joined(separator: "\n"), errors)
-}
-
-public extension SGSurface {
-    func usda(materialName: String) -> String {
-        return getUSDA(materialName: materialName, surface: self, geometryModifier: nil).0
-    }
-}
-
-public extension SGGeometryModifier {
-    func usda(materialName: String) -> String {
-        return getUSDA(materialName: materialName, surface: nil, geometryModifier: self).0
-    }
+    return (lines.joined(separator: "\n"), textureSources, errors)
 }
