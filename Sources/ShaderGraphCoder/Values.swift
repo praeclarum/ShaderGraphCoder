@@ -197,12 +197,7 @@ public class SGTexture1D: SGTexture {
 
 public class SGTexture2D: SGTexture {
     public func sample(texcoord: SGVector? = nil) -> SGColor {
-        if let uv = texcoord {
-            ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack, texcoord: uv)
-        }
-        else {
-            ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack)
-        }
+        ShaderGraphCoder.sample(file: self, defaultValue: SGValue.transparentBlack, texcoord: texcoord)
     }
 }
 
