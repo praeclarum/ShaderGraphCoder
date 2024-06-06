@@ -27,7 +27,7 @@ struct ShaderGraphPreview: View {
             RealityView { content in
                 do {
                     let mat = try await ShaderGraphMaterial(surface: surface, geometryModifier: geometryModifier)
-                    let entity0 = ModelEntity(mesh: .generateBox(size: 0.2/sqrt(2)), materials: [mat])
+                    let entity0 = ModelEntity(mesh: .generateBox(size: 0.16), materials: [mat])
                     entity0.transform.translation = [-0.1, 0.0, 0.0]
                     let entity1 = ModelEntity(mesh: .generateSphere(radius: 0.1), materials: [mat])
                     entity1.transform.translation = [0.1, 0.0, 0.0]
