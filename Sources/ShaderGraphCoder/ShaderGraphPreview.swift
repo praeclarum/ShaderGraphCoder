@@ -33,6 +33,7 @@ struct ShaderGraphPreview: View {
                     entity1.transform.translation = [0.1, 0.0, 0.0]
                     content.add(entity0)
                     content.add(entity1)
+                    self.error = nil
                 }
                 catch {
                     if case ShaderGraphCoderError.graphContainsErrors(errors: let es) = error {
