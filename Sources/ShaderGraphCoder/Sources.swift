@@ -95,8 +95,14 @@ public extension SGValue {
     
     static let black = SGColor(source: .constant(.color3f([0, 0, 0])))
     static let white = SGColor(source: .constant(.color3f([1, 1, 1])))
+    static let red = SGColor(source: .constant(.color3f([1, 0, 0])))
+    static let green = SGColor(source: .constant(.color3f([0, 1, 0])))
+    static let blue = SGColor(source: .constant(.color3f([0, 0, 1])))
     static let opaqueBlack = SGColor(source: .constant(.color4f([0, 0, 0, 1])))
     static let opaqueWhite = SGColor(source: .constant(.color4f([1, 1, 1, 1])))
+    static let opaqueRed = SGColor(source: .constant(.color4f([1, 0, 0, 1])))
+    static let opaqueGreen = SGColor(source: .constant(.color4f([0, 1, 0, 1])))
+    static let opaqueBlue = SGColor(source: .constant(.color4f([0, 0, 1, 1])))
     static let transparentBlack = SGColor(source: .constant(.color4f([0, 0, 0, 0])))
     
     static let vector2fZero = SGVector(source: .constant(.vector2f([0, 0])))
