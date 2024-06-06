@@ -5,12 +5,14 @@
 //  Created by Frank A. Krueger on 6/5/24.
 //
 
+#if os(visionOS)
+
 import SwiftUI
 import RealityKit
 
 struct ShaderGraphPreview: View {
     let surface: SGToken?
-    let geometryModifier: SGToken?
+    let geometryModifier: SGToken? = nil
     @State private var error: String? = nil
     var body: some View {
         VStack {
@@ -46,5 +48,7 @@ struct ShaderGraphPreview: View {
 }
 
 #Preview {
-    ShaderGraphPreview(surface: (.blue*(sin(.time)*0.5 + 0.5)).pbrSurface(), geometryModifier: nil)
+    ShaderGraphPreview(surface: (.blue*(sin(.time * 2.0 * SGValue.pi)*0.5 + 0.5)).pbrSurface())
 }
+
+#endif

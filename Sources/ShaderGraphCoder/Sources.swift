@@ -93,6 +93,10 @@ public extension SGValue {
         SGTexture(source: .parameter(name: name, defaultValue: .emptyTexture2D))
     }
     
+    static let pi = SGScalar(source: .constant(.float(Float.pi)))
+    static let degToRad = SGScalar(source: .constant(.float(Float.pi/180.0)))
+    static let radToDeg = SGScalar(source: .constant(.float(180.0/Float.pi)))
+
     static let black = SGColor(source: .constant(.color3f([0, 0, 0])))
     static let white = SGColor(source: .constant(.color3f([1, 1, 1])))
     static let red = SGColor(source: .constant(.color3f([1, 0, 0])))
