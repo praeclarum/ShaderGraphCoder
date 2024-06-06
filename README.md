@@ -103,35 +103,35 @@ The following operators are supported:
 | `ambientOcclusion(coneangle, maxdistance)` | Ambient Occlusion |
 | `asin(in1)` | Asin |
 | `atan2(iny, inx)` | Atan2 |
-| `blur(in1, size, filtertype)` | Blur |
-| `burn(fg, bg, mix)` | Burn |
+| `blur(in1, size, ...)` | Blur |
+| `burn(fg, bg, ...)` | Burn |
 | `ceil(in1)` | Ceiling |
 | `cellNoise2D(texcoord)` | Cellular Noise 2D |
 | `cellNoise3D(position)` | Cellular Noise 3D |
-| `clamp(in1, min, max)` | Clamp |
-| `contrast(in1, amount, pivot)` | Contrast |
+| `clamp(in1, min, ...)` | Clamp |
+| `contrast(in1, amount, ...)` | Contrast |
 | `cos(in1)` | Cos |
 | `cross(in1, in2)` | Cross Product |
 | `determinant(in1)` | Determinant |
-| `difference(fg, bg, mix)` | Difference |
-| `disjointover(fg, bg, mix)` | Disjoint Over |
+| `difference(fg, bg, ...)` | Difference |
+| `disjointover(fg, bg, ...)` | Disjoint Over |
 | `divide(in1, in2)` | Divide |
-| `dodge(fg, bg, mix)` | Dodge |
+| `dodge(fg, bg, ...)` | Dodge |
 | `dot(in1, in2)` | Dot Product |
 | `exp(in1)` | Exp |
 | `extract(in1, index)` | Extract |
 | `floor(in1)` | Floor |
 | `fract(in1)` | Fractional |
-| `fractal3D(amplitude, octaves, lacunarity, diminish, ...)` | Fractal Noise 3D |
-| `geometrySwitchCameraindex(mono, left, right)` | Camera Index Switch |
+| `fractal3D(amplitude, octaves, ...)` | Fractal Noise 3D |
+| `geometrySwitchCameraindex(mono, left, ...)` | Camera Index Switch |
 | `geompropvalue(geomprop, defaultValue)` | Geometric Property |
 | `heightToNormal(in1, scale)` | Height To Normal |
 | `hsvAdjust(in1, amount)` | HSV Adjust |
 | `hsvToRGB(in1)` | HSV to RGB |
-| `ifEqual(value1, value2, trueResult, falseResult)` | If Equal |
-| `ifGreater(value1, value2, trueResult, falseResult)` | If Greater |
-| `ifGreaterOrEqual(value1, value2, trueResult, falseResult)` | If Greater Or Equal |
-| `image(file, defaultValue, texcoord, uaddressmode, ...)` | Image |
+| `ifEqual(value1, value2, ...)` | If Equal |
+| `ifGreater(value1, value2, ...)` | If Greater |
+| `ifGreaterOrEqual(value1, value2, ...)` | If Greater Or Equal |
+| `image(file, defaultValue, ...)` | Image |
 | `inside(in1, mask)` | Inside |
 | `invertMatrix(in1)` | Invert Matrix |
 | `length(in1)` | Magnitude |
@@ -141,70 +141,70 @@ The following operators are supported:
 | `logicalOr(in1, in2)` | Or |
 | `logicalXor(in1, in2)` | XOR |
 | `luminance(in1, lumacoeffs)` | Luminance |
-| `mask(fg, bg, mix)` | Mask |
-| `matte(fg, bg, mix)` | Matte |
+| `mask(fg, bg, ...)` | Mask |
+| `matte(fg, bg, ...)` | Matte |
 | `max(in1, in2)` | Max |
 | `min(in1, in2)` | Min |
-| `minus(fg, bg, mix)` | Subtractive Mix |
-| `mix(fg, bg, mix)` | Mix |
-| `mixColor(fg, bg, mix)` | In |
+| `minus(fg, bg, ...)` | Subtractive Mix |
+| `mix(fg, bg, ...)` | Mix |
+| `mixColor(fg, bg, ...)` | In |
 | `modulo(in1, in2)` | Modulo |
 | `multiply(in1, in2)` | Multiply |
-| `noise2D(amplitude, pivot, texcoord)` | Noise 2D |
-| `noise3D(amplitude, pivot, position)` | Noise 3D |
-| `normalMap(in1, space, scale, normal, ...)` | Normal Map |
+| `noise2D(amplitude, pivot, ...)` | Noise 2D |
+| `noise3D(amplitude, pivot, ...)` | Noise 3D |
+| `normalMap(in1, space, ...)` | Normal Map |
 | `normalMapDecode(in1)` | Normal Map Decode |
 | `normalize(in1)` | Normalize |
 | `oneMinus(in1)` | One Minus |
-| `out(fg, bg, mix)` | Out |
+| `out(fg, bg, ...)` | Out |
 | `outside(in1, mask)` | Outside |
-| `over(fg, bg, mix)` | Over |
-| `overlay(fg, bg, mix)` | Overlay |
-| `pixel(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Pixel |
-| `pixelGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Gradient Pixel |
-| `pixelLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D LOD Pixel |
-| `place2D(texcoord, pivot, scale, rotate, ...)` | Place 2D |
-| `plus(fg, bg, mix)` | Additive Mix |
+| `over(fg, bg, ...)` | Over |
+| `overlay(fg, bg, ...)` | Overlay |
+| `pixel(file, uWrapMode, ...)` | Image 2D Pixel |
+| `pixelGradient(file, uWrapMode, ...)` | Image 2D Gradient Pixel |
+| `pixelLOD(file, uWrapMode, ...)` | Image 2D LOD Pixel |
+| `place2D(texcoord, pivot, ...)` | Place 2D |
+| `plus(fg, bg, ...)` | Additive Mix |
 | `pow(in1, in2)` | Power |
 | `premult(in1)` | Premultiply |
-| `ramp4(valuetl, valuetr, valuebl, valuebr, ...)` | Ramp 4 Corners |
-| `ramplr(valuel, valuer, texcoord)` | Ramp Horizontal |
-| `ramptb(valuet, valueb, texcoord)` | Ramp Vertical |
-| `range(in1, inlow, inhigh, gamma, ...)` | Range |
-| `read(file, defaultValue, x, y, ...)` | Image 2D Read |
+| `ramp4(valuetl, valuetr, ...)` | Ramp 4 Corners |
+| `ramplr(valuel, valuer, ...)` | Ramp Horizontal |
+| `ramptb(valuet, valueb, ...)` | Ramp Vertical |
+| `range(in1, inlow, ...)` | Range |
+| `read(file, defaultValue, ...)` | Image 2D Read |
 | `reflect(in1, normal)` | Reflect |
-| `refract(in1, normal, eta)` | Refract |
-| `remap(in1, inlow, inhigh, outlow, ...)` | Remap |
+| `refract(in1, normal, ...)` | Refract |
+| `remap(in1, inlow, ...)` | Remap |
 | `rgbToHSV(in1)` | RGB to HSV |
 | `rotate2D(in1, amount)` | Rotate 2D |
-| `rotate3D(in1, amount, axis)` | Rotate 3D |
+| `rotate3D(in1, amount, ...)` | Rotate 3D |
 | `round(in1)` | Round |
 | `safePow(in1, in2)` | Safe Power |
-| `sample(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D |
-| `sampleCube(file, uWrapMode, vWrapMode, borderColor, ...)` | Cube Image |
-| `sampleCubeGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Cube Image Gradient |
-| `sampleCubeLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Cube Image LOD |
-| `sampleGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Gradient |
-| `sampleLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D LOD |
-| `saturate(in1, amount, lumacoeffs)` | Saturate |
-| `screen(fg, bg, mix)` | Screen |
+| `sample(file, uWrapMode, ...)` | Image 2D |
+| `sampleCube(file, uWrapMode, ...)` | Cube Image |
+| `sampleCubeGradient(file, uWrapMode, ...)` | Cube Image Gradient |
+| `sampleCubeLOD(file, uWrapMode, ...)` | Cube Image LOD |
+| `sampleGradient(file, uWrapMode, ...)` | Image 2D Gradient |
+| `sampleLOD(file, uWrapMode, ...)` | Image 2D LOD |
+| `saturate(in1, amount, ...)` | Saturate |
+| `screen(fg, bg, ...)` | Screen |
 | `sign(in1)` | Sign |
 | `sin(in1)` | Sin |
-| `smoothStep(in1, low, high)` | Smooth Step |
-| `splitlr(valuel, valuer, center, texcoord)` | Split Horizontal |
-| `splittb(valuet, valueb, center, texcoord)` | Split Vertical |
+| `smoothStep(in1, low, ...)` | Smooth Step |
+| `splitlr(valuel, valuer, ...)` | Split Horizontal |
+| `splittb(valuet, valueb, ...)` | Split Vertical |
 | `sqrt(in1)` | Square Root |
 | `step(in1, edge)` | Step |
 | `subtract(in1, in2)` | Subtract |
-| `switchValue(in1, in2, in3, in4, ...)` | Switch |
+| `switchValue(in1, in2, ...)` | Switch |
 | `tan(in1)` | Tan |
-| `tiledImage(file, defaultValue, texcoord, uvtiling, ...)` | Tiled Image |
+| `tiledImage(file, defaultValue, ...)` | Tiled Image |
 | `transformMatrix(in1, mat)` | Transform Matrix |
-| `transformNormal(in1, fromspace, tospace)` | Transform Normal |
-| `transformPoint(in1, fromspace, tospace)` | Transform Point |
-| `transformVector(in1, fromspace, tospace)` | Transform Vector |
+| `transformNormal(in1, fromspace, ...)` | Transform Normal |
+| `transformPoint(in1, fromspace, ...)` | Transform Point |
+| `transformVector(in1, fromspace, ...)` | Transform Vector |
 | `transpose(in1)` | Transpose |
-| `triplanarProjection(filex, filey, filez, defaultValue, ...)` | Triplanar Projection |
+| `triplanarProjection(filex, filey, ...)` | Triplanar Projection |
 | `unpremult(in1)` | Unpremultiply |
 | `worleyNoise2DFloat(texcoord, jitter)` | Worley Noise 2D |
 | `worleyNoise2DVector2(texcoord, jitter)` | Worley Noise 2D |

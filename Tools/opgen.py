@@ -952,7 +952,7 @@ def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, pr
         w.write(f"(")
         head = ""
         for i, input in enumerate(node.inputs):
-            if i >= 4:
+            if i >= 2:
                 w.write(f"{head}...")
                 break
             w.write(f"{head}{overloads.param_names[i]}")
