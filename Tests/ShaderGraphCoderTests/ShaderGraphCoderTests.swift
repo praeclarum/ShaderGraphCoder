@@ -97,10 +97,10 @@ final class ShaderGraphCoderTests: XCTestCase {
 
     func testLocalTexture() throws {
         // Load the texture from a bundle resource
-//        guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
-//            throw URLError(.fileDoesNotExist)
-//        }
-//        let textureResource = try TextureResource.load(contentsOf: textureURL)
+        guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
+            throw URLError(.fileDoesNotExist)
+        }
+        let textureResource = try TextureResource.load(contentsOf: textureURL)
         let expectation = self.expectation(description: "Load the texture material")
         let texture = SGValue.textureParameter(name: "ColorTexture")
         let color = texture.sampleColor3f(texcoord: SGValue.uv0)

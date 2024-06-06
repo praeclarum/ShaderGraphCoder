@@ -5,8 +5,11 @@
 //  Created by Frank A. Krueger on 2/10/24.
 //
 
+import CoreGraphics
 import Foundation
 import RealityKit
+
+private var nextTextureId = 1
 
 public extension SGValue {
     static func color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
@@ -89,10 +92,8 @@ public extension SGValue {
         SGString(source: .constant(.string(value)))
     }
 
-    static func textureParameter(name: String) -> SGTexture {
-        SGTexture(source: .parameter(name: name, defaultValue: .emptyTexture2D))
-    }
-    
+    static let zero = SGScalar(source: .constant(.float(0.0)))
+    static let one = SGScalar(source: .constant(.float(1.0)))
     static let pi = SGScalar(source: .constant(.float(Float.pi)))
     static let degToRad = SGScalar(source: .constant(.float(Float.pi/180.0)))
     static let radToDeg = SGScalar(source: .constant(.float(180.0/Float.pi)))
@@ -109,9 +110,29 @@ public extension SGValue {
     static let opaqueBlue = SGColor(source: .constant(.color4f([0, 0, 1, 1])))
     static let transparentBlack = SGColor(source: .constant(.color4f([0, 0, 0, 0])))
     
-    static let vector2fZero = SGVector(source: .constant(.vector2f([0, 0])))
-    static let vector3fZero = SGVector(source: .constant(.vector3f([0, 0, 0])))
-    static let vector4fZero = SGVector(source: .constant(.vector4f([0, 0, 0, 0])))
+    static func texture(_ texture: TextureResource) -> SGTexture {
+        let name = "texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.texture(texture))))
+    }
+    static func texture(from: CGImage, options: TextureResource.CreateOptions) -> SGTexture {
+        let name = "texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.generate(from: from, options: options))))
+    }
+    static func texture(named: String, in bundle: Bundle?, options: TextureResource.CreateOptions?) -> SGTexture {
+        let name = "texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadNamed(named, in: bundle, options: options))))
+    }
+    static func texture(contentsOf: URL, options: TextureResource.CreateOptions?) -> SGTexture {
+        let name = "texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadContentsOf(contentsOf, options: options))))
+    }
+    static func textureParameter(name: String) -> SGTexture {
+        SGTexture(source: .parameter(name: name, defaultValue: .emptyTexture))
+    }
 
     static func uv(index: Int) -> SGVector {
         texcoordVector2(index: index)
@@ -122,6 +143,10 @@ public extension SGValue {
     static var uv1: SGVector {
         SGValue.uv(index: 1)
     }
+
+    static let vector2fZero = SGVector(source: .constant(.vector2f([0, 0])))
+    static let vector3fZero = SGVector(source: .constant(.vector3f([0, 0, 0])))
+    static let vector4fZero = SGVector(source: .constant(.vector4f([0, 0, 0, 0])))
 
     static func vector2f(_ value: SIMD2<Float>) -> SGVector {
         SGVector(source: .constant(.vector2f(value)))

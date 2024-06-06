@@ -5,7 +5,9 @@
 //  Created by Frank A. Krueger on 2/10/24.
 //
 
+import CoreGraphics
 import Foundation
+import RealityKit
 import simd
 
 public class SGNode: Identifiable, Equatable, Hashable {
@@ -168,13 +170,18 @@ public enum SGDataType: String {
     }
 }
 
+public enum SGTextureSource {
+    case texture(_ texture: TextureResource)
+    case generate(from: CGImage, options: TextureResource.CreateOptions)
+    case loadNamed(_ named: String, in: Bundle?, options: TextureResource.CreateOptions?)
+    case loadContentsOf(_ url: URL, options: TextureResource.CreateOptions?)
+}
+
 public enum SGConstantValue {
     case bool(_ value: Bool)
     case color3f(_ value: SIMD3<Float>, colorSpace: SGColorSpace?)
     case color4f(_ value: SIMD4<Float>, colorSpace: SGColorSpace?)
-    case emptyTexture1D
-    case emptyTexture2D
-    case emptyTexture3D
+    case emptyTexture
     case float(_ value: Float)
     case half(_ value: Float16)
     case int(_ value: Int)
@@ -191,6 +198,7 @@ public enum SGConstantValue {
     case vector3i(_ value: SIMD3<Int>)
     case vector4i(_ value: SIMD4<Int>)
     case string(_ value: String)
+    case texture(_ value: SGTextureSource)
     case token(_ value: String)
     public var dataType: SGDataType {
         switch self {
@@ -200,11 +208,7 @@ public enum SGConstantValue {
             return .color3f
         case .color4f:
             return .color4f
-        case .emptyTexture1D:
-            return .asset
-        case .emptyTexture2D:
-            return .asset
-        case .emptyTexture3D:
+        case .emptyTexture:
             return .asset
         case .float:
             return .float
@@ -220,6 +224,8 @@ public enum SGConstantValue {
             return .matrix4d
         case .string:
             return .string
+        case .texture:
+            return .asset
         case .token:
             return .token
         case .vector2f:

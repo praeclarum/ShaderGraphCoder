@@ -48,11 +48,7 @@ public extension SGConstantValue {
             return v.usda
         case .color4f(let v, colorSpace: .none):
             return v.usda
-        case .emptyTexture1D:
-            return "\"\""
-        case .emptyTexture2D:
-            return "\"\""
-        case .emptyTexture3D:
+        case .emptyTexture:
             return "\"\""
         case .float(let v):
             return "\(v)"
@@ -62,6 +58,8 @@ public extension SGConstantValue {
             return "\(v)"
         case .string(let v):
             return "\"\(v)\""
+        case .texture:
+            return "\"\""
         case .token(let v):
             return "\"\(v)\""
         case .vector2f(let v):
