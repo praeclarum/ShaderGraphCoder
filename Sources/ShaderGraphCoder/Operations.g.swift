@@ -72,7 +72,7 @@ public enum SGTransformSpace: String, CaseIterable {
 
 /// Abs
 public func abs<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_color3",
             inputs: [
@@ -80,7 +80,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_color4",
             inputs: [
@@ -88,7 +88,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_float",
             inputs: [
@@ -96,7 +96,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_half",
             inputs: [
@@ -104,7 +104,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_vector2",
             inputs: [
@@ -112,7 +112,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_vector3",
             inputs: [
@@ -120,7 +120,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_vector4",
             inputs: [
@@ -132,7 +132,7 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Acos
 public func acos<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_float",
             inputs: [
@@ -140,7 +140,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half",
             inputs: [
@@ -148,7 +148,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half2",
             inputs: [
@@ -156,7 +156,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half3",
             inputs: [
@@ -164,7 +164,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half4",
             inputs: [
@@ -172,7 +172,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_vector2",
             inputs: [
@@ -180,7 +180,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_vector3",
             inputs: [
@@ -188,7 +188,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_vector4",
             inputs: [
@@ -200,7 +200,7 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Add
 public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color3",
             inputs: [
@@ -209,7 +209,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color3FA",
             inputs: [
@@ -218,7 +218,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color4",
             inputs: [
@@ -227,7 +227,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color4FA",
             inputs: [
@@ -236,7 +236,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_float",
             inputs: [
@@ -245,7 +245,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_half",
             inputs: [
@@ -254,7 +254,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix22",
             inputs: [
@@ -263,7 +263,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.float {
+    if SGDataType.matrix2d.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix22FA",
             inputs: [
@@ -272,7 +272,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) && SGDataType.matrix3d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix33",
             inputs: [
@@ -281,7 +281,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.float {
+    if SGDataType.matrix3d.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix33FA",
             inputs: [
@@ -290,7 +290,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) && SGDataType.matrix4d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix44",
             inputs: [
@@ -299,7 +299,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.float {
+    if SGDataType.matrix4d.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix44FA",
             inputs: [
@@ -308,7 +308,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector2",
             inputs: [
@@ -317,7 +317,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector2FA",
             inputs: [
@@ -326,7 +326,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector3",
             inputs: [
@@ -335,7 +335,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector3FA",
             inputs: [
@@ -344,7 +344,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector4",
             inputs: [
@@ -353,7 +353,7 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector4FA",
             inputs: [
@@ -376,7 +376,7 @@ public func ambientOcclusion(coneangle: SGScalar? = nil, maxdistance: SGScalar? 
 }
 /// Asin
 public func asin<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_float",
             inputs: [
@@ -384,7 +384,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half",
             inputs: [
@@ -392,7 +392,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half2",
             inputs: [
@@ -400,7 +400,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half3",
             inputs: [
@@ -408,7 +408,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half4",
             inputs: [
@@ -416,7 +416,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_vector2",
             inputs: [
@@ -424,7 +424,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_vector3",
             inputs: [
@@ -432,7 +432,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_vector4",
             inputs: [
@@ -444,7 +444,7 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Atan2
 public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
-    if iny.dataType == SGDataType.float && inx.dataType == SGDataType.float {
+    if SGDataType.float.matches(iny) && SGDataType.float.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_float",
             inputs: [
@@ -453,7 +453,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if iny.dataType == SGDataType.half && inx.dataType == SGDataType.half {
+    if SGDataType.half.matches(iny) && SGDataType.half.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half",
             inputs: [
@@ -462,7 +462,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if iny.dataType == SGDataType.vector2h && inx.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(iny) && SGDataType.vector2h.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half2",
             inputs: [
@@ -471,7 +471,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if iny.dataType == SGDataType.vector3h && inx.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(iny) && SGDataType.vector3h.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half3",
             inputs: [
@@ -480,7 +480,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if iny.dataType == SGDataType.vector4h && inx.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(iny) && SGDataType.vector4h.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half4",
             inputs: [
@@ -489,7 +489,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if iny.dataType == SGDataType.vector2f && inx.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(iny) && SGDataType.vector2f.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_vector2",
             inputs: [
@@ -498,7 +498,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if iny.dataType == SGDataType.vector3f && inx.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(iny) && SGDataType.vector3f.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_vector3",
             inputs: [
@@ -507,7 +507,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if iny.dataType == SGDataType.vector4f && inx.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(iny) && SGDataType.vector4f.matches(inx) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_vector4",
             inputs: [
@@ -520,7 +520,7 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
 }
 /// Blur
 public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterType = SGBlurFilterType.box) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && size.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_color3",
             inputs: [
@@ -530,7 +530,7 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && size.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_color4",
             inputs: [
@@ -540,7 +540,7 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && size.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_float",
             inputs: [
@@ -550,7 +550,7 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && size.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_half",
             inputs: [
@@ -560,7 +560,7 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f && size.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_vector2",
             inputs: [
@@ -570,7 +570,7 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && size.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_vector3",
             inputs: [
@@ -580,7 +580,7 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && size.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(size) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_vector4",
             inputs: [
@@ -590,11 +590,11 @@ public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterTyp
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types in blur(in1: \(in1.dataType), size: \(size.dataType))", values: [in1, size]))
+    return T(source: .error("Unsupported input data types in blur(in1: \(in1.dataType), size: \(size?.dataType.rawValue ?? "nil"))", values: [in1, size]))
 }
 /// Burn
 public func burn<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_color3",
             inputs: [
@@ -604,7 +604,7 @@ public func burn<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_color4",
             inputs: [
@@ -614,7 +614,7 @@ public func burn<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_float",
             inputs: [
@@ -624,7 +624,7 @@ public func burn<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_half",
             inputs: [
@@ -634,11 +634,11 @@ public func burn<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in burn(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in burn(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Ceiling
 public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_color3",
             inputs: [
@@ -646,7 +646,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_color4",
             inputs: [
@@ -654,7 +654,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_float",
             inputs: [
@@ -662,7 +662,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_half",
             inputs: [
@@ -670,7 +670,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector2",
             inputs: [
@@ -678,7 +678,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector3",
             inputs: [
@@ -686,7 +686,7 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector4",
             inputs: [
@@ -716,7 +716,7 @@ public func cellNoise3D(position: SGVector? = nil) -> SGScalar {
 }
 /// Clamp
 public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && min.dataType == SGDataType.color3f && max.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(min) && SGDataType.color3f.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color3",
             inputs: [
@@ -726,7 +726,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color3FA",
             inputs: [
@@ -736,7 +736,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && min.dataType == SGDataType.color4f && max.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(min) && SGDataType.color4f.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color4",
             inputs: [
@@ -746,7 +746,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color4FA",
             inputs: [
@@ -756,7 +756,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_float",
             inputs: [
@@ -766,7 +766,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && min.dataType == SGDataType.half && max.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(min) && SGDataType.half.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half",
             inputs: [
@@ -776,7 +776,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h && min.dataType == SGDataType.vector2h && max.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(min) && SGDataType.vector2h.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half2",
             inputs: [
@@ -786,7 +786,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector2h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.vector2h.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half2FA",
             inputs: [
@@ -796,7 +796,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h && min.dataType == SGDataType.vector3h && max.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(min) && SGDataType.vector3h.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half3",
             inputs: [
@@ -806,7 +806,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.vector3h.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half3FA",
             inputs: [
@@ -816,7 +816,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h && min.dataType == SGDataType.vector4h && max.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(min) && SGDataType.vector4h.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half4",
             inputs: [
@@ -826,7 +826,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector4h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.vector4h.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half4FA",
             inputs: [
@@ -836,7 +836,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f && min.dataType == SGDataType.vector2f && max.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(min) && SGDataType.vector2f.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector2",
             inputs: [
@@ -846,7 +846,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector2FA",
             inputs: [
@@ -856,7 +856,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && min.dataType == SGDataType.vector3f && max.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(min) && SGDataType.vector3f.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector3",
             inputs: [
@@ -866,7 +866,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector3FA",
             inputs: [
@@ -876,7 +876,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && min.dataType == SGDataType.vector4f && max.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(min) && SGDataType.vector4f.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector4",
             inputs: [
@@ -886,7 +886,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(min) && SGDataType.float.matches(max) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector4FA",
             inputs: [
@@ -900,7 +900,7 @@ public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGN
 }
 /// Contrast
 public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && amount.dataType == SGDataType.color3f && pivot.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(amount) && SGDataType.color3f.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color3",
             inputs: [
@@ -910,7 +910,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(amount) && SGDataType.float.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color3FA",
             inputs: [
@@ -920,7 +920,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && amount.dataType == SGDataType.color4f && pivot.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(amount) && SGDataType.color4f.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color4",
             inputs: [
@@ -930,7 +930,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(amount) && SGDataType.float.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color4FA",
             inputs: [
@@ -940,7 +940,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(amount) && SGDataType.float.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_float",
             inputs: [
@@ -950,7 +950,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f && amount.dataType == SGDataType.vector2f && pivot.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(amount) && SGDataType.vector2f.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector2",
             inputs: [
@@ -960,7 +960,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(amount) && SGDataType.float.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector2FA",
             inputs: [
@@ -970,7 +970,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && amount.dataType == SGDataType.vector3f && pivot.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(amount) && SGDataType.vector3f.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector3",
             inputs: [
@@ -980,7 +980,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(amount) && SGDataType.float.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector3FA",
             inputs: [
@@ -990,7 +990,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && amount.dataType == SGDataType.vector4f && pivot.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(amount) && SGDataType.vector4f.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector4",
             inputs: [
@@ -1000,7 +1000,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(amount) && SGDataType.float.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector4FA",
             inputs: [
@@ -1014,7 +1014,7 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
 }
 /// Cos
 public func cos<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_float",
             inputs: [
@@ -1022,7 +1022,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half",
             inputs: [
@@ -1030,7 +1030,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half2",
             inputs: [
@@ -1038,7 +1038,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half3",
             inputs: [
@@ -1046,7 +1046,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half4",
             inputs: [
@@ -1054,7 +1054,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_vector2",
             inputs: [
@@ -1062,7 +1062,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_vector3",
             inputs: [
@@ -1070,7 +1070,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_vector4",
             inputs: [
@@ -1082,7 +1082,7 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Cross Product
 public func cross(_ in1: SGVector, _ in2: SGVector) -> SGVector {
-    if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_crossproduct_half3",
             inputs: [
@@ -1091,7 +1091,7 @@ public func cross(_ in1: SGVector, _ in2: SGVector) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_crossproduct_vector3",
             inputs: [
@@ -1104,7 +1104,7 @@ public func cross(_ in1: SGVector, _ in2: SGVector) -> SGVector {
 }
 /// Determinant
 public func determinant(_ in1: SGMatrix) -> SGScalar {
-    if in1.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_determinant_matrix22",
             inputs: [
@@ -1112,7 +1112,7 @@ public func determinant(_ in1: SGMatrix) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_determinant_matrix33",
             inputs: [
@@ -1120,7 +1120,7 @@ public func determinant(_ in1: SGMatrix) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_determinant_matrix44",
             inputs: [
@@ -1132,7 +1132,7 @@ public func determinant(_ in1: SGMatrix) -> SGScalar {
 }
 /// Difference
 public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_color3",
             inputs: [
@@ -1142,7 +1142,7 @@ public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNu
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_color4",
             inputs: [
@@ -1152,7 +1152,7 @@ public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNu
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_float",
             inputs: [
@@ -1162,7 +1162,7 @@ public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNu
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_half",
             inputs: [
@@ -1172,7 +1172,7 @@ public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNu
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in difference(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in difference(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Disjoint Over
 public func disjointover(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
@@ -1187,7 +1187,7 @@ public func disjointover(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? 
 }
 /// Divide
 public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color3",
             inputs: [
@@ -1196,7 +1196,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color3FA",
             inputs: [
@@ -1205,7 +1205,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color4",
             inputs: [
@@ -1214,7 +1214,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color4FA",
             inputs: [
@@ -1223,7 +1223,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_float",
             inputs: [
@@ -1232,7 +1232,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_half",
             inputs: [
@@ -1241,7 +1241,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix22",
             inputs: [
@@ -1250,7 +1250,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) && SGDataType.matrix3d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix33",
             inputs: [
@@ -1259,7 +1259,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) && SGDataType.matrix4d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix44",
             inputs: [
@@ -1268,7 +1268,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector2",
             inputs: [
@@ -1277,7 +1277,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector2FA",
             inputs: [
@@ -1286,7 +1286,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector3",
             inputs: [
@@ -1295,7 +1295,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector3FA",
             inputs: [
@@ -1304,7 +1304,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector4",
             inputs: [
@@ -1313,7 +1313,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector4FA",
             inputs: [
@@ -1326,7 +1326,7 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Dodge
 public func dodge<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_color3",
             inputs: [
@@ -1336,7 +1336,7 @@ public func dodge<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_color4",
             inputs: [
@@ -1346,7 +1346,7 @@ public func dodge<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_float",
             inputs: [
@@ -1356,7 +1356,7 @@ public func dodge<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_half",
             inputs: [
@@ -1366,11 +1366,11 @@ public func dodge<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in dodge(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in dodge(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Dot Product
 public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
-    if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_half2",
             inputs: [
@@ -1379,7 +1379,7 @@ public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_half3",
             inputs: [
@@ -1388,7 +1388,7 @@ public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_half4",
             inputs: [
@@ -1397,7 +1397,7 @@ public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_vector2",
             inputs: [
@@ -1406,7 +1406,7 @@ public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_vector3",
             inputs: [
@@ -1415,7 +1415,7 @@ public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_vector4",
             inputs: [
@@ -1428,7 +1428,7 @@ public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
 }
 /// Exp
 public func exp<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_float",
             inputs: [
@@ -1436,7 +1436,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half",
             inputs: [
@@ -1444,7 +1444,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half2",
             inputs: [
@@ -1452,7 +1452,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half3",
             inputs: [
@@ -1460,7 +1460,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half4",
             inputs: [
@@ -1468,7 +1468,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_vector2",
             inputs: [
@@ -1476,7 +1476,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_vector3",
             inputs: [
@@ -1484,7 +1484,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_vector4",
             inputs: [
@@ -1496,7 +1496,7 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Extract
 public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_color3",
             inputs: [
@@ -1505,7 +1505,7 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_color4",
             inputs: [
@@ -1514,7 +1514,7 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector2",
             inputs: [
@@ -1523,7 +1523,7 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector3",
             inputs: [
@@ -1532,7 +1532,7 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector4",
             inputs: [
@@ -1545,7 +1545,7 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
 }
 /// Floor
 public func floor<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_color3",
             inputs: [
@@ -1553,7 +1553,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_color4",
             inputs: [
@@ -1561,7 +1561,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_float",
             inputs: [
@@ -1569,7 +1569,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_half",
             inputs: [
@@ -1577,7 +1577,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector2",
             inputs: [
@@ -1585,7 +1585,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector3",
             inputs: [
@@ -1593,7 +1593,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector4",
             inputs: [
@@ -1605,7 +1605,7 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Fractional
 public func fract<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_color3",
             inputs: [
@@ -1613,7 +1613,7 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_color4",
             inputs: [
@@ -1621,7 +1621,7 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_float",
             inputs: [
@@ -1629,7 +1629,7 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_vector2",
             inputs: [
@@ -1637,7 +1637,7 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_vector3",
             inputs: [
@@ -1645,7 +1645,7 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_vector4",
             inputs: [
@@ -1657,7 +1657,7 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Fractal Noise 3D
 public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity: SGScalar? = nil, diminish: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
-    if amplitude.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color3",
             inputs: [
@@ -1669,7 +1669,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color3FA",
             inputs: [
@@ -1681,7 +1681,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if amplitude.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color4",
             inputs: [
@@ -1693,7 +1693,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color4FA",
             inputs: [
@@ -1705,7 +1705,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_float",
             inputs: [
@@ -1717,7 +1717,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if amplitude.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector2",
             inputs: [
@@ -1729,7 +1729,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector2FA",
             inputs: [
@@ -1741,7 +1741,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if amplitude.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector3",
             inputs: [
@@ -1753,7 +1753,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector3FA",
             inputs: [
@@ -1765,7 +1765,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if amplitude.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector4",
             inputs: [
@@ -1777,7 +1777,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector4FA",
             inputs: [
@@ -1793,7 +1793,7 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
 }
 /// Camera Index Switch
 public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
-    if mono.dataType == SGDataType.color3f && left.dataType == SGDataType.color3f && right.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(mono) && SGDataType.color3f.matches(left) && SGDataType.color3f.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_color3",
             inputs: [
@@ -1803,7 +1803,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if mono.dataType == SGDataType.color4f && left.dataType == SGDataType.color4f && right.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(mono) && SGDataType.color4f.matches(left) && SGDataType.color4f.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_color4",
             inputs: [
@@ -1813,7 +1813,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if mono.dataType == SGDataType.float && left.dataType == SGDataType.float && right.dataType == SGDataType.float {
+    if SGDataType.float.matches(mono) && SGDataType.float.matches(left) && SGDataType.float.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_float",
             inputs: [
@@ -1823,7 +1823,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if mono.dataType == SGDataType.int && left.dataType == SGDataType.int && right.dataType == SGDataType.int {
+    if SGDataType.int.matches(mono) && SGDataType.int.matches(left) && SGDataType.int.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_integer",
             inputs: [
@@ -1833,7 +1833,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.int)])))
     }
-    if mono.dataType == SGDataType.vector2f && left.dataType == SGDataType.vector2f && right.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(mono) && SGDataType.vector2f.matches(left) && SGDataType.vector2f.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_vector2",
             inputs: [
@@ -1843,7 +1843,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if mono.dataType == SGDataType.vector3f && left.dataType == SGDataType.vector3f && right.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(mono) && SGDataType.vector3f.matches(left) && SGDataType.vector3f.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_vector3",
             inputs: [
@@ -1853,7 +1853,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if mono.dataType == SGDataType.vector4f && left.dataType == SGDataType.vector4f && right.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(mono) && SGDataType.vector4f.matches(left) && SGDataType.vector4f.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_vector4",
             inputs: [
@@ -1867,7 +1867,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
 }
 /// Geometric Property
 public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where T: SGValue {
-    if defaultValue.dataType == SGDataType.bool {
+    if SGDataType.bool.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_boolean",
             inputs: [
@@ -1876,7 +1876,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.bool)])))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_color3",
             inputs: [
@@ -1885,7 +1885,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_color4",
             inputs: [
@@ -1894,7 +1894,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.float {
+    if SGDataType.float.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_float",
             inputs: [
@@ -1903,7 +1903,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if defaultValue.dataType == SGDataType.half {
+    if SGDataType.half.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_half",
             inputs: [
@@ -1912,7 +1912,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if defaultValue.dataType == SGDataType.int {
+    if SGDataType.int.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_integer",
             inputs: [
@@ -1921,7 +1921,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.int)])))
     }
-    if defaultValue.dataType == SGDataType.string {
+    if SGDataType.string.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_string",
             inputs: [
@@ -1930,7 +1930,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.string)])))
     }
-    if defaultValue.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_vector2",
             inputs: [
@@ -1939,7 +1939,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if defaultValue.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_vector3",
             inputs: [
@@ -1948,7 +1948,7 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_vector4",
             inputs: [
@@ -1974,7 +1974,7 @@ public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector 
 }
 /// HSV Adjust
 public func hsvAdjust(_ in1: SGColor, amount: SGVector? = nil) -> SGColor {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvadjust_color3",
             inputs: [
@@ -1983,7 +1983,7 @@ public func hsvAdjust(_ in1: SGColor, amount: SGVector? = nil) -> SGColor {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvadjust_color4",
             inputs: [
@@ -1996,7 +1996,7 @@ public func hsvAdjust(_ in1: SGColor, amount: SGVector? = nil) -> SGColor {
 }
 /// HSV to RGB
 public func hsvToRGB(_ in1: SGColor) -> SGColor {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvtorgb_color3",
             inputs: [
@@ -2004,7 +2004,7 @@ public func hsvToRGB(_ in1: SGColor) -> SGColor {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvtorgb_color4",
             inputs: [
@@ -2016,7 +2016,7 @@ public func hsvToRGB(_ in1: SGColor) -> SGColor {
 }
 /// If Equal
 public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color3",
             inputs: [
@@ -2027,7 +2027,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color3B",
             inputs: [
@@ -2038,7 +2038,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color3I",
             inputs: [
@@ -2049,7 +2049,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color4",
             inputs: [
@@ -2060,7 +2060,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color4B",
             inputs: [
@@ -2071,7 +2071,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color4I",
             inputs: [
@@ -2082,7 +2082,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_float",
             inputs: [
@@ -2093,7 +2093,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_floatB",
             inputs: [
@@ -2104,7 +2104,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_floatI",
             inputs: [
@@ -2115,7 +2115,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.half.matches(value1) && SGDataType.half.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half",
             inputs: [
@@ -2126,7 +2126,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half2",
             inputs: [
@@ -2137,7 +2137,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half2B",
             inputs: [
@@ -2148,7 +2148,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half2I",
             inputs: [
@@ -2159,7 +2159,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half3",
             inputs: [
@@ -2170,7 +2170,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half3B",
             inputs: [
@@ -2181,7 +2181,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half3I",
             inputs: [
@@ -2192,7 +2192,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half4",
             inputs: [
@@ -2203,7 +2203,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half4B",
             inputs: [
@@ -2214,7 +2214,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half4I",
             inputs: [
@@ -2225,7 +2225,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_halfB",
             inputs: [
@@ -2236,7 +2236,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_halfI",
             inputs: [
@@ -2247,7 +2247,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector2",
             inputs: [
@@ -2258,7 +2258,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector2B",
             inputs: [
@@ -2269,7 +2269,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector2I",
             inputs: [
@@ -2280,7 +2280,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector3",
             inputs: [
@@ -2291,7 +2291,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector3B",
             inputs: [
@@ -2302,7 +2302,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector3I",
             inputs: [
@@ -2313,7 +2313,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector4",
             inputs: [
@@ -2324,7 +2324,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.bool.matches(value1) && SGDataType.bool.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector4B",
             inputs: [
@@ -2335,7 +2335,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector4I",
             inputs: [
@@ -2350,7 +2350,7 @@ public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, fals
 }
 /// If Greater
 public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color3",
             inputs: [
@@ -2361,7 +2361,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color3I",
             inputs: [
@@ -2372,7 +2372,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color4",
             inputs: [
@@ -2383,7 +2383,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color4I",
             inputs: [
@@ -2394,7 +2394,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_float",
             inputs: [
@@ -2405,7 +2405,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_floatI",
             inputs: [
@@ -2416,7 +2416,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.half.matches(value1) && SGDataType.half.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half",
             inputs: [
@@ -2427,7 +2427,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half2",
             inputs: [
@@ -2438,7 +2438,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half2I",
             inputs: [
@@ -2449,7 +2449,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half3",
             inputs: [
@@ -2460,7 +2460,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half3I",
             inputs: [
@@ -2471,7 +2471,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half4",
             inputs: [
@@ -2482,7 +2482,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half4I",
             inputs: [
@@ -2493,7 +2493,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_halfI",
             inputs: [
@@ -2504,7 +2504,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector2",
             inputs: [
@@ -2515,7 +2515,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector2I",
             inputs: [
@@ -2526,7 +2526,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector3",
             inputs: [
@@ -2537,7 +2537,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector3I",
             inputs: [
@@ -2548,7 +2548,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector4",
             inputs: [
@@ -2559,7 +2559,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector4I",
             inputs: [
@@ -2574,7 +2574,7 @@ public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, 
 }
 /// If Greater Or Equal
 public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color3",
             inputs: [
@@ -2585,7 +2585,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.color3f.matches(trueResult) && SGDataType.color3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color3I",
             inputs: [
@@ -2596,7 +2596,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color4",
             inputs: [
@@ -2607,7 +2607,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.color4f.matches(trueResult) && SGDataType.color4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color4I",
             inputs: [
@@ -2618,7 +2618,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_float",
             inputs: [
@@ -2629,7 +2629,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.float.matches(trueResult) && SGDataType.float.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_floatI",
             inputs: [
@@ -2640,7 +2640,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.half.matches(value1) && SGDataType.half.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half",
             inputs: [
@@ -2651,7 +2651,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half2",
             inputs: [
@@ -2662,7 +2662,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector2h.matches(trueResult) && SGDataType.vector2h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half2I",
             inputs: [
@@ -2673,7 +2673,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half3",
             inputs: [
@@ -2684,7 +2684,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector3h.matches(trueResult) && SGDataType.vector3h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half3I",
             inputs: [
@@ -2695,7 +2695,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half4",
             inputs: [
@@ -2706,7 +2706,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector4h.matches(trueResult) && SGDataType.vector4h.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half4I",
             inputs: [
@@ -2717,7 +2717,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.half.matches(trueResult) && SGDataType.half.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_halfI",
             inputs: [
@@ -2728,7 +2728,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector2",
             inputs: [
@@ -2739,7 +2739,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector2f.matches(trueResult) && SGDataType.vector2f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector2I",
             inputs: [
@@ -2750,7 +2750,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector3",
             inputs: [
@@ -2761,7 +2761,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector3f.matches(trueResult) && SGDataType.vector3f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector3I",
             inputs: [
@@ -2772,7 +2772,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.float.matches(value1) && SGDataType.float.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector4",
             inputs: [
@@ -2783,7 +2783,7 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
+    if SGDataType.int.matches(value1) && SGDataType.int.matches(value2) && SGDataType.vector4f.matches(trueResult) && SGDataType.vector4f.matches(falseResult) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector4I",
             inputs: [
@@ -2801,7 +2801,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid image input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_color3",
             inputs: [
@@ -2814,7 +2814,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_color4",
             inputs: [
@@ -2827,7 +2827,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.float {
+    if SGDataType.float.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_float",
             inputs: [
@@ -2840,7 +2840,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if defaultValue.dataType == SGDataType.half {
+    if SGDataType.half.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_half",
             inputs: [
@@ -2853,7 +2853,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if defaultValue.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_vector2",
             inputs: [
@@ -2866,7 +2866,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if defaultValue.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_vector3",
             inputs: [
@@ -2879,7 +2879,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_vector4",
             inputs: [
@@ -2896,7 +2896,7 @@ public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil
 }
 /// Inside
 public func inside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && mask.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_color3",
             inputs: [
@@ -2905,7 +2905,7 @@ public func inside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && mask.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_color4",
             inputs: [
@@ -2914,7 +2914,7 @@ public func inside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && mask.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_float",
             inputs: [
@@ -2923,7 +2923,7 @@ public func inside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && mask.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_half",
             inputs: [
@@ -2932,11 +2932,11 @@ public func inside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in inside(in1: \(in1.dataType), mask: \(mask.dataType))", values: [in1, mask]))
+    return T(source: .error("Unsupported input data types in inside(in1: \(in1.dataType), mask: \(mask?.dataType.rawValue ?? "nil"))", values: [in1, mask]))
 }
 /// Invert Matrix
 public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
-    if in1.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_invertmatrix_matrix22",
             inputs: [
@@ -2944,7 +2944,7 @@ public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_invertmatrix_matrix33",
             inputs: [
@@ -2952,7 +2952,7 @@ public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_invertmatrix_matrix44",
             inputs: [
@@ -2964,7 +2964,7 @@ public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
 }
 /// Magnitude
 public func length(_ in1: SGVector) -> SGScalar {
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_half2",
             inputs: [
@@ -2972,7 +2972,7 @@ public func length(_ in1: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_half3",
             inputs: [
@@ -2980,7 +2980,7 @@ public func length(_ in1: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_half4",
             inputs: [
@@ -2988,7 +2988,7 @@ public func length(_ in1: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_vector2",
             inputs: [
@@ -2996,7 +2996,7 @@ public func length(_ in1: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_vector3",
             inputs: [
@@ -3004,7 +3004,7 @@ public func length(_ in1: SGVector) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_vector4",
             inputs: [
@@ -3016,7 +3016,7 @@ public func length(_ in1: SGVector) -> SGScalar {
 }
 /// Natural Log
 public func log<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_float",
             inputs: [
@@ -3024,7 +3024,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half",
             inputs: [
@@ -3032,7 +3032,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half2",
             inputs: [
@@ -3040,7 +3040,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half3",
             inputs: [
@@ -3048,7 +3048,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half4",
             inputs: [
@@ -3056,7 +3056,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_vector2",
             inputs: [
@@ -3064,7 +3064,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_vector3",
             inputs: [
@@ -3072,7 +3072,7 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_vector4",
             inputs: [
@@ -3144,7 +3144,7 @@ public func logicalXor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
 }
 /// Luminance
 public func luminance(_ in1: SGColor, lumacoeffs: SGColor? = nil) -> SGColor {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_luminance_color3",
             inputs: [
@@ -3153,7 +3153,7 @@ public func luminance(_ in1: SGColor, lumacoeffs: SGColor? = nil) -> SGColor {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_luminance_color4",
             inputs: [
@@ -3188,7 +3188,7 @@ public func matte(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) 
 }
 /// Max
 public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color3",
             inputs: [
@@ -3197,7 +3197,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color3FA",
             inputs: [
@@ -3206,7 +3206,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color4",
             inputs: [
@@ -3215,7 +3215,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color4FA",
             inputs: [
@@ -3224,7 +3224,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_float",
             inputs: [
@@ -3233,7 +3233,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half",
             inputs: [
@@ -3242,7 +3242,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half2",
             inputs: [
@@ -3251,7 +3251,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.float {
+    if SGDataType.vector2h.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half2FA",
             inputs: [
@@ -3260,7 +3260,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half3",
             inputs: [
@@ -3269,7 +3269,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.float {
+    if SGDataType.vector3h.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half3FA",
             inputs: [
@@ -3278,7 +3278,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half4",
             inputs: [
@@ -3287,7 +3287,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.float {
+    if SGDataType.vector4h.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half4FA",
             inputs: [
@@ -3296,7 +3296,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector2",
             inputs: [
@@ -3305,7 +3305,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector2FA",
             inputs: [
@@ -3314,7 +3314,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector3",
             inputs: [
@@ -3323,7 +3323,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector3FA",
             inputs: [
@@ -3332,7 +3332,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector4",
             inputs: [
@@ -3341,7 +3341,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector4FA",
             inputs: [
@@ -3354,7 +3354,7 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Min
 public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color3",
             inputs: [
@@ -3363,7 +3363,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color3FA",
             inputs: [
@@ -3372,7 +3372,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color4",
             inputs: [
@@ -3381,7 +3381,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color4FA",
             inputs: [
@@ -3390,7 +3390,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_float",
             inputs: [
@@ -3399,7 +3399,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half",
             inputs: [
@@ -3408,7 +3408,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half2",
             inputs: [
@@ -3417,7 +3417,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.float {
+    if SGDataType.vector2h.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half2FA",
             inputs: [
@@ -3426,7 +3426,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half3",
             inputs: [
@@ -3435,7 +3435,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.float {
+    if SGDataType.vector3h.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half3FA",
             inputs: [
@@ -3444,7 +3444,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half4",
             inputs: [
@@ -3453,7 +3453,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.float {
+    if SGDataType.vector4h.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half4FA",
             inputs: [
@@ -3462,7 +3462,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector2",
             inputs: [
@@ -3471,7 +3471,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector2FA",
             inputs: [
@@ -3480,7 +3480,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector3",
             inputs: [
@@ -3489,7 +3489,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector3FA",
             inputs: [
@@ -3498,7 +3498,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector4",
             inputs: [
@@ -3507,7 +3507,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector4FA",
             inputs: [
@@ -3520,7 +3520,7 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Subtractive Mix
 public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_color3",
             inputs: [
@@ -3530,7 +3530,7 @@ public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_color4",
             inputs: [
@@ -3540,7 +3540,7 @@ public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_float",
             inputs: [
@@ -3550,7 +3550,7 @@ public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_half",
             inputs: [
@@ -3560,11 +3560,11 @@ public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in minus(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in minus(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Mix
 public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_color3",
             inputs: [
@@ -3574,7 +3574,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_color4",
             inputs: [
@@ -3584,7 +3584,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_float",
             inputs: [
@@ -3594,7 +3594,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half",
             inputs: [
@@ -3604,7 +3604,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if fg.dataType == SGDataType.vector2h && bg.dataType == SGDataType.vector2h && mix.dataType == SGDataType.float {
+    if SGDataType.vector2h.matches(fg) && SGDataType.vector2h.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half2",
             inputs: [
@@ -3614,7 +3614,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if fg.dataType == SGDataType.vector3h && bg.dataType == SGDataType.vector3h && mix.dataType == SGDataType.float {
+    if SGDataType.vector3h.matches(fg) && SGDataType.vector3h.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half3",
             inputs: [
@@ -3624,7 +3624,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if fg.dataType == SGDataType.vector4h && bg.dataType == SGDataType.vector4h && mix.dataType == SGDataType.float {
+    if SGDataType.vector4h.matches(fg) && SGDataType.vector4h.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half4",
             inputs: [
@@ -3634,7 +3634,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if fg.dataType == SGDataType.vector2f && bg.dataType == SGDataType.vector2f && mix.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(fg) && SGDataType.vector2f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_vector2",
             inputs: [
@@ -3644,7 +3644,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if fg.dataType == SGDataType.vector3f && bg.dataType == SGDataType.vector3f && mix.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(fg) && SGDataType.vector3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_vector3",
             inputs: [
@@ -3654,7 +3654,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if fg.dataType == SGDataType.vector4f && bg.dataType == SGDataType.vector4f && mix.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(fg) && SGDataType.vector4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_vector4",
             inputs: [
@@ -3664,7 +3664,7 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types in mix(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in mix(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// In
 public func mixColor(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
@@ -3679,7 +3679,7 @@ public func mixColor(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = ni
 }
 /// Modulo
 public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color3",
             inputs: [
@@ -3688,7 +3688,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color3FA",
             inputs: [
@@ -3697,7 +3697,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color4",
             inputs: [
@@ -3706,7 +3706,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color4FA",
             inputs: [
@@ -3715,7 +3715,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_float",
             inputs: [
@@ -3724,7 +3724,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_half",
             inputs: [
@@ -3733,7 +3733,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector2",
             inputs: [
@@ -3742,7 +3742,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector2FA",
             inputs: [
@@ -3751,7 +3751,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector3",
             inputs: [
@@ -3760,7 +3760,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector3FA",
             inputs: [
@@ -3769,7 +3769,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector4",
             inputs: [
@@ -3778,7 +3778,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector4FA",
             inputs: [
@@ -3791,7 +3791,7 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Multiply
 public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color3",
             inputs: [
@@ -3800,7 +3800,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color3FA",
             inputs: [
@@ -3809,7 +3809,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color4",
             inputs: [
@@ -3818,7 +3818,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color4FA",
             inputs: [
@@ -3827,7 +3827,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_float",
             inputs: [
@@ -3836,7 +3836,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_half",
             inputs: [
@@ -3845,7 +3845,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix22",
             inputs: [
@@ -3854,7 +3854,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) && SGDataType.matrix3d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix33",
             inputs: [
@@ -3863,7 +3863,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) && SGDataType.matrix4d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix44",
             inputs: [
@@ -3872,7 +3872,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector2",
             inputs: [
@@ -3881,7 +3881,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector2FA",
             inputs: [
@@ -3890,7 +3890,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector3",
             inputs: [
@@ -3899,7 +3899,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector3FA",
             inputs: [
@@ -3908,7 +3908,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector4",
             inputs: [
@@ -3917,7 +3917,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector4FA",
             inputs: [
@@ -3930,7 +3930,7 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Noise 2D
 public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVector? = nil) -> SGNumeric {
-    if amplitude.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color3",
             inputs: [
@@ -3940,7 +3940,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color3FA",
             inputs: [
@@ -3950,7 +3950,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if amplitude.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color4",
             inputs: [
@@ -3960,7 +3960,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color4FA",
             inputs: [
@@ -3970,7 +3970,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_float",
             inputs: [
@@ -3980,7 +3980,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if amplitude.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector2",
             inputs: [
@@ -3990,7 +3990,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector2FA",
             inputs: [
@@ -4000,7 +4000,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if amplitude.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector3",
             inputs: [
@@ -4010,7 +4010,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector3FA",
             inputs: [
@@ -4020,7 +4020,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if amplitude.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector4",
             inputs: [
@@ -4030,7 +4030,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector4FA",
             inputs: [
@@ -4044,7 +4044,7 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
 }
 /// Noise 3D
 public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
-    if amplitude.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color3",
             inputs: [
@@ -4054,7 +4054,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color3FA",
             inputs: [
@@ -4064,7 +4064,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if amplitude.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color4",
             inputs: [
@@ -4074,7 +4074,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color4FA",
             inputs: [
@@ -4084,7 +4084,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_float",
             inputs: [
@@ -4094,7 +4094,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if amplitude.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector2",
             inputs: [
@@ -4104,7 +4104,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector2FA",
             inputs: [
@@ -4114,7 +4114,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if amplitude.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector3",
             inputs: [
@@ -4124,7 +4124,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector3FA",
             inputs: [
@@ -4134,7 +4134,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if amplitude.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector4",
             inputs: [
@@ -4144,7 +4144,7 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if amplitude.dataType == SGDataType.float {
+    if SGDataType.float.matches(amplitude) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector4FA",
             inputs: [
@@ -4161,7 +4161,7 @@ public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tang
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMap input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    if scale.dataType == SGDataType.float {
+    if SGDataType.float.matches(scale) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalmap",
             inputs: [
@@ -4173,7 +4173,7 @@ public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tang
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if scale.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(scale) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalmap_vector2",
             inputs: [
@@ -4201,7 +4201,7 @@ public func normalMapDecode(_ in1: SGVector) -> SGVector {
 }
 /// Normalize
 public func normalize(_ in1: SGVector) -> SGVector {
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_half2",
             inputs: [
@@ -4209,7 +4209,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_half3",
             inputs: [
@@ -4217,7 +4217,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_half4",
             inputs: [
@@ -4225,7 +4225,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_vector2",
             inputs: [
@@ -4233,7 +4233,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_vector3",
             inputs: [
@@ -4241,7 +4241,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_vector4",
             inputs: [
@@ -4253,7 +4253,7 @@ public func normalize(_ in1: SGVector) -> SGVector {
 }
 /// One Minus
 public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_color3",
             inputs: [
@@ -4261,7 +4261,7 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_color4",
             inputs: [
@@ -4269,7 +4269,7 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_float",
             inputs: [
@@ -4277,7 +4277,7 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector2",
             inputs: [
@@ -4285,7 +4285,7 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector3",
             inputs: [
@@ -4293,7 +4293,7 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector4",
             inputs: [
@@ -4316,7 +4316,7 @@ public func out(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) ->
 }
 /// Outside
 public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && mask.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_color3",
             inputs: [
@@ -4325,7 +4325,7 @@ public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && mask.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_color4",
             inputs: [
@@ -4334,7 +4334,7 @@ public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && mask.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_float",
             inputs: [
@@ -4343,7 +4343,7 @@ public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && mask.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(mask) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_half",
             inputs: [
@@ -4352,7 +4352,7 @@ public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in outside(in1: \(in1.dataType), mask: \(mask.dataType))", values: [in1, mask]))
+    return T(source: .error("Unsupported input data types in outside(in1: \(in1.dataType), mask: \(mask?.dataType.rawValue ?? "nil"))", values: [in1, mask]))
 }
 /// Over
 public func over(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
@@ -4367,7 +4367,7 @@ public func over(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -
 }
 /// Overlay
 public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_color3",
             inputs: [
@@ -4377,7 +4377,7 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_color4",
             inputs: [
@@ -4387,7 +4387,7 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_float",
             inputs: [
@@ -4397,7 +4397,7 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_half",
             inputs: [
@@ -4407,14 +4407,14 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in overlay(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in overlay(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Image 2D Pixel
 public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid pixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixel_color3",
             inputs: [
@@ -4434,7 +4434,7 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixel_color4",
             inputs: [
@@ -4454,7 +4454,7 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixel_vector4",
             inputs: [
@@ -4481,7 +4481,7 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid pixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelGradient_color3",
             inputs: [
@@ -4502,7 +4502,7 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelGradient_color4",
             inputs: [
@@ -4523,7 +4523,7 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelGradient_vector4",
             inputs: [
@@ -4551,7 +4551,7 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid pixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelLOD_color3",
             inputs: [
@@ -4570,7 +4570,7 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelLOD_color4",
             inputs: [
@@ -4589,7 +4589,7 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelLOD_vector4",
             inputs: [
@@ -4625,7 +4625,7 @@ public func place2D(texcoord: SGVector? = nil, pivot: SGVector? = nil, scale: SG
 }
 /// Additive Mix
 public func plus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_color3",
             inputs: [
@@ -4635,7 +4635,7 @@ public func plus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_color4",
             inputs: [
@@ -4645,7 +4645,7 @@ public func plus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_float",
             inputs: [
@@ -4655,7 +4655,7 @@ public func plus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_half",
             inputs: [
@@ -4665,11 +4665,11 @@ public func plus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in plus(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in plus(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Power
 public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color3",
             inputs: [
@@ -4678,7 +4678,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color3FA",
             inputs: [
@@ -4687,7 +4687,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color4",
             inputs: [
@@ -4696,7 +4696,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color4FA",
             inputs: [
@@ -4705,7 +4705,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_float",
             inputs: [
@@ -4714,7 +4714,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_half",
             inputs: [
@@ -4723,7 +4723,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector2",
             inputs: [
@@ -4732,7 +4732,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector2FA",
             inputs: [
@@ -4741,7 +4741,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector3",
             inputs: [
@@ -4750,7 +4750,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector3FA",
             inputs: [
@@ -4759,7 +4759,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector4",
             inputs: [
@@ -4768,7 +4768,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector4FA",
             inputs: [
@@ -4793,7 +4793,7 @@ public func premult(_ in1: SGColor) -> SGColor {
 }
 /// Ramp 4 Corners
 public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
-    if valuetl.dataType == SGDataType.color3f && valuetr.dataType == SGDataType.color3f && valuebl.dataType == SGDataType.color3f && valuebr.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(valuetl) && SGDataType.color3f.matches(valuetr) && SGDataType.color3f.matches(valuebl) && SGDataType.color3f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_color3",
             inputs: [
@@ -4805,7 +4805,7 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if valuetl.dataType == SGDataType.color4f && valuetr.dataType == SGDataType.color4f && valuebl.dataType == SGDataType.color4f && valuebr.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(valuetl) && SGDataType.color4f.matches(valuetr) && SGDataType.color4f.matches(valuebl) && SGDataType.color4f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_color4",
             inputs: [
@@ -4817,7 +4817,7 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if valuetl.dataType == SGDataType.float && valuetr.dataType == SGDataType.float && valuebl.dataType == SGDataType.float && valuebr.dataType == SGDataType.float {
+    if SGDataType.float.matches(valuetl) && SGDataType.float.matches(valuetr) && SGDataType.float.matches(valuebl) && SGDataType.float.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_float",
             inputs: [
@@ -4829,7 +4829,7 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if valuetl.dataType == SGDataType.vector2f && valuetr.dataType == SGDataType.vector2f && valuebl.dataType == SGDataType.vector2f && valuebr.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(valuetl) && SGDataType.vector2f.matches(valuetr) && SGDataType.vector2f.matches(valuebl) && SGDataType.vector2f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_vector2",
             inputs: [
@@ -4841,7 +4841,7 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if valuetl.dataType == SGDataType.vector3f && valuetr.dataType == SGDataType.vector3f && valuebl.dataType == SGDataType.vector3f && valuebr.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(valuetl) && SGDataType.vector3f.matches(valuetr) && SGDataType.vector3f.matches(valuebl) && SGDataType.vector3f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_vector3",
             inputs: [
@@ -4853,7 +4853,7 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if valuetl.dataType == SGDataType.vector4f && valuetr.dataType == SGDataType.vector4f && valuebl.dataType == SGDataType.vector4f && valuebr.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(valuetl) && SGDataType.vector4f.matches(valuetr) && SGDataType.vector4f.matches(valuebl) && SGDataType.vector4f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_vector4",
             inputs: [
@@ -4869,7 +4869,7 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
 }
 /// Ramp Horizontal
 public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
-    if valuel.dataType == SGDataType.color3f && valuer.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(valuel) && SGDataType.color3f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_color3",
             inputs: [
@@ -4879,7 +4879,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if valuel.dataType == SGDataType.color4f && valuer.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(valuel) && SGDataType.color4f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_color4",
             inputs: [
@@ -4889,7 +4889,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if valuel.dataType == SGDataType.float && valuer.dataType == SGDataType.float {
+    if SGDataType.float.matches(valuel) && SGDataType.float.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_float",
             inputs: [
@@ -4899,7 +4899,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if valuel.dataType == SGDataType.half && valuer.dataType == SGDataType.half {
+    if SGDataType.half.matches(valuel) && SGDataType.half.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half",
             inputs: [
@@ -4909,7 +4909,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if valuel.dataType == SGDataType.vector2h && valuer.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(valuel) && SGDataType.vector2h.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half2",
             inputs: [
@@ -4919,7 +4919,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if valuel.dataType == SGDataType.vector3h && valuer.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(valuel) && SGDataType.vector3h.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half3",
             inputs: [
@@ -4929,7 +4929,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if valuel.dataType == SGDataType.vector4h && valuer.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(valuel) && SGDataType.vector4h.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half4",
             inputs: [
@@ -4939,7 +4939,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if valuel.dataType == SGDataType.vector2f && valuer.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(valuel) && SGDataType.vector2f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_vector2",
             inputs: [
@@ -4949,7 +4949,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if valuel.dataType == SGDataType.vector3f && valuer.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(valuel) && SGDataType.vector3f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_vector3",
             inputs: [
@@ -4959,7 +4959,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if valuel.dataType == SGDataType.vector4f && valuer.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(valuel) && SGDataType.vector4f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_vector4",
             inputs: [
@@ -4973,7 +4973,7 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
 }
 /// Ramp Vertical
 public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
-    if valuet.dataType == SGDataType.color3f && valueb.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(valuet) && SGDataType.color3f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_color3",
             inputs: [
@@ -4983,7 +4983,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if valuet.dataType == SGDataType.color4f && valueb.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(valuet) && SGDataType.color4f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_color4",
             inputs: [
@@ -4993,7 +4993,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if valuet.dataType == SGDataType.float && valueb.dataType == SGDataType.float {
+    if SGDataType.float.matches(valuet) && SGDataType.float.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_float",
             inputs: [
@@ -5003,7 +5003,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if valuet.dataType == SGDataType.half && valueb.dataType == SGDataType.half {
+    if SGDataType.half.matches(valuet) && SGDataType.half.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half",
             inputs: [
@@ -5013,7 +5013,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if valuet.dataType == SGDataType.vector2h && valueb.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(valuet) && SGDataType.vector2h.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half2",
             inputs: [
@@ -5023,7 +5023,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if valuet.dataType == SGDataType.vector3h && valueb.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(valuet) && SGDataType.vector3h.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half3",
             inputs: [
@@ -5033,7 +5033,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if valuet.dataType == SGDataType.vector4h && valueb.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(valuet) && SGDataType.vector4h.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half4",
             inputs: [
@@ -5043,7 +5043,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if valuet.dataType == SGDataType.vector2f && valueb.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(valuet) && SGDataType.vector2f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_vector2",
             inputs: [
@@ -5053,7 +5053,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if valuet.dataType == SGDataType.vector3f && valueb.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(valuet) && SGDataType.vector3f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_vector3",
             inputs: [
@@ -5063,7 +5063,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if valuet.dataType == SGDataType.vector4f && valueb.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(valuet) && SGDataType.vector4f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_vector4",
             inputs: [
@@ -5077,7 +5077,7 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
 }
 /// Range
 public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue? = nil) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.color3f && inhigh.dataType == SGDataType.color3f && gamma.dataType == SGDataType.color3f && outlow.dataType == SGDataType.color3f && outhigh.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(inlow) && SGDataType.color3f.matches(inhigh) && SGDataType.color3f.matches(gamma) && SGDataType.color3f.matches(outlow) && SGDataType.color3f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color3",
             inputs: [
@@ -5091,7 +5091,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(gamma) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color3FA",
             inputs: [
@@ -5105,7 +5105,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.color4f && inhigh.dataType == SGDataType.color4f && gamma.dataType == SGDataType.color4f && outlow.dataType == SGDataType.color4f && outhigh.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(inlow) && SGDataType.color4f.matches(inhigh) && SGDataType.color4f.matches(gamma) && SGDataType.color4f.matches(outlow) && SGDataType.color4f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color4",
             inputs: [
@@ -5119,7 +5119,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(gamma) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color4FA",
             inputs: [
@@ -5133,7 +5133,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(gamma) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_float",
             inputs: [
@@ -5147,7 +5147,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.vector2f && inhigh.dataType == SGDataType.vector2f && gamma.dataType == SGDataType.vector2f && outlow.dataType == SGDataType.vector2f && outhigh.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(inlow) && SGDataType.vector2f.matches(inhigh) && SGDataType.vector2f.matches(gamma) && SGDataType.vector2f.matches(outlow) && SGDataType.vector2f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector2",
             inputs: [
@@ -5161,7 +5161,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(gamma) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector2FA",
             inputs: [
@@ -5175,7 +5175,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.vector3f && inhigh.dataType == SGDataType.vector3f && gamma.dataType == SGDataType.vector3f && outlow.dataType == SGDataType.vector3f && outhigh.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(inlow) && SGDataType.vector3f.matches(inhigh) && SGDataType.vector3f.matches(gamma) && SGDataType.vector3f.matches(outlow) && SGDataType.vector3f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector3",
             inputs: [
@@ -5189,7 +5189,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(gamma) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector3FA",
             inputs: [
@@ -5203,7 +5203,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.vector4f && inhigh.dataType == SGDataType.vector4f && gamma.dataType == SGDataType.vector4f && outlow.dataType == SGDataType.vector4f && outhigh.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(inlow) && SGDataType.vector4f.matches(inhigh) && SGDataType.vector4f.matches(gamma) && SGDataType.vector4f.matches(outlow) && SGDataType.vector4f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector4",
             inputs: [
@@ -5217,7 +5217,7 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(gamma) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector4FA",
             inputs: [
@@ -5238,7 +5238,7 @@ public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar? = nil, y: SGS
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid read input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureRead_color4",
             inputs: [
@@ -5250,7 +5250,7 @@ public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar? = nil, y: SGS
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureRead_vector4",
             inputs: [
@@ -5293,7 +5293,7 @@ public func refract(_ in1: SGVector, normal: SGVector? = nil, eta: SGScalar? = n
 }
 /// Remap
 public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.color3f && inhigh.dataType == SGDataType.color3f && outlow.dataType == SGDataType.color3f && outhigh.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(inlow) && SGDataType.color3f.matches(inhigh) && SGDataType.color3f.matches(outlow) && SGDataType.color3f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color3",
             inputs: [
@@ -5305,7 +5305,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color3FA",
             inputs: [
@@ -5317,7 +5317,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.color4f && inhigh.dataType == SGDataType.color4f && outlow.dataType == SGDataType.color4f && outhigh.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(inlow) && SGDataType.color4f.matches(inhigh) && SGDataType.color4f.matches(outlow) && SGDataType.color4f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color4",
             inputs: [
@@ -5329,7 +5329,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color4FA",
             inputs: [
@@ -5341,7 +5341,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_float",
             inputs: [
@@ -5353,7 +5353,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && inlow.dataType == SGDataType.half && inhigh.dataType == SGDataType.half && outlow.dataType == SGDataType.half && outhigh.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(inlow) && SGDataType.half.matches(inhigh) && SGDataType.half.matches(outlow) && SGDataType.half.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half",
             inputs: [
@@ -5365,7 +5365,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h && inlow.dataType == SGDataType.vector2h && inhigh.dataType == SGDataType.vector2h && outlow.dataType == SGDataType.vector2h && outhigh.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(inlow) && SGDataType.vector2h.matches(inhigh) && SGDataType.vector2h.matches(outlow) && SGDataType.vector2h.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half2",
             inputs: [
@@ -5377,7 +5377,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector2h && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector2h.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half2FA",
             inputs: [
@@ -5389,7 +5389,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h && inlow.dataType == SGDataType.vector3h && inhigh.dataType == SGDataType.vector3h && outlow.dataType == SGDataType.vector3h && outhigh.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(inlow) && SGDataType.vector3h.matches(inhigh) && SGDataType.vector3h.matches(outlow) && SGDataType.vector3h.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half3",
             inputs: [
@@ -5401,7 +5401,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3h && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector3h.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half3FA",
             inputs: [
@@ -5413,7 +5413,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h && inlow.dataType == SGDataType.vector4h && inhigh.dataType == SGDataType.vector4h && outlow.dataType == SGDataType.vector4h && outhigh.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(inlow) && SGDataType.vector4h.matches(inhigh) && SGDataType.vector4h.matches(outlow) && SGDataType.vector4h.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half4",
             inputs: [
@@ -5425,7 +5425,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector4h && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector4h.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half4FA",
             inputs: [
@@ -5437,7 +5437,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.vector2f && inhigh.dataType == SGDataType.vector2f && outlow.dataType == SGDataType.vector2f && outhigh.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(inlow) && SGDataType.vector2f.matches(inhigh) && SGDataType.vector2f.matches(outlow) && SGDataType.vector2f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector2",
             inputs: [
@@ -5449,7 +5449,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector2FA",
             inputs: [
@@ -5461,7 +5461,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.vector3f && inhigh.dataType == SGDataType.vector3f && outlow.dataType == SGDataType.vector3f && outhigh.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(inlow) && SGDataType.vector3f.matches(inhigh) && SGDataType.vector3f.matches(outlow) && SGDataType.vector3f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector3",
             inputs: [
@@ -5473,7 +5473,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector3FA",
             inputs: [
@@ -5485,7 +5485,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.vector4f && inhigh.dataType == SGDataType.vector4f && outlow.dataType == SGDataType.vector4f && outhigh.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(inlow) && SGDataType.vector4f.matches(inhigh) && SGDataType.vector4f.matches(outlow) && SGDataType.vector4f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector4",
             inputs: [
@@ -5497,7 +5497,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(inlow) && SGDataType.float.matches(inhigh) && SGDataType.float.matches(outlow) && SGDataType.float.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector4FA",
             inputs: [
@@ -5513,7 +5513,7 @@ public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNu
 }
 /// RGB to HSV
 public func rgbToHSV(_ in1: SGColor) -> SGColor {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_rgbtohsv_color3",
             inputs: [
@@ -5521,7 +5521,7 @@ public func rgbToHSV(_ in1: SGColor) -> SGColor {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_rgbtohsv_color4",
             inputs: [
@@ -5560,7 +5560,7 @@ public func rotate3D(_ in1: SGVector, amount: SGScalar? = nil, axis: SGVector? =
 }
 /// Round
 public func round<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_color3",
             inputs: [
@@ -5568,7 +5568,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_color4",
             inputs: [
@@ -5576,7 +5576,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_float",
             inputs: [
@@ -5584,7 +5584,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_half",
             inputs: [
@@ -5592,7 +5592,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector2",
             inputs: [
@@ -5600,7 +5600,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector3",
             inputs: [
@@ -5608,7 +5608,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector4",
             inputs: [
@@ -5620,7 +5620,7 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Safe Power
 public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color3",
             inputs: [
@@ -5629,7 +5629,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color3FA",
             inputs: [
@@ -5638,7 +5638,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color4",
             inputs: [
@@ -5647,7 +5647,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color4FA",
             inputs: [
@@ -5656,7 +5656,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_float",
             inputs: [
@@ -5665,7 +5665,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_half",
             inputs: [
@@ -5674,7 +5674,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector2",
             inputs: [
@@ -5683,7 +5683,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector2FA",
             inputs: [
@@ -5692,7 +5692,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector3",
             inputs: [
@@ -5701,7 +5701,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector3FA",
             inputs: [
@@ -5710,7 +5710,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector4",
             inputs: [
@@ -5719,7 +5719,7 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector4FA",
             inputs: [
@@ -5735,7 +5735,7 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sample input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2D_color3",
             inputs: [
@@ -5757,7 +5757,7 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2D_color4",
             inputs: [
@@ -5779,7 +5779,7 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2D_vector4",
             inputs: [
@@ -5808,7 +5808,7 @@ public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGS
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleCube input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCube_color4",
             inputs: [
@@ -5829,7 +5829,7 @@ public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGS
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCube_vector4",
             inputs: [
@@ -5857,7 +5857,7 @@ public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMo
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleCubeGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeGradient_color4",
             inputs: [
@@ -5879,7 +5879,7 @@ public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMo
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeGradient_vector4",
             inputs: [
@@ -5908,7 +5908,7 @@ public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = 
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleCubeLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeLOD_color4",
             inputs: [
@@ -5928,7 +5928,7 @@ public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeLOD_vector4",
             inputs: [
@@ -5955,7 +5955,7 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DGradient_color3",
             inputs: [
@@ -5978,7 +5978,7 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DGradient_color4",
             inputs: [
@@ -6001,7 +6001,7 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DGradient_vector4",
             inputs: [
@@ -6031,7 +6031,7 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DLOD_color3",
             inputs: [
@@ -6052,7 +6052,7 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DLOD_color4",
             inputs: [
@@ -6073,7 +6073,7 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DLOD_vector4",
             inputs: [
@@ -6098,7 +6098,7 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
 }
 /// Saturate
 public func saturate(_ in1: SGColor, amount: SGScalar? = nil, lumacoeffs: SGColor? = nil) -> SGColor {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_saturate_color3",
             inputs: [
@@ -6108,7 +6108,7 @@ public func saturate(_ in1: SGColor, amount: SGScalar? = nil, lumacoeffs: SGColo
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_saturate_color4",
             inputs: [
@@ -6122,7 +6122,7 @@ public func saturate(_ in1: SGColor, amount: SGScalar? = nil, lumacoeffs: SGColo
 }
 /// Screen
 public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
-    if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(fg) && SGDataType.color3f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_color3",
             inputs: [
@@ -6132,7 +6132,7 @@ public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeri
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(fg) && SGDataType.color4f.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_color4",
             inputs: [
@@ -6142,7 +6142,7 @@ public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeri
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
+    if SGDataType.float.matches(fg) && SGDataType.float.matches(bg) && SGDataType.float.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_float",
             inputs: [
@@ -6152,7 +6152,7 @@ public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeri
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
+    if SGDataType.half.matches(fg) && SGDataType.half.matches(bg) && SGDataType.half.matches(mix) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_half",
             inputs: [
@@ -6162,11 +6162,11 @@ public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeri
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    return T(source: .error("Unsupported input data types in screen(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
+    return T(source: .error("Unsupported input data types in screen(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// Sign
 public func sign<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_color3",
             inputs: [
@@ -6174,7 +6174,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_color4",
             inputs: [
@@ -6182,7 +6182,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_float",
             inputs: [
@@ -6190,7 +6190,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half",
             inputs: [
@@ -6198,7 +6198,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half2",
             inputs: [
@@ -6206,7 +6206,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half3",
             inputs: [
@@ -6214,7 +6214,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half4",
             inputs: [
@@ -6222,7 +6222,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_vector2",
             inputs: [
@@ -6230,7 +6230,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_vector3",
             inputs: [
@@ -6238,7 +6238,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_vector4",
             inputs: [
@@ -6250,7 +6250,7 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Sin
 public func sin<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_float",
             inputs: [
@@ -6258,7 +6258,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half",
             inputs: [
@@ -6266,7 +6266,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half2",
             inputs: [
@@ -6274,7 +6274,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half3",
             inputs: [
@@ -6282,7 +6282,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half4",
             inputs: [
@@ -6290,7 +6290,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_vector2",
             inputs: [
@@ -6298,7 +6298,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_vector3",
             inputs: [
@@ -6306,7 +6306,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_vector4",
             inputs: [
@@ -6318,7 +6318,7 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Smooth Step
 public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && low.dataType == SGDataType.color3f && high.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(low) && SGDataType.color3f.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color3",
             inputs: [
@@ -6328,7 +6328,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color3FA",
             inputs: [
@@ -6338,7 +6338,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && low.dataType == SGDataType.color4f && high.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(low) && SGDataType.color4f.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color4",
             inputs: [
@@ -6348,7 +6348,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color4FA",
             inputs: [
@@ -6358,7 +6358,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_float",
             inputs: [
@@ -6368,7 +6368,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && low.dataType == SGDataType.half && high.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(low) && SGDataType.half.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half",
             inputs: [
@@ -6378,7 +6378,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h && low.dataType == SGDataType.vector2h && high.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(low) && SGDataType.vector2h.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half2",
             inputs: [
@@ -6388,7 +6388,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector2h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.vector2h.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half2FA",
             inputs: [
@@ -6398,7 +6398,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h && low.dataType == SGDataType.vector3h && high.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(low) && SGDataType.vector3h.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half3",
             inputs: [
@@ -6408,7 +6408,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector3h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.vector3h.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half3FA",
             inputs: [
@@ -6418,7 +6418,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h && low.dataType == SGDataType.vector4h && high.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(low) && SGDataType.vector4h.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half4",
             inputs: [
@@ -6428,7 +6428,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector4h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.vector4h.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half4FA",
             inputs: [
@@ -6438,7 +6438,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f && low.dataType == SGDataType.vector2f && high.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(low) && SGDataType.vector2f.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector2",
             inputs: [
@@ -6448,7 +6448,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector2FA",
             inputs: [
@@ -6458,7 +6458,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && low.dataType == SGDataType.vector3f && high.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(low) && SGDataType.vector3f.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector3",
             inputs: [
@@ -6468,7 +6468,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector3FA",
             inputs: [
@@ -6478,7 +6478,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && low.dataType == SGDataType.vector4f && high.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(low) && SGDataType.vector4f.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector4",
             inputs: [
@@ -6488,7 +6488,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(low) && SGDataType.float.matches(high) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector4FA",
             inputs: [
@@ -6502,7 +6502,7 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
 }
 /// Split Horizontal
 public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: SGVector? = nil) -> T where T: SGNumeric {
-    if valuel.dataType == SGDataType.color3f && valuer.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(valuel) && SGDataType.color3f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_color3",
             inputs: [
@@ -6513,7 +6513,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if valuel.dataType == SGDataType.color4f && valuer.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(valuel) && SGDataType.color4f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_color4",
             inputs: [
@@ -6524,7 +6524,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if valuel.dataType == SGDataType.float && valuer.dataType == SGDataType.float {
+    if SGDataType.float.matches(valuel) && SGDataType.float.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_float",
             inputs: [
@@ -6535,7 +6535,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if valuel.dataType == SGDataType.half && valuer.dataType == SGDataType.half {
+    if SGDataType.half.matches(valuel) && SGDataType.half.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_half",
             inputs: [
@@ -6546,7 +6546,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if valuel.dataType == SGDataType.vector2f && valuer.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(valuel) && SGDataType.vector2f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector2",
             inputs: [
@@ -6557,7 +6557,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if valuel.dataType == SGDataType.vector3f && valuer.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(valuel) && SGDataType.vector3f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector3",
             inputs: [
@@ -6568,7 +6568,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if valuel.dataType == SGDataType.vector4f && valuer.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(valuel) && SGDataType.vector4f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector4",
             inputs: [
@@ -6583,7 +6583,7 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
 }
 /// Split Vertical
 public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: SGVector? = nil) -> T where T: SGNumeric {
-    if valuet.dataType == SGDataType.color3f && valueb.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(valuet) && SGDataType.color3f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_color3",
             inputs: [
@@ -6594,7 +6594,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if valuet.dataType == SGDataType.color4f && valueb.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(valuet) && SGDataType.color4f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_color4",
             inputs: [
@@ -6605,7 +6605,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if valuet.dataType == SGDataType.float && valueb.dataType == SGDataType.float {
+    if SGDataType.float.matches(valuet) && SGDataType.float.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_float",
             inputs: [
@@ -6616,7 +6616,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if valuet.dataType == SGDataType.half && valueb.dataType == SGDataType.half {
+    if SGDataType.half.matches(valuet) && SGDataType.half.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half",
             inputs: [
@@ -6627,7 +6627,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if valuet.dataType == SGDataType.vector2h && valueb.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(valuet) && SGDataType.vector2h.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half2",
             inputs: [
@@ -6638,7 +6638,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if valuet.dataType == SGDataType.vector3h && valueb.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(valuet) && SGDataType.vector3h.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half3",
             inputs: [
@@ -6649,7 +6649,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if valuet.dataType == SGDataType.vector4h && valueb.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(valuet) && SGDataType.vector4h.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half4",
             inputs: [
@@ -6660,7 +6660,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if valuet.dataType == SGDataType.vector2f && valueb.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(valuet) && SGDataType.vector2f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_vector2",
             inputs: [
@@ -6671,7 +6671,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if valuet.dataType == SGDataType.vector3f && valueb.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(valuet) && SGDataType.vector3f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_vector3",
             inputs: [
@@ -6682,7 +6682,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if valuet.dataType == SGDataType.vector4f && valueb.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(valuet) && SGDataType.vector4f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_vector4",
             inputs: [
@@ -6697,7 +6697,7 @@ public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: 
 }
 /// Square Root
 public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_float",
             inputs: [
@@ -6705,7 +6705,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half",
             inputs: [
@@ -6713,7 +6713,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half2",
             inputs: [
@@ -6721,7 +6721,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half3",
             inputs: [
@@ -6729,7 +6729,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half4",
             inputs: [
@@ -6737,7 +6737,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_vector2",
             inputs: [
@@ -6745,7 +6745,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_vector3",
             inputs: [
@@ -6753,7 +6753,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_vector4",
             inputs: [
@@ -6765,7 +6765,7 @@ public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Step
 public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && edge.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_color3",
             inputs: [
@@ -6774,7 +6774,7 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && edge.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_color4",
             inputs: [
@@ -6783,7 +6783,7 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && edge.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_float",
             inputs: [
@@ -6792,7 +6792,7 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.vector2f && edge.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector2",
             inputs: [
@@ -6801,7 +6801,7 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && edge.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector3",
             inputs: [
@@ -6810,7 +6810,7 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && edge.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector4",
             inputs: [
@@ -6823,7 +6823,7 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
 }
 /// Subtract
 public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color3",
             inputs: [
@@ -6832,7 +6832,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color3FA",
             inputs: [
@@ -6841,7 +6841,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color4",
             inputs: [
@@ -6850,7 +6850,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color4FA",
             inputs: [
@@ -6859,7 +6859,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_float",
             inputs: [
@@ -6868,7 +6868,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_half",
             inputs: [
@@ -6877,7 +6877,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix22",
             inputs: [
@@ -6886,7 +6886,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.float {
+    if SGDataType.matrix2d.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix22FA",
             inputs: [
@@ -6895,7 +6895,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) && SGDataType.matrix3d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix33",
             inputs: [
@@ -6904,7 +6904,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.float {
+    if SGDataType.matrix3d.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix33FA",
             inputs: [
@@ -6913,7 +6913,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) && SGDataType.matrix4d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix44",
             inputs: [
@@ -6922,7 +6922,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.float {
+    if SGDataType.matrix4d.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix44FA",
             inputs: [
@@ -6931,7 +6931,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector2",
             inputs: [
@@ -6940,7 +6940,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector2FA",
             inputs: [
@@ -6949,7 +6949,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector3",
             inputs: [
@@ -6958,7 +6958,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector3FA",
             inputs: [
@@ -6967,7 +6967,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector4",
             inputs: [
@@ -6976,7 +6976,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.float.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector4FA",
             inputs: [
@@ -6989,7 +6989,7 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Switch
 public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ in6: T, _ in7: T, _ in8: T, _ in9: T, _ in10: T, which: SGScalar? = nil) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f && in3.dataType == SGDataType.color3f && in4.dataType == SGDataType.color3f && in5.dataType == SGDataType.color3f && in6.dataType == SGDataType.color3f && in7.dataType == SGDataType.color3f && in8.dataType == SGDataType.color3f && in9.dataType == SGDataType.color3f && in10.dataType == SGDataType.color3f && which.dataType == SGDataType.float {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) && SGDataType.color3f.matches(in3) && SGDataType.color3f.matches(in4) && SGDataType.color3f.matches(in5) && SGDataType.color3f.matches(in6) && SGDataType.color3f.matches(in7) && SGDataType.color3f.matches(in8) && SGDataType.color3f.matches(in9) && SGDataType.color3f.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color3",
             inputs: [
@@ -7007,7 +7007,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f && in3.dataType == SGDataType.color3f && in4.dataType == SGDataType.color3f && in5.dataType == SGDataType.color3f && in6.dataType == SGDataType.color3f && in7.dataType == SGDataType.color3f && in8.dataType == SGDataType.color3f && in9.dataType == SGDataType.color3f && in10.dataType == SGDataType.color3f && which.dataType == SGDataType.int {
+    if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) && SGDataType.color3f.matches(in3) && SGDataType.color3f.matches(in4) && SGDataType.color3f.matches(in5) && SGDataType.color3f.matches(in6) && SGDataType.color3f.matches(in7) && SGDataType.color3f.matches(in8) && SGDataType.color3f.matches(in9) && SGDataType.color3f.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color3I",
             inputs: [
@@ -7025,7 +7025,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f && in3.dataType == SGDataType.color4f && in4.dataType == SGDataType.color4f && in5.dataType == SGDataType.color4f && in6.dataType == SGDataType.color4f && in7.dataType == SGDataType.color4f && in8.dataType == SGDataType.color4f && in9.dataType == SGDataType.color4f && in10.dataType == SGDataType.color4f && which.dataType == SGDataType.float {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) && SGDataType.color4f.matches(in3) && SGDataType.color4f.matches(in4) && SGDataType.color4f.matches(in5) && SGDataType.color4f.matches(in6) && SGDataType.color4f.matches(in7) && SGDataType.color4f.matches(in8) && SGDataType.color4f.matches(in9) && SGDataType.color4f.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color4",
             inputs: [
@@ -7043,7 +7043,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f && in3.dataType == SGDataType.color4f && in4.dataType == SGDataType.color4f && in5.dataType == SGDataType.color4f && in6.dataType == SGDataType.color4f && in7.dataType == SGDataType.color4f && in8.dataType == SGDataType.color4f && in9.dataType == SGDataType.color4f && in10.dataType == SGDataType.color4f && which.dataType == SGDataType.int {
+    if SGDataType.color4f.matches(in1) && SGDataType.color4f.matches(in2) && SGDataType.color4f.matches(in3) && SGDataType.color4f.matches(in4) && SGDataType.color4f.matches(in5) && SGDataType.color4f.matches(in6) && SGDataType.color4f.matches(in7) && SGDataType.color4f.matches(in8) && SGDataType.color4f.matches(in9) && SGDataType.color4f.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color4I",
             inputs: [
@@ -7061,7 +7061,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float && in3.dataType == SGDataType.float && in4.dataType == SGDataType.float && in5.dataType == SGDataType.float && in6.dataType == SGDataType.float && in7.dataType == SGDataType.float && in8.dataType == SGDataType.float && in9.dataType == SGDataType.float && in10.dataType == SGDataType.float && which.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) && SGDataType.float.matches(in3) && SGDataType.float.matches(in4) && SGDataType.float.matches(in5) && SGDataType.float.matches(in6) && SGDataType.float.matches(in7) && SGDataType.float.matches(in8) && SGDataType.float.matches(in9) && SGDataType.float.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_float",
             inputs: [
@@ -7079,7 +7079,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float && in3.dataType == SGDataType.float && in4.dataType == SGDataType.float && in5.dataType == SGDataType.float && in6.dataType == SGDataType.float && in7.dataType == SGDataType.float && in8.dataType == SGDataType.float && in9.dataType == SGDataType.float && in10.dataType == SGDataType.float && which.dataType == SGDataType.int {
+    if SGDataType.float.matches(in1) && SGDataType.float.matches(in2) && SGDataType.float.matches(in3) && SGDataType.float.matches(in4) && SGDataType.float.matches(in5) && SGDataType.float.matches(in6) && SGDataType.float.matches(in7) && SGDataType.float.matches(in8) && SGDataType.float.matches(in9) && SGDataType.float.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_floatI",
             inputs: [
@@ -7097,7 +7097,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half && in3.dataType == SGDataType.half && in4.dataType == SGDataType.half && in5.dataType == SGDataType.half && in6.dataType == SGDataType.half && in7.dataType == SGDataType.half && in8.dataType == SGDataType.half && in9.dataType == SGDataType.half && in10.dataType == SGDataType.half && which.dataType == SGDataType.float {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) && SGDataType.half.matches(in3) && SGDataType.half.matches(in4) && SGDataType.half.matches(in5) && SGDataType.half.matches(in6) && SGDataType.half.matches(in7) && SGDataType.half.matches(in8) && SGDataType.half.matches(in9) && SGDataType.half.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_half",
             inputs: [
@@ -7115,7 +7115,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half && in3.dataType == SGDataType.half && in4.dataType == SGDataType.half && in5.dataType == SGDataType.half && in6.dataType == SGDataType.half && in7.dataType == SGDataType.half && in8.dataType == SGDataType.half && in9.dataType == SGDataType.half && in10.dataType == SGDataType.half && which.dataType == SGDataType.int {
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) && SGDataType.half.matches(in3) && SGDataType.half.matches(in4) && SGDataType.half.matches(in5) && SGDataType.half.matches(in6) && SGDataType.half.matches(in7) && SGDataType.half.matches(in8) && SGDataType.half.matches(in9) && SGDataType.half.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_halfI",
             inputs: [
@@ -7133,7 +7133,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f && in3.dataType == SGDataType.vector2f && in4.dataType == SGDataType.vector2f && in5.dataType == SGDataType.vector2f && in6.dataType == SGDataType.vector2f && in7.dataType == SGDataType.vector2f && in8.dataType == SGDataType.vector2f && in9.dataType == SGDataType.vector2f && in10.dataType == SGDataType.vector2f && which.dataType == SGDataType.float {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) && SGDataType.vector2f.matches(in3) && SGDataType.vector2f.matches(in4) && SGDataType.vector2f.matches(in5) && SGDataType.vector2f.matches(in6) && SGDataType.vector2f.matches(in7) && SGDataType.vector2f.matches(in8) && SGDataType.vector2f.matches(in9) && SGDataType.vector2f.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector2",
             inputs: [
@@ -7151,7 +7151,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f && in3.dataType == SGDataType.vector2f && in4.dataType == SGDataType.vector2f && in5.dataType == SGDataType.vector2f && in6.dataType == SGDataType.vector2f && in7.dataType == SGDataType.vector2f && in8.dataType == SGDataType.vector2f && in9.dataType == SGDataType.vector2f && in10.dataType == SGDataType.vector2f && which.dataType == SGDataType.int {
+    if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) && SGDataType.vector2f.matches(in3) && SGDataType.vector2f.matches(in4) && SGDataType.vector2f.matches(in5) && SGDataType.vector2f.matches(in6) && SGDataType.vector2f.matches(in7) && SGDataType.vector2f.matches(in8) && SGDataType.vector2f.matches(in9) && SGDataType.vector2f.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector2I",
             inputs: [
@@ -7169,7 +7169,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f && in3.dataType == SGDataType.vector3f && in4.dataType == SGDataType.vector3f && in5.dataType == SGDataType.vector3f && in6.dataType == SGDataType.vector3f && in7.dataType == SGDataType.vector3f && in8.dataType == SGDataType.vector3f && in9.dataType == SGDataType.vector3f && in10.dataType == SGDataType.vector3f && which.dataType == SGDataType.float {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) && SGDataType.vector3f.matches(in3) && SGDataType.vector3f.matches(in4) && SGDataType.vector3f.matches(in5) && SGDataType.vector3f.matches(in6) && SGDataType.vector3f.matches(in7) && SGDataType.vector3f.matches(in8) && SGDataType.vector3f.matches(in9) && SGDataType.vector3f.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector3",
             inputs: [
@@ -7187,7 +7187,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f && in3.dataType == SGDataType.vector3f && in4.dataType == SGDataType.vector3f && in5.dataType == SGDataType.vector3f && in6.dataType == SGDataType.vector3f && in7.dataType == SGDataType.vector3f && in8.dataType == SGDataType.vector3f && in9.dataType == SGDataType.vector3f && in10.dataType == SGDataType.vector3f && which.dataType == SGDataType.int {
+    if SGDataType.vector3f.matches(in1) && SGDataType.vector3f.matches(in2) && SGDataType.vector3f.matches(in3) && SGDataType.vector3f.matches(in4) && SGDataType.vector3f.matches(in5) && SGDataType.vector3f.matches(in6) && SGDataType.vector3f.matches(in7) && SGDataType.vector3f.matches(in8) && SGDataType.vector3f.matches(in9) && SGDataType.vector3f.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector3I",
             inputs: [
@@ -7205,7 +7205,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f && in3.dataType == SGDataType.vector4f && in4.dataType == SGDataType.vector4f && in5.dataType == SGDataType.vector4f && in6.dataType == SGDataType.vector4f && in7.dataType == SGDataType.vector4f && in8.dataType == SGDataType.vector4f && in9.dataType == SGDataType.vector4f && in10.dataType == SGDataType.vector4f && which.dataType == SGDataType.float {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) && SGDataType.vector4f.matches(in3) && SGDataType.vector4f.matches(in4) && SGDataType.vector4f.matches(in5) && SGDataType.vector4f.matches(in6) && SGDataType.vector4f.matches(in7) && SGDataType.vector4f.matches(in8) && SGDataType.vector4f.matches(in9) && SGDataType.vector4f.matches(in10) && SGDataType.float.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector4",
             inputs: [
@@ -7223,7 +7223,7 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f && in3.dataType == SGDataType.vector4f && in4.dataType == SGDataType.vector4f && in5.dataType == SGDataType.vector4f && in6.dataType == SGDataType.vector4f && in7.dataType == SGDataType.vector4f && in8.dataType == SGDataType.vector4f && in9.dataType == SGDataType.vector4f && in10.dataType == SGDataType.vector4f && which.dataType == SGDataType.int {
+    if SGDataType.vector4f.matches(in1) && SGDataType.vector4f.matches(in2) && SGDataType.vector4f.matches(in3) && SGDataType.vector4f.matches(in4) && SGDataType.vector4f.matches(in5) && SGDataType.vector4f.matches(in6) && SGDataType.vector4f.matches(in7) && SGDataType.vector4f.matches(in8) && SGDataType.vector4f.matches(in9) && SGDataType.vector4f.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector4I",
             inputs: [
@@ -7241,11 +7241,11 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types in switchValue(in1: \(in1.dataType), in2: \(in2.dataType), in3: \(in3.dataType), in4: \(in4.dataType), in5: \(in5.dataType), in6: \(in6.dataType), in7: \(in7.dataType), in8: \(in8.dataType), in9: \(in9.dataType), in10: \(in10.dataType), which: \(which.dataType))", values: [in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, which]))
+    return T(source: .error("Unsupported input data types in switchValue(in1: \(in1.dataType), in2: \(in2.dataType), in3: \(in3.dataType), in4: \(in4.dataType), in5: \(in5.dataType), in6: \(in6.dataType), in7: \(in7.dataType), in8: \(in8.dataType), in9: \(in9.dataType), in10: \(in10.dataType), which: \(which?.dataType.rawValue ?? "nil"))", values: [in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, which]))
 }
 /// Tan
 public func tan<T>(_ in1: T) -> T where T: SGNumeric {
-    if in1.dataType == SGDataType.float {
+    if SGDataType.float.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_float",
             inputs: [
@@ -7253,7 +7253,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if in1.dataType == SGDataType.half {
+    if SGDataType.half.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half",
             inputs: [
@@ -7261,7 +7261,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if in1.dataType == SGDataType.vector2h {
+    if SGDataType.vector2h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half2",
             inputs: [
@@ -7269,7 +7269,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
-    if in1.dataType == SGDataType.vector3h {
+    if SGDataType.vector3h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half3",
             inputs: [
@@ -7277,7 +7277,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
-    if in1.dataType == SGDataType.vector4h {
+    if SGDataType.vector4h.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half4",
             inputs: [
@@ -7285,7 +7285,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
-    if in1.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_vector2",
             inputs: [
@@ -7293,7 +7293,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_vector3",
             inputs: [
@@ -7301,7 +7301,7 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_vector4",
             inputs: [
@@ -7316,7 +7316,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid tiledImage input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_color3",
             inputs: [
@@ -7331,7 +7331,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_color4",
             inputs: [
@@ -7346,7 +7346,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.float {
+    if SGDataType.float.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_float",
             inputs: [
@@ -7361,7 +7361,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if defaultValue.dataType == SGDataType.half {
+    if SGDataType.half.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_half",
             inputs: [
@@ -7376,7 +7376,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
-    if defaultValue.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_vector2",
             inputs: [
@@ -7391,7 +7391,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if defaultValue.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_vector3",
             inputs: [
@@ -7406,7 +7406,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_vector4",
             inputs: [
@@ -7425,7 +7425,7 @@ public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? 
 }
 /// Transform Matrix
 public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
-    if in1.dataType == SGDataType.vector2f && mat.dataType == SGDataType.matrix2d {
+    if SGDataType.vector2f.matches(in1) && SGDataType.matrix2d.matches(mat) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector2",
             inputs: [
@@ -7434,7 +7434,7 @@ public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector2f && mat.dataType == SGDataType.matrix3d {
+    if SGDataType.vector2f.matches(in1) && SGDataType.matrix3d.matches(mat) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector2M3",
             inputs: [
@@ -7443,7 +7443,7 @@ public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if in1.dataType == SGDataType.vector3f && mat.dataType == SGDataType.matrix3d {
+    if SGDataType.vector3f.matches(in1) && SGDataType.matrix3d.matches(mat) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector3",
             inputs: [
@@ -7452,7 +7452,7 @@ public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector3f && mat.dataType == SGDataType.matrix4d {
+    if SGDataType.vector3f.matches(in1) && SGDataType.matrix4d.matches(mat) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector3M4",
             inputs: [
@@ -7461,7 +7461,7 @@ public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if in1.dataType == SGDataType.vector4f && mat.dataType == SGDataType.matrix4d {
+    if SGDataType.vector4f.matches(in1) && SGDataType.matrix4d.matches(mat) {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector4",
             inputs: [
@@ -7516,7 +7516,7 @@ public func transformVector(_ in1: SGVector, fromspace: SGTransformSpace, tospac
 }
 /// Transpose
 public func transpose(_ in1: SGMatrix) -> SGMatrix {
-    if in1.dataType == SGDataType.matrix2d {
+    if SGDataType.matrix2d.matches(in1) {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_transpose_matrix22",
             inputs: [
@@ -7524,7 +7524,7 @@ public func transpose(_ in1: SGMatrix) -> SGMatrix {
             ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
-    if in1.dataType == SGDataType.matrix3d {
+    if SGDataType.matrix3d.matches(in1) {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_transpose_matrix33",
             inputs: [
@@ -7532,7 +7532,7 @@ public func transpose(_ in1: SGMatrix) -> SGMatrix {
             ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
-    if in1.dataType == SGDataType.matrix4d {
+    if SGDataType.matrix4d.matches(in1) {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_transpose_matrix44",
             inputs: [
@@ -7553,7 +7553,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
     guard filez.dataType == SGDataType.asset else {
         return T(source: .error("Invalid triplanarProjection input. Expected filez data type to be SGDataType.asset, but got \(filez.dataType).", values: [filez]))
     }
-    if defaultValue.dataType == SGDataType.color3f {
+    if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_color3",
             inputs: [
@@ -7567,7 +7567,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
             ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
-    if defaultValue.dataType == SGDataType.color4f {
+    if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_color4",
             inputs: [
@@ -7581,7 +7581,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
             ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
-    if defaultValue.dataType == SGDataType.float {
+    if SGDataType.float.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_float",
             inputs: [
@@ -7595,7 +7595,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    if defaultValue.dataType == SGDataType.vector2f {
+    if SGDataType.vector2f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_vector2",
             inputs: [
@@ -7609,7 +7609,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
             ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
-    if defaultValue.dataType == SGDataType.vector3f {
+    if SGDataType.vector3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_vector3",
             inputs: [
@@ -7623,7 +7623,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
-    if defaultValue.dataType == SGDataType.vector4f {
+    if SGDataType.vector4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_vector4",
             inputs: [

@@ -821,7 +821,7 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             if usd_param_type_is_shared[i]:
                 continue
             name = param_names[i]
-            conds.append(f'{name}.dataType == {usd_type_to_sgc_datatype(input.usd_type)}')
+            conds.append(f'{usd_type_to_sgc_datatype(input.usd_type)}.matches({name})')
         if len(conds) == 0:
             indent = ""
             if len(overloads.overloads) > 1:
@@ -862,7 +862,10 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             if usd_param_type_is_shared[i]:
                 continue
             vals.append(param_names[i])
-            args.append(f'{param_names[i]}: \({param_names[i]}.dataType)')
+            if default_value_params[i] is not None:
+                args.append(f'{param_names[i]}: \({param_names[i]}?.dataType.rawValue ?? "nil")')
+            else:
+                args.append(f'{param_names[i]}: \({param_names[i]}.dataType)')
         args_str = "(" + ", ".join(args) + ")"
         vals_str = "[" + ", ".join(vals) + "]"
         w.write_line(f'return {sgc_output_type}(source: .error("Unsupported input data types in {overloads.swift_name}{args_str}", values: {vals_str}))')

@@ -78,7 +78,7 @@ public enum SGValueSource {
     case nodeOutput(_ node: SGNode, _ outputName: String)
     case constant(_ value: SGConstantValue)
     case parameter(name: String, defaultValue: SGConstantValue)
-    case error(_ error: String, values: [SGValue])
+    case error(_ error: String, values: [SGValue?])
     
     public var dataType: SGDataType {
         switch self {
@@ -149,6 +149,14 @@ public enum SGDataType: String {
         default:
             return false
         }
+    }
+    /// Returns true if the provided value's dataType matches this dataType.
+    /// If the value is nil, this function returns true.
+    public func matches(_ value: SGValue?) -> Bool {
+        if let v = value {
+            return v.dataType == self
+        }
+        return true
     }
 }
 
@@ -323,8 +331,10 @@ func collectErrors(nodes rootNodes: [SGNode]) -> [String] {
         }
         else if case .error(let e, let vals) = v.source {
             errors.append(e)
-            for vv in vals {
-                queueValueInputNodes(v: vv)
+            for vvo in vals {
+                if let vv = vvo {
+                    queueValueInputNodes(v: vv)
+                }
             }
         }
     }
