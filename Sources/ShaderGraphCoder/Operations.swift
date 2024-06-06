@@ -14,7 +14,7 @@ public func clamp<T>(_ in1: T, min: Float, max: Float) -> T where T: SGNumeric {
 func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     var errors: [String] = []
     var n = 3
-    let type = getNodeSuffixForDataType(dataType)
+    let nodeSuffix = getNodeSuffixForDataType(dataType)
     let elementType = SGDataType.float
     switch dataType {
     case .color3f:
@@ -26,6 +26,18 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     case .vector3f:
         n = 3
     case .vector4f:
+        n = 4
+    case .vector2h:
+        n = 2
+    case .vector3h:
+        n = 3
+    case .vector4h:
+        n = 4
+    case .vector2i:
+        n = 2
+    case .vector3i:
+        n = 3
+    case .vector4i:
         n = 4
     default:
         errors.append("Cannot combine \(dataType.usda)")
@@ -39,18 +51,10 @@ func combine<T>(values: [SGScalar], dataType: SGDataType) -> T where T: SGSIMD {
     }
     let outputs: [SGNode.Output] = [.init(dataType: dataType)]
     let sep = SGNode(
-        nodeType: "ND_combine\(n)_\(type)",
+        nodeType: "ND_combine\(n)_\(nodeSuffix)",
         inputs: inputs,
         outputs: outputs)
     return T(source: .nodeOutput(sep))
-}
-
-public func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
-    return combine(values: [r, g, b], dataType: .color3f)
-}
-
-public func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
-    return combine(values: [r, g, b, a], dataType: .color4f)
 }
 
 public func ifEqual(_ value1: SGValue, _ value2: SGValue, trueResult: Float, falseResult: Float) -> SGScalar {
@@ -108,18 +112,6 @@ public func pow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
 
 public func safePow<T>(_ x: T, _ y: Float) -> T where T: SGNumeric {
     safePow<T>(x, SGValue.float(y))
-}
-
-public func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
-    return combine(values: [x, y], dataType: .vector2f)
-}
-
-public func vector3f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
-    return combine(values: [x, y, z], dataType: .vector3f)
-}
-
-public func vector4f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
-    return combine(values: [x, y, z, w], dataType: .vector4f)
 }
 
 // MARK: - Private

@@ -15,11 +15,17 @@ public extension SGValue {
     static func color3f(_ x: Float, _ y: Float, _ z: Float, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .constant(.color3f([x, y, z], colorSpace: colorSpace)))
     }
+    static func color3f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar) -> SGColor {
+        return combine(values: [r, g, b], dataType: .color3f)
+    }
     static func color3fParameter(name: String, defaultValue: SIMD3<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color3f(defaultValue, colorSpace: colorSpace)))
     }
     static func color4f(_ x: Float, _ y: Float, _ z: Float, _ w: Float, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .constant(.color4f([x, y, z, w], colorSpace: colorSpace)))
+    }
+    static func color4f(_ r: SGScalar, _ g: SGScalar, _ b: SGScalar, _ a: SGScalar) -> SGColor {
+        return combine(values: [r, g, b, a], dataType: .color4f)
     }
     static func color4fParameter(name: String, defaultValue: SIMD4<Float>, colorSpace: SGColorSpace = .textureSRGB) -> SGColor {
         SGColor(source: .parameter(name: name, defaultValue: .color4f(defaultValue, colorSpace: colorSpace)))
@@ -134,6 +140,15 @@ public extension SGValue {
     static func vector4fParameter(name: String, defaultValue: SIMD4<Float>) -> SGVector {
         SGVector(source: .parameter(name: name, defaultValue: .vector4f(defaultValue)))
     }
+    static func vector2f(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+        return combine(values: [x, y], dataType: .vector2f)
+    }
+    static func vector3f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+        return combine(values: [x, y, z], dataType: .vector3f)
+    }
+    static func vector4f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+        return combine(values: [x, y, z, w], dataType: .vector4f)
+    }
 
     static func vector2h(_ value: SIMD2<Float16>) -> SGVector {
         SGVector(source: .constant(.vector2h(value)))
@@ -162,6 +177,15 @@ public extension SGValue {
     static func vector4hParameter(name: String, defaultValue: SIMD4<Float16>) -> SGVector {
         SGVector(source: .parameter(name: name, defaultValue: .vector4h(defaultValue)))
     }
+    static func vector2h(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+        return combine(values: [x, y], dataType: .vector2h)
+    }
+    static func vector3h(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+        return combine(values: [x, y, z], dataType: .vector3h)
+    }
+    static func vector4h(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+        return combine(values: [x, y, z, w], dataType: .vector4h)
+    }
 
     static func vector2i(_ value: SIMD2<Int>) -> SGVector {
         SGVector(source: .constant(.vector2i(value)))
@@ -189,6 +213,15 @@ public extension SGValue {
     }
     static func vector4iParameter(name: String, defaultValue: SIMD4<Int>) -> SGVector {
         SGVector(source: .parameter(name: name, defaultValue: .vector4i(defaultValue)))
+    }
+    static func vector2i(_ x: SGScalar, _ y: SGScalar) -> SGVector {
+        return combine(values: [x, y], dataType: .vector2i)
+    }
+    static func vector3i(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar) -> SGVector {
+        return combine(values: [x, y, z], dataType: .vector3i)
+    }
+    static func vector4i(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar) -> SGVector {
+        return combine(values: [x, y, z, w], dataType: .vector4i)
     }
 
     static var modelBitangent0: SGVector {

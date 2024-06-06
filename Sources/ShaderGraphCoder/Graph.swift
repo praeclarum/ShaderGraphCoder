@@ -284,8 +284,8 @@ func collectParameters(nodes rootNodes: [SGNode]) -> [(String, SGConstantValue)]
     return parameters.map { ($0.key, $0.value) }
 }
 
-func collectErrors(nodes rootNodes: [SGNode]) -> [String] {
-    var nodesToWrite: [SGNode] = rootNodes
+func collectErrors(values rootValues: [SGValue?]) -> [String] {
+    var nodesToWrite: [SGNode] = []
     var nodesWritten: Set<SGNode> = []
     var errors: [String] = []
     func queueValueInputNodes(v: SGValue) {
@@ -301,6 +301,11 @@ func collectErrors(nodes rootNodes: [SGNode]) -> [String] {
                     queueValueInputNodes(v: vv)
                 }
             }
+        }
+    }
+    for r in rootValues {
+        if let rr = r {
+            queueValueInputNodes(v: rr)
         }
     }
     while nodesToWrite.count > 0 {

@@ -57,6 +57,9 @@ final class ShaderGraphCoderTests: XCTestCase {
     private func scalarTest(_ scalar: SGScalar) throws {
         try surfaceTest(pbrSurface(opacity: scalar))
     }
+    private func halfTest(_ scalar: SGScalar) throws {
+        try surfaceTest(geometryModifier(userAttributeHalf40: .vector4h(scalar, .half(0), .half(0), .half(0))))
+    }
     
     func testModulus() throws {
         try scalarTest(.float(-2.1) % .float(2))
@@ -118,10 +121,10 @@ final class ShaderGraphCoderTests: XCTestCase {
     
     func testCustomAttribute() throws {
         let pos: SGVector = .modelPosition
-        let attrS: SGVector = vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
+        let attrS: SGVector = .vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
         let geom = geometryModifier(userAttribute: attrS)
         let attr = SGValue.surfaceCustomAttribute
-        let color = color3f(attr.x, attr.y, attr.z)
+        let color = SGValue.color3f(attr.x, attr.y, attr.z)
         try surfaceTest(pbrSurface(baseColor: color), geometryModifier: geom)
     }
     
@@ -129,14 +132,14 @@ final class ShaderGraphCoderTests: XCTestCase {
         let v1 = SGValue.vector2f(1, 2)
         let v2 = SGValue.vector3f(3, 4, 5)
         let r = v1 + v2
-        try vectorTest(r, expectErrors: 1)
+        try vectorTest(r, expectErrors: 2)
     }
     
     func testTypeError() throws {
         let v1 = SGValue.vector2f(1, 2)
         let v2 = SGValue.vector3h(3, 4, 5)
         let r = v1 + v2
-        try vectorTest(r, expectErrors: 1)
+        try vectorTest(r, expectErrors: 2)
     }
     
     func testPropagatedError() throws {
@@ -144,12 +147,12 @@ final class ShaderGraphCoderTests: XCTestCase {
         let v2 = SGValue.vector3h(3, 4, 5)
         let v3 = SGValue.vector3h(6, 7, 8)
         let r = (v1 + v2) + v3
-        try vectorTest(r, expectErrors: 2)
+        try vectorTest(r, expectErrors: 3)
     }
     
     func testChainHalf() throws {
         let r = SGValue.half(1).add(.half(2)).divide(.half(2))
-        try scalarTest(r)
+        try halfTest(r)
     }
 
     func testChainVector3() throws {

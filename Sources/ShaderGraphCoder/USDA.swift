@@ -125,9 +125,10 @@ public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: S
     line("    def Material \"\(materialName)\"")
     line("    {")
     
+    let outputValues = [surface, geometryModifier]
     let outputNodes = [surface?.node, geometryModifier?.node].compactMap { $0 }
     let parameters = collectParameters(nodes: outputNodes)
-    let errors = collectErrors(nodes: outputNodes)
+    let errors = collectErrors(values: outputValues)
     for p in parameters {
         let (name, defaultValue) = p
         line("        \(defaultValue.dataType.usda) inputs:\(name) = \(defaultValue.usda)")
