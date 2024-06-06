@@ -131,6 +131,7 @@ public extension SGValue {
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadContentsOf(contentsOf, options: options))))
     }
+    #if os(visionOS)
     static func texture(width: Int, height: Int, format: TextureResource.Format, data: Data, bytesPerRow: Int) -> SGTexture {
         let name = "_texture\(nextTextureId)"
         nextTextureId += 1
@@ -141,6 +142,7 @@ public extension SGValue {
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.mtlBuffer(width: width, height: height, format: format, unsafeBuffer: unsafeBuffer, offset: offset, size: size, bytesPerRow: bytesPerRow))))
     }
+    #endif
     static func textureParameter(name: String) -> SGTexture {
         SGTexture(source: .parameter(name: name, defaultValue: .emptyTexture))
     }

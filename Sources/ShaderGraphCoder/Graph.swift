@@ -176,8 +176,10 @@ public enum SGTextureSource {
     case cgImage(_ image: CGImage, options: TextureResource.CreateOptions)
     case loadNamed(_ named: String, in: Bundle?, options: TextureResource.CreateOptions?)
     case loadContentsOf(_ url: URL, options: TextureResource.CreateOptions?)
+    #if os(visionOS)
     case mtlBuffer(width: Int, height: Int, format: TextureResource.Format, unsafeBuffer: any MTLBuffer, offset: Int, size: Int, bytesPerRow: Int)
     case data(width: Int, height: Int, format: TextureResource.Format, data: Data, bytesPerRow: Int)
+    #endif
     
     @MainActor
     func loadTextureResource() throws -> TextureResource {
@@ -194,10 +196,12 @@ public enum SGTextureSource {
             return try TextureResource.load(contentsOf: url, options: options)
         case .loadContentsOf(let url, .none):
             return try TextureResource.load(contentsOf: url)
+#if os(visionOS)
         case .mtlBuffer(width: let width, height: let height, format: let format, unsafeBuffer: let unsafeBuffer, offset: let offset, size: let size, bytesPerRow: let bytesPerRow):
             return try TextureResource(dimensions: .dimensions(width: width, height: height), format: format, contents: .init(mipmapLevels: [.mip(unsafeBuffer: unsafeBuffer, offset: offset, size: size, bytesPerRow: bytesPerRow)]))
         case .data(width: let width, height: let height, format: let format, data: let data, bytesPerRow: let bytesPerRow):
             return try TextureResource(dimensions: .dimensions(width: width, height: height), format: format, contents: .init(mipmapLevels: [.mip(data: data, bytesPerRow: bytesPerRow)]))
+#endif
         }
     }
 }
