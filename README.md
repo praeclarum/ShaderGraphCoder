@@ -124,7 +124,7 @@ The following operators are supported:
 | `fract(in1)` | Fractional |
 | `fractal3D(amplitude, octaves, ...)` | Fractal Noise 3D |
 | `geometryModifier(modelPositionOffset, color, ...)` | Geometry Modifier |
-| `geometrySwitchCameraindex(mono, left, ...)` | Camera Index Switch |
+| `geometrySwitchCameraIndex(mono, left, ...)` | Camera Index Switch |
 | `heightToNormal(in1, scale)` | Height To Normal |
 | `hsvAdjust(in1, amount)` | HSV Adjust |
 | `hsvToRGB(in1)` | HSV to RGB |

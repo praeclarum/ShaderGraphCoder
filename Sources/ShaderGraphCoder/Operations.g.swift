@@ -1885,7 +1885,7 @@ public func geometryModifier(modelPositionOffset: SGVector? = nil, color: SGColo
         outputs: [.init(dataType: SGDataType.token)])))
 }
 /// Camera Index Switch
-public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
+public func geometrySwitchCameraIndex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(mono) && SGDataType.color3f.matches(left) && SGDataType.color3f.matches(right) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_color3",
@@ -1956,7 +1956,7 @@ public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where 
             ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
-    return T(source: .error("Unsupported input data types in geometrySwitchCameraindex(mono: \(mono.dataType), left: \(left.dataType), right: \(right.dataType))", values: [mono, left, right]))
+    return T(source: .error("Unsupported input data types in geometrySwitchCameraIndex(mono: \(mono.dataType), left: \(left.dataType), right: \(right.dataType))", values: [mono, left, right]))
 }
 /// Height To Normal
 public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector {
@@ -8265,8 +8265,8 @@ public extension SGNumeric {
         ShaderGraphCoder.fractal3D(amplitude: self, octaves: octaves, lacunarity: lacunarity, diminish: diminish, position: position)
     }
     /// Camera Index Switch
-    func geometrySwitchCameraindex(left: SGNumeric, right: SGNumeric) -> Self {
-        ShaderGraphCoder.geometrySwitchCameraindex(mono: self, left: left, right: right) as! Self
+    func geometrySwitchCameraIndex(left: SGNumeric, right: SGNumeric) -> Self {
+        ShaderGraphCoder.geometrySwitchCameraIndex(mono: self, left: left, right: right) as! Self
     }
     /// Inside
     func inside(mask: SGScalar? = nil) -> Self {

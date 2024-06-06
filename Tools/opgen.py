@@ -54,6 +54,7 @@ node_renames: Dict[str, str] = {
     "crossproduct": "cross",
     "fractional": "fract",
     "geometrymodifier_vertexshader": "geometryModifier",
+    "geometry_switch_cameraindex": "geometrySwitchCameraIndex",
     "heighttonormal": "heightToNormal",
     "hsvadjust": "hsvAdjust",
     "hsvtorgb": "hsvToRGB",
