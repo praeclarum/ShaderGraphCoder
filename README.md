@@ -1,6 +1,13 @@
 # ShaderGraphCoder
 
-An embedded DSL to write RealityKit shaders in Swift.
+Are you building the next great visionOS app?
+Are you also super tired of drawing shader code with boxes and lines?
+**ShaderGraphCoder** is an embedded DSL to write RealityKit shader graphs
+(USD compatible) in strongly typed Swift.
+
+**759** shader graph nodes are made available through
+**117** operators (math, blends, texture lookups, etc.) and
+**66** sources (constants, model and view transforms, etc.).
 
 **Supported Platforms:** visionOS
 
@@ -34,6 +41,46 @@ func textureMap(textureLocalURL: URL) async throws -> ShaderGraphMaterial {
     return try await ShaderGraphMaterial(surface: surface)
 }
 ```
+
+## Shader Preview using SwiftUI
+
+Thanks to the powerful SwiftUI integration with RealityKit, you can preview your shaders in the Xcode canvas.
+
+Shader previews are made available through the `ShaderGraphPreview` view.
+You can either embed it into your existing SwiftUI views or
+just use the `#Preview` macro to see the shader in action.
+
+Here is an example of how to embed the preview in your own view:
+
+```swift
+import SwiftUI
+import ShaderGraphCoder
+
+struct MyView: View {
+    /// Create a blue surface shader
+    let blueSurface = SGValue.color3f([0, 0, 1]).pbrSurface()
+    var body: some View {
+        // Preview the surface using ShaderGraphPreview
+        ShaderGraphPreview(surface: blueSurface)
+    }
+}
+```
+
+Or you can just use a preview:
+
+```swift
+#Preview {
+    let blueSurface = SGValue.color3f([0, 0, 1]).pbrSurface()
+    return ShaderGraphPreview(surface: blueSurface)
+}
+```
+
+This will show a blue box and a blue sphere in the Xcode canvas:
+
+![ShaderGraphPreview](Documentation/ShaderGraphPreview.png)
+
+All 100+ shader operations are supported and it's a really fun environment
+to play around in.
 
 
 ## How it Works

@@ -49,11 +49,12 @@ struct ShaderGraphPreview: View {
 }
 
 #Preview {
-//    ShaderGraphPreview(surface: (.blue*(sin(.time * 2.0 * SGValue.pi)*0.5 + 0.5)).pbrSurface())
-    let data = try? Data(contentsOf: URL(string: "https://praeclarum.org/assets/me.jpg")!)
-    let image = UIImage(data: data!)!.cgImage!
-    let texture: SGTexture = .texture(from: image, options: TextureResource.CreateOptions(semantic: .color))
-    return ShaderGraphPreview(surface: texture.sampleColor3f().pbrSurface())
+    // let data = try? Data(contentsOf: URL(string: "https://praeclarum.org/assets/me.jpg")!)
+    // let image = UIImage(data: data!)!.cgImage!
+    // let texture: SGTexture = .texture(from: image, options: TextureResource.CreateOptions(semantic: .color))
+    // let textureSurface = texture.sampleColor3f().pbrSurface()
+    let blueSurface = SGValue.color3f([0, 0, 1]).pbrSurface()
+    return ShaderGraphPreview(surface: blueSurface)
 }
 
 #endif
