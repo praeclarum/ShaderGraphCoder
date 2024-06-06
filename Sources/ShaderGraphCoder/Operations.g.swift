@@ -72,2145 +72,3012 @@ public enum SGTransformSpace: String, CaseIterable {
 
 /// Abs
 public func abs<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_absval_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in abs(in1: \(in1.dataType))", values: [in1]))
 }
 /// Acos
 public func acos<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_acos_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in acos(in1: \(in1.dataType))", values: [in1]))
 }
 /// Add
 public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix2d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix2d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix22FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix2d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix3d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix3d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix33FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix3d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix4d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_matrix44FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_add_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in add(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Ambient Occlusion
-public func ambientOcclusion(coneangle: SGScalar = SGScalar(source: .constant(.float(90.0))), maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
-    guard coneangle.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid ambientOcclusion input. Expected coneangle data type to be SGDataType.float, but got \(coneangle.dataType).", values: [coneangle]))
-    }
-    guard maxdistance.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid ambientOcclusion input. Expected maxdistance data type to be SGDataType.float, but got \(maxdistance.dataType).", values: [maxdistance]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "coneangle", connection: coneangle),
-        .init(name: "maxdistance", connection: maxdistance),
-    ]
+public func ambientOcclusion(coneangle: SGScalar? = nil, maxdistance: SGScalar? = nil) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ambientocclusion_float",
-        inputs: inputs,
+        inputs: [
+            .init(name: "coneangle", dataType: SGDataType.float, connection: coneangle),
+            .init(name: "maxdistance", dataType: SGDataType.float, connection: maxdistance),
+        ],
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Asin
 public func asin<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_asin_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in asin(in1: \(in1.dataType))", values: [in1]))
 }
 /// Atan2
 public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "iny", connection: iny),
-        .init(name: "inx", connection: inx),
-    ]
     if iny.dataType == SGDataType.float && inx.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.float, connection: iny),
+                .init(name: "inx", dataType: SGDataType.float, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if iny.dataType == SGDataType.half && inx.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.half, connection: iny),
+                .init(name: "inx", dataType: SGDataType.half, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if iny.dataType == SGDataType.vector2h && inx.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.vector2h, connection: iny),
+                .init(name: "inx", dataType: SGDataType.vector2h, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if iny.dataType == SGDataType.vector3h && inx.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.vector3h, connection: iny),
+                .init(name: "inx", dataType: SGDataType.vector3h, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if iny.dataType == SGDataType.vector4h && inx.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.vector4h, connection: iny),
+                .init(name: "inx", dataType: SGDataType.vector4h, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if iny.dataType == SGDataType.vector2f && inx.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.vector2f, connection: iny),
+                .init(name: "inx", dataType: SGDataType.vector2f, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if iny.dataType == SGDataType.vector3f && inx.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.vector3f, connection: iny),
+                .init(name: "inx", dataType: SGDataType.vector3f, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if iny.dataType == SGDataType.vector4f && inx.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_atan2_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "iny", dataType: SGDataType.vector4f, connection: iny),
+                .init(name: "inx", dataType: SGDataType.vector4f, connection: inx),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in atan2(iny: \(iny.dataType), inx: \(inx.dataType))", values: [iny, inx]))
 }
 /// Blur
-public func blur<T>(_ in1: T, size: SGScalar = SGScalar(source: .constant(.float(0.0))), filtertype: SGBlurFilterType = SGBlurFilterType.box) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "size", connection: size),
-        .init(name: "filtertype", connection: SGString(source: .constant(.string(filtertype.rawValue)))),
-    ]
+public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterType = SGBlurFilterType.box) -> T where T: SGNumeric {
     if in1.dataType == SGDataType.color3f && size.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "size", dataType: SGDataType.float, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && size.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "size", dataType: SGDataType.float, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && size.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "size", dataType: SGDataType.float, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && size.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "size", dataType: SGDataType.half, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f && size.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "size", dataType: SGDataType.float, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && size.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "size", dataType: SGDataType.float, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && size.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_blur_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "size", dataType: SGDataType.float, connection: size),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in blur(in1: \(in1.dataType), size: \(size.dataType))", values: [in1, size]))
 }
 /// Burn
-public func burn<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func burn<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_burn_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in burn(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Ceiling
 public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ceil(in1: \(in1.dataType))", values: [in1]))
 }
 /// Cellular Noise 2D
-public func cellNoise2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGScalar {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return SGScalar(source: .error("Invalid cellNoise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func cellNoise2D(texcoord: SGVector? = nil) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cellnoise2d_float",
-        inputs: inputs,
+        inputs: [
+            .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+        ],
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Cellular Noise 3D
-public func cellNoise3D(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGScalar {
-    guard position.dataType == SGDataType.vector3f else {
-        return SGScalar(source: .error("Invalid cellNoise3D input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "position", connection: position),
-    ]
+public func cellNoise3D(position: SGVector? = nil) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cellnoise3d_float",
-        inputs: inputs,
+        inputs: [
+            .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+        ],
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Clamp
 public func clamp<T>(_ in1: T, min: SGNumeric, max: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "low", connection: min),
-        .init(name: "high", connection: max),
-    ]
     if in1.dataType == SGDataType.color3f && min.dataType == SGDataType.color3f && max.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.color3f, connection: min),
+                .init(name: "high", dataType: SGDataType.color3f, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && min.dataType == SGDataType.color4f && max.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.color4f, connection: min),
+                .init(name: "high", dataType: SGDataType.color4f, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && min.dataType == SGDataType.half && max.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "low", dataType: SGDataType.half, connection: min),
+                .init(name: "high", dataType: SGDataType.half, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h && min.dataType == SGDataType.vector2h && max.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector2h, connection: min),
+                .init(name: "high", dataType: SGDataType.vector2h, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector2h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h && min.dataType == SGDataType.vector3h && max.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector3h, connection: min),
+                .init(name: "high", dataType: SGDataType.vector3h, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector3h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h && min.dataType == SGDataType.vector4h && max.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector4h, connection: min),
+                .init(name: "high", dataType: SGDataType.vector4h, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector4h && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_half4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f && min.dataType == SGDataType.vector2f && max.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector2f, connection: min),
+                .init(name: "high", dataType: SGDataType.vector2f, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && min.dataType == SGDataType.vector3f && max.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector3f, connection: min),
+                .init(name: "high", dataType: SGDataType.vector3f, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && min.dataType == SGDataType.vector4f && max.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector4f, connection: min),
+                .init(name: "high", dataType: SGDataType.vector4f, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && min.dataType == SGDataType.float && max.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_clamp_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: min),
+                .init(name: "high", dataType: SGDataType.float, connection: max),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in clamp(in1: \(in1.dataType), min: \(min.dataType), max: \(max.dataType))", values: [in1, min, max]))
 }
 /// Contrast
 public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "amount", connection: amount),
-        .init(name: "pivot", connection: pivot),
-    ]
     if in1.dataType == SGDataType.color3f && amount.dataType == SGDataType.color3f && pivot.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.color3f, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.color3f, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && amount.dataType == SGDataType.color4f && pivot.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.color4f, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.color4f, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f && amount.dataType == SGDataType.vector2f && pivot.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector2f, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.vector2f, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && amount.dataType == SGDataType.vector3f && pivot.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector3f, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.vector3f, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && amount.dataType == SGDataType.vector4f && pivot.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector4f, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.vector4f, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && amount.dataType == SGDataType.float && pivot.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_contrast_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in contrast(in1: \(in1.dataType), amount: \(amount.dataType), pivot: \(pivot.dataType))", values: [in1, amount, pivot]))
 }
 /// Cos
 public func cos<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_cos_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in cos(in1: \(in1.dataType))", values: [in1]))
 }
 /// Cross Product
 public func cross(_ in1: SGVector, _ in2: SGVector) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_crossproduct_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_crossproduct_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     return SGVector(source: .error("Unsupported input data types in cross(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Determinant
 public func determinant(_ in1: SGMatrix) -> SGScalar {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.matrix2d {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_determinant_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix2d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.matrix3d {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_determinant_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix3d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.matrix4d {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_determinant_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix4d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in determinant(in1: \(in1.dataType))", values: [in1]))
 }
 /// Difference
-public func difference<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_difference_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in difference(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Disjoint Over
-public func disjointover(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid disjointover input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType).", values: [fg]))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid disjointover input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType).", values: [bg]))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid disjointover input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).", values: [mix]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func disjointover(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_disjointover_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+            .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+            .init(name: "mix", dataType: SGDataType.float, connection: mix),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Divide
 public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix2d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix2d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix3d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix3d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix4d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in divide(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Dodge
-public func dodge<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func dodge<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_dodge_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in dodge(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Dot Product
 public func dot(_ in1: SGVector, _ in2: SGVector) -> SGScalar {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_dotproduct_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in dot(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Exp
 public func exp<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_exp_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in exp(in1: \(in1.dataType))", values: [in1]))
 }
 /// Extract
 public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "index", connection: SGScalar(source: .constant(.int(index)))),
-    ]
     if in1.dataType == SGDataType.color3f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.color4f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in extract(in1: \(in1.dataType))", values: [in1]))
 }
 /// Floor
 public func floor<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in floor(in1: \(in1.dataType))", values: [in1]))
 }
 /// Fractional
 public func fract<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_fractional_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in fract(in1: \(in1.dataType))", values: [in1]))
 }
 /// Fractal Noise 3D
-public func fractal3D(amplitude: SGNumeric, octaves: SGScalar = SGScalar(source: .constant(.int(3))), lacunarity: SGScalar = SGScalar(source: .constant(.float(2.0))), diminish: SGScalar = SGScalar(source: .constant(.float(0.5))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
-    guard octaves.dataType == SGDataType.int else {
-        return SGNumeric(source: .error("Invalid fractal3D input. Expected octaves data type to be SGDataType.int, but got \(octaves.dataType).", values: [octaves]))
-    }
-    guard lacunarity.dataType == SGDataType.float else {
-        return SGNumeric(source: .error("Invalid fractal3D input. Expected lacunarity data type to be SGDataType.float, but got \(lacunarity.dataType).", values: [lacunarity]))
-    }
-    guard diminish.dataType == SGDataType.float else {
-        return SGNumeric(source: .error("Invalid fractal3D input. Expected diminish data type to be SGDataType.float, but got \(diminish.dataType).", values: [diminish]))
-    }
-    guard position.dataType == SGDataType.vector3f else {
-        return SGNumeric(source: .error("Invalid fractal3D input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "amplitude", connection: amplitude),
-        .init(name: "octaves", connection: octaves),
-        .init(name: "lacunarity", connection: lacunarity),
-        .init(name: "diminish", connection: diminish),
-        .init(name: "position", connection: position),
-    ]
+public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity: SGScalar? = nil, diminish: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
     if amplitude.dataType == SGDataType.vector3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector3f, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if amplitude.dataType == SGDataType.vector4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector4f, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if amplitude.dataType == SGDataType.vector2f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector2f, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if amplitude.dataType == SGDataType.vector3f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector3f, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if amplitude.dataType == SGDataType.vector4f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector4f, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "octaves", dataType: SGDataType.int, connection: octaves),
+                .init(name: "lacunarity", dataType: SGDataType.float, connection: lacunarity),
+                .init(name: "diminish", dataType: SGDataType.float, connection: diminish),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGNumeric(source: .error("Unsupported input data types in fractal3D(amplitude: \(amplitude.dataType))", values: [amplitude]))
 }
 /// Camera Index Switch
 public func geometrySwitchCameraindex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "mono", connection: mono),
-        .init(name: "left", connection: left),
-        .init(name: "right", connection: right),
-    ]
     if mono.dataType == SGDataType.color3f && left.dataType == SGDataType.color3f && right.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.color3f, connection: mono),
+                .init(name: "left", dataType: SGDataType.color3f, connection: left),
+                .init(name: "right", dataType: SGDataType.color3f, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if mono.dataType == SGDataType.color4f && left.dataType == SGDataType.color4f && right.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.color4f, connection: mono),
+                .init(name: "left", dataType: SGDataType.color4f, connection: left),
+                .init(name: "right", dataType: SGDataType.color4f, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if mono.dataType == SGDataType.float && left.dataType == SGDataType.float && right.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.float, connection: mono),
+                .init(name: "left", dataType: SGDataType.float, connection: left),
+                .init(name: "right", dataType: SGDataType.float, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if mono.dataType == SGDataType.int && left.dataType == SGDataType.int && right.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_integer",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.int, connection: mono),
+                .init(name: "left", dataType: SGDataType.int, connection: left),
+                .init(name: "right", dataType: SGDataType.int, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.int)])))
     }
     if mono.dataType == SGDataType.vector2f && left.dataType == SGDataType.vector2f && right.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.vector2f, connection: mono),
+                .init(name: "left", dataType: SGDataType.vector2f, connection: left),
+                .init(name: "right", dataType: SGDataType.vector2f, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if mono.dataType == SGDataType.vector3f && left.dataType == SGDataType.vector3f && right.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.vector3f, connection: mono),
+                .init(name: "left", dataType: SGDataType.vector3f, connection: left),
+                .init(name: "right", dataType: SGDataType.vector3f, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if mono.dataType == SGDataType.vector4f && left.dataType == SGDataType.vector4f && right.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_geometry_switch_cameraindex_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.vector4f, connection: mono),
+                .init(name: "left", dataType: SGDataType.vector4f, connection: left),
+                .init(name: "right", dataType: SGDataType.vector4f, connection: right),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in geometrySwitchCameraindex(mono: \(mono.dataType), left: \(left.dataType), right: \(right.dataType))", values: [mono, left, right]))
 }
 /// Geometric Property
 public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where T: SGValue {
-    let inputs: [SGNode.Input] = [
-        .init(name: "geomprop", connection: SGString(source: .constant(.string(geomprop)))),
-        .init(name: "default", connection: defaultValue),
-    ]
     if defaultValue.dataType == SGDataType.bool {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_boolean",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.bool, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.bool)])))
     }
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.float, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if defaultValue.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.half, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if defaultValue.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_integer",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.int, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.int)])))
     }
     if defaultValue.dataType == SGDataType.string {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_string",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.string, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.string)])))
     }
     if defaultValue.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.vector2f, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if defaultValue.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.vector3f, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_geompropvalue_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "geomprop", dataType: SGDataType.string, connection: SGString(source: .constant(.string(geomprop)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in geompropvalue(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Height To Normal
-public func heightToNormal(_ in1: SGScalar, scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector {
     guard in1.dataType == SGDataType.float else {
         return SGVector(source: .error("Invalid heightToNormal input. Expected in1 data type to be SGDataType.float, but got \(in1.dataType).", values: [in1]))
     }
-    guard scale.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid heightToNormal input. Expected scale data type to be SGDataType.float, but got \(scale.dataType).", values: [scale]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "scale", connection: scale),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_heighttonormal_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.float, connection: in1),
+            .init(name: "scale", dataType: SGDataType.float, connection: scale),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// HSV Adjust
-public func hsvAdjust(_ in1: SGColor, amount: SGVector = SGVector(source: .constant(.vector3f([0, 1, 1])))) -> SGColor {
-    guard amount.dataType == SGDataType.vector3f else {
-        return SGColor(source: .error("Invalid hsvAdjust input. Expected amount data type to be SGDataType.vector3f, but got \(amount.dataType).", values: [amount]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "amount", connection: amount),
-    ]
+public func hsvAdjust(_ in1: SGColor, amount: SGVector? = nil) -> SGColor {
     if in1.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvadjust_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector3f, connection: amount),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvadjust_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector3f, connection: amount),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     return SGColor(source: .error("Unsupported input data types in hsvAdjust(in1: \(in1.dataType))", values: [in1]))
 }
 /// HSV to RGB
 public func hsvToRGB(_ in1: SGColor) -> SGColor {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvtorgb_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvtorgb_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     return SGColor(source: .error("Unsupported input data types in hsvToRGB(in1: \(in1.dataType))", values: [in1]))
 }
 /// If Equal
 public func ifEqual<T>(_ value1: SGValue, _ value2: SGValue, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "value1", connection: value1),
-        .init(name: "value2", connection: value2),
-        .init(name: "in1", connection: trueResult),
-        .init(name: "in2", connection: falseResult),
-    ]
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color3B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color4B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_color4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_floatB",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_floatI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.half, connection: value1),
+                .init(name: "value2", dataType: SGDataType.half, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half2B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half3B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half4B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_half4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_halfB",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_halfI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector2B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector3B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if value1.dataType == SGDataType.bool && value2.dataType == SGDataType.bool && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector4B",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.bool, connection: value1),
+                .init(name: "value2", dataType: SGDataType.bool, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifequal_vector4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ifEqual(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// If Greater
 public func ifGreater<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "value1", connection: value1),
-        .init(name: "value2", connection: value2),
-        .init(name: "in1", connection: trueResult),
-        .init(name: "in2", connection: falseResult),
-    ]
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_color4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_floatI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.half, connection: value1),
+                .init(name: "value2", dataType: SGDataType.half, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_half4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_halfI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreater_vector4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ifGreater(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// If Greater Or Equal
 public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "value1", connection: value1),
-        .init(name: "value2", connection: value2),
-        .init(name: "in1", connection: trueResult),
-        .init(name: "in2", connection: falseResult),
-    ]
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color3f && falseResult.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.color4f && falseResult.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_color4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.color4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.float && falseResult.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_floatI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.float, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.float, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if value1.dataType == SGDataType.half && value2.dataType == SGDataType.half && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.half, connection: value1),
+                .init(name: "value2", dataType: SGDataType.half, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2h && falseResult.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3h && falseResult.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4h && falseResult.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_half4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.half && falseResult.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_halfI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.half, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.half, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector2f && falseResult.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector3f && falseResult.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if value1.dataType == SGDataType.float && value2.dataType == SGDataType.float && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.float, connection: value1),
+                .init(name: "value2", dataType: SGDataType.float, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if value1.dataType == SGDataType.int && value2.dataType == SGDataType.int && trueResult.dataType == SGDataType.vector4f && falseResult.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ifgreatereq_vector4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "value1", dataType: SGDataType.int, connection: value1),
+                .init(name: "value2", dataType: SGDataType.int, connection: value2),
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: trueResult),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: falseResult),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ifGreaterOrEqual(value1: \(value1.dataType), value2: \(value2.dataType), trueResult: \(trueResult.dataType), falseResult: \(falseResult.dataType))", values: [value1, value2, trueResult, falseResult]))
 }
 /// Image
-public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil, uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid image input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid image input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "uaddressmode", connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
-        .init(name: "vaddressmode", connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
-        .init(name: "filtertype", connection: SGString(source: .constant(.string(filtertype.rawValue)))),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.float, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if defaultValue.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.half, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if defaultValue.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector2f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if defaultValue.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_image_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uaddressmode.rawValue)))),
+                .init(name: "vaddressmode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vaddressmode.rawValue)))),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in image(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Inside
-public func inside<T>(_ in1: T, mask: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "mask", connection: mask),
-    ]
+public func inside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
     if in1.dataType == SGDataType.color3f && mask.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "mask", dataType: SGDataType.float, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && mask.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "mask", dataType: SGDataType.float, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && mask.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "mask", dataType: SGDataType.float, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && mask.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_inside_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "mask", dataType: SGDataType.half, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in inside(in1: \(in1.dataType), mask: \(mask.dataType))", values: [in1, mask]))
 }
 /// Invert Matrix
 public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.matrix2d {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_invertmatrix_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix2d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix3d {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_invertmatrix_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix3d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix4d {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_invertmatrix_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix4d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     return SGMatrix(source: .error("Unsupported input data types in invertMatrix(in1: \(in1.dataType))", values: [in1]))
 }
 /// Magnitude
 public func length(_ in1: SGVector) -> SGScalar {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.vector2h {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_magnitude_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in length(in1: \(in1.dataType))", values: [in1]))
 }
 /// Natural Log
 public func log<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ln_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in log(in1: \(in1.dataType))", values: [in1]))
@@ -2223,13 +3090,12 @@ public func logicalAnd(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in2.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalAnd input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).", values: [in2]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_and",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in1", dataType: SGDataType.bool, connection: in1),
+            .init(name: "in2", dataType: SGDataType.bool, connection: in2),
+        ],
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// Not
@@ -2237,12 +3103,11 @@ public func logicalNot(_ in1: SGValue) -> SGValue {
     guard in1.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalNot input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_not",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.bool, connection: in1),
+        ],
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// Or
@@ -2253,13 +3118,12 @@ public func logicalOr(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in2.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalOr input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).", values: [in2]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_or",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in1", dataType: SGDataType.bool, connection: in1),
+            .init(name: "in2", dataType: SGDataType.bool, connection: in2),
+        ],
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// XOR
@@ -2270,803 +3134,1055 @@ public func logicalXor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard in2.dataType == SGDataType.bool else {
         return SGValue(source: .error("Invalid logicalXor input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).", values: [in2]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     return SGValue(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_logical_xor",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in1", dataType: SGDataType.bool, connection: in1),
+            .init(name: "in2", dataType: SGDataType.bool, connection: in2),
+        ],
         outputs: [.init(dataType: SGDataType.bool)])))
 }
 /// Luminance
-public func luminance(_ in1: SGColor, lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
-    guard lumacoeffs.dataType == SGDataType.color3f else {
-        return SGColor(source: .error("Invalid luminance input. Expected lumacoeffs data type to be SGDataType.color3f, but got \(lumacoeffs.dataType).", values: [lumacoeffs]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "lumacoeffs", connection: lumacoeffs),
-    ]
+public func luminance(_ in1: SGColor, lumacoeffs: SGColor? = nil) -> SGColor {
     if in1.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_luminance_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "lumacoeffs", dataType: SGDataType.color3f, connection: lumacoeffs),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_luminance_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "lumacoeffs", dataType: SGDataType.color3f, connection: lumacoeffs),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     return SGColor(source: .error("Unsupported input data types in luminance(in1: \(in1.dataType))", values: [in1]))
 }
 /// Mask
-public func mask(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid mask input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType).", values: [fg]))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid mask input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType).", values: [bg]))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid mask input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).", values: [mix]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func mask(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_mask_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+            .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+            .init(name: "mix", dataType: SGDataType.float, connection: mix),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Matte
-public func matte(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid matte input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType).", values: [fg]))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid matte input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType).", values: [bg]))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid matte input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).", values: [mix]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func matte(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_matte_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+            .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+            .init(name: "mix", dataType: SGDataType.float, connection: mix),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Max
 public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_half4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_max_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in max(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Min
 public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector2h && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector3h && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector4h && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_half4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_min_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in min(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Subtractive Mix
-public func minus<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_minus_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in minus(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Mix
-public func mix<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if fg.dataType == SGDataType.vector2h && bg.dataType == SGDataType.vector2h && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.vector2h, connection: fg),
+                .init(name: "bg", dataType: SGDataType.vector2h, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if fg.dataType == SGDataType.vector3h && bg.dataType == SGDataType.vector3h && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.vector3h, connection: fg),
+                .init(name: "bg", dataType: SGDataType.vector3h, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if fg.dataType == SGDataType.vector4h && bg.dataType == SGDataType.vector4h && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.vector4h, connection: fg),
+                .init(name: "bg", dataType: SGDataType.vector4h, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if fg.dataType == SGDataType.vector2f && bg.dataType == SGDataType.vector2f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.vector2f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.vector2f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if fg.dataType == SGDataType.vector3f && bg.dataType == SGDataType.vector3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.vector3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.vector3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if fg.dataType == SGDataType.vector4f && bg.dataType == SGDataType.vector4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_mix_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.vector4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.vector4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in mix(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// In
-public func mixColor(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid mixColor input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType).", values: [fg]))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid mixColor input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType).", values: [bg]))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid mixColor input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).", values: [mix]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func mixColor(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_in_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+            .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+            .init(name: "mix", dataType: SGDataType.float, connection: mix),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Modulo
 public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in modulo(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Multiply
 public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix2d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix2d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix3d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix3d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix4d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in multiply(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Noise 2D
-public func noise2D(amplitude: SGNumeric, pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGNumeric {
-    guard pivot.dataType == SGDataType.float else {
-        return SGNumeric(source: .error("Invalid noise2D input. Expected pivot data type to be SGDataType.float, but got \(pivot.dataType).", values: [pivot]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return SGNumeric(source: .error("Invalid noise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "amplitude", connection: amplitude),
-        .init(name: "pivot", connection: pivot),
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVector? = nil) -> SGNumeric {
     if amplitude.dataType == SGDataType.vector3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector3f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if amplitude.dataType == SGDataType.vector4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector4f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if amplitude.dataType == SGDataType.vector2f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector2f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if amplitude.dataType == SGDataType.vector3f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector3f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if amplitude.dataType == SGDataType.vector4f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector4f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGNumeric(source: .error("Unsupported input data types in noise2D(amplitude: \(amplitude.dataType))", values: [amplitude]))
 }
 /// Noise 3D
-public func noise3D(amplitude: SGNumeric, pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
-    guard pivot.dataType == SGDataType.float else {
-        return SGNumeric(source: .error("Invalid noise3D input. Expected pivot data type to be SGDataType.float, but got \(pivot.dataType).", values: [pivot]))
-    }
-    guard position.dataType == SGDataType.vector3f else {
-        return SGNumeric(source: .error("Invalid noise3D input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "amplitude", connection: amplitude),
-        .init(name: "pivot", connection: pivot),
-        .init(name: "position", connection: position),
-    ]
+public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
     if amplitude.dataType == SGDataType.vector3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector3f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if amplitude.dataType == SGDataType.vector4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector4f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if amplitude.dataType == SGDataType.vector2f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector2f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if amplitude.dataType == SGDataType.vector3f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector3f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if amplitude.dataType == SGDataType.vector4f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.vector4f, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if amplitude.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "amplitude", dataType: SGDataType.float, connection: amplitude),
+                .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGNumeric(source: .error("Unsupported input data types in noise3D(amplitude: \(amplitude.dataType))", values: [amplitude]))
 }
 /// Normal Map
-public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector? = nil, tangent: SGVector? = nil) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMap input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    guard normal.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid normalMap input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType).", values: [normal]))
-    }
-    guard tangent.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid normalMap input. Expected tangent data type to be SGDataType.vector3f, but got \(tangent.dataType).", values: [tangent]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "space", connection: SGString(source: .constant(.string(space.rawValue)))),
-        .init(name: "scale", connection: scale),
-        .init(name: "normal", connection: normal),
-        .init(name: "tangent", connection: tangent),
-    ]
     if scale.dataType == SGDataType.float {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalmap",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "space", dataType: SGDataType.string, connection: SGString(source: .constant(.string(space.rawValue)))),
+                .init(name: "scale", dataType: SGDataType.float, connection: scale),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "tangent", dataType: SGDataType.vector3f, connection: tangent),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if scale.dataType == SGDataType.vector2f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalmap_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "space", dataType: SGDataType.string, connection: SGString(source: .constant(.string(space.rawValue)))),
+                .init(name: "scale", dataType: SGDataType.vector2f, connection: scale),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "tangent", dataType: SGDataType.vector3f, connection: tangent),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     return SGVector(source: .error("Unsupported input data types in normalMap(scale: \(scale.dataType))", values: [scale]))
@@ -3076,528 +4192,589 @@ public func normalMapDecode(_ in1: SGVector) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid normalMapDecode input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_normal_map_decode",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Normalize
 public func normalize(_ in1: SGVector) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.vector2h {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_normalize_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGVector(source: .error("Unsupported input data types in normalize(in1: \(in1.dataType))", values: [in1]))
 }
 /// One Minus
 public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in oneMinus(in1: \(in1.dataType))", values: [in1]))
 }
 /// Out
-public func out(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid out input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType).", values: [fg]))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid out input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType).", values: [bg]))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid out input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).", values: [mix]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func out(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_out_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+            .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+            .init(name: "mix", dataType: SGDataType.float, connection: mix),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Outside
-public func outside<T>(_ in1: T, mask: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "mask", connection: mask),
-    ]
+public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric {
     if in1.dataType == SGDataType.color3f && mask.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "mask", dataType: SGDataType.float, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && mask.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "mask", dataType: SGDataType.float, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && mask.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "mask", dataType: SGDataType.float, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && mask.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_outside_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "mask", dataType: SGDataType.half, connection: mask),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in outside(in1: \(in1.dataType), mask: \(mask.dataType))", values: [in1, mask]))
 }
 /// Over
-public func over(fg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
-    guard fg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid over input. Expected fg data type to be SGDataType.color4f, but got \(fg.dataType).", values: [fg]))
-    }
-    guard bg.dataType == SGDataType.color4f else {
-        return SGColor(source: .error("Invalid over input. Expected bg data type to be SGDataType.color4f, but got \(bg.dataType).", values: [bg]))
-    }
-    guard mix.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid over input. Expected mix data type to be SGDataType.float, but got \(mix.dataType).", values: [mix]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func over(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_over_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+            .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+            .init(name: "mix", dataType: SGDataType.float, connection: mix),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Overlay
-public func overlay<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_overlay_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in overlay(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Image 2D Pixel
-public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid pixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid pixel input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixel input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixel input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid pixel input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard bias.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixel input. Expected bias data type to be SGDataType.float, but got \(bias.dataType).", values: [bias]))
-    }
-    guard dynamicMinLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixel input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
-    }
-    guard offset.dataType == SGDataType.vector2i else {
-        return T(source: .error("Invalid pixel input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "filter", connection: SGString(source: .constant(.string(filter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "bias", connection: bias),
-        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
-        .init(name: "offset", connection: offset),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixel_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixel_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixel_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in pixel(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D Gradient Pixel
-public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientDpdx: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), gradientDpdy: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid pixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid pixelGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixelGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixelGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid pixelGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard dynamicMinLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixelGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
-    }
-    guard gradientDpdx.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid pixelGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx.dataType).", values: [gradientDpdx]))
-    }
-    guard gradientDpdy.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid pixelGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy.dataType).", values: [gradientDpdy]))
-    }
-    guard offset.dataType == SGDataType.vector2i else {
-        return T(source: .error("Invalid pixelGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "filter", connection: SGString(source: .constant(.string(filter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
-        .init(name: "gradient_dPdx", connection: gradientDpdx),
-        .init(name: "gradient_dPdy", connection: gradientDpdy),
-        .init(name: "offset", connection: offset),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelGradient_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelGradient_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelGradient_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in pixelGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D LOD Pixel
-public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid pixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid pixelLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixelLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixelLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid pixelLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard lod.dataType == SGDataType.float else {
-        return T(source: .error("Invalid pixelLOD input. Expected lod data type to be SGDataType.float, but got \(lod.dataType).", values: [lod]))
-    }
-    guard offset.dataType == SGDataType.vector2i else {
-        return T(source: .error("Invalid pixelLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "filter", connection: SGString(source: .constant(.string(filter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "lod", connection: lod),
-        .init(name: "offset", connection: offset),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelLOD_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelLOD_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DPixelLOD_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in pixelLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Place 2D
-public func place2D(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), pivot: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), scale: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), rotate: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGVector {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid place2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard pivot.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid place2D input. Expected pivot data type to be SGDataType.vector2f, but got \(pivot.dataType).", values: [pivot]))
-    }
-    guard scale.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid place2D input. Expected scale data type to be SGDataType.vector2f, but got \(scale.dataType).", values: [scale]))
-    }
-    guard rotate.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid place2D input. Expected rotate data type to be SGDataType.float, but got \(rotate.dataType).", values: [rotate]))
-    }
-    guard offset.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid place2D input. Expected offset data type to be SGDataType.vector2f, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "pivot", connection: pivot),
-        .init(name: "scale", connection: scale),
-        .init(name: "rotate", connection: rotate),
-        .init(name: "offset", connection: offset),
-    ]
+public func place2D(texcoord: SGVector? = nil, pivot: SGVector? = nil, scale: SGVector? = nil, rotate: SGScalar? = nil, offset: SGVector? = nil) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_place2d_vector2",
-        inputs: inputs,
+        inputs: [
+            .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            .init(name: "pivot", dataType: SGDataType.vector2f, connection: pivot),
+            .init(name: "scale", dataType: SGDataType.vector2f, connection: scale),
+            .init(name: "rotate", dataType: SGDataType.float, connection: rotate),
+            .init(name: "offset", dataType: SGDataType.vector2f, connection: offset),
+        ],
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Additive Mix
-public func plus<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func plus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_plus_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in plus(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Power
 public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in pow(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
@@ -3607,1928 +4784,2690 @@ public func premult(_ in1: SGColor) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid premult input. Expected in1 data type to be SGDataType.color4f, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_premult_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Ramp 4 Corners
-public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> T where T: SGNumeric {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid ramp4 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "valuetl", connection: valuetl),
-        .init(name: "valuetr", connection: valuetr),
-        .init(name: "valuebl", connection: valuebl),
-        .init(name: "valuebr", connection: valuebr),
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
     if valuetl.dataType == SGDataType.color3f && valuetr.dataType == SGDataType.color3f && valuebl.dataType == SGDataType.color3f && valuebr.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.color3f, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.color3f, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.color3f, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.color3f, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if valuetl.dataType == SGDataType.color4f && valuetr.dataType == SGDataType.color4f && valuebl.dataType == SGDataType.color4f && valuebr.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.color4f, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.color4f, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.color4f, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.color4f, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if valuetl.dataType == SGDataType.float && valuetr.dataType == SGDataType.float && valuebl.dataType == SGDataType.float && valuebr.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.float, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.float, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.float, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.float, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if valuetl.dataType == SGDataType.vector2f && valuetr.dataType == SGDataType.vector2f && valuebl.dataType == SGDataType.vector2f && valuebr.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.vector2f, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.vector2f, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.vector2f, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.vector2f, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if valuetl.dataType == SGDataType.vector3f && valuetr.dataType == SGDataType.vector3f && valuebl.dataType == SGDataType.vector3f && valuebr.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.vector3f, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.vector3f, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.vector3f, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.vector3f, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if valuetl.dataType == SGDataType.vector4f && valuetr.dataType == SGDataType.vector4f && valuebl.dataType == SGDataType.vector4f && valuebr.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.vector4f, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.vector4f, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.vector4f, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.vector4f, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ramp4(valuetl: \(valuetl.dataType), valuetr: \(valuetr.dataType), valuebl: \(valuebl.dataType), valuebr: \(valuebr.dataType))", values: [valuetl, valuetr, valuebl, valuebr]))
 }
 /// Ramp Horizontal
-public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> T where T: SGNumeric {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid ramplr input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "valuel", connection: valuel),
-        .init(name: "valuer", connection: valuer),
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
     if valuel.dataType == SGDataType.color3f && valuer.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.color3f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.color3f, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if valuel.dataType == SGDataType.color4f && valuer.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.color4f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.color4f, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if valuel.dataType == SGDataType.float && valuer.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.float, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.float, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if valuel.dataType == SGDataType.half && valuer.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.half, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.half, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if valuel.dataType == SGDataType.vector2h && valuer.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector2h, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector2h, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if valuel.dataType == SGDataType.vector3h && valuer.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector3h, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector3h, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if valuel.dataType == SGDataType.vector4h && valuer.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector4h, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector4h, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if valuel.dataType == SGDataType.vector2f && valuer.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector2f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector2f, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if valuel.dataType == SGDataType.vector3f && valuer.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector3f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector3f, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if valuel.dataType == SGDataType.vector4f && valuer.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector4f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector4f, connection: valuer),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ramplr(valuel: \(valuel.dataType), valuer: \(valuer.dataType))", values: [valuel, valuer]))
 }
 /// Ramp Vertical
-public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> T where T: SGNumeric {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid ramptb input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "valuet", connection: valuet),
-        .init(name: "valueb", connection: valueb),
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
     if valuet.dataType == SGDataType.color3f && valueb.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.color3f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.color3f, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if valuet.dataType == SGDataType.color4f && valueb.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.color4f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.color4f, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if valuet.dataType == SGDataType.float && valueb.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.float, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.float, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if valuet.dataType == SGDataType.half && valueb.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.half, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.half, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if valuet.dataType == SGDataType.vector2h && valueb.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector2h, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector2h, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if valuet.dataType == SGDataType.vector3h && valueb.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector3h, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector3h, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if valuet.dataType == SGDataType.vector4h && valueb.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector4h, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector4h, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if valuet.dataType == SGDataType.vector2f && valueb.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector2f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector2f, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if valuet.dataType == SGDataType.vector3f && valueb.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector3f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector3f, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if valuet.dataType == SGDataType.vector4f && valueb.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector4f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector4f, connection: valueb),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in ramptb(valuet: \(valuet.dataType), valueb: \(valueb.dataType))", values: [valuet, valueb]))
 }
 /// Range
-public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue = SGValue(source: .constant(.bool(false)))) -> T where T: SGNumeric {
-    guard doclamp.dataType == SGDataType.bool else {
-        return T(source: .error("Invalid range input. Expected doclamp data type to be SGDataType.bool, but got \(doclamp.dataType).", values: [doclamp]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "inlow", connection: inlow),
-        .init(name: "inhigh", connection: inhigh),
-        .init(name: "gamma", connection: gamma),
-        .init(name: "outlow", connection: outlow),
-        .init(name: "outhigh", connection: outhigh),
-        .init(name: "doclamp", connection: doclamp),
-    ]
+public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue? = nil) -> T where T: SGNumeric {
     if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.color3f && inhigh.dataType == SGDataType.color3f && gamma.dataType == SGDataType.color3f && outlow.dataType == SGDataType.color3f && outhigh.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.color3f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.color3f, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.color3f, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.color3f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.color3f, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.float, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.color4f && inhigh.dataType == SGDataType.color4f && gamma.dataType == SGDataType.color4f && outlow.dataType == SGDataType.color4f && outhigh.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.color4f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.color4f, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.color4f, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.color4f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.color4f, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.float, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.float, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.vector2f && inhigh.dataType == SGDataType.vector2f && gamma.dataType == SGDataType.vector2f && outlow.dataType == SGDataType.vector2f && outhigh.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector2f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector2f, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.vector2f, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.vector2f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector2f, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.float, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.vector3f && inhigh.dataType == SGDataType.vector3f && gamma.dataType == SGDataType.vector3f && outlow.dataType == SGDataType.vector3f && outhigh.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector3f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector3f, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.vector3f, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.vector3f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector3f, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.float, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.vector4f && inhigh.dataType == SGDataType.vector4f && gamma.dataType == SGDataType.vector4f && outlow.dataType == SGDataType.vector4f && outhigh.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector4f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector4f, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.vector4f, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.vector4f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector4f, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && gamma.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "gamma", dataType: SGDataType.float, connection: gamma),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+                .init(name: "doclamp", dataType: SGDataType.bool, connection: doclamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in range(in1: \(in1.dataType), inlow: \(inlow.dataType), inhigh: \(inhigh.dataType), gamma: \(gamma.dataType), outlow: \(outlow.dataType), outhigh: \(outhigh.dataType))", values: [in1, inlow, inhigh, gamma, outlow, outhigh]))
 }
 /// Image 2D Read
-public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar = SGScalar(source: .constant(.int(0))), y: SGScalar = SGScalar(source: .constant(.int(0))), lod: SGScalar = SGScalar(source: .constant(.int(0)))) -> T where T: SGSIMD {
+public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar? = nil, y: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid read input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard x.dataType == SGDataType.int else {
-        return T(source: .error("Invalid read input. Expected x data type to be SGDataType.int, but got \(x.dataType).", values: [x]))
-    }
-    guard y.dataType == SGDataType.int else {
-        return T(source: .error("Invalid read input. Expected y data type to be SGDataType.int, but got \(y.dataType).", values: [y]))
-    }
-    guard lod.dataType == SGDataType.int else {
-        return T(source: .error("Invalid read input. Expected lod data type to be SGDataType.int, but got \(lod.dataType).", values: [lod]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "x", connection: x),
-        .init(name: "y", connection: y),
-        .init(name: "lod", connection: lod),
-    ]
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureRead_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "lod", dataType: SGDataType.int, connection: lod),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureRead_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "lod", dataType: SGDataType.int, connection: lod),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in read(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Reflect
-public func reflect(_ in1: SGVector, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+public func reflect(_ in1: SGVector, normal: SGVector? = nil) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid reflect input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    guard normal.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid reflect input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType).", values: [normal]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "normal", connection: normal),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_reflect_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Refract
-public func refract(_ in1: SGVector, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), eta: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+public func refract(_ in1: SGVector, normal: SGVector? = nil, eta: SGScalar? = nil) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid refract input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    guard normal.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid refract input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType).", values: [normal]))
-    }
-    guard eta.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid refract input. Expected eta data type to be SGDataType.float, but got \(eta.dataType).", values: [eta]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "normal", connection: normal),
-        .init(name: "eta", connection: eta),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_refract_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+            .init(name: "eta", dataType: SGDataType.float, connection: eta),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Remap
 public func remap<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "inlow", connection: inlow),
-        .init(name: "inhigh", connection: inhigh),
-        .init(name: "outlow", connection: outlow),
-        .init(name: "outhigh", connection: outhigh),
-    ]
     if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.color3f && inhigh.dataType == SGDataType.color3f && outlow.dataType == SGDataType.color3f && outhigh.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.color3f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.color3f, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.color3f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.color3f, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.color4f && inhigh.dataType == SGDataType.color4f && outlow.dataType == SGDataType.color4f && outhigh.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.color4f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.color4f, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.color4f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.color4f, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && inlow.dataType == SGDataType.half && inhigh.dataType == SGDataType.half && outlow.dataType == SGDataType.half && outhigh.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.half, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.half, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.half, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.half, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h && inlow.dataType == SGDataType.vector2h && inhigh.dataType == SGDataType.vector2h && outlow.dataType == SGDataType.vector2h && outhigh.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector2h, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector2h, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.vector2h, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector2h, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector2h && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h && inlow.dataType == SGDataType.vector3h && inhigh.dataType == SGDataType.vector3h && outlow.dataType == SGDataType.vector3h && outhigh.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector3h, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector3h, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.vector3h, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector3h, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector3h && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h && inlow.dataType == SGDataType.vector4h && inhigh.dataType == SGDataType.vector4h && outlow.dataType == SGDataType.vector4h && outhigh.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector4h, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector4h, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.vector4h, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector4h, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector4h && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_half4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.vector2f && inhigh.dataType == SGDataType.vector2f && outlow.dataType == SGDataType.vector2f && outhigh.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector2f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector2f, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.vector2f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector2f, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.vector3f && inhigh.dataType == SGDataType.vector3f && outlow.dataType == SGDataType.vector3f && outhigh.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector3f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector3f, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.vector3f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector3f, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.vector4f && inhigh.dataType == SGDataType.vector4f && outlow.dataType == SGDataType.vector4f && outhigh.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.vector4f, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.vector4f, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.vector4f, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.vector4f, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && inlow.dataType == SGDataType.float && inhigh.dataType == SGDataType.float && outlow.dataType == SGDataType.float && outhigh.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_remap_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "inlow", dataType: SGDataType.float, connection: inlow),
+                .init(name: "inhigh", dataType: SGDataType.float, connection: inhigh),
+                .init(name: "outlow", dataType: SGDataType.float, connection: outlow),
+                .init(name: "outhigh", dataType: SGDataType.float, connection: outhigh),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in remap(in1: \(in1.dataType), inlow: \(inlow.dataType), inhigh: \(inhigh.dataType), outlow: \(outlow.dataType), outhigh: \(outhigh.dataType))", values: [in1, inlow, inhigh, outlow, outhigh]))
 }
 /// RGB to HSV
 public func rgbToHSV(_ in1: SGColor) -> SGColor {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_rgbtohsv_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_rgbtohsv_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     return SGColor(source: .error("Unsupported input data types in rgbToHSV(in1: \(in1.dataType))", values: [in1]))
 }
 /// Rotate 2D
-public func rotate2D(_ in1: SGVector, amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
+public func rotate2D(_ in1: SGVector, amount: SGScalar? = nil) -> SGVector {
     guard in1.dataType == SGDataType.vector2f else {
         return SGVector(source: .error("Invalid rotate2D input. Expected in1 data type to be SGDataType.vector2f, but got \(in1.dataType).", values: [in1]))
     }
-    guard amount.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid rotate2D input. Expected amount data type to be SGDataType.float, but got \(amount.dataType).", values: [amount]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "amount", connection: amount),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rotate2d_vector2",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            .init(name: "amount", dataType: SGDataType.float, connection: amount),
+        ],
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Rotate 3D
-public func rotate3D(_ in1: SGVector, amount: SGScalar = SGScalar(source: .constant(.float(0.0))), axis: SGVector = SGVector(source: .constant(.vector3f([0, 1, 0])))) -> SGVector {
+public func rotate3D(_ in1: SGVector, amount: SGScalar? = nil, axis: SGVector? = nil) -> SGVector {
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid rotate3D input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    guard amount.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid rotate3D input. Expected amount data type to be SGDataType.float, but got \(amount.dataType).", values: [amount]))
-    }
-    guard axis.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid rotate3D input. Expected axis data type to be SGDataType.vector3f, but got \(axis.dataType).", values: [axis]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "amount", connection: amount),
-        .init(name: "axis", connection: axis),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rotate3d_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            .init(name: "amount", dataType: SGDataType.float, connection: amount),
+            .init(name: "axis", dataType: SGDataType.vector3f, connection: axis),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Round
 public func round<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in round(in1: \(in1.dataType))", values: [in1]))
 }
 /// Safe Power
 public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in safePow(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Image 2D
-public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sample input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid sample input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sample input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sample input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid sample input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard bias.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sample input. Expected bias data type to be SGDataType.float, but got \(bias.dataType).", values: [bias]))
-    }
-    guard dynamicMinLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sample input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
-    }
-    guard offset.dataType == SGDataType.vector2i else {
-        return T(source: .error("Invalid sample input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
-        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
-        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "bias", connection: bias),
-        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
-        .init(name: "offset", connection: offset),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2D_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2D_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2D_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sample(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Cube Image
-public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGSIMD {
+public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleCube input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid sampleCube input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCube input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCube input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid sampleCube input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard bias.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCube input. Expected bias data type to be SGDataType.float, but got \(bias.dataType).", values: [bias]))
-    }
-    guard dynamicMinLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCube input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
-        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
-        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "bias", connection: bias),
-        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
-    ]
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCube_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCube_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sampleCube(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Cube Image Gradient
-public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientcubeDpdx: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), gradientcubeDpdy: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> T where T: SGSIMD {
+public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleCubeGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard dynamicMinLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
-    }
-    guard gradientcubeDpdx.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected gradientcubeDpdx data type to be SGDataType.vector3f, but got \(gradientcubeDpdx.dataType).", values: [gradientcubeDpdx]))
-    }
-    guard gradientcubeDpdy.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected gradientcubeDpdy data type to be SGDataType.vector3f, but got \(gradientcubeDpdy.dataType).", values: [gradientcubeDpdy]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
-        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
-        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
-        .init(name: "gradientcube_dPdx", connection: gradientcubeDpdx),
-        .init(name: "gradientcube_dPdy", connection: gradientcubeDpdy),
-    ]
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeGradient_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradientcube_dPdx", dataType: SGDataType.vector3f, connection: gradientcubeDpdx),
+                .init(name: "gradientcube_dPdy", dataType: SGDataType.vector3f, connection: gradientcubeDpdy),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeGradient_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradientcube_dPdx", dataType: SGDataType.vector3f, connection: gradientcubeDpdx),
+                .init(name: "gradientcube_dPdy", dataType: SGDataType.vector3f, connection: gradientcubeDpdy),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sampleCubeGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Cube Image LOD
-public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGSIMD {
+public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleCubeLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard lod.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected lod data type to be SGDataType.float, but got \(lod.dataType).", values: [lod]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
-        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
-        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "lod", connection: lod),
-    ]
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeLOD_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTextureCubeLOD_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sampleCubeLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D Gradient
-public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientDpdx: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), gradientDpdy: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid sampleGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid sampleGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard dynamicMinLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp.dataType).", values: [dynamicMinLodClamp]))
-    }
-    guard gradientDpdx.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid sampleGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx.dataType).", values: [gradientDpdx]))
-    }
-    guard gradientDpdy.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid sampleGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy.dataType).", values: [gradientDpdy]))
-    }
-    guard offset.dataType == SGDataType.vector2i else {
-        return T(source: .error("Invalid sampleGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
-        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
-        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "dynamic_min_lod_clamp", connection: dynamicMinLodClamp),
-        .init(name: "gradient_dPdx", connection: gradientDpdx),
-        .init(name: "gradient_dPdy", connection: gradientDpdy),
-        .init(name: "offset", connection: offset),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DGradient_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DGradient_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DGradient_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sampleGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D LOD
-public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid sampleLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard maxAnisotropy.dataType == SGDataType.int else {
-        return T(source: .error("Invalid sampleLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy.dataType).", values: [maxAnisotropy]))
-    }
-    guard maxLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp.dataType).", values: [maxLodClamp]))
-    }
-    guard minLodClamp.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp.dataType).", values: [minLodClamp]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid sampleLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard lod.dataType == SGDataType.float else {
-        return T(source: .error("Invalid sampleLOD input. Expected lod data type to be SGDataType.float, but got \(lod.dataType).", values: [lod]))
-    }
-    guard offset.dataType == SGDataType.vector2i else {
-        return T(source: .error("Invalid sampleLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset.dataType).", values: [offset]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "u_wrap_mode", connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
-        .init(name: "v_wrap_mode", connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
-        .init(name: "border_color", connection: SGString(source: .constant(.string(borderColor.rawValue)))),
-        .init(name: "mag_filter", connection: SGString(source: .constant(.string(magFilter.rawValue)))),
-        .init(name: "min_filter", connection: SGString(source: .constant(.string(minFilter.rawValue)))),
-        .init(name: "mip_filter", connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-        .init(name: "max_anisotropy", connection: maxAnisotropy),
-        .init(name: "max_lod_clamp", connection: maxLodClamp),
-        .init(name: "min_lod_clamp", connection: minLodClamp),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "lod", connection: lod),
-        .init(name: "offset", connection: offset),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DLOD_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DLOD_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_RealityKitTexture2DLOD_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sampleLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Saturate
-public func saturate(_ in1: SGColor, amount: SGScalar = SGScalar(source: .constant(.float(1.0))), lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
-    guard amount.dataType == SGDataType.float else {
-        return SGColor(source: .error("Invalid saturate input. Expected amount data type to be SGDataType.float, but got \(amount.dataType).", values: [amount]))
-    }
-    guard lumacoeffs.dataType == SGDataType.color3f else {
-        return SGColor(source: .error("Invalid saturate input. Expected lumacoeffs data type to be SGDataType.color3f, but got \(lumacoeffs.dataType).", values: [lumacoeffs]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "amount", connection: amount),
-        .init(name: "lumacoeffs", connection: lumacoeffs),
-    ]
+public func saturate(_ in1: SGColor, amount: SGScalar? = nil, lumacoeffs: SGColor? = nil) -> SGColor {
     if in1.dataType == SGDataType.color3f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_saturate_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "lumacoeffs", dataType: SGDataType.color3f, connection: lumacoeffs),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_saturate_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "amount", dataType: SGDataType.float, connection: amount),
+                .init(name: "lumacoeffs", dataType: SGDataType.color3f, connection: lumacoeffs),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     return SGColor(source: .error("Unsupported input data types in saturate(in1: \(in1.dataType))", values: [in1]))
 }
 /// Screen
-public func screen<T>(fg: T, bg: T, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "fg", connection: fg),
-        .init(name: "bg", connection: bg),
-        .init(name: "mix", connection: mix),
-    ]
+public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
     if fg.dataType == SGDataType.color3f && bg.dataType == SGDataType.color3f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color3f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color3f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if fg.dataType == SGDataType.color4f && bg.dataType == SGDataType.color4f && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.color4f, connection: fg),
+                .init(name: "bg", dataType: SGDataType.color4f, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if fg.dataType == SGDataType.float && bg.dataType == SGDataType.float && mix.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.float, connection: fg),
+                .init(name: "bg", dataType: SGDataType.float, connection: bg),
+                .init(name: "mix", dataType: SGDataType.float, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if fg.dataType == SGDataType.half && bg.dataType == SGDataType.half && mix.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_screen_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "fg", dataType: SGDataType.half, connection: fg),
+                .init(name: "bg", dataType: SGDataType.half, connection: bg),
+                .init(name: "mix", dataType: SGDataType.half, connection: mix),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     return T(source: .error("Unsupported input data types in screen(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix.dataType))", values: [fg, bg, mix]))
 }
 /// Sign
 public func sign<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sign_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sign(in1: \(in1.dataType))", values: [in1]))
 }
 /// Sin
 public func sin<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sin_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sin(in1: \(in1.dataType))", values: [in1]))
 }
 /// Smooth Step
 public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "low", connection: low),
-        .init(name: "high", connection: high),
-    ]
     if in1.dataType == SGDataType.color3f && low.dataType == SGDataType.color3f && high.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.color3f, connection: low),
+                .init(name: "high", dataType: SGDataType.color3f, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && low.dataType == SGDataType.color4f && high.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.color4f, connection: low),
+                .init(name: "high", dataType: SGDataType.color4f, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && low.dataType == SGDataType.half && high.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "low", dataType: SGDataType.half, connection: low),
+                .init(name: "high", dataType: SGDataType.half, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h && low.dataType == SGDataType.vector2h && high.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector2h, connection: low),
+                .init(name: "high", dataType: SGDataType.vector2h, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector2h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h && low.dataType == SGDataType.vector3h && high.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector3h, connection: low),
+                .init(name: "high", dataType: SGDataType.vector3h, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector3h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h && low.dataType == SGDataType.vector4h && high.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector4h, connection: low),
+                .init(name: "high", dataType: SGDataType.vector4h, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector4h && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_half4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f && low.dataType == SGDataType.vector2f && high.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector2f, connection: low),
+                .init(name: "high", dataType: SGDataType.vector2f, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && low.dataType == SGDataType.vector3f && high.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector3f, connection: low),
+                .init(name: "high", dataType: SGDataType.vector3f, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && low.dataType == SGDataType.vector4f && high.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.vector4f, connection: low),
+                .init(name: "high", dataType: SGDataType.vector4f, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && low.dataType == SGDataType.float && high.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_smoothstep_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "low", dataType: SGDataType.float, connection: low),
+                .init(name: "high", dataType: SGDataType.float, connection: high),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in smoothStep(in1: \(in1.dataType), low: \(low.dataType), high: \(high.dataType))", values: [in1, low, high]))
 }
 /// Split Horizontal
-public func splitlr<T>(valuel: T, valuer: T, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> T where T: SGNumeric {
-    guard center.dataType == SGDataType.float else {
-        return T(source: .error("Invalid splitlr input. Expected center data type to be SGDataType.float, but got \(center.dataType).", values: [center]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid splitlr input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "valuel", connection: valuel),
-        .init(name: "valuer", connection: valuer),
-        .init(name: "center", connection: center),
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: SGVector? = nil) -> T where T: SGNumeric {
     if valuel.dataType == SGDataType.color3f && valuer.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.color3f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.color3f, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if valuel.dataType == SGDataType.color4f && valuer.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.color4f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.color4f, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if valuel.dataType == SGDataType.float && valuer.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.float, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.float, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if valuel.dataType == SGDataType.half && valuer.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.half, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.half, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if valuel.dataType == SGDataType.vector2f && valuer.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector2f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector2f, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if valuel.dataType == SGDataType.vector3f && valuer.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector3f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector3f, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if valuel.dataType == SGDataType.vector4f && valuer.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector4f, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector4f, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in splitlr(valuel: \(valuel.dataType), valuer: \(valuer.dataType))", values: [valuel, valuer]))
 }
 /// Split Vertical
-public func splittb<T>(valuet: T, valueb: T, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> T where T: SGNumeric {
-    guard center.dataType == SGDataType.float else {
-        return T(source: .error("Invalid splittb input. Expected center data type to be SGDataType.float, but got \(center.dataType).", values: [center]))
-    }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid splittb input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "valuet", connection: valuet),
-        .init(name: "valueb", connection: valueb),
-        .init(name: "center", connection: center),
-        .init(name: "texcoord", connection: texcoord),
-    ]
+public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: SGVector? = nil) -> T where T: SGNumeric {
     if valuet.dataType == SGDataType.color3f && valueb.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.color3f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.color3f, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if valuet.dataType == SGDataType.color4f && valueb.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.color4f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.color4f, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if valuet.dataType == SGDataType.float && valueb.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.float, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.float, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if valuet.dataType == SGDataType.half && valueb.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.half, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.half, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if valuet.dataType == SGDataType.vector2h && valueb.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector2h, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector2h, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if valuet.dataType == SGDataType.vector3h && valueb.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector3h, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector3h, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if valuet.dataType == SGDataType.vector4h && valueb.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector4h, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector4h, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if valuet.dataType == SGDataType.vector2f && valueb.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector2f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector2f, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if valuet.dataType == SGDataType.vector3f && valueb.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector3f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector3f, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if valuet.dataType == SGDataType.vector4f && valueb.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "valuet", dataType: SGDataType.vector4f, connection: valuet),
+                .init(name: "valueb", dataType: SGDataType.vector4f, connection: valueb),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in splittb(valuet: \(valuet.dataType), valueb: \(valueb.dataType))", values: [valuet, valueb]))
 }
 /// Square Root
 public func sqrt<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_sqrt_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sqrt(in1: \(in1.dataType))", values: [in1]))
 }
 /// Step
 public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "edge", connection: edge),
-    ]
     if in1.dataType == SGDataType.color3f && edge.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "edge", dataType: SGDataType.color3f, connection: edge),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && edge.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "edge", dataType: SGDataType.color4f, connection: edge),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && edge.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+                .init(name: "edge", dataType: SGDataType.float, connection: edge),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.vector2f && edge.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "edge", dataType: SGDataType.vector2f, connection: edge),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && edge.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "edge", dataType: SGDataType.vector3f, connection: edge),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && edge.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "edge", dataType: SGDataType.vector4f, connection: edge),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in step(in1: \(in1.dataType), edge: \(edge.dataType))", values: [in1, edge]))
 }
 /// Subtract
 public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-    ]
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_color4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.matrix2d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix2d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix2d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix2d && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix22FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix2d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.matrix3d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix3d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix3d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix3d && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix33FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix3d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.matrix4d {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.matrix4d, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     if in1.dataType == SGDataType.matrix4d && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_matrix44FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector2FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector3FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_subtract_vector4FA",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in subtract(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Switch
-public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ in6: T, _ in7: T, _ in8: T, _ in9: T, _ in10: T, which: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in1", connection: in1),
-        .init(name: "in2", connection: in2),
-        .init(name: "in3", connection: in3),
-        .init(name: "in4", connection: in4),
-        .init(name: "in5", connection: in5),
-        .init(name: "in6", connection: in6),
-        .init(name: "in7", connection: in7),
-        .init(name: "in8", connection: in8),
-        .init(name: "in9", connection: in9),
-        .init(name: "in10", connection: in10),
-        .init(name: "which", connection: which),
-    ]
+public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ in6: T, _ in7: T, _ in8: T, _ in9: T, _ in10: T, which: SGScalar? = nil) -> T where T: SGNumeric {
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f && in3.dataType == SGDataType.color3f && in4.dataType == SGDataType.color3f && in5.dataType == SGDataType.color3f && in6.dataType == SGDataType.color3f && in7.dataType == SGDataType.color3f && in8.dataType == SGDataType.color3f && in9.dataType == SGDataType.color3f && in10.dataType == SGDataType.color3f && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.color3f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.color3f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.color3f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.color3f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.color3f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.color3f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.color3f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.color3f, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color3f && in2.dataType == SGDataType.color3f && in3.dataType == SGDataType.color3f && in4.dataType == SGDataType.color3f && in5.dataType == SGDataType.color3f && in6.dataType == SGDataType.color3f && in7.dataType == SGDataType.color3f && in8.dataType == SGDataType.color3f && in9.dataType == SGDataType.color3f && in10.dataType == SGDataType.color3f && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color3f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.color3f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.color3f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.color3f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.color3f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.color3f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.color3f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.color3f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.color3f, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f && in3.dataType == SGDataType.color4f && in4.dataType == SGDataType.color4f && in5.dataType == SGDataType.color4f && in6.dataType == SGDataType.color4f && in7.dataType == SGDataType.color4f && in8.dataType == SGDataType.color4f && in9.dataType == SGDataType.color4f && in10.dataType == SGDataType.color4f && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.color4f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.color4f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.color4f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.color4f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.color4f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.color4f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.color4f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.color4f, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.color4f && in2.dataType == SGDataType.color4f && in3.dataType == SGDataType.color4f && in4.dataType == SGDataType.color4f && in5.dataType == SGDataType.color4f && in6.dataType == SGDataType.color4f && in7.dataType == SGDataType.color4f && in8.dataType == SGDataType.color4f && in9.dataType == SGDataType.color4f && in10.dataType == SGDataType.color4f && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_color4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.color4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.color4f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.color4f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.color4f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.color4f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.color4f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.color4f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.color4f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.color4f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.color4f, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float && in3.dataType == SGDataType.float && in4.dataType == SGDataType.float && in5.dataType == SGDataType.float && in6.dataType == SGDataType.float && in7.dataType == SGDataType.float && in8.dataType == SGDataType.float && in9.dataType == SGDataType.float && in10.dataType == SGDataType.float && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+                .init(name: "in3", dataType: SGDataType.float, connection: in3),
+                .init(name: "in4", dataType: SGDataType.float, connection: in4),
+                .init(name: "in5", dataType: SGDataType.float, connection: in5),
+                .init(name: "in6", dataType: SGDataType.float, connection: in6),
+                .init(name: "in7", dataType: SGDataType.float, connection: in7),
+                .init(name: "in8", dataType: SGDataType.float, connection: in8),
+                .init(name: "in9", dataType: SGDataType.float, connection: in9),
+                .init(name: "in10", dataType: SGDataType.float, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.float && in2.dataType == SGDataType.float && in3.dataType == SGDataType.float && in4.dataType == SGDataType.float && in5.dataType == SGDataType.float && in6.dataType == SGDataType.float && in7.dataType == SGDataType.float && in8.dataType == SGDataType.float && in9.dataType == SGDataType.float && in10.dataType == SGDataType.float && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_floatI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.float, connection: in1),
+                .init(name: "in2", dataType: SGDataType.float, connection: in2),
+                .init(name: "in3", dataType: SGDataType.float, connection: in3),
+                .init(name: "in4", dataType: SGDataType.float, connection: in4),
+                .init(name: "in5", dataType: SGDataType.float, connection: in5),
+                .init(name: "in6", dataType: SGDataType.float, connection: in6),
+                .init(name: "in7", dataType: SGDataType.float, connection: in7),
+                .init(name: "in8", dataType: SGDataType.float, connection: in8),
+                .init(name: "in9", dataType: SGDataType.float, connection: in9),
+                .init(name: "in10", dataType: SGDataType.float, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half && in3.dataType == SGDataType.half && in4.dataType == SGDataType.half && in5.dataType == SGDataType.half && in6.dataType == SGDataType.half && in7.dataType == SGDataType.half && in8.dataType == SGDataType.half && in9.dataType == SGDataType.half && in10.dataType == SGDataType.half && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+                .init(name: "in3", dataType: SGDataType.half, connection: in3),
+                .init(name: "in4", dataType: SGDataType.half, connection: in4),
+                .init(name: "in5", dataType: SGDataType.half, connection: in5),
+                .init(name: "in6", dataType: SGDataType.half, connection: in6),
+                .init(name: "in7", dataType: SGDataType.half, connection: in7),
+                .init(name: "in8", dataType: SGDataType.half, connection: in8),
+                .init(name: "in9", dataType: SGDataType.half, connection: in9),
+                .init(name: "in10", dataType: SGDataType.half, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.half && in2.dataType == SGDataType.half && in3.dataType == SGDataType.half && in4.dataType == SGDataType.half && in5.dataType == SGDataType.half && in6.dataType == SGDataType.half && in7.dataType == SGDataType.half && in8.dataType == SGDataType.half && in9.dataType == SGDataType.half && in10.dataType == SGDataType.half && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_halfI",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.half, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+                .init(name: "in3", dataType: SGDataType.half, connection: in3),
+                .init(name: "in4", dataType: SGDataType.half, connection: in4),
+                .init(name: "in5", dataType: SGDataType.half, connection: in5),
+                .init(name: "in6", dataType: SGDataType.half, connection: in6),
+                .init(name: "in7", dataType: SGDataType.half, connection: in7),
+                .init(name: "in8", dataType: SGDataType.half, connection: in8),
+                .init(name: "in9", dataType: SGDataType.half, connection: in9),
+                .init(name: "in10", dataType: SGDataType.half, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f && in3.dataType == SGDataType.vector2f && in4.dataType == SGDataType.vector2f && in5.dataType == SGDataType.vector2f && in6.dataType == SGDataType.vector2f && in7.dataType == SGDataType.vector2f && in8.dataType == SGDataType.vector2f && in9.dataType == SGDataType.vector2f && in10.dataType == SGDataType.vector2f && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector2f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector2f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector2f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector2f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector2f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector2f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector2f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector2f, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && in2.dataType == SGDataType.vector2f && in3.dataType == SGDataType.vector2f && in4.dataType == SGDataType.vector2f && in5.dataType == SGDataType.vector2f && in6.dataType == SGDataType.vector2f && in7.dataType == SGDataType.vector2f && in8.dataType == SGDataType.vector2f && in9.dataType == SGDataType.vector2f && in10.dataType == SGDataType.vector2f && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector2I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector2f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector2f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector2f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector2f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector2f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector2f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector2f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector2f, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f && in3.dataType == SGDataType.vector3f && in4.dataType == SGDataType.vector3f && in5.dataType == SGDataType.vector3f && in6.dataType == SGDataType.vector3f && in7.dataType == SGDataType.vector3f && in8.dataType == SGDataType.vector3f && in9.dataType == SGDataType.vector3f && in10.dataType == SGDataType.vector3f && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector3f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector3f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector3f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector3f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector3f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector3f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector3f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector3f, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && in2.dataType == SGDataType.vector3f && in3.dataType == SGDataType.vector3f && in4.dataType == SGDataType.vector3f && in5.dataType == SGDataType.vector3f && in6.dataType == SGDataType.vector3f && in7.dataType == SGDataType.vector3f && in8.dataType == SGDataType.vector3f && in9.dataType == SGDataType.vector3f && in10.dataType == SGDataType.vector3f && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector3I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector3f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector3f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector3f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector3f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector3f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector3f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector3f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector3f, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f && in3.dataType == SGDataType.vector4f && in4.dataType == SGDataType.vector4f && in5.dataType == SGDataType.vector4f && in6.dataType == SGDataType.vector4f && in7.dataType == SGDataType.vector4f && in8.dataType == SGDataType.vector4f && in9.dataType == SGDataType.vector4f && in10.dataType == SGDataType.vector4f && which.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector4f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector4f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector4f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector4f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector4f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector4f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector4f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector4f, connection: in10),
+                .init(name: "which", dataType: SGDataType.float, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     if in1.dataType == SGDataType.vector4f && in2.dataType == SGDataType.vector4f && in3.dataType == SGDataType.vector4f && in4.dataType == SGDataType.vector4f && in5.dataType == SGDataType.vector4f && in6.dataType == SGDataType.vector4f && in7.dataType == SGDataType.vector4f && in8.dataType == SGDataType.vector4f && in9.dataType == SGDataType.vector4f && in10.dataType == SGDataType.vector4f && which.dataType == SGDataType.int {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_switch_vector4I",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector4f, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector4f, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector4f, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector4f, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector4f, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector4f, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector4f, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector4f, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in switchValue(in1: \(in1.dataType), in2: \(in2.dataType), in3: \(in3.dataType), in4: \(in4.dataType), in5: \(in5.dataType), in6: \(in6.dataType), in7: \(in7.dataType), in8: \(in8.dataType), in9: \(in9.dataType), in10: \(in10.dataType), which: \(which.dataType))", values: [in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, which]))
 }
 /// Tan
 public func tan<T>(_ in1: T) -> T where T: SGNumeric {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.float, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if in1.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if in1.dataType == SGDataType.vector2h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2h)])))
     }
     if in1.dataType == SGDataType.vector3h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3h)])))
     }
     if in1.dataType == SGDataType.vector4h {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_half4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if in1.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tan_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in tan(in1: \(in1.dataType))", values: [in1]))
 }
 /// Tiled Image
-public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uvtiling: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), uvoffset: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), realworldimagesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), realworldtilesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil, uvtiling: SGVector? = nil, uvoffset: SGVector? = nil, realworldimagesize: SGVector? = nil, realworldtilesize: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard file.dataType == SGDataType.asset else {
         return T(source: .error("Invalid tiledImage input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
     }
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledImage input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard uvtiling.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledImage input. Expected uvtiling data type to be SGDataType.vector2f, but got \(uvtiling.dataType).", values: [uvtiling]))
-    }
-    guard uvoffset.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledImage input. Expected uvoffset data type to be SGDataType.vector2f, but got \(uvoffset.dataType).", values: [uvoffset]))
-    }
-    guard realworldimagesize.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledImage input. Expected realworldimagesize data type to be SGDataType.vector2f, but got \(realworldimagesize.dataType).", values: [realworldimagesize]))
-    }
-    guard realworldtilesize.dataType == SGDataType.vector2f else {
-        return T(source: .error("Invalid tiledImage input. Expected realworldtilesize data type to be SGDataType.vector2f, but got \(realworldtilesize.dataType).", values: [realworldtilesize]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "file", connection: file),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "uvtiling", connection: uvtiling),
-        .init(name: "uvoffset", connection: uvoffset),
-        .init(name: "realworldimagesize", connection: realworldimagesize),
-        .init(name: "realworldtilesize", connection: realworldtilesize),
-        .init(name: "filtertype", connection: SGString(source: .constant(.string(filtertype.rawValue)))),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.float, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if defaultValue.dataType == SGDataType.half {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_half",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.half, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
     if defaultValue.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector2f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if defaultValue.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_tiledimage_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "uvtiling", dataType: SGDataType.vector2f, connection: uvtiling),
+                .init(name: "uvoffset", dataType: SGDataType.vector2f, connection: uvoffset),
+                .init(name: "realworldimagesize", dataType: SGDataType.vector2f, connection: realworldimagesize),
+                .init(name: "realworldtilesize", dataType: SGDataType.vector2f, connection: realworldtilesize),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in tiledImage(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Transform Matrix
 public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "mat", connection: mat),
-    ]
     if in1.dataType == SGDataType.vector2f && mat.dataType == SGDataType.matrix2d {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "mat", dataType: SGDataType.matrix2d, connection: mat),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector2f && mat.dataType == SGDataType.matrix3d {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector2M3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2f, connection: in1),
+                .init(name: "mat", dataType: SGDataType.matrix3d, connection: mat),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if in1.dataType == SGDataType.vector3f && mat.dataType == SGDataType.matrix3d {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "mat", dataType: SGDataType.matrix3d, connection: mat),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector3f && mat.dataType == SGDataType.matrix4d {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector3M4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+                .init(name: "mat", dataType: SGDataType.matrix4d, connection: mat),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if in1.dataType == SGDataType.vector4f && mat.dataType == SGDataType.matrix4d {
         return SGVector(source: .nodeOutput(SGNode(
             nodeType: "ND_transformmatrix_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4f, connection: in1),
+                .init(name: "mat", dataType: SGDataType.matrix4d, connection: mat),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGVector(source: .error("Unsupported input data types in transformMatrix(in1: \(in1.dataType), mat: \(mat.dataType))", values: [in1, mat]))
@@ -5538,14 +7477,13 @@ public func transformNormal(_ in1: SGVector, fromspace: SGTransformSpace, tospac
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformNormal input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "fromspace", connection: SGString(source: .constant(.string(fromspace.rawValue)))),
-        .init(name: "tospace", connection: SGString(source: .constant(.string(tospace.rawValue)))),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformnormal_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            .init(name: "fromspace", dataType: SGDataType.string, connection: SGString(source: .constant(.string(fromspace.rawValue)))),
+            .init(name: "tospace", dataType: SGDataType.string, connection: SGString(source: .constant(.string(tospace.rawValue)))),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transform Point
@@ -5553,14 +7491,13 @@ public func transformPoint(_ in1: SGVector, fromspace: SGTransformSpace, tospace
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformPoint input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "fromspace", connection: SGString(source: .constant(.string(fromspace.rawValue)))),
-        .init(name: "tospace", connection: SGString(source: .constant(.string(tospace.rawValue)))),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformpoint_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            .init(name: "fromspace", dataType: SGDataType.string, connection: SGString(source: .constant(.string(fromspace.rawValue)))),
+            .init(name: "tospace", dataType: SGDataType.string, connection: SGString(source: .constant(.string(tospace.rawValue)))),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transform Vector
@@ -5568,43 +7505,45 @@ public func transformVector(_ in1: SGVector, fromspace: SGTransformSpace, tospac
     guard in1.dataType == SGDataType.vector3f else {
         return SGVector(source: .error("Invalid transformVector input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-        .init(name: "fromspace", connection: SGString(source: .constant(.string(fromspace.rawValue)))),
-        .init(name: "tospace", connection: SGString(source: .constant(.string(tospace.rawValue)))),
-    ]
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_transformvector_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.vector3f, connection: in1),
+            .init(name: "fromspace", dataType: SGDataType.string, connection: SGString(source: .constant(.string(fromspace.rawValue)))),
+            .init(name: "tospace", dataType: SGDataType.string, connection: SGString(source: .constant(.string(tospace.rawValue)))),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Transpose
 public func transpose(_ in1: SGMatrix) -> SGMatrix {
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     if in1.dataType == SGDataType.matrix2d {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_transpose_matrix22",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix2d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.matrix2d)])))
     }
     if in1.dataType == SGDataType.matrix3d {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_transpose_matrix33",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix3d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.matrix3d)])))
     }
     if in1.dataType == SGDataType.matrix4d {
         return SGMatrix(source: .nodeOutput(SGNode(
             nodeType: "ND_transpose_matrix44",
-            inputs: inputs,
+            inputs: [
+                .init(name: "in", dataType: SGDataType.matrix4d, connection: in1),
+            ],
             outputs: [.init(dataType: SGDataType.matrix4d)])))
     }
     return SGMatrix(source: .error("Unsupported input data types in transpose(in1: \(in1.dataType))", values: [in1]))
 }
 /// Triplanar Projection
-public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector? = nil, normal: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard filex.dataType == SGDataType.asset else {
         return T(source: .error("Invalid triplanarProjection input. Expected filex data type to be SGDataType.asset, but got \(filex.dataType).", values: [filex]))
     }
@@ -5614,55 +7553,88 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
     guard filez.dataType == SGDataType.asset else {
         return T(source: .error("Invalid triplanarProjection input. Expected filez data type to be SGDataType.asset, but got \(filez.dataType).", values: [filez]))
     }
-    guard position.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid triplanarProjection input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    guard normal.dataType == SGDataType.vector3f else {
-        return T(source: .error("Invalid triplanarProjection input. Expected normal data type to be SGDataType.vector3f, but got \(normal.dataType).", values: [normal]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "filex", connection: filex),
-        .init(name: "filey", connection: filey),
-        .init(name: "filez", connection: filez),
-        .init(name: "default", connection: defaultValue),
-        .init(name: "position", connection: position),
-        .init(name: "normal", connection: normal),
-        .init(name: "filtertype", connection: SGString(source: .constant(.string(filtertype.rawValue)))),
-    ]
     if defaultValue.dataType == SGDataType.color3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_color3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "filex", dataType: SGDataType.asset, connection: filex),
+                .init(name: "filey", dataType: SGDataType.asset, connection: filey),
+                .init(name: "filez", dataType: SGDataType.asset, connection: filez),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color3f)])))
     }
     if defaultValue.dataType == SGDataType.color4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_color4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "filex", dataType: SGDataType.asset, connection: filex),
+                .init(name: "filey", dataType: SGDataType.asset, connection: filey),
+                .init(name: "filez", dataType: SGDataType.asset, connection: filez),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.color4f)])))
     }
     if defaultValue.dataType == SGDataType.float {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_float",
-            inputs: inputs,
+            inputs: [
+                .init(name: "filex", dataType: SGDataType.asset, connection: filex),
+                .init(name: "filey", dataType: SGDataType.asset, connection: filey),
+                .init(name: "filez", dataType: SGDataType.asset, connection: filez),
+                .init(name: "default", dataType: SGDataType.float, connection: defaultValue),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
     if defaultValue.dataType == SGDataType.vector2f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_vector2",
-            inputs: inputs,
+            inputs: [
+                .init(name: "filex", dataType: SGDataType.asset, connection: filex),
+                .init(name: "filey", dataType: SGDataType.asset, connection: filey),
+                .init(name: "filez", dataType: SGDataType.asset, connection: filez),
+                .init(name: "default", dataType: SGDataType.vector2f, connection: defaultValue),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector2f)])))
     }
     if defaultValue.dataType == SGDataType.vector3f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_vector3",
-            inputs: inputs,
+            inputs: [
+                .init(name: "filex", dataType: SGDataType.asset, connection: filex),
+                .init(name: "filey", dataType: SGDataType.asset, connection: filey),
+                .init(name: "filez", dataType: SGDataType.asset, connection: filez),
+                .init(name: "default", dataType: SGDataType.vector3f, connection: defaultValue),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
     }
     if defaultValue.dataType == SGDataType.vector4f {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_triplanarprojection_vector4",
-            inputs: inputs,
+            inputs: [
+                .init(name: "filex", dataType: SGDataType.asset, connection: filex),
+                .init(name: "filey", dataType: SGDataType.asset, connection: filey),
+                .init(name: "filez", dataType: SGDataType.asset, connection: filez),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+                .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+                .init(name: "filtertype", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filtertype.rawValue)))),
+            ],
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in triplanarProjection(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
@@ -5672,114 +7644,71 @@ public func unpremult(_ in1: SGColor) -> SGColor {
     guard in1.dataType == SGDataType.color4f else {
         return SGColor(source: .error("Invalid unpremult input. Expected in1 data type to be SGDataType.color4f, but got \(in1.dataType).", values: [in1]))
     }
-    let inputs: [SGNode.Input] = [
-        .init(name: "in", connection: in1),
-    ]
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_unpremult_color4",
-        inputs: inputs,
+        inputs: [
+            .init(name: "in", dataType: SGDataType.color4f, connection: in1),
+        ],
         outputs: [.init(dataType: SGDataType.color4f)])))
 }
 /// Worley Noise 2D
-public func worleyNoise2DFloat(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return SGScalar(source: .error("Invalid worleyNoise2DFloat input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard jitter.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid worleyNoise2DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType).", values: [jitter]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "jitter", connection: jitter),
-    ]
+public func worleyNoise2DFloat(texcoord: SGVector? = nil, jitter: SGScalar? = nil) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_float",
-        inputs: inputs,
+        inputs: [
+            .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            .init(name: "jitter", dataType: SGDataType.float, connection: jitter),
+        ],
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Worley Noise 2D
-public func worleyNoise2DVector2(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid worleyNoise2DVector2 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleyNoise2DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType).", values: [jitter]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "jitter", connection: jitter),
-    ]
+public func worleyNoise2DVector2(texcoord: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_vector2",
-        inputs: inputs,
+        inputs: [
+            .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            .init(name: "jitter", dataType: SGDataType.float, connection: jitter),
+        ],
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Worley Noise 2D
-public func worleyNoise2DVector3(texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
-    guard texcoord.dataType == SGDataType.vector2f else {
-        return SGVector(source: .error("Invalid worleyNoise2DVector3 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord.dataType).", values: [texcoord]))
-    }
-    guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleyNoise2DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType).", values: [jitter]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "texcoord", connection: texcoord),
-        .init(name: "jitter", connection: jitter),
-    ]
+public func worleyNoise2DVector3(texcoord: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            .init(name: "jitter", dataType: SGDataType.float, connection: jitter),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 /// Worley Noise 3D
-public func worleyNoise3DFloat(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
-    guard position.dataType == SGDataType.vector3f else {
-        return SGScalar(source: .error("Invalid worleyNoise3DFloat input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    guard jitter.dataType == SGDataType.float else {
-        return SGScalar(source: .error("Invalid worleyNoise3DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType).", values: [jitter]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "position", connection: position),
-        .init(name: "jitter", connection: jitter),
-    ]
+public func worleyNoise3DFloat(position: SGVector? = nil, jitter: SGScalar? = nil) -> SGScalar {
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_float",
-        inputs: inputs,
+        inputs: [
+            .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            .init(name: "jitter", dataType: SGDataType.float, connection: jitter),
+        ],
         outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Worley Noise 3D
-public func worleyNoise3DVector2(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
-    guard position.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid worleyNoise3DVector2 input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleyNoise3DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType).", values: [jitter]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "position", connection: position),
-        .init(name: "jitter", connection: jitter),
-    ]
+public func worleyNoise3DVector2(position: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_vector2",
-        inputs: inputs,
+        inputs: [
+            .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            .init(name: "jitter", dataType: SGDataType.float, connection: jitter),
+        ],
         outputs: [.init(dataType: SGDataType.vector2f)])))
 }
 /// Worley Noise 3D
-public func worleyNoise3DVector3(position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
-    guard position.dataType == SGDataType.vector3f else {
-        return SGVector(source: .error("Invalid worleyNoise3DVector3 input. Expected position data type to be SGDataType.vector3f, but got \(position.dataType).", values: [position]))
-    }
-    guard jitter.dataType == SGDataType.float else {
-        return SGVector(source: .error("Invalid worleyNoise3DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter.dataType).", values: [jitter]))
-    }
-    let inputs: [SGNode.Input] = [
-        .init(name: "position", connection: position),
-        .init(name: "jitter", connection: jitter),
-    ]
+public func worleyNoise3DVector3(position: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_vector3",
-        inputs: inputs,
+        inputs: [
+            .init(name: "position", dataType: SGDataType.vector3f, connection: position),
+            .init(name: "jitter", dataType: SGDataType.float, connection: jitter),
+        ],
         outputs: [.init(dataType: SGDataType.vector3f)])))
 }
 public extension SGValue {
@@ -5826,11 +7755,11 @@ public extension SGNumeric {
         ShaderGraphCoder.atan2(iny: self, inx: inx) as! Self
     }
     /// Blur
-    func blur(size: SGScalar = SGScalar(source: .constant(.float(0.0))), filtertype: SGBlurFilterType = SGBlurFilterType.box) -> Self {
+    func blur(size: SGScalar? = nil, filtertype: SGBlurFilterType = SGBlurFilterType.box) -> Self {
         ShaderGraphCoder.blur(self, size: size, filtertype: filtertype)
     }
     /// Burn
-    func burn(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func burn(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.burn(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Ceiling
@@ -5850,7 +7779,7 @@ public extension SGNumeric {
         ShaderGraphCoder.cos(self)
     }
     /// Difference
-    func difference(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func difference(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.difference(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Divide
@@ -5858,7 +7787,7 @@ public extension SGNumeric {
         ShaderGraphCoder.divide(self, in2)
     }
     /// Dodge
-    func dodge(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func dodge(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.dodge(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Exp
@@ -5874,7 +7803,7 @@ public extension SGNumeric {
         ShaderGraphCoder.fract(self)
     }
     /// Fractal Noise 3D
-    func fractal3D(octaves: SGScalar = SGScalar(source: .constant(.int(3))), lacunarity: SGScalar = SGScalar(source: .constant(.float(2.0))), diminish: SGScalar = SGScalar(source: .constant(.float(0.5))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
+    func fractal3D(octaves: SGScalar? = nil, lacunarity: SGScalar? = nil, diminish: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
         ShaderGraphCoder.fractal3D(amplitude: self, octaves: octaves, lacunarity: lacunarity, diminish: diminish, position: position)
     }
     /// Camera Index Switch
@@ -5882,7 +7811,7 @@ public extension SGNumeric {
         ShaderGraphCoder.geometrySwitchCameraindex(mono: self, left: left, right: right) as! Self
     }
     /// Inside
-    func inside(mask: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func inside(mask: SGScalar? = nil) -> Self {
         ShaderGraphCoder.inside(self, mask: mask)
     }
     /// Natural Log
@@ -5898,11 +7827,11 @@ public extension SGNumeric {
         ShaderGraphCoder.min(self, in2)
     }
     /// Subtractive Mix
-    func minus(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func minus(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.minus(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Mix
-    func mix(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> Self {
+    func mix(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.mix(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Modulo
@@ -5914,11 +7843,11 @@ public extension SGNumeric {
         ShaderGraphCoder.multiply(self, in2)
     }
     /// Noise 2D
-    func noise2D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGNumeric {
+    func noise2D(pivot: SGScalar? = nil, texcoord: SGVector? = nil) -> SGNumeric {
         ShaderGraphCoder.noise2D(amplitude: self, pivot: pivot, texcoord: texcoord)
     }
     /// Noise 3D
-    func noise3D(pivot: SGScalar = SGScalar(source: .constant(.float(0.0))), position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGNumeric {
+    func noise3D(pivot: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
         ShaderGraphCoder.noise3D(amplitude: self, pivot: pivot, position: position)
     }
     /// One Minus
@@ -5926,15 +7855,15 @@ public extension SGNumeric {
         ShaderGraphCoder.oneMinus(self)
     }
     /// Outside
-    func outside(mask: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> Self {
+    func outside(mask: SGScalar? = nil) -> Self {
         ShaderGraphCoder.outside(self, mask: mask)
     }
     /// Overlay
-    func overlay(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func overlay(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.overlay(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Additive Mix
-    func plus(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func plus(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.plus(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Power
@@ -5942,19 +7871,19 @@ public extension SGNumeric {
         ShaderGraphCoder.pow(self, in2)
     }
     /// Ramp 4 Corners
-    func ramp4(valuetr: SGNumeric, valuebl: SGNumeric, valuebr: SGNumeric, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+    func ramp4(valuetr: SGNumeric, valuebl: SGNumeric, valuebr: SGNumeric, texcoord: SGVector? = nil) -> Self {
         ShaderGraphCoder.ramp4(valuetl: self, valuetr: valuetr, valuebl: valuebl, valuebr: valuebr, texcoord: texcoord) as! Self
     }
     /// Ramp Horizontal
-    func ramplr(valuer: SGNumeric, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+    func ramplr(valuer: SGNumeric, texcoord: SGVector? = nil) -> Self {
         ShaderGraphCoder.ramplr(valuel: self, valuer: valuer, texcoord: texcoord) as! Self
     }
     /// Ramp Vertical
-    func ramptb(valueb: SGNumeric, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+    func ramptb(valueb: SGNumeric, texcoord: SGVector? = nil) -> Self {
         ShaderGraphCoder.ramptb(valuet: self, valueb: valueb, texcoord: texcoord) as! Self
     }
     /// Range
-    func range(inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue = SGValue(source: .constant(.bool(false)))) -> Self {
+    func range(inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue? = nil) -> Self {
         ShaderGraphCoder.range(self, inlow: inlow, inhigh: inhigh, gamma: gamma, outlow: outlow, outhigh: outhigh, doclamp: doclamp)
     }
     /// Remap
@@ -5970,7 +7899,7 @@ public extension SGNumeric {
         ShaderGraphCoder.safePow(self, in2)
     }
     /// Screen
-    func screen(bg: SGNumeric, mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> Self {
+    func screen(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
         ShaderGraphCoder.screen(fg: self, bg: bg, mix: mix) as! Self
     }
     /// Sign
@@ -5986,11 +7915,11 @@ public extension SGNumeric {
         ShaderGraphCoder.smoothStep(self, low: low, high: high)
     }
     /// Split Horizontal
-    func splitlr(valuer: SGNumeric, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+    func splitlr(valuer: SGNumeric, center: SGScalar? = nil, texcoord: SGVector? = nil) -> Self {
         ShaderGraphCoder.splitlr(valuel: self, valuer: valuer, center: center, texcoord: texcoord) as! Self
     }
     /// Split Vertical
-    func splittb(valueb: SGNumeric, center: SGScalar = SGScalar(source: .constant(.float(0.5))), texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> Self {
+    func splittb(valueb: SGNumeric, center: SGScalar? = nil, texcoord: SGVector? = nil) -> Self {
         ShaderGraphCoder.splittb(valuet: self, valueb: valueb, center: center, texcoord: texcoord) as! Self
     }
     /// Square Root
@@ -6006,7 +7935,7 @@ public extension SGNumeric {
         ShaderGraphCoder.subtract(self, in2)
     }
     /// Switch
-    func switchValue(_ in2: SGNumeric, _ in3: SGNumeric, _ in4: SGNumeric, _ in5: SGNumeric, _ in6: SGNumeric, _ in7: SGNumeric, _ in8: SGNumeric, _ in9: SGNumeric, _ in10: SGNumeric, which: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> Self {
+    func switchValue(_ in2: SGNumeric, _ in3: SGNumeric, _ in4: SGNumeric, _ in5: SGNumeric, _ in6: SGNumeric, _ in7: SGNumeric, _ in8: SGNumeric, _ in9: SGNumeric, _ in10: SGNumeric, which: SGScalar? = nil) -> Self {
         ShaderGraphCoder.switchValue(self, in2, in3, in4, in5, in6, in7, in8, in9, in10, which: which) as! Self
     }
     /// Tan
@@ -6016,11 +7945,11 @@ public extension SGNumeric {
 }
 public extension SGScalar {
     /// Ambient Occlusion
-    func ambientOcclusion(maxdistance: SGScalar = SGScalar(source: .constant(.float(9.999999680285692e+37)))) -> SGScalar {
+    func ambientOcclusion(maxdistance: SGScalar? = nil) -> SGScalar {
         ShaderGraphCoder.ambientOcclusion(coneangle: self, maxdistance: maxdistance)
     }
     /// Height To Normal
-    func heightToNormal(scale: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+    func heightToNormal(scale: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.heightToNormal(self, scale: scale)
     }
     /// If Greater
@@ -6034,11 +7963,11 @@ public extension SGScalar {
 }
 public extension SGColor {
     /// Disjoint Over
-    func disjointover(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    func disjointover(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.disjointover(fg: self, bg: bg, mix: mix)
     }
     /// HSV Adjust
-    func hsvAdjust(amount: SGVector = SGVector(source: .constant(.vector3f([0, 1, 1])))) -> SGColor {
+    func hsvAdjust(amount: SGVector? = nil) -> SGColor {
         ShaderGraphCoder.hsvAdjust(self, amount: amount)
     }
     /// HSV to RGB
@@ -6046,27 +7975,27 @@ public extension SGColor {
         ShaderGraphCoder.hsvToRGB(self)
     }
     /// Luminance
-    func luminance(lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
+    func luminance(lumacoeffs: SGColor? = nil) -> SGColor {
         ShaderGraphCoder.luminance(self, lumacoeffs: lumacoeffs)
     }
     /// Mask
-    func mask(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    func mask(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.mask(fg: self, bg: bg, mix: mix)
     }
     /// Matte
-    func matte(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    func matte(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.matte(fg: self, bg: bg, mix: mix)
     }
     /// In
-    func mixColor(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    func mixColor(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.mixColor(fg: self, bg: bg, mix: mix)
     }
     /// Out
-    func out(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    func out(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.out(fg: self, bg: bg, mix: mix)
     }
     /// Over
-    func over(bg: SGColor = SGColor(source: .constant(.color4f([0, 0, 0, 0]))), mix: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGColor {
+    func over(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
         ShaderGraphCoder.over(fg: self, bg: bg, mix: mix)
     }
     /// Premultiply
@@ -6078,7 +8007,7 @@ public extension SGColor {
         ShaderGraphCoder.rgbToHSV(self)
     }
     /// Saturate
-    func saturate(amount: SGScalar = SGScalar(source: .constant(.float(1.0))), lumacoeffs: SGColor = SGColor(source: .constant(.color3f([0.2722287, 0.6740818, 0.0536895])))) -> SGColor {
+    func saturate(amount: SGScalar? = nil, lumacoeffs: SGColor? = nil) -> SGColor {
         ShaderGraphCoder.saturate(self, amount: amount, lumacoeffs: lumacoeffs)
     }
     /// Unpremultiply
@@ -6108,7 +8037,7 @@ public extension SGVector {
         ShaderGraphCoder.length(self)
     }
     /// Normal Map
-    func normalMap(space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), tangent: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+    func normalMap(space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector? = nil, tangent: SGVector? = nil) -> SGVector {
         ShaderGraphCoder.normalMap(self, space: space, scale: scale, normal: normal, tangent: tangent)
     }
     /// Normal Map Decode
@@ -6120,23 +8049,23 @@ public extension SGVector {
         ShaderGraphCoder.normalize(self)
     }
     /// Place 2D
-    func place2D(pivot: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), scale: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), rotate: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2f([0, 0])))) -> SGVector {
+    func place2D(pivot: SGVector? = nil, scale: SGVector? = nil, rotate: SGScalar? = nil, offset: SGVector? = nil) -> SGVector {
         ShaderGraphCoder.place2D(texcoord: self, pivot: pivot, scale: scale, rotate: rotate, offset: offset)
     }
     /// Reflect
-    func reflect(normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> SGVector {
+    func reflect(normal: SGVector? = nil) -> SGVector {
         ShaderGraphCoder.reflect(self, normal: normal)
     }
     /// Refract
-    func refract(normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), eta: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+    func refract(normal: SGVector? = nil, eta: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.refract(self, normal: normal, eta: eta)
     }
     /// Rotate 2D
-    func rotate2D(amount: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> SGVector {
+    func rotate2D(amount: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.rotate2D(self, amount: amount)
     }
     /// Rotate 3D
-    func rotate3D(amount: SGScalar = SGScalar(source: .constant(.float(0.0))), axis: SGVector = SGVector(source: .constant(.vector3f([0, 1, 0])))) -> SGVector {
+    func rotate3D(amount: SGScalar? = nil, axis: SGVector? = nil) -> SGVector {
         ShaderGraphCoder.rotate3D(self, amount: amount, axis: axis)
     }
     /// Transform Matrix
@@ -6156,27 +8085,27 @@ public extension SGVector {
         ShaderGraphCoder.transformVector(self, fromspace: fromspace, tospace: tospace)
     }
     /// Worley Noise 2D
-    func worleyNoise2DFloat(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
+    func worleyNoise2DFloat(jitter: SGScalar? = nil) -> SGScalar {
         ShaderGraphCoder.worleyNoise2DFloat(texcoord: self, jitter: jitter)
     }
     /// Worley Noise 2D
-    func worleyNoise2DVector2(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+    func worleyNoise2DVector2(jitter: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.worleyNoise2DVector2(texcoord: self, jitter: jitter)
     }
     /// Worley Noise 2D
-    func worleyNoise2DVector3(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+    func worleyNoise2DVector3(jitter: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.worleyNoise2DVector3(texcoord: self, jitter: jitter)
     }
     /// Worley Noise 3D
-    func worleyNoise3DFloat(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGScalar {
+    func worleyNoise3DFloat(jitter: SGScalar? = nil) -> SGScalar {
         ShaderGraphCoder.worleyNoise3DFloat(position: self, jitter: jitter)
     }
     /// Worley Noise 3D
-    func worleyNoise3DVector2(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+    func worleyNoise3DVector2(jitter: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.worleyNoise3DVector2(position: self, jitter: jitter)
     }
     /// Worley Noise 3D
-    func worleyNoise3DVector3(jitter: SGScalar = SGScalar(source: .constant(.float(1.0)))) -> SGVector {
+    func worleyNoise3DVector3(jitter: SGScalar? = nil) -> SGVector {
         ShaderGraphCoder.worleyNoise3DVector3(position: self, jitter: jitter)
     }
 }
@@ -6196,55 +8125,55 @@ public extension SGMatrix {
 }
 public extension SGTexture {
     /// Image
-    func image<T>(defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+    func image<T>(defaultValue: T, texcoord: SGVector? = nil, uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
         ShaderGraphCoder.image(file: self, defaultValue: defaultValue, texcoord: texcoord, uaddressmode: uaddressmode, vaddressmode: vaddressmode, filtertype: filtertype)
     }
     /// Image 2D Pixel
-    func pixel<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    func pixel<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.pixel(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
     /// Image 2D Gradient Pixel
-    func pixelGradient<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientDpdx: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), gradientDpdy: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    func pixelGradient<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.pixelGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
     }
     /// Image 2D LOD Pixel
-    func pixelLOD<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    func pixelLOD<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.pixelLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod, offset: offset)
     }
     /// Image 2D Read
-    func read<T>(defaultValue: T, x: SGScalar = SGScalar(source: .constant(.int(0))), y: SGScalar = SGScalar(source: .constant(.int(0))), lod: SGScalar = SGScalar(source: .constant(.int(0)))) -> T where T: SGSIMD {
+    func read<T>(defaultValue: T, x: SGScalar? = nil, y: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.read(file: self, defaultValue: defaultValue, x: x, y: y, lod: lod)
     }
     /// Image 2D
-    func sample<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    func sample<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sample(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
     /// Cube Image
-    func sampleCube<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), bias: SGScalar = SGScalar(source: .constant(.float(0.0))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGSIMD {
+    func sampleCube<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleCube(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp)
     }
     /// Cube Image Gradient
-    func sampleCubeGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientcubeDpdx: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), gradientcubeDpdy: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0])))) -> T where T: SGSIMD {
+    func sampleCubeGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleCubeGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradientcubeDpdx: gradientcubeDpdx, gradientcubeDpdy: gradientcubeDpdy)
     }
     /// Cube Image LOD
-    func sampleCubeLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0)))) -> T where T: SGSIMD {
+    func sampleCubeLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleCubeLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod)
     }
     /// Image 2D Gradient
-    func sampleGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), dynamicMinLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), gradientDpdx: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), gradientDpdy: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    func sampleGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
     }
     /// Image 2D LOD
-    func sampleLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar = SGScalar(source: .constant(.int(1))), maxLodClamp: SGScalar = SGScalar(source: .constant(.float(65504.0))), minLodClamp: SGScalar = SGScalar(source: .constant(.float(0.0))), defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), lod: SGScalar = SGScalar(source: .constant(.float(0.0))), offset: SGVector = SGVector(source: .constant(.vector2i([0, 0])))) -> T where T: SGSIMD {
+    func sampleLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod, offset: offset)
     }
     /// Tiled Image
-    func tiledImage<T>(defaultValue: T, texcoord: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), uvtiling: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), uvoffset: SGVector = SGVector(source: .constant(.vector2f([0, 0]))), realworldimagesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), realworldtilesize: SGVector = SGVector(source: .constant(.vector2f([1, 1]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+    func tiledImage<T>(defaultValue: T, texcoord: SGVector? = nil, uvtiling: SGVector? = nil, uvoffset: SGVector? = nil, realworldimagesize: SGVector? = nil, realworldtilesize: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
         ShaderGraphCoder.tiledImage(file: self, defaultValue: defaultValue, texcoord: texcoord, uvtiling: uvtiling, uvoffset: uvoffset, realworldimagesize: realworldimagesize, realworldtilesize: realworldtilesize, filtertype: filtertype)
     }
     /// Triplanar Projection
-    func triplanarProjection<T>(filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), normal: SGVector = SGVector(source: .constant(.vector3f([0, 0, 0]))), filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
+    func triplanarProjection<T>(filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector? = nil, normal: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
         ShaderGraphCoder.triplanarProjection(filex: self, filey: filey, filez: filez, defaultValue: defaultValue, position: position, normal: normal, filtertype: filtertype)
     }
 }

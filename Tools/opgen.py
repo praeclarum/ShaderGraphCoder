@@ -668,7 +668,7 @@ class CodeWriter():
         self.indent_level += 1
 
     def unindent(self):
-        self.indent_level -= 1
+        self.indent_level = max(0, self.indent_level - 1)
 
 class SwiftWriter(CodeWriter):
     def __init__(self):
@@ -801,6 +801,7 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
     write_node_overloads_prototype(overloads, w, decl_public, decl_static, generic_params, primitive_params, default_value_params, sgc_param_type_is_shared, sgc_shared_param_type, num_unnamed_inputs, param_names, sgc_output_type, skip_params=0, generic_is_self=False)
     first_node_inputs = overloads.first_node().inputs
     w.write_line(f' {{')
+    w.indent()
     for i, input in enumerate(first_node_inputs):
         if not usd_param_type_is_shared[i]:
             continue
@@ -808,21 +809,12 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             continue
         if interface_only_params[i]:
             continue
+        if default_value_params[i] is not None:
+            continue
         sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
-        w.write_line(f'    guard {param_names[i]}.dataType == {sgc_datatype} else {{')
-        w.write_line(f'        return {sgc_output_type}(source: .error("Invalid {overloads.swift_name} input. Expected {param_names[i]} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).", values: [{param_names[i]}]))')
-        w.write_line(f'    }}')
-    w.write_line(f'    let inputs: [SGNode.Input] = [')
-    for i, input in enumerate(first_node_inputs):
-        if input.is_enum:
-            w.write_line(f'        .init(name: "{input.name}", connection: SGString(source: .constant(.string({param_names[i]}.rawValue)))),')
-        elif interface_only_params[i]:
-            sgct = usd_type_to_sgc_type(input.usd_type)
-            ctor = usd_type_to_const_ctor(input.usd_type)
-            w.write_line(f'        .init(name: "{input.name}", connection: {sgct}(source: .constant({ctor}({param_names[i]})))),')
-        else:
-            w.write_line(f'        .init(name: "{input.name}", connection: {param_names[i]}),')
-    w.write_line(f'    ]')
+        w.write_line(f'guard {param_names[i]}.dataType == {sgc_datatype} else {{')
+        w.write_line(f'    return {sgc_output_type}(source: .error("Invalid {overloads.swift_name} input. Expected {param_names[i]} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).", values: [{param_names[i]}]))')
+        w.write_line(f'}}')
     for _, node in overloads.overloads:
         conds: List[str] = []
         for i, input in enumerate(node.inputs):
@@ -836,17 +828,33 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
                 print(f'Warning: {overloads.swift_name} has multiple overloads but none of the inputs have unique types')
         else:
             cond = " && ".join(conds)
-            w.write_line(f'    if {cond} {{')
-            indent = "    "
+            w.write_line(f'if {cond} {{')
+            w.indent()
         sgc_node_output_type = usd_type_to_sgc_type(node.outputs[0].usd_type)
         if generic_params is not None:
             sgc_node_output_type = 'T'
-        w.write_line(f'    {indent}return {sgc_node_output_type}(source: .nodeOutput(SGNode(')
-        w.write_line(f'        {indent}nodeType: "{node.name}",')
-        w.write_line(f'        {indent}inputs: inputs,')
-        w.write_line(f'        {indent}outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type)})])))')
+        w.write_line(f'return {sgc_node_output_type}(source: .nodeOutput(SGNode(')
+        w.indent()
+        w.write_line(f'nodeType: "{node.name}",')
+        w.write_line(f'inputs: [')
+        w.indent()
+        for i, input in enumerate(node.inputs):
+            sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
+            if input.is_enum:
+                w.write_line(f'.init(name: "{input.name}", dataType: {sgc_datatype}, connection: SGString(source: .constant(.string({param_names[i]}.rawValue)))),')
+            elif interface_only_params[i]:
+                sgct = usd_type_to_sgc_type(input.usd_type)
+                ctor = usd_type_to_const_ctor(input.usd_type)
+                w.write_line(f'.init(name: "{input.name}", dataType: {sgc_datatype}, connection: {sgct}(source: .constant({ctor}({param_names[i]})))),')
+            else:
+                w.write_line(f'.init(name: "{input.name}", dataType: {sgc_datatype}, connection: {param_names[i]}),')
+        w.unindent()
+        w.write_line(f'],')
+        w.write_line(f'outputs: [.init(dataType: {usd_type_to_sgc_datatype(node.outputs[0].usd_type)})])))')
+        w.unindent()
         if len(conds) > 0:
-            w.write_line(f'    }}')
+            w.unindent()
+            w.write_line(f'}}')
     if num_unshared_usd_params > 0:
         args: List[str] = []
         vals: List[str] = []
@@ -857,7 +865,8 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             args.append(f'{param_names[i]}: \({param_names[i]}.dataType)')
         args_str = "(" + ", ".join(args) + ")"
         vals_str = "[" + ", ".join(vals) + "]"
-        w.write_line(f'    return {sgc_output_type}(source: .error("Unsupported input data types in {overloads.swift_name}{args_str}", values: {vals_str}))')
+        w.write_line(f'return {sgc_output_type}(source: .error("Unsupported input data types in {overloads.swift_name}{args_str}", values: {vals_str}))')
+    w.unindent()
     w.write_line('}')
 
 def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl_public: bool, decl_static: bool, generic_params, primitive_params: List[bool], default_value_params, sgc_param_type_is_shared: List[bool], sgc_shared_param_type: List[str], num_unnamed_inputs: int, param_names: List[str], sgc_output_type: str, skip_params: int, generic_is_self: bool):
@@ -886,11 +895,12 @@ def write_node_overloads_prototype(overloads: NodeOverloads, w: CodeWriter, decl
         name = f"_ {param_names[i]}" if i < num_unnamed_inputs else param_names[i]
         w.write(f'{name}: {sgc_type}')
         if default_value_params[i] is not None:
-            w.write(f' = ')
             if is_primitive:
+                w.write(f' = ')
                 write_primitive_value(w, default_value_params[i], input.usd_type, sgc_type)
             else:
-                write_sgc_value(w, default_value_params[i], input.usd_type, sgc_type)
+                w.write(f'? = nil')
+                # write_sgc_value(w, default_value_params[i], input.usd_type, sgc_type)
         if i < len(first_node.inputs) - 1:
             w.write(', ')
     if overloads.write_func:

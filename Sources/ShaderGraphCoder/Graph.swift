@@ -32,6 +32,11 @@ public class SGNode: Identifiable, Equatable, Hashable {
             self.dataType = connection.dataType
             self.value = connection
         }
+        public init(name: String, dataType: SGDataType) {
+            self.name = name
+            self.dataType = dataType
+            self.value = nil
+        }
     }
     
     public struct Output {
