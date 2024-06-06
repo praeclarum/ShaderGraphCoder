@@ -7,6 +7,7 @@
 
 import CoreGraphics
 import Foundation
+import Metal
 import RealityKit
 
 private var nextTextureId = 1
@@ -129,6 +130,16 @@ public extension SGValue {
         let name = "_texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadContentsOf(contentsOf, options: options))))
+    }
+    static func texture(width: Int, height: Int, format: TextureResource.Format, data: Data, bytesPerRow: Int) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.data(width: width, height: height, format: format, data: data, bytesPerRow: bytesPerRow))))
+    }
+    static func texture(width: Int, height: Int, format: TextureResource.Format, unsafeBuffer: any MTLBuffer, offset: Int, size: Int, bytesPerRow: Int) -> SGTexture {
+        let name = "_texture\(nextTextureId)"
+        nextTextureId += 1
+        return SGTexture(source: .parameter(name: name, defaultValue: .texture(.mtlBuffer(width: width, height: height, format: format, unsafeBuffer: unsafeBuffer, offset: offset, size: size, bytesPerRow: bytesPerRow))))
     }
     static func textureParameter(name: String) -> SGTexture {
         SGTexture(source: .parameter(name: name, defaultValue: .emptyTexture))
