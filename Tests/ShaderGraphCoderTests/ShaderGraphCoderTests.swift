@@ -17,7 +17,7 @@ final class ShaderGraphCoderTests: XCTestCase {
         XCTAssertNotNil(root, "Failed to load the USD file")
     }
     
-    private func surfaceTest(_ surface: SGSurface, geometryModifier: SGGeometryModifier? = nil, expectErrors: Int = 0) throws {
+    private func surfaceTest(_ surface: SGToken, geometryModifier: SGToken? = nil, expectErrors: Int = 0) throws {
         let expectation = self.expectation(description: "Load the surface material")
         Task {
             do {
@@ -49,13 +49,13 @@ final class ShaderGraphCoderTests: XCTestCase {
     }
 
     private func colorTest(_ color: SGColor) throws {
-        try surfaceTest(SGPBRSurface(baseColor: color))
+        try surfaceTest(pbrSurface(baseColor: color))
     }
     private func vectorTest(_ vector: SGVector, expectErrors: Int = 0) throws {
-        try surfaceTest(SGPBRSurface(normal: vector), expectErrors: expectErrors)
+        try surfaceTest(pbrSurface(normal: vector), expectErrors: expectErrors)
     }
     private func scalarTest(_ scalar: SGScalar) throws {
-        try surfaceTest(SGPBRSurface(opacity: scalar))
+        try surfaceTest(pbrSurface(opacity: scalar))
     }
     
     func testModulus() throws {
@@ -105,7 +105,7 @@ final class ShaderGraphCoderTests: XCTestCase {
             let color = texture.sample(texcoord: SGValue.uv0)
             #if os(visionOS)
             do {
-                var mat = try await ShaderGraphMaterial(surface: SGPBRSurface(baseColor: color), geometryModifier: nil)
+                var mat = try await ShaderGraphMaterial(surface: pbrSurface(baseColor: color), geometryModifier: nil)
                 try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
             }
             catch {
@@ -119,10 +119,10 @@ final class ShaderGraphCoderTests: XCTestCase {
     func testCustomAttribute() throws {
         let pos: SGVector = .modelPosition
         let attrS: SGVector = vector4f(pos.x * 10.0, pos.y * 10.0, pos.z * 10.0, .float(1.0))
-        let geom = SGGeometryModifier(customAttribute: attrS)
+        let geom = geometryModifier(userAttribute: attrS)
         let attr = SGValue.surfaceCustomAttribute
         let color = color3f(attr.x, attr.y, attr.z)
-        try surfaceTest(SGPBRSurface(baseColor: color), geometryModifier: geom)
+        try surfaceTest(pbrSurface(baseColor: color), geometryModifier: geom)
     }
     
     func testDimError() throws {

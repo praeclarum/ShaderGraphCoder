@@ -13,6 +13,7 @@ infix operator ^^ : LogicalDisjunctionPrecedence
 public class SGValue {
     public let source: SGValueSource
     public var dataType: SGDataType { source.dataType }
+    public var node: SGNode? { source.node }
     public required init(source: SGValueSource) {
         self.source = source
     }

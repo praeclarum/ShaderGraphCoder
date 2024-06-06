@@ -126,6 +126,10 @@ public func vector4f(_ x: SGScalar, _ y: SGScalar, _ z: SGScalar, _ w: SGScalar)
 
 private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
     switch dataType {
+    case .asset:
+        return "asset"
+    case .bool:
+        return "bool"
     case .color3f:
         return "color3"
     case .color4f:
@@ -136,6 +140,8 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
         return "float"
     case .half:
         return "half"
+    case .int:
+        return "int"
     case .vector2f:
         return "vector2"
     case .vector3f:
@@ -160,20 +166,9 @@ private func getNodeSuffixForDataType(_ dataType: SGDataType) -> String {
         return "matrix33"
     case .matrix4d:
         return "matrix44"
-    case .asset:
-        return "asset"
-    case .bool:
-        return "bool"
-    case .geometryModifier:
-        return "token"
-    case .int:
-        return "int"
     case .string:
         return "string"
-    case .surface:
-        return "token"
     case .token:
         return "token"
     }
 }
-

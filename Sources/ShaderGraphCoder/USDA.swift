@@ -13,14 +13,7 @@ public extension SGNode {
 
 public extension SGDataType {
     var usda: String {
-        switch self {
-        case .surface:
-            return "token"
-        case .geometryModifier:
-            return "token"
-        default:
-            return self.rawValue
-        }
+        return self.rawValue
     }
 }
 
@@ -114,7 +107,7 @@ public extension SGValueSource {
     }
 }
 
-public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier: SGGeometryModifier?) -> (String, [String]) {
+public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: SGToken?) -> (String, [String]) {
     var lines: [String] = []
     func line(_ text: String) {
         lines.append(text)
@@ -132,7 +125,7 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
     line("    def Material \"\(materialName)\"")
     line("    {")
     
-    let outputNodes = [surface, geometryModifier].compactMap { $0 }
+    let outputNodes = [surface?.node, geometryModifier?.node].compactMap { $0 }
     let parameters = collectParameters(nodes: outputNodes)
     let errors = collectErrors(nodes: outputNodes)
     for p in parameters {
@@ -140,14 +133,14 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
         line("        \(defaultValue.dataType.usda) inputs:\(name) = \(defaultValue.usda)")
     }
     
-    if let s = surface {
+    if let s = surface?.node {
         let v = s.getOutputValue(name: "out").getUSDAReference(materialName: materialName)
         line("        token outputs:mtlx:surface.connect = \(v)")
     }
     else {
         line("        token outputs:mtlx:surface")
     }
-    if let g = geometryModifier {
+    if let g = geometryModifier?.node {
         let v = g.getOutputValue(name: "out").getUSDAReference(materialName: materialName)
         line("        token outputs:realitykit:vertex.connect = \(v)")
     }
@@ -200,16 +193,4 @@ public func getUSDA(materialName: String, surface: SGSurface?, geometryModifier:
     line("}")
     
     return (lines.joined(separator: "\n"), errors)
-}
-
-public extension SGSurface {
-    func usda(materialName: String) -> String {
-        return getUSDA(materialName: materialName, surface: self, geometryModifier: nil).0
-    }
-}
-
-public extension SGGeometryModifier {
-    func usda(materialName: String) -> String {
-        return getUSDA(materialName: materialName, surface: nil, geometryModifier: self).0
-    }
 }

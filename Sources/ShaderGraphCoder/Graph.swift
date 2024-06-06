@@ -95,6 +95,15 @@ public enum SGValueSource {
             return .error
         }
     }
+    
+    public var node: SGNode? {
+        switch self {
+        case .nodeOutput(let node, _):
+            return node
+        default:
+            return nil
+        }
+    }
 
     public static func nodeOutput(_ node: SGNode) -> SGValueSource {
         .nodeOutput(node, "out")
@@ -109,13 +118,11 @@ public enum SGDataType: String {
     case error = "error"
     case half = "half"
     case float = "float"
-    case geometryModifier = "GeometryModifier"
     case int = "int"
     case matrix2d = "matrix2d"
     case matrix3d = "matrix3d"
     case matrix4d = "matrix4d"
     case string = "string"
-    case surface = "Surface"
     case token = "token"
     case vector2f = "float2"
     case vector3f = "float3"
@@ -251,52 +258,6 @@ public enum SGColorSpace: String {
 public enum ShaderGraphCoderError: Error {
     case failedToEncodeUSDAsData
     case graphContainsErrors(errors: [String])
-}
-
-public class SGSurface: SGNode {
-}
-
-public class SGPBRSurface: SGSurface {
-    public init(baseColor: SGColor? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, emissiveColor: SGColor? = nil, ambientOcclusion: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, normal: SGVector? = nil, hasPremultipliedAlpha: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, specular: SGScalar? = nil) {
-        super.init(
-            nodeType: "ND_realitykit_pbr_surfaceshader",
-            inputs: [
-                .init(name: "ambientOcclusion", dataType: .float, connection: ambientOcclusion),
-                .init(name: "baseColor", dataType: .color3f, connection: baseColor),
-                .init(name: "clearcoat", dataType: .float, connection: clearcoat),
-                .init(name: "clearcoatRoughness", dataType: .float, connection: clearcoatRoughness),
-                .init(name: "emissiveColor", dataType: .color3f, connection: emissiveColor),
-                .init(name: "hasPremultipliedAlpha", dataType: .bool, connection: hasPremultipliedAlpha),
-                .init(name: "metallic", dataType: .float, connection: metallic),
-                .init(name: "normal", dataType: .vector3f, connection: normal),
-                .init(name: "opacity", dataType: .float, connection: opacity),
-                .init(name: "opacityThreshold", dataType: .float, connection: opacityThreshold),
-                .init(name: "roughness", dataType: .float, connection: roughness),
-                .init(name: "specular", dataType: .float, connection: specular),
-            ],
-            outputs: [
-                .init(name: "out", dataType: .surface)
-            ])
-    }
-}
-
-public class SGGeometryModifier: SGNode {
-    public init(modelPositionOffset: SGVector? = nil, normal: SGVector? = nil, color: SGColor? = nil, bitangent: SGVector? = nil, customAttribute: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil) {
-        super.init(
-            nodeType: "ND_realitykit_geometrymodifier_vertexshader",
-            inputs: [
-                .init(name: "modelPositionOffset", dataType: .vector3f, connection: modelPositionOffset),
-                .init(name: "normal", dataType: .vector3f, connection: normal),
-                .init(name: "color", dataType: .color4f, connection: color),
-                .init(name: "bitangent", dataType: .vector3f, connection: bitangent),
-                .init(name: "userAttribute", dataType: .vector4f, connection: customAttribute),
-                .init(name: "uv0", dataType: .vector2f, connection: uv0),
-                .init(name: "uv1", dataType: .vector2f, connection: uv1),
-            ],
-            outputs: [
-                .init(name: "out", dataType: .geometryModifier)
-            ])
-    }
 }
 
 func collectParameters(nodes rootNodes: [SGNode]) -> [(String, SGConstantValue)] {
