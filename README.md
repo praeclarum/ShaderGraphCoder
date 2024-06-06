@@ -28,7 +28,7 @@ func textureMap() async throws -> ShaderGraphMaterial {
     // Create the material
     let texture = SGValue.textureParameter(name: "ColorTexture")
     let color = texture.sample(texcoord: SGValue.uv0)
-    var mat = try await ShaderGraphMaterial(surface: SGPBRSurface(baseColor: color), geometryModifier: nil)
+    var mat = try await ShaderGraphMaterial(surface: pbrSurface(baseColor: color), geometryModifier: nil)
     
     // Load the texture as a TextureResource
     guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
