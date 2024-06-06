@@ -62,9 +62,8 @@ The following value types are supported:
 | `SGColor: SGSIMD` | A vector of color values, with either 3 or 4 elements |
 | `SGVector: SGSIMD` | A vector of values, with either 2, 3, or 4 elements |
 | `SGMatrix: SGNumeric` | A square matrix with either 2, 3, or 4 dimensions |
-| `SGTexture1D: SGValue` | A 1D texture that can be sampled |
-| `SGTexture2D: SGValue` | A 2D texture that can be sampled |
-| `SGTexture3D: SGValue` | A 3D texture that can be sampled |
+| `SGTexture: SGValue` | A 2D texture that can be sampled or read |
+| `SGToken: SGValue` | A surface shader or geometry modifier |
 
 Each of these Swift types has an underlying graph data type available as `dataType`.
 
@@ -89,14 +88,9 @@ The following operators are supported:
 | `*` | Multiplication |
 | `/` | Division |
 | `%` | Modulo |
-| `color3f` | Create an RGB color from computed elements |
-| `color4f` | Create an RGBA color from computed elements |
-| `vector2f` | Create a 2D vector from computed elements |
-| `vector3f` | Create a 3D vector from computed elements |
-| `vector4f` | Create a 4D vector from computed elements |
-| `vector2h` | Create a 2D vector from computed elements |
-| `vector3h` | Create a 3D vector from computed elements |
-| `vector4h` | Create a 4D vector from computed elements |
+| `&&` | Logical And |
+| `\|\|` | Logical Or |
+| `^^` | Logical Xor |
 | `abs(in1)` | Abs |
 | `acos(in1)` | Acos |
 | `add(in1, in2)` | Add |
@@ -225,20 +219,18 @@ The following sources are supported:
 
 | Source | Description |
 | ------ | ----------- |
-| `SGValue.color3f` | A constant RGB color with a color space |
+| `SGValue.color3f` | A constant RGB color with an optional color space |
 | `SGValue.color3fParameter` | An RGB color parameter that can be set by later mutating the material |
-| `SGValue.color4f` | A constant RGBA color with a color space |
+| `SGValue.color4f` | A constant RGBA color with an optional color space |
 | `SGValue.color4fParameter` | An RGBA color parameter that can be set by later mutating the material |
-| `SGValue.customAttribute` | A value passed from the geometry modifier to the surface shader |
+| `SGValue.surfaceCustomAttribute` | A value passed from the geometry modifier to the surface shader |
 | `SVValue.float` | A constant floating point number |
 | `SGValue.floatParameter` | A parameter that can be set by later mutating the material |
 | `SGValue.modelNormal` | The model normal of the vertex or fragment being processed |
 | `SGValue.modelPosition` | The model position of the vertex or fragment being processed |
 | `SGValue.objectNormal` | The object normal of the vertex or fragment being processed |
 | `SGValue.objectPosition` | The object position of the vertex or fragment being processed |
-| `SGValue.texture1DParameter` | A 1D texture parameter that can be set by later mutating the material |
-| `SGValue.texture2DParameter` | A 2D texture parameter that can be set by later mutating the material |
-| `SGValue.texture3DParameter` | A 3D texture parameter that can be set by later mutating the material |
+| `SGValue.textureParameter` | A 2D texture parameter that can be set by later mutating the material |
 | `SGValue.uv(index)` | UV coordinate of the vertex or pixel |
 | `SGValue.uv0` | The first UV coordinate of the vertex or pixel |
 | `SGValue.uv1` | The second UV coordinate of the vertex or pixel |
