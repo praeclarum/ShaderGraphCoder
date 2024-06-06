@@ -366,6 +366,12 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Ambient Occlusion
 public func ambientOcclusion(coneangle: SGScalar? = nil, maxdistance: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.float.matches(coneangle) else {
+        return SGScalar(source: .error("Invalid ambientOcclusion input. Expected coneangle data type to be SGDataType.float, but got \(coneangle?.dataType.rawValue ?? "nil").", values: [coneangle]))
+    }
+    guard SGDataType.float.matches(maxdistance) else {
+        return SGScalar(source: .error("Invalid ambientOcclusion input. Expected maxdistance data type to be SGDataType.float, but got \(maxdistance?.dataType.rawValue ?? "nil").", values: [maxdistance]))
+    }
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_ambientocclusion_float",
         inputs: [
@@ -698,6 +704,9 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Cellular Noise 2D
 public func cellNoise2D(texcoord: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return SGScalar(source: .error("Invalid cellNoise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cellnoise2d_float",
         inputs: [
@@ -707,6 +716,9 @@ public func cellNoise2D(texcoord: SGVector? = nil) -> SGScalar {
 }
 /// Cellular Noise 3D
 public func cellNoise3D(position: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(position) else {
+        return SGScalar(source: .error("Invalid cellNoise3D input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_cellnoise3d_float",
         inputs: [
@@ -1176,6 +1188,15 @@ public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNu
 }
 /// Disjoint Over
 public func disjointover(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
+    guard SGDataType.color4f.matches(fg) else {
+        return SGColor(source: .error("Invalid disjointover input. Expected fg data type to be SGDataType.color4f, but got \(fg?.dataType.rawValue ?? "nil").", values: [fg]))
+    }
+    guard SGDataType.color4f.matches(bg) else {
+        return SGColor(source: .error("Invalid disjointover input. Expected bg data type to be SGDataType.color4f, but got \(bg?.dataType.rawValue ?? "nil").", values: [bg]))
+    }
+    guard SGDataType.float.matches(mix) else {
+        return SGColor(source: .error("Invalid disjointover input. Expected mix data type to be SGDataType.float, but got \(mix?.dataType.rawValue ?? "nil").", values: [mix]))
+    }
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_disjointover_color4",
         inputs: [
@@ -1657,6 +1678,18 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Fractal Noise 3D
 public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity: SGScalar? = nil, diminish: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
+    guard SGDataType.int.matches(octaves) else {
+        return SGNumeric(source: .error("Invalid fractal3D input. Expected octaves data type to be SGDataType.int, but got \(octaves?.dataType.rawValue ?? "nil").", values: [octaves]))
+    }
+    guard SGDataType.float.matches(lacunarity) else {
+        return SGNumeric(source: .error("Invalid fractal3D input. Expected lacunarity data type to be SGDataType.float, but got \(lacunarity?.dataType.rawValue ?? "nil").", values: [lacunarity]))
+    }
+    guard SGDataType.float.matches(diminish) else {
+        return SGNumeric(source: .error("Invalid fractal3D input. Expected diminish data type to be SGDataType.float, but got \(diminish?.dataType.rawValue ?? "nil").", values: [diminish]))
+    }
+    guard SGDataType.vector3f.matches(position) else {
+        return SGNumeric(source: .error("Invalid fractal3D input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
     if SGDataType.vector3f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_fractal3d_color3",
@@ -1961,8 +1994,11 @@ public func geompropvalue<T>(geomprop: String = "", defaultValue: T) -> T where 
 }
 /// Height To Normal
 public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector {
-    guard in1.dataType == SGDataType.float else {
+    guard SGDataType.float.matches(in1) else {
         return SGVector(source: .error("Invalid heightToNormal input. Expected in1 data type to be SGDataType.float, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.float.matches(scale) else {
+        return SGVector(source: .error("Invalid heightToNormal input. Expected scale data type to be SGDataType.float, but got \(scale?.dataType.rawValue ?? "nil").", values: [scale]))
     }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_heighttonormal_vector3",
@@ -1974,6 +2010,9 @@ public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector 
 }
 /// HSV Adjust
 public func hsvAdjust(_ in1: SGColor, amount: SGVector? = nil) -> SGColor {
+    guard SGDataType.vector3f.matches(amount) else {
+        return SGColor(source: .error("Invalid hsvAdjust input. Expected amount data type to be SGDataType.vector3f, but got \(amount?.dataType.rawValue ?? "nil").", values: [amount]))
+    }
     if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_hsvadjust_color3",
@@ -2798,8 +2837,11 @@ public func ifGreaterOrEqual<T>(_ value1: SGScalar, _ value2: SGScalar, trueResu
 }
 /// Image
 public func image<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil, uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid image input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid image input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -3084,10 +3126,10 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// And
 public func logicalAnd(_ in1: SGValue, _ in2: SGValue) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in1) else {
         return SGValue(source: .error("Invalid logicalAnd input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
-    guard in2.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in2) else {
         return SGValue(source: .error("Invalid logicalAnd input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).", values: [in2]))
     }
     return SGValue(source: .nodeOutput(SGNode(
@@ -3100,7 +3142,7 @@ public func logicalAnd(_ in1: SGValue, _ in2: SGValue) -> SGValue {
 }
 /// Not
 public func logicalNot(_ in1: SGValue) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in1) else {
         return SGValue(source: .error("Invalid logicalNot input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
     return SGValue(source: .nodeOutput(SGNode(
@@ -3112,10 +3154,10 @@ public func logicalNot(_ in1: SGValue) -> SGValue {
 }
 /// Or
 public func logicalOr(_ in1: SGValue, _ in2: SGValue) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in1) else {
         return SGValue(source: .error("Invalid logicalOr input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
-    guard in2.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in2) else {
         return SGValue(source: .error("Invalid logicalOr input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).", values: [in2]))
     }
     return SGValue(source: .nodeOutput(SGNode(
@@ -3128,10 +3170,10 @@ public func logicalOr(_ in1: SGValue, _ in2: SGValue) -> SGValue {
 }
 /// XOR
 public func logicalXor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
-    guard in1.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in1) else {
         return SGValue(source: .error("Invalid logicalXor input. Expected in1 data type to be SGDataType.bool, but got \(in1.dataType).", values: [in1]))
     }
-    guard in2.dataType == SGDataType.bool else {
+    guard SGDataType.bool.matches(in2) else {
         return SGValue(source: .error("Invalid logicalXor input. Expected in2 data type to be SGDataType.bool, but got \(in2.dataType).", values: [in2]))
     }
     return SGValue(source: .nodeOutput(SGNode(
@@ -3144,6 +3186,9 @@ public func logicalXor(_ in1: SGValue, _ in2: SGValue) -> SGValue {
 }
 /// Luminance
 public func luminance(_ in1: SGColor, lumacoeffs: SGColor? = nil) -> SGColor {
+    guard SGDataType.color3f.matches(lumacoeffs) else {
+        return SGColor(source: .error("Invalid luminance input. Expected lumacoeffs data type to be SGDataType.color3f, but got \(lumacoeffs?.dataType.rawValue ?? "nil").", values: [lumacoeffs]))
+    }
     if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_luminance_color3",
@@ -3166,6 +3211,15 @@ public func luminance(_ in1: SGColor, lumacoeffs: SGColor? = nil) -> SGColor {
 }
 /// Mask
 public func mask(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
+    guard SGDataType.color4f.matches(fg) else {
+        return SGColor(source: .error("Invalid mask input. Expected fg data type to be SGDataType.color4f, but got \(fg?.dataType.rawValue ?? "nil").", values: [fg]))
+    }
+    guard SGDataType.color4f.matches(bg) else {
+        return SGColor(source: .error("Invalid mask input. Expected bg data type to be SGDataType.color4f, but got \(bg?.dataType.rawValue ?? "nil").", values: [bg]))
+    }
+    guard SGDataType.float.matches(mix) else {
+        return SGColor(source: .error("Invalid mask input. Expected mix data type to be SGDataType.float, but got \(mix?.dataType.rawValue ?? "nil").", values: [mix]))
+    }
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_mask_color4",
         inputs: [
@@ -3177,6 +3231,15 @@ public func mask(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -
 }
 /// Matte
 public func matte(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
+    guard SGDataType.color4f.matches(fg) else {
+        return SGColor(source: .error("Invalid matte input. Expected fg data type to be SGDataType.color4f, but got \(fg?.dataType.rawValue ?? "nil").", values: [fg]))
+    }
+    guard SGDataType.color4f.matches(bg) else {
+        return SGColor(source: .error("Invalid matte input. Expected bg data type to be SGDataType.color4f, but got \(bg?.dataType.rawValue ?? "nil").", values: [bg]))
+    }
+    guard SGDataType.float.matches(mix) else {
+        return SGColor(source: .error("Invalid matte input. Expected mix data type to be SGDataType.float, but got \(mix?.dataType.rawValue ?? "nil").", values: [mix]))
+    }
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_matte_color4",
         inputs: [
@@ -3668,6 +3731,15 @@ public func mix<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
 }
 /// In
 public func mixColor(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
+    guard SGDataType.color4f.matches(fg) else {
+        return SGColor(source: .error("Invalid mixColor input. Expected fg data type to be SGDataType.color4f, but got \(fg?.dataType.rawValue ?? "nil").", values: [fg]))
+    }
+    guard SGDataType.color4f.matches(bg) else {
+        return SGColor(source: .error("Invalid mixColor input. Expected bg data type to be SGDataType.color4f, but got \(bg?.dataType.rawValue ?? "nil").", values: [bg]))
+    }
+    guard SGDataType.float.matches(mix) else {
+        return SGColor(source: .error("Invalid mixColor input. Expected mix data type to be SGDataType.float, but got \(mix?.dataType.rawValue ?? "nil").", values: [mix]))
+    }
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_in_color4",
         inputs: [
@@ -3930,6 +4002,12 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Noise 2D
 public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVector? = nil) -> SGNumeric {
+    guard SGDataType.float.matches(pivot) else {
+        return SGNumeric(source: .error("Invalid noise2D input. Expected pivot data type to be SGDataType.float, but got \(pivot?.dataType.rawValue ?? "nil").", values: [pivot]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return SGNumeric(source: .error("Invalid noise2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     if SGDataType.vector3f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise2d_color3",
@@ -4044,6 +4122,12 @@ public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVe
 }
 /// Noise 3D
 public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
+    guard SGDataType.float.matches(pivot) else {
+        return SGNumeric(source: .error("Invalid noise3D input. Expected pivot data type to be SGDataType.float, but got \(pivot?.dataType.rawValue ?? "nil").", values: [pivot]))
+    }
+    guard SGDataType.vector3f.matches(position) else {
+        return SGNumeric(source: .error("Invalid noise3D input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
     if SGDataType.vector3f.matches(amplitude) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_noise3d_color3",
@@ -4158,8 +4242,14 @@ public func noise3D(amplitude: SGNumeric, pivot: SGScalar? = nil, position: SGVe
 }
 /// Normal Map
 public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector? = nil, tangent: SGVector? = nil) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid normalMap input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGVector(source: .error("Invalid normalMap input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
+    }
+    guard SGDataType.vector3f.matches(tangent) else {
+        return SGVector(source: .error("Invalid normalMap input. Expected tangent data type to be SGDataType.vector3f, but got \(tangent?.dataType.rawValue ?? "nil").", values: [tangent]))
     }
     if SGDataType.float.matches(scale) {
         return SGVector(source: .nodeOutput(SGNode(
@@ -4189,7 +4279,7 @@ public func normalMap(_ in1: SGVector, space: SGNormalSpace = SGNormalSpace.tang
 }
 /// Normal Map Decode
 public func normalMapDecode(_ in1: SGVector) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid normalMapDecode input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
     return SGVector(source: .nodeOutput(SGNode(
@@ -4305,6 +4395,15 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Out
 public func out(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
+    guard SGDataType.color4f.matches(fg) else {
+        return SGColor(source: .error("Invalid out input. Expected fg data type to be SGDataType.color4f, but got \(fg?.dataType.rawValue ?? "nil").", values: [fg]))
+    }
+    guard SGDataType.color4f.matches(bg) else {
+        return SGColor(source: .error("Invalid out input. Expected bg data type to be SGDataType.color4f, but got \(bg?.dataType.rawValue ?? "nil").", values: [bg]))
+    }
+    guard SGDataType.float.matches(mix) else {
+        return SGColor(source: .error("Invalid out input. Expected mix data type to be SGDataType.float, but got \(mix?.dataType.rawValue ?? "nil").", values: [mix]))
+    }
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_out_color4",
         inputs: [
@@ -4356,6 +4455,15 @@ public func outside<T>(_ in1: T, mask: SGScalar? = nil) -> T where T: SGNumeric 
 }
 /// Over
 public func over(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
+    guard SGDataType.color4f.matches(fg) else {
+        return SGColor(source: .error("Invalid over input. Expected fg data type to be SGDataType.color4f, but got \(fg?.dataType.rawValue ?? "nil").", values: [fg]))
+    }
+    guard SGDataType.color4f.matches(bg) else {
+        return SGColor(source: .error("Invalid over input. Expected bg data type to be SGDataType.color4f, but got \(bg?.dataType.rawValue ?? "nil").", values: [bg]))
+    }
+    guard SGDataType.float.matches(mix) else {
+        return SGColor(source: .error("Invalid over input. Expected mix data type to be SGDataType.float, but got \(mix?.dataType.rawValue ?? "nil").", values: [mix]))
+    }
     return SGColor(source: .nodeOutput(SGNode(
         nodeType: "ND_over_color4",
         inputs: [
@@ -4411,8 +4519,29 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
 }
 /// Image 2D Pixel
 public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid pixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid pixel input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid pixel input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid pixel input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid pixel input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid pixel input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid pixel input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid pixel input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -4478,8 +4607,32 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
 }
 /// Image 2D Gradient Pixel
 public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid pixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid pixelGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid pixelGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid pixelGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid pixelGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid pixelGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdx) else {
+        return T(source: .error("Invalid pixelGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx?.dataType.rawValue ?? "nil").", values: [gradientDpdx]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdy) else {
+        return T(source: .error("Invalid pixelGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy?.dataType.rawValue ?? "nil").", values: [gradientDpdy]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid pixelGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -4548,8 +4701,26 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
 }
 /// Image 2D LOD Pixel
 public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid pixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid pixelLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid pixelLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid pixelLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid pixelLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid pixelLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid pixelLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -4612,6 +4783,21 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
 }
 /// Place 2D
 public func place2D(texcoord: SGVector? = nil, pivot: SGVector? = nil, scale: SGVector? = nil, rotate: SGScalar? = nil, offset: SGVector? = nil) -> SGVector {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return SGVector(source: .error("Invalid place2D input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.vector2f.matches(pivot) else {
+        return SGVector(source: .error("Invalid place2D input. Expected pivot data type to be SGDataType.vector2f, but got \(pivot?.dataType.rawValue ?? "nil").", values: [pivot]))
+    }
+    guard SGDataType.vector2f.matches(scale) else {
+        return SGVector(source: .error("Invalid place2D input. Expected scale data type to be SGDataType.vector2f, but got \(scale?.dataType.rawValue ?? "nil").", values: [scale]))
+    }
+    guard SGDataType.float.matches(rotate) else {
+        return SGVector(source: .error("Invalid place2D input. Expected rotate data type to be SGDataType.float, but got \(rotate?.dataType.rawValue ?? "nil").", values: [rotate]))
+    }
+    guard SGDataType.vector2f.matches(offset) else {
+        return SGVector(source: .error("Invalid place2D input. Expected offset data type to be SGDataType.vector2f, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_place2d_vector2",
         inputs: [
@@ -4781,7 +4967,7 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Premultiply
 public func premult(_ in1: SGColor) -> SGColor {
-    guard in1.dataType == SGDataType.color4f else {
+    guard SGDataType.color4f.matches(in1) else {
         return SGColor(source: .error("Invalid premult input. Expected in1 data type to be SGDataType.color4f, but got \(in1.dataType).", values: [in1]))
     }
     return SGColor(source: .nodeOutput(SGNode(
@@ -4793,6 +4979,9 @@ public func premult(_ in1: SGColor) -> SGColor {
 }
 /// Ramp 4 Corners
 public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid ramp4 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     if SGDataType.color3f.matches(valuetl) && SGDataType.color3f.matches(valuetr) && SGDataType.color3f.matches(valuebl) && SGDataType.color3f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramp4_color3",
@@ -4869,6 +5058,9 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
 }
 /// Ramp Horizontal
 public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid ramplr input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     if SGDataType.color3f.matches(valuel) && SGDataType.color3f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramplr_color3",
@@ -4973,6 +5165,9 @@ public func ramplr<T>(valuel: T, valuer: T, texcoord: SGVector? = nil) -> T wher
 }
 /// Ramp Vertical
 public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T where T: SGNumeric {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid ramptb input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     if SGDataType.color3f.matches(valuet) && SGDataType.color3f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ramptb_color3",
@@ -5077,6 +5272,9 @@ public func ramptb<T>(valuet: T, valueb: T, texcoord: SGVector? = nil) -> T wher
 }
 /// Range
 public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric, doclamp: SGValue? = nil) -> T where T: SGNumeric {
+    guard SGDataType.bool.matches(doclamp) else {
+        return T(source: .error("Invalid range input. Expected doclamp data type to be SGDataType.bool, but got \(doclamp?.dataType.rawValue ?? "nil").", values: [doclamp]))
+    }
     if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(inlow) && SGDataType.color3f.matches(inhigh) && SGDataType.color3f.matches(gamma) && SGDataType.color3f.matches(outlow) && SGDataType.color3f.matches(outhigh) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_range_color3",
@@ -5235,8 +5433,17 @@ public func range<T>(_ in1: T, inlow: SGNumeric, inhigh: SGNumeric, gamma: SGNum
 }
 /// Image 2D Read
 public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar? = nil, y: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid read input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(x) else {
+        return T(source: .error("Invalid read input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return T(source: .error("Invalid read input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    guard SGDataType.int.matches(lod) else {
+        return T(source: .error("Invalid read input. Expected lod data type to be SGDataType.int, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
     }
     if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -5266,8 +5473,11 @@ public func read<T>(file: SGTexture, defaultValue: T, x: SGScalar? = nil, y: SGS
 }
 /// Reflect
 public func reflect(_ in1: SGVector, normal: SGVector? = nil) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid reflect input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGVector(source: .error("Invalid reflect input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
     }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_reflect_vector3",
@@ -5279,8 +5489,14 @@ public func reflect(_ in1: SGVector, normal: SGVector? = nil) -> SGVector {
 }
 /// Refract
 public func refract(_ in1: SGVector, normal: SGVector? = nil, eta: SGScalar? = nil) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid refract input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGVector(source: .error("Invalid refract input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
+    }
+    guard SGDataType.float.matches(eta) else {
+        return SGVector(source: .error("Invalid refract input. Expected eta data type to be SGDataType.float, but got \(eta?.dataType.rawValue ?? "nil").", values: [eta]))
     }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_refract_vector3",
@@ -5533,8 +5749,11 @@ public func rgbToHSV(_ in1: SGColor) -> SGColor {
 }
 /// Rotate 2D
 public func rotate2D(_ in1: SGVector, amount: SGScalar? = nil) -> SGVector {
-    guard in1.dataType == SGDataType.vector2f else {
+    guard SGDataType.vector2f.matches(in1) else {
         return SGVector(source: .error("Invalid rotate2D input. Expected in1 data type to be SGDataType.vector2f, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.float.matches(amount) else {
+        return SGVector(source: .error("Invalid rotate2D input. Expected amount data type to be SGDataType.float, but got \(amount?.dataType.rawValue ?? "nil").", values: [amount]))
     }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rotate2d_vector2",
@@ -5546,8 +5765,14 @@ public func rotate2D(_ in1: SGVector, amount: SGScalar? = nil) -> SGVector {
 }
 /// Rotate 3D
 public func rotate3D(_ in1: SGVector, amount: SGScalar? = nil, axis: SGVector? = nil) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid rotate3D input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.float.matches(amount) else {
+        return SGVector(source: .error("Invalid rotate3D input. Expected amount data type to be SGDataType.float, but got \(amount?.dataType.rawValue ?? "nil").", values: [amount]))
+    }
+    guard SGDataType.vector3f.matches(axis) else {
+        return SGVector(source: .error("Invalid rotate3D input. Expected axis data type to be SGDataType.vector3f, but got \(axis?.dataType.rawValue ?? "nil").", values: [axis]))
     }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_rotate3d_vector3",
@@ -5732,8 +5957,29 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
 }
 /// Image 2D
 public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sample input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid sample input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid sample input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid sample input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid sample input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid sample input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid sample input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid sample input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -5805,8 +6051,26 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
 }
 /// Cube Image
 public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleCube input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid sampleCube input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid sampleCube input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid sampleCube input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid sampleCube input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid sampleCube input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid sampleCube input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
     }
     if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -5854,8 +6118,29 @@ public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGS
 }
 /// Cube Image Gradient
 public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleCubeGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector3f.matches(gradientcubeDpdx) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected gradientcubeDpdx data type to be SGDataType.vector3f, but got \(gradientcubeDpdx?.dataType.rawValue ?? "nil").", values: [gradientcubeDpdx]))
+    }
+    guard SGDataType.vector3f.matches(gradientcubeDpdy) else {
+        return T(source: .error("Invalid sampleCubeGradient input. Expected gradientcubeDpdy data type to be SGDataType.vector3f, but got \(gradientcubeDpdy?.dataType.rawValue ?? "nil").", values: [gradientcubeDpdy]))
     }
     if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -5905,8 +6190,23 @@ public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMo
 }
 /// Cube Image LOD
 public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleCubeLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid sampleCubeLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
     }
     if SGDataType.color4f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -5952,8 +6252,32 @@ public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = 
 }
 /// Image 2D Gradient
 public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid sampleGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid sampleGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid sampleGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid sampleGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid sampleGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdx) else {
+        return T(source: .error("Invalid sampleGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx?.dataType.rawValue ?? "nil").", values: [gradientDpdx]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdy) else {
+        return T(source: .error("Invalid sampleGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy?.dataType.rawValue ?? "nil").", values: [gradientDpdy]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid sampleGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -6028,8 +6352,26 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
 }
 /// Image 2D LOD
 public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(maxAnisotropy) else {
+        return T(source: .error("Invalid sampleLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
+    }
+    guard SGDataType.float.matches(maxLodClamp) else {
+        return T(source: .error("Invalid sampleLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
+    }
+    guard SGDataType.float.matches(minLodClamp) else {
+        return T(source: .error("Invalid sampleLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid sampleLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid sampleLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid sampleLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -6098,6 +6440,12 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
 }
 /// Saturate
 public func saturate(_ in1: SGColor, amount: SGScalar? = nil, lumacoeffs: SGColor? = nil) -> SGColor {
+    guard SGDataType.float.matches(amount) else {
+        return SGColor(source: .error("Invalid saturate input. Expected amount data type to be SGDataType.float, but got \(amount?.dataType.rawValue ?? "nil").", values: [amount]))
+    }
+    guard SGDataType.color3f.matches(lumacoeffs) else {
+        return SGColor(source: .error("Invalid saturate input. Expected lumacoeffs data type to be SGDataType.color3f, but got \(lumacoeffs?.dataType.rawValue ?? "nil").", values: [lumacoeffs]))
+    }
     if SGDataType.color3f.matches(in1) {
         return SGColor(source: .nodeOutput(SGNode(
             nodeType: "ND_saturate_color3",
@@ -6502,6 +6850,12 @@ public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where 
 }
 /// Split Horizontal
 public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: SGVector? = nil) -> T where T: SGNumeric {
+    guard SGDataType.float.matches(center) else {
+        return T(source: .error("Invalid splitlr input. Expected center data type to be SGDataType.float, but got \(center?.dataType.rawValue ?? "nil").", values: [center]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid splitlr input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     if SGDataType.color3f.matches(valuel) && SGDataType.color3f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_color3",
@@ -6583,6 +6937,12 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
 }
 /// Split Vertical
 public func splittb<T>(valuet: T, valueb: T, center: SGScalar? = nil, texcoord: SGVector? = nil) -> T where T: SGNumeric {
+    guard SGDataType.float.matches(center) else {
+        return T(source: .error("Invalid splittb input. Expected center data type to be SGDataType.float, but got \(center?.dataType.rawValue ?? "nil").", values: [center]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid splittb input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
     if SGDataType.color3f.matches(valuet) && SGDataType.color3f.matches(valueb) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splittb_color3",
@@ -7313,8 +7673,23 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
 }
 /// Tiled Image
 public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil, uvtiling: SGVector? = nil, uvoffset: SGVector? = nil, realworldimagesize: SGVector? = nil, realworldtilesize: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
-    guard file.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid tiledImage input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid tiledImage input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.vector2f.matches(uvtiling) else {
+        return T(source: .error("Invalid tiledImage input. Expected uvtiling data type to be SGDataType.vector2f, but got \(uvtiling?.dataType.rawValue ?? "nil").", values: [uvtiling]))
+    }
+    guard SGDataType.vector2f.matches(uvoffset) else {
+        return T(source: .error("Invalid tiledImage input. Expected uvoffset data type to be SGDataType.vector2f, but got \(uvoffset?.dataType.rawValue ?? "nil").", values: [uvoffset]))
+    }
+    guard SGDataType.vector2f.matches(realworldimagesize) else {
+        return T(source: .error("Invalid tiledImage input. Expected realworldimagesize data type to be SGDataType.vector2f, but got \(realworldimagesize?.dataType.rawValue ?? "nil").", values: [realworldimagesize]))
+    }
+    guard SGDataType.vector2f.matches(realworldtilesize) else {
+        return T(source: .error("Invalid tiledImage input. Expected realworldtilesize data type to be SGDataType.vector2f, but got \(realworldtilesize?.dataType.rawValue ?? "nil").", values: [realworldtilesize]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -7474,7 +7849,7 @@ public func transformMatrix(_ in1: SGVector, mat: SGMatrix) -> SGVector {
 }
 /// Transform Normal
 public func transformNormal(_ in1: SGVector, fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid transformNormal input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
     return SGVector(source: .nodeOutput(SGNode(
@@ -7488,7 +7863,7 @@ public func transformNormal(_ in1: SGVector, fromspace: SGTransformSpace, tospac
 }
 /// Transform Point
 public func transformPoint(_ in1: SGVector, fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid transformPoint input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
     return SGVector(source: .nodeOutput(SGNode(
@@ -7502,7 +7877,7 @@ public func transformPoint(_ in1: SGVector, fromspace: SGTransformSpace, tospace
 }
 /// Transform Vector
 public func transformVector(_ in1: SGVector, fromspace: SGTransformSpace, tospace: SGTransformSpace) -> SGVector {
-    guard in1.dataType == SGDataType.vector3f else {
+    guard SGDataType.vector3f.matches(in1) else {
         return SGVector(source: .error("Invalid transformVector input. Expected in1 data type to be SGDataType.vector3f, but got \(in1.dataType).", values: [in1]))
     }
     return SGVector(source: .nodeOutput(SGNode(
@@ -7544,14 +7919,20 @@ public func transpose(_ in1: SGMatrix) -> SGMatrix {
 }
 /// Triplanar Projection
 public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SGTexture, defaultValue: T, position: SGVector? = nil, normal: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
-    guard filex.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(filex) else {
         return T(source: .error("Invalid triplanarProjection input. Expected filex data type to be SGDataType.asset, but got \(filex.dataType).", values: [filex]))
     }
-    guard filey.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(filey) else {
         return T(source: .error("Invalid triplanarProjection input. Expected filey data type to be SGDataType.asset, but got \(filey.dataType).", values: [filey]))
     }
-    guard filez.dataType == SGDataType.asset else {
+    guard SGDataType.asset.matches(filez) else {
         return T(source: .error("Invalid triplanarProjection input. Expected filez data type to be SGDataType.asset, but got \(filez.dataType).", values: [filez]))
+    }
+    guard SGDataType.vector3f.matches(position) else {
+        return T(source: .error("Invalid triplanarProjection input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return T(source: .error("Invalid triplanarProjection input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
     }
     if SGDataType.color3f.matches(defaultValue) {
         return T(source: .nodeOutput(SGNode(
@@ -7641,7 +8022,7 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
 }
 /// Unpremultiply
 public func unpremult(_ in1: SGColor) -> SGColor {
-    guard in1.dataType == SGDataType.color4f else {
+    guard SGDataType.color4f.matches(in1) else {
         return SGColor(source: .error("Invalid unpremult input. Expected in1 data type to be SGDataType.color4f, but got \(in1.dataType).", values: [in1]))
     }
     return SGColor(source: .nodeOutput(SGNode(
@@ -7653,6 +8034,12 @@ public func unpremult(_ in1: SGColor) -> SGColor {
 }
 /// Worley Noise 2D
 public func worleyNoise2DFloat(texcoord: SGVector? = nil, jitter: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return SGScalar(source: .error("Invalid worleyNoise2DFloat input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(jitter) else {
+        return SGScalar(source: .error("Invalid worleyNoise2DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter?.dataType.rawValue ?? "nil").", values: [jitter]))
+    }
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_float",
         inputs: [
@@ -7663,6 +8050,12 @@ public func worleyNoise2DFloat(texcoord: SGVector? = nil, jitter: SGScalar? = ni
 }
 /// Worley Noise 2D
 public func worleyNoise2DVector2(texcoord: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return SGVector(source: .error("Invalid worleyNoise2DVector2 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(jitter) else {
+        return SGVector(source: .error("Invalid worleyNoise2DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter?.dataType.rawValue ?? "nil").", values: [jitter]))
+    }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_vector2",
         inputs: [
@@ -7673,6 +8066,12 @@ public func worleyNoise2DVector2(texcoord: SGVector? = nil, jitter: SGScalar? = 
 }
 /// Worley Noise 2D
 public func worleyNoise2DVector3(texcoord: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return SGVector(source: .error("Invalid worleyNoise2DVector3 input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(jitter) else {
+        return SGVector(source: .error("Invalid worleyNoise2DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter?.dataType.rawValue ?? "nil").", values: [jitter]))
+    }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise2d_vector3",
         inputs: [
@@ -7683,6 +8082,12 @@ public func worleyNoise2DVector3(texcoord: SGVector? = nil, jitter: SGScalar? = 
 }
 /// Worley Noise 3D
 public func worleyNoise3DFloat(position: SGVector? = nil, jitter: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(position) else {
+        return SGScalar(source: .error("Invalid worleyNoise3DFloat input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
+    guard SGDataType.float.matches(jitter) else {
+        return SGScalar(source: .error("Invalid worleyNoise3DFloat input. Expected jitter data type to be SGDataType.float, but got \(jitter?.dataType.rawValue ?? "nil").", values: [jitter]))
+    }
     return SGScalar(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_float",
         inputs: [
@@ -7693,6 +8098,12 @@ public func worleyNoise3DFloat(position: SGVector? = nil, jitter: SGScalar? = ni
 }
 /// Worley Noise 3D
 public func worleyNoise3DVector2(position: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
+    guard SGDataType.vector3f.matches(position) else {
+        return SGVector(source: .error("Invalid worleyNoise3DVector2 input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
+    guard SGDataType.float.matches(jitter) else {
+        return SGVector(source: .error("Invalid worleyNoise3DVector2 input. Expected jitter data type to be SGDataType.float, but got \(jitter?.dataType.rawValue ?? "nil").", values: [jitter]))
+    }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_vector2",
         inputs: [
@@ -7703,6 +8114,12 @@ public func worleyNoise3DVector2(position: SGVector? = nil, jitter: SGScalar? = 
 }
 /// Worley Noise 3D
 public func worleyNoise3DVector3(position: SGVector? = nil, jitter: SGScalar? = nil) -> SGVector {
+    guard SGDataType.vector3f.matches(position) else {
+        return SGVector(source: .error("Invalid worleyNoise3DVector3 input. Expected position data type to be SGDataType.vector3f, but got \(position?.dataType.rawValue ?? "nil").", values: [position]))
+    }
+    guard SGDataType.float.matches(jitter) else {
+        return SGVector(source: .error("Invalid worleyNoise3DVector3 input. Expected jitter data type to be SGDataType.float, but got \(jitter?.dataType.rawValue ?? "nil").", values: [jitter]))
+    }
     return SGVector(source: .nodeOutput(SGNode(
         nodeType: "ND_worleynoise3d_vector3",
         inputs: [

@@ -809,11 +809,10 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
             continue
         if interface_only_params[i]:
             continue
-        if default_value_params[i] is not None:
-            continue
         sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
-        w.write_line(f'guard {param_names[i]}.dataType == {sgc_datatype} else {{')
-        w.write_line(f'    return {sgc_output_type}(source: .error("Invalid {overloads.swift_name} input. Expected {param_names[i]} data type to be {sgc_datatype}, but got \({param_names[i]}.dataType).", values: [{param_names[i]}]))')
+        w.write_line(f'guard {sgc_datatype}.matches({param_names[i]}) else {{')
+        datatype_code = f'{param_names[i]}.dataType' if default_value_params[i] is None else f'{param_names[i]}?.dataType.rawValue ?? "nil"'
+        w.write_line(f'    return {sgc_output_type}(source: .error("Invalid {overloads.swift_name} input. Expected {param_names[i]} data type to be {sgc_datatype}, but got \({datatype_code}).", values: [{param_names[i]}]))')
         w.write_line(f'}}')
     for _, node in overloads.overloads:
         conds: List[str] = []
