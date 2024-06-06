@@ -8419,6 +8419,12 @@ public extension SGScalar {
         ShaderGraphCoder.ifGreaterOrEqual(self, value2, trueResult: trueResult, falseResult: falseResult)
     }
 }
+public extension SGSIMD {
+    /// Extract
+    func extract(index: Int = 0) -> SGScalar {
+        ShaderGraphCoder.extract(self, index: index)
+    }
+}
 public extension SGColor {
     /// Disjoint Over
     func disjointover(bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
