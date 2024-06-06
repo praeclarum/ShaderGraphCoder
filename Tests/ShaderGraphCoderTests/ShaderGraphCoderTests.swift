@@ -97,26 +97,28 @@ final class ShaderGraphCoderTests: XCTestCase {
 
     func testLocalTexture() throws {
         // Load the texture from a bundle resource
-        guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
-            throw URLError(.fileDoesNotExist)
-        }
-        let textureResource = try TextureResource.load(contentsOf: textureURL)
+//        guard let textureURL = Bundle.module.url(forResource: "TestTexture", withExtension: "png") else {
+//            throw URLError(.fileDoesNotExist)
+//        }
+//        let textureResource = try TextureResource.load(contentsOf: textureURL)
         let expectation = self.expectation(description: "Load the texture material")
+        let texture = SGValue.textureParameter(name: "ColorTexture")
+        let color = texture.sampleColor3f(texcoord: SGValue.uv0)
+        let surface = pbrSurface(baseColor: color)
         Task {
             // Create the material
-            let texture = SGValue.textureParameter(name: "ColorTexture")
-            let color = texture.sample(texcoord: SGValue.uv0)
             #if os(visionOS)
-            do {
-                var mat = try await ShaderGraphMaterial(surface: pbrSurface(baseColor: color), geometryModifier: nil)
-                try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
-            }
-            catch {
-            }
+//            do {
+//                var mat = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
+//                try mat.setParameter(name: "ColorTexture", value: .textureResource(textureResource))
+//            }
+//            catch {
+//            }
             #endif
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0)
+        try surfaceTest(surface)
     }
     
     func testCustomAttribute() throws {

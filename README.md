@@ -27,7 +27,7 @@ func pulsingBlue() async throws -> ShaderGraphMaterial {
 func textureMap() async throws -> ShaderGraphMaterial {
     // Create the material
     let texture = SGValue.textureParameter(name: "ColorTexture")
-    let color = texture.sample(texcoord: SGValue.uv0)
+    let color = texture.sampleColor3f(texcoord: SGValue.uv0)
     var mat = try await ShaderGraphMaterial(surface: pbrSurface(baseColor: color), geometryModifier: nil)
     
     // Load the texture as a TextureResource
