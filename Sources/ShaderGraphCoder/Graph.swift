@@ -175,6 +175,23 @@ public enum SGTextureSource {
     case generate(from: CGImage, options: TextureResource.CreateOptions)
     case loadNamed(_ named: String, in: Bundle?, options: TextureResource.CreateOptions?)
     case loadContentsOf(_ url: URL, options: TextureResource.CreateOptions?)
+    
+    func loadTextureResource() throws -> TextureResource {
+        switch self {
+        case .texture(let t):
+            return t
+        case .generate(let from, let options):
+            return try TextureResource.generate(from: from, options: options)
+        case .loadNamed(let named, let bundle, .some(let options)):
+            return try TextureResource.load(named: named, in: bundle, options: options)
+        case .loadNamed(let named, let bundle, .none):
+            return try TextureResource.load(named: named, in: bundle)
+        case .loadContentsOf(let url, .some(let options)):
+            return try TextureResource.load(contentsOf: url, options: options)
+        case .loadContentsOf(let url, .none):
+            return try TextureResource.load(contentsOf: url)
+        }
+    }
 }
 
 public enum SGConstantValue {

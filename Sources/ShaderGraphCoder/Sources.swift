@@ -111,22 +111,22 @@ public extension SGValue {
     static let transparentBlack = SGColor(source: .constant(.color4f([0, 0, 0, 0])))
     
     static func texture(_ texture: TextureResource) -> SGTexture {
-        let name = "texture\(nextTextureId)"
+        let name = "_texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.texture(texture))))
     }
     static func texture(from: CGImage, options: TextureResource.CreateOptions) -> SGTexture {
-        let name = "texture\(nextTextureId)"
+        let name = "_texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.generate(from: from, options: options))))
     }
     static func texture(named: String, in bundle: Bundle? = nil, options: TextureResource.CreateOptions? = nil) -> SGTexture {
-        let name = "texture\(nextTextureId)"
+        let name = "_texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadNamed(named, in: bundle, options: options))))
     }
     static func texture(contentsOf: URL, options: TextureResource.CreateOptions? = nil) -> SGTexture {
-        let name = "texture\(nextTextureId)"
+        let name = "_texture\(nextTextureId)"
         nextTextureId += 1
         return SGTexture(source: .parameter(name: name, defaultValue: .texture(.loadContentsOf(contentsOf, options: options))))
     }

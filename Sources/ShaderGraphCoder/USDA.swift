@@ -105,7 +105,7 @@ public extension SGValueSource {
     }
 }
 
-public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: SGToken?) -> (String, [String]) {
+public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: SGToken?) -> (String, [String: SGTextureSource], [String]) {
     var lines: [String] = []
     func line(_ text: String) {
         lines.append(text)
@@ -127,9 +127,13 @@ public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: S
     let outputNodes = [surface?.node, geometryModifier?.node].compactMap { $0 }
     let parameters = collectParameters(nodes: outputNodes)
     let errors = collectErrors(values: outputValues)
+    var textureSources: [String: SGTextureSource] = [:]
     for p in parameters {
         let (name, defaultValue) = p
         line("        \(defaultValue.dataType.usda) inputs:\(name) = \(defaultValue.usda)")
+        if case SGConstantValue.texture(let source) = defaultValue {
+            textureSources[name] = source
+        }
     }
     
     if let s = surface?.node {
@@ -191,5 +195,5 @@ public func getUSDA(materialName: String, surface: SGToken?, geometryModifier: S
     line("    }")
     line("}")
     
-    return (lines.joined(separator: "\n"), errors)
+    return (lines.joined(separator: "\n"), textureSources, errors)
 }

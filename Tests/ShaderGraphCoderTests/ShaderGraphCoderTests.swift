@@ -25,7 +25,7 @@ final class ShaderGraphCoderTests: XCTestCase {
                 // APPLE BUG: [Foundation.IO] Could not locate file 'default-binaryarchive.metallib' in bundle. Tool-hosted testing is unavailable on device destinations. Select a host application for the test target, or use a simulator destination instead.
 //                let _ = try await ShaderGraphMaterial(surface: surface, geometryModifier: nil)
 #endif
-                let (usda, errors) = getUSDA(materialName: "TestMat", surface: surface, geometryModifier: geometryModifier)
+                let (usda, _, errors) = getUSDA(materialName: "TestMat", surface: surface, geometryModifier: geometryModifier)
                 if errors.count > 0 {
                     if expectErrors != errors.count {
                         XCTFail("USDA ERRORS: \(errors)")
