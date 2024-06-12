@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "ShaderGraphCoder",
-    platforms: [.visionOS(.v1), .iOS(.v13), .watchOS(.v6), .tvOS(.v13), .macOS(.v12)],
+    platforms: [.visionOS(.v1), .iOS(.v15), .watchOS(.v6), .tvOS(.v15), .macOS(.v12)],
     products: [
         .library(
             name: "ShaderGraphCoder",
