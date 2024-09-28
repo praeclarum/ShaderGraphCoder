@@ -70,2549 +70,6 @@ public enum SGTransformSpace: String, CaseIterable {
     case world = "world"
 }
 
-/// Inverse Hyperbolic Cos
-public func MTLAcosh<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_acosh_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLAcosh(x: \(x.dataType))", values: [x]))
-}
-/// Inverse Hyperbolic Sin
-public func MTLAsinh<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_asinh_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLAsinh(x: \(x.dataType))", values: [x]))
-}
-/// Inverse Tan
-public func MTLAtan<T>(yOverX: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_float",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.float, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_half",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.half, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_half2",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.vector2h, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_half3",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.vector3h, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_half4",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.vector4h, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_vector2",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.vector2f, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_vector3",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.vector3f, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(yOverX) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atan_vector4",
-            inputs: [
-                .init(name: "y_over_x", dataType: SGDataType.vector4f, connection: yOverX),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLAtan(yOverX: \(yOverX.dataType))", values: [yOverX]))
-}
-/// Inverse Hyperbolic Tan
-public func MTLAtanh<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_atanh_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLAtanh(x: \(x.dataType))", values: [x]))
-}
-/// Copy Sign
-public func MTLCopysign<T>(x: T, y: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_copysign_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLCopysign(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
-}
-/// Hyperbolic Cos
-public func MTLCosh<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cosh_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLCosh(x: \(x.dataType))", values: [x]))
-}
-/// Cos Pi
-public func MTLCospi<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_cospi_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLCospi(x: \(x.dataType))", values: [x]))
-}
-/// Screen-Space X Partial Derivative
-public func MTLDfdx<T>(p: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_float",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.float, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_half",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.half, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_half2",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_half3",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_half4",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_vector2",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_vector3",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdx_vector4",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLDfdx(p: \(p.dataType))", values: [p]))
-}
-/// Screen-Space Y Partial Derivative
-public func MTLDfdy<T>(p: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_float",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.float, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_half",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.half, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_half2",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_half3",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_half4",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_vector2",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_vector3",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_dfdy_vector4",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLDfdy(p: \(p.dataType))", values: [p]))
-}
-/// Distance
-public func MTLDistanceHalf2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector2h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector2h.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceHalf2 input. Expected y data type to be SGDataType.vector2h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_half2_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Distance
-public func MTLDistanceHalf3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector3h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector3h.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceHalf3 input. Expected y data type to be SGDataType.vector3h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_half3_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Distance
-public func MTLDistanceHalf4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector4h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector4h.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceHalf4 input. Expected y data type to be SGDataType.vector4h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_half4_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Distance Square
-public func MTLDistanceSquaredHalf2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector2h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector2h.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf2 input. Expected y data type to be SGDataType.vector2h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_squared_half2_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Distance Square
-public func MTLDistanceSquaredHalf3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector3h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector3h.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf3 input. Expected y data type to be SGDataType.vector3h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_squared_half3_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Distance Square
-public func MTLDistanceSquaredHalf4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector4h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector4h.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf4 input. Expected y data type to be SGDataType.vector4h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_squared_half4_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Distance Square
-public func MTLDistanceSquaredVector2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector2f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector2f.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector2 input. Expected y data type to be SGDataType.vector2f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_squared_vector2_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Distance Square
-public func MTLDistanceSquaredVector3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector3f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector3f.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector3 input. Expected y data type to be SGDataType.vector3f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_squared_vector3_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Distance Square
-public func MTLDistanceSquaredVector4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector4f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector4f.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector4 input. Expected y data type to be SGDataType.vector4f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_squared_vector4_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Distance
-public func MTLDistanceVector2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector2f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector2f.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceVector2 input. Expected y data type to be SGDataType.vector2f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_vector2_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Distance
-public func MTLDistanceVector3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector3f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector3f.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceVector3 input. Expected y data type to be SGDataType.vector3f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_vector3_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Distance
-public func MTLDistanceVector4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector4f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLDistanceVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.vector4f.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLDistanceVector4 input. Expected y data type to be SGDataType.vector4f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_distance_vector4_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Exponential 10
-public func MTLExp10<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp10_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLExp10(x: \(x.dataType))", values: [x]))
-}
-/// Exponential 2
-public func MTLExp2<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_exp2_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLExp2(x: \(x.dataType))", values: [x]))
-}
-/// Fortran Difference and Minimum
-public func MTLFdim<T>(x: T, y: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fdim_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLFdim(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
-}
-/// Fused Multiply-Add
-public func MTLFma<T>(a: T, b: T, c: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(a) && SGDataType.float.matches(b) && SGDataType.float.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_float",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.float, connection: a),
-                .init(name: "b", dataType: SGDataType.float, connection: b),
-                .init(name: "c", dataType: SGDataType.float, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(a) && SGDataType.half.matches(b) && SGDataType.half.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_half",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.half, connection: a),
-                .init(name: "b", dataType: SGDataType.half, connection: b),
-                .init(name: "c", dataType: SGDataType.half, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(a) && SGDataType.vector2h.matches(b) && SGDataType.vector2h.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_half2",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.vector2h, connection: a),
-                .init(name: "b", dataType: SGDataType.vector2h, connection: b),
-                .init(name: "c", dataType: SGDataType.vector2h, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(a) && SGDataType.vector3h.matches(b) && SGDataType.vector3h.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_half3",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.vector3h, connection: a),
-                .init(name: "b", dataType: SGDataType.vector3h, connection: b),
-                .init(name: "c", dataType: SGDataType.vector3h, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(a) && SGDataType.vector4h.matches(b) && SGDataType.vector4h.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_half4",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.vector4h, connection: a),
-                .init(name: "b", dataType: SGDataType.vector4h, connection: b),
-                .init(name: "c", dataType: SGDataType.vector4h, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(a) && SGDataType.vector2f.matches(b) && SGDataType.vector2f.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_vector2",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.vector2f, connection: a),
-                .init(name: "b", dataType: SGDataType.vector2f, connection: b),
-                .init(name: "c", dataType: SGDataType.vector2f, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(a) && SGDataType.vector3f.matches(b) && SGDataType.vector3f.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_vector3",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.vector3f, connection: a),
-                .init(name: "b", dataType: SGDataType.vector3f, connection: b),
-                .init(name: "c", dataType: SGDataType.vector3f, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(a) && SGDataType.vector4f.matches(b) && SGDataType.vector4f.matches(c) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fma_vector4",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.vector4f, connection: a),
-                .init(name: "b", dataType: SGDataType.vector4f, connection: b),
-                .init(name: "c", dataType: SGDataType.vector4f, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLFma(a: \(a.dataType), b: \(b.dataType), c: \(c.dataType))", values: [a, b, c]))
-}
-/// Modulo
-public func MTLFmod<T>(x: T, y: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fmod_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLFmod(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
-}
-/// Absolute Derivatives Sum
-public func MTLFwidth<T>(p: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_float",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.float, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_half",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.half, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_half2",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_half3",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_half4",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_vector2",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_vector3",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(p) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_fwidth_vector4",
-            inputs: [
-                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLFwidth(p: \(p.dataType))", values: [p]))
-}
-/// Is Finite
-public func MTLIsfinite(x: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isfinite_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isfinite_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLIsfinite(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
-}
-/// Is Infinite
-public func MTLIsinf(x: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isinf_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isinf_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLIsinf(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
-}
-/// Is Not a Number
-public func MTLIsnan(x: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isnan_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isnan_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLIsnan(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
-}
-/// Is Normal
-public func MTLIsnormal(x: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isnormal_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isnormal_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLIsnormal(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
-}
-/// Is Ordered
-public func MTLIsordered(x: SGScalar? = nil, y: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isordered_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isordered_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLIsordered(x: \(x?.dataType.rawValue ?? "nil"), y: \(y?.dataType.rawValue ?? "nil"))", values: [x, y]))
-}
-/// Is Unordered
-public func MTLIsunordered(x: SGScalar? = nil, y: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isunordered_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_isunordered_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLIsunordered(x: \(x?.dataType.rawValue ?? "nil"), y: \(y?.dataType.rawValue ?? "nil"))", values: [x, y]))
-}
-/// Magnitude Square
-public func MTLLengthSquaredHalf2(x: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector2h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLLengthSquaredHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_length_squared_half2_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Magnitude Square
-public func MTLLengthSquaredHalf3(x: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector3h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLLengthSquaredHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_length_squared_half3_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Magnitude Square
-public func MTLLengthSquaredHalf4(x: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector4h.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLLengthSquaredHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_length_squared_half4_half",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-        ],
-        outputs: [.init(dataType: SGDataType.half)])))
-}
-/// Magnitude Square
-public func MTLLengthSquaredVector2(x: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector2f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLLengthSquaredVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_length_squared_vector2_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Magnitude Square
-public func MTLLengthSquaredVector3(x: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector3f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLLengthSquaredVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_length_squared_vector3_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Magnitude Square
-public func MTLLengthSquaredVector4(x: SGVector? = nil) -> SGScalar {
-    guard SGDataType.vector4f.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLLengthSquaredVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_length_squared_vector4_float",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-        ],
-        outputs: [.init(dataType: SGDataType.float)])))
-}
-/// Log 10
-public func MTLLog10<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log10_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLLog10(x: \(x.dataType))", values: [x]))
-}
-/// Log 2
-public func MTLLog2<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_log2_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLLog2(x: \(x.dataType))", values: [x]))
-}
-/// Multiply Add 24
-public func MTLMad24(x: SGScalar? = nil, y: SGScalar? = nil, z: SGScalar? = nil) -> SGScalar {
-    guard SGDataType.int.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLMad24 input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.int.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLMad24 input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    guard SGDataType.int.matches(z) else {
-        return SGScalar(source: .error("Invalid MTLMad24 input. Expected z data type to be SGDataType.int, but got \(z?.dataType.rawValue ?? "nil").", values: [z]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_mad24_integer",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.int, connection: x),
-            .init(name: "y", dataType: SGDataType.int, connection: y),
-            .init(name: "z", dataType: SGDataType.int, connection: z),
-        ],
-        outputs: [.init(dataType: SGDataType.int)])))
-}
-/// Max
-public func MTLMax(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
-    guard SGDataType.int.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLMax input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.int.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLMax input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_max_integer",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.int, connection: x),
-            .init(name: "y", dataType: SGDataType.int, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.int)])))
-}
-/// Max3
-public func MTLMax3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-                .init(name: "z", dataType: SGDataType.float, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-                .init(name: "z", dataType: SGDataType.half, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_integer",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.int, connection: x),
-                .init(name: "y", dataType: SGDataType.int, connection: y),
-                .init(name: "z", dataType: SGDataType.int, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_max3_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLMax3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
-}
-/// Median3
-public func MTLMedian3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-                .init(name: "z", dataType: SGDataType.float, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-                .init(name: "z", dataType: SGDataType.half, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_integer",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.int, connection: x),
-                .init(name: "y", dataType: SGDataType.int, connection: y),
-                .init(name: "z", dataType: SGDataType.int, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_median3_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLMedian3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
-}
-/// Min
-public func MTLMin(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
-    guard SGDataType.int.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLMin input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.int.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLMin input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_min_integer",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.int, connection: x),
-            .init(name: "y", dataType: SGDataType.int, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.int)])))
-}
-/// Min3
-public func MTLMin3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-                .init(name: "z", dataType: SGDataType.float, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-                .init(name: "z", dataType: SGDataType.half, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_integer",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.int, connection: x),
-                .init(name: "y", dataType: SGDataType.int, connection: y),
-                .init(name: "z", dataType: SGDataType.int, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_min3_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLMin3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
-}
-/// Multiply 24
-public func MTLMul24(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
-    guard SGDataType.int.matches(x) else {
-        return SGScalar(source: .error("Invalid MTLMul24 input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
-    }
-    guard SGDataType.int.matches(y) else {
-        return SGScalar(source: .error("Invalid MTLMul24 input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
-    }
-    return SGScalar(source: .nodeOutput(SGNode(
-        nodeType: "ND_MTL_mul24_integer",
-        inputs: [
-            .init(name: "x", dataType: SGDataType.int, connection: x),
-            .init(name: "y", dataType: SGDataType.int, connection: y),
-        ],
-        outputs: [.init(dataType: SGDataType.int)])))
-}
-/// Power Positive
-public func MTLPowr<T>(x: T, y: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-                .init(name: "y", dataType: SGDataType.float, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-                .init(name: "y", dataType: SGDataType.half, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_powr_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLPowr(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
-}
-/// Round Integral
-public func MTLRint<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rint_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLRint(x: \(x.dataType))", values: [x]))
-}
-/// Reciprocal Square Root
-public func MTLRsqrt<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_rsqrt_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLRsqrt(x: \(x.dataType))", values: [x]))
-}
-/// Select
-public func MTLSelect(a: SGScalar? = nil, b: SGScalar? = nil, c: SGValue? = nil) -> SGScalar {
-    guard SGDataType.bool.matches(c) else {
-        return SGScalar(source: .error("Invalid MTLSelect input. Expected c data type to be SGDataType.bool, but got \(c?.dataType.rawValue ?? "nil").", values: [c]))
-    }
-    if SGDataType.float.matches(a) && SGDataType.float.matches(b) {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_select_float",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.float, connection: a),
-                .init(name: "b", dataType: SGDataType.float, connection: b),
-                .init(name: "c", dataType: SGDataType.bool, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(a) && SGDataType.half.matches(b) {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_select_half",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.half, connection: a),
-                .init(name: "b", dataType: SGDataType.half, connection: b),
-                .init(name: "c", dataType: SGDataType.bool, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.int.matches(a) && SGDataType.int.matches(b) {
-        return SGScalar(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_select_integer",
-            inputs: [
-                .init(name: "a", dataType: SGDataType.int, connection: a),
-                .init(name: "b", dataType: SGDataType.int, connection: b),
-                .init(name: "c", dataType: SGDataType.bool, connection: c),
-            ],
-            outputs: [.init(dataType: SGDataType.int)])))
-    }
-    return SGScalar(source: .error("Unsupported input data types in MTLSelect(a: \(a?.dataType.rawValue ?? "nil"), b: \(b?.dataType.rawValue ?? "nil"))", values: [a, b]))
-}
-/// Sign Bit
-public func MTLSignbit(x: SGScalar? = nil) -> SGValue {
-    if SGDataType.float.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_signbit_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    if SGDataType.half.matches(x) {
-        return SGValue(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_signbit_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.bool)])))
-    }
-    return SGValue(source: .error("Unsupported input data types in MTLSignbit(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
-}
-/// Hyperbolic Sin
-public func MTLSinh<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinh_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLSinh(x: \(x.dataType))", values: [x]))
-}
-/// Sin Pi
-public func MTLSinpi<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_sinpi_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLSinpi(x: \(x.dataType))", values: [x]))
-}
-/// Hyperbolic Tan
-public func MTLTanh<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanh_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLTanh(x: \(x.dataType))", values: [x]))
-}
-/// Tan Pi
-public func MTLTanpi<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_tanpi_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLTanpi(x: \(x.dataType))", values: [x]))
-}
-/// Truncate
-public func MTLTrunc<T>(x: T) -> T where T: SGNumeric {
-    if SGDataType.float.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_float",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.float, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.float)])))
-    }
-    if SGDataType.half.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_half",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.half, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.half)])))
-    }
-    if SGDataType.vector2h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_half2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    if SGDataType.vector3h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_half3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3h)])))
-    }
-    if SGDataType.vector4h.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_half4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    if SGDataType.vector2f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_vector2",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector2f)])))
-    }
-    if SGDataType.vector3f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_vector3",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector3f)])))
-    }
-    if SGDataType.vector4f.matches(x) {
-        return T(source: .nodeOutput(SGNode(
-            nodeType: "ND_MTL_trunc_vector4",
-            inputs: [
-                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    return T(source: .error("Unsupported input data types in MTLTrunc(x: \(x.dataType))", values: [x]))
-}
 /// Image 2D Array
 public func RealityKitTexture2DArray<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
@@ -3902,6 +1359,74 @@ public func acos<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in acos(in1: \(in1.dataType))", values: [in1]))
 }
+/// Inverse Hyperbolic Cos
+public func acosh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in acosh(x: \(x.dataType))", values: [x]))
+}
 /// Add
 public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
@@ -4206,6 +1731,142 @@ public func asin<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in asin(in1: \(in1.dataType))", values: [in1]))
 }
+/// Inverse Hyperbolic Sin
+public func asinh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in asinh(x: \(x.dataType))", values: [x]))
+}
+/// Inverse Tan
+public func atan<T>(yOverX: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_float",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.float, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.half, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half2",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector2h, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half3",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector3h, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half4",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector4h, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_vector2",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector2f, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_vector3",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector3f, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_vector4",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector4f, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in atan(yOverX: \(yOverX.dataType))", values: [yOverX]))
+}
 /// Atan2
 public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
     if SGDataType.float.matches(iny) && SGDataType.float.matches(inx) {
@@ -4281,6 +1942,74 @@ public func atan2<T>(iny: T, inx: T) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in atan2(iny: \(iny.dataType), inx: \(inx.dataType))", values: [iny, inx]))
+}
+/// Inverse Hyperbolic Tan
+public func atanh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in atanh(x: \(x.dataType))", values: [x]))
 }
 /// Blur
 public func blur<T>(_ in1: T, size: SGScalar? = nil, filtertype: SGBlurFilterType = SGBlurFilterType.box) -> T where T: SGNumeric {
@@ -4876,6 +2605,82 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
     }
     return T(source: .error("Unsupported input data types in contrast(in1: \(in1.dataType), amount: \(amount.dataType), pivot: \(pivot.dataType))", values: [in1, amount, pivot]))
 }
+/// Copy Sign
+public func copysign<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in copysign(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
+}
 /// Cos
 public func cos<T>(_ in1: T) -> T where T: SGNumeric {
     if SGDataType.float.matches(in1) {
@@ -4944,6 +2749,142 @@ public func cos<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in cos(in1: \(in1.dataType))", values: [in1]))
 }
+/// Hyperbolic Cos
+public func cosh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in cosh(x: \(x.dataType))", values: [x]))
+}
+/// Cos Pi
+public func cospi<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in cospi(x: \(x.dataType))", values: [x]))
+}
 /// Cross Product
 public func cross(_ in1: SGVector, _ in2: SGVector) -> SGVector {
     if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
@@ -4993,6 +2934,142 @@ public func determinant(_ in1: SGMatrix) -> SGScalar {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in determinant(in1: \(in1.dataType))", values: [in1]))
+}
+/// Screen-Space X Partial Derivative
+public func dfdx<T>(p: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_float",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.float, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.half, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_vector2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_vector3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_vector4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in dfdx(p: \(p.dataType))", values: [p]))
+}
+/// Screen-Space Y Partial Derivative
+public func dfdy<T>(p: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_float",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.float, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.half, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_vector2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_vector3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_vector4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in dfdy(p: \(p.dataType))", values: [p]))
 }
 /// Difference
 public func difference<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
@@ -5057,6 +3134,198 @@ public func disjointover(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? 
             .init(name: "mix", dataType: SGDataType.float, connection: mix),
         ],
         outputs: [.init(dataType: SGDataType.color4f)])))
+}
+/// Distance
+public func distanceHalf2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2h.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2h.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceHalf2 input. Expected y data type to be SGDataType.vector2h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_half2_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance
+public func distanceHalf3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3h.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3h.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceHalf3 input. Expected y data type to be SGDataType.vector3h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_half3_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance
+public func distanceHalf4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4h.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4h.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceHalf4 input. Expected y data type to be SGDataType.vector4h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_half4_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func distanceSquaredHalf2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2h.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceSquaredHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2h.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceSquaredHalf2 input. Expected y data type to be SGDataType.vector2h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_half2_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func distanceSquaredHalf3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3h.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceSquaredHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3h.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceSquaredHalf3 input. Expected y data type to be SGDataType.vector3h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_half3_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func distanceSquaredHalf4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4h.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceSquaredHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4h.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceSquaredHalf4 input. Expected y data type to be SGDataType.vector4h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_half4_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func distanceSquaredVector2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceSquaredVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2f.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceSquaredVector2 input. Expected y data type to be SGDataType.vector2f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_vector2_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance Square
+public func distanceSquaredVector3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceSquaredVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3f.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceSquaredVector3 input. Expected y data type to be SGDataType.vector3f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_vector3_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance Square
+public func distanceSquaredVector4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4f.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceSquaredVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4f.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceSquaredVector4 input. Expected y data type to be SGDataType.vector4f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_vector4_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance
+public func distanceVector2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2f.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceVector2 input. Expected y data type to be SGDataType.vector2f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_vector2_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance
+public func distanceVector3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3f.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceVector3 input. Expected y data type to be SGDataType.vector3f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_vector3_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance
+public func distanceVector4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4f.matches(x) else {
+        return SGScalar(source: .error("Invalid distanceVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4f.matches(y) else {
+        return SGScalar(source: .error("Invalid distanceVector4 input. Expected y data type to be SGDataType.vector4f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_vector4_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Divide
 public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
@@ -5394,6 +3663,142 @@ public func exp<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in exp(in1: \(in1.dataType))", values: [in1]))
 }
+/// Exponential 10
+public func exp10<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in exp10(x: \(x.dataType))", values: [x]))
+}
+/// Exponential 2
+public func exp2<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in exp2(x: \(x.dataType))", values: [x]))
+}
 /// Extract
 public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
     if SGDataType.color3f.matches(in1) {
@@ -5469,6 +3874,82 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in extract(in1: \(in1.dataType))", values: [in1]))
+}
+/// Fortran Difference and Minimum
+public func fdim<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in fdim(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
 }
 /// Floor
 public func floor<T>(_ in1: T) -> T where T: SGNumeric {
@@ -5553,6 +4034,166 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in floor(in1: \(in1.dataType))", values: [in1]))
+}
+/// Fused Multiply-Add
+public func fma<T>(a: T, b: T, c: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(a) && SGDataType.float.matches(b) && SGDataType.float.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_float",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.float, connection: a),
+                .init(name: "b", dataType: SGDataType.float, connection: b),
+                .init(name: "c", dataType: SGDataType.float, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(a) && SGDataType.half.matches(b) && SGDataType.half.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.half, connection: a),
+                .init(name: "b", dataType: SGDataType.half, connection: b),
+                .init(name: "c", dataType: SGDataType.half, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(a) && SGDataType.vector2h.matches(b) && SGDataType.vector2h.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half2",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector2h, connection: a),
+                .init(name: "b", dataType: SGDataType.vector2h, connection: b),
+                .init(name: "c", dataType: SGDataType.vector2h, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(a) && SGDataType.vector3h.matches(b) && SGDataType.vector3h.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half3",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector3h, connection: a),
+                .init(name: "b", dataType: SGDataType.vector3h, connection: b),
+                .init(name: "c", dataType: SGDataType.vector3h, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(a) && SGDataType.vector4h.matches(b) && SGDataType.vector4h.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half4",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector4h, connection: a),
+                .init(name: "b", dataType: SGDataType.vector4h, connection: b),
+                .init(name: "c", dataType: SGDataType.vector4h, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(a) && SGDataType.vector2f.matches(b) && SGDataType.vector2f.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_vector2",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector2f, connection: a),
+                .init(name: "b", dataType: SGDataType.vector2f, connection: b),
+                .init(name: "c", dataType: SGDataType.vector2f, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(a) && SGDataType.vector3f.matches(b) && SGDataType.vector3f.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_vector3",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector3f, connection: a),
+                .init(name: "b", dataType: SGDataType.vector3f, connection: b),
+                .init(name: "c", dataType: SGDataType.vector3f, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(a) && SGDataType.vector4f.matches(b) && SGDataType.vector4f.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_vector4",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector4f, connection: a),
+                .init(name: "b", dataType: SGDataType.vector4f, connection: b),
+                .init(name: "c", dataType: SGDataType.vector4f, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in fma(a: \(a.dataType), b: \(b.dataType), c: \(c.dataType))", values: [a, b, c]))
+}
+/// Modulo
+public func fmod<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in fmod(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
 }
 /// Fractional
 public func fract<T>(_ in1: T) -> T where T: SGNumeric {
@@ -5785,6 +4426,74 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return SGNumeric(source: .error("Unsupported input data types in fractal3D(amplitude: \(amplitude.dataType))", values: [amplitude]))
+}
+/// Absolute Derivatives Sum
+public func fwidth<T>(p: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_float",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.float, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.half, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_vector2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_vector3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_vector4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in fwidth(p: \(p.dataType))", values: [p]))
 }
 /// Camera Index Switch
 public func geometrySwitchCameraIndex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
@@ -6968,6 +5677,130 @@ public func invertMatrix(_ in1: SGMatrix) -> SGMatrix {
     }
     return SGMatrix(source: .error("Unsupported input data types in invertMatrix(in1: \(in1.dataType))", values: [in1]))
 }
+/// Is Finite
+public func isfinite(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isfinite_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isfinite_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in isfinite(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Infinite
+public func isinf(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isinf_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isinf_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in isinf(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Not a Number
+public func isnan(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnan_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnan_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in isnan(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Normal
+public func isnormal(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnormal_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnormal_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in isnormal(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Ordered
+public func isordered(x: SGScalar? = nil, y: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isordered_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isordered_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in isordered(x: \(x?.dataType.rawValue ?? "nil"), y: \(y?.dataType.rawValue ?? "nil"))", values: [x, y]))
+}
+/// Is Unordered
+public func isunordered(x: SGScalar? = nil, y: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isunordered_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isunordered_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in isunordered(x: \(x?.dataType.rawValue ?? "nil"), y: \(y?.dataType.rawValue ?? "nil"))", values: [x, y]))
+}
 /// Magnitude
 public func length(_ in1: SGVector) -> SGScalar {
     if SGDataType.vector2h.matches(in1) {
@@ -7019,6 +5852,78 @@ public func length(_ in1: SGVector) -> SGScalar {
             outputs: [.init(dataType: SGDataType.float)])))
     }
     return SGScalar(source: .error("Unsupported input data types in length(in1: \(in1.dataType))", values: [in1]))
+}
+/// Magnitude Square
+public func lengthSquaredHalf2(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2h.matches(x) else {
+        return SGScalar(source: .error("Invalid lengthSquaredHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_half2_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Magnitude Square
+public func lengthSquaredHalf3(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3h.matches(x) else {
+        return SGScalar(source: .error("Invalid lengthSquaredHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_half3_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Magnitude Square
+public func lengthSquaredHalf4(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4h.matches(x) else {
+        return SGScalar(source: .error("Invalid lengthSquaredHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_half4_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Magnitude Square
+public func lengthSquaredVector2(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(x) else {
+        return SGScalar(source: .error("Invalid lengthSquaredVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_vector2_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Magnitude Square
+public func lengthSquaredVector3(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(x) else {
+        return SGScalar(source: .error("Invalid lengthSquaredVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_vector3_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Magnitude Square
+public func lengthSquaredVector4(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4f.matches(x) else {
+        return SGScalar(source: .error("Invalid lengthSquaredVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_vector4_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
 }
 /// Reflection Diffuse
 public func lightSpillDiffuse(emitterUV: SGVector? = nil, attenuationUV: SGVector? = nil, attenuationMap: SGTexture) -> SGColor {
@@ -7132,6 +6037,142 @@ public func log<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in log(in1: \(in1.dataType))", values: [in1]))
 }
+/// Log 10
+public func log10<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in log10(x: \(x.dataType))", values: [x]))
+}
+/// Log 2
+public func log2<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in log2(x: \(x.dataType))", values: [x]))
+}
 /// And
 public func logicalAnd(_ in1: SGValue, _ in2: SGValue) -> SGValue {
     guard SGDataType.bool.matches(in1) else {
@@ -7217,6 +6258,26 @@ public func luminance(_ in1: SGColor, lumacoeffs: SGColor? = nil) -> SGColor {
     }
     return SGColor(source: .error("Unsupported input data types in luminance(in1: \(in1.dataType))", values: [in1]))
 }
+/// Multiply Add 24
+public func mad24(x: SGScalar? = nil, y: SGScalar? = nil, z: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid mad24 input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid mad24 input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    guard SGDataType.int.matches(z) else {
+        return SGScalar(source: .error("Invalid mad24 input. Expected z data type to be SGDataType.int, but got \(z?.dataType.rawValue ?? "nil").", values: [z]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_mad24_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+            .init(name: "z", dataType: SGDataType.int, connection: z),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
+}
 /// Mask
 public func mask(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) -> SGColor {
     guard SGDataType.color4f.matches(fg) else {
@@ -7256,6 +6317,22 @@ public func matte(fg: SGColor? = nil, bg: SGColor? = nil, mix: SGScalar? = nil) 
             .init(name: "mix", dataType: SGDataType.float, connection: mix),
         ],
         outputs: [.init(dataType: SGDataType.color4f)])))
+}
+/// Max
+public func max(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid max input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid max input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_max_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
 }
 /// Max
 public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
@@ -7423,6 +6500,210 @@ public func max<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in max(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
+/// Max3
+public func max3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+                .init(name: "z", dataType: SGDataType.float, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+                .init(name: "z", dataType: SGDataType.half, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_integer",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in max3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
+}
+/// Median3
+public func median3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+                .init(name: "z", dataType: SGDataType.float, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+                .init(name: "z", dataType: SGDataType.half, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_integer",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in median3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
+}
+/// Min
+public func min(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid min input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid min input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_min_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
+}
 /// Min
 public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(in1) && SGDataType.color3f.matches(in2) {
@@ -7588,6 +6869,100 @@ public func min<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in min(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
+}
+/// Min3
+public func min3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+                .init(name: "z", dataType: SGDataType.float, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+                .init(name: "z", dataType: SGDataType.half, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_integer",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in min3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
 }
 /// Subtractive Mix
 public func minus<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeric {
@@ -7922,6 +7297,22 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in modulo(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
+}
+/// Multiply 24
+public func mul24(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid mul24 input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid mul24 input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_mul24_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
 }
 /// Multiply
 public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
@@ -9186,6 +8577,82 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in pow(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
+/// Power Positive
+public func powr<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in powr(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
+}
 /// Premultiply
 public func premult(_ in1: SGColor) -> SGColor {
     guard SGDataType.color4f.matches(in1) else {
@@ -10016,6 +9483,74 @@ public func rgbToHSV(_ in1: SGColor) -> SGColor {
     }
     return SGColor(source: .error("Unsupported input data types in rgbToHSV(in1: \(in1.dataType))", values: [in1]))
 }
+/// Round Integral
+public func rint<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in rint(x: \(x.dataType))", values: [x]))
+}
 /// Rotate 2D
 public func rotate2D(_ in1: SGVector, amount: SGScalar? = nil) -> SGVector {
     guard SGDataType.vector2f.matches(in1) else {
@@ -10135,6 +9670,74 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in round(in1: \(in1.dataType))", values: [in1]))
+}
+/// Reciprocal Square Root
+public func rsqrt<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in rsqrt(x: \(x.dataType))", values: [x]))
 }
 /// Safe Power
 public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
@@ -10814,6 +10417,43 @@ public func screen<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumeri
     }
     return T(source: .error("Unsupported input data types in screen(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
+/// Select
+public func select(a: SGScalar? = nil, b: SGScalar? = nil, c: SGValue? = nil) -> SGScalar {
+    guard SGDataType.bool.matches(c) else {
+        return SGScalar(source: .error("Invalid select input. Expected c data type to be SGDataType.bool, but got \(c?.dataType.rawValue ?? "nil").", values: [c]))
+    }
+    if SGDataType.float.matches(a) && SGDataType.float.matches(b) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_select_float",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.float, connection: a),
+                .init(name: "b", dataType: SGDataType.float, connection: b),
+                .init(name: "c", dataType: SGDataType.bool, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(a) && SGDataType.half.matches(b) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_select_half",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.half, connection: a),
+                .init(name: "b", dataType: SGDataType.half, connection: b),
+                .init(name: "c", dataType: SGDataType.bool, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.int.matches(a) && SGDataType.int.matches(b) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_select_integer",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.int, connection: a),
+                .init(name: "b", dataType: SGDataType.int, connection: b),
+                .init(name: "c", dataType: SGDataType.bool, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    return SGScalar(source: .error("Unsupported input data types in select(a: \(a?.dataType.rawValue ?? "nil"), b: \(b?.dataType.rawValue ?? "nil"))", values: [a, b]))
+}
 /// Sign
 public func sign<T>(_ in1: T) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(in1) {
@@ -10898,6 +10538,26 @@ public func sign<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in sign(in1: \(in1.dataType))", values: [in1]))
 }
+/// Sign Bit
+public func signbit(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_signbit_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_signbit_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in signbit(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
 /// Sin
 public func sin<T>(_ in1: T) -> T where T: SGNumeric {
     if SGDataType.float.matches(in1) {
@@ -10965,6 +10625,142 @@ public func sin<T>(_ in1: T) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in sin(in1: \(in1.dataType))", values: [in1]))
+}
+/// Hyperbolic Sin
+public func sinh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sinh(x: \(x.dataType))", values: [x]))
+}
+/// Sin Pi
+public func sinpi<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in sinpi(x: \(x.dataType))", values: [x]))
 }
 /// Smooth Step
 public func smoothStep<T>(_ in1: T, low: SGNumeric, high: SGNumeric) -> T where T: SGNumeric {
@@ -12204,6 +12000,142 @@ public func tan<T>(_ in1: T) -> T where T: SGNumeric {
     }
     return T(source: .error("Unsupported input data types in tan(in1: \(in1.dataType))", values: [in1]))
 }
+/// Hyperbolic Tan
+public func tanh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in tanh(x: \(x.dataType))", values: [x]))
+}
+/// Tan Pi
+public func tanpi<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in tanpi(x: \(x.dataType))", values: [x]))
+}
 /// Tiled Image
 public func tiledImage<T>(file: SGTexture, defaultValue: T, texcoord: SGVector? = nil, uvtiling: SGVector? = nil, uvoffset: SGVector? = nil, realworldimagesize: SGVector? = nil, realworldtilesize: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
     guard SGDataType.asset.matches(file) else {
@@ -12553,6 +12485,74 @@ public func triplanarProjection<T>(filex: SGTexture, filey: SGTexture, filez: SG
     }
     return T(source: .error("Unsupported input data types in triplanarProjection(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
+/// Truncate
+public func trunc<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in trunc(x: \(x.dataType))", values: [x]))
+}
 /// Unlit Surface
 public func unlitSurface(color: SGColor? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, applyPostProcessToneMap: Bool = true, hasPremultipliedAlpha: Bool = false) -> SGToken {
     guard SGDataType.color3f.matches(color) else {
@@ -12706,118 +12706,6 @@ public extension SGValue {
     }
 }
 public extension SGNumeric {
-    /// Inverse Hyperbolic Cos
-    func MTLAcosh() -> Self {
-        ShaderGraphCoder.MTLAcosh(x: self)
-    }
-    /// Inverse Hyperbolic Sin
-    func MTLAsinh() -> Self {
-        ShaderGraphCoder.MTLAsinh(x: self)
-    }
-    /// Inverse Tan
-    func MTLAtan() -> Self {
-        ShaderGraphCoder.MTLAtan(yOverX: self)
-    }
-    /// Inverse Hyperbolic Tan
-    func MTLAtanh() -> Self {
-        ShaderGraphCoder.MTLAtanh(x: self)
-    }
-    /// Copy Sign
-    func MTLCopysign(y: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLCopysign(x: self, y: y) as! Self
-    }
-    /// Hyperbolic Cos
-    func MTLCosh() -> Self {
-        ShaderGraphCoder.MTLCosh(x: self)
-    }
-    /// Cos Pi
-    func MTLCospi() -> Self {
-        ShaderGraphCoder.MTLCospi(x: self)
-    }
-    /// Screen-Space X Partial Derivative
-    func MTLDfdx() -> Self {
-        ShaderGraphCoder.MTLDfdx(p: self)
-    }
-    /// Screen-Space Y Partial Derivative
-    func MTLDfdy() -> Self {
-        ShaderGraphCoder.MTLDfdy(p: self)
-    }
-    /// Exponential 10
-    func MTLExp10() -> Self {
-        ShaderGraphCoder.MTLExp10(x: self)
-    }
-    /// Exponential 2
-    func MTLExp2() -> Self {
-        ShaderGraphCoder.MTLExp2(x: self)
-    }
-    /// Fortran Difference and Minimum
-    func MTLFdim(y: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLFdim(x: self, y: y) as! Self
-    }
-    /// Fused Multiply-Add
-    func MTLFma(b: SGNumeric, c: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLFma(a: self, b: b, c: c) as! Self
-    }
-    /// Modulo
-    func MTLFmod(y: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLFmod(x: self, y: y) as! Self
-    }
-    /// Absolute Derivatives Sum
-    func MTLFwidth() -> Self {
-        ShaderGraphCoder.MTLFwidth(p: self)
-    }
-    /// Log 10
-    func MTLLog10() -> Self {
-        ShaderGraphCoder.MTLLog10(x: self)
-    }
-    /// Log 2
-    func MTLLog2() -> Self {
-        ShaderGraphCoder.MTLLog2(x: self)
-    }
-    /// Max3
-    func MTLMax3(y: SGNumeric, z: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLMax3(x: self, y: y, z: z) as! Self
-    }
-    /// Median3
-    func MTLMedian3(y: SGNumeric, z: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLMedian3(x: self, y: y, z: z) as! Self
-    }
-    /// Min3
-    func MTLMin3(y: SGNumeric, z: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLMin3(x: self, y: y, z: z) as! Self
-    }
-    /// Power Positive
-    func MTLPowr(y: SGNumeric) -> Self {
-        ShaderGraphCoder.MTLPowr(x: self, y: y) as! Self
-    }
-    /// Round Integral
-    func MTLRint() -> Self {
-        ShaderGraphCoder.MTLRint(x: self)
-    }
-    /// Reciprocal Square Root
-    func MTLRsqrt() -> Self {
-        ShaderGraphCoder.MTLRsqrt(x: self)
-    }
-    /// Hyperbolic Sin
-    func MTLSinh() -> Self {
-        ShaderGraphCoder.MTLSinh(x: self)
-    }
-    /// Sin Pi
-    func MTLSinpi() -> Self {
-        ShaderGraphCoder.MTLSinpi(x: self)
-    }
-    /// Hyperbolic Tan
-    func MTLTanh() -> Self {
-        ShaderGraphCoder.MTLTanh(x: self)
-    }
-    /// Tan Pi
-    func MTLTanpi() -> Self {
-        ShaderGraphCoder.MTLTanpi(x: self)
-    }
-    /// Truncate
-    func MTLTrunc() -> Self {
-        ShaderGraphCoder.MTLTrunc(x: self)
-    }
     /// Abs
     func abs() -> Self {
         ShaderGraphCoder.abs(self)
@@ -12825,6 +12713,10 @@ public extension SGNumeric {
     /// Acos
     func acos() -> Self {
         ShaderGraphCoder.acos(self)
+    }
+    /// Inverse Hyperbolic Cos
+    func acosh() -> Self {
+        ShaderGraphCoder.acosh(x: self)
     }
     /// Add
     func add(_ in2: SGNumeric) -> Self {
@@ -12834,9 +12726,21 @@ public extension SGNumeric {
     func asin() -> Self {
         ShaderGraphCoder.asin(self)
     }
+    /// Inverse Hyperbolic Sin
+    func asinh() -> Self {
+        ShaderGraphCoder.asinh(x: self)
+    }
+    /// Inverse Tan
+    func atan() -> Self {
+        ShaderGraphCoder.atan(yOverX: self)
+    }
     /// Atan2
     func atan2(inx: SGNumeric) -> Self {
         ShaderGraphCoder.atan2(iny: self, inx: inx) as! Self
+    }
+    /// Inverse Hyperbolic Tan
+    func atanh() -> Self {
+        ShaderGraphCoder.atanh(x: self)
     }
     /// Blur
     func blur(size: SGScalar? = nil, filtertype: SGBlurFilterType = SGBlurFilterType.box) -> Self {
@@ -12858,9 +12762,29 @@ public extension SGNumeric {
     func contrast(amount: SGNumeric, pivot: SGNumeric) -> Self {
         ShaderGraphCoder.contrast(self, amount: amount, pivot: pivot)
     }
+    /// Copy Sign
+    func copysign(y: SGNumeric) -> Self {
+        ShaderGraphCoder.copysign(x: self, y: y) as! Self
+    }
     /// Cos
     func cos() -> Self {
         ShaderGraphCoder.cos(self)
+    }
+    /// Hyperbolic Cos
+    func cosh() -> Self {
+        ShaderGraphCoder.cosh(x: self)
+    }
+    /// Cos Pi
+    func cospi() -> Self {
+        ShaderGraphCoder.cospi(x: self)
+    }
+    /// Screen-Space X Partial Derivative
+    func dfdx() -> Self {
+        ShaderGraphCoder.dfdx(p: self)
+    }
+    /// Screen-Space Y Partial Derivative
+    func dfdy() -> Self {
+        ShaderGraphCoder.dfdy(p: self)
     }
     /// Difference
     func difference(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
@@ -12878,9 +12802,29 @@ public extension SGNumeric {
     func exp() -> Self {
         ShaderGraphCoder.exp(self)
     }
+    /// Exponential 10
+    func exp10() -> Self {
+        ShaderGraphCoder.exp10(x: self)
+    }
+    /// Exponential 2
+    func exp2() -> Self {
+        ShaderGraphCoder.exp2(x: self)
+    }
+    /// Fortran Difference and Minimum
+    func fdim(y: SGNumeric) -> Self {
+        ShaderGraphCoder.fdim(x: self, y: y) as! Self
+    }
     /// Floor
     func floor() -> Self {
         ShaderGraphCoder.floor(self)
+    }
+    /// Fused Multiply-Add
+    func fma(b: SGNumeric, c: SGNumeric) -> Self {
+        ShaderGraphCoder.fma(a: self, b: b, c: c) as! Self
+    }
+    /// Modulo
+    func fmod(y: SGNumeric) -> Self {
+        ShaderGraphCoder.fmod(x: self, y: y) as! Self
     }
     /// Fractional
     func fract() -> Self {
@@ -12889,6 +12833,10 @@ public extension SGNumeric {
     /// Fractal Noise 3D
     func fractal3D(octaves: SGScalar? = nil, lacunarity: SGScalar? = nil, diminish: SGScalar? = nil, position: SGVector? = nil) -> SGNumeric {
         ShaderGraphCoder.fractal3D(amplitude: self, octaves: octaves, lacunarity: lacunarity, diminish: diminish, position: position)
+    }
+    /// Absolute Derivatives Sum
+    func fwidth() -> Self {
+        ShaderGraphCoder.fwidth(p: self)
     }
     /// Camera Index Switch
     func geometrySwitchCameraIndex(left: SGNumeric, right: SGNumeric) -> Self {
@@ -12902,13 +12850,33 @@ public extension SGNumeric {
     func log() -> Self {
         ShaderGraphCoder.log(self)
     }
+    /// Log 10
+    func log10() -> Self {
+        ShaderGraphCoder.log10(x: self)
+    }
+    /// Log 2
+    func log2() -> Self {
+        ShaderGraphCoder.log2(x: self)
+    }
     /// Max
     func max(_ in2: SGNumeric) -> Self {
         ShaderGraphCoder.max(self, in2)
     }
+    /// Max3
+    func max3(y: SGNumeric, z: SGNumeric) -> Self {
+        ShaderGraphCoder.max3(x: self, y: y, z: z) as! Self
+    }
+    /// Median3
+    func median3(y: SGNumeric, z: SGNumeric) -> Self {
+        ShaderGraphCoder.median3(x: self, y: y, z: z) as! Self
+    }
     /// Min
     func min(_ in2: SGNumeric) -> Self {
         ShaderGraphCoder.min(self, in2)
+    }
+    /// Min3
+    func min3(y: SGNumeric, z: SGNumeric) -> Self {
+        ShaderGraphCoder.min3(x: self, y: y, z: z) as! Self
     }
     /// Subtractive Mix
     func minus(bg: SGNumeric, mix: SGScalar? = nil) -> Self {
@@ -12954,6 +12922,10 @@ public extension SGNumeric {
     func pow(_ in2: SGNumeric) -> Self {
         ShaderGraphCoder.pow(self, in2)
     }
+    /// Power Positive
+    func powr(y: SGNumeric) -> Self {
+        ShaderGraphCoder.powr(x: self, y: y) as! Self
+    }
     /// Ramp 4 Corners
     func ramp4(valuetr: SGNumeric, valuebl: SGNumeric, valuebr: SGNumeric, texcoord: SGVector? = nil) -> Self {
         ShaderGraphCoder.ramp4(valuetl: self, valuetr: valuetr, valuebl: valuebl, valuebr: valuebr, texcoord: texcoord) as! Self
@@ -12974,9 +12946,17 @@ public extension SGNumeric {
     func remap(inlow: SGNumeric, inhigh: SGNumeric, outlow: SGNumeric, outhigh: SGNumeric) -> Self {
         ShaderGraphCoder.remap(self, inlow: inlow, inhigh: inhigh, outlow: outlow, outhigh: outhigh)
     }
+    /// Round Integral
+    func rint() -> Self {
+        ShaderGraphCoder.rint(x: self)
+    }
     /// Round
     func round() -> Self {
         ShaderGraphCoder.round(self)
+    }
+    /// Reciprocal Square Root
+    func rsqrt() -> Self {
+        ShaderGraphCoder.rsqrt(x: self)
     }
     /// Safe Power
     func safePow(_ in2: SGNumeric) -> Self {
@@ -12993,6 +12973,14 @@ public extension SGNumeric {
     /// Sin
     func sin() -> Self {
         ShaderGraphCoder.sin(self)
+    }
+    /// Hyperbolic Sin
+    func sinh() -> Self {
+        ShaderGraphCoder.sinh(x: self)
+    }
+    /// Sin Pi
+    func sinpi() -> Self {
+        ShaderGraphCoder.sinpi(x: self)
     }
     /// Smooth Step
     func smoothStep(low: SGNumeric, high: SGNumeric) -> Self {
@@ -13026,56 +13014,20 @@ public extension SGNumeric {
     func tan() -> Self {
         ShaderGraphCoder.tan(self)
     }
+    /// Hyperbolic Tan
+    func tanh() -> Self {
+        ShaderGraphCoder.tanh(x: self)
+    }
+    /// Tan Pi
+    func tanpi() -> Self {
+        ShaderGraphCoder.tanpi(x: self)
+    }
+    /// Truncate
+    func trunc() -> Self {
+        ShaderGraphCoder.trunc(x: self)
+    }
 }
 public extension SGScalar {
-    /// Is Finite
-    func MTLIsfinite() -> SGValue {
-        ShaderGraphCoder.MTLIsfinite(x: self)
-    }
-    /// Is Infinite
-    func MTLIsinf() -> SGValue {
-        ShaderGraphCoder.MTLIsinf(x: self)
-    }
-    /// Is Not a Number
-    func MTLIsnan() -> SGValue {
-        ShaderGraphCoder.MTLIsnan(x: self)
-    }
-    /// Is Normal
-    func MTLIsnormal() -> SGValue {
-        ShaderGraphCoder.MTLIsnormal(x: self)
-    }
-    /// Is Ordered
-    func MTLIsordered(y: SGScalar? = nil) -> SGValue {
-        ShaderGraphCoder.MTLIsordered(x: self, y: y)
-    }
-    /// Is Unordered
-    func MTLIsunordered(y: SGScalar? = nil) -> SGValue {
-        ShaderGraphCoder.MTLIsunordered(x: self, y: y)
-    }
-    /// Multiply Add 24
-    func MTLMad24(y: SGScalar? = nil, z: SGScalar? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLMad24(x: self, y: y, z: z)
-    }
-    /// Max
-    func MTLMax(y: SGScalar? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLMax(x: self, y: y)
-    }
-    /// Min
-    func MTLMin(y: SGScalar? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLMin(x: self, y: y)
-    }
-    /// Multiply 24
-    func MTLMul24(y: SGScalar? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLMul24(x: self, y: y)
-    }
-    /// Select
-    func MTLSelect(b: SGScalar? = nil, c: SGValue? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLSelect(a: self, b: b, c: c)
-    }
-    /// Sign Bit
-    func MTLSignbit() -> SGValue {
-        ShaderGraphCoder.MTLSignbit(x: self)
-    }
     /// Ambient Occlusion
     func ambientOcclusion(maxdistance: SGScalar? = nil) -> SGScalar {
         ShaderGraphCoder.ambientOcclusion(coneangle: self, maxdistance: maxdistance)
@@ -13091,6 +13043,54 @@ public extension SGScalar {
     /// If Greater Or Equal
     func ifGreaterOrEqual<T>(_ value2: SGScalar, trueResult: T, falseResult: T) -> T where T: SGNumeric {
         ShaderGraphCoder.ifGreaterOrEqual(self, value2, trueResult: trueResult, falseResult: falseResult)
+    }
+    /// Is Finite
+    func isfinite() -> SGValue {
+        ShaderGraphCoder.isfinite(x: self)
+    }
+    /// Is Infinite
+    func isinf() -> SGValue {
+        ShaderGraphCoder.isinf(x: self)
+    }
+    /// Is Not a Number
+    func isnan() -> SGValue {
+        ShaderGraphCoder.isnan(x: self)
+    }
+    /// Is Normal
+    func isnormal() -> SGValue {
+        ShaderGraphCoder.isnormal(x: self)
+    }
+    /// Is Ordered
+    func isordered(y: SGScalar? = nil) -> SGValue {
+        ShaderGraphCoder.isordered(x: self, y: y)
+    }
+    /// Is Unordered
+    func isunordered(y: SGScalar? = nil) -> SGValue {
+        ShaderGraphCoder.isunordered(x: self, y: y)
+    }
+    /// Multiply Add 24
+    func mad24(y: SGScalar? = nil, z: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.mad24(x: self, y: y, z: z)
+    }
+    /// Max
+    func max(y: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.max(x: self, y: y)
+    }
+    /// Min
+    func min(y: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.min(x: self, y: y)
+    }
+    /// Multiply 24
+    func mul24(y: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.mul24(x: self, y: y)
+    }
+    /// Select
+    func select(b: SGScalar? = nil, c: SGValue? = nil) -> SGScalar {
+        ShaderGraphCoder.select(a: self, b: b, c: c)
+    }
+    /// Sign Bit
+    func signbit() -> SGValue {
+        ShaderGraphCoder.signbit(x: self)
     }
 }
 public extension SGSIMD {
@@ -13162,78 +13162,6 @@ public extension SGColor {
     }
 }
 public extension SGVector {
-    /// Distance
-    func MTLDistanceHalf2(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceHalf2(x: self, y: y)
-    }
-    /// Distance
-    func MTLDistanceHalf3(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceHalf3(x: self, y: y)
-    }
-    /// Distance
-    func MTLDistanceHalf4(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceHalf4(x: self, y: y)
-    }
-    /// Distance Square
-    func MTLDistanceSquaredHalf2(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceSquaredHalf2(x: self, y: y)
-    }
-    /// Distance Square
-    func MTLDistanceSquaredHalf3(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceSquaredHalf3(x: self, y: y)
-    }
-    /// Distance Square
-    func MTLDistanceSquaredHalf4(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceSquaredHalf4(x: self, y: y)
-    }
-    /// Distance Square
-    func MTLDistanceSquaredVector2(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceSquaredVector2(x: self, y: y)
-    }
-    /// Distance Square
-    func MTLDistanceSquaredVector3(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceSquaredVector3(x: self, y: y)
-    }
-    /// Distance Square
-    func MTLDistanceSquaredVector4(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceSquaredVector4(x: self, y: y)
-    }
-    /// Distance
-    func MTLDistanceVector2(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceVector2(x: self, y: y)
-    }
-    /// Distance
-    func MTLDistanceVector3(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceVector3(x: self, y: y)
-    }
-    /// Distance
-    func MTLDistanceVector4(y: SGVector? = nil) -> SGScalar {
-        ShaderGraphCoder.MTLDistanceVector4(x: self, y: y)
-    }
-    /// Magnitude Square
-    func MTLLengthSquaredHalf2() -> SGScalar {
-        ShaderGraphCoder.MTLLengthSquaredHalf2(x: self)
-    }
-    /// Magnitude Square
-    func MTLLengthSquaredHalf3() -> SGScalar {
-        ShaderGraphCoder.MTLLengthSquaredHalf3(x: self)
-    }
-    /// Magnitude Square
-    func MTLLengthSquaredHalf4() -> SGScalar {
-        ShaderGraphCoder.MTLLengthSquaredHalf4(x: self)
-    }
-    /// Magnitude Square
-    func MTLLengthSquaredVector2() -> SGScalar {
-        ShaderGraphCoder.MTLLengthSquaredVector2(x: self)
-    }
-    /// Magnitude Square
-    func MTLLengthSquaredVector3() -> SGScalar {
-        ShaderGraphCoder.MTLLengthSquaredVector3(x: self)
-    }
-    /// Magnitude Square
-    func MTLLengthSquaredVector4() -> SGScalar {
-        ShaderGraphCoder.MTLLengthSquaredVector4(x: self)
-    }
     /// Cellular Noise 2D
     func cellNoise2D() -> SGScalar {
         ShaderGraphCoder.cellNoise2D(texcoord: self)
@@ -13246,6 +13174,54 @@ public extension SGVector {
     func cross(_ in2: SGVector) -> SGVector {
         ShaderGraphCoder.cross(self, in2)
     }
+    /// Distance
+    func distanceHalf2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceHalf2(x: self, y: y)
+    }
+    /// Distance
+    func distanceHalf3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceHalf3(x: self, y: y)
+    }
+    /// Distance
+    func distanceHalf4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceHalf4(x: self, y: y)
+    }
+    /// Distance Square
+    func distanceSquaredHalf2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceSquaredHalf2(x: self, y: y)
+    }
+    /// Distance Square
+    func distanceSquaredHalf3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceSquaredHalf3(x: self, y: y)
+    }
+    /// Distance Square
+    func distanceSquaredHalf4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceSquaredHalf4(x: self, y: y)
+    }
+    /// Distance Square
+    func distanceSquaredVector2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceSquaredVector2(x: self, y: y)
+    }
+    /// Distance Square
+    func distanceSquaredVector3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceSquaredVector3(x: self, y: y)
+    }
+    /// Distance Square
+    func distanceSquaredVector4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceSquaredVector4(x: self, y: y)
+    }
+    /// Distance
+    func distanceVector2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceVector2(x: self, y: y)
+    }
+    /// Distance
+    func distanceVector3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceVector3(x: self, y: y)
+    }
+    /// Distance
+    func distanceVector4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.distanceVector4(x: self, y: y)
+    }
     /// Dot Product
     func dot(_ in2: SGVector) -> SGScalar {
         ShaderGraphCoder.dot(self, in2)
@@ -13257,6 +13233,30 @@ public extension SGVector {
     /// Magnitude
     func length() -> SGScalar {
         ShaderGraphCoder.length(self)
+    }
+    /// Magnitude Square
+    func lengthSquaredHalf2() -> SGScalar {
+        ShaderGraphCoder.lengthSquaredHalf2(x: self)
+    }
+    /// Magnitude Square
+    func lengthSquaredHalf3() -> SGScalar {
+        ShaderGraphCoder.lengthSquaredHalf3(x: self)
+    }
+    /// Magnitude Square
+    func lengthSquaredHalf4() -> SGScalar {
+        ShaderGraphCoder.lengthSquaredHalf4(x: self)
+    }
+    /// Magnitude Square
+    func lengthSquaredVector2() -> SGScalar {
+        ShaderGraphCoder.lengthSquaredVector2(x: self)
+    }
+    /// Magnitude Square
+    func lengthSquaredVector3() -> SGScalar {
+        ShaderGraphCoder.lengthSquaredVector3(x: self)
+    }
+    /// Magnitude Square
+    func lengthSquaredVector4() -> SGScalar {
+        ShaderGraphCoder.lengthSquaredVector4(x: self)
     }
     /// Reflection Diffuse
     func lightSpillDiffuse(attenuationUV: SGVector? = nil, attenuationMap: SGTexture) -> SGColor {

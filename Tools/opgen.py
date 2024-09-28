@@ -731,6 +731,8 @@ def get_param_name(name: str, node: Node) -> str:
 def get_node_name(name: str) -> str:
     if name.startswith('ND_realitykit_'):
         name = name[len('ND_realitykit_'):]
+    elif name.startswith('ND_MTL_'):
+        name = name[len('ND_MTL_'):]
     elif name.startswith('ND_'):
         name = name[len('ND_'):]
     if name in node_renames:
@@ -977,7 +979,7 @@ def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, pr
         w.write(f"(")
         head = ""
         for i, input in enumerate(node.inputs):
-            if i >= 2:
+            if i >= 4:
                 w.write(f"{head}...")
                 break
             w.write(f"{head}{overloads.param_names[i]}")
