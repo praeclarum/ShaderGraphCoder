@@ -37,6 +37,8 @@ manual_node_prefixes = [
     'ND_dot_',
 
     'ND_geompropvalue',
+
+    'ND_MTL_abs_integer',
 ]
 
 param_renames: Dict[str, str] = {
@@ -323,6 +325,8 @@ class NodeOverloads():
         sgc_shared_param_type = [usd_type_to_sgc_type(p.usd_type) for p in first_node.inputs]
         for _, node in self.overloads[1:]:
             for i, input in enumerate(node.inputs):
+                if i >= len(usd_param_type_is_shared):
+                    break
                 if input.usd_type != usd_shared_param_type[i]:
                     usd_param_type_is_shared[i] = False
                 if usd_type_to_sgc_type(input.usd_type) != sgc_shared_param_type[i]:
@@ -364,15 +368,15 @@ class NodeOverloads():
         interface_only = [i.usd_type != "asset" for i in self.first_node().inputs]
         for _, node in self.overloads:
             for i, input in enumerate(node.inputs):
-                if not input.interface_only:
+                if i < len(interface_only) and not input.interface_only:
                     interface_only[i] = False
         return interface_only
     def find_primitive_params(self, interface_only_params: List[bool]) -> List[bool]:
         primitive = [True for i in self.first_node().inputs]
         for _, node in self.overloads:
             for i, input in enumerate(node.inputs):
-                is_primitive = input.is_enum or interface_only_params[i]
-                if not is_primitive:
+                is_primitive = input.is_enum or (i < len(interface_only_params) and interface_only_params[i])
+                if i < len(primitive) and not is_primitive:
                     primitive[i] = False
         return primitive
     def find_default_value_params(self, num_unnamed_params) -> List[Optional[object]]:
@@ -386,11 +390,11 @@ class NodeOverloads():
         default_value_valid = [v is not None for v in default_values]
         for _, node in self.overloads:
             for i, input in enumerate(node.inputs):
-                if default_value_valid[i]:
+                if i < len(default_value_valid) and default_value_valid[i]:
                     if input.default_value != default_values[i]:
                         default_value_valid[i] = False
         for i, valid in enumerate(default_value_valid):
-            if not valid:
+            if i < len(default_values) and not valid:
                 default_values[i] = None
         return default_values
 
@@ -834,6 +838,8 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
     for _, node in overloads.overloads:
         conds: List[str] = []
         for i, input in enumerate(node.inputs):
+            if i >= len(usd_param_type_is_shared):
+                break
             if usd_param_type_is_shared[i]:
                 continue
             name = param_names[i]
@@ -855,6 +861,9 @@ def write_node_overloads(overloads: NodeOverloads, decl_public: bool, decl_stati
         w.write_line(f'inputs: [')
         w.indent()
         for i, input in enumerate(node.inputs):
+            if i >= len(param_names):
+                print(f'Warning: Not enough param names for {overloads.swift_name}: node.inputs={[i.name for i in node.inputs]}')
+                break
             sgc_datatype = usd_type_to_sgc_datatype(input.usd_type)
             if input.is_enum:
                 w.write_line(f'.init(name: "{input.name}", dataType: {sgc_datatype}, connection: SGString(source: .constant(.string({param_names[i]}.rawValue)))),')
@@ -978,7 +987,7 @@ def write_node_overload_table_entry(overloads: NodeOverloads, w: SwiftWriter, pr
 
 tools_path = os.path.dirname(os.path.abspath(__file__))
 repo_path = os.path.dirname(tools_path)
-schemas_path = os.path.join(tools_path, 'schemas.usda')
+schemas_path = os.path.join(tools_path, 'schemas.usd')
 plist_path = os.path.join(tools_path, 'schemas.plist') 
 src_path = os.path.abspath(os.path.join(tools_path, '..', 'Sources', 'ShaderGraphCoder'))
 node_descriptions = load_plist_strings(plist_path)

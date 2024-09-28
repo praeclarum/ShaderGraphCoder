@@ -70,6 +70,3686 @@ public enum SGTransformSpace: String, CaseIterable {
     case world = "world"
 }
 
+/// Inverse Hyperbolic Cos
+public func MTLAcosh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_acosh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLAcosh(x: \(x.dataType))", values: [x]))
+}
+/// Inverse Hyperbolic Sin
+public func MTLAsinh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_asinh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLAsinh(x: \(x.dataType))", values: [x]))
+}
+/// Inverse Tan
+public func MTLAtan<T>(yOverX: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_float",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.float, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.half, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half2",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector2h, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half3",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector3h, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_half4",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector4h, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_vector2",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector2f, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_vector3",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector3f, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(yOverX) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atan_vector4",
+            inputs: [
+                .init(name: "y_over_x", dataType: SGDataType.vector4f, connection: yOverX),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLAtan(yOverX: \(yOverX.dataType))", values: [yOverX]))
+}
+/// Inverse Hyperbolic Tan
+public func MTLAtanh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_atanh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLAtanh(x: \(x.dataType))", values: [x]))
+}
+/// Copy Sign
+public func MTLCopysign<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_copysign_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLCopysign(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
+}
+/// Hyperbolic Cos
+public func MTLCosh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cosh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLCosh(x: \(x.dataType))", values: [x]))
+}
+/// Cos Pi
+public func MTLCospi<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_cospi_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLCospi(x: \(x.dataType))", values: [x]))
+}
+/// Screen-Space X Partial Derivative
+public func MTLDfdx<T>(p: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_float",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.float, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.half, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_half4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_vector2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_vector3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdx_vector4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLDfdx(p: \(p.dataType))", values: [p]))
+}
+/// Screen-Space Y Partial Derivative
+public func MTLDfdy<T>(p: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_float",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.float, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.half, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_half4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_vector2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_vector3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_dfdy_vector4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLDfdy(p: \(p.dataType))", values: [p]))
+}
+/// Distance
+public func MTLDistanceHalf2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2h.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceHalf2 input. Expected y data type to be SGDataType.vector2h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_half2_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance
+public func MTLDistanceHalf3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3h.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceHalf3 input. Expected y data type to be SGDataType.vector3h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_half3_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance
+public func MTLDistanceHalf4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4h.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceHalf4 input. Expected y data type to be SGDataType.vector4h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_half4_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func MTLDistanceSquaredHalf2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2h.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf2 input. Expected y data type to be SGDataType.vector2h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_half2_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func MTLDistanceSquaredHalf3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3h.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf3 input. Expected y data type to be SGDataType.vector3h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_half3_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func MTLDistanceSquaredHalf4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4h.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredHalf4 input. Expected y data type to be SGDataType.vector4h, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_half4_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Distance Square
+public func MTLDistanceSquaredVector2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2f.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector2 input. Expected y data type to be SGDataType.vector2f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_vector2_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance Square
+public func MTLDistanceSquaredVector3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3f.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector3 input. Expected y data type to be SGDataType.vector3f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_vector3_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance Square
+public func MTLDistanceSquaredVector4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4f.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceSquaredVector4 input. Expected y data type to be SGDataType.vector4f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_squared_vector4_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance
+public func MTLDistanceVector2(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector2f.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceVector2 input. Expected y data type to be SGDataType.vector2f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_vector2_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance
+public func MTLDistanceVector3(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector3f.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceVector3 input. Expected y data type to be SGDataType.vector3f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_vector3_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Distance
+public func MTLDistanceVector4(x: SGVector? = nil, y: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLDistanceVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.vector4f.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLDistanceVector4 input. Expected y data type to be SGDataType.vector4f, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_distance_vector4_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Exponential 10
+public func MTLExp10<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp10_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLExp10(x: \(x.dataType))", values: [x]))
+}
+/// Exponential 2
+public func MTLExp2<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_exp2_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLExp2(x: \(x.dataType))", values: [x]))
+}
+/// Fortran Difference and Minimum
+public func MTLFdim<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fdim_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLFdim(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
+}
+/// Fused Multiply-Add
+public func MTLFma<T>(a: T, b: T, c: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(a) && SGDataType.float.matches(b) && SGDataType.float.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_float",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.float, connection: a),
+                .init(name: "b", dataType: SGDataType.float, connection: b),
+                .init(name: "c", dataType: SGDataType.float, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(a) && SGDataType.half.matches(b) && SGDataType.half.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.half, connection: a),
+                .init(name: "b", dataType: SGDataType.half, connection: b),
+                .init(name: "c", dataType: SGDataType.half, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(a) && SGDataType.vector2h.matches(b) && SGDataType.vector2h.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half2",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector2h, connection: a),
+                .init(name: "b", dataType: SGDataType.vector2h, connection: b),
+                .init(name: "c", dataType: SGDataType.vector2h, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(a) && SGDataType.vector3h.matches(b) && SGDataType.vector3h.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half3",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector3h, connection: a),
+                .init(name: "b", dataType: SGDataType.vector3h, connection: b),
+                .init(name: "c", dataType: SGDataType.vector3h, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(a) && SGDataType.vector4h.matches(b) && SGDataType.vector4h.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_half4",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector4h, connection: a),
+                .init(name: "b", dataType: SGDataType.vector4h, connection: b),
+                .init(name: "c", dataType: SGDataType.vector4h, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(a) && SGDataType.vector2f.matches(b) && SGDataType.vector2f.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_vector2",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector2f, connection: a),
+                .init(name: "b", dataType: SGDataType.vector2f, connection: b),
+                .init(name: "c", dataType: SGDataType.vector2f, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(a) && SGDataType.vector3f.matches(b) && SGDataType.vector3f.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_vector3",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector3f, connection: a),
+                .init(name: "b", dataType: SGDataType.vector3f, connection: b),
+                .init(name: "c", dataType: SGDataType.vector3f, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(a) && SGDataType.vector4f.matches(b) && SGDataType.vector4f.matches(c) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fma_vector4",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.vector4f, connection: a),
+                .init(name: "b", dataType: SGDataType.vector4f, connection: b),
+                .init(name: "c", dataType: SGDataType.vector4f, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLFma(a: \(a.dataType), b: \(b.dataType), c: \(c.dataType))", values: [a, b, c]))
+}
+/// Modulo
+public func MTLFmod<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fmod_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLFmod(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
+}
+/// Absolute Derivatives Sum
+public func MTLFwidth<T>(p: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_float",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.float, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.half, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_half4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4h, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_vector2",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector2f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_vector3",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector3f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(p) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_fwidth_vector4",
+            inputs: [
+                .init(name: "p", dataType: SGDataType.vector4f, connection: p),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLFwidth(p: \(p.dataType))", values: [p]))
+}
+/// Is Finite
+public func MTLIsfinite(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isfinite_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isfinite_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLIsfinite(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Infinite
+public func MTLIsinf(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isinf_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isinf_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLIsinf(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Not a Number
+public func MTLIsnan(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnan_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnan_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLIsnan(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Normal
+public func MTLIsnormal(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnormal_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isnormal_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLIsnormal(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Is Ordered
+public func MTLIsordered(x: SGScalar? = nil, y: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isordered_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isordered_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLIsordered(x: \(x?.dataType.rawValue ?? "nil"), y: \(y?.dataType.rawValue ?? "nil"))", values: [x, y]))
+}
+/// Is Unordered
+public func MTLIsunordered(x: SGScalar? = nil, y: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isunordered_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_isunordered_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLIsunordered(x: \(x?.dataType.rawValue ?? "nil"), y: \(y?.dataType.rawValue ?? "nil"))", values: [x, y]))
+}
+/// Magnitude Square
+public func MTLLengthSquaredHalf2(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLLengthSquaredHalf2 input. Expected x data type to be SGDataType.vector2h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_half2_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Magnitude Square
+public func MTLLengthSquaredHalf3(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLLengthSquaredHalf3 input. Expected x data type to be SGDataType.vector3h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_half3_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Magnitude Square
+public func MTLLengthSquaredHalf4(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4h.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLLengthSquaredHalf4 input. Expected x data type to be SGDataType.vector4h, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_half4_half",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.half)])))
+}
+/// Magnitude Square
+public func MTLLengthSquaredVector2(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector2f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLLengthSquaredVector2 input. Expected x data type to be SGDataType.vector2f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_vector2_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Magnitude Square
+public func MTLLengthSquaredVector3(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector3f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLLengthSquaredVector3 input. Expected x data type to be SGDataType.vector3f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_vector3_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Magnitude Square
+public func MTLLengthSquaredVector4(x: SGVector? = nil) -> SGScalar {
+    guard SGDataType.vector4f.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLLengthSquaredVector4 input. Expected x data type to be SGDataType.vector4f, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_length_squared_vector4_float",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+        ],
+        outputs: [.init(dataType: SGDataType.float)])))
+}
+/// Log 10
+public func MTLLog10<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log10_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLLog10(x: \(x.dataType))", values: [x]))
+}
+/// Log 2
+public func MTLLog2<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_log2_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLLog2(x: \(x.dataType))", values: [x]))
+}
+/// Multiply Add 24
+public func MTLMad24(x: SGScalar? = nil, y: SGScalar? = nil, z: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLMad24 input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLMad24 input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    guard SGDataType.int.matches(z) else {
+        return SGScalar(source: .error("Invalid MTLMad24 input. Expected z data type to be SGDataType.int, but got \(z?.dataType.rawValue ?? "nil").", values: [z]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_mad24_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+            .init(name: "z", dataType: SGDataType.int, connection: z),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
+}
+/// Max
+public func MTLMax(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLMax input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLMax input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_max_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
+}
+/// Max3
+public func MTLMax3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+                .init(name: "z", dataType: SGDataType.float, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+                .init(name: "z", dataType: SGDataType.half, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_integer",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_max3_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLMax3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
+}
+/// Median3
+public func MTLMedian3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+                .init(name: "z", dataType: SGDataType.float, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+                .init(name: "z", dataType: SGDataType.half, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_integer",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_median3_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLMedian3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
+}
+/// Min
+public func MTLMin(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLMin input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLMin input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_min_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
+}
+/// Min3
+public func MTLMin3<T>(x: T, y: T, z: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) && SGDataType.float.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+                .init(name: "z", dataType: SGDataType.float, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) && SGDataType.half.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+                .init(name: "z", dataType: SGDataType.half, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) && SGDataType.vector2h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) && SGDataType.vector3h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) && SGDataType.vector4h.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4h, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.int.matches(x) && SGDataType.int.matches(y) && SGDataType.int.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_integer",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) && SGDataType.vector2f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector2f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) && SGDataType.vector3f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector3f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) && SGDataType.vector4f.matches(z) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_min3_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+                .init(name: "z", dataType: SGDataType.vector4f, connection: z),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLMin3(x: \(x.dataType), y: \(y.dataType), z: \(z.dataType))", values: [x, y, z]))
+}
+/// Multiply 24
+public func MTLMul24(x: SGScalar? = nil, y: SGScalar? = nil) -> SGScalar {
+    guard SGDataType.int.matches(x) else {
+        return SGScalar(source: .error("Invalid MTLMul24 input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return SGScalar(source: .error("Invalid MTLMul24 input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    return SGScalar(source: .nodeOutput(SGNode(
+        nodeType: "ND_MTL_mul24_integer",
+        inputs: [
+            .init(name: "x", dataType: SGDataType.int, connection: x),
+            .init(name: "y", dataType: SGDataType.int, connection: y),
+        ],
+        outputs: [.init(dataType: SGDataType.int)])))
+}
+/// Power Positive
+public func MTLPowr<T>(x: T, y: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) && SGDataType.float.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+                .init(name: "y", dataType: SGDataType.float, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) && SGDataType.half.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+                .init(name: "y", dataType: SGDataType.half, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) && SGDataType.vector2h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) && SGDataType.vector3h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) && SGDataType.vector4h.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4h, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) && SGDataType.vector2f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector2f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) && SGDataType.vector3f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector3f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) && SGDataType.vector4f.matches(y) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_powr_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+                .init(name: "y", dataType: SGDataType.vector4f, connection: y),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLPowr(x: \(x.dataType), y: \(y.dataType))", values: [x, y]))
+}
+/// Round Integral
+public func MTLRint<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rint_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLRint(x: \(x.dataType))", values: [x]))
+}
+/// Reciprocal Square Root
+public func MTLRsqrt<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_rsqrt_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLRsqrt(x: \(x.dataType))", values: [x]))
+}
+/// Select
+public func MTLSelect(a: SGScalar? = nil, b: SGScalar? = nil, c: SGValue? = nil) -> SGScalar {
+    guard SGDataType.bool.matches(c) else {
+        return SGScalar(source: .error("Invalid MTLSelect input. Expected c data type to be SGDataType.bool, but got \(c?.dataType.rawValue ?? "nil").", values: [c]))
+    }
+    if SGDataType.float.matches(a) && SGDataType.float.matches(b) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_select_float",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.float, connection: a),
+                .init(name: "b", dataType: SGDataType.float, connection: b),
+                .init(name: "c", dataType: SGDataType.bool, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(a) && SGDataType.half.matches(b) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_select_half",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.half, connection: a),
+                .init(name: "b", dataType: SGDataType.half, connection: b),
+                .init(name: "c", dataType: SGDataType.bool, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.int.matches(a) && SGDataType.int.matches(b) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_select_integer",
+            inputs: [
+                .init(name: "a", dataType: SGDataType.int, connection: a),
+                .init(name: "b", dataType: SGDataType.int, connection: b),
+                .init(name: "c", dataType: SGDataType.bool, connection: c),
+            ],
+            outputs: [.init(dataType: SGDataType.int)])))
+    }
+    return SGScalar(source: .error("Unsupported input data types in MTLSelect(a: \(a?.dataType.rawValue ?? "nil"), b: \(b?.dataType.rawValue ?? "nil"))", values: [a, b]))
+}
+/// Sign Bit
+public func MTLSignbit(x: SGScalar? = nil) -> SGValue {
+    if SGDataType.float.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_signbit_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    if SGDataType.half.matches(x) {
+        return SGValue(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_signbit_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.bool)])))
+    }
+    return SGValue(source: .error("Unsupported input data types in MTLSignbit(x: \(x?.dataType.rawValue ?? "nil"))", values: [x]))
+}
+/// Hyperbolic Sin
+public func MTLSinh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLSinh(x: \(x.dataType))", values: [x]))
+}
+/// Sin Pi
+public func MTLSinpi<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_sinpi_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLSinpi(x: \(x.dataType))", values: [x]))
+}
+/// Hyperbolic Tan
+public func MTLTanh<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanh_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLTanh(x: \(x.dataType))", values: [x]))
+}
+/// Tan Pi
+public func MTLTanpi<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_tanpi_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLTanpi(x: \(x.dataType))", values: [x]))
+}
+/// Truncate
+public func MTLTrunc<T>(x: T) -> T where T: SGNumeric {
+    if SGDataType.float.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_float",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.float, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.half, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_half4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4h, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector2f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_vector2",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector2f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_vector3",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector3f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    if SGDataType.vector4f.matches(x) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_MTL_trunc_vector4",
+            inputs: [
+                .init(name: "x", dataType: SGDataType.vector4f, connection: x),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in MTLTrunc(x: \(x.dataType))", values: [x]))
+}
+/// Image 2D Array
+public func RealityKitTexture2DArray<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArray input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture2DArray input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArray input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid RealityKitTexture2DArray input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture2DArray input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture2DArray input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArray_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArray_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArray_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArray(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Array Gradient
+public func RealityKitTexture2DArrayGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdx) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx?.dataType.rawValue ?? "nil").", values: [gradientDpdx]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdy) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy?.dataType.rawValue ?? "nil").", values: [gradientDpdy]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayGradient_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayGradient_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayGradient_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArrayGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Array LOD
+public func RealityKitTexture2DArrayLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayLOD input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayLOD_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayLOD_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayLOD_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArrayLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Array Pixel
+public func RealityKitTexture2DArrayPixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixel input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixel input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixel input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixel input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixel input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixel_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixel_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixel_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArrayPixel(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Array Gradient Pixel
+public func RealityKitTexture2DArrayPixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdx) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected gradientDpdx data type to be SGDataType.vector2f, but got \(gradientDpdx?.dataType.rawValue ?? "nil").", values: [gradientDpdx]))
+    }
+    guard SGDataType.vector2f.matches(gradientDpdy) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected gradientDpdy data type to be SGDataType.vector2f, but got \(gradientDpdy?.dataType.rawValue ?? "nil").", values: [gradientDpdy]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelGradient input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixelGradient_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixelGradient_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixelGradient_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
+                .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArrayPixelGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Array LOD Pixel
+public func RealityKitTexture2DArrayPixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector2f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelLOD input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    guard SGDataType.vector2i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayPixelLOD input. Expected offset data type to be SGDataType.vector2i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixelLOD_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixelLOD_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayPixelLOD_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArrayPixelLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 2D Array Read
+public func RealityKitTexture2DArrayRead<T>(file: SGTexture, defaultValue: T, index: SGScalar? = nil, x: SGScalar? = nil, y: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayRead input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(index) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayRead input. Expected index data type to be SGDataType.int, but got \(index?.dataType.rawValue ?? "nil").", values: [index]))
+    }
+    guard SGDataType.int.matches(x) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayRead input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayRead input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    guard SGDataType.int.matches(lod) else {
+        return T(source: .error("Invalid RealityKitTexture2DArrayRead input. Expected lod data type to be SGDataType.int, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayRead_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "lod", dataType: SGDataType.int, connection: lod),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture2DArrayRead_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "index", dataType: SGDataType.int, connection: index),
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "lod", dataType: SGDataType.int, connection: lod),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture2DArrayRead(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D
+public func RealityKitTexture3D<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, wWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3D input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture3D input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid RealityKitTexture3D input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture3D input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector3i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture3D input. Expected offset data type to be SGDataType.vector3i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3D_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3D_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3D_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3D(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D Gradient
+public func RealityKitTexture3DGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, wWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradient3DDpdx: SGVector? = nil, gradient3DDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3DGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture3DGradient input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture3DGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector3f.matches(gradient3DDpdx) else {
+        return T(source: .error("Invalid RealityKitTexture3DGradient input. Expected gradient3DDpdx data type to be SGDataType.vector3f, but got \(gradient3DDpdx?.dataType.rawValue ?? "nil").", values: [gradient3DDpdx]))
+    }
+    guard SGDataType.vector3f.matches(gradient3DDpdy) else {
+        return T(source: .error("Invalid RealityKitTexture3DGradient input. Expected gradient3DDpdy data type to be SGDataType.vector3f, but got \(gradient3DDpdy?.dataType.rawValue ?? "nil").", values: [gradient3DDpdy]))
+    }
+    guard SGDataType.vector3i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture3DGradient input. Expected offset data type to be SGDataType.vector3i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DGradient_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient3d_dPdx", dataType: SGDataType.vector3f, connection: gradient3DDpdx),
+                .init(name: "gradient3d_dPdy", dataType: SGDataType.vector3f, connection: gradient3DDpdy),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DGradient_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient3d_dPdx", dataType: SGDataType.vector3f, connection: gradient3DDpdx),
+                .init(name: "gradient3d_dPdy", dataType: SGDataType.vector3f, connection: gradient3DDpdy),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DGradient_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient3d_dPdx", dataType: SGDataType.vector3f, connection: gradient3DDpdx),
+                .init(name: "gradient3d_dPdy", dataType: SGDataType.vector3f, connection: gradient3DDpdy),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3DGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D LOD
+public func RealityKitTexture3DLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, wWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3DLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture3DLOD input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid RealityKitTexture3DLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    guard SGDataType.vector3i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture3DLOD input. Expected offset data type to be SGDataType.vector3i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DLOD_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DLOD_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DLOD_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
+                .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
+                .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3DLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D Pixel
+public func RealityKitTexture3DPixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, wWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixel input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(bias) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixel input. Expected bias data type to be SGDataType.float, but got \(bias?.dataType.rawValue ?? "nil").", values: [bias]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixel input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector3i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixel input. Expected offset data type to be SGDataType.vector3i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixel_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixel_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixel_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "bias", dataType: SGDataType.float, connection: bias),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3DPixel(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D Gradient Pixel
+public func RealityKitTexture3DPixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, wWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradient3DDpdx: SGVector? = nil, gradient3DDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelGradient input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(dynamicMinLodClamp) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelGradient input. Expected dynamicMinLodClamp data type to be SGDataType.float, but got \(dynamicMinLodClamp?.dataType.rawValue ?? "nil").", values: [dynamicMinLodClamp]))
+    }
+    guard SGDataType.vector3f.matches(gradient3DDpdx) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelGradient input. Expected gradient3DDpdx data type to be SGDataType.vector3f, but got \(gradient3DDpdx?.dataType.rawValue ?? "nil").", values: [gradient3DDpdx]))
+    }
+    guard SGDataType.vector3f.matches(gradient3DDpdy) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelGradient input. Expected gradient3DDpdy data type to be SGDataType.vector3f, but got \(gradient3DDpdy?.dataType.rawValue ?? "nil").", values: [gradient3DDpdy]))
+    }
+    guard SGDataType.vector3i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelGradient input. Expected offset data type to be SGDataType.vector3i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixelGradient_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient3d_dPdx", dataType: SGDataType.vector3f, connection: gradient3DDpdx),
+                .init(name: "gradient3d_dPdy", dataType: SGDataType.vector3f, connection: gradient3DDpdy),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixelGradient_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient3d_dPdx", dataType: SGDataType.vector3f, connection: gradient3DDpdx),
+                .init(name: "gradient3d_dPdy", dataType: SGDataType.vector3f, connection: gradient3DDpdy),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixelGradient_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
+                .init(name: "gradient3d_dPdx", dataType: SGDataType.vector3f, connection: gradient3DDpdx),
+                .init(name: "gradient3d_dPdy", dataType: SGDataType.vector3f, connection: gradient3DDpdy),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3DPixelGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D LOD Pixel
+public func RealityKitTexture3DPixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, wWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.vector3f.matches(texcoord) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelLOD input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
+    }
+    guard SGDataType.float.matches(lod) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelLOD input. Expected lod data type to be SGDataType.float, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    guard SGDataType.vector3i.matches(offset) else {
+        return T(source: .error("Invalid RealityKitTexture3DPixelLOD input. Expected offset data type to be SGDataType.vector3i, but got \(offset?.dataType.rawValue ?? "nil").", values: [offset]))
+    }
+    if SGDataType.color3f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixelLOD_color3",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixelLOD_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DPixelLOD_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "u_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(uWrapMode.rawValue)))),
+                .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
+                .init(name: "w_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(wWrapMode.rawValue)))),
+                .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
+                .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
+                .init(name: "lod", dataType: SGDataType.float, connection: lod),
+                .init(name: "offset", dataType: SGDataType.vector3i, connection: offset),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3DPixelLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
+/// Image 3D Read
+public func RealityKitTexture3DRead<T>(file: SGTexture, defaultValue: T, x: SGScalar? = nil, y: SGScalar? = nil, z: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
+    guard SGDataType.asset.matches(file) else {
+        return T(source: .error("Invalid RealityKitTexture3DRead input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
+    }
+    guard SGDataType.int.matches(x) else {
+        return T(source: .error("Invalid RealityKitTexture3DRead input. Expected x data type to be SGDataType.int, but got \(x?.dataType.rawValue ?? "nil").", values: [x]))
+    }
+    guard SGDataType.int.matches(y) else {
+        return T(source: .error("Invalid RealityKitTexture3DRead input. Expected y data type to be SGDataType.int, but got \(y?.dataType.rawValue ?? "nil").", values: [y]))
+    }
+    guard SGDataType.int.matches(z) else {
+        return T(source: .error("Invalid RealityKitTexture3DRead input. Expected z data type to be SGDataType.int, but got \(z?.dataType.rawValue ?? "nil").", values: [z]))
+    }
+    guard SGDataType.int.matches(lod) else {
+        return T(source: .error("Invalid RealityKitTexture3DRead input. Expected lod data type to be SGDataType.int, but got \(lod?.dataType.rawValue ?? "nil").", values: [lod]))
+    }
+    if SGDataType.color4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DRead_color4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+                .init(name: "lod", dataType: SGDataType.int, connection: lod),
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
+    if SGDataType.vector4f.matches(defaultValue) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_RealityKitTexture3DRead_vector4",
+            inputs: [
+                .init(name: "file", dataType: SGDataType.asset, connection: file),
+                .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
+                .init(name: "x", dataType: SGDataType.int, connection: x),
+                .init(name: "y", dataType: SGDataType.int, connection: y),
+                .init(name: "z", dataType: SGDataType.int, connection: z),
+                .init(name: "lod", dataType: SGDataType.int, connection: lod),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
+    }
+    return T(source: .error("Unsupported input data types in RealityKitTexture3DRead(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
+}
 /// Abs
 public func abs<T>(_ in1: T) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(in1) {
@@ -103,6 +3783,30 @@ public func abs<T>(_ in1: T) -> T where T: SGNumeric {
                 .init(name: "in", dataType: SGDataType.half, connection: in1),
             ],
             outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_absval_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_absval_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_absval_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
@@ -253,6 +3957,60 @@ public func add<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
                 .init(name: "in2", dataType: SGDataType.half, connection: in2),
             ],
             outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_add_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_add_half2FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_add_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_add_half3FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_add_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_add_half4FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
@@ -676,6 +4434,30 @@ public func ceil<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ceil_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ceil_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ceil_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_ceil_vector2",
@@ -961,6 +4743,76 @@ public func contrast<T>(_ in1: T, amount: SGNumeric, pivot: SGNumeric) -> T wher
                 .init(name: "pivot", dataType: SGDataType.float, connection: pivot),
             ],
             outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(amount) && SGDataType.half.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "amount", dataType: SGDataType.half, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.half, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(amount) && SGDataType.vector2h.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector2h, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.vector2h, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.half.matches(amount) && SGDataType.half.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half2FA",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "amount", dataType: SGDataType.half, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.half, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(amount) && SGDataType.vector3h.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector3h, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.vector3h, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.half.matches(amount) && SGDataType.half.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half3FA",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "amount", dataType: SGDataType.half, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.half, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(amount) && SGDataType.vector4h.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "amount", dataType: SGDataType.vector4h, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.vector4h, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.half.matches(amount) && SGDataType.half.matches(pivot) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_contrast_half4FA",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "amount", dataType: SGDataType.half, connection: amount),
+                .init(name: "pivot", dataType: SGDataType.half, connection: pivot),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(amount) && SGDataType.vector2f.matches(pivot) {
         return T(source: .nodeOutput(SGNode(
@@ -1262,6 +5114,33 @@ public func divide<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_divide_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_divide_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_divide_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_divide_matrix22",
@@ -1535,6 +5414,33 @@ public func extract(_ in1: SGSIMD, index: Int = 0) -> SGScalar {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
+    if SGDataType.vector2h.matches(in1) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_extract_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_extract_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return SGScalar(source: .nodeOutput(SGNode(
+            nodeType: "ND_extract_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
     if SGDataType.vector2f.matches(in1) {
         return SGScalar(source: .nodeOutput(SGNode(
             nodeType: "ND_extract_vector2",
@@ -1598,6 +5504,30 @@ public func floor<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_floor_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_floor_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_floor_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_floor_vector2",
@@ -1649,6 +5579,38 @@ public func fract<T>(_ in1: T) -> T where T: SGNumeric {
                 .init(name: "in", dataType: SGDataType.float, connection: in1),
             ],
             outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_half",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_fractional_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
@@ -1824,66 +5786,6 @@ public func fractal3D(amplitude: SGNumeric, octaves: SGScalar? = nil, lacunarity
     }
     return SGNumeric(source: .error("Unsupported input data types in fractal3D(amplitude: \(amplitude.dataType))", values: [amplitude]))
 }
-/// Geometry Modifier
-public func geometryModifier(modelPositionOffset: SGVector? = nil, color: SGColor? = nil, normal: SGVector? = nil, bitangent: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil, userAttribute: SGVector? = nil, userAttributeHalf40: SGVector? = nil, userAttributeHalf41: SGVector? = nil, userAttributeHalf42: SGVector? = nil, userAttributeHalf43: SGVector? = nil, userAttributeHalf20: SGVector? = nil, userAttributeHalf21: SGVector? = nil) -> SGToken {
-    guard SGDataType.vector3f.matches(modelPositionOffset) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected modelPositionOffset data type to be SGDataType.vector3f, but got \(modelPositionOffset?.dataType.rawValue ?? "nil").", values: [modelPositionOffset]))
-    }
-    guard SGDataType.color4f.matches(color) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected color data type to be SGDataType.color4f, but got \(color?.dataType.rawValue ?? "nil").", values: [color]))
-    }
-    guard SGDataType.vector3f.matches(normal) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
-    }
-    guard SGDataType.vector3f.matches(bitangent) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected bitangent data type to be SGDataType.vector3f, but got \(bitangent?.dataType.rawValue ?? "nil").", values: [bitangent]))
-    }
-    guard SGDataType.vector2f.matches(uv0) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected uv0 data type to be SGDataType.vector2f, but got \(uv0?.dataType.rawValue ?? "nil").", values: [uv0]))
-    }
-    guard SGDataType.vector2f.matches(uv1) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected uv1 data type to be SGDataType.vector2f, but got \(uv1?.dataType.rawValue ?? "nil").", values: [uv1]))
-    }
-    guard SGDataType.vector4f.matches(userAttribute) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttribute data type to be SGDataType.vector4f, but got \(userAttribute?.dataType.rawValue ?? "nil").", values: [userAttribute]))
-    }
-    guard SGDataType.vector4h.matches(userAttributeHalf40) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf40 data type to be SGDataType.vector4h, but got \(userAttributeHalf40?.dataType.rawValue ?? "nil").", values: [userAttributeHalf40]))
-    }
-    guard SGDataType.vector4h.matches(userAttributeHalf41) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf41 data type to be SGDataType.vector4h, but got \(userAttributeHalf41?.dataType.rawValue ?? "nil").", values: [userAttributeHalf41]))
-    }
-    guard SGDataType.vector4h.matches(userAttributeHalf42) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf42 data type to be SGDataType.vector4h, but got \(userAttributeHalf42?.dataType.rawValue ?? "nil").", values: [userAttributeHalf42]))
-    }
-    guard SGDataType.vector4h.matches(userAttributeHalf43) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf43 data type to be SGDataType.vector4h, but got \(userAttributeHalf43?.dataType.rawValue ?? "nil").", values: [userAttributeHalf43]))
-    }
-    guard SGDataType.vector2h.matches(userAttributeHalf20) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf20 data type to be SGDataType.vector2h, but got \(userAttributeHalf20?.dataType.rawValue ?? "nil").", values: [userAttributeHalf20]))
-    }
-    guard SGDataType.vector2h.matches(userAttributeHalf21) else {
-        return SGToken(source: .error("Invalid geometryModifier input. Expected userAttributeHalf21 data type to be SGDataType.vector2h, but got \(userAttributeHalf21?.dataType.rawValue ?? "nil").", values: [userAttributeHalf21]))
-    }
-    return SGToken(source: .nodeOutput(SGNode(
-        nodeType: "ND_realitykit_geometrymodifier_vertexshader",
-        inputs: [
-            .init(name: "modelPositionOffset", dataType: SGDataType.vector3f, connection: modelPositionOffset),
-            .init(name: "color", dataType: SGDataType.color4f, connection: color),
-            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
-            .init(name: "bitangent", dataType: SGDataType.vector3f, connection: bitangent),
-            .init(name: "uv0", dataType: SGDataType.vector2f, connection: uv0),
-            .init(name: "uv1", dataType: SGDataType.vector2f, connection: uv1),
-            .init(name: "userAttribute", dataType: SGDataType.vector4f, connection: userAttribute),
-            .init(name: "userAttributeHalf4_0", dataType: SGDataType.vector4h, connection: userAttributeHalf40),
-            .init(name: "userAttributeHalf4_1", dataType: SGDataType.vector4h, connection: userAttributeHalf41),
-            .init(name: "userAttributeHalf4_2", dataType: SGDataType.vector4h, connection: userAttributeHalf42),
-            .init(name: "userAttributeHalf4_3", dataType: SGDataType.vector4h, connection: userAttributeHalf43),
-            .init(name: "userAttributeHalf2_0", dataType: SGDataType.vector2h, connection: userAttributeHalf20),
-            .init(name: "userAttributeHalf2_1", dataType: SGDataType.vector2h, connection: userAttributeHalf21),
-        ],
-        outputs: [.init(dataType: SGDataType.token)])))
-}
 /// Camera Index Switch
 public func geometrySwitchCameraIndex<T>(mono: T, left: T, right: T) -> T where T: SGNumeric {
     if SGDataType.color3f.matches(mono) && SGDataType.color3f.matches(left) && SGDataType.color3f.matches(right) {
@@ -1915,6 +5817,46 @@ public func geometrySwitchCameraIndex<T>(mono: T, left: T, right: T) -> T where 
                 .init(name: "right", dataType: SGDataType.float, connection: right),
             ],
             outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(mono) && SGDataType.half.matches(left) && SGDataType.half.matches(right) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_half",
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.half, connection: mono),
+                .init(name: "left", dataType: SGDataType.half, connection: left),
+                .init(name: "right", dataType: SGDataType.half, connection: right),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(mono) && SGDataType.vector2h.matches(left) && SGDataType.vector2h.matches(right) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_half2",
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.vector2h, connection: mono),
+                .init(name: "left", dataType: SGDataType.vector2h, connection: left),
+                .init(name: "right", dataType: SGDataType.vector2h, connection: right),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(mono) && SGDataType.vector3h.matches(left) && SGDataType.vector3h.matches(right) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_half3",
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.vector3h, connection: mono),
+                .init(name: "left", dataType: SGDataType.vector3h, connection: left),
+                .init(name: "right", dataType: SGDataType.vector3h, connection: right),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(mono) && SGDataType.vector4h.matches(left) && SGDataType.vector4h.matches(right) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_geometry_switch_cameraindex_half4",
+            inputs: [
+                .init(name: "mono", dataType: SGDataType.vector4h, connection: mono),
+                .init(name: "left", dataType: SGDataType.vector4h, connection: left),
+                .init(name: "right", dataType: SGDataType.vector4h, connection: right),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.int.matches(mono) && SGDataType.int.matches(left) && SGDataType.int.matches(right) {
         return T(source: .nodeOutput(SGNode(
@@ -1957,6 +5899,62 @@ public func geometrySwitchCameraIndex<T>(mono: T, left: T, right: T) -> T where 
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in geometrySwitchCameraIndex(mono: \(mono.dataType), left: \(left.dataType), right: \(right.dataType))", values: [mono, left, right]))
+}
+/// Geometry Modifier
+public func geometrymodifier20Vertexshader(modelPositionOffset: SGVector? = nil, color: SGColor? = nil, normal: SGVector? = nil, bitangent: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil, uv2: SGVector? = nil, uv3: SGVector? = nil, uv4: SGVector? = nil, uv5: SGVector? = nil, uv6: SGVector? = nil, uv7: SGVector? = nil) -> SGToken {
+    guard SGDataType.vector3f.matches(modelPositionOffset) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected modelPositionOffset data type to be SGDataType.vector3f, but got \(modelPositionOffset?.dataType.rawValue ?? "nil").", values: [modelPositionOffset]))
+    }
+    guard SGDataType.color4f.matches(color) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected color data type to be SGDataType.color4f, but got \(color?.dataType.rawValue ?? "nil").", values: [color]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
+    }
+    guard SGDataType.vector3f.matches(bitangent) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected bitangent data type to be SGDataType.vector3f, but got \(bitangent?.dataType.rawValue ?? "nil").", values: [bitangent]))
+    }
+    guard SGDataType.vector2f.matches(uv0) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv0 data type to be SGDataType.vector2f, but got \(uv0?.dataType.rawValue ?? "nil").", values: [uv0]))
+    }
+    guard SGDataType.vector2f.matches(uv1) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv1 data type to be SGDataType.vector2f, but got \(uv1?.dataType.rawValue ?? "nil").", values: [uv1]))
+    }
+    guard SGDataType.vector4f.matches(uv2) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv2 data type to be SGDataType.vector4f, but got \(uv2?.dataType.rawValue ?? "nil").", values: [uv2]))
+    }
+    guard SGDataType.vector4f.matches(uv3) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv3 data type to be SGDataType.vector4f, but got \(uv3?.dataType.rawValue ?? "nil").", values: [uv3]))
+    }
+    guard SGDataType.vector4f.matches(uv4) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv4 data type to be SGDataType.vector4f, but got \(uv4?.dataType.rawValue ?? "nil").", values: [uv4]))
+    }
+    guard SGDataType.vector4f.matches(uv5) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv5 data type to be SGDataType.vector4f, but got \(uv5?.dataType.rawValue ?? "nil").", values: [uv5]))
+    }
+    guard SGDataType.vector4f.matches(uv6) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv6 data type to be SGDataType.vector4f, but got \(uv6?.dataType.rawValue ?? "nil").", values: [uv6]))
+    }
+    guard SGDataType.vector4f.matches(uv7) else {
+        return SGToken(source: .error("Invalid geometrymodifier20Vertexshader input. Expected uv7 data type to be SGDataType.vector4f, but got \(uv7?.dataType.rawValue ?? "nil").", values: [uv7]))
+    }
+    return SGToken(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_geometrymodifier_2_0_vertexshader",
+        inputs: [
+            .init(name: "modelPositionOffset", dataType: SGDataType.vector3f, connection: modelPositionOffset),
+            .init(name: "color", dataType: SGDataType.color4f, connection: color),
+            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+            .init(name: "bitangent", dataType: SGDataType.vector3f, connection: bitangent),
+            .init(name: "uv0", dataType: SGDataType.vector2f, connection: uv0),
+            .init(name: "uv1", dataType: SGDataType.vector2f, connection: uv1),
+            .init(name: "uv2", dataType: SGDataType.vector4f, connection: uv2),
+            .init(name: "uv3", dataType: SGDataType.vector4f, connection: uv3),
+            .init(name: "uv4", dataType: SGDataType.vector4f, connection: uv4),
+            .init(name: "uv5", dataType: SGDataType.vector4f, connection: uv5),
+            .init(name: "uv6", dataType: SGDataType.vector4f, connection: uv6),
+            .init(name: "uv7", dataType: SGDataType.vector4f, connection: uv7),
+        ],
+        outputs: [.init(dataType: SGDataType.token)])))
 }
 /// Height To Normal
 public func heightToNormal(_ in1: SGScalar, scale: SGScalar? = nil) -> SGVector {
@@ -3022,6 +7020,50 @@ public func length(_ in1: SGVector) -> SGScalar {
     }
     return SGScalar(source: .error("Unsupported input data types in length(in1: \(in1.dataType))", values: [in1]))
 }
+/// Reflection Diffuse
+public func lightSpillDiffuse(emitterUV: SGVector? = nil, attenuationUV: SGVector? = nil, attenuationMap: SGTexture) -> SGColor {
+    guard SGDataType.vector2f.matches(emitterUV) else {
+        return SGColor(source: .error("Invalid lightSpillDiffuse input. Expected emitterUV data type to be SGDataType.vector2f, but got \(emitterUV?.dataType.rawValue ?? "nil").", values: [emitterUV]))
+    }
+    guard SGDataType.vector2f.matches(attenuationUV) else {
+        return SGColor(source: .error("Invalid lightSpillDiffuse input. Expected attenuationUV data type to be SGDataType.vector2f, but got \(attenuationUV?.dataType.rawValue ?? "nil").", values: [attenuationUV]))
+    }
+    guard SGDataType.asset.matches(attenuationMap) else {
+        return SGColor(source: .error("Invalid lightSpillDiffuse input. Expected attenuationMap data type to be SGDataType.asset, but got \(attenuationMap.dataType).", values: [attenuationMap]))
+    }
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_light_spill_diffuse",
+        inputs: [
+            .init(name: "emitterUV", dataType: SGDataType.vector2f, connection: emitterUV),
+            .init(name: "attenuationUV", dataType: SGDataType.vector2f, connection: attenuationUV),
+            .init(name: "attenuationMap", dataType: SGDataType.asset, connection: attenuationMap),
+        ],
+        outputs: [.init(dataType: SGDataType.color4f)])))
+}
+/// Reflection Specular
+public func lightSpillSpecular(reflectionOrigin: SGVector? = nil, unreflectedDirection: SGVector? = nil, normal: SGVector? = nil, antialiasingStrength: SGVector? = nil) -> SGColor {
+    guard SGDataType.vector3f.matches(reflectionOrigin) else {
+        return SGColor(source: .error("Invalid lightSpillSpecular input. Expected reflectionOrigin data type to be SGDataType.vector3f, but got \(reflectionOrigin?.dataType.rawValue ?? "nil").", values: [reflectionOrigin]))
+    }
+    guard SGDataType.vector3f.matches(unreflectedDirection) else {
+        return SGColor(source: .error("Invalid lightSpillSpecular input. Expected unreflectedDirection data type to be SGDataType.vector3f, but got \(unreflectedDirection?.dataType.rawValue ?? "nil").", values: [unreflectedDirection]))
+    }
+    guard SGDataType.vector3f.matches(normal) else {
+        return SGColor(source: .error("Invalid lightSpillSpecular input. Expected normal data type to be SGDataType.vector3f, but got \(normal?.dataType.rawValue ?? "nil").", values: [normal]))
+    }
+    guard SGDataType.vector2f.matches(antialiasingStrength) else {
+        return SGColor(source: .error("Invalid lightSpillSpecular input. Expected antialiasingStrength data type to be SGDataType.vector2f, but got \(antialiasingStrength?.dataType.rawValue ?? "nil").", values: [antialiasingStrength]))
+    }
+    return SGColor(source: .nodeOutput(SGNode(
+        nodeType: "ND_realitykit_light_spill_specular",
+        inputs: [
+            .init(name: "reflection_origin", dataType: SGDataType.vector3f, connection: reflectionOrigin),
+            .init(name: "unreflected_direction", dataType: SGDataType.vector3f, connection: unreflectedDirection),
+            .init(name: "normal", dataType: SGDataType.vector3f, connection: normal),
+            .init(name: "antialiasingStrength", dataType: SGDataType.vector2f, connection: antialiasingStrength),
+        ],
+        outputs: [.init(dataType: SGDataType.color4f)])))
+}
 /// Natural Log
 public func log<T>(_ in1: T) -> T where T: SGNumeric {
     if SGDataType.float.matches(in1) {
@@ -3771,6 +7813,60 @@ public func modulo<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_modulo_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_modulo_half2FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_modulo_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_modulo_half3FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_modulo_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_modulo_half4FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_modulo_vector2",
@@ -3883,6 +7979,60 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_multiply_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_multiply_half2FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_multiply_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_multiply_half3FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_multiply_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_multiply_half4FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_multiply_matrix22",
@@ -3965,6 +8115,22 @@ public func multiply<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     return T(source: .error("Unsupported input data types in multiply(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
+}
+/// Multiply
+public func multiplyMatrix44(_ in1: SGMatrix, _ in2: SGVector) -> SGVector {
+    guard SGDataType.matrix4d.matches(in1) else {
+        return SGVector(source: .error("Invalid multiplyMatrix44 input. Expected in1 data type to be SGDataType.matrix4d, but got \(in1.dataType).", values: [in1]))
+    }
+    guard SGDataType.vector4f.matches(in2) else {
+        return SGVector(source: .error("Invalid multiplyMatrix44 input. Expected in2 data type to be SGDataType.vector4f, but got \(in2.dataType).", values: [in2]))
+    }
+    return SGVector(source: .nodeOutput(SGNode(
+        nodeType: "ND_multiply_matrix44_vector4",
+        inputs: [
+            .init(name: "in1", dataType: SGDataType.matrix4d, connection: in1),
+            .init(name: "in2", dataType: SGDataType.vector4f, connection: in2),
+        ],
+        outputs: [.init(dataType: SGDataType.vector4f)])))
 }
 /// Noise 2D
 public func noise2D(amplitude: SGNumeric, pivot: SGScalar? = nil, texcoord: SGVector? = nil) -> SGNumeric {
@@ -4333,6 +8499,38 @@ public func oneMinus<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
+    if SGDataType.half.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_half",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_oneminus_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_oneminus_vector2",
@@ -4484,7 +8682,7 @@ public func overlay<T>(fg: T, bg: T, mix: SGScalar? = nil) -> T where T: SGNumer
     return T(source: .error("Unsupported input data types in overlay(fg: \(fg.dataType), bg: \(bg.dataType), mix: \(mix?.dataType.rawValue ?? "nil"))", values: [fg, bg, mix]))
 }
 /// PBR Surface
-public func pbrSurface(baseColor: SGColor? = nil, emissiveColor: SGColor? = nil, normal: SGVector? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, ambientOcclusion: SGScalar? = nil, specular: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, hasPremultipliedAlpha: Bool = false) -> SGToken {
+public func pbrSurface(baseColor: SGColor? = nil, emissiveColor: SGColor? = nil, normal: SGVector? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, ambientOcclusion: SGScalar? = nil, specular: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, clearcoatNormal: SGVector? = nil, hasPremultipliedAlpha: Bool = false) -> SGToken {
     guard SGDataType.color3f.matches(baseColor) else {
         return SGToken(source: .error("Invalid pbrSurface input. Expected baseColor data type to be SGDataType.color3f, but got \(baseColor?.dataType.rawValue ?? "nil").", values: [baseColor]))
     }
@@ -4518,6 +8716,9 @@ public func pbrSurface(baseColor: SGColor? = nil, emissiveColor: SGColor? = nil,
     guard SGDataType.float.matches(clearcoatRoughness) else {
         return SGToken(source: .error("Invalid pbrSurface input. Expected clearcoatRoughness data type to be SGDataType.float, but got \(clearcoatRoughness?.dataType.rawValue ?? "nil").", values: [clearcoatRoughness]))
     }
+    guard SGDataType.vector3f.matches(clearcoatNormal) else {
+        return SGToken(source: .error("Invalid pbrSurface input. Expected clearcoatNormal data type to be SGDataType.vector3f, but got \(clearcoatNormal?.dataType.rawValue ?? "nil").", values: [clearcoatNormal]))
+    }
     return SGToken(source: .nodeOutput(SGNode(
         nodeType: "ND_realitykit_pbr_surfaceshader",
         inputs: [
@@ -4532,23 +8733,15 @@ public func pbrSurface(baseColor: SGColor? = nil, emissiveColor: SGColor? = nil,
             .init(name: "opacityThreshold", dataType: SGDataType.float, connection: opacityThreshold),
             .init(name: "clearcoat", dataType: SGDataType.float, connection: clearcoat),
             .init(name: "clearcoatRoughness", dataType: SGDataType.float, connection: clearcoatRoughness),
+            .init(name: "clearcoatNormal", dataType: SGDataType.vector3f, connection: clearcoatNormal),
             .init(name: "hasPremultipliedAlpha", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(hasPremultipliedAlpha)))),
         ],
         outputs: [.init(dataType: SGDataType.token)])))
 }
 /// Image 2D Pixel
-public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid pixel input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid pixel input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid pixel input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid pixel input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector2f.matches(texcoord) else {
         return T(source: .error("Invalid pixel input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -4571,9 +8764,9 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
@@ -4591,9 +8784,9 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
@@ -4611,9 +8804,9 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
@@ -4625,18 +8818,9 @@ public func pixel<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepe
     return T(source: .error("Unsupported input data types in pixel(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D Gradient Pixel
-public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid pixelGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid pixelGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid pixelGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid pixelGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector2f.matches(texcoord) else {
         return T(source: .error("Invalid pixelGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -4662,9 +8846,9 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
@@ -4683,9 +8867,9 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
@@ -4704,9 +8888,9 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
@@ -4719,18 +8903,9 @@ public func pixelGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWit
     return T(source: .error("Unsupported input data types in pixelGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D LOD Pixel
-public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid pixelLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid pixelLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid pixelLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid pixelLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector2f.matches(texcoord) else {
         return T(source: .error("Invalid pixelLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -4750,9 +8925,9 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
@@ -4769,9 +8944,9 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
@@ -4788,9 +8963,9 @@ public func pixelLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressModeWithoutR
                 .init(name: "v_wrap_mode", dataType: SGDataType.string, connection: SGString(source: .constant(.string(vWrapMode.rawValue)))),
                 .init(name: "border_color", dataType: SGDataType.string, connection: SGString(source: .constant(.string(borderColor.rawValue)))),
                 .init(name: "filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(filter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
@@ -4928,6 +9103,33 @@ public func pow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_power_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_power_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_power_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_power_vector2",
@@ -5036,6 +9238,54 @@ public func ramp4<T>(valuetl: T, valuetr: T, valuebl: T, valuebr: T, texcoord: S
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
             ],
             outputs: [.init(dataType: SGDataType.float)])))
+    }
+    if SGDataType.half.matches(valuetl) && SGDataType.half.matches(valuetr) && SGDataType.half.matches(valuebl) && SGDataType.half.matches(valuebr) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ramp4_half",
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.half, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.half, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.half, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.half, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(valuetl) && SGDataType.vector2h.matches(valuetr) && SGDataType.vector2h.matches(valuebl) && SGDataType.vector2h.matches(valuebr) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ramp4_half2",
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.vector2h, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.vector2h, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.vector2h, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.vector2h, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2f)])))
+    }
+    if SGDataType.vector3h.matches(valuetl) && SGDataType.vector3h.matches(valuetr) && SGDataType.vector3h.matches(valuebl) && SGDataType.vector3h.matches(valuebr) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ramp4_half3",
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.vector3h, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.vector3h, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.vector3h, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.vector3h, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(valuetl) && SGDataType.vector4h.matches(valuetr) && SGDataType.vector4h.matches(valuebl) && SGDataType.vector4h.matches(valuebr) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_ramp4_half4",
+            inputs: [
+                .init(name: "valuetl", dataType: SGDataType.vector4h, connection: valuetl),
+                .init(name: "valuetr", dataType: SGDataType.vector4h, connection: valuetr),
+                .init(name: "valuebl", dataType: SGDataType.vector4h, connection: valuebl),
+                .init(name: "valuebr", dataType: SGDataType.vector4h, connection: valuebr),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.vector2f.matches(valuetl) && SGDataType.vector2f.matches(valuetr) && SGDataType.vector2f.matches(valuebl) && SGDataType.vector2f.matches(valuebr) {
         return T(source: .nodeOutput(SGNode(
@@ -5836,6 +10086,30 @@ public func round<T>(_ in1: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_round_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_round_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_round_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_round_vector2",
@@ -5918,6 +10192,60 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_safepower_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_safepower_half2FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_safepower_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_safepower_half3FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_safepower_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_safepower_half4FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(in2) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_safepower_vector2",
@@ -5975,18 +10303,9 @@ public func safePow<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
     return T(source: .error("Unsupported input data types in safePow(in1: \(in1.dataType), in2: \(in2.dataType))", values: [in1, in2]))
 }
 /// Image 2D
-public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, noFlipV: Bool = false, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sample input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid sample input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid sample input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid sample input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector2f.matches(texcoord) else {
         return T(source: .error("Invalid sample input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -6011,11 +10330,12 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
                 .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
@@ -6033,11 +10353,12 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
                 .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
@@ -6055,11 +10376,12 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
                 .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
@@ -6069,18 +10391,9 @@ public func sample<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSampl
     return T(source: .error("Unsupported input data types in sample(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Cube Image
-public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
+public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleCube input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid sampleCube input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid sampleCube input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid sampleCube input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector3f.matches(texcoord) else {
         return T(source: .error("Invalid sampleCube input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -6102,9 +10415,9 @@ public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGS
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
@@ -6123,9 +10436,9 @@ public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGS
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
                 .init(name: "bias", dataType: SGDataType.float, connection: bias),
@@ -6136,18 +10449,9 @@ public func sampleCube<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGS
     return T(source: .error("Unsupported input data types in sampleCube(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Cube Image Gradient
-public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
+public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleCubeGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid sampleCubeGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector3f.matches(texcoord) else {
         return T(source: .error("Invalid sampleCubeGradient input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -6172,9 +10476,9 @@ public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMo
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
@@ -6194,9 +10498,9 @@ public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMo
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
@@ -6208,18 +10512,9 @@ public func sampleCubeGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMo
     return T(source: .error("Unsupported input data types in sampleCubeGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Cube Image LOD
-public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
+public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleCubeLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid sampleCubeLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector3f.matches(texcoord) else {
         return T(source: .error("Invalid sampleCubeLOD input. Expected texcoord data type to be SGDataType.vector3f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -6238,9 +10533,9 @@ public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = 
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
@@ -6258,9 +10553,9 @@ public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = 
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector3f, connection: texcoord),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
@@ -6270,18 +10565,9 @@ public func sampleCubeLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = 
     return T(source: .error("Unsupported input data types in sampleCubeLOD(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D Gradient
-public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, noFlipV: Bool = false, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleGradient input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid sampleGradient input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid sampleGradient input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid sampleGradient input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector2f.matches(texcoord) else {
         return T(source: .error("Invalid sampleGradient input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -6309,11 +10595,12 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
                 .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
                 .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
@@ -6332,11 +10619,12 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
                 .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
                 .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
@@ -6355,11 +10643,12 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "dynamic_min_lod_clamp", dataType: SGDataType.float, connection: dynamicMinLodClamp),
                 .init(name: "gradient_dPdx", dataType: SGDataType.vector2f, connection: gradientDpdx),
                 .init(name: "gradient_dPdy", dataType: SGDataType.vector2f, connection: gradientDpdy),
@@ -6370,18 +10659,9 @@ public func sampleGradient<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode =
     return T(source: .error("Unsupported input data types in sampleGradient(defaultValue: \(defaultValue.dataType))", values: [defaultValue]))
 }
 /// Image 2D LOD
-public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, noFlipV: Bool = false, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
     guard SGDataType.asset.matches(file) else {
         return T(source: .error("Invalid sampleLOD input. Expected file data type to be SGDataType.asset, but got \(file.dataType).", values: [file]))
-    }
-    guard SGDataType.int.matches(maxAnisotropy) else {
-        return T(source: .error("Invalid sampleLOD input. Expected maxAnisotropy data type to be SGDataType.int, but got \(maxAnisotropy?.dataType.rawValue ?? "nil").", values: [maxAnisotropy]))
-    }
-    guard SGDataType.float.matches(maxLodClamp) else {
-        return T(source: .error("Invalid sampleLOD input. Expected maxLodClamp data type to be SGDataType.float, but got \(maxLodClamp?.dataType.rawValue ?? "nil").", values: [maxLodClamp]))
-    }
-    guard SGDataType.float.matches(minLodClamp) else {
-        return T(source: .error("Invalid sampleLOD input. Expected minLodClamp data type to be SGDataType.float, but got \(minLodClamp?.dataType.rawValue ?? "nil").", values: [minLodClamp]))
     }
     guard SGDataType.vector2f.matches(texcoord) else {
         return T(source: .error("Invalid sampleLOD input. Expected texcoord data type to be SGDataType.vector2f, but got \(texcoord?.dataType.rawValue ?? "nil").", values: [texcoord]))
@@ -6403,11 +10683,12 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color3f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
                 .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
             ],
@@ -6424,11 +10705,12 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.color4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
                 .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
             ],
@@ -6445,11 +10727,12 @@ public func sampleLOD<T>(file: SGTexture, uWrapMode: SGSamplerAddressMode = SGSa
                 .init(name: "mag_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(magFilter.rawValue)))),
                 .init(name: "min_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(minFilter.rawValue)))),
                 .init(name: "mip_filter", dataType: SGDataType.string, connection: SGString(source: .constant(.string(mipFilter.rawValue)))),
-                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: maxAnisotropy),
-                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: maxLodClamp),
-                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: minLodClamp),
+                .init(name: "max_anisotropy", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(maxAnisotropy)))),
+                .init(name: "max_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(maxLodClamp)))),
+                .init(name: "min_lod_clamp", dataType: SGDataType.float, connection: SGScalar(source: .constant(.float(minLodClamp)))),
                 .init(name: "default", dataType: SGDataType.vector4f, connection: defaultValue),
                 .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+                .init(name: "no_flip_v", dataType: SGDataType.bool, connection: SGValue(source: .constant(.bool(noFlipV)))),
                 .init(name: "lod", dataType: SGDataType.float, connection: lod),
                 .init(name: "offset", dataType: SGDataType.vector2i, connection: offset),
             ],
@@ -6919,6 +11202,39 @@ public func splitlr<T>(valuel: T, valuer: T, center: SGScalar? = nil, texcoord: 
             ],
             outputs: [.init(dataType: SGDataType.half)])))
     }
+    if SGDataType.vector2h.matches(valuel) && SGDataType.vector2h.matches(valuer) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_splitlr_half2",
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector2h, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector2h, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(valuel) && SGDataType.vector3h.matches(valuer) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_splitlr_half3",
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector3h, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector3h, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(valuel) && SGDataType.vector4h.matches(valuer) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_splitlr_half4",
+            inputs: [
+                .init(name: "valuel", dataType: SGDataType.vector4h, connection: valuel),
+                .init(name: "valuer", dataType: SGDataType.vector4h, connection: valuer),
+                .init(name: "center", dataType: SGDataType.float, connection: center),
+                .init(name: "texcoord", dataType: SGDataType.vector2f, connection: texcoord),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(valuel) && SGDataType.vector2f.matches(valuer) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_splitlr_vector2",
@@ -7171,6 +11487,42 @@ public func step<T>(_ in1: T, edge: T) -> T where T: SGNumeric {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
+    if SGDataType.half.matches(in1) && SGDataType.half.matches(edge) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_half",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.half, connection: in1),
+                .init(name: "edge", dataType: SGDataType.half, connection: edge),
+            ],
+            outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(edge) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_half2",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "edge", dataType: SGDataType.vector2h, connection: edge),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(edge) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_half3",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "edge", dataType: SGDataType.vector3h, connection: edge),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(edge) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_step_half4",
+            inputs: [
+                .init(name: "in", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "edge", dataType: SGDataType.vector4h, connection: edge),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
     if SGDataType.vector2f.matches(in1) && SGDataType.vector2f.matches(edge) {
         return T(source: .nodeOutput(SGNode(
             nodeType: "ND_realitykit_step_vector2",
@@ -7255,6 +11607,60 @@ public func subtract<T>(_ in1: T, _ in2: SGNumeric) -> T where T: SGNumeric {
                 .init(name: "in2", dataType: SGDataType.half, connection: in2),
             ],
             outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_subtract_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_subtract_half2FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_subtract_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_subtract_half3FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_subtract_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.half.matches(in2) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_subtract_half4FA",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.half, connection: in2),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.matrix2d.matches(in1) && SGDataType.matrix2d.matches(in2) {
         return T(source: .nodeOutput(SGNode(
@@ -7493,6 +11899,114 @@ public func switchValue<T>(_ in1: T, _ in2: T, _ in3: T, _ in4: T, _ in5: T, _ i
                 .init(name: "which", dataType: SGDataType.float, connection: which),
             ],
             outputs: [.init(dataType: SGDataType.half)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) && SGDataType.vector2h.matches(in3) && SGDataType.vector2h.matches(in4) && SGDataType.vector2h.matches(in5) && SGDataType.vector2h.matches(in6) && SGDataType.vector2h.matches(in7) && SGDataType.vector2h.matches(in8) && SGDataType.vector2h.matches(in9) && SGDataType.vector2h.matches(in10) && SGDataType.half.matches(which) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_switch_half2",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector2h, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector2h, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector2h, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector2h, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector2h, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector2h, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector2h, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector2h, connection: in10),
+                .init(name: "which", dataType: SGDataType.half, connection: which),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector2h.matches(in1) && SGDataType.vector2h.matches(in2) && SGDataType.vector2h.matches(in3) && SGDataType.vector2h.matches(in4) && SGDataType.vector2h.matches(in5) && SGDataType.vector2h.matches(in6) && SGDataType.vector2h.matches(in7) && SGDataType.vector2h.matches(in8) && SGDataType.vector2h.matches(in9) && SGDataType.vector2h.matches(in10) && SGDataType.int.matches(which) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_switch_half2I",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector2h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector2h, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector2h, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector2h, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector2h, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector2h, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector2h, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector2h, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector2h, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector2h, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
+            outputs: [.init(dataType: SGDataType.vector2h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) && SGDataType.vector3h.matches(in3) && SGDataType.vector3h.matches(in4) && SGDataType.vector3h.matches(in5) && SGDataType.vector3h.matches(in6) && SGDataType.vector3h.matches(in7) && SGDataType.vector3h.matches(in8) && SGDataType.vector3h.matches(in9) && SGDataType.vector3h.matches(in10) && SGDataType.half.matches(which) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_switch_half3",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector3h, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector3h, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector3h, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector3h, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector3h, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector3h, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector3h, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector3h, connection: in10),
+                .init(name: "which", dataType: SGDataType.half, connection: which),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector3h.matches(in1) && SGDataType.vector3h.matches(in2) && SGDataType.vector3h.matches(in3) && SGDataType.vector3h.matches(in4) && SGDataType.vector3h.matches(in5) && SGDataType.vector3h.matches(in6) && SGDataType.vector3h.matches(in7) && SGDataType.vector3h.matches(in8) && SGDataType.vector3h.matches(in9) && SGDataType.vector3h.matches(in10) && SGDataType.int.matches(which) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_switch_half3I",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector3h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector3h, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector3h, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector3h, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector3h, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector3h, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector3h, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector3h, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector3h, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector3h, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
+            outputs: [.init(dataType: SGDataType.vector3h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) && SGDataType.vector4h.matches(in3) && SGDataType.vector4h.matches(in4) && SGDataType.vector4h.matches(in5) && SGDataType.vector4h.matches(in6) && SGDataType.vector4h.matches(in7) && SGDataType.vector4h.matches(in8) && SGDataType.vector4h.matches(in9) && SGDataType.vector4h.matches(in10) && SGDataType.half.matches(which) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_switch_half4",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector4h, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector4h, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector4h, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector4h, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector4h, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector4h, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector4h, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector4h, connection: in10),
+                .init(name: "which", dataType: SGDataType.half, connection: which),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
+    }
+    if SGDataType.vector4h.matches(in1) && SGDataType.vector4h.matches(in2) && SGDataType.vector4h.matches(in3) && SGDataType.vector4h.matches(in4) && SGDataType.vector4h.matches(in5) && SGDataType.vector4h.matches(in6) && SGDataType.vector4h.matches(in7) && SGDataType.vector4h.matches(in8) && SGDataType.vector4h.matches(in9) && SGDataType.vector4h.matches(in10) && SGDataType.int.matches(which) {
+        return T(source: .nodeOutput(SGNode(
+            nodeType: "ND_switch_half4I",
+            inputs: [
+                .init(name: "in1", dataType: SGDataType.vector4h, connection: in1),
+                .init(name: "in2", dataType: SGDataType.vector4h, connection: in2),
+                .init(name: "in3", dataType: SGDataType.vector4h, connection: in3),
+                .init(name: "in4", dataType: SGDataType.vector4h, connection: in4),
+                .init(name: "in5", dataType: SGDataType.vector4h, connection: in5),
+                .init(name: "in6", dataType: SGDataType.vector4h, connection: in6),
+                .init(name: "in7", dataType: SGDataType.vector4h, connection: in7),
+                .init(name: "in8", dataType: SGDataType.vector4h, connection: in8),
+                .init(name: "in9", dataType: SGDataType.vector4h, connection: in9),
+                .init(name: "in10", dataType: SGDataType.vector4h, connection: in10),
+                .init(name: "which", dataType: SGDataType.int, connection: which),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4h)])))
     }
     if SGDataType.half.matches(in1) && SGDataType.half.matches(in2) && SGDataType.half.matches(in3) && SGDataType.half.matches(in4) && SGDataType.half.matches(in5) && SGDataType.half.matches(in6) && SGDataType.half.matches(in7) && SGDataType.half.matches(in8) && SGDataType.half.matches(in9) && SGDataType.half.matches(in10) && SGDataType.int.matches(which) {
         return T(source: .nodeOutput(SGNode(
@@ -8192,6 +12706,118 @@ public extension SGValue {
     }
 }
 public extension SGNumeric {
+    /// Inverse Hyperbolic Cos
+    func MTLAcosh() -> Self {
+        ShaderGraphCoder.MTLAcosh(x: self)
+    }
+    /// Inverse Hyperbolic Sin
+    func MTLAsinh() -> Self {
+        ShaderGraphCoder.MTLAsinh(x: self)
+    }
+    /// Inverse Tan
+    func MTLAtan() -> Self {
+        ShaderGraphCoder.MTLAtan(yOverX: self)
+    }
+    /// Inverse Hyperbolic Tan
+    func MTLAtanh() -> Self {
+        ShaderGraphCoder.MTLAtanh(x: self)
+    }
+    /// Copy Sign
+    func MTLCopysign(y: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLCopysign(x: self, y: y) as! Self
+    }
+    /// Hyperbolic Cos
+    func MTLCosh() -> Self {
+        ShaderGraphCoder.MTLCosh(x: self)
+    }
+    /// Cos Pi
+    func MTLCospi() -> Self {
+        ShaderGraphCoder.MTLCospi(x: self)
+    }
+    /// Screen-Space X Partial Derivative
+    func MTLDfdx() -> Self {
+        ShaderGraphCoder.MTLDfdx(p: self)
+    }
+    /// Screen-Space Y Partial Derivative
+    func MTLDfdy() -> Self {
+        ShaderGraphCoder.MTLDfdy(p: self)
+    }
+    /// Exponential 10
+    func MTLExp10() -> Self {
+        ShaderGraphCoder.MTLExp10(x: self)
+    }
+    /// Exponential 2
+    func MTLExp2() -> Self {
+        ShaderGraphCoder.MTLExp2(x: self)
+    }
+    /// Fortran Difference and Minimum
+    func MTLFdim(y: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLFdim(x: self, y: y) as! Self
+    }
+    /// Fused Multiply-Add
+    func MTLFma(b: SGNumeric, c: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLFma(a: self, b: b, c: c) as! Self
+    }
+    /// Modulo
+    func MTLFmod(y: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLFmod(x: self, y: y) as! Self
+    }
+    /// Absolute Derivatives Sum
+    func MTLFwidth() -> Self {
+        ShaderGraphCoder.MTLFwidth(p: self)
+    }
+    /// Log 10
+    func MTLLog10() -> Self {
+        ShaderGraphCoder.MTLLog10(x: self)
+    }
+    /// Log 2
+    func MTLLog2() -> Self {
+        ShaderGraphCoder.MTLLog2(x: self)
+    }
+    /// Max3
+    func MTLMax3(y: SGNumeric, z: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLMax3(x: self, y: y, z: z) as! Self
+    }
+    /// Median3
+    func MTLMedian3(y: SGNumeric, z: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLMedian3(x: self, y: y, z: z) as! Self
+    }
+    /// Min3
+    func MTLMin3(y: SGNumeric, z: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLMin3(x: self, y: y, z: z) as! Self
+    }
+    /// Power Positive
+    func MTLPowr(y: SGNumeric) -> Self {
+        ShaderGraphCoder.MTLPowr(x: self, y: y) as! Self
+    }
+    /// Round Integral
+    func MTLRint() -> Self {
+        ShaderGraphCoder.MTLRint(x: self)
+    }
+    /// Reciprocal Square Root
+    func MTLRsqrt() -> Self {
+        ShaderGraphCoder.MTLRsqrt(x: self)
+    }
+    /// Hyperbolic Sin
+    func MTLSinh() -> Self {
+        ShaderGraphCoder.MTLSinh(x: self)
+    }
+    /// Sin Pi
+    func MTLSinpi() -> Self {
+        ShaderGraphCoder.MTLSinpi(x: self)
+    }
+    /// Hyperbolic Tan
+    func MTLTanh() -> Self {
+        ShaderGraphCoder.MTLTanh(x: self)
+    }
+    /// Tan Pi
+    func MTLTanpi() -> Self {
+        ShaderGraphCoder.MTLTanpi(x: self)
+    }
+    /// Truncate
+    func MTLTrunc() -> Self {
+        ShaderGraphCoder.MTLTrunc(x: self)
+    }
     /// Abs
     func abs() -> Self {
         ShaderGraphCoder.abs(self)
@@ -8402,6 +13028,54 @@ public extension SGNumeric {
     }
 }
 public extension SGScalar {
+    /// Is Finite
+    func MTLIsfinite() -> SGValue {
+        ShaderGraphCoder.MTLIsfinite(x: self)
+    }
+    /// Is Infinite
+    func MTLIsinf() -> SGValue {
+        ShaderGraphCoder.MTLIsinf(x: self)
+    }
+    /// Is Not a Number
+    func MTLIsnan() -> SGValue {
+        ShaderGraphCoder.MTLIsnan(x: self)
+    }
+    /// Is Normal
+    func MTLIsnormal() -> SGValue {
+        ShaderGraphCoder.MTLIsnormal(x: self)
+    }
+    /// Is Ordered
+    func MTLIsordered(y: SGScalar? = nil) -> SGValue {
+        ShaderGraphCoder.MTLIsordered(x: self, y: y)
+    }
+    /// Is Unordered
+    func MTLIsunordered(y: SGScalar? = nil) -> SGValue {
+        ShaderGraphCoder.MTLIsunordered(x: self, y: y)
+    }
+    /// Multiply Add 24
+    func MTLMad24(y: SGScalar? = nil, z: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLMad24(x: self, y: y, z: z)
+    }
+    /// Max
+    func MTLMax(y: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLMax(x: self, y: y)
+    }
+    /// Min
+    func MTLMin(y: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLMin(x: self, y: y)
+    }
+    /// Multiply 24
+    func MTLMul24(y: SGScalar? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLMul24(x: self, y: y)
+    }
+    /// Select
+    func MTLSelect(b: SGScalar? = nil, c: SGValue? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLSelect(a: self, b: b, c: c)
+    }
+    /// Sign Bit
+    func MTLSignbit() -> SGValue {
+        ShaderGraphCoder.MTLSignbit(x: self)
+    }
     /// Ambient Occlusion
     func ambientOcclusion(maxdistance: SGScalar? = nil) -> SGScalar {
         ShaderGraphCoder.ambientOcclusion(coneangle: self, maxdistance: maxdistance)
@@ -8463,8 +13137,8 @@ public extension SGColor {
         ShaderGraphCoder.over(fg: self, bg: bg, mix: mix)
     }
     /// PBR Surface
-    func pbrSurface(emissiveColor: SGColor? = nil, normal: SGVector? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, ambientOcclusion: SGScalar? = nil, specular: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, hasPremultipliedAlpha: Bool = false) -> SGToken {
-        ShaderGraphCoder.pbrSurface(baseColor: self, emissiveColor: emissiveColor, normal: normal, roughness: roughness, metallic: metallic, ambientOcclusion: ambientOcclusion, specular: specular, opacity: opacity, opacityThreshold: opacityThreshold, clearcoat: clearcoat, clearcoatRoughness: clearcoatRoughness, hasPremultipliedAlpha: hasPremultipliedAlpha)
+    func pbrSurface(emissiveColor: SGColor? = nil, normal: SGVector? = nil, roughness: SGScalar? = nil, metallic: SGScalar? = nil, ambientOcclusion: SGScalar? = nil, specular: SGScalar? = nil, opacity: SGScalar? = nil, opacityThreshold: SGScalar? = nil, clearcoat: SGScalar? = nil, clearcoatRoughness: SGScalar? = nil, clearcoatNormal: SGVector? = nil, hasPremultipliedAlpha: Bool = false) -> SGToken {
+        ShaderGraphCoder.pbrSurface(baseColor: self, emissiveColor: emissiveColor, normal: normal, roughness: roughness, metallic: metallic, ambientOcclusion: ambientOcclusion, specular: specular, opacity: opacity, opacityThreshold: opacityThreshold, clearcoat: clearcoat, clearcoatRoughness: clearcoatRoughness, clearcoatNormal: clearcoatNormal, hasPremultipliedAlpha: hasPremultipliedAlpha)
     }
     /// Premultiply
     func premult() -> SGColor {
@@ -8488,6 +13162,78 @@ public extension SGColor {
     }
 }
 public extension SGVector {
+    /// Distance
+    func MTLDistanceHalf2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceHalf2(x: self, y: y)
+    }
+    /// Distance
+    func MTLDistanceHalf3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceHalf3(x: self, y: y)
+    }
+    /// Distance
+    func MTLDistanceHalf4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceHalf4(x: self, y: y)
+    }
+    /// Distance Square
+    func MTLDistanceSquaredHalf2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceSquaredHalf2(x: self, y: y)
+    }
+    /// Distance Square
+    func MTLDistanceSquaredHalf3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceSquaredHalf3(x: self, y: y)
+    }
+    /// Distance Square
+    func MTLDistanceSquaredHalf4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceSquaredHalf4(x: self, y: y)
+    }
+    /// Distance Square
+    func MTLDistanceSquaredVector2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceSquaredVector2(x: self, y: y)
+    }
+    /// Distance Square
+    func MTLDistanceSquaredVector3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceSquaredVector3(x: self, y: y)
+    }
+    /// Distance Square
+    func MTLDistanceSquaredVector4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceSquaredVector4(x: self, y: y)
+    }
+    /// Distance
+    func MTLDistanceVector2(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceVector2(x: self, y: y)
+    }
+    /// Distance
+    func MTLDistanceVector3(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceVector3(x: self, y: y)
+    }
+    /// Distance
+    func MTLDistanceVector4(y: SGVector? = nil) -> SGScalar {
+        ShaderGraphCoder.MTLDistanceVector4(x: self, y: y)
+    }
+    /// Magnitude Square
+    func MTLLengthSquaredHalf2() -> SGScalar {
+        ShaderGraphCoder.MTLLengthSquaredHalf2(x: self)
+    }
+    /// Magnitude Square
+    func MTLLengthSquaredHalf3() -> SGScalar {
+        ShaderGraphCoder.MTLLengthSquaredHalf3(x: self)
+    }
+    /// Magnitude Square
+    func MTLLengthSquaredHalf4() -> SGScalar {
+        ShaderGraphCoder.MTLLengthSquaredHalf4(x: self)
+    }
+    /// Magnitude Square
+    func MTLLengthSquaredVector2() -> SGScalar {
+        ShaderGraphCoder.MTLLengthSquaredVector2(x: self)
+    }
+    /// Magnitude Square
+    func MTLLengthSquaredVector3() -> SGScalar {
+        ShaderGraphCoder.MTLLengthSquaredVector3(x: self)
+    }
+    /// Magnitude Square
+    func MTLLengthSquaredVector4() -> SGScalar {
+        ShaderGraphCoder.MTLLengthSquaredVector4(x: self)
+    }
     /// Cellular Noise 2D
     func cellNoise2D() -> SGScalar {
         ShaderGraphCoder.cellNoise2D(texcoord: self)
@@ -8505,12 +13251,20 @@ public extension SGVector {
         ShaderGraphCoder.dot(self, in2)
     }
     /// Geometry Modifier
-    func geometryModifier(color: SGColor? = nil, normal: SGVector? = nil, bitangent: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil, userAttribute: SGVector? = nil, userAttributeHalf40: SGVector? = nil, userAttributeHalf41: SGVector? = nil, userAttributeHalf42: SGVector? = nil, userAttributeHalf43: SGVector? = nil, userAttributeHalf20: SGVector? = nil, userAttributeHalf21: SGVector? = nil) -> SGToken {
-        ShaderGraphCoder.geometryModifier(modelPositionOffset: self, color: color, normal: normal, bitangent: bitangent, uv0: uv0, uv1: uv1, userAttribute: userAttribute, userAttributeHalf40: userAttributeHalf40, userAttributeHalf41: userAttributeHalf41, userAttributeHalf42: userAttributeHalf42, userAttributeHalf43: userAttributeHalf43, userAttributeHalf20: userAttributeHalf20, userAttributeHalf21: userAttributeHalf21)
+    func geometrymodifier20Vertexshader(color: SGColor? = nil, normal: SGVector? = nil, bitangent: SGVector? = nil, uv0: SGVector? = nil, uv1: SGVector? = nil, uv2: SGVector? = nil, uv3: SGVector? = nil, uv4: SGVector? = nil, uv5: SGVector? = nil, uv6: SGVector? = nil, uv7: SGVector? = nil) -> SGToken {
+        ShaderGraphCoder.geometrymodifier20Vertexshader(modelPositionOffset: self, color: color, normal: normal, bitangent: bitangent, uv0: uv0, uv1: uv1, uv2: uv2, uv3: uv3, uv4: uv4, uv5: uv5, uv6: uv6, uv7: uv7)
     }
     /// Magnitude
     func length() -> SGScalar {
         ShaderGraphCoder.length(self)
+    }
+    /// Reflection Diffuse
+    func lightSpillDiffuse(attenuationUV: SGVector? = nil, attenuationMap: SGTexture) -> SGColor {
+        ShaderGraphCoder.lightSpillDiffuse(emitterUV: self, attenuationUV: attenuationUV, attenuationMap: attenuationMap)
+    }
+    /// Reflection Specular
+    func lightSpillSpecular(unreflectedDirection: SGVector? = nil, normal: SGVector? = nil, antialiasingStrength: SGVector? = nil) -> SGColor {
+        ShaderGraphCoder.lightSpillSpecular(reflectionOrigin: self, unreflectedDirection: unreflectedDirection, normal: normal, antialiasingStrength: antialiasingStrength)
     }
     /// Normal Map
     func normalMap(space: SGNormalSpace = SGNormalSpace.tangent, scale: SGNumeric, normal: SGVector? = nil, tangent: SGVector? = nil) -> SGVector {
@@ -8594,26 +13348,86 @@ public extension SGMatrix {
     func invertMatrix() -> SGMatrix {
         ShaderGraphCoder.invertMatrix(self)
     }
+    /// Multiply
+    func multiplyMatrix44(_ in2: SGVector) -> SGVector {
+        ShaderGraphCoder.multiplyMatrix44(self, in2)
+    }
     /// Transpose
     func transpose() -> SGMatrix {
         ShaderGraphCoder.transpose(self)
     }
 }
 public extension SGTexture {
+    /// Image 2D Array
+    func RealityKitTexture2DArray<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArray(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, index: index, noFlipV: noFlipV, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
+    }
+    /// Image 2D Array Gradient
+    func RealityKitTexture2DArrayGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArrayGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, index: index, noFlipV: noFlipV, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
+    }
+    /// Image 2D Array LOD
+    func RealityKitTexture2DArrayLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, noFlipV: Bool = false, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArrayLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, index: index, noFlipV: noFlipV, lod: lod, offset: offset)
+    }
+    /// Image 2D Array Pixel
+    func RealityKitTexture2DArrayPixel<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArrayPixel(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, index: index, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
+    }
+    /// Image 2D Array Gradient Pixel
+    func RealityKitTexture2DArrayPixelGradient<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArrayPixelGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, index: index, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
+    }
+    /// Image 2D Array LOD Pixel
+    func RealityKitTexture2DArrayPixelLOD<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, index: SGScalar? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArrayPixelLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, index: index, lod: lod, offset: offset)
+    }
+    /// Image 2D Array Read
+    func RealityKitTexture2DArrayRead<T>(defaultValue: T, index: SGScalar? = nil, x: SGScalar? = nil, y: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture2DArrayRead(file: self, defaultValue: defaultValue, index: index, x: x, y: y, lod: lod)
+    }
+    /// Image 3D
+    func RealityKitTexture3D<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, wWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3D(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, wWrapMode: wWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
+    }
+    /// Image 3D Gradient
+    func RealityKitTexture3DGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, wWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradient3DDpdx: SGVector? = nil, gradient3DDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3DGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, wWrapMode: wWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradient3DDpdx: gradient3DDpdx, gradient3DDpdy: gradient3DDpdy, offset: offset)
+    }
+    /// Image 3D LOD
+    func RealityKitTexture3DLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, wWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3DLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, wWrapMode: wWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod, offset: offset)
+    }
+    /// Image 3D Pixel
+    func RealityKitTexture3DPixel<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, wWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3DPixel(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, wWrapMode: wWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
+    }
+    /// Image 3D Gradient Pixel
+    func RealityKitTexture3DPixelGradient<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, wWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradient3DDpdx: SGVector? = nil, gradient3DDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3DPixelGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, wWrapMode: wWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradient3DDpdx: gradient3DDpdx, gradient3DDpdy: gradient3DDpdy, offset: offset)
+    }
+    /// Image 3D LOD Pixel
+    func RealityKitTexture3DPixelLOD<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, wWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3DPixelLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, wWrapMode: wWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod, offset: offset)
+    }
+    /// Image 3D Read
+    func RealityKitTexture3DRead<T>(defaultValue: T, x: SGScalar? = nil, y: SGScalar? = nil, z: SGScalar? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.RealityKitTexture3DRead(file: self, defaultValue: defaultValue, x: x, y: y, z: z, lod: lod)
+    }
     /// Image
     func image<T>(defaultValue: T, texcoord: SGVector? = nil, uaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, vaddressmode: SGImageAddressMode = SGImageAddressMode.periodic, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
         ShaderGraphCoder.image(file: self, defaultValue: defaultValue, texcoord: texcoord, uaddressmode: uaddressmode, vaddressmode: vaddressmode, filtertype: filtertype)
     }
     /// Image 2D Pixel
-    func pixel<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    func pixel<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.pixel(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
     /// Image 2D Gradient Pixel
-    func pixelGradient<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    func pixelGradient<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.pixelGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
     }
     /// Image 2D LOD Pixel
-    func pixelLOD<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+    func pixelLOD<T>(uWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, vWrapMode: SGSamplerAddressModeWithoutRepeat = SGSamplerAddressModeWithoutRepeat.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, filter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.pixelLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, filter: filter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod, offset: offset)
     }
     /// Image 2D Read
@@ -8621,28 +13435,28 @@ public extension SGTexture {
         ShaderGraphCoder.read(file: self, defaultValue: defaultValue, x: x, y: y, lod: lod)
     }
     /// Image 2D
-    func sample<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-        ShaderGraphCoder.sample(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
+    func sample<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, noFlipV: Bool = false, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.sample(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, noFlipV: noFlipV, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp, offset: offset)
     }
     /// Cube Image
-    func sampleCube<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
+    func sampleCube<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, bias: SGScalar? = nil, dynamicMinLodClamp: SGScalar? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleCube(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, bias: bias, dynamicMinLodClamp: dynamicMinLodClamp)
     }
     /// Cube Image Gradient
-    func sampleCubeGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
+    func sampleCubeGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientcubeDpdx: SGVector? = nil, gradientcubeDpdy: SGVector? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleCubeGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradientcubeDpdx: gradientcubeDpdx, gradientcubeDpdy: gradientcubeDpdy)
     }
     /// Cube Image LOD
-    func sampleCubeLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
+    func sampleCubeLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil) -> T where T: SGSIMD {
         ShaderGraphCoder.sampleCubeLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod)
     }
     /// Image 2D Gradient
-    func sampleGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-        ShaderGraphCoder.sampleGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
+    func sampleGradient<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, noFlipV: Bool = false, dynamicMinLodClamp: SGScalar? = nil, gradientDpdx: SGVector? = nil, gradientDpdy: SGVector? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.sampleGradient(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, noFlipV: noFlipV, dynamicMinLodClamp: dynamicMinLodClamp, gradientDpdx: gradientDpdx, gradientDpdy: gradientDpdy, offset: offset)
     }
     /// Image 2D LOD
-    func sampleLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: SGScalar? = nil, maxLodClamp: SGScalar? = nil, minLodClamp: SGScalar? = nil, defaultValue: T, texcoord: SGVector? = nil, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
-        ShaderGraphCoder.sampleLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, lod: lod, offset: offset)
+    func sampleLOD<T>(uWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, vWrapMode: SGSamplerAddressMode = SGSamplerAddressMode.clampToEdge, borderColor: SGSamplerBorderColor = SGSamplerBorderColor.transparentBlack, magFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, minFilter: SGSamplerMinMagFilter = SGSamplerMinMagFilter.linear, mipFilter: SGSamplerMipFilter = SGSamplerMipFilter.linear, maxAnisotropy: Int = 1, maxLodClamp: Float = 65504.0, minLodClamp: Float = 0.0, defaultValue: T, texcoord: SGVector? = nil, noFlipV: Bool = false, lod: SGScalar? = nil, offset: SGVector? = nil) -> T where T: SGSIMD {
+        ShaderGraphCoder.sampleLOD(file: self, uWrapMode: uWrapMode, vWrapMode: vWrapMode, borderColor: borderColor, magFilter: magFilter, minFilter: minFilter, mipFilter: mipFilter, maxAnisotropy: maxAnisotropy, maxLodClamp: maxLodClamp, minLodClamp: minLodClamp, defaultValue: defaultValue, texcoord: texcoord, noFlipV: noFlipV, lod: lod, offset: offset)
     }
     /// Tiled Image
     func tiledImage<T>(defaultValue: T, texcoord: SGVector? = nil, uvtiling: SGVector? = nil, uvoffset: SGVector? = nil, realworldimagesize: SGVector? = nil, realworldtilesize: SGVector? = nil, filtertype: SGFilterType = SGFilterType.linear) -> T where T: SGNumeric {
