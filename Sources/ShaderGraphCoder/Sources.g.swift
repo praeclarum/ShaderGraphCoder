@@ -3,6 +3,22 @@ import Foundation
 import simd
 
 public extension SGValue {
+    /// Blurred Background
+    static var backgroundBlurColor3: SGColor {
+        return SGColor(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_background_blur_color3",
+            inputs: [
+            ],
+            outputs: [.init(dataType: SGDataType.color3f)])))
+    }
+    /// Blurred Background
+    static var backgroundBlurColor4: SGColor {
+        return SGColor(source: .nodeOutput(SGNode(
+            nodeType: "ND_realitykit_background_blur_color4",
+            inputs: [
+            ],
+            outputs: [.init(dataType: SGDataType.color4f)])))
+    }
     /// Bitangent
     static func bitangent(space: SGSpace = SGSpace.object, index: Int = 0) -> SGVector {
         return SGVector(source: .nodeOutput(SGNode(
@@ -331,62 +347,6 @@ public extension SGValue {
             ],
             outputs: [.init(dataType: SGDataType.float)])))
     }
-    /// Surface Custom Attribute
-    static var surfaceCustomAttribute: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
-    }
-    /// Surface Custom Attribute 0
-    static var surfaceCustomAttributeHalf20: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half2_0",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    /// Surface Custom Attribute 1
-    static var surfaceCustomAttributeHalf21: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half2_1",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector2h)])))
-    }
-    /// Surface Custom Attribute 0
-    static var surfaceCustomAttributeHalf40: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_0",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    /// Surface Custom Attribute 1
-    static var surfaceCustomAttributeHalf41: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_1",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    /// Surface Custom Attribute 2
-    static var surfaceCustomAttributeHalf42: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_2",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
-    /// Surface Custom Attribute 3
-    static var surfaceCustomAttributeHalf43: SGVector {
-        return SGVector(source: .nodeOutput(SGNode(
-            nodeType: "ND_realitykit_surface_custom_attribute_half4_3",
-            inputs: [
-            ],
-            outputs: [.init(dataType: SGDataType.vector4h)])))
-    }
     /// Surface Custom Parameter
     static var surfaceCustomParameter: SGVector {
         return SGVector(source: .nodeOutput(SGNode(
@@ -518,6 +478,15 @@ public extension SGValue {
                 .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
             ],
             outputs: [.init(dataType: SGDataType.vector3f)])))
+    }
+    /// Texture Coordinates
+    static func texcoordVector4(index: Int = 0) -> SGVector {
+        return SGVector(source: .nodeOutput(SGNode(
+            nodeType: "ND_texcoord_vector4",
+            inputs: [
+                .init(name: "index", dataType: SGDataType.int, connection: SGScalar(source: .constant(.int(index)))),
+            ],
+            outputs: [.init(dataType: SGDataType.vector4f)])))
     }
     /// Time
     static var time: SGScalar {

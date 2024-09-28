@@ -132,116 +132,496 @@ The following operators are supported:
 | `&&` | Logical And |
 | `\|\|` | Logical Or |
 | `^^` | Logical Xor |
+| `MTLAbs(x)` | Abs |
+| `MTLAcosh(x)` | Inverse Hyperbolic Cos |
+| `MTLAsinh(x)` | Inverse Hyperbolic Sin |
+| `MTLAtan(yOverX)` | Inverse Tan |
+| `MTLAtanh(x)` | Inverse Hyperbolic Tan |
+| `MTLCopysign(x, y)` | Copy Sign |
+| `MTLCosh(x)` | Hyperbolic Cos |
+| `MTLCospi(x)` | Cos Pi |
+| `MTLDfdx(p)` | Screen-Space X Partial Derivative |
+| `MTLDfdy(p)` | Screen-Space Y Partial Derivative |
+| `MTLDistanceHalf2(x, y)` | Distance |
+| `MTLDistanceHalf3(x, y)` | Distance |
+| `MTLDistanceHalf4(x, y)` | Distance |
+| `MTLDistanceSquaredHalf2(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf3(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf4(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector2(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector3(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector4(x, y)` | Distance Square |
+| `MTLDistanceVector2(x, y)` | Distance |
+| `MTLDistanceVector3(x, y)` | Distance |
+| `MTLDistanceVector4(x, y)` | Distance |
+| `MTLExp10(x)` | Exponential 10 |
+| `MTLExp2(x)` | Exponential 2 |
+| `MTLFdim(x, y)` | Fortran Difference and Minimum |
+| `MTLFma(a, b, ...)` | Fused Multiply-Add |
+| `MTLFmod(x, y)` | Modulo |
+| `MTLFwidth(p)` | Absolute Derivatives Sum |
+| `MTLIsfinite(x)` | Is Finite |
+| `MTLIsinf(x)` | Is Infinite |
+| `MTLIsnan(x)` | Is Not a Number |
+| `MTLIsnormal(x)` | Is Normal |
+| `MTLIsordered(x, y)` | Is Ordered |
+| `MTLIsunordered(x, y)` | Is Unordered |
+| `MTLLengthSquaredHalf2(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf3(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf4(x)` | Magnitude Square |
+| `MTLLengthSquaredVector2(x)` | Magnitude Square |
+| `MTLLengthSquaredVector3(x)` | Magnitude Square |
+| `MTLLengthSquaredVector4(x)` | Magnitude Square |
+| `MTLLog10(x)` | Log 10 |
+| `MTLLog2(x)` | Log 2 |
+| `MTLMad24(x, y, ...)` | Multiply Add 24 |
+| `MTLMax(x, y)` | Max |
+| `MTLMax3(x, y, ...)` | Max3 |
+| `MTLMedian3(x, y, ...)` | Median3 |
+| `MTLMin(x, y)` | Min |
+| `MTLMin3(x, y, ...)` | Min3 |
+| `MTLMul24(x, y)` | Multiply 24 |
+| `MTLPowr(x, y)` | Power Positive |
+| `MTLRint(x)` | Round Integral |
+| `MTLRsqrt(x)` | Reciprocal Square Root |
+| `MTLSelect(a, b, ...)` | Select |
+| `MTLSignbit(x)` | Sign Bit |
+| `MTLSinh(x)` | Hyperbolic Sin |
+| `MTLSinpi(x)` | Sin Pi |
+| `MTLTanh(x)` | Hyperbolic Tan |
+| `MTLTanpi(x)` | Tan Pi |
+| `MTLTrunc(x)` | Truncate |
+| `RealityKitTexture2DArray(file, uWrapMode, ...)` | Image 2D Array |
+| `RealityKitTexture2DArrayGradient(file, uWrapMode, ...)` | Image 2D Array Gradient |
+| `RealityKitTexture2DArrayLOD(file, uWrapMode, ...)` | Image 2D Array LOD |
+| `RealityKitTexture2DArrayPixel(file, uWrapMode, ...)` | Image 2D Array Pixel |
+| `RealityKitTexture2DArrayPixelGradient(file, uWrapMode, ...)` | Image 2D Array Gradient Pixel |
+| `RealityKitTexture2DArrayPixelLOD(file, uWrapMode, ...)` | Image 2D Array LOD Pixel |
+| `RealityKitTexture2DArrayRead(file, defaultValue, ...)` | Image 2D Array Read |
+| `RealityKitTexture3D(file, uWrapMode, ...)` | Image 3D |
+| `RealityKitTexture3DGradient(file, uWrapMode, ...)` | Image 3D Gradient |
+| `RealityKitTexture3DLOD(file, uWrapMode, ...)` | Image 3D LOD |
+| `RealityKitTexture3DPixel(file, uWrapMode, ...)` | Image 3D Pixel |
+| `RealityKitTexture3DPixelGradient(file, uWrapMode, ...)` | Image 3D Gradient Pixel |
+| `RealityKitTexture3DPixelLOD(file, uWrapMode, ...)` | Image 3D LOD Pixel |
+| `RealityKitTexture3DRead(file, defaultValue, ...)` | Image 3D Read |
+| `MTLAbs(x)` | Abs |
+| `MTLAcosh(x)` | Inverse Hyperbolic Cos |
+| `MTLAsinh(x)` | Inverse Hyperbolic Sin |
+| `MTLAtan(yOverX)` | Inverse Tan |
+| `MTLAtanh(x)` | Inverse Hyperbolic Tan |
+| `MTLCopysign(x, y)` | Copy Sign |
+| `MTLCosh(x)` | Hyperbolic Cos |
+| `MTLCospi(x)` | Cos Pi |
+| `MTLDfdx(p)` | Screen-Space X Partial Derivative |
+| `MTLDfdy(p)` | Screen-Space Y Partial Derivative |
+| `MTLDistanceHalf2(x, y)` | Distance |
+| `MTLDistanceHalf3(x, y)` | Distance |
+| `MTLDistanceHalf4(x, y)` | Distance |
+| `MTLDistanceSquaredHalf2(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf3(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf4(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector2(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector3(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector4(x, y)` | Distance Square |
+| `MTLDistanceVector2(x, y)` | Distance |
+| `MTLDistanceVector3(x, y)` | Distance |
+| `MTLDistanceVector4(x, y)` | Distance |
+| `MTLExp10(x)` | Exponential 10 |
+| `MTLExp2(x)` | Exponential 2 |
+| `MTLFdim(x, y)` | Fortran Difference and Minimum |
+| `MTLFma(a, b, ...)` | Fused Multiply-Add |
+| `MTLFmod(x, y)` | Modulo |
+| `MTLFwidth(p)` | Absolute Derivatives Sum |
+| `MTLIsfinite(x)` | Is Finite |
+| `MTLIsinf(x)` | Is Infinite |
+| `MTLIsnan(x)` | Is Not a Number |
+| `MTLIsnormal(x)` | Is Normal |
+| `MTLIsordered(x, y)` | Is Ordered |
+| `MTLIsunordered(x, y)` | Is Unordered |
+| `MTLLengthSquaredHalf2(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf3(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf4(x)` | Magnitude Square |
+| `MTLLengthSquaredVector2(x)` | Magnitude Square |
+| `MTLLengthSquaredVector3(x)` | Magnitude Square |
+| `MTLLengthSquaredVector4(x)` | Magnitude Square |
+| `MTLLog10(x)` | Log 10 |
+| `MTLLog2(x)` | Log 2 |
+| `MTLMad24(x, y, ...)` | Multiply Add 24 |
+| `MTLMax(x, y)` | Max |
+| `MTLMax3(x, y, ...)` | Max3 |
+| `MTLMedian3(x, y, ...)` | Median3 |
+| `MTLMin(x, y)` | Min |
+| `MTLMin3(x, y, ...)` | Min3 |
+| `MTLMul24(x, y)` | Multiply 24 |
+| `MTLPowr(x, y)` | Power Positive |
+| `MTLRint(x)` | Round Integral |
+| `MTLRsqrt(x)` | Reciprocal Square Root |
+| `MTLSelect(a, b, ...)` | Select |
+| `MTLSignbit(x)` | Sign Bit |
+| `MTLSinh(x)` | Hyperbolic Sin |
+| `MTLSinpi(x)` | Sin Pi |
+| `MTLTanh(x)` | Hyperbolic Tan |
+| `MTLTanpi(x)` | Tan Pi |
+| `MTLTrunc(x)` | Truncate |
+| `RealityKitTexture2DArray(file, uWrapMode, ...)` | Image 2D Array |
+| `RealityKitTexture2DArrayGradient(file, uWrapMode, ...)` | Image 2D Array Gradient |
+| `RealityKitTexture2DArrayLOD(file, uWrapMode, ...)` | Image 2D Array LOD |
+| `RealityKitTexture2DArrayPixel(file, uWrapMode, ...)` | Image 2D Array Pixel |
+| `RealityKitTexture2DArrayPixelGradient(file, uWrapMode, ...)` | Image 2D Array Gradient Pixel |
+| `RealityKitTexture2DArrayPixelLOD(file, uWrapMode, ...)` | Image 2D Array LOD Pixel |
+| `RealityKitTexture2DArrayRead(file, defaultValue, ...)` | Image 2D Array Read |
+| `RealityKitTexture3D(file, uWrapMode, ...)` | Image 3D |
+| `RealityKitTexture3DGradient(file, uWrapMode, ...)` | Image 3D Gradient |
+| `RealityKitTexture3DLOD(file, uWrapMode, ...)` | Image 3D LOD |
+| `RealityKitTexture3DPixel(file, uWrapMode, ...)` | Image 3D Pixel |
+| `RealityKitTexture3DPixelGradient(file, uWrapMode, ...)` | Image 3D Gradient Pixel |
+| `RealityKitTexture3DPixelLOD(file, uWrapMode, ...)` | Image 3D LOD Pixel |
+| `RealityKitTexture3DRead(file, defaultValue, ...)` | Image 3D Read |
+| `MTLAbs(x)` | Abs |
+| `MTLAcosh(x)` | Inverse Hyperbolic Cos |
+| `MTLAsinh(x)` | Inverse Hyperbolic Sin |
+| `MTLAtan(yOverX)` | Inverse Tan |
+| `MTLAtanh(x)` | Inverse Hyperbolic Tan |
+| `MTLCopysign(x, y)` | Copy Sign |
+| `MTLCosh(x)` | Hyperbolic Cos |
+| `MTLCospi(x)` | Cos Pi |
+| `MTLDfdx(p)` | Screen-Space X Partial Derivative |
+| `MTLDfdy(p)` | Screen-Space Y Partial Derivative |
+| `MTLDistanceHalf2(x, y)` | Distance |
+| `MTLDistanceHalf3(x, y)` | Distance |
+| `MTLDistanceHalf4(x, y)` | Distance |
+| `MTLDistanceSquaredHalf2(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf3(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf4(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector2(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector3(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector4(x, y)` | Distance Square |
+| `MTLDistanceVector2(x, y)` | Distance |
+| `MTLDistanceVector3(x, y)` | Distance |
+| `MTLDistanceVector4(x, y)` | Distance |
+| `MTLExp10(x)` | Exponential 10 |
+| `MTLExp2(x)` | Exponential 2 |
+| `MTLFdim(x, y)` | Fortran Difference and Minimum |
+| `MTLFma(a, b, ...)` | Fused Multiply-Add |
+| `MTLFmod(x, y)` | Modulo |
+| `MTLFwidth(p)` | Absolute Derivatives Sum |
+| `MTLIsfinite(x)` | Is Finite |
+| `MTLIsinf(x)` | Is Infinite |
+| `MTLIsnan(x)` | Is Not a Number |
+| `MTLIsnormal(x)` | Is Normal |
+| `MTLIsordered(x, y)` | Is Ordered |
+| `MTLIsunordered(x, y)` | Is Unordered |
+| `MTLLengthSquaredHalf2(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf3(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf4(x)` | Magnitude Square |
+| `MTLLengthSquaredVector2(x)` | Magnitude Square |
+| `MTLLengthSquaredVector3(x)` | Magnitude Square |
+| `MTLLengthSquaredVector4(x)` | Magnitude Square |
+| `MTLLog10(x)` | Log 10 |
+| `MTLLog2(x)` | Log 2 |
+| `MTLMad24(x, y, ...)` | Multiply Add 24 |
+| `MTLMax(x, y)` | Max |
+| `MTLMax3(x, y, ...)` | Max3 |
+| `MTLMedian3(x, y, ...)` | Median3 |
+| `MTLMin(x, y)` | Min |
+| `MTLMin3(x, y, ...)` | Min3 |
+| `MTLMul24(x, y)` | Multiply 24 |
+| `MTLPowr(x, y)` | Power Positive |
+| `MTLRint(x)` | Round Integral |
+| `MTLRsqrt(x)` | Reciprocal Square Root |
+| `MTLSelect(a, b, ...)` | Select |
+| `MTLSignbit(x)` | Sign Bit |
+| `MTLSinh(x)` | Hyperbolic Sin |
+| `MTLSinpi(x)` | Sin Pi |
+| `MTLTanh(x)` | Hyperbolic Tan |
+| `MTLTanpi(x)` | Tan Pi |
+| `MTLTrunc(x)` | Truncate |
+| `RealityKitTexture2DArray(file, uWrapMode, ...)` | Image 2D Array |
+| `RealityKitTexture2DArrayGradient(file, uWrapMode, ...)` | Image 2D Array Gradient |
+| `RealityKitTexture2DArrayLOD(file, uWrapMode, ...)` | Image 2D Array LOD |
+| `RealityKitTexture2DArrayPixel(file, uWrapMode, ...)` | Image 2D Array Pixel |
+| `RealityKitTexture2DArrayPixelGradient(file, uWrapMode, ...)` | Image 2D Array Gradient Pixel |
+| `RealityKitTexture2DArrayPixelLOD(file, uWrapMode, ...)` | Image 2D Array LOD Pixel |
+| `RealityKitTexture2DArrayRead(file, defaultValue, ...)` | Image 2D Array Read |
+| `RealityKitTexture3D(file, uWrapMode, ...)` | Image 3D |
+| `RealityKitTexture3DGradient(file, uWrapMode, ...)` | Image 3D Gradient |
+| `RealityKitTexture3DLOD(file, uWrapMode, ...)` | Image 3D LOD |
+| `RealityKitTexture3DPixel(file, uWrapMode, ...)` | Image 3D Pixel |
+| `RealityKitTexture3DPixelGradient(file, uWrapMode, ...)` | Image 3D Gradient Pixel |
+| `RealityKitTexture3DPixelLOD(file, uWrapMode, ...)` | Image 3D LOD Pixel |
+| `RealityKitTexture3DRead(file, defaultValue, ...)` | Image 3D Read |
+| `MTLAcosh(x)` | Inverse Hyperbolic Cos |
+| `MTLAsinh(x)` | Inverse Hyperbolic Sin |
+| `MTLAtan(yOverX)` | Inverse Tan |
+| `MTLAtanh(x)` | Inverse Hyperbolic Tan |
+| `MTLCopysign(x, y)` | Copy Sign |
+| `MTLCosh(x)` | Hyperbolic Cos |
+| `MTLCospi(x)` | Cos Pi |
+| `MTLDfdx(p)` | Screen-Space X Partial Derivative |
+| `MTLDfdy(p)` | Screen-Space Y Partial Derivative |
+| `MTLDistanceHalf2(x, y)` | Distance |
+| `MTLDistanceHalf3(x, y)` | Distance |
+| `MTLDistanceHalf4(x, y)` | Distance |
+| `MTLDistanceSquaredHalf2(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf3(x, y)` | Distance Square |
+| `MTLDistanceSquaredHalf4(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector2(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector3(x, y)` | Distance Square |
+| `MTLDistanceSquaredVector4(x, y)` | Distance Square |
+| `MTLDistanceVector2(x, y)` | Distance |
+| `MTLDistanceVector3(x, y)` | Distance |
+| `MTLDistanceVector4(x, y)` | Distance |
+| `MTLExp10(x)` | Exponential 10 |
+| `MTLExp2(x)` | Exponential 2 |
+| `MTLFdim(x, y)` | Fortran Difference and Minimum |
+| `MTLFma(a, b, ...)` | Fused Multiply-Add |
+| `MTLFmod(x, y)` | Modulo |
+| `MTLFwidth(p)` | Absolute Derivatives Sum |
+| `MTLIsfinite(x)` | Is Finite |
+| `MTLIsinf(x)` | Is Infinite |
+| `MTLIsnan(x)` | Is Not a Number |
+| `MTLIsnormal(x)` | Is Normal |
+| `MTLIsordered(x, y)` | Is Ordered |
+| `MTLIsunordered(x, y)` | Is Unordered |
+| `MTLLengthSquaredHalf2(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf3(x)` | Magnitude Square |
+| `MTLLengthSquaredHalf4(x)` | Magnitude Square |
+| `MTLLengthSquaredVector2(x)` | Magnitude Square |
+| `MTLLengthSquaredVector3(x)` | Magnitude Square |
+| `MTLLengthSquaredVector4(x)` | Magnitude Square |
+| `MTLLog10(x)` | Log 10 |
+| `MTLLog2(x)` | Log 2 |
+| `MTLMad24(x, y, ...)` | Multiply Add 24 |
+| `MTLMax(x, y)` | Max |
+| `MTLMax3(x, y, ...)` | Max3 |
+| `MTLMedian3(x, y, ...)` | Median3 |
+| `MTLMin(x, y)` | Min |
+| `MTLMin3(x, y, ...)` | Min3 |
+| `MTLMul24(x, y)` | Multiply 24 |
+| `MTLPowr(x, y)` | Power Positive |
+| `MTLRint(x)` | Round Integral |
+| `MTLRsqrt(x)` | Reciprocal Square Root |
+| `MTLSelect(a, b, ...)` | Select |
+| `MTLSignbit(x)` | Sign Bit |
+| `MTLSinh(x)` | Hyperbolic Sin |
+| `MTLSinpi(x)` | Sin Pi |
+| `MTLTanh(x)` | Hyperbolic Tan |
+| `MTLTanpi(x)` | Tan Pi |
+| `MTLTrunc(x)` | Truncate |
+| `RealityKitTexture2DArray(file, uWrapMode, ...)` | Image 2D Array |
+| `RealityKitTexture2DArrayGradient(file, uWrapMode, ...)` | Image 2D Array Gradient |
+| `RealityKitTexture2DArrayLOD(file, uWrapMode, ...)` | Image 2D Array LOD |
+| `RealityKitTexture2DArrayPixel(file, uWrapMode, ...)` | Image 2D Array Pixel |
+| `RealityKitTexture2DArrayPixelGradient(file, uWrapMode, ...)` | Image 2D Array Gradient Pixel |
+| `RealityKitTexture2DArrayPixelLOD(file, uWrapMode, ...)` | Image 2D Array LOD Pixel |
+| `RealityKitTexture2DArrayRead(file, defaultValue, ...)` | Image 2D Array Read |
+| `RealityKitTexture3D(file, uWrapMode, ...)` | Image 3D |
+| `RealityKitTexture3DGradient(file, uWrapMode, ...)` | Image 3D Gradient |
+| `RealityKitTexture3DLOD(file, uWrapMode, ...)` | Image 3D LOD |
+| `RealityKitTexture3DPixel(file, uWrapMode, ...)` | Image 3D Pixel |
+| `RealityKitTexture3DPixelGradient(file, uWrapMode, ...)` | Image 3D Gradient Pixel |
+| `RealityKitTexture3DPixelLOD(file, uWrapMode, ...)` | Image 3D LOD Pixel |
+| `RealityKitTexture3DRead(file, defaultValue, ...)` | Image 3D Read |
+| `RealityKitTexture2DArray(file, uWrapMode, ...)` | Image 2D Array |
+| `RealityKitTexture2DArrayGradient(file, uWrapMode, ...)` | Image 2D Array Gradient |
+| `RealityKitTexture2DArrayLOD(file, uWrapMode, ...)` | Image 2D Array LOD |
+| `RealityKitTexture2DArrayPixel(file, uWrapMode, ...)` | Image 2D Array Pixel |
+| `RealityKitTexture2DArrayPixelGradient(file, uWrapMode, ...)` | Image 2D Array Gradient Pixel |
+| `RealityKitTexture2DArrayPixelLOD(file, uWrapMode, ...)` | Image 2D Array LOD Pixel |
+| `RealityKitTexture2DArrayRead(file, defaultValue, ...)` | Image 2D Array Read |
+| `RealityKitTexture3D(file, uWrapMode, ...)` | Image 3D |
+| `RealityKitTexture3DGradient(file, uWrapMode, ...)` | Image 3D Gradient |
+| `RealityKitTexture3DLOD(file, uWrapMode, ...)` | Image 3D LOD |
+| `RealityKitTexture3DPixel(file, uWrapMode, ...)` | Image 3D Pixel |
+| `RealityKitTexture3DPixelGradient(file, uWrapMode, ...)` | Image 3D Gradient Pixel |
+| `RealityKitTexture3DPixelLOD(file, uWrapMode, ...)` | Image 3D LOD Pixel |
+| `RealityKitTexture3DRead(file, defaultValue, ...)` | Image 3D Read |
+| `RealityKitTexture2DArray(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Array |
+| `RealityKitTexture2DArrayGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Array Gradient |
+| `RealityKitTexture2DArrayLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Array LOD |
+| `RealityKitTexture2DArrayPixel(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Array Pixel |
+| `RealityKitTexture2DArrayPixelGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Array Gradient Pixel |
+| `RealityKitTexture2DArrayPixelLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Array LOD Pixel |
+| `RealityKitTexture2DArrayRead(file, defaultValue, index, x, ...)` | Image 2D Array Read |
+| `RealityKitTexture3D(file, uWrapMode, vWrapMode, wWrapMode, ...)` | Image 3D |
+| `RealityKitTexture3DGradient(file, uWrapMode, vWrapMode, wWrapMode, ...)` | Image 3D Gradient |
+| `RealityKitTexture3DLOD(file, uWrapMode, vWrapMode, wWrapMode, ...)` | Image 3D LOD |
+| `RealityKitTexture3DPixel(file, uWrapMode, vWrapMode, wWrapMode, ...)` | Image 3D Pixel |
+| `RealityKitTexture3DPixelGradient(file, uWrapMode, vWrapMode, wWrapMode, ...)` | Image 3D Gradient Pixel |
+| `RealityKitTexture3DPixelLOD(file, uWrapMode, vWrapMode, wWrapMode, ...)` | Image 3D LOD Pixel |
+| `RealityKitTexture3DRead(file, defaultValue, x, y, ...)` | Image 3D Read |
 | `abs(in1)` | Abs |
 | `acos(in1)` | Acos |
+| `acosh(x)` | Inverse Hyperbolic Cos |
 | `add(in1, in2)` | Add |
 | `ambientOcclusion(coneangle, maxdistance)` | Ambient Occlusion |
 | `asin(in1)` | Asin |
+| `asinh(x)` | Inverse Hyperbolic Sin |
+| `atan(yOverX)` | Inverse Tan |
 | `atan2(iny, inx)` | Atan2 |
-| `blur(in1, size, ...)` | Blur |
-| `burn(fg, bg, ...)` | Burn |
+| `atanh(x)` | Inverse Hyperbolic Tan |
+| `blur(in1, size, filtertype)` | Blur |
+| `burn(fg, bg, mix)` | Burn |
 | `ceil(in1)` | Ceiling |
 | `cellNoise2D(texcoord)` | Cellular Noise 2D |
 | `cellNoise3D(position)` | Cellular Noise 3D |
-| `clamp(in1, min, ...)` | Clamp |
-| `contrast(in1, amount, ...)` | Contrast |
+| `clamp(in1, min, max)` | Clamp |
+| `contrast(in1, amount, pivot)` | Contrast |
+| `copysign(x, y)` | Copy Sign |
 | `cos(in1)` | Cos |
+| `cosh(x)` | Hyperbolic Cos |
+| `cospi(x)` | Cos Pi |
 | `cross(in1, in2)` | Cross Product |
 | `determinant(in1)` | Determinant |
-| `difference(fg, bg, ...)` | Difference |
-| `disjointover(fg, bg, ...)` | Disjoint Over |
+| `dfdx(p)` | Screen-Space X Partial Derivative |
+| `dfdy(p)` | Screen-Space Y Partial Derivative |
+| `difference(fg, bg, mix)` | Difference |
+| `disjointover(fg, bg, mix)` | Disjoint Over |
+| `distanceHalf2(x, y)` | Distance |
+| `distanceHalf3(x, y)` | Distance |
+| `distanceHalf4(x, y)` | Distance |
+| `distanceSquaredHalf2(x, y)` | Distance Square |
+| `distanceSquaredHalf3(x, y)` | Distance Square |
+| `distanceSquaredHalf4(x, y)` | Distance Square |
+| `distanceSquaredVector2(x, y)` | Distance Square |
+| `distanceSquaredVector3(x, y)` | Distance Square |
+| `distanceSquaredVector4(x, y)` | Distance Square |
+| `distanceVector2(x, y)` | Distance |
+| `distanceVector3(x, y)` | Distance |
+| `distanceVector4(x, y)` | Distance |
 | `divide(in1, in2)` | Divide |
-| `dodge(fg, bg, ...)` | Dodge |
+| `dodge(fg, bg, mix)` | Dodge |
 | `dot(in1, in2)` | Dot Product |
 | `exp(in1)` | Exp |
+| `exp10(x)` | Exponential 10 |
+| `exp2(x)` | Exponential 2 |
 | `extract(in1, index)` | Extract |
+| `fdim(x, y)` | Fortran Difference and Minimum |
 | `floor(in1)` | Floor |
+| `fma(a, b, c)` | Fused Multiply-Add |
+| `fmod(x, y)` | Modulo |
 | `fract(in1)` | Fractional |
-| `fractal3D(amplitude, octaves, ...)` | Fractal Noise 3D |
-| `geometryModifier(modelPositionOffset, color, ...)` | Geometry Modifier |
-| `geometrySwitchCameraIndex(mono, left, ...)` | Camera Index Switch |
+| `fractal3D(amplitude, octaves, lacunarity, diminish, ...)` | Fractal Noise 3D |
+| `fwidth(p)` | Absolute Derivatives Sum |
+| `geometrySwitchCameraIndex(mono, left, right)` | Camera Index Switch |
+| `geometrymodifier20Vertexshader(modelPositionOffset, color, normal, bitangent, ...)` | Geometry Modifier |
 | `heightToNormal(in1, scale)` | Height To Normal |
 | `hsvAdjust(in1, amount)` | HSV Adjust |
 | `hsvToRGB(in1)` | HSV to RGB |
-| `ifEqual(value1, value2, ...)` | If Equal |
-| `ifGreater(value1, value2, ...)` | If Greater |
-| `ifGreaterOrEqual(value1, value2, ...)` | If Greater Or Equal |
-| `image(file, defaultValue, ...)` | Image |
+| `ifEqual(value1, value2, trueResult, falseResult)` | If Equal |
+| `ifGreater(value1, value2, trueResult, falseResult)` | If Greater |
+| `ifGreaterOrEqual(value1, value2, trueResult, falseResult)` | If Greater Or Equal |
+| `image(file, defaultValue, texcoord, uaddressmode, ...)` | Image |
 | `inside(in1, mask)` | Inside |
 | `invertMatrix(in1)` | Invert Matrix |
+| `isfinite(x)` | Is Finite |
+| `isinf(x)` | Is Infinite |
+| `isnan(x)` | Is Not a Number |
+| `isnormal(x)` | Is Normal |
+| `isordered(x, y)` | Is Ordered |
+| `isunordered(x, y)` | Is Unordered |
 | `length(in1)` | Magnitude |
+| `lengthSquaredHalf2(x)` | Magnitude Square |
+| `lengthSquaredHalf3(x)` | Magnitude Square |
+| `lengthSquaredHalf4(x)` | Magnitude Square |
+| `lengthSquaredVector2(x)` | Magnitude Square |
+| `lengthSquaredVector3(x)` | Magnitude Square |
+| `lengthSquaredVector4(x)` | Magnitude Square |
+| `lightSpillDiffuse(emitterUV, attenuationUV, attenuationMap)` | Reflection Diffuse |
+| `lightSpillSpecular(reflectionOrigin, unreflectedDirection, normal, antialiasingStrength)` | Reflection Specular |
 | `log(in1)` | Natural Log |
+| `log10(x)` | Log 10 |
+| `log2(x)` | Log 2 |
 | `logicalAnd(in1, in2)` | And |
 | `logicalNot(in1)` | Not |
 | `logicalOr(in1, in2)` | Or |
 | `logicalXor(in1, in2)` | XOR |
 | `luminance(in1, lumacoeffs)` | Luminance |
-| `mask(fg, bg, ...)` | Mask |
-| `matte(fg, bg, ...)` | Matte |
+| `mad24(x, y, z)` | Multiply Add 24 |
+| `mask(fg, bg, mix)` | Mask |
+| `matte(fg, bg, mix)` | Matte |
+| `max(x, y)` | Max |
 | `max(in1, in2)` | Max |
+| `max3(x, y, z)` | Max3 |
+| `median3(x, y, z)` | Median3 |
+| `min(x, y)` | Min |
 | `min(in1, in2)` | Min |
-| `minus(fg, bg, ...)` | Subtractive Mix |
-| `mix(fg, bg, ...)` | Mix |
-| `mixColor(fg, bg, ...)` | In |
+| `min3(x, y, z)` | Min3 |
+| `minus(fg, bg, mix)` | Subtractive Mix |
+| `mix(fg, bg, mix)` | Mix |
+| `mixColor(fg, bg, mix)` | In |
 | `modulo(in1, in2)` | Modulo |
+| `mul24(x, y)` | Multiply 24 |
 | `multiply(in1, in2)` | Multiply |
-| `noise2D(amplitude, pivot, ...)` | Noise 2D |
-| `noise3D(amplitude, pivot, ...)` | Noise 3D |
-| `normalMap(in1, space, ...)` | Normal Map |
+| `multiplyMatrix44(in1, in2)` | Multiply |
+| `noise2D(amplitude, pivot, texcoord)` | Noise 2D |
+| `noise3D(amplitude, pivot, position)` | Noise 3D |
+| `normalMap(in1, space, scale, normal, ...)` | Normal Map |
 | `normalMapDecode(in1)` | Normal Map Decode |
 | `normalize(in1)` | Normalize |
 | `oneMinus(in1)` | One Minus |
-| `out(fg, bg, ...)` | Out |
+| `out(fg, bg, mix)` | Out |
 | `outside(in1, mask)` | Outside |
-| `over(fg, bg, ...)` | Over |
-| `overlay(fg, bg, ...)` | Overlay |
-| `pbrSurface(baseColor, emissiveColor, ...)` | PBR Surface |
-| `pixel(file, uWrapMode, ...)` | Image 2D Pixel |
-| `pixelGradient(file, uWrapMode, ...)` | Image 2D Gradient Pixel |
-| `pixelLOD(file, uWrapMode, ...)` | Image 2D LOD Pixel |
-| `place2D(texcoord, pivot, ...)` | Place 2D |
-| `plus(fg, bg, ...)` | Additive Mix |
+| `over(fg, bg, mix)` | Over |
+| `overlay(fg, bg, mix)` | Overlay |
+| `pbrSurface(baseColor, emissiveColor, normal, roughness, ...)` | PBR Surface |
+| `pixel(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Pixel |
+| `pixelGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Gradient Pixel |
+| `pixelLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D LOD Pixel |
+| `place2D(texcoord, pivot, scale, rotate, ...)` | Place 2D |
+| `plus(fg, bg, mix)` | Additive Mix |
 | `pow(in1, in2)` | Power |
+| `powr(x, y)` | Power Positive |
 | `premult(in1)` | Premultiply |
-| `ramp4(valuetl, valuetr, ...)` | Ramp 4 Corners |
-| `ramplr(valuel, valuer, ...)` | Ramp Horizontal |
-| `ramptb(valuet, valueb, ...)` | Ramp Vertical |
-| `range(in1, inlow, ...)` | Range |
-| `read(file, defaultValue, ...)` | Image 2D Read |
+| `ramp4(valuetl, valuetr, valuebl, valuebr, ...)` | Ramp 4 Corners |
+| `ramplr(valuel, valuer, texcoord)` | Ramp Horizontal |
+| `ramptb(valuet, valueb, texcoord)` | Ramp Vertical |
+| `range(in1, inlow, inhigh, gamma, ...)` | Range |
+| `read(file, defaultValue, x, y, ...)` | Image 2D Read |
 | `reflect(in1, normal)` | Reflect |
-| `refract(in1, normal, ...)` | Refract |
-| `remap(in1, inlow, ...)` | Remap |
+| `refract(in1, normal, eta)` | Refract |
+| `remap(in1, inlow, inhigh, outlow, ...)` | Remap |
 | `rgbToHSV(in1)` | RGB to HSV |
+| `rint(x)` | Round Integral |
 | `rotate2D(in1, amount)` | Rotate 2D |
-| `rotate3D(in1, amount, ...)` | Rotate 3D |
+| `rotate3D(in1, amount, axis)` | Rotate 3D |
 | `round(in1)` | Round |
+| `rsqrt(x)` | Reciprocal Square Root |
 | `safePow(in1, in2)` | Safe Power |
-| `sample(file, uWrapMode, ...)` | Image 2D |
-| `sampleCube(file, uWrapMode, ...)` | Cube Image |
-| `sampleCubeGradient(file, uWrapMode, ...)` | Cube Image Gradient |
-| `sampleCubeLOD(file, uWrapMode, ...)` | Cube Image LOD |
-| `sampleGradient(file, uWrapMode, ...)` | Image 2D Gradient |
-| `sampleLOD(file, uWrapMode, ...)` | Image 2D LOD |
-| `saturate(in1, amount, ...)` | Saturate |
-| `screen(fg, bg, ...)` | Screen |
+| `sample(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D |
+| `sampleCube(file, uWrapMode, vWrapMode, borderColor, ...)` | Cube Image |
+| `sampleCubeGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Cube Image Gradient |
+| `sampleCubeLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Cube Image LOD |
+| `sampleGradient(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D Gradient |
+| `sampleLOD(file, uWrapMode, vWrapMode, borderColor, ...)` | Image 2D LOD |
+| `saturate(in1, amount, lumacoeffs)` | Saturate |
+| `screen(fg, bg, mix)` | Screen |
+| `select(a, b, c)` | Select |
 | `sign(in1)` | Sign |
+| `signbit(x)` | Sign Bit |
 | `sin(in1)` | Sin |
-| `smoothStep(in1, low, ...)` | Smooth Step |
-| `splitlr(valuel, valuer, ...)` | Split Horizontal |
-| `splittb(valuet, valueb, ...)` | Split Vertical |
+| `sinh(x)` | Hyperbolic Sin |
+| `sinpi(x)` | Sin Pi |
+| `smoothStep(in1, low, high)` | Smooth Step |
+| `splitlr(valuel, valuer, center, texcoord)` | Split Horizontal |
+| `splittb(valuet, valueb, center, texcoord)` | Split Vertical |
 | `sqrt(in1)` | Square Root |
 | `step(in1, edge)` | Step |
 | `subtract(in1, in2)` | Subtract |
-| `switchValue(in1, in2, ...)` | Switch |
+| `switchValue(in1, in2, in3, in4, ...)` | Switch |
 | `tan(in1)` | Tan |
-| `tiledImage(file, defaultValue, ...)` | Tiled Image |
+| `tanh(x)` | Hyperbolic Tan |
+| `tanpi(x)` | Tan Pi |
+| `tiledImage(file, defaultValue, texcoord, uvtiling, ...)` | Tiled Image |
 | `transformMatrix(in1, mat)` | Transform Matrix |
-| `transformNormal(in1, fromspace, ...)` | Transform Normal |
-| `transformPoint(in1, fromspace, ...)` | Transform Point |
-| `transformVector(in1, fromspace, ...)` | Transform Vector |
+| `transformNormal(in1, fromspace, tospace)` | Transform Normal |
+| `transformPoint(in1, fromspace, tospace)` | Transform Point |
+| `transformVector(in1, fromspace, tospace)` | Transform Vector |
 | `transpose(in1)` | Transpose |
-| `triplanarProjection(filex, filey, ...)` | Triplanar Projection |
-| `unlitSurface(color, opacity, ...)` | Unlit Surface |
+| `triplanarProjection(filex, filey, filez, defaultValue, ...)` | Triplanar Projection |
+| `trunc(x)` | Truncate |
+| `unlitSurface(color, opacity, opacityThreshold, applyPostProcessToneMap, ...)` | Unlit Surface |
 | `unpremult(in1)` | Unpremultiply |
 | `worleyNoise2DFloat(texcoord, jitter)` | Worley Noise 2D |
 | `worleyNoise2DVector2(texcoord, jitter)` | Worley Noise 2D |
@@ -284,6 +664,18 @@ The following sources are supported:
 | `SGValue.worldCameraPosition` | The world position of the camera |
 | `SGValue.worldNormal` | The world normal of the vertex or fragment being processed |
 | `SGValue.worldPosition` | The world position of the vertex or fragment being processed |
+| `SGValue.backgroundBlurColor3` | Blurred Background |
+| `SGValue.backgroundBlurColor4` | Blurred Background |
+| `SGValue.backgroundBlurColor3` | Blurred Background |
+| `SGValue.backgroundBlurColor4` | Blurred Background |
+| `SGValue.backgroundBlurColor3` | Blurred Background |
+| `SGValue.backgroundBlurColor4` | Blurred Background |
+| `SGValue.backgroundBlurColor3` | Blurred Background |
+| `SGValue.backgroundBlurColor4` | Blurred Background |
+| `SGValue.backgroundBlurColor3` | Blurred Background |
+| `SGValue.backgroundBlurColor4` | Blurred Background |
+| `SGValue.backgroundBlurColor3` | Blurred Background |
+| `SGValue.backgroundBlurColor4` | Blurred Background |
 | `SGValue.bitangent(space, index)` | Bitangent |
 | `SGValue.cameraPosition(space)` | Camera Position |
 | `SGValue.frame` | Frame |
@@ -324,13 +716,6 @@ The following sources are supported:
 | `SGValue.surfaceBaseColor` | Surface Base Color |
 | `SGValue.surfaceClearcoat` | Surface Clearcoat |
 | `SGValue.surfaceClearcoatRoughness` | Surface Clearcoat Roughness |
-| `SGValue.surfaceCustomAttribute` | Surface Custom Attribute |
-| `SGValue.surfaceCustomAttributeHalf20` | Surface Custom Attribute 0 |
-| `SGValue.surfaceCustomAttributeHalf21` | Surface Custom Attribute 1 |
-| `SGValue.surfaceCustomAttributeHalf40` | Surface Custom Attribute 0 |
-| `SGValue.surfaceCustomAttributeHalf41` | Surface Custom Attribute 1 |
-| `SGValue.surfaceCustomAttributeHalf42` | Surface Custom Attribute 2 |
-| `SGValue.surfaceCustomAttributeHalf43` | Surface Custom Attribute 3 |
 | `SGValue.surfaceCustomParameter` | Surface Custom Parameter |
 | `SGValue.surfaceEmissiveColor` | Surface Emissive Color |
 | `SGValue.surfaceMetallic` | Surface Metallic |
@@ -347,6 +732,7 @@ The following sources are supported:
 | `SGValue.tangent(space, index)` | Tangent |
 | `SGValue.texcoordVector2(index)` | Texture Coordinates |
 | `SGValue.texcoordVector3(index)` | Texture Coordinates |
+| `SGValue.texcoordVector4(index)` | Texture Coordinates |
 | `SGValue.time` | Time |
 | `SGValue.upDirection(space)` | Up Direction |
 | `SGValue.viewDirection(space)` | View Direction |
