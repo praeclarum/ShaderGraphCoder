@@ -162,4 +162,13 @@ final class ShaderGraphCoderTests: XCTestCase {
         let r = SGValue.vector3f(1, 2, 3).add(.vector3f(4, 5, 6)).divide(.float(2))
         try vectorTest(r)
     }
+
+    func testConvertVector3Color3() throws {
+        try colorTest(SGColor(.vector3f(0.0, 0.5, 1.0)))
+    }
+
+    func testConvertColor3Color4() throws {
+        let color = SGColor(color4From: .color3f(0.0, 0.5, 1.0))
+        try surfaceTest(pbrSurface(), geometryModifier: geometryModifier(color: color))
+    }
 }
