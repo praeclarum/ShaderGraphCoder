@@ -457,7 +457,7 @@ public extension SGValue {
             nodeType: "ND_realitykit_surface_screen_position",
             inputs: [
             ],
-            outputs: [.init(dataType: SGDataType.vector4f)])))
+            outputs: [.init(name: "screenPosition", dataType: SGDataType.vector4f)]), "screenPosition"))
     }
     /// Surface Specular
     static var surfaceSpecular: SGScalar {
